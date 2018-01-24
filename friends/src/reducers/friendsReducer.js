@@ -6,7 +6,7 @@ const initialState = {
   friendsFetched: false,
   saveFriends: false,
   updateFriend: false,
-  friendUPdated: false,
+  friendUpdated: false,
   deleteFriend: false,
   friendDeleted: false,
   friends: [],
