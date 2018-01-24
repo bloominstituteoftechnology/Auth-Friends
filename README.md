@@ -12,12 +12,14 @@ Topics:
 ## Project Description
 
 * Last week we built an app that interfaced with a `RESTful` api. That same project is now to be built using React & Redux.
-* Take a look at the endpoints that our API has to offer.
+* Take your examples from the mini project and use them to build a more sophisticated Application. Have fuN!
+* Once your server is up and running the URL you'll be able to hit from within your action creators is `http://localhost:5000`.
+* Take a look at the endpoints that our API has to offer in `server.js`.
 
-  * `/api/friends/get`
-  * `/api/friends/create`
-  * `/api/friends/update`
-  * `/api/friends/delete`
+  * `**[GET]** /api/friends/get`
+  * `**[POST]** /api/friends/create`
+  * `**[UPDATE]** /api/friends/update`
+  * `**[DELETE]** /api/friends/delete`
 
 ## Initialize Project
 
@@ -33,7 +35,6 @@ Topics:
 
 ## Reducer and our State Tree
 
-* Your application should have an input field, a submit button, and a list of items that represents your friends list. Make each friend a separate component.
 * You're initial state could looks something like this:
 
 ```
@@ -52,7 +53,7 @@ Topics:
 ```
 
 * This is a pretty large state tree. But each field is extremely simple.
-
+* All of your items in your state tree represent a make up of actions that you're going to make asynchronously. Think about your
 * Each `friend` item that is in the `friends` array should have the following format:
 
 ```
@@ -63,17 +64,31 @@ Topics:
 }
 ```
 
-## React
-
-* When you type a new friend's name into the input field and press the submit button you should call an action creator that adds a new friend item to the `friends` array on the application state tree.
-* When the user presses submit you will invoke the appropriate action creator which will then have its new action fed through all of the reducers.
-* You will display the friends list by creating a container that receives the application's `friends` array as a prop. That container then uses `map` to display the array.
-
 ## Project
 
 * For this project you'll need to create a few React components that will interact with your redux state.
+* This app can all be built in terms of a single view made up of multiple components that is bound to all of your `action creators`. (No need for a router here. We can fit all we need to fit onto one page with some proper styling and layout decisions)
+* Your component tree could look a lot like this.
 
-  ## Stretch Problem
+```
+index.js
+  - App.js
+    - Friends.js
+    - CreateFriendForm.js
+    - UpdateFriendForm.js
+```
+
+* If you'd like, you can create multiple components and `connect` them all up to your `redux` state tree. You could have a component who's sole purpose is to render a form for updating a user, another component who's sole purpose is for creating users, and then another component who's sole purpose is to delete a user.
+* It really is up to you how you build this project. You'll be given a couple of days to work on it so don't feel too overwhelmed at first. Just start with `App.js` and be sure that it calls your `node server`.
+
+#### App.js
+
+* Inside of `App.js` I suggest doing the friend fetching for your friend data from within `componentDidMount`. You'll need to call an action creator that you build in order to fetch your friends.
+* A crude example of what this coule potentially look like would be:
+  ![Bad example](https://image.ibb.co/hpg7gw/Screen_Shot_2018_01_24_at_1_07_21_PM.png)
+* You **Definitely** want to style your application to look much better than mine!
+
+## Stretch Problem
 
 * In the requirements for this project, we implemented a GET operation and a POST operation. Add two more actions, one for making a PUT request, and the other for making a DELETE request.
 * Style the friends list and the input field and make everything look nice.
