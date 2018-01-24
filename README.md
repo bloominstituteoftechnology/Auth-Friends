@@ -27,27 +27,39 @@ Topics:
 * You will create a list of your friends using React and Redux.
 * The general flow of steps will be to create your action creator functions, your reducers, then your React components.
 * Don't forget to hook up the store using the `Provider` tag inside of `src/index.js`, passing it your root reducer.
-* You will need to use `Redux Thunk` as a middleware inside of `src/index.js`.
-*
+* You will need to use `redux-thunk` as a middleware inside of `src/index.js`. You'll want to be sure to pass it to `applyMiddleware()` then feed it into your createStore function.
+* If you so choose include `redux-logger` to your middleware. You're going to have plenty of action creators that will consume our API so you'll get plenty of actions triggered.
+* You'll only need one reducer to represent the state of this application. This reducer will be a 'friends' reducer whos job is to look at all of the responses
 
-## State Tree
+## Reducer and our State Tree
 
 * Your application should have an input field, a submit button, and a list of items that represents your friends list. Make each friend a separate component.
-* Your application's state tree should have a single property called `friends`. It should take the same form as the object shown below.
+* You're initial state could looks something like this:
 
 ```
 {
- friends: [],
+  fetchingFriends: false,
+  friendsFetched: false,
+  friendsSaved: false,
+  savingFriends: false,
+  updatingFriend: false,
+  friendUpdated: false,
+  deletingFriend: false,
+  friendDeleted: false,
+  friends: [],
+  error: null
 }
 ```
+
+* This is a pretty large state tree. But each field is extremely simple.
 
 * Each `friend` item that is in the `friends` array should have the following format:
 
 ```
 {
-  name: 'Stephanie',
+  name: 'Luis',
   age: 24,
-  email: 'stephanie@gmail.com',
+  email: 'luis@lambdaschool.com',
 }
 ```
 
@@ -57,14 +69,11 @@ Topics:
 * When the user presses submit you will invoke the appropriate action creator which will then have its new action fed through all of the reducers.
 * You will display the friends list by creating a container that receives the application's `friends` array as a prop. That container then uses `map` to display the array.
 
-## Notes/Hints
+## Project
 
-* You will only need one reducer. This reducer will control the `friends` array property on the state tree.
-* You will have several action creators. One for adding a new friend and another for retrieving the friends list from the server.
-* Containers require `connect` and a `mapStateToProps(state)` function to read from the state tree.
-* Actions require you to create a `mapDispatchToProps(dispatch)` function that you'll also pass to the `connect` function.
+* For this project you'll need to create a few React components that will interact with your redux state.
 
-## Stretch Problem
+  ## Stretch Problem
 
 * In the requirements for this project, we implemented a GET operation and a POST operation. Add two more actions, one for making a PUT request, and the other for making a DELETE request.
 * Style the friends list and the input field and make everything look nice.
