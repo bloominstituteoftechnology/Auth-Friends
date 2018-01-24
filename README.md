@@ -6,26 +6,34 @@ Topics:
 * AJAX
 * Promises
 * Middleware
-* `redux-promise` package
+* `redux-thunk` package
+* `redux-logger` package
 
 ## Project Description
 
-### Initialize Project
+* Last week we built an app that interfaced with a `RESTful` api. That same project is now to be built using React & Redux.
+* Take a look at the endpoints that our API has to offer.
+
+  * `/api/friends/get`
+  * `/api/friends/create`
+  * `/api/friends/update`
+  * `/api/friends/delete`
+
+## Initialize Project
 
 * Run `npm i` inside the root directory of this project. Run `node server.js` to start the server.
 * Run `create-react-app friends` in in a separate terminal window in the root directory of the project to create your starter application.
-* Run `npm i --save redux react-redux redux-promise axios`, which will install the needed dependencies.
+* `cd` into 'friends' & Run `npm i --save redux react-redux redux-thunk redux-logger axios`, which will install the needed dependencies.
 * You will create a list of your friends using React and Redux.
 * The general flow of steps will be to create your action creator functions, your reducers, then your React components.
 * Don't forget to hook up the store using the `Provider` tag inside of `src/index.js`, passing it your root reducer.
-* You will need to use `Redux Promise` as a middleware inside of `src/index.js`.
-* Create two actions. One action will retrieve the friends list from the server. The second action will add a new friend to the friends list on the server.
+* You will need to use `Redux Thunk` as a middleware inside of `src/index.js`.
+*
 
-### State Tree
+## State Tree
 
 * Your application should have an input field, a submit button, and a list of items that represents your friends list. Make each friend a separate component.
 * Your application's state tree should have a single property called `friends`. It should take the same form as the object shown below.
-
 
 ```
 {
@@ -35,7 +43,6 @@ Topics:
 
 * Each `friend` item that is in the `friends` array should have the following format:
 
-
 ```
 {
   name: 'Stephanie',
@@ -44,13 +51,13 @@ Topics:
 }
 ```
 
-### React
+## React
 
 * When you type a new friend's name into the input field and press the submit button you should call an action creator that adds a new friend item to the `friends` array on the application state tree.
 * When the user presses submit you will invoke the appropriate action creator which will then have its new action fed through all of the reducers.
 * You will display the friends list by creating a container that receives the application's `friends` array as a prop. That container then uses `map` to display the array.
 
-### Notes/Hints
+## Notes/Hints
 
 * You will only need one reducer. This reducer will control the `friends` array property on the state tree.
 * You will have several action creators. One for adding a new friend and another for retrieving the friends list from the server.
