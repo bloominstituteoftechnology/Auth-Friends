@@ -1,4 +1,8 @@
-// import { *actions here* } from '../actions';
+import { 
+  FETCH_FRIENDS, 
+  FRIENDS_FETCHED, 
+  ERROR_FETCHING 
+} from '../actions';
 
 // create initialState
 const initialState = {
@@ -17,5 +21,20 @@ const initialState = {
 // switch, case, return {...state, action}
 // action.type
 export const friendReducer = (state = initialState, action) => {
-
+  switch (action.type) {
+    case FETCH_FRIENDS:
+      return {...state, fetchFriends: true};
+    case FRIENDS_FETCHED:
+      console.log("payload from reducer", action.payload);
+      return {
+        ...state,
+        friendsFetched: true,
+        fetchFriends: false,
+        friends: action.payload
+      };
+    case ERROR_FETCHING:
+      return { ...state, fetchFriends: false, error: action.payload };
+    default:
+    return state;
+  }
 }
