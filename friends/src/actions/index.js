@@ -6,6 +6,7 @@ import axios from 'axios';
 export const FETCH_FRIENDS = 'FETCH_FRIENDS';
 export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
 export const ERROR_FETCHING = 'ERROR_FETCHING';
+export const UPDATE_FRIENDS = 'UPDATE_FRIENDS';
 // add additional actions for save, update, delete
 
 // get data from server
@@ -16,8 +17,15 @@ export const getFriends = () => {
   return dispatch => {
     dispatch({ type: 'FETCH_FRIENDS' });
     friends.then(({ data }) => {
-      console.log(data);
       dispatch({ type: FRIENDS_FETCHED, payload: data })
     })
   }
 }
+
+export const addFriend = value => {
+  return {
+    type: UPDATE_FRIENDS,
+    id: this.props.friends.length, 
+    value,
+  };
+};

@@ -9,7 +9,7 @@ const initialState = {
   fetchFriends: false,
   friendsFetched: false,
   saveFriends: false,
-  updateFriend: false,
+  updateFriends: false,
   friendUpdated: false,
   deleteFriend: false,
   friendDeleted: false,
@@ -25,7 +25,7 @@ export const friendReducer = (state = initialState, action) => {
     case FETCH_FRIENDS:
       return {...state, fetchFriends: true};
     case FRIENDS_FETCHED:
-      console.log("payload from reducer", action.payload);
+      
       return {
         ...state,
         friendsFetched: true,

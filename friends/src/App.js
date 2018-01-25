@@ -1,38 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { getFriends } from './actions';
 
 class App extends Component {
+  // mount component to props
   componentDidMount() {
     this.props.getFriends();
   }
-
+  // build basic html/jsx inside return for friendslist
   render() {
     return (
-      <div className="Friends">
-        {this.props.fetchFriends ? (
-          <img src={logo} className="App-logo" alt="logo" />
-        ) : (
-          <ul>
-            {this.props.friends.map(friend => {
-              return <li key={friend.name}>{friend.name}</li>;
-            })}
-          </ul>
-        )}
+      <div className="friends">
+        <ul className="Friends-list">
+          {this.props.friends.map(friend => {
+            return (
+              <li key={friend.id}>
+                <div className="Friend-name">{friend.name}</div>
+                <div className="Friend-age">{`Age: ${friend.age}`}</div>
+                <div className="Friend-email">{`Email: ${friend.email}`}</div>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }
 }
-
+  // mapStateToProps
 const mapStateToProps= (state) => {
-  console.log(state);
   return {
     friends: state.friendReducer.friends,
     fetchFriends: state.friendReducer.fetchFriends,
     error: state.friendReducer.error
   };
 };
-
+// connect components
 export default connect(mapStateToProps, { getFriends }) (App);
