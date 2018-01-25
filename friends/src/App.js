@@ -3,8 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import Friends from './Components/Friends';
 import CreateFriendForm from './Components/CreateFriendForm';
+import {getFriends} from './Actions'
+import { connect } from 'react-redux';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getFriends()
+  }
+
   render() {
     return (
       <div className="App">
@@ -16,10 +22,18 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <CreateFriendForm />
-        <Friends />
+        <div className="List">
+          {this.props.friendsFetched ? this.props.friends.map(friend => { return <Friends key={friend.email} friend={friend} />}) : (<img src={logo} className="App-logo" alt="logo" />)}
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    friends: state.friends,
+    friendsFetched: state.friendsFetched  
+  }
+}
+export default connect(mapStateToProps, { getFriends })(App);

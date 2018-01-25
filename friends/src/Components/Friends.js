@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import logo from '../logo.svg';
 import './Friends.css'
 import UpdateFriend from './UpdateFriend'
-
-import { getFriends } from '../Actions';
+import { friendsReducer } from '../Reducers/index';
 
 class Friends extends Component {
 
@@ -15,10 +13,6 @@ class Friends extends Component {
         }
     }
 
-    componentDidMount() {
-        this.props.getFriends();
-    }
-
     updateToggle = () => {
         const active = this.state.update;
         this.setState({update: !active});
@@ -26,33 +20,19 @@ class Friends extends Component {
 
     render() {
         return (
-            <div className="App">
-                {this.props.friendsFetched ? (
-                <div className="FriendList">
-                    {this.props.friends.map(friend => {
-                    return <div key={friend.email} className="Friend" >
-                        <div>{friend.name}</div>
-                        <div>Age: {friend.age}</div>
-                        <div>Email: {friend.email}</div>
+            <div className="Friend">
+                <div>
+                        <div>{this.props.friend.name}</div>
+                        <div>Age: {this.props.friend.age}</div>
+                        <div>Email: {this.props.friend.email}</div>
                         <button onClick={this.updateToggle}>Update</button>
-                        {this.state.update ? <UpdateFriend data={friend}/> : null}
-                    </div>;
-                    })}
+                        {this.state.update ? <UpdateFriend data={this.props.friend}/> : null}
                 </div>
-                ) : (
-                <img src={logo} className="App-logo" alt="logo" />
-                )}
+
             </div>
         );
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        friends: state.friends,
-        friendsFetched: state.friendsFetched
-    }
-}
-
-export default connect(mapStateToProps, { getFriends })(Friends)
+export default Friends;
 
