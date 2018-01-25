@@ -23,16 +23,16 @@ const initialState = {
 export const friends = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCHING_FRIENDS:
-			return { ...state, fetching: true };
+			return { ...state, fetchingFriends: true };
 		case FRIENDS_RECEIVED:
 			return {
 				...state,
-				fetching: false,
-				fetched: true,
+				fetchingFriends: false,
+				friendsFetched: true,
 				friends: action.payload,
 			};
 		case ERROR_FETCHING_FRIENDS:
-			return { ...state, fetching: false, error: action.payload };
+			return { ...state, fetchingFriends: false, error: action.payload };
 		case ADDING_FRIEND:
 			return { ...state, savingFriends: true };
 		case ADDING_FRIEND_SUCCESSFUL:
