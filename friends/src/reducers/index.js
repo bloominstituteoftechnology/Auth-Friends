@@ -1,5 +1,4 @@
 import { GETTING_FRIENDS, FRIENDS_RECEIVED, ADDING_FRIEND, FRIEND_ADDED, ERROR } from '../actions';
-// friendAdded: true, addingFriend: false, 
 
 const initialState = {
   friends: [],

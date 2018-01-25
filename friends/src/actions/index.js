@@ -29,7 +29,6 @@ export const getFriends = () => {
       .then(({ data }) => {
         dispatch({ type: FRIENDS_RECEIVED, payload: data })
       })
-      // .catch(err => console.log(err));
       .catch(err => {
         dispatch({ type: ERROR, payload: err })
       });
