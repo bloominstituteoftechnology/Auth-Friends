@@ -21,8 +21,12 @@ class Friends extends Component {
 
     deleteFriend = (event) => {
         event.preventDefault();
-        console.log(this.props.index);
-        this.props.deleteFriend(this.props.index);
+        const deleteIndex = {
+            data: {
+                index: this.props.index
+            }
+        }
+        this.props.deleteFriend(deleteIndex);
 
     }
 
