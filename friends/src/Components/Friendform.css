@@ -1,23 +1,29 @@
 .Form-bg {
   display: flex;
-  justify-content: center;
-  height: 60px;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-flow: row wrap;
+  height: 100px;
   width: 75%;
   background-color: #FFFFFF;
-  box-shadow: 0px 4px 5px 8px #3B5998;
+  box-shadow: 0px 4px 3px 4px #3B5998;
 }
 
 .Add-form {
   display: flex;
   justify-content: center;
+  flex-direction: row;
+  flex-flow: row wrap;
   margin: auto;
   padding: 5px;
-  height: 25px;
-  box-shadow: 0px 0px 6px 6px #3B5998;
+  height: 60px;
+  box-shadow: 0px 4px 3px 4px #3B5998;
 }
 
 .Add-button {
   width: 15%;
+  flex-direction: row;
+  flex-flow: row wrap;
   text-align: center;
   font-family: 'Indie Flower', cursive;
   font-weight: bold;
@@ -26,11 +32,17 @@
 
 .Name {
   width: 40%;
+  flex-direction: row;
+  flex-flow: row wrap;
 }
 
 .Age {
   width: 5%;
+  flex-direction: row;
+  flex-flow: row wrap; 
 }
 .Email {
   width: 40%;
+  flex-direction: row;
+  flex-flow: row wrap;
 }
