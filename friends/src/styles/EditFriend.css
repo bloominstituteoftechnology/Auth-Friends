@@ -1,0 +1,34 @@
+.EditFriend {
+	margin-bottom: 20px;
+
+	display: flex;
+	justify-content: center;
+}
+
+.EditingFriend {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.CancelEditFriendButton {
+	width: 100px;
+
+	margin-bottom: 20px;
+}
+
+.InputForm {
+	display: inherit;
+	flex-direction: inherit;
+}
+
+.AddFriendInput {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	text-align: center;
+}
+
+.editFriendConfirmButton {
+	margin-top: 20px;
+}

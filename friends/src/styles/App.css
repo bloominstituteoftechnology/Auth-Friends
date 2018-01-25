@@ -14,14 +14,9 @@
 	justify-content: center;
 }
 
-.LoadingScreen {
-	display: flex;
-	justify-content: center;
-}
-
 .LoadingPicture {
-	animation: App-logo-spin infinite 20s linear;
-	height: 80px;
+	animation: LoadingPicture-spin infinite 5s linear;
+	height: 250px;
 }
 
 @keyframes LoadingPicture-spin {

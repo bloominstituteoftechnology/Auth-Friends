@@ -1,0 +1,11 @@
+.AppLogger {
+	margin-top: 20px;
+	margin-left: 5px;
+	margin-bottom: 20px;
+
+	font-size: 10px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}

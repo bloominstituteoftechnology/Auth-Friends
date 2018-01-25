@@ -1,0 +1,23 @@
+.Loader {
+	margin-top: 20px;
+
+	border-bottom: solid 1px;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	/*align-items: center;*/
+}
+
+.LoadingScreen {
+	margin-top: 20px;
+
+	display: inherit;
+	flex-direction: column;
+}
+
+.StatusMessage {
+	margin: 5px;
+
+	font-size: 10px;
+}

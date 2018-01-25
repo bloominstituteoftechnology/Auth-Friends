@@ -5,6 +5,12 @@ import {
 	ADDING_FRIEND,
 	ADDING_FRIEND_SUCCESSFUL,
 	ERROR_ADDING_FRIEND,
+	EDITING_FRIEND,
+	EDITING_FRIEND_SUCCESSFUL,
+	ERROR_EDITING_FRIEND,
+	DELETING_FRIEND,
+	DELETING_FRIEND_SUCCESSFUL,
+	ERROR_DELETING_FRIEND,
 } from '../actions';
 
 const initialState = {
@@ -23,7 +29,7 @@ const initialState = {
 export const friends = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCHING_FRIENDS:
-			return { ...state, fetchingFriends: true };
+			return { ...state, fetchingFriends: true, friendsFetched: false };
 		case FRIENDS_RECEIVED:
 			return {
 				...state,
@@ -34,16 +40,40 @@ export const friends = (state = initialState, action) => {
 		case ERROR_FETCHING_FRIENDS:
 			return { ...state, fetchingFriends: false, error: action.payload };
 		case ADDING_FRIEND:
-			return { ...state, savingFriends: true };
+			return { ...state, savingFriends: true, friendsSaved: false };
 		case ADDING_FRIEND_SUCCESSFUL:
 			return {
 				...state,
 				friends: action.payload,
-				friendsSaved: true,
 				savingFriends: false,
+				friendsSaved: true,
 			};
 		case ERROR_ADDING_FRIEND:
 			return { ...state, savingFriends: false };
+		case EDITING_FRIEND:
+			return { ...state, updatingFriend: true, friendUpdated: false };
+		case EDITING_FRIEND_SUCCESSFUL:
+			console.log(action.payload);
+			return {
+				...state,
+				friends: action.payload,
+				updatingFriend: false,
+				friendUpdated: true,
+			};
+		case ERROR_EDITING_FRIEND:
+			return { ...state, updatingFriend: false, error: action.payload };
+		case DELETING_FRIEND:
+			return { ...state, deletingFriend: true, friendDeleted: false };
+		case DELETING_FRIEND_SUCCESSFUL:
+			console.log(action.payload);
+			return {
+				...state,
+				friends: action.payload,
+				deletingFriend: false,
+				friendDeleted: true,
+			};
+		case ERROR_DELETING_FRIEND:
+			return { ...state, deletingFriend: false, error: action.payload };
 		default:
 			return state;
 	}
