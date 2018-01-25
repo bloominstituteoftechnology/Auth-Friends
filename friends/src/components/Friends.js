@@ -14,13 +14,13 @@ class Friends extends Component {
 		return (
 			<div className='Friends'>
 				{this.props.fetchingFriends ? (<h2>Loading...</h2>) : (
-					<ul>
+					<ul className='Friends-grid'>
 						{this.props.friends.map((friend, index) => {
 							return (
-								<li key={index} className="friend">
-									<div className="friend-name">{friend.name}</div>
-									<div className="friend-age">{`Age: ${friend.age}`}</div>
-									<div className="friend-email">{`Email: ${friend.email}`}</div>
+								<li key={index} className="Friend">
+									<div className="Friend-name">{friend.name}</div>
+									<div className="Friend-age">{`Age: ${friend.age}`}</div>
+									<div className="Friend-email">{`Email: ${friend.email}`}</div>
 								</li>
 							);
 						})}
@@ -34,8 +34,9 @@ class Friends extends Component {
 const mapStateToProps = (state) => {
 	console.log('*****mapStateToProps state', state);
 	return {
-		friends: state.getFriendsReducer.friends,
-		fetchingFriends: state.getFriendsReducer.fetchingFriends
+		friends: state.friendsReducer.friends,
+		fetchingFriends: state.friendsReducer.fetchingFriends,
+		error: state.friendsReducer.error
 	}
 }
 

@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 180px;
   padding: 20px;
   color: white;
 }
@@ -20,6 +20,28 @@
 
 .App-intro {
   font-size: large;
+}
+
+.Friends-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Friend {
+  background-color: #fff;
+  color: rgba(0,0,0,0.7);
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+  margin: 1rem;
+  padding: 1rem;
+  min-width: 15rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+.Create-form input{
+  margin-right: 5px;
 }
 
 @keyframes App-logo-spin {

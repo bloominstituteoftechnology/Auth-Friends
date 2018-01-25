@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Friends from './components/Friends';
+import CreateFriendForm from './components/CreateFriendForm';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Friends</h1>
+          <CreateFriendForm />
         </header>
         <Friends />
       </div>
