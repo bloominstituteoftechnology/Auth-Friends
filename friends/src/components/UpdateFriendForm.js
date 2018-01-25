@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class UpdateFriendForm extends Component {
-  render() {
-    return (
-      <form>
-        <input placeholder="cool form" />
-        <input placeholder="cool form" />
-        <input placeholder="cool form" />
-      </form>
-    );
-  }
-}
+const UpdateFriendForm = props => {
+  return (
+    <form>
+      <input placeholder={props.friend.name} />
+      <input placeholder={props.friend.email} />
+      <input placeholder={props.friend.age} />
+    </form>
+  );
+};
 
 export default UpdateFriendForm;

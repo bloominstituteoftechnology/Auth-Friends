@@ -6,9 +6,11 @@ export const GETTING_FRIENDS = 'GETTING_FRIENDS';
 export const CREATING_FRIEND = 'CREATING_FRIEND';
 export const CREATE_FRIEND = 'CREATE_FRIEND';
 export const UPDATE_FRIEND = 'UPDATE_FRIENDS';
-export const DELETE_FRIEND = 'DELETE_FRIENDS';
+export const DELETE_FRIEND = 'DELETE_FRIEND';
 export const UPDATING_FRIEND = 'UPDATING_FRIEND';
 export const DELETING_FRIEND = 'DELETING_FRIEND';
+export const SINGLE_FRIEND = 'SINGLE_FRIEND';
+export const TOGGLE_UPDATE_FRIEND = 'TOGGLE_UPDATE_FRIEND';
 
 const URL = 'http://localhost:5000/api/friends';
 
@@ -49,9 +51,23 @@ export const deleteFriend = id => {
     deletedFriend
       .then(({ data }) => {
         dispatch({ type: DELETE_FRIEND, payload: data });
+        dispatch({ type: SINGLE_FRIEND, payload: {} });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
       });
+  };
+};
+
+export const toggleShowUpdate = () => {
+  return {
+    type: TOGGLE_UPDATE_FRIEND
+  };
+};
+
+export const updateSingleFriend = friend => {
+  return {
+    type: SINGLE_FRIEND,
+    payload: friend
   };
 };

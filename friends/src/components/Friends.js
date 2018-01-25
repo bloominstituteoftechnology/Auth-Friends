@@ -3,61 +3,48 @@ import './App.css';
 import logo from './logo.svg';
 import SelectedFriend from './SelectedFriend';
 import { connect } from 'react-redux';
-import { deleteFriend } from '../actions';
+import { deleteFriend, updateSingleFriend, toggleShowUpdate } from '../actions';
 import UpdateFriendForm from './UpdateFriendForm';
 
 class Friends extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      friendSelected: {},
-      friendId: null,
-      showUpdate: false
-    };
-  }
-
   handleDeleteFriend = () => {
-    const { friendSelected } = this.state;
-    this.props.deleteFriend(friendSelected.id);
-    this.setState({ friendSelected: {} });
+    const { id } = this.props.friendSelected;
+    this.props.deleteFriend(id);
   };
 
+  handleShowFriend = friend => {
+    this.props.updateSingleFriend(friend);
+  };
+
+  toggleShowUpdate = () => {
+    this.props.toggleShowUpdate();
+  };
   render() {
     return (
       <div className="Friend-Container">
         <ul className="Friend-List">
           {this.props.friends.map(friend => {
-            return [
-              <li
-                onClick={() => this.setState({ friendSelected: friend })}
-                key={friend.id}
-              >
+            return (
+              <li onClick={() => this.handleShowFriend(friend)} key={friend.id}>
                 {friend.name}
-              </li>,
-              <button
-                onClick={_ =>
-                  this.setState({
-                    friendId: friend.id,
-                    showUpdate: !this.state.showUpdate
-                  })
-                }
-              >
-                {' '}
-                Update {friend.name}
-              </button>
-            ];
+              </li>
+            );
           })}
         </ul>
-        {Object.keys(this.state.friendSelected).length > 0 ? (
+        {Object.keys(this.props.friendSelected).length > 0 ? (
           <SelectedFriend
+            handleShowFriend={this.handleShowFriend}
+            toggleShowUpdate={this.toggleShowUpdate}
             handleDeleteFriend={this.handleDeleteFriend}
-            selected={this.state.friendSelected}
+            selected={this.props.friendSelected}
           />
+        ) : null}
+        {this.props.showUpdate ? (
+          <UpdateFriendForm friend={this.props.friendSelected} />
         ) : null}
         {this.props.deletingFriend ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : null}
-        {this.state.showUpdate ? <UpdateFriendForm /> : null}
       </div>
     );
   }
@@ -66,8 +53,14 @@ class Friends extends Component {
 const mapStateToProps = state => {
   return {
     deletingFriend: state.friendsReducer.deletingFriend,
-    error: state.friendsReducer.error
+    error: state.friendsReducer.error,
+    showUpdate: state.singleFriendReducer.showUpdate,
+    friendSelected: state.singleFriendReducer.friendSelected
   };
 };
 
-export default connect(mapStateToProps, { deleteFriend })(Friends);
+export default connect(mapStateToProps, {
+  deleteFriend,
+  updateSingleFriend,
+  toggleShowUpdate
+})(Friends);
