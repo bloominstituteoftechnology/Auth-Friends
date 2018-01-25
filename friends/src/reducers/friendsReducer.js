@@ -1,7 +1,8 @@
 import { 
   FETCH_FRIENDS, 
   FRIENDS_FETCHED, 
-  ERROR_FETCHING 
+  ERROR_FETCHING,
+   
 } from '../actions';
 
 // create initialState

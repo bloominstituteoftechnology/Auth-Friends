@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { getFriends } from './actions';
+import AddFriend from './containers/AddFriend';
 
 class App extends Component {
   // mount component to props
@@ -23,7 +24,9 @@ class App extends Component {
             );
           })}
         </ul>
+        <AddFriend />
       </div>
+      
     );
   }
 }
