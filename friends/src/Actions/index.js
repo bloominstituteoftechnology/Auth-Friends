@@ -34,10 +34,10 @@ export const postFriend = friend => {
     }
 }
 
-export const updateFriend = friend => {
+export const updateFriend = (friend, index) => {
     return dispatch => {
         dispatch({type: UPDATING_FRIEND})
-        axios.put('http://localhost:5000/api/friends/update', friend)
+        axios.put('http://localhost:5000/api/friends/update', friend[index])
         .then(response => {dispatch({type: FRIEND_UPDATED, payload: response.data})})
         .catch(error => {dispatch({type:FRIEND_UPDATING_ERROR, payload: error})})
     }

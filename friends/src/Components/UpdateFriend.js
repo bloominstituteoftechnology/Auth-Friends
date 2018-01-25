@@ -25,7 +25,8 @@ class UpdateFriend extends Component {
             age: this.state.age,
             email: this.state.email
         }
-        this.props.updateFriend(update);
+        let id = this.props.data.email
+        this.props.updateFriend(update, id);
         console.log(update);
     }
     render() {
