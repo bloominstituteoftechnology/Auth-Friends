@@ -1,0 +1,17 @@
+.FriendList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.Friend {
+    border: solid 1px silver;
+    margin: 10px;
+    width: 300px;
+    padding: 10px;
+}
+
+button {
+    margin: 5px;
+}
