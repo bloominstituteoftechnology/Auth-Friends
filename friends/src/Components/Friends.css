@@ -1,0 +1,81 @@
+.List {
+  display: flex;
+  padding: 20px;
+  width: 95%;
+  height: 800px;
+  margin-top: 25px;
+  border: 2px solid #3B5998;
+  background-color: #FFFFFF;
+  justify-content: space-evenly;
+  flex-direction: row; 
+}
+/* .Friends {
+  display: flex;
+  padding: 60px;
+  margin-left: 10px;
+  height: 80px;
+  border: 2px solid #3B5998;
+  background-color: #FFFFFF;
+} */
+
+/* .Friend-box {
+  display: flex;
+  flex-direction: column;
+  
+  width: 50%;
+  height: 50%;
+} */
+
+
+.Friends {
+  padding: 0;
+  margin: 0;
+  background: #FFFFFF;
+  box-shadow: 2px 2px 10px 3px #3B5998;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  height: 150px;
+  -webkit-flex-flow: row wrap;
+  justify-content:
+}
+
+.Friend-box {
+  font-family: 'Indie Flower';
+  padding: 5px;
+  width: 200px;
+  height: 150px;
+  margin: 0;
+  
+  line-height: 20px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+
+.Name {
+  text-align: left;
+}
+.Age {
+  align-content: space-between;
+}
+
+.Email {
+  display: flex;
+  align-content: space-around;
+  text-align: left;
+}
+
+.Update {
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+.Delete {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}

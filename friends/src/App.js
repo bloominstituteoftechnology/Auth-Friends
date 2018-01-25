@@ -1,42 +1,47 @@
 import React, { Component } from 'react';
+// Fixed Imports to reflect new File structure 
 import './App.css';
+import Friends from './Components/Friends';
+import Friendform from './Components/Friendform';
+import { getFriends } from './Actions';
 import { connect } from 'react-redux';
-import { getFriends } from './actions';
-import AddFriend from './containers/AddFriend';
+
+// Fix bugs in rendering
+// Format to default React boilerplate
+// Add form/friends and props calls
 
 class App extends Component {
-  // mount component to props
   componentDidMount() {
     this.props.getFriends();
   }
-  // build basic html/jsx inside return for friendslist
+
   render() {
     return (
-      <div className="friends">
-        <ul className="Friends-list">
-          {this.props.friends.map(friend => {
-            return (
-              <li key={friend.id}>
-                <div className="Friend-name">{friend.name}</div>
-                <div className="Friend-age">{`Age: ${friend.age}`}</div>
-                <div className="Friend-email">{`Email: ${friend.email}`}</div>
-              </li>
-            );
-          })}
-        </ul>
-        <AddFriend />
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Redux Friends</h1>
+        </header>
+        <Friendform />
+        <div className="List">
+          {this.props.friendsFetched ? (
+            this.props.friends.map((friend, index) => {
+              return <Friends key={index} index={index} friend={friend} />;
+            })
+          ) : (
+            <img className="App-logo" alt="logo" />
+          )}
+        </div>
       </div>
-      
     );
   }
 }
-  // mapStateToProps
-const mapStateToProps= (state) => {
+// mappedState to newly restructured code
+const mapStateToProps = state => {
   return {
-    friends: state.friendReducer.friends,
-    fetchFriends: state.friendReducer.fetchFriends,
-    error: state.friendReducer.error
+    friends: state.friends,
+    friendsFetched: state.friendsFetched,
   };
 };
-// connect components
-export default connect(mapStateToProps, { getFriends }) (App);
+
+// connect works with previous commits leave as is
+export default connect(mapStateToProps, { getFriends })(App);
