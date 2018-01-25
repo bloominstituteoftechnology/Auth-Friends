@@ -68,7 +68,9 @@ export default function Friends(props) {
                         </div>
                       </li>
 
-                      <li className="Friend__listItem">{friend.age} y/o</li>
+                      <li className="Friend__listItem">
+                        {friend.age} years old
+                      </li>
                     </div>
 
                     <div className="FriendsDetailedHeader">

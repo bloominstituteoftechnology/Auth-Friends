@@ -1,13 +1,17 @@
 .AddFriend {
 	margin-bottom: 20px;
 
+	/*height: 18px;*/
+
 	display: flex;
 	justify-content: center;
 }
 
 .IsAddingFriend {
+	/*height: 18px;*/
+
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 }
@@ -15,24 +19,35 @@
 .CancelAddFriendButton {
 	width: 100px;
 
-	margin-bottom: 20px;
+	text-align: center;
+
+	margin-right: 4px;
 }
 
 .InputForm {
 	display: inherit;
 	flex-direction: inherit;
+	align-items: center;
 }
 
 .AddFriendInput {
-	margin-top: 2px;
-	margin-bottom: 2px;
+	margin-left: 1px;
+	margin-right: 1px;
+
 	text-align: center;
 }
 
 .AddFriendConfirmButton {
-	margin-top: 20px;
+	width: 100px;
+
+	text-align: center;
+
+	margin-left: 4px;
+}
+
+.AddFriendButtonContainer {
+	height: 23px;
 }
 
 .AddFriendButton {
-	width: 100px;
 }

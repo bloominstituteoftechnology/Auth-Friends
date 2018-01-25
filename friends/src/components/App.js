@@ -15,12 +15,6 @@ import '../styles/App.css';
 
 class App extends Component {
 	state = {
-		isAddingFriend: null,
-		addFriend: {
-			name: '',
-			age: '',
-			email: '',
-		},
 		friendClickedEmails: [],
 		showEditingFriendsPane: null,
 		editingFriendEmail: '',
@@ -33,7 +27,10 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		this.setState({ isAddingFriend: false, showEditingFriendsPane: false });
+		this.setState({
+			finishedAddingFriend: false,
+			showEditingFriendsPane: false,
+		});
 
 		this.props.getFriends();
 	}
@@ -45,41 +42,8 @@ class App extends Component {
 		// if (nextProps.friends !== this.props.friends) this.props.getFriends();
 	}
 
-	addFriendButtonClicked = () => {
-		this.setState({
-			isAddingFriend: !this.state.isAddingFriend,
-		});
-
-		// this.state.isAddingFriend
-		// will turn false
-		// because setState is asynchronous
-		if (this.state.isAddingFriend)
-			this.setState({ addFriend: { name: '', age: '', email: '' } });
-	};
-
-	handleAddFriendInput = (name, value) => {
-		const addFriend = { ...this.state.addFriend };
-		if (name === 'name') addFriend.name = value;
-		else if (name === 'number') addFriend.age = Number(value);
-		else if (name === 'email') addFriend.email = value;
-		this.setState({ addFriend });
-	};
-
-	addFriendHandler = () => {
-		let isOkayToAdd = true;
-
-		this.props.friends.forEach(friend => {
-			if (friend.email === this.state.addFriend.email) {
-				isOkayToAdd = false;
-				window.alert("New friend's email already exists in database.");
-				return null;
-			}
-		});
-
-		if (isOkayToAdd) {
-			this.props.addFriend(this.state.addFriend);
-			this.addFriendButtonClicked();
-		}
+	addFriendHandler = newFriend => {
+		this.props.addFriend(newFriend);
 	};
 
 	friendClicked = email => {
@@ -169,10 +133,10 @@ class App extends Component {
 				<div className="ShowFriends">
 					{!this.state.showEditingFriendsPane ? (
 						<AddFriend
-							isAddingFriend={this.state.isAddingFriend}
-							addFriendButtonClicked={this.addFriendButtonClicked}
-							handleAddFriendInput={this.handleAddFriendInput}
-							addFriend={this.addFriendHandler}
+							friendKeys={this.props.friends.map(friend => {
+								return friend.email;
+							})}
+							addFriendHandler={this.addFriendHandler}
 						/>
 					) : (
 						<EditFriend
