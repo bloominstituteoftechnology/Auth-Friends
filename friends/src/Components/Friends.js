@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './Friends.css'
 import UpdateFriend from './UpdateFriend'
 
+import { connect } from 'react-redux';
+import { deleteFriend } from '../Actions';
+
 class Friends extends Component {
 
     constructor(props) {
@@ -16,6 +19,13 @@ class Friends extends Component {
         this.setState({update: !active});
     }
 
+    deleteFriend = (event) => {
+        event.preventDefault();
+        console.log(this.props.index);
+        this.props.deleteFriend(this.props.index);
+
+    }
+
     render() {
         return (
             <div className="Friend">
@@ -24,7 +34,8 @@ class Friends extends Component {
                         <div>Age: {this.props.friend.age}</div>
                         <div>Email: {this.props.friend.email}</div>
                         <button onClick={this.updateToggle}>Update</button>
-                        {this.state.update ? <UpdateFriend data={this.props.friend}/> : null}
+                        <button onClick={this.deleteFriend}>Delete</button>
+                        {this.state.update ? <UpdateFriend data={this.props.friend} index={this.props.index}/> : null}
                 </div>
 
             </div>
@@ -32,5 +43,10 @@ class Friends extends Component {
     }
 }
 
-export default Friends;
+const mapStateToProps = state => {
+    return {
+        state
+    }
+}
+export default connect(mapStateToProps, { deleteFriend })(Friends);
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { postFriend } from '../Actions';
 
+import './CreateFriendForm.css';
+
 class CreateFriendForm extends Component {
     constructor() {
         super();

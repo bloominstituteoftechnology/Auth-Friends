@@ -20,7 +20,7 @@ class App extends Component {
         </header>
         <CreateFriendForm />
         <div className="List">
-          {this.props.friendsFetched ? this.props.friends.map(friend => { return <Friends key={friend.email} friend={friend} />}) : (<img src={logo} className="App-logo" alt="logo" />)}
+          {this.props.friendsFetched ? this.props.friends.map((friend, index )=> { return <Friends key={index} index={index} friend={friend} />}) : (<img src={logo} className="App-logo" alt="logo" />)}
         </div>
       </div>
     );

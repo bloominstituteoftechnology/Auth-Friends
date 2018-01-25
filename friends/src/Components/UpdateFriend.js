@@ -9,7 +9,8 @@ class UpdateFriend extends Component {
         this.state = {
             name: this.props.data.name,
             age: this.props.data.age,
-            email: this.props.data.email
+            email: this.props.data.email,
+            save: false
         }
     }
 
@@ -21,17 +22,22 @@ class UpdateFriend extends Component {
     submitUpdate = (event) => {
         event.preventDefault();
         const update = {
-            name: this.state.name,
-            age: this.state.age,
-            email: this.state.email
+            index: this.props.index,
+            update: {
+                name: this.state.name,
+                age: this.state.age,
+                email: this.state.email
+            }
         }
-        let id = this.props.data.email
-        this.props.updateFriend(update, id);
+        let active = this.state.save;
+        this.props.updateFriend(update);
+        this.setState({save: !active});
+
         console.log(update);
     }
     render() {
         return (
-            <form>
+            <form style={this.state.save ? {display: 'none'} : null}>
                 <input placholder="name" name="name" value={this.state.name} onChange={this.handleUpdate} />
                 <input placholder="age" name="age" value={this.state.age} onChange={this.handleUpdate} />
                 <input placholder="email" name="email" value={this.state.email} onChange={this.handleUpdate} />
