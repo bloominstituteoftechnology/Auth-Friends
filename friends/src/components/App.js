@@ -28,7 +28,6 @@ class App extends Component {
 
 	componentDidMount() {
 		this.setState({
-			finishedAddingFriend: false,
 			showEditingFriendsPane: false,
 		});
 

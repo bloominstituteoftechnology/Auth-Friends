@@ -19,7 +19,16 @@ class AddFriend extends Component {
 	}
 
 	AddFriendButtonClickHandler = () => {
-		this.setState({ isAddingFriend: !this.state.isAddingFriend });
+		this.setState({ isAddingFriend: true });
+	};
+
+	CancelAddFriendButtonClickHandler = () => {
+		this.setState({
+			name: '',
+			age: '',
+			email: '',
+			isAddingFriend: false,
+		});
 	};
 
 	handleInputChange = e => {
@@ -34,11 +43,7 @@ class AddFriend extends Component {
 			newFriend.age = Number(this.state.age);
 			newFriend.email = this.state.email;
 
-			this.setState({
-				name: '',
-				age: '',
-				email: '',
-			});
+			this.CancelAddFriendButtonClickHandler();
 
 			this.props.addFriendHandler(newFriend);
 		}
@@ -119,7 +124,7 @@ class AddFriend extends Component {
 						<div className="IsAddingFriend">
 							<button
 								className="CancelAddFriendButton"
-								onClick={this.AddFriendButtonClickHandler}
+								onClick={this.CancelAddFriendButtonClickHandler}
 							>
 								cancel
 							</button>
