@@ -10,23 +10,6 @@
   align-content: flex-start;
   flex-wrap: wrap;
 }
-/* .Friends {
-  display: flex;
-  padding: 60px;
-  margin-left: 10px;
-  height: 80px;
-  border: 2px solid #3B5998;
-  background-color: #FFFFFF;
-} */
-
-/* .Friend-box {
-  display: flex;
-  flex-direction: column;
-  
-  width: 50%;
-  height: 50%;
-} */
-
 
 .Friends {
   padding: 0;
