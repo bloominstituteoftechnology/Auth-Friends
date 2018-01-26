@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFriends } from '../../actions';
+import { getFriends, deleteFriend } from '../../actions';
+import UpdateFriend from '../UpdateFriend/UpdateFriend';
 import './FriendsList.css';
 
 class FriendsList extends Component {
@@ -11,15 +12,20 @@ class FriendsList extends Component {
 
   render() {
     return (
-      <ul>
-        {this.props.friends.map(friend => {
-          return <li key={friend.name}>
-            <div>Name: {friend.name}</div>
-            <div>Age: {friend.age}</div>
-            <div>Email: {friend.email}</div>
-          </li>
-        })}
-      </ul>
+      <div>
+        <UpdateFriend />
+        <ul>
+          {this.props.friends.map(friend => {
+            return <li key={friend.id}>
+              <div>ID: {friend.id}</div>
+              <div>Name: {friend.name}</div>
+              <div>Age: {friend.age}</div>
+              <div>Email: {friend.email}</div>
+              <button onClick={() => this.props.deleteFriend(friend.id)}>Delete</button>
+            </li>
+          })}
+        </ul>
+      </div>
     );
   };
 };
@@ -34,4 +40,4 @@ const mapStateToProps = state => {
     error: state.error,
   }
 }
-export default connect(mapStateToProps, {getFriends})(FriendsList);
+export default connect(mapStateToProps, {getFriends, deleteFriend})(FriendsList);
