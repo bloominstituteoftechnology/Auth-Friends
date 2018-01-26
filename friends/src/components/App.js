@@ -6,7 +6,7 @@ import Header from './Header';
 import AddFriend from './AddFriend';
 import EditFriend from './EditFriend';
 import Friends from './Friends';
-import Loader from './Loader';
+import Status from './Status';
 import AppLogger from './AppLogger';
 
 import logo from '../assets/logo.svg';
@@ -111,23 +111,14 @@ class App extends Component {
 
 	checkStatus = () => {};
 
-	checkIfLoading = () => {
-		// console.log(this.props.friendsFetched);
-		// console.log('checking fi loading');
-		return this.props.fetchingFriends;
-	};
-
-	checkIfLoaded = () => {
-		// console.log('checkifloaded');
-		return this.props.friendsFetched;
-	};
-
 	render() {
 		// console.log(this.props);
 		// console.log(this.state.addFriend);
 		return (
 			<div className="App">
 				<Header />
+
+				<Status status={this.props} />
 
 				<div className="ShowFriends">
 					{!this.state.showEditingFriendsPane ? (
@@ -148,7 +139,10 @@ class App extends Component {
 						/>
 					)}
 
-					{!this.props.fetchingFriends ? (
+					{this.props.friendsFetched ||
+					this.props.friendsSaved ||
+					this.props.friendUpdated ||
+					this.props.friendDeleted ? (
 						<Friends
 							className="Friends"
 							friends={this.props.friends}
@@ -163,12 +157,6 @@ class App extends Component {
 					)}
 				</div>
 
-				<Loader
-					isLoading={this.checkIfLoading}
-					isLoaded={this.checkIfLoaded}
-					status={this.props.error}
-				/>
-
 				<AppLogger appState={this.props} />
 			</div>
 		);
@@ -180,8 +168,12 @@ const mapStateToProps = state => {
 		friends: state.friends.friends,
 		fetchingFriends: state.friends.fetchingFriends,
 		friendsFetched: state.friends.friendsFetched,
-		updatingFriend: state.friends.updatingFriend,
+		savingFriends: state.friends.savingFriends,
 		friendsSaved: state.friends.friendsSaved,
+		updatingFriend: state.friends.updatingFriend,
+		friendUpdated: state.friends.friendUpdated,
+		deletingFriend: state.friends.deletingFriend,
+		friendDeleted: state.friends.friendDeleted,
 		error: state.friends.error,
 	};
 };

@@ -1,15 +1,13 @@
 .AddFriend {
-	margin-bottom: 20px;
+	height: 23px;
 
-	/*height: 18px;*/
+	margin-bottom: 20px;
 
 	display: flex;
 	justify-content: center;
 }
 
 .IsAddingFriend {
-	/*height: 18px;*/
-
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -47,7 +45,4 @@
 
 .AddFriendButtonContainer {
 	height: 23px;
-}
-
-.AddFriendButton {
 }

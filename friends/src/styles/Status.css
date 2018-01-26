@@ -1,17 +1,10 @@
-.Loader {
-	margin-top: 20px;
-
-	border-bottom: solid 1px;
-
+.Status {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
-	/*align-items: center;*/
 }
 
-.LoadingScreen {
-	margin-top: 20px;
-
+.StatusBar {
 	display: inherit;
 	flex-direction: column;
 }

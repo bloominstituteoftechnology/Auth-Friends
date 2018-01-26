@@ -17,13 +17,15 @@ export const getFriends = () => {
 	const friends = axios.get('http://localhost:5000/api/friends/get');
 	return dispatch => {
 		dispatch({ type: FETCHING_FRIENDS });
-		friends
-			.then(({ data }) => {
-				dispatch({ type: FRIENDS_RECEIVED, payload: data });
-			})
-			.catch(err => {
-				dispatch({ type: ERROR_FETCHING_FRIENDS, payload: err });
-			});
+		setTimeout(_ => {
+			friends
+				.then(({ data }) => {
+					dispatch({ type: FRIENDS_RECEIVED, payload: data });
+				})
+				.catch(err => {
+					dispatch({ type: ERROR_FETCHING_FRIENDS, payload: err });
+				});
+		}, 1500);
 	};
 };
 
@@ -34,13 +36,15 @@ export const addFriend = newFriend => {
 	);
 	return dispatch => {
 		dispatch({ type: ADDING_FRIEND });
-		friends
-			.then(({ data }) => {
-				dispatch({ type: ADDING_FRIEND_SUCCESSFUL, payload: data });
-			})
-			.catch(err => {
-				dispatch({ type: ERROR_ADDING_FRIEND, payload: err });
-			});
+		setTimeout(_ => {
+			friends
+				.then(({ data }) => {
+					dispatch({ type: ADDING_FRIEND_SUCCESSFUL, payload: data });
+				})
+				.catch(err => {
+					dispatch({ type: ERROR_ADDING_FRIEND, payload: err });
+				});
+		}, 1500);
 	};
 };
 
@@ -51,31 +55,34 @@ export const editFriend = (friend, ofFriend) => {
 	});
 	return dispatch => {
 		dispatch({ type: EDITING_FRIEND });
-		friends
-			.then(({ data }) => {
-				console.log(data);
-				dispatch({ type: EDITING_FRIEND_SUCCESSFUL, payload: data });
-			})
-			.catch(err => {
-				dispatch({ type: ERROR_EDITING_FRIEND, payload: err });
-			});
+		setTimeout(_ => {
+			friends
+				.then(({ data }) => {
+					console.log(data);
+					dispatch({ type: EDITING_FRIEND_SUCCESSFUL, payload: data });
+				})
+				.catch(err => {
+					dispatch({ type: ERROR_EDITING_FRIEND, payload: err });
+				});
+		}, 1500);
 	};
 };
 
 export const deleteFriend = ofFriend => {
-	console.log('deletefriendindex', ofFriend);
 	const friends = axios.delete('http://localhost:5000/api/friends/delete', {
 		data: { index: ofFriend },
 	});
 	return dispatch => {
 		dispatch({ type: DELETING_FRIEND });
-		friends
-			.then(({ data }) => {
-				console.log(data);
-				dispatch({ type: DELETING_FRIEND_SUCCESSFUL, payload: data });
-			})
-			.catch(err => {
-				dispatch({ type: ERROR_DELETING_FRIEND, payload: err });
-			});
+		setTimeout(_ => {
+			friends
+				.then(({ data }) => {
+					console.log(data);
+					dispatch({ type: DELETING_FRIEND_SUCCESSFUL, payload: data });
+				})
+				.catch(err => {
+					dispatch({ type: ERROR_DELETING_FRIEND, payload: err });
+				});
+		}, 1500);
 	};
 };

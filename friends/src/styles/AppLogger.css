@@ -1,9 +1,12 @@
 .AppLogger {
 	margin-top: 20px;
-	margin-left: 5px;
 	margin-bottom: 20px;
 
+	padding: 5px;
+
 	font-size: 10px;
+
+	border-top: solid 1px;
 
 	display: flex;
 	flex-direction: column;
