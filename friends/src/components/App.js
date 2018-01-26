@@ -16,10 +16,11 @@ class App extends Component {
 	state = {
 		logs: null,
 		actions: null,
+		showLogger: null,
 	};
 
 	componentWillMount() {
-		this.setState({ logs: [], actions: [] });
+		this.setState({ logs: [], actions: [], showLogger: true });
 	}
 
 	componentDidMount() {
@@ -59,6 +60,10 @@ class App extends Component {
 
 		if (addLogs.length > 0)
 			this.setState({ logs: [...addLogs, ...this.state.logs] });
+	};
+
+	showHideLoggerButtonClickHandler = _ => {
+		this.setState({ showLogger: !this.state.showLogger });
 	};
 
 	addFriendHandler = newFriend => {
@@ -126,7 +131,16 @@ class App extends Component {
 					)}
 				</div>
 
-				<AppLogger logs={this.state.logs} />
+				<div className="BottomBar">
+					<button
+						className="ShowHideLoggerButton"
+						onClick={this.showHideLoggerButtonClickHandler}
+					>
+						{this.state.showLogger ? 'hide logger' : 'show logger'}
+					</button>
+				</div>
+
+				<AppLogger logs={this.state.logs} showLogger={this.state.showLogger} />
 			</div>
 		);
 	}

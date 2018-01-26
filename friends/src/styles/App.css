@@ -42,3 +42,12 @@
 		transform: rotate(360deg);
 	}
 }
+
+.BottomBar {
+	display: inherit;
+	justify-content: flex-end;
+}
+
+.ShowHideLoggerButton {
+	margin-right: 4px;
+}
