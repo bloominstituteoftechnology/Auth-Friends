@@ -72,6 +72,9 @@ class App extends Component {
 							friends={this.props.friends}
 							editFriend={this.editFriend}
 							deleteFriend={this.deleteFriend}
+							friendKeys={this.props.friends.map(friend => {
+								return friend.email;
+							})}
 						/>
 					) : (
 						<img src={logo} className="LoadingPicture" alt="loading-logo" />

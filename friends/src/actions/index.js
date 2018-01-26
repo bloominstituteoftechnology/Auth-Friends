@@ -13,7 +13,7 @@ export const DELETING_FRIEND = 'DELETING_FRIEND';
 export const DELETING_FRIEND_SUCCESSFUL = 'DELETING_FRIEND_SUCCESSFUL';
 export const ERROR_DELETING_FRIEND = 'ERROR_DELETING_FRIEND';
 
-export const getFriends = () => {
+export const getFriends = _ => {
 	const friends = axios.get('http://localhost:5000/api/friends/get');
 	return dispatch => {
 		dispatch({ type: FETCHING_FRIENDS });

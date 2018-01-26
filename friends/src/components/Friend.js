@@ -94,6 +94,7 @@ class Friend extends Component {
 								age={this.state.age}
 								email={this.state.email}
 								submitEditHandler={this.submitEditHandler}
+								friendKeys={this.props.friendKeys}
 							/>
 						</div>
 					)}

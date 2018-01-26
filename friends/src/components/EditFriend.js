@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import '../styles/EditFriend.css';
 
 class EditFriend extends Component {
@@ -29,7 +30,68 @@ class EditFriend extends Component {
 	};
 
 	submitEditButtonClicked = _ => {
-		this.props.submitEditHandler({ ...this.state });
+		if (this.checkFriend()) this.props.submitEditHandler({ ...this.state });
+	};
+
+	checkFriend = _ => {
+		const isOkayToAdd = true;
+		const editedFriendKeys = this.props.friendKeys.filter(
+			email => email !== this.state.email
+		);
+
+		for (let i = 0; i < editedFriendKeys; i++) {
+			const email = this.props.friendKeys[i];
+
+			if (email === this.state.email) {
+				window.alert("New friend's email already exists in database.");
+				return !isOkayToAdd;
+			}
+		}
+
+		if (
+			this.state.name === '' &&
+			this.state.age === '' &&
+			this.state.email === ''
+		) {
+			window.alert("Please add friend's name, age, and email");
+			return !isOkayToAdd;
+		} else if (this.state.name === '' && this.state.age === '') {
+			window.alert("Please add friend's name and age");
+			return !isOkayToAdd;
+		} else if (this.state.name === '' && this.state.email === '') {
+			window.alert("Please add friend's name and email");
+			return !isOkayToAdd;
+		} else if (this.state.age === '' && this.state.email === '') {
+			window.alert("Please add friend's age and email");
+			return !isOkayToAdd;
+		} else if (this.state.name === '') {
+			window.alert("Please add friend's name");
+			return !isOkayToAdd;
+		} else if (this.state.age === '') {
+			window.alert("Please add friend's age");
+			return !isOkayToAdd;
+		} else if (this.state.email === '') {
+			window.alert("Please add friend's email");
+			return !isOkayToAdd;
+		} else if (
+			!this.state.email.includes('@') &&
+			!this.state.email.includes('.')
+		) {
+			window.alert("Please check friend's email for @ and .");
+			return !isOkayToAdd;
+		} else if (!this.state.email.includes('@')) {
+			window.alert("Please check friend's email for @");
+			return !isOkayToAdd;
+		} else if (!this.state.email.includes('.')) {
+			window.alert("Please check friend's email for .");
+			return !isOkayToAdd;
+		} else if (this.state.email.length < 7) {
+			// e.g. c@c.co = 6 chars
+			window.alert('Please enter a valid email');
+			return !isOkayToAdd;
+		} // add more checks for correct email formatting char@char.char
+
+		return isOkayToAdd;
 	};
 
 	render() {

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import FriendChecked from './FriendChecked';
-
 import '../styles/AddFriend.css';
 
 class AddFriend extends Component {
@@ -39,14 +37,7 @@ class AddFriend extends Component {
 	};
 
 	addFriendHandler = _ => {
-		if (
-			FriendChecked(
-				this.props.friendKeys,
-				this.state.name,
-				this.state.age,
-				this.state.email
-			)
-		) {
+		if (this.checkFriend()) {
 			const newFriend = {};
 
 			newFriend.name = this.state.name;

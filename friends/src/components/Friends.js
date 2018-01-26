@@ -24,6 +24,7 @@ export default function Friends(props) {
                   friend={friend}
                   editFriendHandler={editFriendHandler}
                   deleteFriendHandler={deleteFriendHandler}
+                  friendKeys={props.friendKeys}
                 />
               </div>
             );
