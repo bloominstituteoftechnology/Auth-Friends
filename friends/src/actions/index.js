@@ -8,6 +8,10 @@ export const CREATE_FRIEND = 'CREATE_FRIEND';
 export const CREATE_FRIEND_SUCCESS = 'CREATE_FRIEND_SUCCESS';
 export const CREATE_FRIEND_FAILURE = 'CREATE_FRIEND_FAILURE';
 
+export const DELETE_FRIEND = 'DELETE_FRIEND';
+export const DELETE_FRIEND_SUCCESS = 'DELETE_FRIEND_SUCCESS';
+export const DELETE_FRIEND_FAILURE = 'DELETE_FRIEND_FAILURE';
+
 export const getFriends = () => {
 	const friends = axios.get('http://localhost:5000/api/friends/get');
 	return dispatch => {
@@ -36,3 +40,25 @@ export const createFriend = (values) => {
 			});
 	}
 }
+
+export const deleteFriend = (id) => {
+	const deletedFriend = axios.delete('http://localhost:5000/api/friends/delete', {
+		data: {
+			id
+		}
+	});
+	return (dispatch) => {
+		dispatch({ type: DELETE_FRIEND });
+		deletedFriend
+			.then(({ data }) => {
+				dispatch({ type: DELETE_FRIEND_SUCCESS, payload: data });
+			})
+			.catch((error) => {
+				dispatch({ type: DELETE_FRIEND_FAILURE, payload: error });
+			});
+	}
+}
+
+
+
+

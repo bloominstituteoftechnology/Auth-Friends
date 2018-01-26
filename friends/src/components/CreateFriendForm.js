@@ -21,8 +21,9 @@ class CreateFriendForm extends Component {
 
 	render () {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<div className="Create-form">
+			<div className="Create-form">
+				<form onSubmit={this.handleSubmit}>
+
 					<input
 						type="text"
 						name="name"
@@ -45,8 +46,8 @@ class CreateFriendForm extends Component {
 						onChange={this.handleInput}
 					/>
 					<button type="submit">Add Friend</button>
-				</div>
-			</form>
+				</form>
+			</div>
 		);
 	}
 }
