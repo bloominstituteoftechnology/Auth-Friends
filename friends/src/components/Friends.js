@@ -9,10 +9,9 @@ class Friends extends Component {
 		this.props.getFriends();
 	}
 
-	// deleteFriendHandler = (params) => {
-	// 	console.log('*******params', params);
-	// 	this.props.deleteFriend(1);
-	// }
+	showForm = () => {
+
+	}
 
 	render() {
 		// console.log('****render props', this.props);
@@ -29,6 +28,7 @@ class Friends extends Component {
 										<div className="Friend-email">{`Email: ${friend.email}`}</div>
 									</li>
 									<button onClick={() => this.props.deleteFriend(index)}>Delete</button>
+									<button onClick={this.showForm}>Update</button>
 								</div>
 							);
 						})}
