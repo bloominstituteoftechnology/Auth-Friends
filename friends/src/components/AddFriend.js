@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import FriendChecked from './FriendChecked';
+
 import '../styles/AddFriend.css';
 
 class AddFriend extends Component {
@@ -19,11 +21,11 @@ class AddFriend extends Component {
 		});
 	}
 
-	AddFriendButtonClickHandler = () => {
+	AddFriendButtonClickHandler = _ => {
 		this.setState({ isAddingFriend: true });
 	};
 
-	CancelAddFriendButtonClickHandler = () => {
+	CancelAddFriendButtonClickHandler = _ => {
 		this.setState({
 			name: '',
 			age: '',
@@ -36,8 +38,15 @@ class AddFriend extends Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	addFriendHandler = () => {
-		if (this.checkFriend()) {
+	addFriendHandler = _ => {
+		if (
+			FriendChecked(
+				this.props.friendKeys,
+				this.state.name,
+				this.state.age,
+				this.state.email
+			)
+		) {
 			const newFriend = {};
 
 			newFriend.name = this.state.name;
@@ -50,7 +59,7 @@ class AddFriend extends Component {
 		}
 	};
 
-	checkFriend = () => {
+	checkFriend = _ => {
 		const isOkayToAdd = true;
 
 		for (let i = 0; i < this.props.friendKeys.length; i++) {

@@ -36,65 +36,12 @@ class App extends Component {
 		this.props.addFriend(newFriend);
 	};
 
-	// friendClicked = email => {
-	// 	if (this.state.friendClickedEmails.includes(email))
-	// 		this.setState({
-	// 			friendClickedEmails: this.state.friendClickedEmails.filter(
-	// 				clickedEmail => clickedEmail !== email
-	// 			),
-	// 		});
-	// 	else
-	// 		this.setState({
-	// 			friendClickedEmails: [...this.state.friendClickedEmails, email],
-	// 		});
-	// };
-
 	deleteFriend = index => {
 		this.props.deleteFriend(index);
 	};
 
-	editFriendButtonClicked = (email, index) => {
-		// console.log(index);
-		// if (!this.state.showEditingFriendsPane) {
-		// 	const editingFriend = this.props.friends.filter(friend => {
-		// 		return friend.email === email;
-		// 	});
-		// this.setState({
-		// 	addFriend: {
-		// 		name: editingFriend[0].name,
-		// 		age: editingFriend[0].age,
-		// 		email: editingFriend[0].email,
-		// 	},
-		// });
-		// };
-		// this.setState({
-		// 	showEditingFriendsPane: !this.state.showEditingFriendsPane,
-		// 	editingFriendEmail: email,
-		// 	editingFriendIndex: index,
-		// });
-		// this.state.showEditingFriendsPane
-		// will turn false
-		// because setState is asynchronous
-		// if (this.state.showEditingFriendsPane)
-		// 	this.setState({
-		// 		addFriend: { name: '', age: '', email: '' },
-		// 		editingFriendEmail: '',
-		// 	});
-	};
-
 	editFriend = (friend, index) => {
-		// this.props.friends.forEach((friend, index) => {
-		// 	if ()
-		// })
-		// console.log(this.props.friends);
 		this.props.editFriend(friend, index);
-
-		// this.setState({
-		// 	showEditingFriendsPane: !this.state.showEditingFriendsPane,
-		// 	addFriend: { name: '', age: '', email: '' },
-		// 	editingFriendEmail: '',
-		// 	editingFriendIndex: '',
-		// });
 	};
 
 	checkStatus = () => {};
