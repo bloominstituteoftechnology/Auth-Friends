@@ -4,7 +4,6 @@ import { getFriends, addFriend, deleteFriend, editFriend } from '../actions/';
 
 import Header from './Header';
 import AddFriend from './AddFriend';
-import EditFriend from './EditFriend';
 import Friends from './Friends';
 import Status from './Status';
 import AppLogger from './AppLogger';
@@ -15,15 +14,7 @@ import '../styles/App.css';
 
 class App extends Component {
 	state = {
-		friendClickedEmails: [],
-		showEditingFriendsPane: null,
-		editingFriendEmail: '',
-		editingFriendIndex: '',
-		editFriend: {
-			name: '',
-			age: '',
-			email: '',
-		},
+		//
 	};
 
 	componentDidMount() {
@@ -45,18 +36,18 @@ class App extends Component {
 		this.props.addFriend(newFriend);
 	};
 
-	friendClicked = email => {
-		if (this.state.friendClickedEmails.includes(email))
-			this.setState({
-				friendClickedEmails: this.state.friendClickedEmails.filter(
-					clickedEmail => clickedEmail !== email
-				),
-			});
-		else
-			this.setState({
-				friendClickedEmails: [...this.state.friendClickedEmails, email],
-			});
-	};
+	// friendClicked = email => {
+	// 	if (this.state.friendClickedEmails.includes(email))
+	// 		this.setState({
+	// 			friendClickedEmails: this.state.friendClickedEmails.filter(
+	// 				clickedEmail => clickedEmail !== email
+	// 			),
+	// 		});
+	// 	else
+	// 		this.setState({
+	// 			friendClickedEmails: [...this.state.friendClickedEmails, email],
+	// 		});
+	// };
 
 	deleteFriend = index => {
 		this.props.deleteFriend(index);
@@ -64,49 +55,46 @@ class App extends Component {
 
 	editFriendButtonClicked = (email, index) => {
 		// console.log(index);
-		if (!this.state.showEditingFriendsPane) {
-			const editingFriend = this.props.friends.filter(friend => {
-				return friend.email === email;
-			});
-
-			this.setState({
-				addFriend: {
-					name: editingFriend[0].name,
-					age: editingFriend[0].age,
-					email: editingFriend[0].email,
-				},
-			});
-		}
-
-		this.setState({
-			showEditingFriendsPane: !this.state.showEditingFriendsPane,
-			editingFriendEmail: email,
-			editingFriendIndex: index,
-		});
-
+		// if (!this.state.showEditingFriendsPane) {
+		// 	const editingFriend = this.props.friends.filter(friend => {
+		// 		return friend.email === email;
+		// 	});
+		// this.setState({
+		// 	addFriend: {
+		// 		name: editingFriend[0].name,
+		// 		age: editingFriend[0].age,
+		// 		email: editingFriend[0].email,
+		// 	},
+		// });
+		// };
+		// this.setState({
+		// 	showEditingFriendsPane: !this.state.showEditingFriendsPane,
+		// 	editingFriendEmail: email,
+		// 	editingFriendIndex: index,
+		// });
 		// this.state.showEditingFriendsPane
 		// will turn false
 		// because setState is asynchronous
-		if (this.state.showEditingFriendsPane)
-			this.setState({
-				addFriend: { name: '', age: '', email: '' },
-				editingFriendEmail: '',
-			});
+		// if (this.state.showEditingFriendsPane)
+		// 	this.setState({
+		// 		addFriend: { name: '', age: '', email: '' },
+		// 		editingFriendEmail: '',
+		// 	});
 	};
 
-	editFriend = () => {
+	editFriend = (friend, index) => {
 		// this.props.friends.forEach((friend, index) => {
 		// 	if ()
 		// })
 		// console.log(this.props.friends);
-		this.props.editFriend(this.state.addFriend, this.state.editingFriendIndex);
+		this.props.editFriend(friend, index);
 
-		this.setState({
-			showEditingFriendsPane: !this.state.showEditingFriendsPane,
-			addFriend: { name: '', age: '', email: '' },
-			editingFriendEmail: '',
-			editingFriendIndex: '',
-		});
+		// this.setState({
+		// 	showEditingFriendsPane: !this.state.showEditingFriendsPane,
+		// 	addFriend: { name: '', age: '', email: '' },
+		// 	editingFriendEmail: '',
+		// 	editingFriendIndex: '',
+		// });
 	};
 
 	checkStatus = () => {};
@@ -121,23 +109,12 @@ class App extends Component {
 				<Status status={this.props} />
 
 				<div className="ShowFriends">
-					{!this.state.showEditingFriendsPane ? (
-						<AddFriend
-							friendKeys={this.props.friends.map(friend => {
-								return friend.email;
-							})}
-							addFriendHandler={this.addFriendHandler}
-						/>
-					) : (
-						<EditFriend
-							editName={this.state.addFriend.name}
-							editAge={this.state.addFriend.age}
-							editEmail={this.state.addFriend.email}
-							editFriendButtonClicked={this.editFriendButtonClicked}
-							handleEditFriendInput={this.handleAddFriendInput}
-							editFriend={this.editFriend}
-						/>
-					)}
+					<AddFriend
+						friendKeys={this.props.friends.map(friend => {
+							return friend.email;
+						})}
+						addFriendHandler={this.addFriendHandler}
+					/>
 
 					{this.props.friendsFetched ||
 					this.props.friendsSaved ||
@@ -146,11 +123,8 @@ class App extends Component {
 						<Friends
 							className="Friends"
 							friends={this.props.friends}
-							friendClickedEmails={this.state.friendClickedEmails}
-							friendClicked={this.friendClicked}
+							editFriend={this.editFriend}
 							deleteFriend={this.deleteFriend}
-							editFriendButtonClicked={this.editFriendButtonClicked}
-							editingFriendEmail={this.state.editingFriendEmail}
 						/>
 					) : (
 						<img src={logo} className="LoadingPicture" alt="loading-logo" />

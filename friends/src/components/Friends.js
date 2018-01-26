@@ -1,26 +1,38 @@
 import React from 'react';
 
+import Friend from './Friend';
+
 import '../styles/Friends.css';
 
 export default function Friends(props) {
-  const friendClickedHandler = email => {
-    props.friendClicked(email);
+  // const friendClickedHandler = email => {
+  //   props.friendClicked(email);
+  // };
+
+  const editFriendHandler = (friend, index) => {
+    props.editFriend(friend, index);
   };
 
   const deleteFriendHandler = index => {
     props.deleteFriend(index);
   };
 
-  const editFriendHandler = (email, index) => {
-    props.editFriendButtonClicked(email, index);
-  };
+  // editName={this.state.addFriend.name}
+  // editAge={this.state.addFriend.age}
+  // editEmail={this.state.addFriend.email}
+  // editFriendButtonClicked={this.editFriendButtonClicked}
+  // handleEditFriendInput={this.handleAddFriendInput}
+  // editFriend={this.editFriend}
+  // <EditFriend />
+  /*
+                     <button
+                      className="CloseDetailedInfoButton"
+                      onClick={() => friendClickedHandler(friend.email)}
+                    >
+                      close
+                    </button>
 
-  return (
-    <div className="Friends">
-      {props.friends
-        ? props.friends.map((friend, index) => {
-            return (
-              <div key={friend.email} className="FriendContainer">
+
                 <div className="FriendDetailed">
                   <div className="ButtonsHeader">
                     <button
@@ -61,15 +73,22 @@ export default function Friends(props) {
                     <li className="Friend__listItem">{friend.age} years old</li>
                   </div>
 
-                  <div className="FriendsDetailedHeader">
-                    <button
-                      className="CloseDetailedInfoButton"
-                      onClick={() => friendClickedHandler(friend.email)}
-                    >
-                      close
-                    </button>
-                  </div>
+                  <div className="FriendsDetailedHeader" />
                 </div>
+
+                    */
+  return (
+    <div className="Friends">
+      {props.friends
+        ? props.friends.map((friend, index) => {
+            return (
+              <div key={friend.email} className="FriendContainer">
+                <Friend
+                  index={index}
+                  friend={friend}
+                  editFriendHandler={editFriendHandler}
+                  deleteFriendHandler={deleteFriendHandler}
+                />
               </div>
             );
           })

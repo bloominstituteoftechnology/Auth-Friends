@@ -1,7 +1,7 @@
 .EditFriend {
-	height: 23px;
+	/*height: 23px;*/
 
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 
 	display: flex;
 	justify-content: center;
@@ -9,7 +9,7 @@
 
 .EditingFriend {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
@@ -29,8 +29,8 @@
 }
 
 .AddFriendInput {
-	margin-left: 1px;
-	margin-right: 1px;
+	margin-top: 1px;
+	margin-bottom: 1px;
 
 	text-align: center;
 }
@@ -40,5 +40,5 @@
 
 	text-align: center;
 
-	margin-left: 4px;
+	margin-top: 20px;
 }

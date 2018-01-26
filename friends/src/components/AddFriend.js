@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import '../styles/AddFriend.css';
 
 class AddFriend extends Component {

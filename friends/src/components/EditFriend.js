@@ -1,57 +1,80 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../styles/EditFriend.css';
 
-export default function EditFriend(props) {
-	const handleInputChange = e => {
-		props.handleEditFriendInput(e.target.name, e.target.value);
+class EditFriend extends Component {
+	state = {
+		name: null,
+		age: null,
+		email: null,
 	};
-	console.log(props);
-	return (
-		<div className="EditFriend">
-			<div>
-				<div className="EditingFriend">
-					<button
-						className="CancelEditFriendButton"
-						onClick={props.editFriendButtonClicked}
-					>
-						cancel
-					</button>
 
-					<form className="InputForm">
-						<input
-							className="AddFriendInput"
-							onChange={handleInputChange}
-							type="text"
-							name="name"
-							value={props.editName}
-						/>
+	componentWillMount() {
+		this.setState({
+			name: '',
+			age: '',
+			email: '',
+		});
+	}
 
-						<input
-							className="AddFriendInput"
-							onChange={handleInputChange}
-							type="number"
-							min="1"
-							name="number"
-							value={props.editAge}
-						/>
+	componentDidMount() {
+		this.setState({
+			name: this.props.name,
+			age: this.props.age,
+			email: this.props.email,
+		});
+	}
 
-						<input
-							className="AddFriendInput"
-							onChange={handleInputChange}
-							type="email"
-							name="email"
-							value={props.editEmail}
-						/>
+	handleInputChange = e => {
+		this.setState({ [e.target.name]: e.target.value });
+	};
 
-						<input
-							className="editFriendConfirmButton"
-							type="button"
-							value={`edit ${props.editName}`}
-							onClick={props.editFriend}
-						/>
-					</form>
+	submitEditButtonClicked = _ => {
+		this.props.submitEditHandler({ ...this.state });
+	};
+
+	render() {
+		return (
+			<div className="EditFriend">
+				<div>
+					<div className="EditingFriend">
+						<form className="InputForm">
+							<input
+								className="AddFriendInput"
+								onChange={this.handleInputChange}
+								type="text"
+								name="name"
+								value={this.state.name}
+							/>
+
+							<input
+								className="AddFriendInput"
+								onChange={this.handleInputChange}
+								type="number"
+								min="1"
+								name="age"
+								value={this.state.age}
+							/>
+
+							<input
+								className="AddFriendInput"
+								onChange={this.handleInputChange}
+								type="email"
+								name="email"
+								value={this.state.email}
+							/>
+
+							<input
+								className="editFriendConfirmButton"
+								type="button"
+								value="submit"
+								onClick={this.submitEditButtonClicked}
+							/>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
-	);
+		);
+	}
 }
+
+export default EditFriend;
