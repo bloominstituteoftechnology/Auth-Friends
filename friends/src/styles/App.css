@@ -3,6 +3,21 @@
 	flex-direction: column;
 }
 
+.StatusBarHeader {
+	margin-top: 4px;
+
+	display: inherit;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.DeleteAllButtonContainer {
+	height: 23px;
+	width: 200px;
+
+	margin-left: 4px;
+}
+
 .ShowFriends {
 	display: inherit;
 	flex-direction: inherit;
@@ -16,7 +31,7 @@
 
 .LoadingPicture {
 	animation: LoadingPicture-spin infinite 5s linear;
-	height: 250px;
+	height: 284px;
 }
 
 @keyframes LoadingPicture-spin {

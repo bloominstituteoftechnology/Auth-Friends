@@ -26,9 +26,9 @@ class Friend extends Component {
 	deleteFriendButtonClicked = index => {
 		if (
 			window.confirm(
-				`Are you sure you want to delete ${
+				`This will remove ${
 					this.state.name
-				}? This CANNOT be undone.`
+				} as a friend? This CANNOT be undone. Are you sure you want to continue?`
 			)
 		)
 			this.props.deleteFriendHandler(Number(this.state.index));

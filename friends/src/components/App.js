@@ -14,23 +14,52 @@ import '../styles/App.css';
 
 class App extends Component {
 	state = {
-		//
+		logs: null,
+		actions: null,
 	};
+
+	componentWillMount() {
+		this.setState({ logs: [], actions: [] });
+	}
 
 	componentDidMount() {
 		this.setState({
-			showEditingFriendsPane: false,
+			logs: ['App mounted'],
+			actions: [
+				'fetchingFriends',
+				'friendsFetched',
+				'savingFriends',
+				'friendsSaved',
+				'updatingFriends',
+				'friendUpdated',
+				'deletingFriend',
+				'friendDeleted',
+				'okToLoad',
+				'error',
+			],
 		});
 
 		this.props.getFriends();
 	}
 
 	componentWillReceiveProps(nextProps) {
-		// console.log(nextProps);
-		// console.log(this.props);
-		this.checkStatus();
-		// if (nextProps.friends !== this.props.friends) this.props.getFriends();
+		this.checkStates(nextProps);
 	}
+
+	checkStates = nextState => {
+		const addLogs = [];
+
+		for (let i = 0; i < this.state.actions.length; i++) {
+			const action = this.state.actions[i];
+
+			if (nextState[action] !== this.props[action]) {
+				if (this.state.logs[0] !== action) addLogs.unshift(action);
+			}
+		}
+
+		if (addLogs.length > 0)
+			this.setState({ logs: [...addLogs, ...this.state.logs] });
+	};
 
 	addFriendHandler = newFriend => {
 		this.props.addFriend(newFriend);
@@ -44,18 +73,33 @@ class App extends Component {
 		this.props.editFriend(friend, index);
 	};
 
-	checkStatus = () => {};
+	deleteAllFriendsButtonHandler = _ => {
+		if (
+			this.props.friends.length > 0 &&
+			window.confirm(
+				'This will remove ALL your friends. This CANNOT be undone. Are you sure you want to continue?'
+			)
+		) {
+			const count = this.props.friends.length;
+
+			for (let i = 0; i <= count; i++) {
+				this.deleteFriend(0);
+			}
+		}
+	};
 
 	render() {
-		// console.log(this.props);
-		// console.log(this.state.addFriend);
 		return (
 			<div className="App">
 				<Header />
 
-				<Status status={this.props} />
+				<div className="StatusBarHeader">
+					<div className="DeleteAllButtonContainer">
+						<button onClick={this.deleteAllFriendsButtonHandler}>
+							delete all
+						</button>
+					</div>
 
-				<div className="ShowFriends">
 					<AddFriend
 						friendKeys={this.props.friends.map(friend => {
 							return friend.email;
@@ -63,10 +107,11 @@ class App extends Component {
 						addFriendHandler={this.addFriendHandler}
 					/>
 
-					{this.props.friendsFetched ||
-					this.props.friendsSaved ||
-					this.props.friendUpdated ||
-					this.props.friendDeleted ? (
+					<Status status={this.props} />
+				</div>
+
+				<div className="ShowFriends">
+					{this.props.okToLoad ? (
 						<Friends
 							className="Friends"
 							friends={this.props.friends}
@@ -81,7 +126,7 @@ class App extends Component {
 					)}
 				</div>
 
-				<AppLogger appState={this.props} />
+				<AppLogger logs={this.state.logs} />
 			</div>
 		);
 	}
@@ -98,6 +143,7 @@ const mapStateToProps = state => {
 		friendUpdated: state.friends.friendUpdated,
 		deletingFriend: state.friends.deletingFriend,
 		friendDeleted: state.friends.friendDeleted,
+		okToLoad: state.friends.okToLoad,
 		error: state.friends.error,
 	};
 };

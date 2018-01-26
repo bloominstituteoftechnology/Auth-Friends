@@ -15,8 +15,9 @@ export default function Friends(props) {
 
   return (
     <div className="Friends">
-      {props.friends
-        ? props.friends.map((friend, index) => {
+      {props.friends ? (
+        props.friends.length > 0 ? (
+          props.friends.map((friend, index) => {
             return (
               <div key={friend.email} className="FriendContainer">
                 <Friend
@@ -29,7 +30,12 @@ export default function Friends(props) {
               </div>
             );
           })
-        : null}
+        ) : (
+          <div className="NoFriends">
+            <h2>&#x21EA; No friends. Add some friends! &#x21EA;</h2>
+          </div>
+        )
+      ) : null}
     </div>
   );
 }

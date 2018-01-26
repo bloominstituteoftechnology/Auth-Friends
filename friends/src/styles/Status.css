@@ -1,4 +1,6 @@
 .Status {
+	width: 200px;
+
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
