@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-Title">Ryan's Friends</h1>
+          <h1 className="App-Title">{Ryan's Friends}</h1>
           <FriendForm />
         </header>
         {this.props.error ? <h3>Error Fetching Friends</h3> : null}
