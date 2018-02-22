@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Friends = props => {
-    console.log('my props from cmoponene: ', props);
-    return (
+class Friends extends Component {
+  render() {
+  return (
+    <div>
         <ul>
-            {props.friends.map(friend => {
-                return <li key={friend}>{friend}</li>;
+            {this.props.friends.map(friend => {
+                return (
+
+                <li key={friend}>{friend.name}</li>)
             })}
         </ul>
+        </div>
     );
+  }
+};
+
+const mapStateToProps = state => {
+  return {
+    error: state.friends_reducer.error,
+  };
 };
 
 export default Friends;
