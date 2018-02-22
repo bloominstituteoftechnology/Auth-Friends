@@ -23,7 +23,7 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         fetchedFriends: true,
         fetchingFriends: false,
-        friends: Object.keys(action.payload)
+        friends: action.payload
       };
     case ERROR_FETCHING_FRIENDS:
       return { ...state, fetchingFriends: false, error: action.payload };
