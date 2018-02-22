@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getFriends } from './actions/actions';
+import { getFriends, createFriend, updateFriend } from './actions/actions';
 
 class App extends Component {
-  
+
   componentDidMount() {
     this.props.getFriends();
   }
@@ -28,4 +28,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getFriends })(App);
+export default connect(mapStateToProps, { getFriends, createFriend, updateFriend })(App);
