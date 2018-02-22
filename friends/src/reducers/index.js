@@ -2,7 +2,7 @@ import {
   IS_FETCHING,
   FRIENDS_FETCHED,
   ERROR_FETCHING_FRIENDS,
-  ADD_FRIEND
+  // ADD_FRIEND
  } from '../actions'
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
   // deletingFriend: false,
   // friendDeleted: false,
   friends: [],
-  error: null
+  error: null,
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -38,7 +38,7 @@ const rootReducer = (state = initialState, action) => {
         fetchingFriends: false,
         error: action.payload, 
       };
-    case ADD_FRIEND:
-      return {}
-  }
-}
+    default:
+      return state;
+  };
+};
