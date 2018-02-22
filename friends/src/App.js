@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import CreateFriendForm from 'components/CreateFriendForm';
+import Friends from './components/Friends';
+import CreateFriendForm from './components/CreateFriendForm';
 import { getFriends, createFriend, updateFriend, deleteFriend } from './actions/actions';
 
 class App extends Component {
