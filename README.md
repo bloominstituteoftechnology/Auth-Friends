@@ -53,7 +53,7 @@ Topics:
 ```
 
 * This is a pretty large state tree. But each field is extremely simple.
-* All of your items in your state tree represent a make up of actions that you're going to make asynchronously. Think about your
+* All of your items in your state tree represent a make up of actions that you're going to make asynchronously. Think about your application and the state you need. This reducer object will represent that state.
 * Each `friend` item that is in the `friends` array should have the following format:
 
 ```
