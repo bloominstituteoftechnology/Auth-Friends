@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFriends } from './actions/getFriends';
 import FriendForm from './components/friendForm';
-import createNewFriend from './actions/createNewFriend';
 import Friends from './components/Friends';
 import './App.css';
 
@@ -16,7 +15,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <FriendForm createNewFriend={this.props.createNewFriend} />
+        <FriendForm />
         <Friends friends={friends} />
       </div>
     );
