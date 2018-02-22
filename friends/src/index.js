@@ -7,7 +7,7 @@ import logger from 'redux-logger';
 import reducer from './reducers'
 import App from './App';
 
-const store = createStore(reducer)
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 render(
   <Provider store={store}>
