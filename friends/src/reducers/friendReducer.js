@@ -1,4 +1,4 @@
-import { IS_FETCHING, ADDING_FRIEND, FRIEND_ADDED, ERROR, FRIENDS_FETCHED } from '../actions';
+import { IS_FETCHING, ADDING_FRIEND, FRIEND_ADDED, ERROR, FRIENDS_FETCHED } from '../actions/actions';
 
 const initialState = {
     friends: [],
