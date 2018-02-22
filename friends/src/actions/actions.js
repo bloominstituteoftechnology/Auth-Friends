@@ -6,8 +6,11 @@ export const UPDATE_FRIEND = 'UPDATE_FRIEND';
 export const getFriends = () => {
     dispatch => {
         axios.get('http://localhost:5000/api/friends/get')
-        .then()
-        .catch()
+        .then(({data}) =>
+        dispatch({type: FRIENDS_RECEIVED, payload: data}))
+        .catch(error =>{
+            dispatch({type: ERROR_GETTING_FRIENDS, payload: error})
+        })
     }
 }
 
