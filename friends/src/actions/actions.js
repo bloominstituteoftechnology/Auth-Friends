@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const GETTING_FRIENDS = 'GETTING_FRIENDS';
 export const FRIENDS_RECEIVED = 'FRIENDS_RECEIVED';
 export const ERROR_GETTING_FRIENDS = 'ERROR_GETTING_FRIENDS';
