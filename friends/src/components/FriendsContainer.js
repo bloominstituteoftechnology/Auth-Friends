@@ -13,7 +13,7 @@ class FriendsContainer extends React.Component {
     console.log('container props', this.props);
     return (
       <div>
-        <Friends friends={this.props.friends}/>
+        <Friends friends={this.props.friends} loaded={this.props.loaded}/>
       </div>
     );
   }
@@ -22,6 +22,7 @@ class FriendsContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     friends: state.loadFriendsReducer.friends,
+    loaded: state.loadFriendsReducer.loaded,
   };
 };
 
