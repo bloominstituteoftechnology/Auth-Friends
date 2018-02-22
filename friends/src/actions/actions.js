@@ -16,7 +16,7 @@ export const ERROR_UPDATING_FRIEND = 'ERROR_UPDATING_FRIEND';
 
 
 export const getFriends = () => {
-    dispatch => {
+   return dispatch => {
         dispatch({type: GETTING_FRIENDS});
         axios.get('http://localhost:5000/api/friends/get')
         .then(({data}) =>
@@ -28,7 +28,7 @@ export const getFriends = () => {
 }
 
 export const createFriend = () => {
-    dispatch => {
+   return dispatch => {
         dispatch({type: CREATE_FRIEND})
         axios.post('http://localhost:5000/api/friends/create')
         .then(({data}) => {
@@ -41,7 +41,7 @@ export const createFriend = () => {
 }
 
 export const deleteFriend = () => {
-    dispatch => {
+    return dispatch => {
         dispatch({type: DELETE_FRIEND})
         axios.delete(`http://localhost:5000/api/friends/delete/${id}`)
         .then(({data}) =>
@@ -53,7 +53,7 @@ export const deleteFriend = () => {
 }
 
 export const updateFriend = () => {
-    dispatch => {
+    return dispatch => {
         dispatch({type: UPDATE_FRIEND})
         axios.put(`http://localhost:5000/api/friends/update/${id}`)
         .then(({data}) => {
