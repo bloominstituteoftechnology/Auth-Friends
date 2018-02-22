@@ -25,6 +25,8 @@ class CreateFriendForm extends Component {
   };
 
   render() {
+
+    return (
     <div>
       <form onSubmit="">
         <input onChange={this.handleInput} type="text" name="name" />
@@ -32,7 +34,8 @@ class CreateFriendForm extends Component {
         <input onChange={this.handleInput} type="text" name="email" />
         <button />
       </form>
-    </div>;
+    </div>)
   }
+
 }
 export default CreateFriendForm;

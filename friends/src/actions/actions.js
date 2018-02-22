@@ -46,7 +46,7 @@ export const deleteFriend = () => {
   return dispatch => {
     dispatch({ type: DELETE_FRIEND });
     axios
-      .delete(`http://localhost:5000/api/friends/delete/${id}`)
+      .delete(`http://localhost:5000/api/friends/delete`)
       .then(({ data }) => dispatch({ type: FRIEND_DELETED, payload: data }))
       .catch(error => {
         dispatch({ type: ERROR_DELETING_FRIEND, payload: error });
@@ -58,9 +58,9 @@ export const updateFriend = () => {
   return dispatch => {
     dispatch({ type: UPDATE_FRIEND });
     axios
-      .put(`http://localhost:5000/api/friends/update/${id}`)
+      .put(`http://localhost:5000/api/friends/update`)
       .then(({ data }) => {
-        dispatch({ type: FRIEND_UPDATED, payload: dada });
+        dispatch({ type: FRIEND_UPDATED, payload: data });
       })
       .catch(error => {
         dispatch({ type: ERROR_UPDATING_FRIEND, payload: error });
