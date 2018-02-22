@@ -1,7 +1,7 @@
 import addFriend from './addFriend';
-import loadFriend from './loadFriend';
+import loadFriends from './loadFriends';
 import removeFriend from './removeFriend';
 
 export { addFriend };
-export { loadFriend };
+export { loadFriends };
 export { removeFriend };

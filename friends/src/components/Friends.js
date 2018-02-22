@@ -20,7 +20,6 @@ function Friends(props) {
         <div>
           Loading...
         </div>
-
     }
     </ul>
   );

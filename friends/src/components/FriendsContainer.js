@@ -1,12 +1,12 @@
 import React from 'react';
-import { loadFriend } from '../actions';
+import { loadFriends } from '../actions';
 import { connect } from 'react-redux';
 import Friends from './Friends';
 
 class FriendsContainer extends React.Component {
 
   componentDidMount() {
-    this.props.loadFriend();
+    this.props.loadFriends();
   }
 
   render() {
@@ -26,4 +26,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { loadFriend })(FriendsContainer);
+export default connect(mapStateToProps, { loadFriends })(FriendsContainer);
