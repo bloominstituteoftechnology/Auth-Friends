@@ -6,9 +6,12 @@ class CreateFriendForm extends Component {
     age: '',
     email: '',
   };
-  handleInput = () => {};
+  handleInput = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-  submitFriend = () => {
+  submitFriend = e => {
+    e.preventDefaults();
     this.props.createFriend({
       name: this.state.name,
       age: this.state.age,
@@ -24,9 +27,9 @@ class CreateFriendForm extends Component {
   render() {
     <div>
       <form onSubmit="">
-        <input onChange={handleInput} type="text" value={this.state.name} />
-        <input onChange={handleInput} type="text" value={this.state.age} />
-        <input onChange={handleInput} type="text" value={this.state.email} />
+        <input onChange={this.handleInput} type="text" name="name" />
+        <input onChange={this.handleInput} type="text" name="age" />
+        <input onChange={this.handleInput} type="text" name="email" />
         <button />
       </form>
     </div>;
