@@ -14,7 +14,7 @@ class App extends Component {
       <div className="App">
         <Friends friends={this.state.friends} />
         <CreateFriendForm />
-        <UpdateFriendForm />
+        {/* <UpdateFriendForm /> */}
       </div>
     );
   }

@@ -9,7 +9,7 @@ import App from './App';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
-render(
+ReactDOM.render (
   <Provider store={store}>
     <App />
   </Provider>,
