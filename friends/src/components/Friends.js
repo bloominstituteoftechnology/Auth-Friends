@@ -3,7 +3,7 @@ import React from 'react';
 export const Friends = props => {
   return (
     <div>
-      <h1>Hello!</h1>
+      <h1>Friends</h1>
       {props.friends.map(friend => {
         return (
           <ul>
