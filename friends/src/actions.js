@@ -8,9 +8,9 @@ export const getFriends = () => {
   return dispatch => {
     dispatch({ type: FETCHING_FRIENDS });
     friends
-    .then(({ data }) => {
-      console.log(data);
-      dispatch({ type: FRIENDS_FETCHED, payload: data });
+    .then(({ response }) => {
+      console.log(response);
+      dispatch({ type: FRIENDS_FETCHED, payload: response.data });
     })
     .catch(err => {
       dispatch({ type: ERROR_FETCHING_FRIENDS, payload: err });

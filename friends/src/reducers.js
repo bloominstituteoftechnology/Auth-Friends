@@ -14,4 +14,20 @@ const initialState = {
 
 export const rootReducer = (state = initialState, action) => {
   console.log(action);
+  switch (action.type) {
+    case FETCHING_FRIENDS:
+      return { ...state, fetchingFriends: true };
+    case FRIENDS_FETCHED:
+      console.log('DOOOOGS: ', action.payload);
+      return {
+        ...state,
+        friendsFetched: true,
+        fetchingFriends: false,
+        friends: Object.keys(action.payload)
+      };
+    case ERROR_FETCHING_FRIENDS:
+      return { ...state, fetchingFriends: false, error: action.payload };
+    default:
+      return state;
+  }
 };
