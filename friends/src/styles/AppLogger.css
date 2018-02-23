@@ -1,0 +1,14 @@
+.AppLogger {
+	margin-top: 4px;
+	margin-bottom: 20px;
+
+	padding: 5px;
+
+	font-size: 10px;
+
+	border-top: solid 1px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}

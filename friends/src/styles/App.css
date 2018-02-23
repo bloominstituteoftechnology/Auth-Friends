@@ -1,0 +1,53 @@
+.App {
+	display: flex;
+	flex-direction: column;
+}
+
+.StatusBarHeader {
+	margin-top: 4px;
+
+	display: inherit;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.DeleteAllButtonContainer {
+	height: 23px;
+	width: 200px;
+
+	margin-left: 4px;
+}
+
+.ShowFriends {
+	display: inherit;
+	flex-direction: inherit;
+}
+
+.Friends {
+	display: inherit;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.LoadingPicture {
+	animation: LoadingPicture-spin infinite 5s linear;
+	height: 284px;
+}
+
+@keyframes LoadingPicture-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.BottomBar {
+	display: inherit;
+	justify-content: flex-end;
+}
+
+.ShowHideLoggerButton {
+	margin-right: 4px;
+}
