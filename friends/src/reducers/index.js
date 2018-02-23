@@ -3,8 +3,11 @@ import {
   FRIENDS_FETCHED,
   FRIENDS_SAVED,
   SAVING_FRIENDS,
+  DELETING_FRIEND,
+  FRIEND_DELETED,
   ERROR_FETCHING_FRIENDS,
   ERROR_SAVING_FRIENDS,
+  ERROR_DELETING_FRIENDS,
 } from '../actions/index';
 
 const initialState = {
@@ -51,12 +54,30 @@ export const reducer = (state = initialState, action) => {
         ...state,
         savingFriends: false,
         friendsSaved: true,
-        friends: [...state.friends, action.payload],
+        friends: action.payload,
       };
     case ERROR_SAVING_FRIENDS:
       return {
         ...state,
         savingFriends: false,
+        error: action.payload,
+      }; 
+    case DELETING_FRIEND:
+      return {
+        ...state,
+        deletingFriend: true,
+      };
+    case FRIEND_DELETED:
+      return {
+        ...state,
+        deletingFriend: false,
+        friendDeleted: true,
+        friends: action.payload,
+      };
+    case ERROR_DELETING_FRIENDS:
+      return {
+        ...state,
+        deletingFriend: false,
         error: action.payload,
       };
     default:
