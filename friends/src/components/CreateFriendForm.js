@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addFriends } from '../actions';
+import { saveFriends } from '../actions';
 
 class CreateFriendForm extends React.Component{
   state = {
@@ -11,7 +11,7 @@ class CreateFriendForm extends React.Component{
   render() {
     return(
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input type="text" name="name" placeholder="Name:" value={this.state.name} onChange={this.handleName}/>
           <input type="text" name="age" placeholder="Age:" value={this.state.age} onChange={this.handleAge}/>
           <input type="text" name="email" placeholder="Email:" value={this.state.email} onChange={this.handleEmail}/>
@@ -31,17 +31,16 @@ class CreateFriendForm extends React.Component{
   }
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    console.log('state', this.state);
+    this.props.saveFriends(this.state);
+    this.setState({name: '', age: '', email:''})
   }
 }
 
 const mapStateToProps = state => {
   return {
     friends: state.friends,
-    friendsSaved: state.friendsSaved,
-    savingFriends: state.savingFriends,
-    error: state.error,
   }
 }
 
-export default connect(mapStateToProps, { addFriends })(CreateFriendForm)
+export default connect(mapStateToProps, { saveFriends })(CreateFriendForm)
