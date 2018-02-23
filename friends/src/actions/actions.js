@@ -4,6 +4,8 @@ export const ADDING_FRIEND = 'ADDING_FRIEND';
 export const FRIEND_ADDED = 'FRIEND_ADDED';
 export const ERROR = 'ERROR';
 export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
+export const DELETING_FRIEND = 'DELETING_FRIEND';
+export const FRIEND_DELETED = 'FRIEND_DELETED';
 
 export const getFriends = () => {
     const friends = axios.get('http://localhost:5000/api/friends/get');

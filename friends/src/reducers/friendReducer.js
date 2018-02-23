@@ -1,4 +1,4 @@
-import { IS_FETCHING, ADDING_FRIEND, FRIEND_ADDED, ERROR, FRIENDS_FETCHED } from '../actions/actions';
+import { IS_FETCHING, ADDING_FRIEND, FRIEND_ADDED, ERROR, FRIENDS_FETCHED, DELETING_FRIEND, FRIEND_DELETED } from '../actions/actions';
 
 const initialState = {
     friends: [],
@@ -8,6 +8,7 @@ const initialState = {
     addingFriends: false,
     updatingFriend: false,
     deletingFriend: false,
+    friendDeleted: false,
     error: null
 }
 
@@ -37,6 +38,20 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 friendsAdded: true,
                 addingFriends: false,
+                friends: action.payload
+            }
+
+        case DELETING_FRIEND:
+            return {
+                ...state,
+                deletingFriend: true
+            }
+        
+        case FRIEND_DELETED:
+            return {
+                ...state,
+                friendDeleted: true,
+                deletingFriend: false,
                 friends: action.payload
             }
         
