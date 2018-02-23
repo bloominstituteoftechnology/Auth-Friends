@@ -2,22 +2,38 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addFriend } from '../actions';
 
-class AddFriend extends React.Component {
+class FriendForm extends React.Component {
   state = {
-    newFriend: '',
+    name: '',
+    age: '',
+    email: '',
   };
   
   handleAddFriend = (event) => {
     event.preventDefault()
-    this.props.addFriend(this.state.newFriend);
+    this.props.addFriend(this.state);
     this.setState({
-      newFriend: '',
+      name: '',
+      age: '',
+      email: '',
     });
   }
 
-  handleOnchange = (event) => {
+  handleNameChange = (event) => {
     this.setState({
-      newFriend: event.target.value,
+      name: event.target.value,
+    });
+  }
+
+  handleAgeChange = (event) => {
+    this.setState({
+      age: event.target.value,
+    });
+  }
+
+  handleEmailChange = (event) => {
+    this.setState({
+      email: event.target.value,
     });
   }
 
@@ -26,9 +42,19 @@ class AddFriend extends React.Component {
       <div>
         <form onSubmit={this.handleAddFriend}>
           <input
-            onChange={this.handleOnchange}
-            placeholder='Enter new friend'
-            value={this.state.newFriend}
+            onChange={this.handleNameChange}
+            placeholder='Name'
+            value={this.state.name}
+          />
+          <input
+            onChange={this.handleAgeChange}
+            placeholder='Age'
+            value={this.state.age}
+          />
+          <input
+            onChange={this.handleEmailChange}
+            placeholder='Email'
+            value={this.state.email}
           />
           <button type="submit">Add</button>
         </form>
@@ -37,4 +63,4 @@ class AddFriend extends React.Component {
   }
 }
 
-export default connect(null, { addFriend })(AddTodo);
+export default connect(null, { addFriend })(FriendForm);
