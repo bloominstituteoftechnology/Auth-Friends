@@ -7,10 +7,10 @@ class Friends extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="friends">
                 {this.state.friends.map((friend, index) => {
                 return (
-                    <ul key={index}>
+                    <ul key={index} className="friend">
                         <li>{friend.name}</li>
                         <li>{friend.age}</li>
                         <li>{friend.email}</li>

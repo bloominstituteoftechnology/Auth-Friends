@@ -1,0 +1,38 @@
+@import "reset";
+
+.App {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background: #C9D6FF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 1000px;
+    .Header {
+        color: white;
+        background: black;
+        padding: 32px;
+        width: 100%;
+        h1 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: 700;
+            font-size: 3.2rem;
+        }
+    }
+    .friends {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        max-width: 750px;
+        width: 80%;
+        .friend {
+            border: solid lightskyblue 1px;
+            border-radius: 2px;
+            background: white;
+            margin: 8px 0px;
+            padding: 8px;
+            height: 200 px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    }
+}
