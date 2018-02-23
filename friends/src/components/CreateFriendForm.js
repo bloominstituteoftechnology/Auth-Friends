@@ -28,12 +28,12 @@ class CreateFriendForm extends Component {
 
   render() {
     return (
-      <div>
+      <div class="col-one-half friend-form">
         <form onSubmit="">
           <input onChange={this.handleInput} type="text" name="name" />
           <input onChange={this.handleInput} type="text" name="age" />
           <input onChange={this.handleInput} type="text" name="email" />
-          <button />
+          <button type="submit">Add/Update Friend</button>
         </form>
       </div>
     );
