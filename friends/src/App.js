@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div className="container">
         <div className="col-one-half">
-        <Friends friends={this.props.friends} />
+        <Friends friends={this.friends} />
         </div>
         <CreateFriendForm />
         {/* <UpdateFriendForm /> */}

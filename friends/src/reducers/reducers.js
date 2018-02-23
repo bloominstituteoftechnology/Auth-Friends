@@ -40,7 +40,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         savingFriends: true,
-        gettingFriends: true,
+        friendsSaved: false,
         friends: action.payload,
       };
     case FRIEND_CREATED:

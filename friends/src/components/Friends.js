@@ -1,22 +1,38 @@
-import React from 'react';
-import { deleteFriend } from '../actions/actions';
-
-const Friends = props => {
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getFriends } from '../actions/actions';
+class Friends extends Component {
+  componentDidMount() {
+    this.props.getFriends();
+  }
+  
+  render() {
   return (
     <div>
       <ul>
-        {props.friends.map(friend => {
-          return (
-            <li key={friend.email}>
-              <p>{friend.name}</p>
-              <p>{friend.age}</p>
-              <p>{friend.email}</p>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
+        {this.props.friends.map(friend => {
+            return (
+              <li key={friend.email}>
+                <p>{friend.name}</p>
+                <p>{friend.age}</p>
+                <p>{friend.email}</p>
+              </li>
+            );
+          })}
+       </ul>
+      </div>
+    );
+  } 
 };
 
-export default Friends;
+
+const mapStateToProps = state => {
+  return {
+    friends: state.friends,
+    fetching: state.fetching,
+    error: state.error,
+  }
+};
+
+
+export default connect(mapStateToProps, { getFriends })(Friends);
