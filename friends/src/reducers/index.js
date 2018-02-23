@@ -5,6 +5,9 @@ import {
   FRIENDS_SAVED,
   ERROR_SAVING,
   ERROR_FETCHING,
+  FRIEND_DELETING,
+  FRIEND_DELETED,
+  ERROR_DELETING,
 } from '../actions';
 
 const initialState = {
@@ -58,6 +61,25 @@ export const rootReducer = (state = initialState, action) => {
         savingFriends: false,
         error: true,
       }
+    case FRIEND_DELETING:
+      return {
+        ...state,
+        deletingFriend: true,
+      };
+    case FRIEND_DELETED:
+      return {
+        ...state,
+        deletingFriend: false,
+        friendDeleted: true,
+        friends: action.payload,
+      };
+    case ERROR_DELETING:
+      return {
+        ...state,
+        deletingFriend: false,
+        error: true,
+      }
+    
     default:
       return state;
   }

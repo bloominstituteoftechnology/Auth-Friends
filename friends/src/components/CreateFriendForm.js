@@ -53,7 +53,7 @@ class CreateFriendForm extends React.Component {
             name='email'
             required
           />
-        <button type='submit' value='Submit'/>
+        <button type='submit'>SUBMIT</button>
         </form>
       </div>
     )

@@ -5,7 +5,7 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { rootReducer } from './reducers/index';
+import { rootReducer } from './reducers';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
@@ -22,9 +22,7 @@ const enhancer = composeEnhancers(
 const store = createStore(rootReducer, enhancer);
 
 ReactDOM.render(
-  <Provider
-    store={ store }
-  >
+  <Provider store={ store }>
     <App />
   </Provider>,
   document.getElementById('root')
