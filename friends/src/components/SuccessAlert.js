@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert} from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import styled  from 'styled-components';
 
 const AlertContainer = styled.div`
