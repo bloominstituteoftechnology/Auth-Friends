@@ -15,6 +15,7 @@ const initialState = {
 export const rootReducer = (state = initialState, action) => {
   console.log('The action the reducer received was: ', action);
   switch (action.type) {
+
     case FETCHING_FRIENDS:
       return { ...state, fetchingFriends: true };
     case FRIENDS_FETCHED:
@@ -23,10 +24,11 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         friendsFetched: true,
         fetchingFriends: false,
-        friends: Object.values(action.payload)
+        friends: action.payload,
       };
     case ERROR_FETCHING_FRIENDS:
       return { ...state, fetchingFriends: false, error: action.payload };
+
     case CREATING_FRIEND:
       return {...state, savingFriends: true};
     case FRIEND_CREATED:
@@ -37,6 +39,7 @@ export const rootReducer = (state = initialState, action) => {
       };
     case ERROR_CREATING_FRIEND:
       return {};
+
     default:
       return state;
   }

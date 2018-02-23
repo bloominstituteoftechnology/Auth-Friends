@@ -20,7 +20,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <FriendList />
-        <button onClick={() => this.props.postFriend({name: 'Leon', age: 23, email: 'sleepyhollow.net'})}>Click me to add a friend!</button>
+        <button onClick={() => this.props.postFriend({name: 'Leon', age: 23, email: 'leon@sleepyhollowgames.net'})}>Click me to add a friend!</button>
       </div>
     );
   }
