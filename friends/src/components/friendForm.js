@@ -12,15 +12,20 @@ class FriendForm extends Component {
 
   addFriend = (event) => {
     event.preventDefault();
-
-    this.props.createNewFriend();
-  }
+    const newFriend = Object.assign({}, this.state);
+    this.props.createNewFriend(newFriend);
+    this.setState({
+      name: '',
+      age: '',
+      email: ''
+    });
+  };
 
   updateFriend = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
-  }
+  };
 
 
   render() {
@@ -52,4 +57,4 @@ class FriendForm extends Component {
   }
 }
 
-export default FriendForm;
+export default connect(null, { createNewFriend })(FriendForm);
