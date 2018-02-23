@@ -1,40 +1,44 @@
 import React from 'react';
-import FriendList from 'FriendList';
-import 
+import { connect } from 'react-redux';
+import { addFriend } from '../actions/actions.js';
+
 class FriendForm extends React.Component {
-  // method 1: put state in class component but outside render
-  state={
-    friends:[]
-  }
-  
-  render() {  //'render' MUST be lower case to be recognized by React!!!!
+  state = {
+    name: '',
+    age: '',
+    email: '',
+  };
+
+  render() {
     return (
-      <form>
+      <form onSubmit={this.props.addFriend(this.state)} className="friend-form">
         <label>Name</label>
-        <input type="text" 
-        value={this.state.name} 
-        onChange={this.handleInputChange}
-        />
+        <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange} />
 
         <label>Age</label>
-      <input type="number"/>    {/* Making type a 'number' will not convert it from string coming back from the form*/}
+        <input type="number" name="age" value={this.state.age} onChange={this.handleInputChange} />
 
         <label>Email</label>
-        <input type="email"/>  {/* changing type to email gets help from browser */}
-
-        <button type="submit">Add New Friend</button>
-        {/* everything you grab from the server will be a string.  The server will typically handle the conversion of age to a number. */}
+        <input
+          type="email"
+          name="email"
+          value={this.state.email}
+          onChange={this.handleInputChange}
+        />
+        <button type="submit">Add Friend</button>
       </form>
     );
   }
 
-  //helpers
+  handleInputChange = event => {
+    const name = event.target.name;
+    const age = event.target.age;
+    const email = event.target.email;
+    let value = event.target.value;
 
-  // handleInputChange will change state.  setState() causes App to re-render.
-  handleInputChange = (event) => { 
-    console.log(event.target.value)
-    this.setState({ name: event.target.value })
-  }
+    this.setState({ [name]: value, [age]: value, [email]: value });
+  };
 }
-export default FriendForm;
-// React recommends getting value from controlled components.  It's called controlled because the value comes from state into the component.  The 'value' property sets the the value of the attribute.
+
+export default connect(null, { addFriend })(FriendForm);
+
