@@ -1,40 +1,26 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Friends extends Component {
-    state = {
-        friends: []
-    }
-    render() {
-        return (
+//class Friends extends Component {
+    // state = {
+    //     friends: []
+    // }
+const Friends = props => {
+   return (
             <div className="friends">
-                {this.state.friends.map((friend, index) => {
-                return (
-                    <ul key={index} className="friend">
+                {props.friends.map((friend, index) => {
+                    return (
+                        <ul key={index} className="friend">
                         <li>{friend.name}</li>
                         <li>{friend.age}</li>
                         <li>{friend.email}</li>
-                    </ul>
-                )}
+                        </ul>
+                    )}
                 )}
             </div>
-        )
-    }
-    componentDidMount() {
-        this.loadFriends();
-    }
-    loadFriends = () => { 
-        axios 
-          .get('http://localhost:5000/api/friends/get') 
-          .then(response => { 
-            this.setState({ 
-            friends: response.data, 
-            }); 
-          }) 
-          .catch(() => { 
-            console.error('error getting data'); 
-          }); 
-      }; 
+    )
 }
+
+    
 
 export default Friends;

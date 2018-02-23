@@ -1,23 +1,39 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
+import logo from './logo.svg';
 import './App.css';
-// import { connect } from 'react-redux';
-// import { newFriend } from '../actions';
+import { connect } from 'react-redux';
+import { loadFriends } from './actions';
 // import axios from 'axios';
 // import CreateFriendForm from './components/CreateFriendForm';
 import Friends from './components/Friends';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.loadFriends();
+  }
   render() {
     return (
       <div className="App">
         <div className="Header">
           <h1>Friends List</h1>
+          {this.props.fetchingFriends ? (
+            <img src={logo} className="App-logo" alt="logo" />
+          ) : null}
         </div>
-        <Friends className="friends"/>
+        <Friends friends={this.props.friends} className="friends"/>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    friends: state.friends, 
+    fetchingFriends: state.fetchingFriends,
+    error: state.error
+  }
+}
+
+export default connect(
+  mapStateToProps, { loadFriends }
+)(App);

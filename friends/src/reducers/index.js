@@ -1,4 +1,4 @@
-import { NEW_FRIEND } from '../actions';
+import { IS_FETCHING, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS } from '../actions';
 
 const friendState = {
     fetchingFriends: false,
@@ -15,11 +15,21 @@ const friendState = {
 
 const friends = (state = friendState, action) => {
     switch (action.type) {
-        case NEW_FRIEND:
+        case IS_FETCHING:
           return {
             ...state, 
             fetchingFriends: true, 
-            friends: Object.keys(action.payload)};
+        };
+        case FRIENDS_FETCHED:
+              return {
+                ...state,
+                friendsFetched: true,
+                fetchingFriends: false,
+                friends: Object.keys(action.payload)
+              };
+            case ERROR_FETCHING_FRIENDS:
+              return { ...state, fetchingFriends: false, error: action.payload };
+        
         default:
             return state;
     }
