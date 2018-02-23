@@ -52,7 +52,8 @@ app.put('/api/friends/update', (req, res) => {
 });
 
 app.delete('/api/friends/delete', (req, res) => {
-  const index = req.body.index;
+  const index = req.body.id;
+  console.log('in server', index);
   friends.splice(index, 1);
   res.send(friends);
 });

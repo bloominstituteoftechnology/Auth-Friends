@@ -47,8 +47,9 @@ export const createFriend = newFriend => {
 export const deleteFriend = id => {
   const friends = axios.delete(
     'http://localhost:5000/api/friends/delete',
-    id
+    {data: {id}}
   );
+  console.log('actions/index id: ', id);
   return dispatch => {
     dispatch({ type: DELETING_FRIEND });
     friends

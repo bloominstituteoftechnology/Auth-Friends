@@ -10,11 +10,6 @@ class App extends Component {
     this.props.getFriends();
   }
 
-onDelete=(id) => {
-  console.log("checking id: ", id);
-  this.props.deleteFriend(id);
-}
-
   render() {
     return (
       <div className="container">
@@ -22,11 +17,16 @@ onDelete=(id) => {
         <ul className="friends__list">
           {this.props.friends.map((friend, i) => {
             return (
-              <ul className="friend">
+              <ul className="friend" key={i}>
                 <li className="friend__name">{friend.name}</li>
                 <li className="friend__age">{friend.age}</li>
                 <li className="friend__email">{friend.email}</li>
-                <button className="delButton" onClick={ () => this.onDelete(i)}>Delete</button>
+                <button
+                  className="delButton"
+                  onClick={() => this.props.deleteFriend(i)}
+                >
+                  Delete
+                </button>
               </ul>
             );
           })}
