@@ -14,4 +14,8 @@ const singleFriendReducer = (state = initialState, action) => {
   }
 }
 
+<<<<<<< HEAD
 export default singleFriendReducer;
+=======
+export default singleFriendReducer;
+>>>>>>> e17719758f5ddc3b0ef7ad616b06a428f23a2611
