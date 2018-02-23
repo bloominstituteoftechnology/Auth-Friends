@@ -13,21 +13,22 @@ const initialState = {
 };
 
 export const rootReducer = (state = initialState, action) => {
-  console.log(action);
+  console.log('The action the reducer received was: ', action);
   switch (action.type) {
     case FETCHING_FRIENDS:
       return { ...state, fetchingFriends: true };
     case FRIENDS_FETCHED:
-      console.log('DOOOOGS: ', action.payload);
+      console.log('Friends: ', action.payload);
       return {
         ...state,
         friendsFetched: true,
         fetchingFriends: false,
-        friends: Object.keys(action.payload)
+        friends: Object.values(action.payload)
       };
     case ERROR_FETCHING_FRIENDS:
       return { ...state, fetchingFriends: false, error: action.payload };
     default:
       return state;
   }
+  console.log('The new state is: ', state);
 };
