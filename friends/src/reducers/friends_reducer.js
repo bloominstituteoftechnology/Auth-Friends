@@ -1,4 +1,4 @@
-import { IS_FETCHING, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS, DELETE_FRIEND, A_FRIEND } from '../actions/Friends';
+import {IS_FETCHING, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS, DELETE_FRIEND, A_FRIEND} from '../actions/Friends';
 
 const initialState = {
     friends: [],
@@ -6,16 +6,16 @@ const initialState = {
     fetching: false,
     fetched: false,
     deleteFriend: false,
-    error: null
+    visible:false,
+    error: null,
 };
 
 export const friends_reducer = (state = initialState, action) => {
     switch (action.type) {
         case IS_FETCHING:
-            console.log('Fetching...')
-            return { ...state, fetching: true };
+            console.log('Fetching...');
+            return {...state, fetching: true};
         case FRIENDS_FETCHED:
-            console.log('FRIIIEEENNDDSS');
             return {
                 ...state,
                 friends: action.payload,
@@ -23,11 +23,11 @@ export const friends_reducer = (state = initialState, action) => {
                 fetching: false
             };
         case DELETE_FRIEND:
-          return { ...state, deleteFriend: true};
+            return {...state, deleteFriend: true, visible:action.visible};
         case A_FRIEND:
-          return { ...state, select: action.payload };
+            return {...state, select: action.payload};
         case ERROR_FETCHING_FRIENDS:
-            return { ...state, fetching: false, error: action.payload };
+            return {...state, fetching: false, error: action.payload};
         default:
             return state;
     }
