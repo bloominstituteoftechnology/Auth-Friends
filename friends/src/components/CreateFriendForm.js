@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getFriends, createFriend, updateFriend, deleteFriend } from './actions';
 
 class CreateFriendForm extends Component {
   state = {
@@ -38,4 +39,5 @@ class CreateFriendForm extends Component {
   }
 
 }
-export default CreateFriendForm;
+
+export default connect({ getFriends, createFriend, updateFriend, deleteFriend })(App);
