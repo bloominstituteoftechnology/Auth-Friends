@@ -13,10 +13,12 @@ class App extends Component {
     const { friends } = this.props;
     return (
       <div>
+        <header>
         {this.props.fetching ? (
-          <Friends friends={friends} />
+         <button>Cool</button>
         ) : null}
-        
+        </header>
+        <Friends friends={friends} />
       </div>
     );
   }
@@ -25,8 +27,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     friends: state.friends,
-    fetching: state.fetching,
-    error: state.error
+    fetching: state.fetching
   };
 };
 

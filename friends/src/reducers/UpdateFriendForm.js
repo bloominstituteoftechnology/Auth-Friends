@@ -1,24 +1,24 @@
-import { IS_FETCHING, FRIEND_FETCHED, ERROR_FETCHING_FRIEND } from './actions';
+import { IS_FETCHING, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS } from '../actions/CreateFriendForm';
 
 const initialState = {
     friends: [],
     fetching: false,
     fetched: false,
     error: null
-  };
+};
 
-  export const rootReducer = (state = initialState, action) 
+export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case IS_FETCHING:
-            return { ...state, fetching: true};
-        case FRIEND_FETCHED:
+            return { ...state, fetching: true };
+        case FRIENDS_FETCHED:
             return {
                 ...state,
                 fetched: true,
                 fetching: false,
                 friends: Object.keys(action.payload)
             }
-        case ERROR_FETCHING_FRIEND:
+        case ERROR_FETCHING_FRIENDS:
             return {
                 ...state,
                 fetching: false,
@@ -28,3 +28,6 @@ const initialState = {
         default:
             return state;
     }
+
+}
+
