@@ -7,7 +7,6 @@ import FriendForm from './components/FriendForm';
 class App extends Component {
 
   componentWillMount() {
-    console.log('cm');
     this.props.getFriends();
   }
 
@@ -24,7 +23,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('Friends: ', state);
   return {
     friends: state.friends,
     fetching: state.fetching,

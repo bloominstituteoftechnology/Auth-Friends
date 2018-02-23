@@ -1,22 +1,79 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteFriend } from '../actions';
+import { deleteFriend, updateFriend, editingFriend } from '../actions';
 
-const FriendsList = props => {
+class FriendsList extends React.Component {
+  state = {
+    updatedFriend: {
+      name: '',
+      age: '',
+      email: '',},
+  };
+
+  toggleEdit = () => {
+    this.props.editingFriend();
+  }
+
+  handleEditFriend = (event) => {
+    event.preventDefault();
+    this.props.addFriend(this.state);
+    this.setState({
+      updatedFriend: {
+        name: '',
+        age: '',
+        email: '',},
+    });
+  }
+
+  handleNameChange = (event) => {
+    this.setState({
+      updatedFriend: {
+        name: event.target.value,
+      }
+    });
+  }
+
+  handleAgeChange = (event) => {
+    this.setState({
+      updatedFriend: {
+        age: event.target.value,
+      }
+    });
+  }
+
+  handleEmailChange = (event) => {
+    this.setState({
+      updatedFriend: {
+        email: event.target.value,
+      }
+    });
+  }
+
+  render() {
   return (
     <ul>
-      {props.friends.map((friend, index) => {
+      {this.props.friends.map((friend, index) => {
         return (
         <li key={index}>
-          {friend.name} <br />
+          {this.state.editing ? (<h1>Fetching friends</h1>) : friend.name} <br />
           {friend.age} <br />
           {friend.email} <br />
-          <button onClick={() => {props.deleteFriend(index)}}>Delete</button>
+          <button onClick={() => {this.props.deleteFriend(index)}}>Delete</button>
+
+          {this.props.updatingFriend 
+          ? <button onClick={() => {this.props.updateFriend(index)}}>Save</button>
+          : <button onClick={() => {this.toggleEdit()}}>Edit</button>}
         </li>
         )
       })}
     </ul>
-  )
+  )}
 }
 
-export default connect(null, { deleteFriend })(FriendsList)
+const mapStateToProps = state => {
+  return {
+    updatingFriend: state.updatingFriend,
+  }
+}
+
+export default connect(mapStateToProps, { deleteFriend, updateFriend, editingFriend })(FriendsList)
