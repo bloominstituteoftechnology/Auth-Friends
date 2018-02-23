@@ -8,9 +8,9 @@ export const loadFriends = () => {
        return dispatch => {
            dispatch({ type: IS_FETCHING });
            friends
-             .then(({ data }) => {
-                 dispatch({ type: FRIENDS_FETCHED, payload: data.message });
-             })
+             .then(response => {
+                 dispatch({ type: FRIENDS_FETCHED, payload: response.data });
+                })
              .catch(err => {
                 dispatch({ type: ERROR_FETCHING_FRIENDS, payload: err });
         });
@@ -24,6 +24,7 @@ export const loadFriends = () => {
     //         console.error('error getting data'); 
     //     }); 
 }; 
+
 
 
 // export const NEW_FRIEND = 'NEW_FRIEND';

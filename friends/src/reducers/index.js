@@ -25,7 +25,7 @@ const friends = (state = friendState, action) => {
                 ...state,
                 friendsFetched: true,
                 fetchingFriends: false,
-                friends: Object.keys(action.payload)
+                friends: action.payload
               };
             case ERROR_FETCHING_FRIENDS:
               return { ...state, fetchingFriends: false, error: action.payload };

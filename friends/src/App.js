@@ -12,6 +12,7 @@ class App extends Component {
     this.props.loadFriends();
   }
   render() {
+    console.log('App props: ', this.props);
     return (
       <div className="App">
         <div className="Header">
@@ -27,6 +28,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("Mapping this state: ", state);
   return {
     friends: state.friends, 
     fetchingFriends: state.fetchingFriends,
@@ -34,6 +36,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(
-  mapStateToProps, { loadFriends }
-)(App);
+export default connect(mapStateToProps, { loadFriends })(App);

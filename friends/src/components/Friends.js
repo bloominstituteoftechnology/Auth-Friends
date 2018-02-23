@@ -8,7 +8,7 @@ import React from 'react';
 const Friends = props => {
    return (
             <div className="friends">
-                {props.friends.map((friend, index) => {
+                {props.friends ? props.friends.map((friend, index) => {
                     return (
                         <ul key={index} className="friend">
                         <li>{friend.name}</li>
@@ -16,7 +16,8 @@ const Friends = props => {
                         <li>{friend.email}</li>
                         </ul>
                     )}
-                )}
+                ) :
+                <div></div> }
             </div>
     )
 }
