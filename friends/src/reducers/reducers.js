@@ -37,9 +37,18 @@ const rootReducer = (state = initialState, action) => {
     case ERROR_GETTING_FRIENDS:
       return console.log(action.error);
     case CREATE_FRIEND:
-      return state;
+      return {
+        ...state,
+        savingFriends: true,
+        gettingFriends: false,
+      };
     case FRIEND_CREATED:
-      return state;
+      return {
+        ...state,
+        friendsSaved: true,
+        gettingFriends: true,
+        friends: action.payload,
+      };
     case ERROR_CREATING_FRIEND:
       return state;
     case DELETE_FRIEND:
@@ -47,10 +56,10 @@ const rootReducer = (state = initialState, action) => {
     case ERROR_DELETING_FRIEND:
       return state;
     case UPDATE_FRIEND:
-      return state;
+      return { ...state, updatingFriend: true };
     case ERROR_UPDATING_FRIEND:
       return state;
-    default: 
+    default:
       return state;
   }
 };
