@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\friends",
+    "\\friends\\src",
+    "\\friends\\src\\actions",
+    "\\friends\\src\\components",
+    "\\friends\\src\\reducers"
   ],
+  "SelectedNode": "\\friends\\src\\index.js",
   "PreviewInSolutionExplorer": false
 }
