@@ -27,17 +27,28 @@ class CreateFriendForm extends Component {
   };
 
   render() {
-
     return (
-    <div>
-      <form onSubmit="">
-        <input onChange={this.handleInput} type="text" name="name" />
-        <input onChange={this.handleInput} type="text" name="age" />
-        <input onChange={this.handleInput} type="text" name="email" />
-        <button />
-      </form>
-    </div>)
+      <div>
+        <form onSubmit="">
+          <input onChange={this.handleInput} type="text" name="name" />
+          <input onChange={this.handleInput} type="text" name="age" />
+          <input onChange={this.handleInput} type="text" name="email" />
+          <button />
+        </form>
+      </div>
+    );
   }
 }
+const mapStateToProps = state => {
+  return {
+    friendsSaved: state.friendsSaved,
+    savingFriends: state.savingFriends,
+    updatingFriend: state.updatingFriend,
+    deletingFriend: state.deletingFriend,
+    error: state.error,
+  };
+};
 
-export default connect({ createFriend, updateFriend, deleteFriend })(CreateFriendForm);
+export default connect(mapStateToProps, { createFriend, updateFriend, deleteFriend })(
+  CreateFriendForm
+);

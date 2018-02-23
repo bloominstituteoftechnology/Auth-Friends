@@ -22,7 +22,7 @@ const initialState = {
   error: null,
 };
 
- const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
   console.log(`The reducer ran ${action}`);
   switch (action.type) {
     case 'GETTING_FRIENDS':
