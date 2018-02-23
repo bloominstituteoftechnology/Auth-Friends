@@ -5,7 +5,9 @@ import FriendsList from './components/FriendsList';
 import FriendForm from './components/FriendForm';
 
 class App extends Component {
+
   componentWillMount() {
+    console.log('cm');
     this.props.getFriends();
   }
 

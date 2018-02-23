@@ -11,7 +11,7 @@ const FriendsList = props => {
           {friend.name} <br />
           {friend.age} <br />
           {friend.email} <br />
-          <button onClick={() => {props.deleteFriend(friend)}}>Delete</button>
+          <button onClick={() => {props.deleteFriend(index)}}>Delete</button>
         </li>
         )
       })}

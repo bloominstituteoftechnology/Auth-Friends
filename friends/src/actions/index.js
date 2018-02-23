@@ -28,9 +28,9 @@ export const addFriend = (friend) => {
 	}
 }
 
-export const deleteFriend = (friend) => {
+export const deleteFriend = (index) => {
 	// console.log(typeof index);
-	const endpoint = axios.delete('http://localhost:5000/api/friends/delete', friend);
+	const endpoint = axios.delete('http://localhost:5000/api/friends/delete', {data: {index}});
 	return dispatch => {
 		endpoint.then((response) => {
 			console.log(response);

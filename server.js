@@ -42,6 +42,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/api/friends/get', (req, res) => {
+  console.log(friends);
   res.send(friends);
 });
 
@@ -57,7 +58,7 @@ app.put('/api/friends/update', (req, res) => {
 });
 
 app.delete('/api/friends/delete', (req, res) => {
-  console.log(req);
+  console.log(req.body);
   const index = req.body.index;
   friends.splice(index, 1);
   res.send(friends);
