@@ -8,27 +8,32 @@ const friends = [
   {
     name: 'Ben',
     age: 30,
-    email: 'ben@lambdaschool.com'
+    email: 'ben@lambdaschool.com',
+    id: 0,
   },
   {
     name: 'Austen',
     age: 45,
-    email: 'austen@lambdaschool.com'
+    email: 'austen@lambdaschool.com',
+    id: 1,
   },
   {
     name: 'Ryan',
     age: 15,
-    email: 'ryan@lambdaschool.com'
+    email: 'ryan@lambdaschool.com',
+    id: 2,
   },
   {
     name: 'Sean',
     age: 35,
-    email: 'sean@lambdaschool.com'
+    email: 'sean@lambdaschool.com',
+    id: 3,
   },
   {
     name: 'Michelle',
     age: 67,
-    email: 'michelle@gmail.com'
+    email: 'michelle@gmail.com',
+    id: 4,
   }
 ];
 
@@ -52,6 +57,7 @@ app.put('/api/friends/update', (req, res) => {
 });
 
 app.delete('/api/friends/delete', (req, res) => {
+  console.log(req);
   const index = req.body.index;
   friends.splice(index, 1);
   res.send(friends);
