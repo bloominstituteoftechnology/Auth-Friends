@@ -2,22 +2,21 @@ const addFriendsReducer = (state = [], action) => {
   console.log(action);
   switch(action.type) {
     case 'ADDING_FRIEND':
-      return { ...state, loading: true };
+      return { ...state, adding: true, added: false };
 
-    case 'ADDED_FRIEND':
-      console.log('added friend');
+    case 'FRIEND_ADDED':
       return {
         ...state,
-        loaded: true,
-        loading: false,
+        added: true,
+        adding: false,
         friends: action.payload,
       };
 
     case 'ERROR_ADDING_FRIEND':
       return {
         ...state,
-        loading: false,
-        loaded: false,
+        adding: false,
+        added: false,
         error: action.payload,
       }
     default:

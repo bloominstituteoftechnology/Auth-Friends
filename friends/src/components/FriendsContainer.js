@@ -10,7 +10,6 @@ class FriendsContainer extends React.Component {
   }
 
   render() {
-    console.log('container props', this.props);
     return (
       <div>
         <Friends friends={this.props.friends} loaded={this.props.loaded}/>

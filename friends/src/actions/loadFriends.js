@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const loadFriends = () => {
+  console.log('loading again');
   return dispatch => {
     dispatch({ type: 'IS_LOADING_FRIENDS' });
     axios.get('http://localhost:5000/api/friends/get')

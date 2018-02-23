@@ -5,4 +5,4 @@ import loadFriendsReducer from './loadFriendsReducer';
 export default combineReducers({
   addFriendsReducer,
   loadFriendsReducer,
-})
+});

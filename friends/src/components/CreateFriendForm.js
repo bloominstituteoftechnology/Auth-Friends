@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 class CreateFriendForm extends React.Component {
   state = {
+    id: '',
     name: '',
     age: '',
     email: '',
@@ -13,13 +14,21 @@ class CreateFriendForm extends React.Component {
     console.log('submit test');
     event.preventDefault();
     const { name, age, email } = this.state;
-    this.props.addFriend({ name, age, email});
-    this.props.loadFriends();
+    const id = this.generateID();
+    this.props.addFriend({ id, name, age, email});
     this.setState({
       name: '',
       age: '',
       email: '',
     });
+  }
+
+  componentWillReceiveProps() {
+    this.props.loadFriends();
+  }
+
+  generateID = () => {
+    return Math.floor(Math.random() * 1000);
   }
 
   onChange = (event) => {
@@ -29,6 +38,7 @@ class CreateFriendForm extends React.Component {
     }
     this.setState({ [name]: value });
   }
+
 
   render() {
     return (
@@ -45,4 +55,10 @@ class CreateFriendForm extends React.Component {
   }
 }
 
-export default connect(null, { addFriend, loadFriends })(CreateFriendForm);
+const mapStateToProps = (state) => {
+  return {
+    adding: state.addFriendsReducer.adding,
+  }
+}
+
+export default connect(mapStateToProps, { addFriend, loadFriends })(CreateFriendForm);
