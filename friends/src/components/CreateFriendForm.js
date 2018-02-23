@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addFriend } from '../actions';
 
-export class CreateFriendForm extends React.Component {
+class CreateFriendForm extends React.Component {
   state = {
     name: '',
     age: '',
