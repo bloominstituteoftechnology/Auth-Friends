@@ -30,9 +30,9 @@ class CreateFriendForm extends Component {
     return (
       <div>
         <form onSubmit="">
-          <input onChange={this.handleInput} type="text" name="name" />
-          <input onChange={this.handleInput} type="text" name="age" />
-          <input onChange={this.handleInput} type="text" name="email" />
+          <input onChange={this.handleInput} type="text" name="name" placeholder="name"/>
+          <input onChange={this.handleInput} type="number" name="age" placeholder="age"/>
+          <input onChange={this.handleInput} type="email" name="email" placeholder="email"/>
           <button />
         </form>
       </div>
