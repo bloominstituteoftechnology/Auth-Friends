@@ -4,8 +4,8 @@ const initialState = {
     friends: [],
     fetchingFriends: false,
     friendsFetched: false,
-    friendsSaved: false,
-    savingFriends: false,
+    friendsAdded: false,
+    addingFriends: false,
     updatingFriend: false,
     deletingFriend: false,
     error: null
@@ -25,6 +25,21 @@ export const rootReducer = (state = initialState, action) => {
                 fetchingFriends: false,
                 friends: action.payload
             };
+        
+        case ADDING_FRIEND:
+            return { 
+                ...state,
+                addingFriends: true
+            }
+        
+        case FRIEND_ADDED:
+            return {
+                ...state,
+                friendsAdded: true,
+                addingFriends: false,
+                friends: action.payload
+            }
+        
         case ERROR:
             return {
                 ...state,
