@@ -21,12 +21,14 @@ export const getFriends = () => {
   };
 };
 
-export const addFriend = () => {
-  const monkey = axios.post('http://localhost:5000/api/friends/create');
+export const addFriend = (data) => {
+  console.log('run');
+  // const monkey = axios.post('http://localhost:5000/api/friends/create', data);
   return dispatch => {
     dispatch({ type: FRIENDS_SAVING });
-    monkey
+    axios.post('http://localhost:5000/api/friends/create', data)    
       .then(({ data }) => {
+        console.log(data);
         dispatch({ type: FRIENDS_SAVED, payload: data });
       })
       .catch(err => {

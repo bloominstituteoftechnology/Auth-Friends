@@ -50,6 +50,7 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         savingFriends: false,
         friendsSaved: true,
+        friends: action.payload,
       };
     case ERROR_SAVING:
       return {
