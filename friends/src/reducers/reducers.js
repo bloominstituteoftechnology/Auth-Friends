@@ -1,15 +1,4 @@
-import {
-  GETTING_FRIENDS,
-  FRIENDS_RECEIVED,
-  ERROR_GETTING_FRIENDS,
-  CREATE_FRIEND,
-  FRIEND_CREATED,
-  ERROR_CREATING_FRIEND,
-  DELETE_FRIEND,
-  ERROR_DELETING_FRIEND,
-  UPDATE_FRIEND,
-  ERROR_UPDATING_FRIEND,
-} from '../actions/actions';
+import * as actionTypes from '../actions/actions';
 
 const initialState = {
   fetchingFriends: false,
@@ -25,25 +14,25 @@ const initialState = {
 export const rootReducer = (state = initialState, action) => {
   console.log(`The reducer ran ${action.type}`);
   switch (action.type) {
-    case GETTING_FRIENDS:
+    case actionTypes.GETTING_FRIENDS:
       return { ...state, fetchingFriends: true };
-    case FRIENDS_RECEIVED:
+    case actionTypes.FRIENDS_RECEIVED:
       return {
         ...state,
         friendsFetched: true,
         fetchingFriends: false,
         friends: action.payload,
       };
-    case ERROR_GETTING_FRIENDS:
+    case actionTypes.ERROR_GETTING_FRIENDS:
       return console.log(action.error);
-    case CREATE_FRIEND:
+    case actionTypes.CREATE_FRIEND:
       return {
         ...state,
         savingFriends: true,
         friendsFetched: false,
         fetchingFriends: true,
       };
-    case FRIEND_CREATED:
+    case actionTypes.FRIEND_CREATED:
       return {
         ...state,
         friendsSaved: true,
@@ -51,15 +40,15 @@ export const rootReducer = (state = initialState, action) => {
         friends: action.payload,
         savingFriends: false,
       };
-    case ERROR_CREATING_FRIEND:
+    case actionTypes.ERROR_CREATING_FRIEND:
       return state;
-    case DELETE_FRIEND:
+    case actionTypes.DELETE_FRIEND:
       return state;
-    case ERROR_DELETING_FRIEND:
+    case actionTypes.ERROR_DELETING_FRIEND:
       return state;
-    case UPDATE_FRIEND:
+    case actionTypes.UPDATE_FRIEND:
       return { ...state, updatingFriend: true };
-    case ERROR_UPDATING_FRIEND:
+    case actionTypes.ERROR_UPDATING_FRIEND:
       return state;
     default:
       return state;
