@@ -1,4 +1,5 @@
-import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS} from '../actions/actions';
+import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS } from '../actions/actions';
+import { SAVING_FRIENDS, FRIENDS_SAVED, ERROR_SAVING_FRIENDS } from '../actions/actions';
 
 // const initialState = {
 //     fetchingFriends: false,  Getting Friends
@@ -15,11 +16,12 @@ import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS} from '../act
 const initialState = {
   fetchingFriends: false,
   friendsFetched: false,
+  savingFriends: false,
+  friendsSaved: false,
   friends: [],
 };
 
-export const rootReducer = (state = initialState, action) => {
-  console.log("Whole Action", action);
+export const getReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_FRIENDS:
       return { ...state, fetching: true };
@@ -37,3 +39,21 @@ export const rootReducer = (state = initialState, action) => {
   }
 };
 
+export const addReducer = (state = initialState, action) => {
+  const newFriend = action.payload;
+  switch (action.type) {
+    case SAVING_FRIENDS:
+      return { ...state, fetching: true };
+    case FRIENDS_SAVED:
+      return {
+        ...state,
+        fetched: true,
+        fetching: false,
+        friends: { ...state.friends, newFriend},
+      };
+    case ERROR_SAVING_FRIENDS:
+      return { ...state, fetching: false, error: action.payload };
+    default:
+      return state;
+  }
+};
