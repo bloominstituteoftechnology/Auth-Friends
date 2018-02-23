@@ -16,12 +16,14 @@ export const ERROR_FETCHING_FRIENDS = 'ERROR_FETCHING_FRIENDS';
 // }
 
 export const getFriends = () => {
+    console.log("Get Friends is working")
     const friends = axios.get('http://localhost:5000/api/friends/get');
     return dispatch => {
       dispatch({ type: FETCHING_FRIENDS });
       friends
         .then(response => {
-          dispatch({ type: FRIENDS_FETCHED, payload: response.data.message });
+            console.log("Is this firing? response is ", response)
+          dispatch({ type: FRIENDS_FETCHED, payload: response.data });
         })
         .catch(error => {
           dispatch({ type: ERROR_FETCHING_FRIENDS, payload: error });

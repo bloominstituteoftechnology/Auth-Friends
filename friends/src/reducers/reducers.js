@@ -15,10 +15,11 @@ import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS} from '../act
 const initialState = {
   fetchingFriends: false,
   friendsFetched: false,
+  friends: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
-  console.log(action);
+  console.log("Whole Action", action);
   switch (action.type) {
     case FETCHING_FRIENDS:
       return { ...state, fetching: true };
@@ -27,7 +28,7 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         fetched: true,
         fetching: false,
-        dogs: action.payload,
+        friends: action.payload,
       };
     case ERROR_FETCHING_FRIENDS:
       return { ...state, fetching: false, error: action.payload };
