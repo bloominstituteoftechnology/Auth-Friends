@@ -47,7 +47,7 @@ export const deleteFriend = id => {
   });
   return dispatch => {
     dispatch({ type: DELETING_FRIEND });
-    friendRemoved
+    deleteFriend
       .then(({ data }) => {
         dispatch({ type: DELETE_FRIEND, payload: data });
         dispatch({ type: SINGLE_FRIEND, payload: {} });
