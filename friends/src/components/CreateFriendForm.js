@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { getFriends, createFriend, updateFriend, deleteFriend } from '../actions/actions';
+import { connect } from 'react-redux';
+import { createFriend, updateFriend, deleteFriend } from '../actions/actions';
 
 class CreateFriendForm extends Component {
   state = {
@@ -37,7 +38,6 @@ class CreateFriendForm extends Component {
       </form>
     </div>)
   }
-
 }
 
-export default connect({ getFriends, createFriend, updateFriend, deleteFriend })(App);
+export default connect({ createFriend, updateFriend, deleteFriend })(CreateFriendForm);
