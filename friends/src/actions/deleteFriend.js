@@ -3,8 +3,9 @@ export const IS_DELETING = 'IS_DELETING';
 export const FRIEND_DELETED = 'FRIEND_DELETED';
 export const ERROR_DELETING_FRIEND = 'ERROR_DELETING_FRIEND';
 
-export const deleteFriend = (id) => {
-  const friends = axios.delete('http://localhost:5000/api/friends/delete', id);
+export const deleteFriend = (friendToDelete) => {
+  console.log('we are about to delete', friendToDelete);
+  const friends = axios.delete('http://localhost:5000/api/friends/delete', friendToDelete);
   return dispatch => {
     dispatch({ type: IS_DELETING });
     friends

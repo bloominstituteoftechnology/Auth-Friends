@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { deleteFriend } from '../actions/deleteFriend';
 
 
 const Friends = (props) => {
@@ -9,10 +11,11 @@ const Friends = (props) => {
           <div className="friendName">{friend.name}</div>
           <div className="friendAge">{friend.age}</div>
           <div className="friendEmail">{friend.email}</div>
+          <button onClick={() => props.deleteFriend({index: i})}>Delete Friend</button>
         </li>     
       })}
     </ul>
   );
 }
 
-export default Friends;
+export default connect(null, { deleteFriend })(Friends);
