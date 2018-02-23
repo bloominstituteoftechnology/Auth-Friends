@@ -33,7 +33,7 @@ export const getFriends = () => {
 };
 
 export const addFriend = (friend) => {
-  const newFriend = axios.post('http://localhost:5000//api/friends/create', friend);
+  const newFriend = axios.post('http://localhost:5000/api/friends/create', friend);
   console.log(newFriend)
   return dispatch => {
     dispatch({ type: SAVING_FRIENDS });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addFriend } from '../actions/actions.js';
+import { addFriend } from '../actions/index.js';
 
 class FriendForm extends React.Component {
   state = {
@@ -32,12 +32,11 @@ class FriendForm extends React.Component {
 
   handleInputChange = event => {
     const name = event.target.name;
-    const age = event.target.age;
-    const email = event.target.email;
     let value = event.target.value;
 
-    this.setState({ [name]: value, [age]: value, [email]: value });
+    this.setState({ [name]: value });
   };
 }
 
 export default connect(null, { addFriend })(FriendForm);
+

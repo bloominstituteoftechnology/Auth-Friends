@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { getFriends } from './actions/actions.js';
+import { getFriends } from './actions/index.js';
 import Friends from './components/FriendList.js';
 import FriendForm from './components/FriendForm.js';
 

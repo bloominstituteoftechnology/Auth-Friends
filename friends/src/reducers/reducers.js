@@ -1,5 +1,5 @@
-import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS } from '../actions/actions';
-import { SAVING_FRIENDS, FRIENDS_SAVED, ERROR_SAVING_FRIENDS } from '../actions/actions';
+import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS } from '../actions/index.js';
+import { SAVING_FRIENDS, FRIENDS_SAVED, ERROR_SAVING_FRIENDS } from '../actions/index.js';
 
 // const initialState = {
 //     fetchingFriends: false,  Getting Friends
