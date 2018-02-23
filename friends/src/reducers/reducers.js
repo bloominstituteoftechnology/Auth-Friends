@@ -50,7 +50,6 @@ export const rootReducer = (state = initialState, action) => {
         fetchingFriends: false,
         friends: action.payload,
         savingFriends: false,
-        friendsSaved: true,
       };
     case ERROR_CREATING_FRIEND:
       return state;
