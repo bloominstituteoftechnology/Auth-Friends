@@ -50,7 +50,8 @@ const initialState = {
       return state;
     case ERROR_UPDATING_FRIEND:
       return state;
-      defaut: return state;
+    default: 
+      return state;
   }
 };
 
