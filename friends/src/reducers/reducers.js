@@ -50,5 +50,6 @@ export const rootReducer = (state = initialState, action) => {
       return state;
     case ERROR_UPDATING_FRIEND:
       return state;
+      defaut: return state;
   }
 };
