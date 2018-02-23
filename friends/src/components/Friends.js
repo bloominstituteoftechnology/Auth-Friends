@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {deleteFriend, updateFormVisible} from '../actions/Friends';
+import {deleteFriend, updateFormVisible, createFormVisible} from '../actions/Friends';
 import {Table} from 'react-bootstrap';
 import AlertSuccess from './SuccessAlert';
 import styled  from 'styled-components';
@@ -11,10 +11,14 @@ const FriendsContainer = styled.div`
         text-align:left;
         padding:5px 0px 5px 0px;
     }
-    
+
 `;
 
 class Friends extends Component {
+
+    handleCreateNewVisibility = () => {
+      this.props.createFormVisible(true);
+    }
 
     handleDelete = (id) => {
         this.props.deleteFriend(id);
@@ -31,7 +35,7 @@ class Friends extends Component {
                 {this.props.visible ? <AlertSuccess/> : ''}
 
                 <div className="create-btn">
-                    <button className={"btn btn-primary btn-sm"} onClick={() => this.handleCreateNew()}> Create New </button>
+                    <button className={"btn btn-primary btn-sm"} onClick={() => this.handleCreateNewVisibility()}> Create New </button>
                 </div>
 
                 <Table striped bordered condensed hover>
@@ -81,4 +85,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, {deleteFriend, updateFormVisible})(Friends);
+export default connect(mapStateToProps, {deleteFriend, updateFormVisible, createFormVisible})(Friends);

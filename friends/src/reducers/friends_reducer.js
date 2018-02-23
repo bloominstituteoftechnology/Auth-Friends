@@ -1,4 +1,4 @@
-import {IS_FETCHING, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS, DELETE_FRIEND, UPDATE_FRIEND } from '../actions/Friends';
+import {IS_FETCHING, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS, DELETE_FRIEND, UPDATE_FRIEND, SHOW_CREATE_FORM } from '../actions/Friends';
 
 const initialState = {
     friends: [],
@@ -8,6 +8,7 @@ const initialState = {
     visible:false,
     singleFriend:[],
     updateVisible:false,
+    createFormVisibility:false,
     error: null,
 };
 
@@ -29,6 +30,8 @@ export const friends_reducer = (state = initialState, action) => {
             return {...state, singleFriend: action.payload,  updateVisible: action.updateVisible };
         case ERROR_FETCHING_FRIENDS:
             return {...state, fetching: false, error: action.payload};
+        case SHOW_CREATE_FORM:
+          return {...state, createFormVisibility: action.createFormVisibility }
         default:
             return state;
     }

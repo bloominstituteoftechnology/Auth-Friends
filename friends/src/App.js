@@ -4,6 +4,7 @@ import './App.css';
 import {connect} from 'react-redux';
 import {getFriends} from './actions/Friends';
 import Friends from './components/Friends';
+import CreateFormFriend from './components/CreateFormFriend'
 import FormFriend from './components/FormFriend';
 import {Grid, Col} from 'react-bootstrap'
 import {updateSingleFriend} from './actions/Friends';
@@ -28,10 +29,13 @@ class App extends Component {
                             {this.props.fetching
                                     ?  <img src={logo} className="App-logo" alt="logo"/>
                                     :  this.props.updateVisible
-                                          ? <FormFriend/>: <Friends friends={this.props.friends}/>
+                                          ? <FormFriend/>
+                                          : this.props.createFormVisibility
+                                              ? <CreateFormFriend />
+                                              : <Friends friends={this.props.friends}/>
                             }
-                        </div>
 
+                        </div>
                     </Col>
                 </Grid>
             </div>
@@ -41,6 +45,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
     const {friends_reducer} = state;
+    console.log(state);
     return {
         friends: friends_reducer.friends,
         error: friends_reducer.error,
@@ -48,6 +53,7 @@ const mapStateToProps = state => {
         fetched: friends_reducer.fetched,
         updateF: friends_reducer.singleFriend,
         updateVisible: friends_reducer.updateVisible,
+        createFormVisibility: friends_reducer.createFormVisibility
     }
 };
 
