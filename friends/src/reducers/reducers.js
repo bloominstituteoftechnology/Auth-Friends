@@ -11,7 +11,7 @@ import {
   ERROR_UPDATING_FRIEND,
 } from '../actions/actions';
 
-const intialState = {
+const initialState = {
   fetchingFriends: false,
   friendsFetched: false,
   friendsSaved: false,
@@ -22,7 +22,7 @@ const intialState = {
   error: null,
 };
 
-export const rootReducer = (state = intitialSate, action) => {
+export const rootReducer = (state = initialState, action) => {
   console.log(`The reducer ran ${action}`);
   switch (action.type) {
     case 'GETTING_FRIENDS':
@@ -35,7 +35,7 @@ export const rootReducer = (state = intitialSate, action) => {
         friends: action.payload,
       };
     case ERROR_GETTING_FRIENDS:
-      return console.log(actions.error);
+      return console.log(action.error);
     case CREATE_FRIEND:
       return state;
     case FRIEND_CREATED:
