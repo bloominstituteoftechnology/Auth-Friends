@@ -56,7 +56,7 @@ class CreateFriendForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    friendUpdated: state.friendsReducer.friendUpdated,
+    savingFriends: state.friendsReducer.savingFriends,
     error: state.friendsReducer.error
   };
 };
