@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFriends } from './actions';
+import { getFriends, deleteFriend } from './actions';
 import logo from './logo.svg';
 import Friends from './components/Friends';
 import CreateFriendForm from './components/CreateFriendForm';
@@ -18,7 +18,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <Friends friends={this.props.friends} />
+        <Friends friends={this.props.friends} delete={this.props.deleteFriend}/>
         <CreateFriendForm />
       </div>
     );
@@ -28,10 +28,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     friends: state.friends,
-    fetchingFriends: state.fetchingFriends,
-    friendsFetched: state.friendsFetched,
-    error: state.error,
   }
 }
 
-export default connect(mapStateToProps, { getFriends })(App)
+export default connect(mapStateToProps, { getFriends, deleteFriend })(App)
