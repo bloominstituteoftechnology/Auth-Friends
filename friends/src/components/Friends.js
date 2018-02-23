@@ -11,7 +11,7 @@ const Friends = (props) => {
           <div className="friendName">{friend.name}</div>
           <div className="friendAge">{friend.age}</div>
           <div className="friendEmail">{friend.email}</div>
-          <button onClick={() => props.deleteFriend({index: i})}>Delete Friend</button>
+          <button onClick={() => props.deleteFriend({...friend, index: i})}>Delete Friend</button>
         </li>     
       })}
     </ul>
