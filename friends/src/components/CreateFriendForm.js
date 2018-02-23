@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { getFriends, createFriend, updateFriend, deleteFriend } from '../actions/actions';
 
 class CreateFriendForm extends Component {
@@ -40,4 +41,4 @@ class CreateFriendForm extends Component {
 
 }
 
-export default connect({ getFriends, createFriend, updateFriend, deleteFriend })(App);
+export default connect({ getFriends, createFriend, updateFriend, deleteFriend });

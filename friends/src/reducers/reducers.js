@@ -22,7 +22,7 @@ const initialState = {
   error: null,
 };
 
-export const rootReducer = (state = initialState, action) => {
+ const rootReducer = (state = initialState, action) => {
   console.log(`The reducer ran ${action}`);
   switch (action.type) {
     case 'GETTING_FRIENDS':
@@ -52,3 +52,5 @@ export const rootReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default rootReducer;
