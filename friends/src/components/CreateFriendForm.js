@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getFriends, createFriend, updateFriend, deleteFriend } from './actions';
+import { getFriends, createFriend, updateFriend, deleteFriend } from '../actions/actions';
 
 class CreateFriendForm extends Component {
   state = {

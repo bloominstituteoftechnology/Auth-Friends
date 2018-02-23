@@ -25,10 +25,15 @@ const intialState = {
 export const rootReducer = (state = intitialSate, action) => {
   console.log(`The reducer ran ${action}`);
   switch (action.type) {
-    case GETTING_FRIENDS:
-    return { ...state, fetchingFriends: true };
-    case FRIENDS_RECEIVED:
-      return [...state, actions.payload];
+    case 'GETTING_FRIENDS':
+      return { ...state, gettingFriends: true };
+    case 'FRIENDS_RECEIVED':
+      return {
+        ...state,
+        friendsFetched: true,
+        gettingFriends: false,
+        friends: action.payload,
+      };
     case ERROR_GETTING_FRIENDS:
       return console.log(actions.error);
     case CREATE_FRIEND:
