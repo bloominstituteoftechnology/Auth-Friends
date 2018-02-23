@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 import { getFriends } from "./actions";
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getFriends();
-  }
+  // componentDidMount() {
+  //   this.props.getFriends();
+  // }
   render() {
     return (
       <div className="App">

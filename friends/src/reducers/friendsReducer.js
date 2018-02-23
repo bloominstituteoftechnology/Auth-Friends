@@ -1,4 +1,4 @@
-import { GETTING_FRIENDS, GET_FRIENDS, ERROR } from "../actions";
+import { GETTING_FRIENDS, GET_FRIENDS, ERROR, CREATING_FRIEND, CREATE_FRIEND } from "../actions";
 
 const initialState = {
   friends: [],
