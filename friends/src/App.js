@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { getFriends } from './actions/index';
 import FriendForm from './components/FriendForm';
+import './index.css';
 
 class App extends Component {
   componentDidMount() {
@@ -11,16 +12,16 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <FriendForm />
-        <ul>
+        <ul className="friends__list">
           {this.props.friends.map((friend, i) => {
             return (
-              <div>
-                <div className="friend__name">{friend.name}</div>
-                <div className="friend__age">{friend.age}</div>
-                <div className="friend__email">{friend.email}</div>
-              </div>
+              <ul className="friend">
+                <li className="friend__name">{friend.name}</li>
+                <li className="friend__age">{friend.age}</li>
+                <li className="friend__email">{friend.email}</li>
+              </ul>
             );
           })}
         </ul>

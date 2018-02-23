@@ -1,0 +1,57 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.form__text {
+  padding-top: 15px;
+}
+
+.form__input {
+  height: 30px;
+  width: 200px;
+  margin: 15px;
+  border: 1px solid gray;
+}
+
+.form__button {
+  width: 100px;
+  background: lightgray;
+  padding: 5px;
+  margin: 10px;
+}
+
+.friend {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;
+  border: 1px solid gray;
+  margin: 25px;
+  padding: 15px;
+  height: 140px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.friend__name {
+  font-weight: bold;
+}
+
+.friend__email {
+  font-style: italic;
+}
+
+.friends__list {
+  max-width: 1000px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}

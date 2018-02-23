@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createFriend } from '../actions/index';
-import './FriendForm.css';
+import './index.css';
 
 class FriendForm extends Component {
   state = {
