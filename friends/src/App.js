@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="App-title">More Friends</h1>
-        <CreateFriendForm/>
+        <CreateFriendForm />
         <Friends />
       </div>
     );

@@ -5,6 +5,9 @@ import {
   IS_SAVING,
   FRIENDS_SAVED,
   ERROR_SAVING_FRIENDS,
+  IS_UPDATING,
+  FRIENDS_UPDATED,
+  ERROR_UPDATING_FRIENDS
 } from '../actions';
 
 const initialState = {
@@ -59,6 +62,26 @@ export const friendsReducer = (state = initialState, action) => {
         savingFriends: false,
         friendsSave: false, 
         error: action.payload, 
+      };
+    case IS_UPDATING:
+      return {
+        ...state,
+        updatingFriends: true,
+        friendsUpdated: false,
+      };
+    case FRIENDS_UPDATED:
+      return {
+        ...state,
+        friends: action.payload,
+        updatingFriends: false,
+        friendsUpdated: true
+      };
+    case ERROR_UPDATING_FRIENDS:
+      return {
+        ...state,
+        updatingFriends: false,
+        friendsUpdated: false,
+        error: action.payload
       };
     default:
       return state;

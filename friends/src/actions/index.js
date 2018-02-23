@@ -8,6 +8,10 @@ export const IS_SAVING = 'IS_SAVING';
 export const FRIENDS_SAVED = 'FRIENDS_SAVED';
 export const ERROR_SAVING_FRIENDS = 'ERROR_SAVING_FRIENDS';
 
+export const IS_UPDATING = 'IS_UPDATING';
+export const FRIENDS_UPDATED = 'FRIENDS_UPDATED';
+export const ERROR_UPDATING_FRIENDS = 'ERROR_UPDATING_FRIENDS';
+
 export const getFriends = () => {
   const friends = axios.get('http://localhost:5000/api/friends/get');
   return dispatch => {
@@ -32,6 +36,20 @@ export const saveFriend = (values) => {
       })
       .catch(err => {
         dispatch({ type: ERROR_SAVING_FRIENDS, payload: err });
+      });
+  };
+};
+
+export const updateFriend = (id, info) => {
+  const updatedFriend = axios.put(`http://localhost:5000/api/friends/update/${id}`, info);
+  return (dispatch) => {
+    dispatch({ type: IS_UPDATING });
+    updatedFriend
+      .then(({ data }) => {
+        dispatch({ type: FRIENDS_UPDATED, payload: data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR_UPDATING_FRIENDS, payload: err });
       });
   };
 };

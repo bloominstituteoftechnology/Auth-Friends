@@ -4,12 +4,13 @@ import { saveFriend } from "../actions";
 
 class CreateFriendForm extends Component {
   state = {
-    age: "",
-    email: "",
-    name: ""
+    name: '',
+    age: '',
+    email: ''
   };
 
-  handleChange = event => {
+  handleSubmit = event => {
+    event.preventDefault();
     let name = event.target.name;
     let value = event.target.value;
 
@@ -17,44 +18,52 @@ class CreateFriendForm extends Component {
     if (name === "age") this.setState({ age: value });
     if (name === "email") this.setState({ email: value });
   };
+
+  handleInput = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
     return (
-      <form onSubmit={this.props.saveFriend(this.state)}>
+      <form onSubmit={this.handleSubmit}>
         <label>
           Name:
           <input
             type="text"
-            value={this.state.name}
-            onChange={this.handleChange}
             name="name"
+            value={this.state.name}
+            onChange={this.handleInput}
           />
         </label>
         <label>
           Age:
           <input
             type="text"
-            value={this.state.age}
-            onChange={this.handleChange}
             name="age"
+            value={this.state.age}
+            onChange={this.handleInput}
           />
         </label>
         <label>
           Email:
           <input
             type="text"
-            value={this.state.email}
-            onChange={this.handleChange}
             name="email"
+            value={this.state.email}
+            onChange={this.handleInput}
           />
         </label>
-        <button type="submit">Save</button>
+        <button type="submit">Add Friend</button>
       </form>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    savingFriends: state.friendsReducer.savingFriends,
+    error: state.friendsReducer.error
+  };
 }
 
 export default connect(mapStateToProps, { saveFriend }) (CreateFriendForm);
