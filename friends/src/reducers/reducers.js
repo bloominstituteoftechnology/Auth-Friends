@@ -1,4 +1,4 @@
-import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS} from './actions';
+import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS} from '../actions/actions';
 
 // const initialState = {
 //     fetchingFriends: false,  Getting Friends
@@ -35,3 +35,4 @@ export const rootReducer = (state = initialState, action) => {
       return state;
   }
 };
+
