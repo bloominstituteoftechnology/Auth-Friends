@@ -1,40 +1,22 @@
-/* Old Code
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
-
-
-ReactDOM.render(
-  <Provider store={createStore(rootReducer, applyMiddleware(thunk, logger), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
-      <App />
-  </Provider>
-, document.getElementById('root'));
-*/
  //here the react stuff
  import React from 'react';
  import ReactDOM from 'react-dom';
- import App from './components/App';
+ import App from './App';
  //the redux stuff
  import { Provider } from 'react-redux';
  import { createStore, applyMiddleware } from 'redux';
- import friends from './reducers/Reducers';
+ import friends from './reducers';
  import logger from 'redux-thunk';
  import thunk from 'redux-logger';
  //styles goes here
- import registerServiceWorker from './registerServiceWorker';
- import './styles/index.css';
+ import './index.css';
  
- const store = createStore(friends, applyMiddleware(thunk, logger));
+ const store = createStore(friends, applyMiddleware(thunk, logger), 
+   window.__REDUX_DEVTOOLS_EXTENSION__ && 
+   window.__REDUX_DEVTOOLS_EXTENSION__());
  
  ReactDOM.render(
      <Provider store={store}>
          <App />
      </Provider>
      , document.getElementById('root'));
- registerServiceWorker();
