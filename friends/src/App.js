@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import FriendList from './containers/FriendList'
 import { connect } from 'react-redux';
-import { getFriends } from './actions';
+import { getFriends, postFriend } from './actions';
 
 class App extends Component {
 
@@ -20,6 +20,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <FriendList />
+        <button onClick={() => this.props.postFriend({name: 'Leon', age: 23, email: 'sleepyhollow.net'})}>Click me to add a friend!</button>
       </div>
     );
   }
@@ -31,4 +32,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, { getFriends })(App);
+export default connect(mapStateToProps, { getFriends, postFriend })(App);
