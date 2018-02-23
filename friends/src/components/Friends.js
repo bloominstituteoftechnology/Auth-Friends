@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {deleteFriend} from '../actions/Friends';
+import {deleteFriend, updateSingleFriend, updateFormVisible} from '../actions/Friends';
 import {Table} from 'react-bootstrap';
 import AlertSuccess from './SuccessAlert';
 import styled  from 'styled-components';
@@ -17,14 +17,17 @@ const FriendsContainer = styled.div`
 class Friends extends Component {
 
     handleDelete = (id) => {
-
         this.props.deleteFriend(id);
+    };
+
+    handleUpdateVisibility = (friend, index) => {
+        friend.id = index;
+        this.props.updateFormVisible(friend);
     };
 
     render() {
         return (
             <FriendsContainer>
-                {console.log('habla',this.props)}
                 {this.props.visible ? <AlertSuccess/> : ''}
 
                 <div className="create-btn">
@@ -52,7 +55,7 @@ class Friends extends Component {
                                 <td>{friend.email}</td>
                                 <td>
 
-                                    <button className={"btn btn-success btn-sm"} onClick={() => this.handleUpdate(index)}> Update </button>
+                                    <button className={"btn btn-success btn-sm"} onClick={() => this.handleUpdateVisibility(friend, index)}> Update </button>
                                     &nbsp; &nbsp;
                                     <button className={"btn btn-danger btn-sm"} onClick={() => this.handleDelete(index)}> Delete </button>
 
@@ -69,12 +72,13 @@ class Friends extends Component {
 
 const mapStateToProps = state => {
     const {friends_reducer} = state;
-    console.log('State from Friends Component', state);
     return {
         error: friends_reducer.error,
         deleteF: friends_reducer.deleteFriend,
         visible: friends_reducer.visible,
+        updateVisible: friends_reducer.updateVisible,
+        updateF: friends_reducer.singleFriend,
     }
 };
 
-export default connect(mapStateToProps, {deleteFriend})(Friends);
+export default connect(mapStateToProps, {deleteFriend, updateSingleFriend, updateFormVisible})(Friends);

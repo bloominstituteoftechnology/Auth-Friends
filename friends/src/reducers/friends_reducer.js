@@ -1,4 +1,4 @@
-import {IS_FETCHING, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS, DELETE_FRIEND, A_FRIEND} from '../actions/Friends';
+import {IS_FETCHING, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS, DELETE_FRIEND, UPDATE_FRIEND, A_FRIEND} from '../actions/Friends';
 
 const initialState = {
     friends: [],
@@ -7,6 +7,8 @@ const initialState = {
     fetched: false,
     deleteFriend: false,
     visible:false,
+    singleFriend:[],
+    updateVisible:false,
     error: null,
 };
 
@@ -24,6 +26,8 @@ export const friends_reducer = (state = initialState, action) => {
             };
         case DELETE_FRIEND:
             return {...state, deleteFriend: true, visible:action.visible};
+        case UPDATE_FRIEND:
+            return {...state, singleFriend: action.payload,  updateVisible: action.updateVisible };
         case A_FRIEND:
             return {...state, select: action.payload};
         case ERROR_FETCHING_FRIENDS:

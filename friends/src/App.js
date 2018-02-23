@@ -4,12 +4,13 @@ import './App.css';
 import {connect} from 'react-redux';
 import {getFriends} from './actions/Friends';
 import Friends from './components/Friends';
+import FormFriend from './components/FormFriend';
 import {Grid, Col} from 'react-bootstrap'
+import {updateSingleFriend} from './actions/Friends';
 
 class App extends Component {
 
     componentDidMount() {
-        console.log('lets start from App.js', this.props);
         this.props.getFriends();
     }
 
@@ -22,13 +23,15 @@ class App extends Component {
                 <Grid>
                     <Col>
                         {this.props.error ? <h3>Error Fetching Friends</h3> : null}
+
                         <div className="Flex-Container">
-                            {this.props.fetching ? (
-                                <img src={logo} className="App-logo" alt="logo"/>
-                            ) : (
-                                <Friends friends={this.props.friends}/>
-                            )}
+                            {this.props.fetching
+                                    ?  <img src={logo} className="App-logo" alt="logo"/>
+                                    :  this.props.updateVisible
+                                            ? <FormFriend/>: <Friends friends={this.props.friends}/>
+                            }
                         </div>
+
                     </Col>
                 </Grid>
             </div>
@@ -38,13 +41,14 @@ class App extends Component {
 
 const mapStateToProps = state => {
     const {friends_reducer} = state;
-    console.log('xxxxxxxx', state);
     return {
         friends: friends_reducer.friends,
         error: friends_reducer.error,
         fetching: friends_reducer.fetching,
         fetched: friends_reducer.fetched,
+        updateF: friends_reducer.singleFriend,
+        updateVisible: friends_reducer.updateVisible,
     }
 };
 
-export default connect(mapStateToProps, {getFriends})(App);
+export default connect(mapStateToProps, {getFriends, updateSingleFriend})(App);

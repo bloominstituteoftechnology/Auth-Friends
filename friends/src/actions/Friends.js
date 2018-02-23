@@ -4,6 +4,7 @@ export const IS_FETCHING = 'IS_FETCHING';
 export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
 export const ERROR_FETCHING_FRIENDS = 'ERROR_FETCHING_FRIENDS';
 export const DELETE_FRIEND = 'DELETE_FRIEND';
+export const UPDATE_FRIEND = 'UPDATE_FRIEND';
 export const A_FRIEND = 'A_FRIEND';
 
 export const getFriends = () => {
@@ -40,6 +41,33 @@ export const deleteFriend = (index) => {
             })
             .catch(err => {
                 console.log('error deleting friend', err);
+                dispatch({type: ERROR_FETCHING_FRIENDS, payload: err});
+            });
+    };
+};
+
+export const updateFormVisible = (friend) => {
+    return dispatch => {
+        dispatch({type: UPDATE_FRIEND, payload: friend, updateVisible:true});
+    };
+};
+
+export const updateSingleFriend = (friend, index) => {
+
+    const updateFriend = axios.put('http://localhost:5000/api/friends/update', {
+        index: index,
+        update: friend
+    });
+
+    return dispatch => {
+        dispatch({type: UPDATE_FRIEND});
+        updateFriend
+            .then(({data}) => {
+                dispatch({type: FRIENDS_FETCHED, payload: data});
+                dispatch({type: UPDATE_FRIEND, payload: friend, updateVisible:false});
+            })
+            .catch(err => {
+                console.log('error updating friend', err);
                 dispatch({type: ERROR_FETCHING_FRIENDS, payload: err});
             });
     };
