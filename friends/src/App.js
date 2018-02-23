@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { connect } from "react-redux";
+
+// import Friends from './components/Friends';
+import FriendForm from './components/FriendForm';
+// import { connect } from "react-redux";
 import { getFriends } from "./actions";
 
 class App extends Component {
@@ -13,11 +16,13 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">OUR FRIENDS</h1>
         </header>
-        <p className="App-intro">
+        {/* <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        </p> */}
+        <FriendForm />
+        {/* <Friends /> */}
       </div>
     );
   }

@@ -1,13 +1,14 @@
-import React from "react";
+import React, {Component} from "react";
+import { connect } from 'react-redux';
 
-const Friends = props => {
-  return (
-    <ul>
-      {props.friends.map(friend => {
-        return <li key={friend}>{friend}</li>;
-      })}
-    </ul>
-  );
+class Friends extends Component {
+
+}
+
+const mapStateToProps = state => {
+  return {
+    error: state.friendsReducer.error,
+  };
 };
 
-export default Friends;
+export default connect(mapStateToProps)(Friends);
