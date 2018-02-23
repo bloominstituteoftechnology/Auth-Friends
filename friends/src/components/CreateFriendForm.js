@@ -12,6 +12,11 @@ class CreateFriendForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.saveFriend(this.state);
+    this.setState({
+      name: "",
+      age: "",
+      email: ""
+    });
   };
 
   handleInput = e => {
