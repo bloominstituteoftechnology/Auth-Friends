@@ -7,9 +7,6 @@ import { getFriends } from './actions/actions';
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.getFriends();
-  }
 
   render() {
     return (
@@ -24,12 +21,6 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    friends: state.friends,
-    fetching: state.fetching,
-    error: state.error,
-  };
-};
 
-export default connect(mapStateToProps, { getFriends })(App);
+
+export default App;
