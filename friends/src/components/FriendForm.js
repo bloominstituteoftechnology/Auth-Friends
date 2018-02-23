@@ -41,3 +41,5 @@ const mapStateToProps = (state) => {
     creatingFriend: state.creatingFriend,
   }
 }
+
+export default connect(mapStateToProps, { createFriend})(FriendForm);
