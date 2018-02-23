@@ -2,10 +2,16 @@ import axios from "axios";
 export const GET_FRIENDS = "GET_FRIENDS";
 export const GETTING_FRIENDS = "GETTING_FRIENDS";
 export const ERROR = "ERROR";
-export const CREATING_FRIEND = 'CREATING_FRIEND';
-export const CREATE_FRIEND = 'CREATE_FRIEND';
+export const CREATING_FRIEND = "CREATING_FRIEND";
+export const CREATE_FRIEND = "CREATE_FRIEND";
+export const DELETE_FRIEND = "DELETE_FRIEND";
+export const DELETING_FRIEND = "DELETING_FRIEND";
+export const UPDATE_FRIEND = "UPDATE_FRIEND";
+export const UPDATING_FRIEND = "UPDATING_FRIEND";
+export const SINGLE_FRIEND = "SINGLE_FRIEND";
+export const CHANGE_UPDATE_FRIEND = "CHANGE_UPDATE_FRIEND";
 
-const URL = 'http://localhost:5000/api/friends';
+const URL = "http://localhost:5000/api/friends";
 
 export const getFriends = () => {
   const friends = axios.get(`${URL}/get`);
@@ -32,5 +38,35 @@ export const createFriend = friend => {
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
       });
+  };
+};
+
+export const deleteFriend = id => {
+  const deleteFriend = axios.delete(`${URL}/delete`, {
+    data: { id }
+  });
+  return dispatch => {
+    dispatch({ type: DELETING_FRIEND });
+    friendRemoved
+      .then(({ data }) => {
+        dispatch({ type: DELETE_FRIEND, payload: data });
+        dispatch({ type: SINGLE_FRIEND, payload: {} });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
+
+export const showUpdate = () => {
+  return {
+    type: CHANGE_UPDATE_FRIEND
+  };
+};
+
+export const updateOneFriend = friend => {
+  return {
+    type: SINGLE_FRIEND,
+    payload: friend
   };
 };
