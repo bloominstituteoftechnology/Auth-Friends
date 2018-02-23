@@ -4,10 +4,9 @@ import { deleteFriend, updateFriend, editingFriend } from '../actions';
 
 class FriendsList extends React.Component {
   state = {
-    updatedFriend: {
-      name: '',
-      age: '',
-      email: '',},
+    name: '',
+    age: '',
+    email: '',
   };
 
   toggleEdit = () => {
@@ -18,57 +17,51 @@ class FriendsList extends React.Component {
     event.preventDefault();
     this.props.addFriend(this.state);
     this.setState({
-      updatedFriend: {
-        name: '',
-        age: '',
-        email: '',},
-    });
+      name: '',
+      age: '',
+      email: '',
+      }
+    );
   }
 
   handleNameChange = (event) => {
     this.setState({
-      updatedFriend: {
         name: event.target.value,
-      }
     });
   }
 
   handleAgeChange = (event) => {
     this.setState({
-      updatedFriend: {
         age: event.target.value,
-      }
     });
   }
 
   handleEmailChange = (event) => {
     this.setState({
-      updatedFriend: {
         email: event.target.value,
-      }
-    });
+      });
   }
 
   render() {
-  return (
-    <ul>
-      {this.props.friends.map((friend, index) => {
-        return (
-        <li key={index}>
-          {this.state.editing ? (<h1>Fetching friends</h1>) : friend.name} <br />
-          {friend.age} <br />
-          {friend.email} <br />
-          <button onClick={() => {this.props.deleteFriend(index)}}>Delete</button>
+    return (
+      <ul>
+        {this.props.friends.map((friend, index) => {
+          return (
+          <li key={index}>
+            {this.props.updatingFriend ? <input value={this.state.name} onChange={this.handleNameChange} /> : friend.name} <br />
+            {this.props.updatingFriend ? <input value={this.state.age} onChange={this.handleAgeChange} /> : friend.age}<br />
+            {this.props.updatingFriend ? <input value={this.state.email} onChange={this.handleEmailChange} /> : friend.email}<br />
+            <button onClick={() => {this.props.deleteFriend(index)}}>Delete</button>
 
-          {this.props.updatingFriend 
-          ? <button onClick={() => {this.props.updateFriend(index)}}>Save</button>
-          : <button onClick={() => {this.toggleEdit()}}>Edit</button>}
-        </li>
-        )
-      })}
-    </ul>
-  )}
-}
+            {this.props.updatingFriend 
+            ? <button onClick={() => {this.props.updateFriend(index)}}>Save</button>
+            : <button onClick={() => {this.toggleEdit()}}>Edit</button>}
+          </li>
+          )
+        })}
+      </ul>
+    )}
+  }
 
 const mapStateToProps = state => {
   return {
