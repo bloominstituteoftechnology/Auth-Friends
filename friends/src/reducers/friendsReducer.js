@@ -1,9 +1,5 @@
 const initialState = {
   friends: [],
-  gettingFriends: false,
-  updatingFriend: false,
-  creatingFriend: false,
-  deletingFriend: false,
   error: null
 }
 
