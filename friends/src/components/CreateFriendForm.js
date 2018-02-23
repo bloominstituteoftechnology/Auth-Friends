@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { createFriend, updateFriend, deleteFriend } from '../actions/actions';
+import { createFriend } from '../actions/actions';
 import { connect } from 'react-redux';
+import { rootReducer } from '../reducers/reducers';
 
 class CreateFriendForm extends Component {
   state = {
@@ -13,7 +14,7 @@ class CreateFriendForm extends Component {
   };
 
   submitFriend = e => {
-    e.preventDefaults();
+    e.preventDefault();
     this.props.createFriend({
       name: this.state.name,
       age: this.state.age,
@@ -28,8 +29,8 @@ class CreateFriendForm extends Component {
 
   render() {
     return (
-      <div class="col-one-half friend-form">
-        <form onSubmit="">
+      <div className="col-one-half friend-form">
+        <form onSubmit={this.submitFriend}>
           <input onChange={this.handleInput} type="text" name="name" placeholder="name"/>
           <input onChange={this.handleInput} type="number" name="age" placeholder="age"/>
           <input onChange={this.handleInput} type="email" name="email" placeholder="email"/>
@@ -41,14 +42,11 @@ class CreateFriendForm extends Component {
 }
 const mapStateToProps = state => {
   return {
-    friendsSaved: state.friendsSaved,
     savingFriends: state.savingFriends,
-    updatingFriend: state.updatingFriend,
-    deletingFriend: state.deletingFriend,
     error: state.error,
-  };
+  }
 };
 
-export default connect(mapStateToProps, { createFriend, updateFriend, deleteFriend })(
+export default connect(mapStateToProps, { createFriend })(
   CreateFriendForm
 );

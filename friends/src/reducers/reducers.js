@@ -22,7 +22,7 @@ const initialState = {
   error: null,
 };
 
-const rootReducer = (state = initialState, action) => {
+export const rootReducer = (state = initialState, action) => {
   console.log(`The reducer ran ${action}`);
   switch (action.type) {
     case 'GETTING_FRIENDS':
@@ -40,14 +40,14 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         savingFriends: true,
-        gettingFriends: false,
+        friendsSaved: false,
       };
     case FRIEND_CREATED:
       return {
         ...state,
-        friendsSaved: true,
-        gettingFriends: true,
         friends: action.payload,
+        savingFriends: false,
+        friendsSaved: true,
       };
     case ERROR_CREATING_FRIEND:
       return state;
@@ -64,4 +64,4 @@ const rootReducer = (state = initialState, action) => {
   }
 };
 
-export default rootReducer;
+

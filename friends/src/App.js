@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <div class="col-one-half">
+        <div className="col-one-half">
         <Friends friends={this.props.friends} />
         </div>
         <CreateFriendForm />
