@@ -9,3 +9,5 @@ const Friends = props => {
         </ul>
     );
 };
+
+export default Friends;
