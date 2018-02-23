@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS } from '../actions/index.js';
 import { SAVING_FRIENDS, FRIENDS_SAVED, ERROR_SAVING_FRIENDS } from '../actions/index.js';
+=======
+import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS } from '../actions/actions';
+import { SAVING_FRIENDS, FRIENDS_SAVED, ERROR_SAVING_FRIENDS } from '../actions/actions';
+>>>>>>> b507e5806ef549cc2709dc0a775072cd263a9a4d
 
 // const initialState = {
 //     fetchingFriends: false,  Getting Friends

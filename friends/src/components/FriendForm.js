@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addFriend } from '../actions/index.js';
+// import { addFriend } from '../actions/index.js';
+import { addFriend } from '../actions/actions.js';
 
 class FriendForm extends React.Component {
   state = {
@@ -40,3 +41,4 @@ class FriendForm extends React.Component {
 
 export default connect(null, { addFriend })(FriendForm);
 
+// 
