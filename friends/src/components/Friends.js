@@ -7,8 +7,7 @@ const Friends = props => {
       <ul>
         {props.friends.map(friend => {
           return (
-            <li key={friend.id}>
-              <button>Delete Friend</button>
+            <li key={friend.email}>
               <p>{friend.name}</p>
               <p>{friend.age}</p>
               <p>{friend.email}</p>

@@ -28,11 +28,11 @@ export const getFriends = () => {
   };
 };
 
-export const createFriend = (args) => {
+export const createFriend = (data) => {
   return dispatch => {
     dispatch({ type: CREATE_FRIEND });
     axios
-      .post('http://localhost:5000/api/friends/create', args)
+      .post('http://localhost:5000/api/friends/create', data)
       .then(({ data }) => {
         dispatch({ type: FRIEND_CREATED, payload: data });
       })
