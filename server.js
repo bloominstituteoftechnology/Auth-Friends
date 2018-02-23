@@ -29,6 +29,11 @@ const friends = [
     name: 'Michelle',
     age: 67,
     email: 'michelle@gmail.com'
+  },
+  {
+    name: 'Luis',
+    age: 24,
+    email: 'luis@lambdaschool.com',
   }
 ];
 
