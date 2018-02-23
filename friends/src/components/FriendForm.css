@@ -1,0 +1,28 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.form__text {
+  padding-top: 15px;
+}
+
+.form__input {
+  height: 30px;
+  width: 200px;
+  margin: 15px;
+  border: 1px solid gray;
+}
+
+.form__button {
+  width: 100px;
+  background: lightgray;
+  padding: 5px;
+  margin: 10px;
+}
