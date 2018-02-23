@@ -16,6 +16,21 @@ class App extends Component {
       </div>
     );
   }
+
+  state = {
+    friend: null,
+  };
+
+  componentDidMount() {
+
+    axios
+      .get(`http://localhost:/5000/src/components/Friends`)
+      .then(response => this.setState(() => ({ friend: response.data })))
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
 }
 
 export default App;
