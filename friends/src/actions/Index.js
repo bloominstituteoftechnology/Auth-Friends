@@ -11,7 +11,7 @@ const URL = 'http://localhost:5000/api/friends';
 export const getFriend = (id) => {
 	const friends = axios.get('http://localhost:5000/friends');
 	return dispatch => {
-		dispatch({ type: GET_FRIENDS });
+		dispatch({ type: GET_FRIEND });
 		friends
 		 .then(response => {
 		 dispatch({		 
@@ -24,17 +24,17 @@ export const getFriend = (id) => {
        type: ERROR,
 			 payload: error 
      });
-   };
+		});
   }
 }
 
 export const deleteFriend = id => {
- const deleteFriend = axios.delete(`http://localhost:5000/friends/${index}`, {
+ const deleteFriend = axios.delete(`http://localhost:5000/friends/${id}`, {
    data: { id }
 	});
 	  return dispatch => {
-		 dispatch({ type: DELETING_FRIEND });
-		 deletedFriend
+		 dispatch({ type: DELETE_FRIEND });
+     deleteFriend
 			.then(({ data }) => {
 			dispatch({ 		
         type: 'DELETE_FRIEND',
@@ -44,10 +44,11 @@ export const deleteFriend = id => {
 			.catch(error => {
 			 dispatch({ 
          type: ERROR,
-				 payload: err
-			});	 
-    };
- };
+				 payload: error
+	  		});	 
+     });
+  };
+}
 
 export const toggleUpdateFriend = friend => {
  return {
@@ -57,8 +58,9 @@ export const toggleUpdateFriend = friend => {
 
 export const UpdateFriend = friend => {
   return {
-    type: Update_FRIEND,
+    type: UPDATE_FRIEND,
 		payload: friend
 	};
 };
+
 
