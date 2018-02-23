@@ -13,8 +13,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="container">
+        <div class="col-one-half">
         <Friends friends={this.props.friends} />
+        </div>
         <CreateFriendForm />
         {/* <UpdateFriendForm /> */}
       </div>
