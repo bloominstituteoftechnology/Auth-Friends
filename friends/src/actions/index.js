@@ -7,7 +7,7 @@ export const ERROR_SAVING = 'ERROR_SAVING';
 export const ERROR_FETCHING = 'ERROR_FETCHING';
 export const FRIEND_DELETING = 'FRIEND_DELETING';
 export const FRIEND_DELETED = 'FRIEND_DELETED';
-export const ERROR_DELETING = 'ERROR_DELETING'
+export const ERROR_DELETING = 'ERROR_DELETING';
 
 export const getFriends = () => {
   const friends = axios.get('http://localhost:5000/api/friends/get');
@@ -15,7 +15,6 @@ export const getFriends = () => {
     dispatch({ type: FRIENDS_FETCHING });
     friends
       .then(({ data }) => {
-        console.log(data);
         dispatch({ type: FRIENDS_FETCHED, payload: data });
       })
       .catch(err => {
@@ -24,7 +23,7 @@ export const getFriends = () => {
   };
 };
 
-export const addFriend = (data) => {
+export const addFriend = data => {
   const monkey = axios.post('http://localhost:5000/api/friends/create', data);
   return dispatch => {
     dispatch({ type: FRIENDS_SAVING });
@@ -38,8 +37,10 @@ export const addFriend = (data) => {
   };
 };
 
-export const deleteFriend = (index) => {
-  const monkey = axios.delete('http://localhost:5000/api/friends/delete', index);
+export const deleteFriend = index => {
+  const monkey = axios.delete('http://localhost:5000/api/friends/delete', {
+    data: { index },
+  });
   return dispatch => {
     dispatch({ type: FRIEND_DELETING });
     monkey
@@ -50,4 +51,4 @@ export const deleteFriend = (index) => {
         dispatch({ type: ERROR_DELETING, payload: err });
       });
   };
-};  
+};
