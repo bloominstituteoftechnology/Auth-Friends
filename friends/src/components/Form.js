@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { addFriend } from '../actions/actions';
+import { connect } from 'react-redux';
 
 class Form extends Component {
     state = {
@@ -10,7 +12,7 @@ class Form extends Component {
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label>Name: </label>
                     <input 
                     type="text"
@@ -47,7 +49,31 @@ class Form extends Component {
         };
 
         this.setState( { [name]: value } )
+    };
+
+    handleSubmit = event => {
+        event.preventDefault();
+        this.props.addFriend(this.state
+            // name = this.state.name,
+            // age = this.state.age,
+            // email = this.state.email
+        );
+        this.setState({
+            name:'',
+            age:'',
+            email:''
+        });
+
     }
+
 }
 
-export default Form;
+const mapStateToProps = state => {
+    return {
+        addingFriends : state.addingFriends,
+        friendsAdded: state.friendsAdded,
+        error: state.error
+    };
+};
+
+export default connect(mapStateToProps, { addFriend })(Form);
