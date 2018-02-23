@@ -1,10 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getFriends } from "../actions";
+import UpdateFriendForm from "./UpdateFriendForm";
 
 class Friends extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      update: false
+    };
+  }
+
   componentDidMount() {
     this.props.getFriends();
+  }
+
+  updateToggle = () => {
+    const active = this.state.update;
+    this.setState({update: !active});
   }
 
   render() {
@@ -19,7 +33,8 @@ class Friends extends Component {
               <li>{`Age: ${friend.age}`}</li>
               <li>{`Email: ${friend.email}`}</li>
             </ul>
-            <button onClick={this.showForm}>Update</button>
+            <button onClick={this.updateToggle}>Update</button>
+            {this.state.update ? <UpdateFriendForm data={this.props.friend} index={this.props.index} /> : null}
           </div>
         );
       })

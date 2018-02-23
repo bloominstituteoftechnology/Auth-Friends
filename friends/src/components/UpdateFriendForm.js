@@ -6,13 +6,25 @@ class UpdateFriendForm extends Component {
   state = {
     name: '',
     age: '',
-    email: ''
-  }
+    email: '',
+    save: false
+  };
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
     event.preventDefault();
-    const { name, age, email } = this.state;
-    this.props.updateFriend(this.props.id ,{name, age, email});
+    const update = {
+      index: this.props.index,
+      update: {
+        name: this.state.name,
+        age: this.state.age,
+        email: this.state.email
+      }
+    }
+    let active = this.state.save;
+    this.props.updateFriend(update);
+    this.setState({save: !active});
+
+    console.log(update);
   };
 
   handleInput = (e) => {
@@ -21,26 +33,29 @@ class UpdateFriendForm extends Component {
 
   render () {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form style={this.state.save ? {display: 'none'} : null}>
         <input
           type="text"
           name="name"
+          placeholder="Name"
           value={this.state.name}
           onchange={this.handleInput}
         />
         <input
           type="number"
           name="age"
+          placeholder="Age"
           value={this.state.age}
           onChange={this.handleInput}
         />
         <input
           type="email"
           name="email"
+          placeholder="Email"
           value={this.state.email}
           onChange={this.handleInput}
         />
-        <button type="submit">Update Friend</button>
+        <button type="submit" onClick={this.handleSubmit}>Update Friend</button>
       </form>
     );
   };
@@ -48,9 +63,10 @@ class UpdateFriendForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    updatingFriends: state.friendsReducer.updatingFriends,
+    updatingFriend: state.friendsReducer.updatingFriend,
+    friendUpdated: state.friendsReducer.friendUpdated,
     error: state.friendsReducer.error
   }
 };
 
-export default connect(mapStateToProps, { updateFriend })(CreateFriendForm);
+export default connect(mapStateToProps, { updateFriend })(UpdateFriendForm);

@@ -40,10 +40,10 @@ export const saveFriend = values => {
   };
 };
 
-export const updateFriend = (id, info) => {
+export const updateFriend = (friend) => {
   const updatedFriend = axios.put(
-    `http://localhost:5000/api/friends/update/${id}`,
-    info
+    'http://localhost:5000/api/friends/update',
+    friend
   );
   return dispatch => {
     dispatch({ type: IS_UPDATING });
