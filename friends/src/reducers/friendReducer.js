@@ -7,9 +7,7 @@ const initialState = {
     friendsSaved: false,
     savingFriends: false,
     updatingFriend: false,
-    friendUpdated: false,
     deletingFriend: false,
-    friendDeleted: false,
     error: null
 }
 
@@ -25,7 +23,7 @@ export const rootReducer = (state = initialState, action) => {
                 ...state, 
                 friendsFetched: true,
                 fetchingFriends: false,
-                friends: Object.keys(action.payload)
+                friends: action.payload
             };
         case ERROR:
             return {
