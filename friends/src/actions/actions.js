@@ -31,4 +31,18 @@ export const addFriend = friend => {
                 dispatch({ type: ERROR, payload: err });
             });  
     };
+};
+
+export const deleteFriend = friend => {
+    const byeFriend = axios.delete('http://localhost:5000/api/friends/delete', friend);
+    return dispatch => {
+        dispatch({ type: DELETING_FRIEND });
+        byeFriend
+            .then(({ data }) => {
+                dispatch({ type: FRIEND_DELETED, payload: data });
+            })
+            .catch(err => {
+                dispatch({ type: ERROR, payload: err })
+            })
+    }
 }
