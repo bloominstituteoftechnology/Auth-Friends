@@ -1,25 +1,20 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { saveFriend } from "../actions";
 
 class CreateFriendForm extends Component {
   state = {
-    name: '',
-    age: '',
-    email: ''
+    name: "",
+    age: "",
+    email: ""
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    let name = event.target.name;
-    let value = event.target.value;
-
-    if (name === "name") this.setState({ name: value });
-    if (name === "age") this.setState({ age: value });
-    if (name === "email") this.setState({ email: value });
+    this.props.saveFriend(this.state);
   };
 
-  handleInput = (e) => {
+  handleInput = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -64,6 +59,6 @@ const mapStateToProps = state => {
     savingFriends: state.friendsReducer.savingFriends,
     error: state.friendsReducer.error
   };
-}
+};
 
-export default connect(mapStateToProps, { saveFriend }) (CreateFriendForm);
+export default connect(mapStateToProps, { saveFriend })(CreateFriendForm);

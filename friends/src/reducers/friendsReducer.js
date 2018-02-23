@@ -8,7 +8,7 @@ import {
   IS_UPDATING,
   FRIENDS_UPDATED,
   ERROR_UPDATING_FRIENDS
-} from '../actions';
+} from "../actions";
 
 const initialState = {
   fetchingFriends: false,
@@ -26,9 +26,9 @@ const initialState = {
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case IS_FETCHING:
-      return { 
+      return {
         ...state,
-        fetchingFriends: true, 
+        fetchingFriends: true
       };
     case FRIENDS_FETCHED:
       return {
@@ -38,36 +38,36 @@ export const friendsReducer = (state = initialState, action) => {
         friends: action.payload
       };
     case ERROR_FETCHING_FRIENDS:
-      return { 
-        ...state, 
-        fetchingFriends: false, 
-        error: action.payload 
+      return {
+        ...state,
+        fetchingFriends: false,
+        error: action.payload
       };
     case IS_SAVING:
-      return { 
-        ...state, 
+      return {
+        ...state,
         savingFriends: true,
-        friendsSaved: false,
+        friendsSaved: false
       };
     case FRIENDS_SAVED:
-      return { 
+      return {
         ...state,
-        friends: action.paylod, 
+        friends: action.payload,
         savingFriends: false,
-        friendsSaved: true, 
+        friendsSaved: true
       };
     case ERROR_SAVING_FRIENDS:
-      return { 
-        ...state, 
+      return {
+        ...state,
         savingFriends: false,
-        friendsSave: false, 
-        error: action.payload, 
+        friendsSave: false,
+        error: action.payload
       };
     case IS_UPDATING:
       return {
         ...state,
         updatingFriends: true,
-        friendsUpdated: false,
+        friendsUpdated: false
       };
     case FRIENDS_UPDATED:
       return {

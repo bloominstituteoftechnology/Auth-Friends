@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Friends from './components/Friends';
-import './App.css';
-import CreateFriendForm from './components/CreateFriendForm';
+import React, { Component } from "react";
+import Friends from "./components/Friends";
+import "./App.css";
+import CreateFriendForm from "./components/CreateFriendForm";
 
 class App extends Component {
   render() {
