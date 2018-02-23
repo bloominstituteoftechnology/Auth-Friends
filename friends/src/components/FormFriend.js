@@ -5,30 +5,6 @@ import {FormGroup, ControlLabel, FormControl, Row, Col, Grid} from 'react-bootst
 // import AlertSuccess from './SuccessAlert';
 import styled  from 'styled-components';
 
-const FormContainer = styled.div`
-
-    border:0px solid black;
-    text-align:left;
-    margin-top:10px;
-    
-        .title-form {
-            text-align:center;
-            padding:0px;
-        }
-        
-        .col-up {
-            border:1px solid grey;
-            margin:0px auto;
-        }
-        
-        .btn-update{
-            text-align:center;
-            margin-top:15px;
-        }
-        
-    
-`;
-
 class FormFriend extends Component {
 
     state = {
@@ -37,10 +13,6 @@ class FormFriend extends Component {
         email:this.props.friendF.email,
         id:this.props.friendF.id,
     };
-    
-    componentDidMount(){
-        console.log('I am in FormFriend componendidmount', this.props.friendF.index);
-    }
 
     submitUpdate = (e, index) => {
         e.preventDefault();
@@ -119,11 +91,35 @@ class FormFriend extends Component {
 
 const mapStateToProps = state => {
     const {friends_reducer} = state;
-    console.log('State from FormFriends Component', state);
     return {
         error: friends_reducer.error,
         friendF: friends_reducer.singleFriend,
     }
 };
 
+
 export default connect(mapStateToProps, {updateSingleFriend})(FormFriend);
+
+
+const FormContainer = styled.div`
+    border:0px solid black;
+    text-align:left;
+    margin-top:10px;
+    
+        .title-form {
+            text-align:center;
+            padding:0px;
+        }
+        
+        .col-up {
+            border:1px solid grey;
+            margin:0px auto;
+        }
+        
+        .btn-update{
+            text-align:center;
+            margin-top:15px;
+        }
+        
+    
+`;

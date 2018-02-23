@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {deleteFriend, updateSingleFriend, updateFormVisible} from '../actions/Friends';
+import {deleteFriend, updateFormVisible} from '../actions/Friends';
 import {Table} from 'react-bootstrap';
 import AlertSuccess from './SuccessAlert';
 import styled  from 'styled-components';
@@ -81,4 +81,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, {deleteFriend, updateSingleFriend, updateFormVisible})(Friends);
+export default connect(mapStateToProps, {deleteFriend, updateFormVisible})(Friends);

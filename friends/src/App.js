@@ -28,7 +28,7 @@ class App extends Component {
                             {this.props.fetching
                                     ?  <img src={logo} className="App-logo" alt="logo"/>
                                     :  this.props.updateVisible
-                                            ? <FormFriend/>: <Friends friends={this.props.friends}/>
+                                          ? <FormFriend/>: <Friends friends={this.props.friends}/>
                             }
                         </div>
 
