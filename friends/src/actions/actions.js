@@ -28,7 +28,7 @@ export const getFriends = () => {
   };
 };
 
-export const createFriend = (data) => {
+export const createFriend = data => {
   return dispatch => {
     dispatch({ type: CREATE_FRIEND });
     axios

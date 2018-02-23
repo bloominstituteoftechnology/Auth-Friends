@@ -5,12 +5,12 @@ class Friends extends Component {
   componentDidMount() {
     this.props.getFriends();
   }
-  
+
   render() {
-  return (
-    <div>
-      <ul>
-        {this.props.friends.map(friend => {
+    return (
+      <div>
+        <ul>
+          {this.props.friends.map(friend => {
             return (
               <li key={friend.email}>
                 <p>{friend.name}</p>
@@ -19,20 +19,18 @@ class Friends extends Component {
               </li>
             );
           })}
-       </ul>
+        </ul>
       </div>
     );
-  } 
-};
-
+  }
+}
 
 const mapStateToProps = state => {
   return {
     friends: state.friends,
     fetching: state.fetching,
     error: state.error,
-  }
+  };
 };
-
 
 export default connect(mapStateToProps, { getFriends })(Friends);

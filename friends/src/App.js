@@ -6,13 +6,11 @@ import Friends from './components/Friends';
 import { getFriends } from './actions/actions';
 
 class App extends Component {
-
-
   render() {
     return (
       <div className="container">
         <div className="col-one-half">
-        <Friends friends={this.friends} />
+          <Friends friends={this.friends} />
         </div>
         <CreateFriendForm />
         {/* <UpdateFriendForm /> */}
@@ -20,7 +18,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;

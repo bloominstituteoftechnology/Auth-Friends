@@ -31,9 +31,24 @@ class CreateFriendForm extends Component {
     return (
       <div className="col-one-half friend-form">
         <form onSubmit={this.submitFriend}>
-          <input onChange={this.handleInput} type="text" name="name" placeholder="name"/>
-          <input onChange={this.handleInput} type="number" name="age" placeholder="age"/>
-          <input onChange={this.handleInput} type="email" name="email" placeholder="email"/>
+          <input
+            onChange={this.handleInput}
+            type="text"
+            name="name"
+            placeholder="name"
+          />
+          <input
+            onChange={this.handleInput}
+            type="number"
+            name="age"
+            placeholder="age"
+          />
+          <input
+            onChange={this.handleInput}
+            type="email"
+            name="email"
+            placeholder="email"
+          />
           <button type="submit">Add/Update Friend</button>
         </form>
       </div>
@@ -44,9 +59,7 @@ const mapStateToProps = state => {
   return {
     savingFriends: state.savingFriends,
     error: state.error,
-  }
+  };
 };
 
-export default connect(mapStateToProps, { createFriend })(
-  CreateFriendForm
-);
+export default connect(mapStateToProps, { createFriend })(CreateFriendForm);
