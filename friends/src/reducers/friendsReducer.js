@@ -23,8 +23,4 @@ const FriendsReducer = (state = initialState, action) => {
   }
 }
 
-<<<<<<< HEAD
 export default FriendsReducer;
-=======
-export default FriendsReducer;
->>>>>>> e17719758f5ddc3b0ef7ad616b06a428f23a2611

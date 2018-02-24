@@ -62,5 +62,3 @@ export const UpdateFriend = friend => {
 		payload: friend
 	};
 };
-
-
