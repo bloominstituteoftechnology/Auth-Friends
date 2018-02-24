@@ -6,26 +6,31 @@ const app = express();
 
 const friends = [
   {
+    id: 0,
     name: 'Ben',
     age: 30,
     email: 'ben@lambdaschool.com'
   },
   {
+    id: 1,
     name: 'Austen',
     age: 45,
     email: 'austen@lambdaschool.com'
   },
   {
+    id: 2,
     name: 'Ryan',
     age: 15,
     email: 'ryan@lambdaschool.com'
   },
   {
+    id: 3,
     name: 'Sean',
     age: 35,
     email: 'sean@lambdaschool.com'
   },
   {
+    id: 4,
     name: 'Michelle',
     age: 67,
     email: 'michelle@gmail.com'
