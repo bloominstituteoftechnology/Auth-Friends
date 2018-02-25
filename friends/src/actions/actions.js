@@ -4,9 +4,9 @@ export const ERROR = "ERROR";
 export const FETCHING_FRIENDS = "FETCHING_FRIENDS";
 export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
 
-const URL = "http://localhost:500/api/friends";
+const URL = "http://localhost:5000/api/friends";
 
-export const fetchingFriends = () => {
+export const fetchFriends = () => {
   const friends = axios.get(`${URL}/get`);
   return dispatch => {
     dispatch({ type: FETCHING_FRIENDS });

@@ -1,49 +1,37 @@
 import React, { Component } from "react";
+import logo from "./logo.svg";
 import "./App.css";
 import FriendList from "./components/FriendList";
 import { connect } from "react-redux";
-import axios from "axios";
+import { fetchFriends } from "./actions/actions";
 
 class App extends Component {
-  state = {
-    friendsFetching: false,
-    friendsFetched: false,
-    friendsSaved: false,
-    friendsSaving: false,
-    updatingFriend: false,
-    updatedFriend: false,
-    deletingFriend: false,
-    deletedFriend: false,
-    friends: [],
-    error: null
-  };
+  componentDidMount() {
+    this.props.fetchFriends();
+  }
 
   render() {
     return (
       <div className="App">
         <h2>A list of my Friends</h2>
-        <FriendList />
+        {this.props.error ? <h3>Error fetching Friends</h3> : null}
+        {this.props.fetchingFriends ? (
+          <img src={logo} className="App-logo" alt="logo" />
+        ) : (
+          <FriendList friends={this.props.friends} />
+        )}
       </div>
     );
   }
-
-  componentDidMount = () => {
-    axios
-      .get('http://localhost:5000/friends')
-      .then(response => {
-        this.setState( { friends: response.data });
-      })
-      .catch(error => {
-        console.error('error', error);
-      });
-  };
 } // App Component
 
-
 const mapStateToProps = state => {
+  const { friendsReducer } = state;
   return {
-    friends: state.friends
+    friends: friendsReducer.friends,
+    error: friendsReducer.error,
+    fetchingFriends: friendsReducer.fetchingFriends
   };
 };
 
-export default connect(mapStateToProps, {})(App);
+export default connect(mapStateToProps, { fetchFriends })(App);
