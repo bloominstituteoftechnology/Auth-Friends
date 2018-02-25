@@ -8,10 +8,10 @@ export const SINGLE_FRIEND = 'SINGLE_FRIEND';
 export const DELETE_FRIEND = 'DELETE_FRIEND';
 export const TOOGLE_UPDATE_FRIEND = 'TOOGLE_UPDATE_FRIEND';
 
-const URL = 'http://localhost:5000/api/friends';
+//const URL = 'http://localhost:5000/api/friends';
 
 export const createFriend = friend => {
-	const createFriend = axios.post('http://localhost:5000/friends', friend);
+	const createFriend = axios.post('http://localhost:5000/api/friends/create', friend);
 	return dispatch => {
 	  createFriend
      .then(({ data }) => {
@@ -25,8 +25,8 @@ export const createFriend = friend => {
 		 });
   };
 }
-export const getFriend = (id) => {
-	const friends = axios.get('http://localhost:5000/friends');
+export const getFriend = () => {
+	const friends = axios.get('http://localhost:5000/api/friends/get');
 	return dispatch => {
 		friends
 		 .then(response => {
@@ -45,7 +45,7 @@ export const getFriend = (id) => {
 }
 
 export const deleteFriend = id => {
- const deleteFriend = axios.delete(`http://localhost:5000/friends/${id}`, {
+ const deleteFriend = axios.delete('http://localhost:5000/api/friends/delete', {
    data: { id }
 	});
 	  return dispatch => {
@@ -55,6 +55,9 @@ export const deleteFriend = id => {
         type: 'DELETE_FRIEND',
 			  payload: data
 		   });
+			dispatch({
+        type: 'SINGLE_FRIEND',
+				payload: {} });
 	  })
 			.catch(error => {
 			 dispatch({ 
@@ -65,7 +68,7 @@ export const deleteFriend = id => {
   };
 }
 
-export const toggleUpdateFriend = friend => {
+export const toggleUpdateFriend = () => {
  return {
     type: TOOGLE_UPDATE_FRIEND
    };

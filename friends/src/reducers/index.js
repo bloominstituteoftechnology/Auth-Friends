@@ -5,4 +5,4 @@ import { combineReducers } from "redux";
 export default combineReducers({
   friendsReducer,
   singleFriendReducer
-})
+});

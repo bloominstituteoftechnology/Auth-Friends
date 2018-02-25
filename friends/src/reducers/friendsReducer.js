@@ -1,13 +1,13 @@
-import * as actionTypes from '../actions';
+//import * as actionTypes from '../actions';
 
 const initialState = {
   friends: [],
   error: null
-}
+};
 
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "GET_FRIENDS":
+    case "GET_FRIEND":
       return { ...state, friends: action.payload };
     case "UPDATE_FRIEND":
       return { ...state, friends: action.payload };

@@ -1,0 +1,22 @@
+form {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+}
+
+#form-header {
+  text-align: left;
+  margin: 10px 0 0 0;
+}
+  
+form h2 {
+  color: blue;
+}
+
+.form-header-update {
+  color: red;
+}
+
+input {
+  margin-top: 15px;
+}

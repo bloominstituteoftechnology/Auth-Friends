@@ -6,6 +6,46 @@ const app = express();
 
 const friends = [
   {
+ //   id: 1,
+    name: 'Ben',
+    age: 30,
+    email: 'ben@lambdaschool.com',
+    phoneNumber: '(123) 456-7890',
+    favoriteColor: 'Red',
+  },
+  {
+   // id: 2,
+    name: 'Austen',
+    age: 32,
+    email: 'austen@lambdaschool.com',
+    phoneNumber: '(123) 456-7890',
+    favoriteColor: 'Green',
+  },
+  {
+  //  id: 3,
+    name: 'Ryan',
+    age: 35,
+    email: 'ryan@lambdaschool.com',
+    phoneNumber: '(123) 456-7890',
+    favoriteColor: 'Purple',
+  },
+  {
+  //  id: 4,
+    name: 'Sean',
+    age: 35,
+    email: 'sean@lambdaschool.com',
+    phoneNumber: '(123) 456-7890',
+    favoriteColor: 'Blue',
+  },
+  {
+  //  id: 5,
+    name: 'Michelle',
+    age: 67,
+    email: 'michelle@gmail.com',
+    phoneNumber: '(123) 456-7890',
+    favoriteColor: 'Yellow',
+},
+ /* {
     name: 'Ben',
     age: 30,
     email: 'ben@lambdaschool.com'
@@ -29,7 +69,7 @@ const friends = [
     name: 'Michelle',
     age: 67,
     email: 'michelle@gmail.com'
-  }
+  }*/
 ];
 
 app.use(bodyParser.json());

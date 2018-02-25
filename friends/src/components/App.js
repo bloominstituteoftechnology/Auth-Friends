@@ -46,10 +46,9 @@ class App extends Component {
             <header className="App-header">
              <img src={logo} className="App-logo" alt="logo" />
               <h1 className="App-title">Charlie, Russell and Eileen's Friends </h1>
-             <FriendForm />
            </header>
             {this.props.error ? <h3>Error Fetching Friends</h3> : null}
-            <div className="container">
+						{/*  <div className="container">
               <div className="friend-grid">
                     <Friends friends={this.props.friends} />
                    {this.props.friends.map((friend) => {
@@ -71,7 +70,9 @@ class App extends Component {
             </div>
             <Friends updateName={this.updateName} updateAge={this.updateAge} updateEmail={this.updateEmail}
               updatePhone={this.updatePhone} updateFavoriteColor={this.updateFavoriteColor}
-                onSubmit={this.submitRequest} />
+                onSubmit={this.submitRequest} /> */}
+				   <Friends />
+					 <FriendForm />	 
           </div>
         );
      }

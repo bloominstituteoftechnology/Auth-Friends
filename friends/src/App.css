@@ -26,3 +26,51 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.friend-title {
+  margin-bottom: 0;
+}
+
+.friend-grid {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: left;
+  justify-content: flex-start;
+  width: 80%;
+  float: left;
+}
+
+.friend {
+  margin: 10px 0 0 10px;
+  width: 31%;
+  border: 1px solid black;
+}
+
+.friend-name {
+  color: blue;
+  margin: 10px 5px;
+}
+
+.friend-name-update {
+  color: red;
+}
+
+.friend-age {
+  margin: 5px;
+}
+
+.friend-email {
+  margin: 5px;
+}
+
+.friend-phone {
+  margin: 5px;
+}
+
+.friend-favorite-color {
+  margin: 5px;
+}
+
+button {
+  margin: 0 0 10px 5px;
+}
