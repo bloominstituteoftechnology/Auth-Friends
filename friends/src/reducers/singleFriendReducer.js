@@ -1,9 +1,11 @@
+import * as actionTypes from '../actions';
+
 const initialState = {
   friendSelected: {},
   showUpdate: false
 }
 
-const singleFriendReducer = (state = initialState, action) => {
+export const singleFriendReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SINGLE_FRIEND":
       return { ...state, friendSelected: action.payload, showUpdate: false };
@@ -14,4 +16,3 @@ const singleFriendReducer = (state = initialState, action) => {
   }
 }
 
-export default singleFriendReducer;

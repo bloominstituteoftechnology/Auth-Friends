@@ -1,9 +1,11 @@
+import * as actionTypes from '../actions';
+
 const initialState = {
   friends: [],
   error: null
 }
 
-const FriendsReducer = (state = initialState, action) => {
+export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_FRIENDS":
       return { ...state, friends: action.payload };
@@ -23,4 +25,4 @@ const FriendsReducer = (state = initialState, action) => {
   }
 }
 
-export default FriendsReducer;
+

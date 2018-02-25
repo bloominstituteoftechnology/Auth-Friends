@@ -3,13 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import Friends from './Friends';
 import FriendForm from './FriendForm';
-import { getFriends } from '../actions';
+import { getFriend } from '../actions';
 import { connect } from 'react-redux'; 
 
 class App extends Component {
 
 	componentDidMount() {
-     this.props.getFriends();
+     this.props.getFriend();
    }
 
    /* state = {
@@ -51,8 +51,8 @@ class App extends Component {
             {this.props.error ? <h3>Error Fetching Friends</h3> : null}
             <div className="container">
               <div className="friend-grid">
-                    <Friend friends={this.props.friends} />
-              //     {this.state.friends.map((friend) => {
+                    <Friends friends={this.props.friends} />
+                   {this.props.friends.map((friend) => {
                   return (
                     <div key={friend.id} className="friend">
                       <h2 className="friend-name" id={`friend-name-${friend.id}`}>{friend.name}</h2>
@@ -69,10 +69,20 @@ class App extends Component {
                 })}
               </div>
             </div>
-            <Friend updateName={this.updateName} updateAge={this.updateAge} updateEmail={this.updateEmail}
+            <Friends updateName={this.updateName} updateAge={this.updateAge} updateEmail={this.updateEmail}
               updatePhone={this.updatePhone} updateFavoriteColor={this.updateFavoriteColor}
                 onSubmit={this.submitRequest} />
           </div>
         );
      }
   }
+
+  const mapStateToProps = (state) => {
+    return {
+      friends: state.friendsReducer.friends,
+      error: state.friendsReducer.error,
+    }
+  }
+
+
+export default connect(mapStateToProps, { getFriend })(App);

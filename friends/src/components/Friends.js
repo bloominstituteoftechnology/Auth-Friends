@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SelectedFriend from "./SelectedFriend";
-import { deleteFriend, updateSingleFriend, toggleShowUpdate } from "../actions";
+import { deleteFriend, updateFriend, toggleUpdateFriend } from "../actions";
 import UpdateFriendForm from "./UpdateFriendForm";
 import logo from './logo.svg';
 
@@ -46,12 +46,12 @@ class Friends extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    deletingFriend: state.friendsReducer.deletingFriend,
+    friends: state.friendsReducer.friends,
     error: state.friendsReducer.error,
     showUpdate: state.singleFriendReducer.showUpdate,
     friendSelected: state.singleFriendReducer.friendSelected
   }
 }
 
-export default connect(mapStateToProps, {deleteFriend, updateSingleFriend, toggleShowUpdate})(Friends);
+export default connect(mapStateToProps, {deleteFriend, updateFriend, toggleUpdateFriend})(Friends);
 
