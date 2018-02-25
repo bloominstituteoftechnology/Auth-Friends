@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {deleteFriend, updateFormVisible, createFormVisible} from '../actions/Friends';
 import {Table} from 'react-bootstrap';
 import AlertSuccess from './SuccessAlert';
+import AlertSuccess2 from './NewAlert';
 import styled  from 'styled-components';
 
 const FriendsContainer = styled.div`
@@ -33,8 +34,7 @@ class Friends extends Component {
         return (
             <FriendsContainer>
                 {this.props.visible ? <AlertSuccess/> : ''}
-
-                <div className="create-btn">
+              <div className="create-btn">
                     <button className={"btn btn-primary btn-sm"} onClick={() => this.handleCreateNewVisibility()}> Create New </button>
                 </div>
 
@@ -82,6 +82,7 @@ const mapStateToProps = state => {
         visible: friends_reducer.visible,
         updateVisible: friends_reducer.updateVisible,
         updateF: friends_reducer.singleFriend,
+        createFormVisibility: friends_reducer.createFormVisibility
     }
 };
 

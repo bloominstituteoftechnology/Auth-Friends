@@ -6,7 +6,7 @@ const app = express();
 
 const friends = [
   {
-    name: 'Benny',
+    name: 'Ben',
     age: 30,
     email: 'ben@lambdaschool.com'
   },

@@ -10,7 +10,6 @@ import {Grid, Col} from 'react-bootstrap'
 import {updateSingleFriend, createNewFriend } from './actions/Friends';
 
 class App extends Component {
-
     componentDidMount() {
         this.props.getFriends();
     }
@@ -43,16 +42,16 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-    const {friends_reducer} = state;
-    return {
-        friends: friends_reducer.friends,
-        error: friends_reducer.error,
-        fetching: friends_reducer.fetching,
-        fetched: friends_reducer.fetched,
-        updateF: friends_reducer.singleFriend,
-        updateVisible: friends_reducer.updateVisible,
-        createFormVisibility: friends_reducer.createFormVisibility
-    }
+  const {friends_reducer} = state;
+  return {
+    friends: friends_reducer.friends,
+    error: friends_reducer.error,
+    fetching: friends_reducer.fetching,
+    fetched: friends_reducer.fetched,
+    updateF: friends_reducer.singleFriend,
+    updateVisible: friends_reducer.updateVisible,
+    createFormVisibility: friends_reducer.createFormVisibility
+  }
 };
 
 export default connect(mapStateToProps, {getFriends, updateSingleFriend, createNewFriend})(App);

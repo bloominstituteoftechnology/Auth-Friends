@@ -2,43 +2,39 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {createNewFriend} from '../actions/Friends';
 import {FormGroup, ControlLabel, FormControl, Row, Col, Grid} from 'react-bootstrap';
-// import AlertSuccess from './SuccessAlert';
 import styled from 'styled-components';
 
 class CreateFormFriend extends Component {
+  state = {
+    name: '',
+    age: '',
+    email: '',
+  };
 
-    state = {
-        name: '',
-        age: '',
-        email: '',
-    };
+  submitCreate = (e) => {
+    e.preventDefault();
+    this.props.createNewFriend(this.state);
+  };
 
-    submitCreate = (e) => {
-        e.preventDefault();
-      //  console.log('the index', this.state);
-        console.log("SUBMIT NAO")
-        this.props.createNewFriend(this.state);
-    };
+  newName = (e) => {
+    this.setState({
+      name: e.target.value
+    });
+  };
 
-    newName = (e) => {
-        this.setState({
-            name: e.target.value
-        });
-    };
+  newAge = (e) => {
+    this.setState({
+      age: e.target.value
+    });
+  };
 
-    newAge = (e) => {
-        this.setState({
-            age: e.target.value
-        });
-    };
+  newEmail = (e) => {
+    this.setState({
+        email: e.target.value
+    });
+};
 
-    newEmail = (e) => {
-        this.setState({
-            email: e.target.value
-        });
-    };
-
-    render() {
+  render() {
         return (
             <CreateFormFriendContainer>
                 <Grid>
