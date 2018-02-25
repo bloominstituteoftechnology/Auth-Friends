@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import FriendList from "./components/FriendList";
+import logo from "../logo.svg";
+import "../styledComponents/App.css";
+import FriendList from "./FriendList";
+import Form from './Form';
 import { connect } from "react-redux";
-import { fetchFriends } from "./actions/actions";
+import { fetchFriends } from "../actions/actions";
 
 class App extends Component {
   componentDidMount() {
@@ -20,6 +21,7 @@ class App extends Component {
         ) : (
           <FriendList friends={this.props.friends} />
         )}
+        <Form />
       </div>
     );
   }

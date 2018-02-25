@@ -6,10 +6,10 @@ class FriendList extends Component {
     return (
       <ListStyled>
         {this.props.friends.map(friend => {
-          return <div>
+          return <li>
             {friend.name} is {friend.age} years old, with the email:{" "}
             {friend.email}
-          </div>;
+          </li>;
         })}
       </ListStyled>
     );

@@ -1,13 +1,18 @@
-import * as actionTypes from '../actions/actions';
+import * as actionTypes from "../actions/actions";
 
 const initialState = {
   friendSelected: {},
-  showUpdate: false,
-}
+  showUpdate: false
+};
 
 export const friendReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
+    case actionTypes.ERROR:
+      return {
+        ...state,
+        error: action.payload
+      };
     default:
-    return state;
+      return state;
   }
 };
