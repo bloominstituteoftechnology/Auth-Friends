@@ -7,7 +7,7 @@ import Friends from './components/Friends';
 import CreateFormFriend from './components/CreateFormFriend'
 import FormFriend from './components/FormFriend';
 import {Grid, Col} from 'react-bootstrap'
-import {updateSingleFriend} from './actions/Friends';
+import {updateSingleFriend, createNewFriend } from './actions/Friends';
 
 class App extends Component {
 
@@ -34,7 +34,6 @@ class App extends Component {
                                               ? <CreateFormFriend />
                                               : <Friends friends={this.props.friends}/>
                             }
-
                         </div>
                     </Col>
                 </Grid>
@@ -45,7 +44,6 @@ class App extends Component {
 
 const mapStateToProps = state => {
     const {friends_reducer} = state;
-    console.log(state);
     return {
         friends: friends_reducer.friends,
         error: friends_reducer.error,
@@ -57,4 +55,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, {getFriends, updateSingleFriend})(App);
+export default connect(mapStateToProps, {getFriends, updateSingleFriend, createNewFriend})(App);

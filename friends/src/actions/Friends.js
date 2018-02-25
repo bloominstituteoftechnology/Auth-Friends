@@ -21,6 +21,28 @@ export const getFriends = () => {
     };
 };
 
+
+export const createNewFriend = (newFriendData) => {
+
+    const newFriend = axios.post('http://localhost:5000/api/friends/create', {
+      friend: newFriendData
+    });
+    return dispatch => {
+        dispatch({type: SHOW_CREATE_FORM});
+        newFriend
+            .then(({data}) => {
+                dispatch({type: FRIENDS_FETCHED, payload: data});
+                dispatch({type: SHOW_CREATE_FORM, payload: newFriendData, createFormVisibility:false});
+
+                  console.log(newFriendData)
+            })
+            .catch(err => {
+                console.log('error updating friend', err);
+                dispatch({type: ERROR_FETCHING_FRIENDS, payload: err});
+            });
+    };
+};
+
 export const deleteFriend = (index) => {
     const deleteFriend = axios.delete('http://localhost:5000/api/friends/delete', {
         data: {index}
@@ -68,28 +90,6 @@ export const updateSingleFriend = (friend, index) => {
     return dispatch => {
         dispatch({type: UPDATE_FRIEND});
         updateFriend
-            .then(({data}) => {
-                dispatch({type: FRIENDS_FETCHED, payload: data});
-                dispatch({type: UPDATE_FRIEND, payload: friend, updateVisible:false});
-            })
-            .catch(err => {
-                console.log('error updating friend', err);
-                dispatch({type: ERROR_FETCHING_FRIENDS, payload: err});
-            });
-    };
-};
-
-
-export const createNewFriend = (friend, index) => {
-
-    const newFriend = axios.post('http://localhost:5000/api/friends/create', {
-        index: index,
-        update: friend
-    });
-
-    return dispatch => {
-        dispatch({type: UPDATE_FRIEND});
-        newFriend
             .then(({data}) => {
                 dispatch({type: FRIENDS_FETCHED, payload: data});
                 dispatch({type: UPDATE_FRIEND, payload: friend, updateVisible:false});

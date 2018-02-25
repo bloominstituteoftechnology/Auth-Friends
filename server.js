@@ -6,7 +6,7 @@ const app = express();
 
 const friends = [
   {
-    name: 'Ben',
+    name: 'Benny',
     age: 30,
     email: 'ben@lambdaschool.com'
   },
@@ -41,7 +41,7 @@ app.get('/api/friends/get', (req, res) => {
 });
 
 app.post('/api/friends/create', (req, res) => {
-  friends.push(req.body);
+  friends.push(req.body.friend);
   res.send(friends);
 });
 

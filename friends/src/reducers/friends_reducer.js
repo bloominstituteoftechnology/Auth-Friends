@@ -7,6 +7,7 @@ const initialState = {
     deleteFriend: false,
     visible:false,
     singleFriend:[],
+    newFriend:[],
     updateVisible:false,
     createFormVisibility:false,
     error: null,
@@ -27,11 +28,11 @@ export const friends_reducer = (state = initialState, action) => {
         case DELETE_FRIEND:
             return {...state, deleteFriend: true, visible:action.visible};
         case UPDATE_FRIEND:
-            return {...state, singleFriend: action.payload,  updateVisible: action.updateVisible };
+            return {...state, singleFriend: action.payload, updateVisible: action.updateVisible };
+        case SHOW_CREATE_FORM:
+            return {...state, newFriend: action.payload, createFormVisibility: action.createFormVisibility};
         case ERROR_FETCHING_FRIENDS:
             return {...state, fetching: false, error: action.payload};
-        case SHOW_CREATE_FORM:
-          return {...state, createFormVisibility: action.createFormVisibility }
         default:
             return state;
     }

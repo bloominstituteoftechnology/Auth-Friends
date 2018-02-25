@@ -13,25 +13,26 @@ class CreateFormFriend extends Component {
         email: '',
     };
 
-    submitCreate = (e, index) => {
+    submitCreate = (e) => {
         e.preventDefault();
       //  console.log('the index', this.state);
-      //  this.props.updateSingleFriend(this.state, index);
+        console.log("SUBMIT NAO")
+        this.props.createNewFriend(this.state);
     };
 
-    updateName = (e) => {
+    newName = (e) => {
         this.setState({
             name: e.target.value
         });
     };
 
-    updateAge = (e) => {
+    newAge = (e) => {
         this.setState({
             age: e.target.value
         });
     };
 
-    updateEmail = (e) => {
+    newEmail = (e) => {
         this.setState({
             email: e.target.value
         });
@@ -54,7 +55,7 @@ class CreateFormFriend extends Component {
                                         type="text"
                                         value={this.state.name}
                                         placeholder="Name"
-                                        onChange={this.updateName}
+                                        onChange={this.newName}
                                         name={"name"}
                                     />
                                     <br/>
@@ -63,7 +64,7 @@ class CreateFormFriend extends Component {
                                         type="age"
                                         value={this.state.age}
                                         placeholder="Age"
-                                        onChange={this.updateAge}
+                                        onChange={this.newAge}
                                         name={"age"}
                                     />
                                     <br/>
@@ -72,11 +73,11 @@ class CreateFormFriend extends Component {
                                         type="email"
                                         value={this.state.email}
                                         placeholder="Email"
-                                        onChange={this.updateEmail}
+                                        onChange={this.newEmail}
                                         name={"email"}
                                     />
                                     <div className={"btn-update"}>
-                                        <button onClick={(e) => {this.submitCreate(e, this.state.id)}} className={"btn btn-primary btn-md"}> Update </button>
+                                        <button onClick={(e) => {this.submitCreate(e)}} className={"btn btn-primary btn-md"}> Add </button>
                                     </div>
                                 </FormGroup>
                             </form>

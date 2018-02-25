@@ -16,7 +16,8 @@ class FormFriend extends Component {
 
     submitUpdate = (e, index) => {
         e.preventDefault();
-        console.log('the index', this.state);
+        //console.log('the index', this.state);
+        console.log("MAGIC HAPPENS...")
         this.props.updateSingleFriend(this.state, index);
     };
 
@@ -105,21 +106,21 @@ const FormContainer = styled.div`
     border:0px solid black;
     text-align:left;
     margin-top:10px;
-    
+
         .title-form {
             text-align:center;
             padding:0px;
         }
-        
+
         .col-up {
             border:1px solid grey;
             margin:0px auto;
         }
-        
+
         .btn-update{
             text-align:center;
             margin-top:15px;
         }
-        
-    
+
+
 `;
