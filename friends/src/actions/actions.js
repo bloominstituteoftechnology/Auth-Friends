@@ -5,6 +5,8 @@ export const FETCHING_FRIENDS = "FETCHING_FRIENDS";
 export const FRIENDS_FETCHED = "FRIENDS_FETCHED";
 export const ADDING_FRIEND = "ADDING_FRIEND";
 export const FRIEND_ADDED = "FRIEND_ADDED";
+export const DELETING_FRIEND = "DELETING_FRIEND";
+export const FRIEND_DELETED = "FRIEND_DELETED";
 
 const URL = "http://localhost:5000/api/friends";
 
@@ -29,6 +31,20 @@ export const addFriend = friend => {
     newFriend
       .then(response => {
         dispatch({ type: FRIEND_ADDED, payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR, payload: error });
+      });
+  };
+};
+
+export const deleteFriend = id => {
+  const notFriend = axios.delete(`${URL}/delete`, id);
+  return dispatch => {
+    dispatch({ type: DELETING_FRIEND });
+    notFriend
+      .then(response => {
+        dispatch({ type: FRIEND_DELETED, payload: response.data });
       })
       .catch(error => {
         dispatch({ type: ERROR, payload: error });

@@ -1,11 +1,11 @@
-import * as actionTypes from '../actions/actions';
+import * as actionTypes from "../actions/actions";
 
 const initialState = {
   friends: [],
   fetchingFriends: false,
   addingFriend: false,
-  error: null,
-}
+  error: null
+};
 
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -22,9 +22,9 @@ export const friendsReducer = (state = initialState, action) => {
         ...state,
         fetchingFriends: false,
         addingFriend: false,
-        error: action.payload,
-      }
+        error: action.payload
+      };
     default:
       return state;
   }
-}
+};

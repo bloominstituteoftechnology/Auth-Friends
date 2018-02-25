@@ -19,7 +19,7 @@ class App extends Component {
         {this.props.fetchingFriends ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
-          <FriendList friends={this.props.friends} />
+          <FriendList friends={this.props.friends}/>
         )}
         <Form />
       </div>
