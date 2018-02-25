@@ -1,21 +1,49 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import FriendList from "./components/FriendList";
+import { connect } from "react-redux";
+import axios from "axios";
 
 class App extends Component {
+  state = {
+    friendsFetching: false,
+    friendsFetched: false,
+    friendsSaved: false,
+    friendsSaving: false,
+    updatingFriend: false,
+    updatedFriend: false,
+    deletingFriend: false,
+    deletedFriend: false,
+    friends: [],
+    error: null
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h2>A list of my Friends</h2>
+        <FriendList />
       </div>
     );
   }
-}
 
-export default App;
+  componentDidMount = () => {
+    axios
+      .get('http://localhost:5000/friends')
+      .then(response => {
+        this.setState( { friends: response.data });
+      })
+      .catch(error => {
+        console.error('error', error);
+      });
+  };
+} // App Component
+
+
+const mapStateToProps = state => {
+  return {
+    friends: state.friends
+  };
+};
+
+export default connect(mapStateToProps, {})(App);
