@@ -19,6 +19,7 @@ class FriendForm extends Component {
 )};
 
 handleAddFriend = (event) => {
+  event.preventDefault();
   const { name, age, email, phoneNumber, favoriteColor } = this.state;
   this.props.createFriend({name, age, email, phoneNumber, favoriteColor})
   this.setState({name: "", age: "", email: "", phoneNumber: "", favoriteColor: ""});
