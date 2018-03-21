@@ -7,7 +7,7 @@ Topics:
 * Promises
 * Middleware
 * `redux-thunk` package
-* `redux-logger` package
+* optional: `redux-logger` package
 
 ## Project Description
 
@@ -16,26 +16,26 @@ Topics:
 * Once your server is up and running, the URL you'll be able to hit from within your action creators is `http://localhost:5000`.
 * Take a look at the endpoints that our API has to offer in `server.js`.
 
-  * `**[GET]** /api/friends/get`
-  * `**[POST]** /api/friends/create`
-  * `**[UPDATE]** /api/friends/update`
-  * `**[DELETE]** /api/friends/delete`
+  * **[GET]** to `/api/friends`: returns the list of friends.
+  * **[POST]** to `/api/friends`: creates a friend and return the new list of friends. Pass the friend as the `body` of the request (the second argument passed to `axios.post`).
+  * **[PUT]** to `/api/friends/:id`: updates the friend using the `id` passed as part of the URL. Send the an object with the updated information as the `body` of the request (the second argument passed to `axios.put`).
+  * **[DELETE]** to `/api/friends/:id`: removes the friend using the `id` passed as part of the URL.
 
 ## Initialize Project
 
-* Run `npm i` inside the root directory of this project. Run `node server.js` to start the server.
-* Run `create-react-app friends` in in a separate terminal window in the root directory of the project to create your starter application.
-* `cd` into 'friends' & Run `npm i redux react-redux redux-thunk redux-logger axios`, which will install the needed dependencies.
+* Run `yarn` or `npm i` inside the root directory of this project to install dependencies.
+* Run `yarn start` or `npm start` to start the API server.
+* Run `create-react-app friends` in a separate terminal window in the root directory of the project to create your starter application.
+* `cd` into the _friends_ folder and type `yarn add redux react-redux redux-thunk redux-logger axios` or `npm i redux react-redux redux-thunk redux-logger axios`, which will install the needed dependencies.
 * You will create a list of your friends using React and Redux.
-* The general flow of steps will be to create your action creator functions, your reducers, and then your React components.
+* A possible flow of steps will be to create your Components, action creators, reducers, root reducer and your Redux store. Then use the Provider component from `react-redux` to pass the store to your root component and `connect` the React components that need access to the store.
 * Don't forget to hook up the store using the `Provider` tag inside of `src/index.js`, passing it your root reducer.
 * You will need to use `redux-thunk` as a middleware inside of `src/index.js`. You'll want to be sure to pass it to `applyMiddleware()` then feed it into your createStore function.
-* If you so choose include `redux-logger` to your middleware. You're going to have plenty of action creators that will consume our API so you'll get plenty of actions triggered.
-* You'll only need one reducer to represent the state of this application. This reducer will be a 'friends' reducer whos job is to look at all of the responses
+* If you so choose, include `redux-logger` to your middleware. You're going to have plenty of action creators that will consume our API so you'll get plenty of actions triggered.
 
-## Reducer and our State Tree
+## Root Reducer and our State Tree
 
-* Your initial state could looks something like this:
+* Your initial state **could** (but doesn't have to) look something like this:
 
 ```js
 {
@@ -53,22 +53,26 @@ Topics:
 ```
 
 * This is a pretty large state tree, but each field is extremely simple.
-* All of your items in your state tree represent a make up of actions that you're going to make asynchronously. Think about your application and the state you need. This reducer object will represent that state.
+* All of your items in your state tree represent a make up of actions that you're going to make asynchronously. Think about your application and the state you need. This root reducer object will represent that state.
 * Each `friend` item that is in the `friends` array should have the following format:
 
 ```js
 {
-  name: 'Luis',
+  id: 1
+  name: 'Joe',
   age: 24,
-  email: 'luis@lambdaschool.com',
+  email: 'joe@lambdaschool.com',
 }
 ```
 
 ## Project
 
 * For this project you'll need to create a few React components that will interact with your Redux state.
-* This app can all be built in terms of a single view made up of multiple components which are bound to all of your `action creators`. (No need for a router here. We can fit all we need to fit onto one page with some proper styling and layout decisions)
-* Your component tree could look a lot like this.
+* This app can all be built in terms of a single view made up of multiple components. Some components will be connected to your Redux Store and others will get their data passed down as props from the connected components.
+
+No need for a router here. We can fit all we need into one page with some proper styling and layout decisions.
+
+* Your component tree **could** (but doesn't have to) look a like this.
 
 ```
 index.js
@@ -79,12 +83,12 @@ index.js
 ```
 
 * If you'd like, you can create multiple components and `connect` them all up to your `redux` state tree. You could have a component who's sole purpose is to render a form for updating a user; another component who's sole purpose is for creating users; and then another component who's sole purpose is to delete a user.
-* It really is up to you how you build this project. You'll be given a couple of days to work on it so don't feel too overwhelmed at first. Just start with `App.js` and be sure that it calls your `node server`.
+* It really is up to you how you build this project. You'll be given a couple of days to work on it so don't feel too overwhelmed at first.
 
 #### App.js
 
-* Inside of `App.js` I suggest doing the friend fetching for your friend data from within `componentDidMount`. You'll need to call an action creator that you build in order to fetch your friends.
-* A crude example of what this coule potentially look like would be:
+* Inside of `App.js` I suggest doing the friend fetching for your _friends_ data from within `componentDidMount()`. You'll need to call an action creator that you build in order to fetch your friends.
+* A crude example of what this could potentially look like would be:
   ![Bad example](https://image.ibb.co/hpg7gw/Screen_Shot_2018_01_24_at_1_07_21_PM.png)
 * You **Definitely** want to style your application to look much better than mine!
 
