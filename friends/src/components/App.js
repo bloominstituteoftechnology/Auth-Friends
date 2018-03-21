@@ -15,10 +15,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <form action="">
-          <input type="text" />
-          <button>Add Friend</button>
-        </form> */}
         <AddFriend />
         {this.props.fetching ? (
           <img src={logo} className="App-logo" alt="logo" />
