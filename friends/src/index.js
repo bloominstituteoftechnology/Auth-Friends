@@ -1,8 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+
+import { rootReducer } from './reducers';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
+
+
+ReactDOM.render(
+<Provider store={store}>
+    <App /> 
+</Provider>,
+document.getElementById('root')
+);
+
