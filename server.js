@@ -78,7 +78,6 @@ app.put('/api/friends/:id', (req, res) => {
       friend,
       ...friends.slice(friendIndex + 1),
     ];
-    console.log('new friends', friends);
     res.send(friends);
   } else {
     res.status(404).send({ msg: 'Friend not found' });
