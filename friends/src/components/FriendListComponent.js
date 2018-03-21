@@ -7,9 +7,7 @@ class FriendListComponent extends Component {
   render() {
     return (
       <div>
-        FriendListComponent Loaded
-        <FriendComponent />
-        {this.props.friends.map(friend => <h1>{friend.name}</h1>)}
+        {this.props.friends.map(friend => <FriendComponent friend={friend} />)}
       </div>
     );
   }
