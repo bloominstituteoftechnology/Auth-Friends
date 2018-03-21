@@ -5,11 +5,12 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
-import { App } from './components/App';
+import App from './components/App';
 import './index.css';
+import friendReducer from './reducers/friendReducer';
 
 const middleware = applyMiddleware(logger, thunk);
-const store = createStore(rootReducer, middleware);
+const store = createStore(friendReducer, middleware);
 
 ReactDOM.render(
   <Provider store={store}>
