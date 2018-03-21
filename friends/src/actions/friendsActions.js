@@ -28,7 +28,7 @@ export const postFriends = data => dispatch => {
   dispatch({ type: CREATING_FRIEND });
 
   axios
-    .post('http://localhost:5000/api/friends/create', data)
+    .post('http://localhost:5000/api/friends', data)
     .then(response => {
       dispatch({ type: FRIEND_CREATED, friends: response.data });
     })
