@@ -39,11 +39,11 @@ class FriendComponent extends Component {
           <CardText>E-mail: {this.props.friend.email}</CardText>
         </CardBody>
         <CardBody>
-          <Button color="success" onClick={this.toggle}>
+          <Button style={{ background: "#DCABDF" }} onClick={this.toggle}>
             Edit Friend
           </Button>
           <Button
-            color="danger"
+            style={{ background: "#C792DF" }}
             onClick={() => this.props.deleteFriend(this.props.friend.id)}
           >
             Remove Friend

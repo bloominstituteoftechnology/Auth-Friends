@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import FriendComponent from "./FriendComponent";
 import { connect } from "react-redux";
 import { getFriends } from "../actions/actions";
+import { Row, Col } from "reactstrap";
 
 class FriendListComponent extends Component {
   render() {
     return (
-      <div>
-        {this.props.friends.map(friend => <FriendComponent friend={friend} />)}
-      </div>
+      <Row>
+        {this.props.friends.map(friend => (
+          <Col sm={6}>
+            <FriendComponent friend={friend} />
+          </Col>
+        ))}
+      </Row>
     );
   }
 

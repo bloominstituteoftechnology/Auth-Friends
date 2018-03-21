@@ -9,6 +9,8 @@ import { addFriends } from "./actions/actions";
 
 class App extends Component {
   render() {
+    document.body.style.background = "#DDDFDF";
+
     return (
       <Container className="App my-5">
         <h1 className="my-3">Friend Face</h1>
