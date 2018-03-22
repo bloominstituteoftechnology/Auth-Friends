@@ -27,10 +27,13 @@ Topics:
 * Run `yarn start` or `npm start` to start the API server.
 * Run `create-react-app friends` in a separate terminal window in the root directory of the project to create your starter application.
 * `cd` into the _friends_ folder and type `yarn add redux react-redux redux-thunk redux-logger axios` or `npm i redux react-redux redux-thunk redux-logger axios`, which will install the needed dependencies.
+
 * You will create a list of your friends using React and Redux.
 * A possible flow of steps will be to create your Components, action creators, reducers, root reducer and your Redux store. Then use the Provider component from `react-redux` to pass the store to your root component and `connect` the React components that need access to the store.
 * Don't forget to hook up the store using the `Provider` tag inside of `src/index.js`, passing it your root reducer.
+
 * You will need to use `redux-thunk` as a middleware inside of `src/index.js`. You'll want to be sure to pass it to `applyMiddleware()` then feed it into your createStore function.
+
 * If you so choose, include `redux-logger` to your middleware. You're going to have plenty of action creators that will consume our API so you'll get plenty of actions triggered.
 
 ## Root Reducer and our State Tree
@@ -53,7 +56,9 @@ Topics:
 ```
 
 * This is a pretty large state tree, but each field is extremely simple.
+
 * All of your items in your state tree represent a make up of actions that you're going to make asynchronously. Think about your application and the state you need. This root reducer object will represent that state.
+
 * Each `friend` item that is in the `friends` array should have the following format:
 
 ```js
@@ -68,6 +73,7 @@ Topics:
 ## Project
 
 * For this project you'll need to create a few React components that will interact with your Redux state.
+
 * This app can all be built in terms of a single view made up of multiple components. Some components will be connected to your Redux Store and others will get their data passed down as props from the connected components.
 
 No need for a router here. We can fit all we need into one page with some proper styling and layout decisions.
