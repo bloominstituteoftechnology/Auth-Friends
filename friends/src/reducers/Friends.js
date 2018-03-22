@@ -1,7 +1,8 @@
-import { POSTED, POSTING, FETCHED, FETCHING, ERROR } from '../actions';
+import { DELETED, DELETING, POSTED, POSTING, FETCHED, FETCHING, ERROR } from '../actions';
 
 const initialState = {
     friends: [],
+    deleting: false,
     fetching: false,
     posting: false,
     error: null,
@@ -9,6 +10,10 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case DELETING:
+            return { ...state, deleting: true};
+        case DELETED:
+            return { ...state, friends: action.friends, deleting: false, error: null };    
         case FETCHING:
             return { ...state, fetching: true };
         case FETCHED:

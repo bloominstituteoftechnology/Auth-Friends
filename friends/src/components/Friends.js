@@ -1,6 +1,8 @@
 import React from 'react';
-import{ connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { Fragment } from 'react';
 import './Friends.css';
+import { deleteFriend } from '../actions';
 
 const Friends = (state) =>{ 
     return (
@@ -8,11 +10,14 @@ const Friends = (state) =>{
                 <ul>
                 {state.friendsGetRequest.friends.map((friend, i) => {
                    return ( 
-                   <div className="divListStyle" key={i} >    
-                        <li key={ friend.name}> {friend.name} </li>
-                        <li key={ friend.age }> {friend.age}  </li>  
-                        <li key={ friend.email}> {friend.email} </li>                      
-                    </div> 
+                     <Fragment key={i}>
+                        <li key={ friend.id}>
+                         <p>{friend.name}</p> 
+                         <p>{friend.age}</p>   
+                         <p>{friend.email}</p> 
+                         <button onClick={state.deleteFriend(friend.id)}> Delete </button>                     
+                        </li>
+                    </Fragment>
                    );
                 })}
                 </ul>    
@@ -29,4 +34,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Friends);
+export default connect(mapStateToProps, { deleteFriend })(Friends);

@@ -3,15 +3,10 @@ ul {
 }
 
 li {
-    margin: 10px 0;
-}
-
-.divListStyle {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    
-    margin: 30px 0;
+    justify-content: space-around;
     border: thin solid black;
+    margin: 5px 0;
 }
