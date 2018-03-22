@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const friends = props => {
+const Friends = props => {
     return props.friends.map((friend, i) => {
         return (
             <ul key={i}>
@@ -12,4 +13,7 @@ const friends = props => {
     });
 };
 
-export default friends;
+const mapStateToProps= state => {
+    return state;
+};
+export default connect(mapStateToProps, {})(Friends);
