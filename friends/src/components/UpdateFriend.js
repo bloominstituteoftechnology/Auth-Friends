@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { saveFriends } from '../actions';
+import { updateFriends } from '../actions';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input} from 'reactstrap';
 
 
-class Friends extends Component {
+class UpdateFriend extends Component {
 
     constructor(props) {
         super(props);
@@ -26,11 +26,11 @@ class Friends extends Component {
       }
 
       toggleSet() {
-          this.props.saveFriends({
+        this.props.updateFriends(this.props.id, {
             name: this.state.newName,
             age: this.state.newAge,
             email: this.state.newEmail,
-          })
+          });
         this.setState({
           modal: !this.state.modal,
           newName: '',
@@ -46,11 +46,10 @@ class Friends extends Component {
           });
       }
 
-
     render() {
         return (
           <div>
-            <Button color="primary" onClick={this.toggle}>Add new friend</Button>
+            <Button outline color="primary" size="sm" onClick={this.toggle}>Update</Button>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
               <ModalHeader toggle={this.toggle}></ModalHeader>
               <ModalBody>
@@ -59,7 +58,7 @@ class Friends extends Component {
                 <Input className="text-center" type="email" name="newEmail" id="emailText" placeholder="Email" onChange={this.handleChange}/>
              </ModalBody>
               <ModalFooter>
-                <Button color="primary" onClick={this.toggleSet}>Add</Button>
+                <Button color="primary" onClick={this.toggleSet}>Update</Button>
               </ModalFooter>
             </Modal>
           </div>
@@ -70,10 +69,10 @@ class Friends extends Component {
 
 const mapStateToProps = state => {
     return {
-      savingFriends: state.fetchingFriends,
+      updatingFriends: state.updatingFriends,
       friends: state.friends,
       error: state.errorMessage,
     };
 };
 
-export default connect(mapStateToProps, { saveFriends })(Friends);
+export default connect(mapStateToProps, { updateFriends })(UpdateFriend);

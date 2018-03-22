@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFriends } from '../actions';
+import { getFriends, deleteFriends, updateFriends } from '../actions';
+import { Card, CardBody, CardHeader, Button } from 'reactstrap';
+import UpdateFriend from './UpdateFriend';
+import './Friends.css';
+
 
 class Friends extends Component {
 
@@ -8,18 +12,34 @@ class Friends extends Component {
         this.props.getFriends();
     }
 
+    handleDelete = (e) => {
+        this.props.deleteFriends(e.target.parentNode.id);
+    };
+
+    
+
     render() {
-        console.log(this.props)
         return (
             <div>
                 {this.props.fetchingFriends ? (
                 <h1> FETCHING </h1>
                 ) : (
-                <ul>
+                <div className="Friends__container">
                     {this.props.friends.map(friend => {
-                    return <li key={`${friend.name}${friend.id}`}>{friend.name}</li>;
+                    return <div key={`${friend.name}${friend.id}`}>
+                        <Card>
+                            <CardBody>
+                                <CardHeader>{friend.name}</CardHeader>
+                                <CardBody>Age: {friend.age}<br></br>{friend.email}</CardBody>
+                                <div className="Friends__buttons" id={friend.id}>
+                                <UpdateFriend  id={friend.id}/>
+                                <Button outline color="danger" size="sm" className="Friends__button" onClick={this.handleDelete}>Delete</Button>
+                                </div>
+                            </CardBody>
+                        </Card>
+                    </div>;
                     })}
-                </ul>
+                </div>
                 )}
             </div>
         );
@@ -34,4 +54,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { getFriends })(Friends);
+export default connect(mapStateToProps, { getFriends, deleteFriends, updateFriends })(Friends);

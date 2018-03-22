@@ -20,20 +20,20 @@ export const saveFriends = (friend) => dispatch => {
     })
 }
 
-export const updateFriends = () => dispatch => {
+export const updateFriends = (id, friend) => dispatch => {
     dispatch({ type: 'UPDATING_FRIENDS' });
 
-    axios.put('http://localhost:5000/api/friends/:id', {}).then(response => {
+    axios.put(`http://localhost:5000/api/friends/${id}`, friend).then(response => {
         dispatch({ type: 'UPDATED_FRIENDS', friends: response.data });
     }).catch(error => {
         dispatch({ type: 'ERROR', errorMessage: 'Error updating the data' });
     })
 }
 
-export const deleteFriends = () => dispatch => {
+export const deleteFriends = (id) => dispatch => {
     dispatch({ type: 'DELETING_FRIENDS' });
 
-    axios.delete('http://localhost:5000/api/friends/:id').then(response => {
+    axios.delete(`http://localhost:5000/api/friends/${id}`).then(response => {
         dispatch({ type: 'DELETED_FRIENDS', friends: response.data});
     }).catch(error => {
         dispatch({ type: 'ERROR', errorMessage: 'Error deleting the data' });
