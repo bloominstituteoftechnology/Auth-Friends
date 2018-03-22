@@ -3,8 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 
-import { getFriends, addNewFriend } from './actions';
+import { getFriends, addNewFriend, deleteFriend } from './actions';
 
+import FriendsList from './containers/FriendsList'
 
 
 class App extends Component {
@@ -28,34 +29,22 @@ class App extends Component {
     return (
       <div className="App">
         {this.props.fetching ? (
-        <img src={logo}/> )
-          :
-          (
-            <div>
-              {this.props.friends.map(friend => {
-                return (
-                  <div>
-                    <div>{friend.name}</div>
-                    <div>{friend.age}</div>
-                    <div>{friend.email}</div>
-                    <br/>
-                  </div>
-                )
-              })}
-            </div>
-          )
-        }
+        <img src={logo}/> ) : (<FriendsList />)}
+        
         <form onSubmit={(event) => {
           event.preventDefault();
-          console.log(nameInput.value);
           this.props.addNewFriend({name: nameInput.value, age: ageInput.value, email: emailInput.value})
-          nameInput.value, ageInput.value, emailInput.value = '';
+          ageInput.value = ''; 
+          emailInput.value = '';
+          nameInput.value = '';
+          document.getElementById('name_field').focus();
           }}>
-          <input ref={name => nameInput = name} placeholder='New Friend Name'/>
-          <input ref={age => ageInput = age} placeholder='Age' />
+          <input ref={name => nameInput = name} placeholder='New Friend Name' autoFocus='true' id='name_field'/>
+          <input ref={age => ageInput = age} placeholder='Age'/>
           <input ref={email => emailInput = email} placeholder='email'/>
           <button type='submit'>Add New Fiend</button>
         </form>
+        
       </div>
     );
   }
