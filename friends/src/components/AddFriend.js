@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { add_new_friend } from '../actions';
 
 class AddFriend extends Component {
     state = {
-        newFriendName: '',
-        newFriendAge: '',
-        newFriendEmail: ''
+        name: '',
+        age: '',
+        email: ''
     };
 
 
@@ -16,22 +19,22 @@ class AddFriend extends Component {
             <label>name:</label>
               <input
                 type='text'
-                name='newFriendName'
-                value={this.state.newFriendName}
+                name='name'
+                value={this.state.name}
                 onChange={this.handleNewInput}
               />
               <label>age:</label>
               <input
                 type='number'
-                name='newFriendAge'
-                value={this.state.newFriendAge}
+                name='age'
+                value={this.state.age}
                 onChange={this.handleNewInput}
               />
               <label>email:</label>
               <input
                 type='email'
-                name='newFriendEmail'
-                value={this.state.newFriendEmail}
+                name='email'
+                value={this.state.email}
                 onChange={this.handleNewInput}
               />
               <button type='submit' onClick={this.submitFriend}>Submit New Friend</button>
@@ -51,18 +54,25 @@ class AddFriend extends Component {
   // submitFriend() resets form so a new friend can be added and
   // sends formData to application state
   submitFriend = event => {
-      event.preventDefault();
       const { name, age, email } = this.state;
       const newFriend = { name, age, email };
+      console.log('before post request', newFriend);
       this.props.add_new_friend(newFriend); // add application state to component
       this.setState({
-        newFriendName: '',
-        newFriendAge: '',
-        newFriendEmail: ''
+        name: '',
+        age: '',
+        email: ''
       });
   };
 
 } // end AddFriend class
 
-
-export default AddFriend;
+const mapStateToProps = state => {
+    return {
+      fetchFriends: state.fetchFriends,
+      friends: state.friends,
+      error: state.errorMessage,
+    };
+  };
+  
+  export default connect(mapStateToProps, { add_new_friend })(AddFriend);
