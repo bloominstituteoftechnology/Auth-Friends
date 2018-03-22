@@ -9,7 +9,7 @@ class FriendListComponent extends Component {
     return (
       <Row>
         {this.props.friends.map(friend => (
-          <Col sm={6}>
+          <Col md={6}>
             <FriendComponent friend={friend} />
           </Col>
         ))}

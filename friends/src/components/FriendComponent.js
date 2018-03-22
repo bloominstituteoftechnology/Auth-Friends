@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { updateFriend, deleteFriend } from "../actions/actions";
 
 import {
+  Row,
+  Col,
   Button,
   Modal,
   ModalHeader,
@@ -32,22 +34,33 @@ class FriendComponent extends Component {
 
   render() {
     return (
-      <Card className="my-3">
+      <Card className="my-3 friend-card">
         <CardBody>
           <CardTitle>{this.props.friend.name}</CardTitle>
           <CardText>Age: {this.props.friend.age}</CardText>
           <CardText>E-mail: {this.props.friend.email}</CardText>
         </CardBody>
         <CardBody>
-          <Button style={{ background: "#DCABDF" }} onClick={this.toggle}>
-            Edit Friend
-          </Button>
-          <Button
-            style={{ background: "#C792DF" }}
-            onClick={() => this.props.deleteFriend(this.props.friend.id)}
-          >
-            Remove Friend
-          </Button>
+          <Row>
+            <Col sm={6}>
+              <Button
+                className="w-100"
+                style={{ background: "#DCABDF" }}
+                onClick={this.toggle}
+              >
+                Edit Friend
+              </Button>
+            </Col>
+            <Col sm={6}>
+              <Button
+                className="w-100"
+                style={{ background: "#C792DF" }}
+                onClick={() => this.props.deleteFriend(this.props.friend.id)}
+              >
+                Remove Friend
+              </Button>
+            </Col>
+          </Row>
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>Edit Friend</ModalHeader>
             <ModalBody>

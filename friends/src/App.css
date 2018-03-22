@@ -23,6 +23,24 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.header {
+  height: 6rem;
+  text-align: center;
+  background: rgb(99, 219, 219);
+  border-radius: 3em 3em 3em 0em;
+  font-family: "Oleo Script Swash Caps", cursive;
+  color: white;
+  font-size: 4.5rem;
+}
+
+div.friend-card {
+  border-radius: 3em 3em 3em 0em;
 }

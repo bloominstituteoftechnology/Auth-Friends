@@ -4,7 +4,7 @@ import FriendListComponent from "./components/FriendListComponent";
 import FormComponent from "./components/FormComponent";
 import "./App.css";
 import { connect } from "react-redux";
-import { Container } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import { addFriends } from "./actions/actions";
 
 class App extends Component {
@@ -12,8 +12,10 @@ class App extends Component {
     document.body.style.background = "#DDDFDF";
 
     return (
-      <Container className="App my-5">
-        <h1 className="my-3">Friend Face</h1>
+      <Container className="App my-5 ">
+        <Row className=" header d-flex mb-3 justify-content-center">
+          <div className=" my-auto">Friend Face</div>
+        </Row>
         <FriendListComponent />
         <FormComponent submit={this.props.addFriends} />
       </Container>
