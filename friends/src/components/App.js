@@ -14,19 +14,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Friends friends={this.props.friends} />
+        <Friends />
         <CreateFriendForm />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    // fetching: state.fetching,
-    friends: state.friends,
-    // error: state.errorMessage,
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     // fetching: state.fetching,
+//     // friends: state.friends,
+//     // error: state.errorMessage,
+//   };
+// };
 
-export default connect(mapStateToProps, { getFriends })(App);
+export default connect(null, { getFriends })(App);
