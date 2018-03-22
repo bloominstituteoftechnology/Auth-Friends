@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CreateFriendForm from './CreateFriendForm';
-import { getFriends } from '../actions';
+
 import Friends from './Friends';
+import CreateFriendForm from './CreateFriendForm';
 
+import { getFriends } from '../actions';
 class App extends Component {
-  componentDidMount(){
-
+  
+  componentDidMount() {
     this.props.getFriends();
-    
   }
 
   render() {
     return (
       <div className="App">
-        <Friends />
+        <Friends friends={this.props.friends} />
         <CreateFriendForm />
       </div>
     );
@@ -23,10 +23,10 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    fetching: state.fetching,
+    // fetching: state.fetching,
     friends: state.friends,
-    error: state.errorMessage,
-  }
-}
+    // error: state.errorMessage,
+  };
+};
 
 export default connect(mapStateToProps, { getFriends })(App);

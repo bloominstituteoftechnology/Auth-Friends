@@ -1,30 +1,24 @@
 import React from 'react';
-import{ connect } from 'react-redux';
+import { deleteFriend } from '../actions';
+
 import './Friends.css';
 
-const Friends = (state) =>{ 
+const Friends = (props) =>{ 
     return (
             <div >
                 <ul>
-                {state.friends.map((friend,i) => {
+                {props.friends.map((friend,index) => {
                    return ( 
-                   <div className="divList" key={i}>    
-                        <li key={friend.name}> {friend.name} </li>
-                        <li key={ friend.age }> {friend.age}  </li>  
-                        <li key={ friend.email}> {friend.email} </li>                      
+                   <div className="divList" key={index}>    
+                        <li>{friend.name}</li>
+                        <li>{friend.age}</li>  
+                        <li>{friend.email}</li>                      
                     </div> 
                    );
                 })}
                 </ul>    
-               {console.log(state)}
             </div>
     )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    friends: state.friends, 
-  };
-};
-
-export default connect(mapStateToProps)(Friends);
+export default Friends;
