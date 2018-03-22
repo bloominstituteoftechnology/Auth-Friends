@@ -33,15 +33,19 @@ class App extends Component {
           <ul>
             {this.props.friends.map(friend => {
               return (
-                <li
-                  onClick={() => this.deleteFriend(friend.id)}
-                  key={friend.id}
-                >
+                <li key={friend.id}>
                   Name: {friend.name}
                   <br />
                   Age: {friend.age}
                   <br />
                   Email: {friend.email}
+                  <br />
+                  <button
+                    className="deleteBtn"
+                    onClick={() => this.deleteFriend(friend.id)}
+                  >
+                    Delete
+                  </button>
                 </li>
               );
             })}
