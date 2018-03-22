@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addFriend } from '../actions/actions';
+import { addFriend } from '../actions/index';
 import { connect } from 'react-redux';
 
 class Form extends Component {
