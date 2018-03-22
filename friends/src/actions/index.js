@@ -8,6 +8,10 @@ export const POSTING = 'POSTING';
 export const POST_FRIEND_ERROR = 'POST_FRIEND_ERROR';
 export const POSTED = 'POSTED';
 
+export const DELETING = 'DELETING';
+export const DELETE_FRIEND_ERROR = 'DELETE_FRIEND_ERROR';
+export const DELETED = 'DELETED';
+
 export const get_friends = () => dispatch => {
   dispatch({ type: FETCHING });
 
@@ -31,5 +35,18 @@ export const add_new_friend = (newFriend) => dispatch => {
     })
     .catch(err => {
       dispatch({ type: POST_FRIEND_ERROR, errorMessage: 'Error posting new friend' });
+    });
+};
+
+export const delete_friend = (id) => dispatch => {
+  dispatch({ type: DELETING });
+
+  axios
+    .delete(`http://localhost:5000/api/friends/${id}`)
+    .then(response => {
+      dispatch({ type: DELETED, friends: response.data });
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_FRIEND_ERROR, errorMessage: 'Error deleting friend' });
     });
 };

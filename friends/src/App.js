@@ -1,50 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
-// pull in actions from action/index
-import { get_friends } from './actions';
+import React from 'react';
 
 import AddFriend from './components/AddFriend';
+import FriendsList from './components/FriendsList';
 
-class App extends Component {
-  componentDidMount() {
-    // call our action
-    this.props.get_friends();
-  }
+import './App';
 
-  render() {
+const App = () => {
+
     return (
       <React.Fragment>
-        {/* FriendsList */}
-        {this.props.fetchFriends ? (
-          <p>Fetching...</p>
-        ) : (
-          <React.Fragment>
-            {this.props.friends.map(friend => {
-              return <ul key={`${friend.name} ${friend.id}`}>
-                <li>{friend.name}</li>
-                <li>{friend.age}</li>
-                <li>{friend.email}</li>
-              </ul>;
-            })}
-          </React.Fragment>
-        )}
+        <FriendsList />
         <AddFriend />
+        {/* UpdateFriend? */}
       </React.Fragment>
     );
-  }
-}
 
+}; // end of App class
 
-// our mapDispatchToProps needs to have two properties inherited from state
-// the chars and the fetching boolean
-
-const mapStateToProps = state => {
-  return {
-    fetchFriends: state.fetchFriends,
-    friends: state.friends,
-    error: state.errorMessage,
-  };
-};
-
-export default connect(mapStateToProps, { get_friends })(App);
+export default App;

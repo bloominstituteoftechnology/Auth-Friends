@@ -46,9 +46,6 @@ class AddFriend extends Component {
   handleNewInput = event => {
       event.preventDefault();
       this.setState({ [event.target.name]: event.target.value });
-      console.log('event target name: ', event.target.name);
-      console.log('event target value: ', event.target.value);
-      console.log(this.state);
   }
 
   // submitFriend() resets form so a new friend can be added and
@@ -56,7 +53,6 @@ class AddFriend extends Component {
   submitFriend = event => {
       const { name, age, email } = this.state;
       const newFriend = { name, age, email };
-      console.log('before post request', newFriend);
       this.props.add_new_friend(newFriend); // add application state to component
       this.setState({
         name: '',
@@ -66,13 +62,5 @@ class AddFriend extends Component {
   };
 
 } // end AddFriend class
-
-const mapStateToProps = state => {
-    return {
-      fetchFriends: state.fetchFriends,
-      friends: state.friends,
-      error: state.errorMessage,
-    };
-  };
   
-  export default connect(mapStateToProps, { add_new_friend })(AddFriend);
+  export default connect(null, { add_new_friend })(AddFriend);
