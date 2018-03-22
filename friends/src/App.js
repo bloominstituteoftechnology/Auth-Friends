@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 // pull in actions from action/index
 import { getFriends } from './actions';
 
+import AddFriend from './components/AddFriend';
+
 class App extends Component {
   componentDidMount() {
     // call our action
@@ -23,6 +25,7 @@ class App extends Component {
             })}
           </ul>
         )}
+        <AddFriend />
       </React.Fragment>
     );
   }
