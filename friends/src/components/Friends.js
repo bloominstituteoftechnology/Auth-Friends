@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Fragment } from 'react';
 import './Friends.css';
 import { deleteFriend } from '../actions';
+import { getFriend } from '../actions';
 
 const Friends = (state) =>{ 
     return (
@@ -11,11 +12,11 @@ const Friends = (state) =>{
                 {state.friendsGetRequest.friends.map((friend, i) => {
                    return ( 
                      <Fragment key={i}>
-                        <li key={ friend.id}>
+                        <li onClick={()=>{console.log(friend.name)}} key={ friend.id}>
                          <p>{friend.name}</p> 
                          <p>{friend.age}</p>   
                          <p>{friend.email}</p> 
-                         <button onClick={state.deleteFriend(friend.id)}> Delete </button>                     
+                         <button onClick={()=>{state.deleteFriend(friend.id)}}> Delete </button>                     
                         </li>
                     </Fragment>
                    );
@@ -34,4 +35,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { deleteFriend })(Friends);
+export default connect(mapStateToProps, { getFriend, deleteFriend })(Friends);
