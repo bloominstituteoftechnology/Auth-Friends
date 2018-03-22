@@ -44,7 +44,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/api/friends', (req, res) => {
-  res.send(friends);
+  setTimeout(() => {
+    res.send(friends);
+  }, 1000);
 });
 
 app.get('/api/friends/:id', (req, res) => {
