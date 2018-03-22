@@ -8,7 +8,7 @@ const Friends = (state) =>{
                 <ul>
                 {state.friends.map((friend,i) => {
                    return ( 
-                   <div className="divListStyle" key={i}>    
+                   <div className="divList" key={i}>    
                         <li key={friend.name}> {friend.name} </li>
                         <li key={ friend.age }> {friend.age}  </li>  
                         <li key={ friend.email}> {friend.email} </li>                      

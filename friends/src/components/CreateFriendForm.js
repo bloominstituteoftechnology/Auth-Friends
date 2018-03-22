@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './CreateFriendForm.css'
 class CreateFriendForm extends Component {
     constructor() {
         super();
@@ -9,7 +9,7 @@ class CreateFriendForm extends Component {
     }
         render(){
             return (
-            <div>    
+            <div className="divInputs">    
                 <input placeholder="Enter name" /> <br />
                 <input placeholder="Enter age" /> <br />
                 <input placeholder="Enter email"/> <br />
