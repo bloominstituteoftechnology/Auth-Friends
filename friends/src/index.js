@@ -7,12 +7,10 @@ import thunk from 'redux-thunk';
 
 import './index.css';
 
-import rootReducer from './reducers';
+import { rootReducer } from './reducers/index';
 import App from './App';
 
-
-const middleware = applyMiddleware(thunk)
-const store = createStore( rootReducer, middleware);
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <Provider store={store}>
