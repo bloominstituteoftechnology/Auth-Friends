@@ -1,6 +1,5 @@
 .Friend {
-  text-align: center;
-  border: 1px solid darkcyan;
-  height: 300px;
-  width: 300px;
-}
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+};

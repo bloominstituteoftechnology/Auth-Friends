@@ -4,6 +4,11 @@ import { connect } from 'react-redux';
 // pull in actions from action/index
 import { get_friends, delete_friend } from '../actions';
 
+import UpdateFriend from './UpdateFriend';
+
+import {Card, Button } from 'reactstrap';
+import './FriendsList.css';
+
 class FriendsList extends Component {
     componentDidMount() {
       this.props.get_friends();
@@ -11,26 +16,26 @@ class FriendsList extends Component {
   
     render() {
       return (
-        <React.Fragment>
+        <div style={{display: 'flex', flexDirection: 'row'}}>
           {/* FriendsList */}
           {this.props.fetchFriends ? (
             <p>Fetching...</p>
           ) : (
             <React.Fragment>
               {this.props.friends.map(friend => {
-                return <div className='Friend' key={`${friend.name} ${friend.id}`}>
+                return <Card className='card' key={`${friend.name} ${friend.id}`}>
                   <h3>{friend.name}</h3>
-                  <p>{friend.age}</p>
-                  <p>{friend.email}</p>
-                  <div>
-                    <button>Edit Friend</button>
-                    <button onClick={() => this.props.delete_friend(friend.id)}> Delete Friend</button>
+                  <p>age: {friend.age}</p>
+                  <p>email: {friend.email}</p>
+                  <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+                    <UpdateFriend buttonLabel='Update Friend'/>
+                    <Button color='danger' onClick={() => this.props.delete_friend(friend.id)}> Delete Friend</Button>
                   </div>
-                </div>
+                </Card>
               })}
             </React.Fragment>
           )}
-        </React.Fragment>
+        </div>
       );
     }
   

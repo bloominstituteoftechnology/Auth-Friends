@@ -3,16 +3,17 @@ import React from 'react';
 import AddFriend from './components/AddFriend';
 import FriendsList from './components/FriendsList';
 
-import './App';
+import './App.css';
 
 const App = () => {
 
     return (
-      <React.Fragment>
-        <FriendsList />
+      <div className='Friend'>
+        <h2>Lambda Friends</h2>
         <AddFriend />
+        <FriendsList />
         {/* UpdateFriend? */}
-      </React.Fragment>
+      </div>
     );
 
 }; // end of App class

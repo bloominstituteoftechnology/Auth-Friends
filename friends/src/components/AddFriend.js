@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 
 import { add_new_friend } from '../actions';
 
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import './AddFriend.css';
+
 class AddFriend extends Component {
     state = {
         name: '',
@@ -13,33 +16,36 @@ class AddFriend extends Component {
 
   render() {
     return (
-        <form type='submit'>
-          <fieldset>
-            <legend>Add Friend Form</legend>
-            <label>name:</label>
-              <input
-                type='text'
-                name='name'
-                value={this.state.name}
-                onChange={this.handleNewInput}
-              />
-              <label>age:</label>
-              <input
-                type='number'
-                name='age'
-                value={this.state.age}
-                onChange={this.handleNewInput}
-              />
-              <label>email:</label>
-              <input
-                type='email'
-                name='email'
-                value={this.state.email}
-                onChange={this.handleNewInput}
-              />
-              <button type='submit' onClick={this.submitFriend}>Submit New Friend</button>
-          </fieldset>
-        </form>
+        <Form inline type='submit' className='Form'>
+            <FormGroup className='mt-2 mb-2 mr-sm-2'>
+              <Label className='mr-sm-2'>name:</Label>
+                <Input
+                  type='text'
+                  name='name'
+                  value={this.state.name}
+                  onChange={this.handleNewInput}
+                />
+              </FormGroup>
+              <FormGroup className='mt-2 mb-2 mr-sm-2'>
+                <Label className='mr-sm-2'>age:</Label>
+                <Input
+                  type='number'
+                  name='age'
+                  value={this.state.age}
+                  onChange={this.handleNewInput}
+                />
+              </FormGroup>
+              <FormGroup className='mt-2 mb-2 mr-sm-2'>
+                <Label className='mr-sm-2'>email:</Label>
+                <Input
+                  type='email'
+                  name='email'
+                  value={this.state.email}
+                  onChange={this.handleNewInput}
+                />
+              </FormGroup>
+              <Button type='submit' style={{backgroundColor: 'darkred'}} onClick={this.submitFriend}>Submit New Friend</Button>
+        </Form>
     );
   }
 
@@ -53,7 +59,7 @@ class AddFriend extends Component {
   submitFriend = event => {
       const { name, age, email } = this.state;
       const newFriend = { name, age, email };
-      this.props.add_new_friend(newFriend); // add application state to component
+      this.props.add_new_friend(newFriend);
       this.setState({
         name: '',
         age: '',
