@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f6f9fc;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.friend-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.friend {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
+  margin: 1rem;
+  padding: 1rem;
+  min-width: 15rem;
+}
+
+.friend-title {
+  color: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.friend-name {
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.friend-age {
+  font-size: 0.9rem;
+  padding-top: 8px;
+}
+
+.friend-email {
+  font-size: 0.8rem;
+  padding-top: 8px;
+}
