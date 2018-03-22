@@ -6,17 +6,17 @@ const Friends = (state) =>{
     return (
             <div >
                 <ul>
-                {state.friends.map((friend,i) => {
+                {state.friendsGetRequest.friends.map((friend, i) => {
                    return ( 
-                   <div className="divListStyle" key={i}>    
-                        <li key={friend.name}> {friend.name} </li>
+                   <div className="divListStyle" key={i} >    
+                        <li key={ friend.name}> {friend.name} </li>
                         <li key={ friend.age }> {friend.age}  </li>  
                         <li key={ friend.email}> {friend.email} </li>                      
                     </div> 
                    );
                 })}
                 </ul>    
-               {console.log(state)}
+               {/* {console.log(state)} */}
             </div>
     )
 }
@@ -25,7 +25,7 @@ const Friends = (state) =>{
 
 const mapStateToProps = (state) => {
   return {
-    friends: state.friends, 
+    friendsGetRequest: state.friendsGetRequest, 
   };
 };
 

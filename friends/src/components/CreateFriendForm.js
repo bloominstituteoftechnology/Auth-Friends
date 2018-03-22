@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import{ connect } from 'react-redux';
 class CreateFriendForm extends Component {
     constructor() {
         super();
@@ -7,6 +7,8 @@ class CreateFriendForm extends Component {
             newFriend: '',
         }
     }
+
+
         render(){
             return (
             <div>    
@@ -14,10 +16,19 @@ class CreateFriendForm extends Component {
                 <input placeholder="Enter your age" /> <br />
                 <input placeholder="Enter your email"/> <br />
                 <button> Add Friend </button>
+                {console.log(this.state.props)}
             </div>    
             )
         }
 }
 
-export default CreateFriendForm;
+
+const mapStateToProps = (state) => {
+    return {
+      friendsGetRequest: state.friendsGetRequest, 
+    };
+  };
+  
+  export default connect(mapStateToProps)(CreateFriendForm);
+
 
