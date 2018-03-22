@@ -36,9 +36,9 @@ class FormComponent extends Component {
 
   render() {
     return (
-      <Container className="border p-3">
+      <Container className="add-form border p-3 mt-3">
         <Form
-          className="text-left mt-5"
+          className="text-left "
           onSubmit={this.handleOnSubmit}
           onChange={this.handleOnChange}
         >

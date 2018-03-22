@@ -44,3 +44,8 @@
 div.friend-card {
   border-radius: 3em 3em 3em 0em;
 }
+
+div.add-form {
+  width: 60%;
+  background-color: #dcabdf;
+}
