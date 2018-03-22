@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import FriendForm from './FriendForm';
 import logo from './logo.svg';
 import './App.css';
 
-import { initFriends } from '../actions'
+import { initFriends} from '../actions'
 
 class App extends Component {
   componentDidMount(){
-    this.props.initFriends();
+    this.props.initFriends()
   }
 
+  // state = {
+  //   name: '',
+  //   age: '',
+  //   email: ''
+  // };
 
+  // handleInputChange = event => {
+  //   this.setState({ [event.target.name]: event.target.value })
+  // }
+
+  // handleAddFriend = _ => {
+  //   const { name, age, email } = this.state;
+  //   this.props.addFriends({name, age, email});
+  //   this.setState({name: '', age: '', email: ''});
+  // };
 
   render() {
     return (
@@ -19,26 +34,23 @@ class App extends Component {
         {this.props.friending ? (
           <img src={logo} className="App-logo" alt="logo" />
         ):(
-          <div>
+          <div className="Friends__Section">
             {this.props.friends.map(friend => {
               return( 
-              <div key={friend.id}>
+              <div className="Friends__List"  key={friend.id}>
                 <ul>
-                  <li>{friend.id}</li>
-                  <li>{friend.name}</li>
-                  <li>{friend.age}</li>
-                  <li>{friend.email}</li>
+                  <li className="Friend_Item" id="id">{friend.id}</li>
+                  <li className="Friend_Item">{friend.name}</li>
+                  <li className="Friend_Item">{friend.age}</li>
+                  <li className="Friend_Item">{friend.email}</li>
                 </ul>
               </div> 
               )
             })}
             </div>  
         )}
-        <div>
-          <form>
-            <input></input>
-          
-          </form>
+        <div className="Friends__Form">
+        <FriendForm />
           </div>
       </div>
 

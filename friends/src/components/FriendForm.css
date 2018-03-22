@@ -1,0 +1,15 @@
+.Friend__Form{
+    display: flex;
+    align-items: center;
+    background: greenyellow;
+}
+
+.Friend__Input{
+    text-align: center;
+    color: rgb(250, 42, 77);
+    background: greenyellow;
+}
+
+button{
+    background: paleturquoise;
+}
