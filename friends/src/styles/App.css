@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -23,6 +26,24 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  height: 100px;
+  width: 250px;
+  border: 1px solid gray;
+  margin: 10px 0;
+}
+
+.addFriendForm {
 }

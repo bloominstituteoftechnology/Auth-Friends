@@ -24,7 +24,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AddFriend />
+        <div className="addFriendForm">
+          <AddFriend />
+        </div>
         {this.props.fetching ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
@@ -35,8 +37,11 @@ class App extends Component {
                   onClick={() => this.deleteFriend(friend.id)}
                   key={friend.id}
                 >
-                  Name: {friend.name} - Age: {friend.age} - Email:{' '}
-                  {friend.email}
+                  Name: {friend.name}
+                  <br />
+                  Age: {friend.age}
+                  <br />
+                  Email: {friend.email}
                 </li>
               );
             })}
