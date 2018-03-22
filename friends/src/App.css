@@ -1,0 +1,22 @@
+.App {
+  display: flex;
+  font-family: 'Indie Flower', cursive;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  background-color: #DFE3EE;
+}
+
+.App-header {
+  margin-bottom: 20px;
+  width: 80%;
+  background-color: #3B5998;
+  box-shadow: 0px 3px 3px 4px #8B9DC3;
+}
+
+.App-title {
+  text-align: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 3em;
+}
