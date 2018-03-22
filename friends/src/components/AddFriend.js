@@ -37,18 +37,21 @@ class AddFriend extends Component {
             onChange={this.handleInput}
             type="text"
             name="name"
+            value={this.state.name}
             placeholder="name"
           />
           <input
             onChange={this.handleInput}
             type="number"
             name="age"
+            value={this.state.age}
             placeholder="age"
           />
           <input
             onChange={this.handleInput}
             type="email"
             name="email"
+            value={this.state.email}
             placeholder="email"
           />
           <button type="submit">Add Friend</button>
@@ -64,4 +67,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { postFriends })(AddFriend);
+const actions = {
+  postFriends
+};
+
+export default connect(mapStateToProps, actions)(AddFriend);

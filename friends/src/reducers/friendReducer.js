@@ -6,6 +6,8 @@ const initialState = {
   friendsFetched: false,
   friendsSaved: false,
   savingFriends: false,
+  deletingFriend: false,
+  friendDeleted: false,
   error: null
 };
 
@@ -27,7 +29,23 @@ export default (state = initialState, action) => {
     case actionTypes.ERROR_CREATING_FRIEND:
       return { ...state, error: action.error };
     case actionTypes.FRIEND_CREATED:
-      return { ...state, friends: action.friends, savingFriends: false };
+      return {
+        ...state,
+        friends: action.friends,
+        savingFriends: false,
+        error: null
+      };
+    case actionTypes.DELETING_FRIEND:
+      return { ...state, deletingFriend: true };
+    case actionTypes.ERROR_DELETING_FRIEND:
+      return { ...state, error: action.error };
+    case actionTypes.FRIEND_DELETED:
+      return {
+        ...state,
+        friends: action.friends,
+        deletingFriend: false,
+        error: null
+      };
     default:
       return state;
   }

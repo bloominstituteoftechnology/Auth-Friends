@@ -11,37 +11,43 @@ let friends = [
     id: 1,
     name: 'Ben',
     age: 30,
-    email: 'ben@lambdaschool.com',
+    email: 'ben@lambdaschool.com'
   },
   {
     id: 2,
     name: 'Austen',
     age: 45,
-    email: 'austen@lambdaschool.com',
+    email: 'austen@lambdaschool.com'
   },
   {
     id: 3,
     name: 'Ryan',
     age: 15,
-    email: 'ryan@lambdaschool.com',
+    email: 'ryan@lambdaschool.com'
   },
   {
     id: 4,
     name: 'Sean',
     age: 35,
-    email: 'sean@lambdaschool.com',
+    email: 'sean@lambdaschool.com'
   },
   {
     id: 5,
     name: 'Michelle',
     age: 67,
-    email: 'michelle@gmail.com',
-  },
+    email: 'michelle@gmail.com'
+  }
 ];
 
 app.use(bodyParser.json());
 
 app.use(cors());
+
+app.get('/api/friends', (req, res) => {
+  setTimeout(() => {
+    res.send(friends);
+  }, 1000);
+});
 
 app.get('/api/friends', (req, res) => {
   res.send(friends);
@@ -76,7 +82,7 @@ app.put('/api/friends/:id', (req, res) => {
     friends = [
       ...friends.slice(0, friendIndex),
       friend,
-      ...friends.slice(friendIndex + 1),
+      ...friends.slice(friendIndex + 1)
     ];
     res.send(friends);
   } else {
