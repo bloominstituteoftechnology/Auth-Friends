@@ -19,11 +19,15 @@ class App extends Component {
         {this.props.fetchFriends ? (
           <p>Fetching...</p>
         ) : (
-          <ul>
+          <React.Fragment>
             {this.props.friends.map(friend => {
-              return <li key={`${friend.name} ${friend.id}`}>{friend.name}</li>;
+              return <ul key={`${friend.name} ${friend.id}`}>
+                <li>{friend.name}</li>
+                <li>{friend.age}</li>
+                <li>{friend.email}</li>
+              </ul>;
             })}
-          </ul>
+          </React.Fragment>
         )}
         <AddFriend />
       </React.Fragment>

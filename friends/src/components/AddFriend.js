@@ -2,50 +2,63 @@ import React, { Component } from 'react';
 
 class AddFriend extends Component {
     state = {
-        newFriendName: null,
-        newFriendAge: null,
-        newFriendEmail: null
-    }
+        newFriendName: '',
+        newFriendAge: '',
+        newFriendEmail: ''
+    };
 
 
   render() {
     return (
-        <form>
+        <form type='submit'>
           <fieldset>
             <legend>Add Friend Form</legend>
             <label>name:</label>
               <input
                 type='text'
-                value={this.state.newFriend}
+                name='newFriendName'
+                value={this.state.newFriendName}
                 onChange={this.handleNewInput}
               />
               <label>age:</label>
               <input
                 type='number'
+                name='newFriendAge'
                 value={this.state.newFriendAge}
                 onChange={this.handleNewInput}
               />
               <label>email:</label>
               <input
                 type='email'
+                name='newFriendEmail'
                 value={this.state.newFriendEmail}
                 onChange={this.handleNewInput}
               />
-              <button onClick={this.submitFriend}>Submit New Friend</button>
+              <button type='submit' onClick={this.submitFriend}>Submit New Friend</button>
           </fieldset>
         </form>
     );
+  }
+
+  handleNewInput = event => {
+      event.preventDefault();
+      this.setState({ [event.target.name]: event.target.value });
+      console.log('event target name: ', event.target.name);
+      console.log('event target value: ', event.target.value);
+      console.log(this.state);
   }
 
   // submitFriend() resets form so a new friend can be added and
   // sends formData to application state
   submitFriend = event => {
       event.preventDefault();
-      this.props.add_new_friend(this.state); // add application state to component
+      const { name, age, email } = this.state;
+      const newFriend = { name, age, email };
+      this.props.add_new_friend(newFriend); // add application state to component
       this.setState({
-        newFriendName: null,
-        newFriendAge: null,
-        newFriendEmail: null
+        newFriendName: '',
+        newFriendAge: '',
+        newFriendEmail: ''
       });
   };
 

@@ -6,7 +6,6 @@ export const ERROR = 'ERROR';
 
 export const getFriends = () => dispatch => {
   dispatch({ type: FETCHING });
-  console.log('fetching');
 
   axios
     .get('http://localhost:5000/api/friends')
