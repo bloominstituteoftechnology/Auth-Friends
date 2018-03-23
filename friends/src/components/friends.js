@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Friends = props => {
-    return props.friends.map((friend, i) => {
+
+
+const Friends = state => {
+   
+    return state.friends.map((friend, i) => {
         return (
             <ul key={i}>
             <li>{friend.name}</li>
