@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import { getFriends } from './actions';
 import Friends from './components/friends';
-import CreateFriendForm from './components/createfriendform';
 
 import './App.css';
 
@@ -15,7 +14,6 @@ class App extends Component {
     return (
       <div className="App">
         <Friends />
-        <CreateFriendForm />
       </div>
     );
   }

@@ -37,18 +37,20 @@ export const addFriend = (newFriend) => dispatch => {
         });
 };
 
-export const updateFriend = (id) => dispatch => {
+export const updateFriend = (id, friend) => dispatch => {
     dispatch({ type: UPDATING});
     
     axios
-        .put(`http://localhost:5000/api/friends/${id}`)
+        .put(`http://localhost:5000/api/friends/${id}`, friend )
         .then(response => {
+            // console.log('responses', response.data)
             dispatch({ type: UPDATED, friends: response.data})
         })
         .catch(err => {
             dispatch({ type: ERROR, errorMessage: 'Friend Not Updated' })
         });
 };
+
 
 export const deleteFriend = (id) => dispatch => {
     dispatch({ type: DELETING});
