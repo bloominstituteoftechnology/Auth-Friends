@@ -2,6 +2,10 @@ ul {
     list-style-type: none;
 }
 
+.deleteButton {
+  margin-left: 60px;
+}
+
 li {
     display: flex;
     flex-direction: row;
@@ -9,4 +13,9 @@ li {
     justify-content: space-around;
     border: thin solid black;
     margin: 5px 0;
+}
+
+p {
+  width: 45px;
+  padding-right: 50px;
 }

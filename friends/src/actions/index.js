@@ -12,9 +12,6 @@ export const FETCHED  = 'FETCHED';
 export const ERROR = 'ERROR';
 
 
-
-
-
 export const getFriends = () => dispatch => {
     dispatch({ type: FETCHING });
 
@@ -30,7 +27,7 @@ export const getFriends = () => dispatch => {
 };
 
 export const addFriend = (name, age, email) => dispatch => {
-   
+
     dispatch({ type: POSTING });
 
     axios
@@ -45,7 +42,7 @@ export const addFriend = (name, age, email) => dispatch => {
 };
 
 export const deleteFriend = (id) => dispatch => {
-    
+
     dispatch({ type: DELETING });
 
     axios
@@ -59,11 +56,11 @@ export const deleteFriend = (id) => dispatch => {
 
 };
 
-export const updateFriend = (id) => dispatch => {
+export const updateFriend = (name, age, email, id) => dispatch => {
     dispatch({ type: UPDATING });
 
     axios
-        .put(`http://localhost:5000/api/friends/${id}`)
+        .put(`http://localhost:5000/api/friends/${id}`, {name, age, email})
         .then(response => {
             dispatch({ type: UPDATED, friends: response.data})
         })
@@ -86,5 +83,3 @@ export const getFriend = (id) => dispatch => {
         });
 
 };
-
-

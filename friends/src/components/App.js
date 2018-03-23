@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CreateFriendForm from './CreateFriendForm';
+import FriendForm from './FriendForm';
 import { getFriends } from '../actions';
-import Friends from './Friends';
+import FriendList from './FriendList';
+import './App.css';
+
 
 class App extends Component {
-  componentDidMount(){
 
+  componentDidMount() {
     this.props.getFriends();
-    
   }
 
   render() {
     return (
       <div className="App">
-        <Friends />
-        <CreateFriendForm />
+        <FriendList />
+        <FriendForm />
       </div>
     );
   }
+
 }
+
 
 const mapStateToProps = state => {
   return {
