@@ -9,15 +9,11 @@ const FriendsList = state => {
     <div>
       <h1 className="list-title">Friends</h1>
       <ul className="friend-list">
-        
-          return (
             <li key={friend.id}>
               <div className="friend-name">{friend.name}</div>
               <div className="friend-age">{`Age: ${friend.age}`}</div>
               <div className="friend-email">{`Email: ${friend.email}`}</div>
             </li>
-          )
-        
       </ul>
     </div>
     )
