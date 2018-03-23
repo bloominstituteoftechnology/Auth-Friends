@@ -1,12 +1,9 @@
 import axios from 'axios';
 
-export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
 
-const getFriends = () => dispatch => {
-  dispatch({ type: FETCHING });
-
+const getFriendsAction = () => dispatch => {
   axios
     .get('http://localhost:5000/api/friends')
     .then(response => {
@@ -17,4 +14,4 @@ const getFriends = () => dispatch => {
     });
 };
 
-export default getFriends;
+export default getFriendsAction;

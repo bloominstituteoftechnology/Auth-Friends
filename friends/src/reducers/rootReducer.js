@@ -1,25 +1,10 @@
-import { FETCHED, FETCHING, ERROR } from '../actions/getFriends';
+import { combineReducers } from 'redux';
 
-const initialState = {
-  friends: [],
-  fetching: false,
-  error: null
-};
+import getFriendsReducer from './getFriendsReducer';
+import addFriendReducer from './addFriendReducer';
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case FETCHING:
-      return { ...state, fetching: true };
-    case ERROR:
-      return { ...state, error: action.errorMessage };
-    case FETCHED:
-      return {
-        ...state,
-        friends: action.friends,
-        fetching: false,
-        error: null
-      };
-    default:
-      return state;
-  }
-};
+// this is state
+export default combineReducers({
+  friendsReducer: getFriendsReducer,
+  addFriend: addFriendReducer
+});

@@ -6,7 +6,6 @@ import AddFriend from './components/AddFriend';
 const App = () => {
   return (
     <div>
-      <AddFriend />
       <FriendsList />
     </div>
   );

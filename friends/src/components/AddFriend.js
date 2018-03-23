@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import getFriends from '../actions/getFriends';
+import addFriendAction from '../actions/addFriendAction';
+import addFriendReducer from '../reducers/addFriendReducer';
 
 class AddFriend extends Component {
   state = {
@@ -18,6 +18,12 @@ class AddFriend extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    this.props.addFriendAction(this.state);
+    this.setState({
+      name: '',
+      age: '',
+      email: ''
+    });
   };
 
   render() {
@@ -55,12 +61,16 @@ class AddFriend extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = store => {
   return {
-    fetching: state.fetching,
-    friends: state.friends,
-    error: state.errorMessage
+    fetched: store.fetched,
+    friends: store.friendsReducer.friends,
+    error: store.errorMessage
   };
 };
 
-export default connect(mapStateToProps, {})(AddFriend);
+const actions = {
+  addFriendAction
+};
+
+export default connect(mapStateToProps, actions)(AddFriend);
