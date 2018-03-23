@@ -56,7 +56,7 @@ class UpdateFriend extends Component {
                 <Input className="text-center" type="text" name="newName" id="nameText" placeholder="Name" onChange={this.handleChange}/>
                 <Input className="text-center" type="text" name="newAge" id="ageText" placeholder="Age" onChange={this.handleChange}/>
                 <Input className="text-center" type="email" name="newEmail" id="emailText" placeholder="Email" onChange={this.handleChange}/>
-             </ModalBody>
+              </ModalBody>
               <ModalFooter>
                 <Button color="primary" onClick={this.toggleSet}>Update</Button>
               </ModalFooter>
