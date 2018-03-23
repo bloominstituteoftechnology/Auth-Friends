@@ -4,7 +4,6 @@ import './FriendsList.css';
 
 class FriendsList extends Component{
   render(){
-    console.log(this.props.friends);
     return(
     <div>
     {

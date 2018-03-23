@@ -3,6 +3,7 @@ import './App.css';
 import {add} from './actions';
 import {connect} from 'react-redux';
 import FriendsList from './components/FriendsList';
+import NewFriend from './components/NewFriend';
 import axios from 'axios';
 
 class App extends Component {
@@ -16,7 +17,6 @@ class App extends Component {
         this.props.add(name,age,email,id);
       });
     }).catch( (err)=>{
-      console.log(err);
     });
   }
 
@@ -24,6 +24,7 @@ class App extends Component {
     return (
     <div>
       <h1>list of friends</h1>
+      <NewFriend friends={this.props}/>
       <FriendsList friends={this.props.info.friends} />
     </div>
     );
