@@ -6,9 +6,9 @@ import getFriends from "../actions/getFriendsAction";
 
 class FriendsList extends Component {
   state = {
-    newName: "",
-    newAge: "",
-    newEmail: ""
+    name: "",
+    age: "",
+    email: ""
   };
 
   render() {
@@ -21,7 +21,7 @@ class FriendsList extends Component {
             onChange={this.handleNameChange}
             type="text"
             placeholder="Enter name"
-            value={this.state.newName}
+            value={this.state.name}
           />
           <Input
             required
@@ -29,7 +29,7 @@ class FriendsList extends Component {
             onChange={this.handleAgeChange}
             type="number"
             placeholder="Enter age"
-            value={this.state.newAge}
+            value={this.state.age}
           />
           <Input
             required
@@ -37,7 +37,7 @@ class FriendsList extends Component {
             onChange={this.handleEmailChange}
             type="email"
             placeholder="Enter email"
-            value={this.state.newEmail}
+            value={this.state.email}
           />
           <Button>Add Friend</Button>
         </Form>
@@ -52,13 +52,13 @@ class FriendsList extends Component {
   };
 
   handleNameChange = event => {
-    this.setState({ newName: event.target.value });
+    this.setState({ name: event.target.value });
   };
   handleAgeChange = event => {
-    this.setState({ newAge: event.target.value });
+    this.setState({ age: event.target.value });
   };
   handleEmailChange = event => {
-    this.setState({ newEmail: event.target.value });
+    this.setState({ email: event.target.value });
   };
 }
 
