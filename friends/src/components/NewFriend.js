@@ -53,6 +53,7 @@ class NewFriend extends Component{
      else{
        id = 1;
      }
+     this.props.friends.fetchFriends();
      axios.post('http://localhost:5000/api/friends',{name:this.state.name,age:this.state.age,email:this.state.email}).then( (res)=>{
        res.data.forEach( (e)=>{
          if(e.id === id){

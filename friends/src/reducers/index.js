@@ -1,6 +1,7 @@
-import {ADD} from '../actions';
+import {ADD,REQUEST_FRIENDS,RECEIVE_FRIENDS} from '../actions';
 
 const defaultState = {
+  fetching: false,
   friends:[]
 }
 
@@ -25,6 +26,15 @@ export default (state=defaultState,action) =>{
       return Object.assign({}, state, {
         friends: modifyFriends(state.friends,action)
       });
+    case REQUEST_FRIENDS:
+      return Object.assign({},state,{
+        fetching:true
+      });
+    case RECEIVE_FRIENDS:
+      return Object.assign({},state,{
+        fetching:false
+      });
+
     default:
      return state; 
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {add} from './actions';
+import {add,fetchFriends} from './actions';
 import {connect} from 'react-redux';
 import FriendsList from './components/FriendsList';
 import NewFriend from './components/NewFriend';
@@ -8,6 +8,7 @@ import axios from 'axios';
 
 class App extends Component {
   componentDidMount(){
+    this.props.fetchFriends();
     axios.get('http://localhost:5000/api/friends').then( res=>{
       res.data.forEach( (e,i)=>{
         let name = e.name;
@@ -39,4 +40,4 @@ const mapStateToProps = (state) =>{
 }
 
 
-export default connect(mapStateToProps,{add})(App);
+export default connect(mapStateToProps,{add,fetchFriends})(App);

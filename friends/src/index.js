@@ -8,6 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import friends from './reducers';
+import 'babel-polyfill';
 
 
 const loggerMiddleware = createLogger()
@@ -19,6 +20,7 @@ const store = createStore(
       loggerMiddleware
     )
 )
+
 
 ReactDOM.render(
 <Provider store={store}>
