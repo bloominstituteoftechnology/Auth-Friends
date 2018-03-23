@@ -20,7 +20,7 @@ export const addNewFriend = (friend) => dispatch => {
     axios
         .post('http://localhost:5000/api/friends', friend)
             .then(response => {
-                dispatch({type: 'SAVED', friend});
+                dispatch({type: 'SAVED', friends: response.data});
             })
             .catch(error => {
                 dispatch({type:'ERROR', errorMessage: `There was and error: ${error}`});

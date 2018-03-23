@@ -49,31 +49,28 @@ class FriendButtons extends Component {
     
     updateFriendClick() {
         this.toggle();
-
-        let fName, fAge, fEmail;
-
-        if (this.state.name !== '') {
-        fName = this.state.newName;    
-        } else {
-        fName = this.props.friend.name;
-        }
         
-        console.log(fName);
 
+        const updatedInfo = {
+            id: this.props.friend.id,
+            name: this.state.newName,
+            age: this.state.newAge,
+            email: this.state.newEmail
+        };
+
+        if (updatedInfo.name === '') 
+            updatedInfo.name = this.props.friend.name;
+        if (updatedInfo.age === '') 
+            updatedInfo.age = this.props.friend.age;
+        if (updatedInfo.email === '') 
+            updatedInfo.email = this.props.friend.email;
         
-        this.props.updateFriend(
-            {
-                id: this.props.friend.id,
-                name: this.state.newName,
-                age: this.state.newAge,
-                email: this.state.newEmail
-            }
-        )
+        this.props.updateFriend(updatedInfo);
 
     }
     
     render(){
-        //document.getElementById('new-Name').focus()
+        
         return(
             <fragment>
                 <Button color="danger" onClick={this.toggle}>Edit</Button>
@@ -96,7 +93,9 @@ class FriendButtons extends Component {
                             </FormGroup>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" type='submit' onClick={this.updateFriendClick}>Update Info</Button>{' '}
+                        <Button color="primary" onClick={() => {
+                            this.updateFriendClick()
+                            }}>Update Info</Button>{' '}
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                     </Form>

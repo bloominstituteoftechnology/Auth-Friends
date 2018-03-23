@@ -39,9 +39,9 @@ class App extends Component {
           nameInput.value = '';
           document.getElementById('name_field').focus();
           }}>
-          <input ref={name => nameInput = name} placeholder='New Friend Name' autoFocus='true' id='name_field'/>
-          <input ref={age => ageInput = age} placeholder='Age'/>
-          <input ref={email => emailInput = email} placeholder='email'/>
+          <input className='inputField' ref={name => nameInput = name} placeholder='New Friend Name' autoFocus='true' id='name_field'/>
+          <input className='inputField' ref={age => ageInput = age} placeholder='Age'/>
+          <input className='inputField' ref={email => emailInput = email} placeholder='email'/>
           <button type='submit'>Add New Fiend</button>
         </form>
         

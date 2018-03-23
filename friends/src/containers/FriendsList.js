@@ -14,13 +14,14 @@ class FriendsList extends Component {
     render() {
         
         return(    
-            <div>
+            <div className='container' >
               {this.props.friends.map(friend => {
                 return (
-                  <div>
-                    <div>{friend.name}</div>
-                    <div>{friend.age}</div>
-                    <div>{friend.email}</div>
+                  <div className='friendCard'>
+                    <div className='w100'>{friend.name}</div>
+                    <div className='w100'>{friend.age}</div>
+                    <div className='w100'>{friend.email}</div>
+                    <br/>
                     <FriendButtons friend={friend}/>
                     <br/><br/>
                   </div>

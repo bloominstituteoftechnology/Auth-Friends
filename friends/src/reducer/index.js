@@ -4,6 +4,7 @@ const initialState = {
     fetching: false,
     saving: false,
     deleting: false,
+    updating: false,
     error: null
 }
 
@@ -18,7 +19,7 @@ export default (state = initialState, action) => {
         case 'SAVING':
             return {...state, saving: true};
         case 'SAVED':
-            return {...state, friends: [...state.friends, action.friend], saving: false}
+            return {...state, friends: action.friends, saving: false}
         case 'DELETING':
             return {...state, deleting: true }
         case 'DELETED':
