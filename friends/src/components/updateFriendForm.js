@@ -8,6 +8,7 @@ class UpdateFriendForm extends React.Component {
             name: '',
             age: '',
             email: '',
+            edit: true,
         },
         id: 0,
     }
@@ -21,16 +22,18 @@ class UpdateFriendForm extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.updateFriend(this.state.id, this.state.friend);
+        this.props.updateFriend(this.state.id, this.state.Fields);
         this.setState({
             Fields: {
                 name: '',
                 age: '',
                 email: '',
+                
             }
         });
+        this.props.update()
     }
-
+    
     componentDidMount() {
         const { friend } = this.props;
         const field = this.state.Fields;
@@ -44,7 +47,7 @@ class UpdateFriendForm extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <div className="Container">
                <form onSubmit={this.handleSubmit}>

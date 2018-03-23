@@ -28,12 +28,13 @@ class CreateFriendForm extends React.Component {
                 name: '',
                 age: '',
                 email: '',
+                
             }
         });
-    }
+    }   
 
     render() {
-        // console.log(this.props)
+        console.log(this.props)
         return (
             <div className="Container">
                <form onSubmit={this.handleSubmit}>
@@ -49,6 +50,7 @@ class CreateFriendForm extends React.Component {
         )
     }
 }
+
 const mapStateToProps = state => {
     return state;
 }

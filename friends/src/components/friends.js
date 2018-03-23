@@ -13,7 +13,7 @@ class Friends extends React.Component {
 
     update = (friend) => {
         this.setState({
-            edit: true,
+            edit: !this.state.edit,
             friend: friend,
         })
     }
@@ -28,7 +28,7 @@ class Friends extends React.Component {
                         <button onClick ={ () =>this.update(friend) } >EDIT</button>
                     </div> 
                 )}
-        { this.state.edit ? (<UpdateFriendForm friend={this.state.friend} />) : ( <CreateFriendForm /> )  } 
+        { this.state.edit ? (<UpdateFriendForm update={this.update} friend={this.state.friend} />) : ( <CreateFriendForm /> )  } 
             </div>
         )
     }

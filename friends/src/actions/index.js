@@ -16,7 +16,7 @@ export const getFriends = () => dispatch => {
 
     axios
         .get(`http://localhost:5000/api/friends`)
-        .then(response => {
+        .then(response => { 
             dispatch({ type: FETCHED, friends: response.data })
         })
         .catch(err => {
@@ -43,7 +43,7 @@ export const updateFriend = (id, friend) => dispatch => {
     axios
         .put(`http://localhost:5000/api/friends/${id}`, friend )
         .then(response => {
-            console.log('repsonses', response.data)
+            // console.log('responses', response.data)
             dispatch({ type: UPDATED, friends: response.data})
         })
         .catch(err => {
