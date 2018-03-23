@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, CardTitle, CardText, Button } from "reactstrap";
 import { connect } from "react-redux";
 import getFriends from "../actions/getFriendsAction";
+import removeFriend from "../actions/removeFriendAction";
 
 class FriendsList extends Component {
   componentDidMount() {
@@ -22,7 +23,9 @@ class FriendsList extends Component {
               <CardText>{friend.age}</CardText>
               <CardText>{friend.email}</CardText>
             </Card>
-            <Button id={friend.id}>Remove Friend</Button>
+            <Button onClick={() => this.props.removeFriend(friend.id)}>
+              Remove Friend
+            </Button>
           </Fragment>
         ))}
       </Fragment>
@@ -36,4 +39,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getFriends })(FriendsList);
+export default connect(mapStateToProps, { getFriends, removeFriend })(
+  FriendsList
+);

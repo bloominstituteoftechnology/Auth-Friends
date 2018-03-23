@@ -8,6 +8,11 @@ import {
   ADD_FRIEND_SUCCESS,
   ADD_FRIEND_ERROR
 } from "../actions/addFriendAction";
+import {
+  REMOVE_FRIEND_PENDING,
+  REMOVE_FRIEND_SUCCESS,
+  REMOVE_FRIEND_ERROR
+} from "../actions/removeFriendAction";
 
 const init = {
   friends: [],
@@ -25,25 +30,25 @@ const init = {
   addError: null
 };
 
-export default (getFriendsSlice = init, action) => {
+export default (state = init, action) => {
   switch (action.type) {
     /*   FETCH FRIENDS REDUCERS  */
     case FETCH_FRIENDS_PENDING:
       return {
-        ...getFriendsSlice,
+        ...state,
         fetchingFriends: true,
         fetchedFriends: false
       };
     case FETCH_FRIENDS_SUCCESS:
       return {
-        ...getFriendsSlice,
+        ...state,
         friends: action.payload,
         fetchingFriends: false,
         fetchedFriends: true
       };
     case FETCH_FRIENDS_ERROR:
       return {
-        ...getFriendsSlice,
+        ...state,
         fetchedError: action.error,
         fetchingFriends: false,
         fetchedFriends: false
@@ -51,25 +56,46 @@ export default (getFriendsSlice = init, action) => {
     /*   ADD FRIEND REDUCERS  */
     case ADD_FRIEND_PENDING:
       return {
-        ...getFriendsSlice,
+        ...state,
         addingFriends: true,
         addedFriends: false
       };
     case ADD_FRIEND_SUCCESS:
       return {
-        ...getFriendsSlice,
+        ...state,
         friends: action.payload,
         addingFriends: false,
         addedFriends: true
       };
     case ADD_FRIEND_ERROR:
       return {
-        ...getFriendsSlice,
-        fetchedError: action.error,
+        ...state,
+        addError: action.error,
         addingFriends: false,
         addedFriends: false
       };
+
+    case REMOVE_FRIEND_PENDING:
+      return {
+        ...state,
+        removingFriend: true,
+        removedFriend: false
+      };
+    case REMOVE_FRIEND_SUCCESS:
+      return {
+        ...state,
+        friends: action.payload,
+        removingFriend: false,
+        removedFriend: true
+      };
+    case REMOVE_FRIEND_ERROR:
+      return {
+        ...state,
+        removedError: action.error,
+        removingFriend: false,
+        removedFriend: false
+      };
     default:
-      return getFriendsSlice;
+      return state;
   }
 };
