@@ -26,7 +26,7 @@ export const fetchFriends = () => dispatch => {
 export const saveFriend = data => dispatch => {
     dispatch({ type: SAVE_FRIEND });
     axios
-        .post("http://localhost:5000/api/friends/save", data)
+        .post("http://localhost:5000/api/friends", data)
         .then(({ data }) => {
             dispatch({ type: FRIEND_SAVED, payload: data });
         })
@@ -38,7 +38,7 @@ export const saveFriend = data => dispatch => {
 export const updateFriend = () => dispatch => {
     dispatch({ type: UPDATE_FRIEND });
     axios
-        .put(`http://localhost:5000/api/friends/update`)
+        .put(`http://localhost:5000/api/friends`)
         .then(({ data }) => {
             dispatch({ type: FRIEND_UPDATED, payload: data });
         })
@@ -47,10 +47,10 @@ export const updateFriend = () => dispatch => {
         });
 };
 
-export const deleteFriend = () => dispatch => {
+export const deleteFriend = (id) => dispatch => {
     dispatch({ type: DELETE_FRIEND });
     axios
-        .delete(`http://localhost:5000/api/friends/delete`)
+        .delete(`http://localhost:5000/api/friends/${id}`)
         .then(({ data }) => dispatch({ type: FRIEND_DELETED, payload: data }))
         .catch(error => {
             dispatch({ type: DELETE_ERROR, errorMessage: 'Error deleting friend' });

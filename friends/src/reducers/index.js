@@ -46,7 +46,15 @@ export const rootReducer = (state = initialState, action) => {
 			return state;
 		case actionTypes.DELETE_FRIEND:
 			return state;
-		case actionTypes. DELETE_ERROR:
+		case actionTypes.FRIEND_DELETED:
+			console.log(action);
+			return {
+				...state,
+				friends: action.payload,
+				friendDeleted: true,
+				error: null
+			};
+		case actionTypes.DELETE_ERROR:
 			return state;
 		case actionTypes.UPDATE_FRIEND:
 			return { ...state, updatingFriend: true };
