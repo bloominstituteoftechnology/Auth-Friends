@@ -48,13 +48,16 @@ app.get('/api/friends', (req, res) => {
 });
 
 app.get('/api/friends/:id', (req, res) => {
-  const friend = friends.find(f => f.id == req.params.id);
+  setTimeout(() => {
+    res.send(friends);
+  }, 1000);
+  // const friend = friends.find(f => f.id == req.params.id);
 
-  if (friend) {
-    res.status(200).json(friend);
-  } else {
-    res.status(404).send({ msg: 'Friend not found' });
-  }
+  // if (friend) {
+  //   res.status(200).json(friend);
+  // } else {
+  //   res.status(404).send({ msg: 'Friend not found' });
+  // }
 });
 
 app.post('/api/friends', (req, res) => {
