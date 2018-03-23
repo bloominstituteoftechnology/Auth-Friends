@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getFriends, addFriend } from './actions';
+import { getFriends, addFriend, deleteFriend } from './actions';
 
 class App extends Component {
   state = {
@@ -25,15 +25,10 @@ handleInputChange = (event) => {
             {this.props.friends.map(friend => {
               return (
                 <div key={friend.id}>
-                  <li>
-                    {friend.name}
-                  </li>
-                  <li>
-                    {friend.age}
-                  </li>
-                  <li>
-                    {friend.email}
-                  </li>
+                  <div>{friend.name}</div>
+                  <div>{friend.age}</div>
+                  <div>{friend.email}</div>
+                  <button onClick={() => this.props.deleteFriend(friend.id)}>Delete Friend</button>
                 </div>)
             } )}
           </ul>
@@ -69,4 +64,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {getFriends, addFriend})(App);
+export default connect(mapStateToProps, {getFriends, addFriend, deleteFriend})(App);

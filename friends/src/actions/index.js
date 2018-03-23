@@ -4,7 +4,8 @@ export const GET_FRIEND = 'GET_FRIEND';
 export const GOT_FRIEND = 'GOT_FRIEND';
 export const ADD_FRIEND = 'ADD_FRIEND';
 export const ADDED_FRIEND = 'ADDED_FRIEND';
-// export const DELETE_FRIEND = 'DELETE_FRIEND';
+export const DELETING = 'DELETING';
+export const DELETE_FRIEND = 'DELETE_FRIEND';
 export const ERROR = 'ERROR';
 
 export const getFriends = () => (dispatch) => {
@@ -28,7 +29,17 @@ export const addFriend = (friend) => (dispatch) => {
       dispatch({ type: ADD_FRIEND, friends: response.data});
     })
     .catch((err) => {
-			dispatch({ type: ERROR, errorMessage: "You didnt add any friends" });
+			dispatch({ type: ERROR, errorMessage: "You didn't add any friends" });
 		});
-
-}
+	} 
+	export const deleteFriend = (id) => (dispatch) => {
+		dispatch({ type: DELETING });
+		axios
+			.delete(`http://localhost:5000/api/friends/${id}`)
+			.then((response)=> {
+					dispatch({ type: DELETE_FRIEND, friends: response.data});
+				})
+			.catch((err) => {
+					dispatch({ type: ERROR, errorMessage: "You didn't delete any friends" });
+				});
+	}
