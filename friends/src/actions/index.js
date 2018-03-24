@@ -14,22 +14,6 @@ function receiveFriends(){
   }
 }
 
-export function fetchFriends(){
-  return function(dispatch){
-    dispatch(requestFriends());
-    return fetch('http://localhost:5000/api/friends')
-    .then(
-      (res,err)=>{
-        dispatch(requestFriends());
-        console.log(res);
-        console.log(err,);
-      })
-    .then( ()=>{
-      dispatch(receiveFriends());
-    });
-  }
-}
-
 export const add = (n,a,e,i) =>{
   return {
     type:ADD,
@@ -39,3 +23,45 @@ export const add = (n,a,e,i) =>{
     id:i
   }
 }
+
+export function fetchFriends(name='',age='',email='',id=''){
+  return function(dispatch){
+    dispatch(requestFriends());
+    console.log(name);
+    if(name === ''){
+      return fetch('http://localhost:5000/api/friends')
+      .then(response=>response.json())
+      .then(json =>{
+        dispatch(requestFriends());
+        json.forEach( (e,i)=>{
+          let name = e.name;
+          let age = e.age;
+          let email = e.email;
+          let id = e.id;
+          dispatch(add(name,age,email,id))
+        });
+      })
+      .then( ()=>{
+        dispatch(receiveFriends());
+      })
+      .catch( (err)=>{
+        console.log(err);
+      });
+    }
+    else{
+      return fetch('http://localhost:5000/api/friends')
+      .then( res=>{
+        dispatch(requestFriends());
+        dispatch(add(name,age,email,id));
+      })
+      .then( res=>{
+        dispatch(receiveFriends());
+      })
+      .catch( (err)=>{
+        console.log(err);
+      });
+    }
+  }
+}
+
+

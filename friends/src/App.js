@@ -4,21 +4,10 @@ import {add,fetchFriends} from './actions';
 import {connect} from 'react-redux';
 import FriendsList from './components/FriendsList';
 import NewFriend from './components/NewFriend';
-import axios from 'axios';
 
 class App extends Component {
   componentDidMount(){
     this.props.fetchFriends();
-    axios.get('http://localhost:5000/api/friends').then( res=>{
-      res.data.forEach( (e,i)=>{
-        let name = e.name;
-        let age = e.age;
-        let email = e.email;
-        let id = e.id;
-        this.props.add(name,age,email,id);
-      });
-    }).catch( (err)=>{
-    });
   }
 
   render() {
