@@ -29,10 +29,10 @@ export function fetchFriends(name='',age='',email='',id=''){
     dispatch(requestFriends());
     console.log(name);
     if(name === ''){
+      dispatch(requestFriends());
       return fetch('http://localhost:5000/api/friends')
       .then(response=>response.json())
       .then(json =>{
-        dispatch(requestFriends());
         json.forEach( (e,i)=>{
           let name = e.name;
           let age = e.age;
@@ -49,13 +49,11 @@ export function fetchFriends(name='',age='',email='',id=''){
       });
     }
     else{
+      dispatch(requestFriends());
       return fetch('http://localhost:5000/api/friends')
       .then( res=>{
-        dispatch(requestFriends());
-        dispatch(add(name,age,email,id));
-      })
-      .then( res=>{
         dispatch(receiveFriends());
+        dispatch(add(name,age,email,id));
       })
       .catch( (err)=>{
         console.log(err);
