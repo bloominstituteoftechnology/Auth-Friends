@@ -1,4 +1,4 @@
-# Redux II
+# Redux Friends
 
 Topics:
 
