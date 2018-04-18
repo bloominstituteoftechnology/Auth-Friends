@@ -7,7 +7,7 @@ export const
  UPDATED = 'UPDATED',
  DELETE = 'DELETE',
  DELETED = 'DELETED',
- FETCHING = 'FETCH',
+ FETCH = 'FETCH',
  FETCHED = 'FETCHED'
  ERROR = 'ERROR';
 
@@ -32,5 +32,29 @@ export const
         })
         .catch(err => {
             dispatch({ type: ERROR, errorMessage: 'Cant Add Friends that Arent There'})
+        });
+ };
+
+ export const updateFriend = (id, friend) => dispatch => {
+     dispatch({ type: UPDATE});
+     axios
+        .put(`http://:localhost:5000/api/friends/${id}`, friend )
+        .then(response => {
+            dispatch({ type: UPDATED, friends: response.data})
         })
- }
+        .catch(err => {
+            dispatch({ type: ERROR, errorMessage: 'No Friends to Update'})
+        });
+ };
+
+ export const deleteFriend = (id) => dispatch => {
+     dispatch({ type: DELETE });
+     axios 
+        .delete(`http://:localhost:5000/api/friends/${id}`)
+        .then(response => {
+            dispatch({ type: DELETED, friends: response.data})
+        })
+        .catch(err => {
+            dispatch({ type: ERROR, errorMessage: 'No Friends to Delete'})
+        });
+};
