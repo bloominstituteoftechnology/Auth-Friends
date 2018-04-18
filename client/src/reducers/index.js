@@ -1,19 +1,22 @@
 import {
   FETCH_START,
-  FETCH_SUCCESS,
-  FETCH_ERROR
+  MULTI_FETCH_SUCCESS,
+  SINGLE_FETCH_SUCCESS,
+  FETCH_ERROR,
+  UPDATING_FRIEND,
+  UPDATED_FRIEND
 } from '../actions'
 
 const initialState = {
   fetchingFriends: false,
-  friendsFetched: false,
   friendsSaved: false,
   savingFriends: false,
+  friendsFetched: false,
   updatingFriend: false,
   friendUpdated: false,
   deletingFriend: false,
   friendDeleted: false,
-  currentFriend: null,
+  selectedFriend: null,
   friends: [],
   error: null
 }
@@ -22,11 +25,17 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_START:
       return Object.assign({}, state, { fetchingFriends: true, friendsFetched: false })
-    case FETCH_SUCCESS:
+    case MULTI_FETCH_SUCCESS:
       return Object.assign({}, state, { friends: payload, fetchingFriends: false, friendsFetched: true })
+    case SINGLE_FETCH_SUCCESS:
+      return Object.assign({}, state, { selectedFriend: payload }) 
     case FETCH_ERROR:
       return Object.assign({}, state, { error: payload, fetchingFriends: false, friendsFetched: false })
+    case UPDATING_FRIEND:
+      return Object.assign({}, state, { friendUpdated: false, updatingFriend: true })
+    case UPDATED_FRIEND:
+      return Object.assign({}, state, { friendUpdated: true, updatingFriend: false, selectedFriend: null })  
     default:
-      return state  
+      return state
   }
 }
