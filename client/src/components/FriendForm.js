@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createFriend, updateFriend, fetchFriend } from '../actions'
 
-class FormComponent extends Component {
+class Form extends Component {
   constructor(props) {
     super(props)
     this.state = props.friend
@@ -52,8 +52,6 @@ class FormComponent extends Component {
   }
 }
 
-const Form = connect(null, { createFriend, updateFriend })(FormComponent)
-
 class FormWrapper extends Component {
   componentDidMount() {
     if (this.props.match.params.id) {
@@ -69,4 +67,4 @@ class FormWrapper extends Component {
 }
 
 const mapStateToProps = (state) => ({ selectedFriend: state.selectedFriend, updatingFriend: state.updatingFriend })
-export default connect(mapStateToProps, { fetchFriend })(FormWrapper)
+export default connect(mapStateToProps, { fetchFriend, createFriend, updateFriend })(FormWrapper)
