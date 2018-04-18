@@ -1,41 +1,59 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFriends } from '../actions'
+import { fetchFriends, addFriend } from '../actions'
+import FriendList from './Friends'
+import CreateFriendForm from './CreateFriendForm'
 
 import logo from '../logo.svg';
 import '../styles/App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      friendName: '',
+      friendAge: '',
+      friendEmail: '',
+    }
+  }
+
   componentDidMount() {
     this.props.fetchFriends();
+  }
+
+  addFriend = event => {
+    event.preventDefault();
+    const { friendName, friendAge, friendEmail } = this.state;
+    const newFriend = {
+      friendName,
+      friendAge,
+      friendEmail
+    }
+    this.props.addFriend(newFriend);
+    this.setState({ friendName: '', friendAge: '', friendEmail: '' });
+  }
+
+  handleInputChange = event => {
+    this.setState({ [event.target.name]: event.target.value })
   }
 
   render() {
     return (
       <div className="App">
-      {console.log('props', this.props)}
+        {console.log('props', this.props)}
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Redux Friends</h1>
         </header>
-        <div>
-          {this.props.friends.map(friend => {
-            return (
-            <div key={friend.id}>
-              <h1>{friend.name}</h1>
-              <strong>{friend.age}</strong>
-              <p>{friend.email}</p>
-            </div>)
-          })}
-          
-        </div>
+        <CreateFriendForm friendName={this.state.friendName} friendAge={this.state.friendAge} friendEmail={this.state.friendEmail} handleInputChange={this.handleInputChange} />
+        <FriendList friends={this.props.friends} />
       </div>
     );
   }
 }
 
 const stateProps = state => {
-  console.log('state',state.friendsReducers)
+  console.log('state', state.friendsReducers)
   return {
     friends: state.friendsReducers.friends,
     fetching: state.friendsReducers.fetching,
@@ -44,4 +62,4 @@ const stateProps = state => {
   }
 }
 
-export default connect(stateProps, { fetchFriends })(App);
+export default connect(stateProps, { fetchFriends, addFriend })(App);
