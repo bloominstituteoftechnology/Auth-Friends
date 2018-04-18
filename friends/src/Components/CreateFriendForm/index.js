@@ -3,7 +3,7 @@ import React from 'react';
 export default (props) => {
     return (
         <div>
-            <form >
+            <form onSubmit={props.createFriend} >
                 <input
                     className="input"
                     onChange={props.handleInputChange}

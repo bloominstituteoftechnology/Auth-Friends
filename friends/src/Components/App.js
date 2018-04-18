@@ -21,13 +21,13 @@ class App extends Component {
     this.props.fetchFriends();
   }
 
-  addFriend = event => {
+  createFriend = event => {
     event.preventDefault();
     const { friendName, friendAge, friendEmail } = this.state;
     const newFriend = {
-      friendName,
-      friendAge,
-      friendEmail
+      name: friendName,
+      age: friendAge,
+      email: friendEmail
     }
     this.props.addFriend(newFriend);
     this.setState({ friendName: '', friendAge: '', friendEmail: '' });
@@ -45,7 +45,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Redux Friends</h1>
         </header>
-        <CreateFriendForm friendName={this.state.friendName} friendAge={this.state.friendAge} friendEmail={this.state.friendEmail} handleInputChange={this.handleInputChange} />
+        <CreateFriendForm friendName={this.state.friendName} friendAge={this.state.friendAge} friendEmail={this.state.friendEmail} handleInputChange={this.handleInputChange} createFriend={this.createFriend} />
         <FriendList friends={this.props.friends} />
       </div>
     );
