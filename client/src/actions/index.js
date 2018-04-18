@@ -13,9 +13,29 @@ const fetchFriends = () => {
   }
 }
 
+const createFriend = (friend) => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_START })
+    axios.post('http://localhost:5000/api/friends', friend)
+      .then(({ data }) => dispatch({ type: FETCH_SUCCESS, payload: data }))
+      .catch((error) => dispatch({ type: FETCH_ERROR, payload: error }))
+  }
+}
+
+const updateFriend = (friend) => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_START })
+    axios.put(`http://localhost:5000/api/friends/${friend.id}`, friend)
+      .then(({ data }) => dispatch({ type: FETCH_SUCCESS, payload: data }))
+      .catch((error) => dispatch({ type: FETCH_ERROR, payload: error }))
+  }
+}
+
 export {
   FETCH_START,
   FETCH_SUCCESS,
   FETCH_ERROR,
-  fetchFriends
+  fetchFriends,
+  createFriend,
+  updateFriend
 }

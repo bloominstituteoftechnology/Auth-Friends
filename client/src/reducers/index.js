@@ -13,6 +13,7 @@ const initialState = {
   friendUpdated: false,
   deletingFriend: false,
   friendDeleted: false,
+  currentFriend: null,
   friends: [],
   error: null
 }
@@ -24,7 +25,7 @@ export default (state = initialState, { type, payload }) => {
     case FETCH_SUCCESS:
       return Object.assign({}, state, { friends: payload, fetchingFriends: false, friendsFetched: true })
     case FETCH_ERROR:
-      return Object.assign({}, state, { error: payload, fetchingFriends: false, friendsFetched: false })  
+      return Object.assign({}, state, { error: payload, fetchingFriends: false, friendsFetched: false })
     default:
       return state  
   }
