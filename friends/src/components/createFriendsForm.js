@@ -25,6 +25,9 @@ const CreateFriendsForm = props => {
 			<button type="button" onClick={() => props.createFriends(props.friend)}>
 				Create Friend
 			</button>
+			<button type="button" onClick={() => props.createFriends(props.friend)}>
+				Update Friend
+			</button>
 		</form>
 	);
 };
