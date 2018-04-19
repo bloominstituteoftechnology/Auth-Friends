@@ -1,4 +1,4 @@
-import { /* Actions */} from './actions';
+import { /* Actions */} from './actions/friendsActions.js';
 
 const initialState = { /* Set state here */ };
 
