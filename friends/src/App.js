@@ -30,6 +30,29 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <div className='Form'>
+          <input
+          type='text'
+          placeholder='name'
+          className='Form__input'>
+          </input>
+          <input
+          type='text'
+          placeholder='age'
+          className='Form__input'>
+          </input>
+          <input
+          type='text'
+          placeholder='email'
+          className='Form__input'>
+          </input>
+          <button
+          className='Form__input-button'>
+           Add New Friend </button>
+        </div>
+        <div className='List'>
+          <h1>Friends</h1>
+        </div>
       </div>
     );
   }

@@ -26,3 +26,22 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+.Form {
+  display: inline-block;
+  max-width: 400px;
+}
+
+.Form__input {
+  width: 100%;
+  text-align: center;
+}
+
+.Form__input-button {
+  width: 100%;
+}
+
+.List {
+  display: block;
+}
