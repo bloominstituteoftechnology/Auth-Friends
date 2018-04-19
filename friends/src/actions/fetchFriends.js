@@ -33,3 +33,17 @@ export const createFriends = friend => {
 			});
 	};
 };
+
+export const updateFriends = friend => {
+	const friends = axios.put("http://localhost:5000/api/friends", friend);
+	return dispatch => {
+		friends
+			.then(response => {
+				dispatch(fetchFriends());
+			})
+			.catch(error => {
+				console.log(error);
+				dispatch({ type: ERROR, payload: "Error posting friend!" });
+			});
+	};
+};
