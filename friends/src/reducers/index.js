@@ -1,38 +1,34 @@
-import { FETCH_BEGIN, FETCH_SUCCESS, FETCH_ERROR } from '../actions';
+import * as AT from '../actions/actionTypes';
 
 const initialState = {
   friends: [],
-  fetchingFriends: false,
-  friendsFetched: false,
-  friendsSaved: false,
-  savingFriends: false,
-  updatingFriend: false,
-  friendUpdated: false,
-  deletingFriend: false,
-  friendDeleted: false,
+  pending: false,
+//   updatingFriend: false,
+//   friendUpdated: false,
+//   deletingFriend: false,
+//   friendDeleted: false,
   error: null,
 };
 
-export const friendsReducer = (state = initialState, action) => {
+const friendsReducer = (state = initialState, action) => {
     switch(action.type) {
-        case FETCH_BEGIN:
+        case AT.PENDING_FRIENDS:
             return Object.assign({}, state, { 
-                fetchingFriends: true,
-                friendsFetched: false
+                pending: true,
              });
-        case FETCH_SUCCESS:
+        case AT.SUCCESS_FRIENDS:
             return Object.assign({}, state, { 
+                pending: false,
                 friends: [...state.friends, ...action.payload],
-                fetchingFriends: false,
-                friendsFetched: true
             })
-        case FETCH_ERROR:
+        case AT.ERROR_FRIENDS:
             return Object.assign({}, state, { 
-                fetchingFriends: false,
-                friendsFetched: false,
+                pending: false,
                 error: action.payload
             })
         default:
             return state;
     }
 }
+
+export default friendsReducer;
