@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { friendReducer } from './reducers/index';
+import { friendReducer } from './index';
 
-export default ({
+export default combineReducers({
     friends: friendReducer
 })
