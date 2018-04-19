@@ -6,29 +6,29 @@ export const ERROR_FRIENDS = 'ERROR_FREINDS';
 export const fetchFriends = () => {
     const friends = axios.get('http://localhost:5000/api/friends');
     return dispatch => {
-        dispatch({ type: FETCHING_FRIENDS });
+        dispatch({ type: PENDING_FRIENDS });
         friends 
             .then(response => {
                 console.log(response);
-                dispatch({ type: SUCCESS_FETCHING_FRIENDS, payload: []});
+                dispatch({ type: SUCCESS_FRIENDS, payload: []});
             })
             .catch(err => {
-                dispatch({ type: ERROR_FETCHING_FRIENDS, payload: 'ERROR FETCHING FRIENDS' });
+                dispatch({ type: ERROR_FRIENDS, payload: 'ERROR FETCHING FRIENDS' });
             });
     }
 }
 
-export const fetchFriends = data => {
+export const createFriend = data => {
     const friends = axios.post('http://localhost:5000/api/friends');
     return dispatch => {
-        dispatch({ type: POSTING_FRIEND });
+        dispatch({ type: PENDING_FRIEND });
         friends 
             .then(response => {
                 console.log(response);
-                dispatch({ type: SUCCESS_POSTING_FRIEND, payload: []});
+                dispatch({ type: SUCCESS_FRIEND, payload: []});
             })
             .catch(err => {
-                dispatch({ type: ERROR_POSTING_FRIENDS, payload: 'ERROR POSTING FRIENDS' });
+                dispatch({ type: ERROR_FRIENDS, payload: 'ERROR POSTING FRIENDS' });
             });
     }
 }
