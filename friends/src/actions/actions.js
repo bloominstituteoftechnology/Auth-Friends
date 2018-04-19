@@ -55,4 +55,16 @@ export const deleteFriend = () => {
     };
 };
 
-export const
+export const updateFriend = () => {
+    return dispatch => {
+        dispatch({ type: UPDATE_FRIEND });
+        axios
+            .put('http://localhost:5000/api/friends/update')
+            .then(({ data }) => {
+                dispatch({ type: FRIEND_UPDATED, payload: data });
+            })
+            .catch(error => {
+                dispatch({ type: ERROR_UPDATING_FRIEND, payload: error });
+            });
+    };
+};
