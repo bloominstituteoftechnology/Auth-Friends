@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
       <ul>
-        {this.props.friends.map(friend => <li onClick={() => this.handleUpdateFriend(friend) }>{friend.name}</li>)}
+        {this.props.friends.map(friend => <li onSubmit={() => this.handleUpdateFriend(friend) }>{friend.name}</li>)}
       </ul>
 
 
