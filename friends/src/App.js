@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchFriends, createFriend } from './actions';
+import { fetchFriends, createFriend, deleteFriend } from './actions';
 import { connect } from 'react-redux';
 
 
@@ -50,7 +50,7 @@ class App extends Component {
             this.setState({ name: '', age: '', email: '' });
           }}
         >
-          Add Friend
+        Add Friend
         </button>
         </div>
         {this.props.error !== null ? <h4>{this.props.error}</h4> : null}
@@ -62,6 +62,8 @@ class App extends Component {
                                               <div className="friendInfo">
                                                 <div className="age">{friend.age}</div>
                                                 <div className="email">{friend.email}</div>
+                                                <button onClick={() => {
+                                                  this.props.deleteFriend(friend.id);}}>Destroy</button>
                                               </div>
                                               </div>
                                             </li>)}
@@ -80,4 +82,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchFriends, createFriend })(App);
+export default connect(mapStateToProps, { fetchFriends, createFriend, deleteFriend })(App);
