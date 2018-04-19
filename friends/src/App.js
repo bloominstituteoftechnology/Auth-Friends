@@ -62,8 +62,9 @@ class App extends Component {
                                               <div className="friendInfo">
                                                 <div className="age">{friend.age}</div>
                                                 <div className="email">{friend.email}</div>
-                                                <button onClick={() => {
-                                                  this.props.deleteFriend(friend.id);}}>Destroy</button>
+                                                <button className="button" 
+                                                  onClick={() => {
+                                                    this.props.deleteFriend(friend.id);}}>Destroy</button>
                                               </div>
                                               </div>
                                             </li>)}
