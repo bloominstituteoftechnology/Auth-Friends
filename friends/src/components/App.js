@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "./App.css";
 
 import { fetchFriends } from "../actions";
+import Friends from "./Friends";
 
 class App extends Component {
   componentDidMount() {
@@ -11,9 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.friends.map(friend => {
-          return <div key={friend.id}>{friend.name}</div>;
-        })}
+        <Friends friends={this.props.friends} />
       </div>
     );
   }
