@@ -1,0 +1,13 @@
+.Friendcard {
+    width: 275px;
+    height: 200px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.Friendlist {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}

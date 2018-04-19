@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import {getFriends} from '../actions';
 import Friend from './Friend';
-
+import './Friends.css'
 class FriendList extends React.Component {
     componentDidMount() {
         this.props.getFriends();
@@ -10,9 +10,9 @@ class FriendList extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='Friendlist'>
                 {this.props.friends.map(friend => {
-                    return <Friend  key={friend.id} name={friend.name}/>
+                    return <Friend  key={friend.id} name={friend.name} email={friend.email} age={friend.age}/>
                 })}
             </div>
         );
