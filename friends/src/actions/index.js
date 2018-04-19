@@ -21,8 +21,14 @@ export const fetchFriends = friends => {
   };
 };
 
-export const addFriend = friend => {
-  const promise = axios.post("http://localhost:5000/api/friends");
+export const addFriend = (id, name, age, email) => {
+  const promise = axios.post(
+    "http://localhost:5000/api/friends",
+    id,
+    name,
+    age,
+    email
+  );
   return dispatch => {
     dispatch({ type: POSTING });
     promise

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { addFriend } from "../actions";
 
-export default class CreateFriendForm extends Component {
+export class CreateFriendForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,6 +20,7 @@ export default class CreateFriendForm extends Component {
   };
 
   handleAddNewFriend = () => {
+    console.log(this.state.newFriendName);
     this.props.addFriend(
       this.state.newFriendId,
       this.state.newFriendName,
@@ -57,3 +58,12 @@ export default class CreateFriendForm extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    // friends: state.friendsReducer.friends,
+    posting: state.friendsReducer.posting
+  };
+};
+
+export default connect(mapStateToProps, { addFriend })(CreateFriendForm);
