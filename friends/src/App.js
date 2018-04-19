@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import{ friendsActions } from '/actions/friendsActions.js';
+import { connect } from 'react-redux';
 class App extends Component {
   render() {
     return (
@@ -11,4 +12,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, {friendsActions})(App);
