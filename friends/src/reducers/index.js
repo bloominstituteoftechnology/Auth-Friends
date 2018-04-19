@@ -6,6 +6,8 @@ const initialState = {
     friends: [],
 };
 
-export default (friendsReducer = (state = initialState, action) => {
+const friendsReducer = (state = initialState, action) => {
     return state;
-});
+};
+
+export default friendsReducer;

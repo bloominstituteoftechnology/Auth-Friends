@@ -13,7 +13,10 @@ export const fetchFriends = () => {
         friends 
             .then(response => {
                 console.log(response);
-                dispatch();
+                dispatch({ type: SUCCESS_FETCHING_FRIENDS, payload: []});
             })
+            .catch(err => {
+                dispatch({ type: ERROR_FETCHING_FRIENDS, payload: 'ERROR FETCHING FRIENDS' });
+            });
     }
 }
