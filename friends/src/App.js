@@ -7,12 +7,15 @@ import Friends from './components/Friends';
 
 class App extends Component {
   state = {
-    friend: ''
+    newFriend: ''
   };
   componentDidMount() {
     this.props.fetchFriends();
   }
 
+  handleNewFriend = (e) => {
+    this.setState()
+  }
   render() {
     console.log("PROPS", this.props);
     return (
@@ -26,6 +29,13 @@ class App extends Component {
         </p>
         {/* Render CreateFriendForm here - fire action from App*/}
         {/* Render Friends here - send list of friends as props */}
+        <input
+         type=“text”
+         placeholder=“avenger”
+         name=“avenger”
+         value={this.state.avenger}
+         onChange={e => this.setState({ [e.target.name]: e.target.value })}
+       />
         <Friends friendsList={this.props.friends}/>
       </div>
     );
