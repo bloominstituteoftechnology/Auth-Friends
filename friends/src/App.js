@@ -1,22 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Friends } from 
+import { fetchFriends } from './Actions/Index.js';
+import Friends from './Components/Friends';
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchFriends();
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Friends />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+      fetchingFriends: state.fetchingFriends,
+      friendsFetched: state.friendsFetched,
+      friendsSaved: state.friendsSaved,
+      savingFriends: state.savingFriends,
+      updatingFriend: state.updatingFriend,
+      friendUpdated: state.friendUpdated,
+      deletingFriend: state.deletingFriend,
+      friendDeleted: state.friendDeleted,
+      friends: state.friends,
+      error:  state.error,
+  };
+};
+
+export default connect(mapStateToProps, {fetchFriends})(App);

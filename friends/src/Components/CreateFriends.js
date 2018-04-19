@@ -2,25 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addFriend } from '../Actions/Index.js';
 
-class CreateFriend extends React.Component {
+class CreateFriends extends React.Component {
     state = {
-        Inputs: {
+        Fields: {
             name: '',
             age: '',
             email: '',
         }
     }
+
     handleInputChange = (event) => {
         const { name, value } = event.target;
-        const inputs = this.state.Inputs;
-        inputs[name] = value;
-        this.setState({ Inputs: inputs })
+        const fields = this.state.Fields;
+        fields[name] = value;
+        this.setState({Fields: fields})
     }
+
     handleSubmit = (event) => {
-        event.preventDefautl();    
-        this.props.addFriend(this.state.Inputs);
+        event.preventDefault();
+        this.props.addFriend(this.state.Fields);
         this.setState({
-            Inputs: {
+            Fields: {
                 name: '',
                 age: '',
                 email: '',
@@ -30,17 +32,27 @@ class CreateFriend extends React.Component {
 
     render() {
         return (
-            <div className="Friends">
-            <form onSubmit={this.handleSubmit}>
-            <p>
-                <p> New Friend</p>
-                <input onChange={this.handelInputChange} value={this.state.Inputs.name} type="text" name="name" placeholder="Enter Name"/>
-                <input onChange={this.handelInputChange} value={this.state.Inputs.age} type="text" age="age" placeholder="Enter Age"/>
-                <input onChange={this.handelInputChange} value={this.state.Inputs.email} type="text" email="email" placeholder="Enter Email"/>
-            <button> Add Friend </button>
-            </p>
-            </form>
+            <div className="Container">
+                <form onSubmit={this.handleSubmit}>
+                    <fieldset>
+                        <legend>New Friend</legend>
+                        <input value={this.state.Fields.name} onChange={this.handleInputChange} type="text" name="name" placeholder="enter name" />
+                        <input value={this.state.Fields.age} onChange={this.handleInputChange} type="number" name="age" placeholder="enter age" />
+                        <input value={this.state.Fields.email} onChange={this.handleInputChange} type="email" name="email" placeholder="enter email" />
+                        <button>Add Friend</button>
+                    </fieldset>
+                </form>
             </div>
-        )
+        );
+    }
+};
+
+const mapStateToProps = state => {
+    return {
+        friendsSaved: state.friendsSaved,
+        savingFriends: state.savingFriends,
+        error:  state.error,
     }
 }
+
+export default connect(mapStateToProps, { addFriend })(CreateFriends);

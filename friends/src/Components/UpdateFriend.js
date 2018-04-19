@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateFriend } from '../Actions/Index.js';
-import { SIGINT } from 'constants';
 
-class ChangeFriend extends React.Component {
-    state ={
-        Inputs: {
+class UpdateFriends extends React.Component {
+    state = {
+        Fields: {
             name: '',
             age: '',
             email: '',
@@ -13,52 +12,60 @@ class ChangeFriend extends React.Component {
         },
         id: 0,
     }
-    handelInputChange = (event) => {
+
+    handleInputChange = (event) => {
         const { name, value } = event.target;
-        const inputs = this.state.Inputs;
-        input[name] = value;
-        this.setState({ Inputs: inputs });
+        const fields = this.state.Fields;
+        fields[name] = value;
+       this.setState({ Fields: fields });
     }
+
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.updateFriend(this.state.id, this.state.Inputs);
+        this.props.updateFriend(this.state.id, this.state.Fields);
         this.setState({
-            Inputs: {
+            Fields: {
                 name: '',
                 age: '',
                 email: '',
+                
             }
         });
         this.props.update()
     }
+    
     componentDidMount() {
         const { friend } = this.props;
-        const input = this.state.Inputs;
-        input.name = friend.name;
-        input.age = friend.age;
-        input.email = friend.email;
-            this.setState({
-                Inputs: input,
-                id: friend.id,
-            });
-        }
-        render() {
-            return (
-                <div className="Friends">
-                    <form onSubmit={this.handleSubmit}>
-                    <p>
-                    <p> Edit Friend </p>
-                    <input onChange={this.handelInputChange} value={this.state.Inputs.name} type="text" name="name" placeholder="Enter Name"/>
-                    <input onChange={this.handelInputChange} value={this.state.Inputs.age} type="text" age="age" placeholder="Enter Age"/>
-                    <input onChange={this.handelInputChange} value={this.state.Inputs.email} type="text" email="email" placeholder="Enter Email"/>
-                    <button> Update Friends </button>
-                    </p>
-                    </form>
-                    </div>
-            )
-        }
+        const field = this.state.Fields;
+        field.name = friend.name;
+        field.age = friend.age;
+        field.email = friend.email;
+        this.setState({
+            Fields: field,
+            id: friend.id,
+        });
+    }
+
+    render() {
+        // console.log(this.state)
+        return (
+            <div className="Container">
+               <form onSubmit={this.handleSubmit}>
+                   <fieldset>
+                       <legend>Edit Friend </legend>
+                        <input onChange={this.handleInputChange} value={this.state.Fields.name} type="text"   name="name" placeholder="Enter Name" />
+                        <input onChange={this.handleInputChange} value={this.state.Fields.age} type="number" name="age" placeholder="Enter Age" />
+                        <input onChange={this.handleInputChange} value={this.state.Fields.email} type="email"  name="email" placeholder="Enter Email" />
+                        <button>Update Friend</button> 
+                   </fieldset>            
+               </form>
+            </div>
+        )
+    }
 }
+
 const mapStateToProps = state => {
     return state;
 }
-export default connect(mapStateToProps, {updateFriend })(ChangeFriend);
+
+export default connect(mapStateToProps, { updateFriend })(UpdateFriends);
