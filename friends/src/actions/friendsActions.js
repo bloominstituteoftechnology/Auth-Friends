@@ -23,3 +23,20 @@ export const fetchFriends = () => {
         });
       };
     };
+
+
+    export const addFriend = data => {
+      const friends = axios.post('http://localhost:5000/api/friends', data);
+      return dispatch => {
+        friends
+          .then(response => {
+            dispatch(fetchFriends());
+          })
+          .catch(error => {
+            dispatch({
+              type: FETCHING_FRIENDS_ERROR,
+              payload: 'No friends found!'
+            });
+          });
+      };
+    };

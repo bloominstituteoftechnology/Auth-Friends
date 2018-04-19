@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchFriends } from './actions/friendsActions.js';
+import { fetchFriends, addFriend } from './actions/friendsActions.js';
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -57,4 +57,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, { fetchFriends })(App);
+export default connect(mapStateToProps, { fetchFriends, addFriend })(App);
