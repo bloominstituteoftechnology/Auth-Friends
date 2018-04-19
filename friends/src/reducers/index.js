@@ -13,7 +13,7 @@ const friendsReducer = (state = initialState, action) => {
        case SUCCESS_FRIENDS:
         return Object.assign({}, state,{ 
             pending: false, 
-            friends: [...state.friends, ...action.payload] });
+            friends: [...action.payload] });
        case ERROR_FRIENDS:
         return Object.assign({}, state, { 
             pending: false, 

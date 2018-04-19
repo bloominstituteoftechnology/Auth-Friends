@@ -25,7 +25,7 @@ export const createFriend = data => {
         friends 
             .then(response => {
                 console.log(response);
-                dispatch({ type: SUCCESS_FRIENDS, payload: [] });
+                dispatch({ type: SUCCESS_FRIENDS, payload: response.data });
             })
             .catch(err => {
                 dispatch({ type: ERROR_FRIENDS, payload: 'ERROR POSTING FRIENDS' });
