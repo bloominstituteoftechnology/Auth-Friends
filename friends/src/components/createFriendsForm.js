@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const CreateFriendsForm = props => {
 	console.log("Create props: ", props);
@@ -6,7 +6,7 @@ const CreateFriendsForm = props => {
 		<form>
 			<input
 				type="text"
-				name="friendName"
+				name="name"
 				placeholder="Enter friend's name"
 				onChange={props.handleNewFriend}
 			/>
