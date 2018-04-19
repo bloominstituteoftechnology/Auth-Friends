@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFriends, addFriend } from '../actions'
+import { fetchFriends, addFriend, updateFriend, deleteFriend } from '../actions'
 import FriendList from './Friends'
 import CreateFriendForm from './CreateFriendForm'
 
@@ -45,8 +45,19 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Redux Friends</h1>
         </header>
-        <CreateFriendForm friendName={this.state.friendName} friendAge={this.state.friendAge} friendEmail={this.state.friendEmail} handleInputChange={this.handleInputChange} createFriend={this.createFriend} />
-        <FriendList friends={this.props.friends} />
+        <CreateFriendForm
+          friendName={this.state.friendName}
+          friendAge={this.state.friendAge}
+          friendEmail={this.state.friendEmail}
+          handleInputChange={this.handleInputChange}
+          createFriend={this.createFriend}
+        />
+        <div className="list" >
+          <FriendList
+            friends={this.props.friends}
+            updateFriend={this.props.updateFriend}
+          />
+        </div>
       </div>
     );
   }
@@ -58,8 +69,9 @@ const stateProps = state => {
     friends: state.friendsReducers.friends,
     fetching: state.friendsReducers.fetching,
     fetched: state.friendsReducers.fetched,
-    error: state.friendsReducers.error
+    error: state.friendsReducers.error,
+    selected: state.friendsReducers.selected
   }
 }
 
-export default connect(stateProps, { fetchFriends, addFriend })(App);
+export default connect(stateProps, { fetchFriends, addFriend, updateFriend, deleteFriend })(App);

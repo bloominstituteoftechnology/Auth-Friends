@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default (props) => {
+const Update = props => {
     return (
-        <div>
-            <form onSubmit={props.createFriend} >
+        <div className={props.show ? "task" : "task unselected"} >
+            <form onSubmit={props.friendChange} >
                 <input
                     className="input"
                     onChange={props.handleInputChange}
@@ -25,8 +25,10 @@ export default (props) => {
                     value={props.friendEmail}
                     name="friendEmail"
                 />
-                <button className="button button-add" type="submit">Add New Friend</button>
+                <button className="button button-update" type="submit" > Update Friend </button>
             </form>
         </div>
-    );
+    )
 }
+
+export default Update

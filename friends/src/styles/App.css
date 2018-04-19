@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  background-color: #000;
+  color: white;
+  height: 100%;
+  min-height: 850px;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -25,4 +31,149 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.input {
+  border: 2px solid red;
+  border-radius: 4px;
+  text-align: center;
+  width: 250px;
+  margin: 0 5px;
+  height: 25px;
+}
+
+.input:focus {
+  outline: none;
+  border: 2px solid rgb(47, 154, 216);
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+}
+
+.button-disabled {
+  display: none;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button-add {
+  background-color: rgb(2, 138, 184);
+}
+
+.button-add:hover {
+  background-color: rgb(2, 100, 133);
+}
+
+.button-save {
+  background-color: rgb(174, 182, 58);
+}
+
+.button-save:hover {
+  background-color: rgb(107, 112, 36);
+}
+
+.button-return {
+  background-color: rgb(30, 126, 43);
+}
+
+.button-return:hover {
+  background-color: rgb(27, 116, 39);
+}
+
+.button-update {
+  background-color: rgb(207, 143, 24);
+}
+
+.button-update:hover {
+  background-color: rgb(150, 105, 22);
+}
+
+.button-delete {
+  background-color: rgb(196, 58, 24);
+}
+
+.button-delete:hover {
+  background-color: rgb(145, 46, 21);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  margin: 20px auto;
+}
+
+.list__Item {
+  border-bottom: 1px solid black;
+  border-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.list__Item:hover {
+  box-shadow: 1px 1px 10px rgb(2, 138, 184);
+}
+
+.smurfForm {
+  padding: 20px 0;
+}
+
+.list__Item:first-child {
+  border-top: 1px solid black;
+  border-color: #333
+}
+
+.input {
+  border: 2px solid red;
+  background-color: #111;
+  color: #AAA;
+  border-radius: 4px;
+  text-align: center;
+  width: 250px;
+  margin: 0 5px;
+  height: 25px;
+}
+
+.input:focus {
+  outline: none;
+  border: 2px solid rgb(47, 154, 216);
+  background-color: #333;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: red;
+}
+
+.task {
+  flex-grow: 1;
+  height: 18px;
+  margin: 5px;
+  padding: 5px 0;
+}
+
+.footnote {
+  font-size: 10px;
+  margin-top: auto;
+}
+
+.unselected {
+  display: none;
 }
