@@ -1,8 +1,17 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { fetchFriends, createFriends } from './actions/fetchFriends';
+import { connect } from 'react-redux';
 
 class App extends Component {
+  state = {
+    friend: ''
+  };
+  componentDidMount() {
+    this.props.fetchFriends();
+  }
+
   render() {
     return (
       <div className="App">
@@ -20,6 +29,15 @@ class App extends Component {
   }
 }
 
-export default App;
+
 
 // mapStateToProps here and connect App with Redux store
+const mapStateToProps = state => {
+  return {
+    friends: state.friends,
+    error: state.error,
+    fetching: state.fetching
+  };
+};
+
+export default connect(mapStateToProps, { fetchFriends, createFriends })(App);

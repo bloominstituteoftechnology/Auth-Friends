@@ -10,14 +10,14 @@ const initialState = {
 	friends: []
 };
 
-export const friendsReducer = (state = initialState, action) => {
+const friendsReducer = (state = initialState, action) => {
+	console.log(state);
 	switch (action.type) {
 		case FETCHING_FRIENDS:
 			return Object.assign({}, state, { fetching: true });
 		case FETCHED_FRIENDS:
 			return Object.assign({} , state, {
 				fetching: false,
-				error: null,
 				friends: [...action.payload]
 			});
 		case ERROR:
@@ -29,3 +29,5 @@ export const friendsReducer = (state = initialState, action) => {
 			return state;
 	}
 };
+
+export default friendsReducer;

@@ -11,7 +11,7 @@ export const fetchFriends = () => {
 		friends
 			.then(response => {
 				console.log(response);
-				dispatch({ type: FETCHED_FRIENDS, payload: response.data });
+				dispatch({ type: FETCHED_FRIENDS, payload: response.data.data });
 			})
 			.catch(error => {
 				console.log(error);
