@@ -1,28 +1,35 @@
 .App {
   text-align: center;
+  background: lightcoral;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 
 .App-header {
-  background-color: #222;
   height: 150px;
   padding: 20px;
-  color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+input {
+  background: lightgray;
+  text-align: center;
+  height: 20px;
 }
 
-.App-intro {
-  font-size: large;
+ul {
+  list-style: none;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.friend {
+  border: 1px solid gray;
+  width: 30%;
+  margin-left: 30%;
+  padding: 2%;
+  background-color: lightgray;
+}
+
+button {
+  background-color: lightgray;
+  border-radius: 10%;
+  width: 8%;
+  height: 30px;
 }

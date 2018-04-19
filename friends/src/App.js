@@ -39,7 +39,7 @@ class App extends Component {
           value={this.state.email}
           onChange={e => this.setState({ [e.target.name]: e.target.value })}
         />
-        <button
+        <button 
           onClick={() => {
             this.props.createFriend({name: this.state.name, age: this.state.age, email: this.state.email});
             this.setState({name: '', age: '', email: ''});
@@ -49,13 +49,13 @@ class App extends Component {
         </button>
         {this.props.erro !== null ? <h4>{this.props.error}</h4> : null }
         <ul>
-          {this.props.friends.map(friend => <li key={friend.id}>
-          {friend.name}
+          {this.props.friends.map(friend => <li className='friend' key={friend.id}>
+          <h3>{friend.name}</h3>
           <div>
-            {friend.age}
+            <h4>{friend.age}</h4>
           </div>
           <div>
-            {friend.email}
+            <h4>{friend.email}</h4>
           </div>
           </li>)}
         </ul>
