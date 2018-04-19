@@ -1,3 +1,4 @@
+
 import { PENDING_FRIENDS, SUCCESS_FRIENDS, ERROR_FRIENDS} from '../actions/index';
 
 const initialState = {

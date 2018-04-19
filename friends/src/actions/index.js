@@ -12,7 +12,7 @@ export const fetchFriends = () => {
         promise
         .then(response => {
             console.log(response);
-            dispatch({ type: SUCCESS_FRIENDS });
+            dispatch({ type: SUCCESS_FRIENDS, payload: response.data });
         })
         .catch(err => {
             dispatch({type: ERROR_FRIENDS, payload: 'Error Fetching Friends'})

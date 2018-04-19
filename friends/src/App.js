@@ -31,23 +31,28 @@ class App extends Component {
         value={this.state.friends}
         onChange= {(e) => this.setState([e.target.name] = e.target.value)}
         />
-      </div>
+       {/* <ul>
+       {this.props.map(char => {
+         return <li key={char.name}>{char.name}</li>;
+       })}
+     </ul> */}
+     </div>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    fetchingFriends: state.fetchingFriends,
-    friendsfetched: state.friendsfetched,
-    friendsSaved: state.friendsSaved,
-    savingFriends: state.savingFriends,
-    updatingFriends: state.updatingFriends,
-    friendsUpdated: state.friendsUpdated,
-    deletingFriend: state.deletingFriend,
-    friendDeleted: state.friendDeleted,
-    friend: state.friend,
-    error: state.error
+    fetchingFriends: state.friends.fetchingFriends,
+    friendsfetched: state.friends.friendsfetched,
+    friendsSaved: state.friends.friendsSaved,
+    savingFriends: state.friends.savingFriends,
+    updatingFriends: state.friends.updatingFriends,
+    friendsUpdated: state.friends.friendsUpdated,
+    deletingFriend: state.friends.deletingFriend,
+    friendDeleted: state.friends.friendDeleted,
+    friend: state.friends.friend,
+    error: state.friends.error
   };
 };
 
