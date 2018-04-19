@@ -4,7 +4,6 @@ export const FETCHING = "FETCHING";
 export const FETCHED = "FETCHED";
 export const ERROR = "ERROR";
 export const POSTING = "POSTING"
-export const SUCCESS = "SUCCESS"
 
 export function fetch_Friends() {
     return(dispatch) => {
@@ -25,7 +24,7 @@ export const post_Friend = friend => {
         dispatch({type: POSTING})
         axios.post('http://localhost:5000/api/friends', friend)
         .then((response) => {
-            dispatch({type: SUCCESS, payload: []});
+            dispatch(fetch_Friends());
         })
         .catch((err) => {
             dispatch({type: ERROR, payload: "ERROR POSTING FRIEND"})

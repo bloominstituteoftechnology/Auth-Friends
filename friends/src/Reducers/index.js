@@ -1,10 +1,12 @@
-import {FETCHING, FETCHED, ERROR} from '../Actions';
+import {FETCHING, FETCHED, ERROR, POSTING} from '../Actions';
 
 const initialState = {
     fetching: false,
     fetched: false,
     friends: [],
-    error: null
+    error: null,
+    posting: false,
+    success: false
 };
 
 const friendsReducer = (state = initialState, action) => {
@@ -14,6 +16,9 @@ const friendsReducer = (state = initialState, action) => {
         }
         case FETCHED: {
             return {...state, fetching: false, fetched: true, friends: action.payload}
+        }
+        case POSTING: {
+            return{ ...state, posting: true}
         }
         case ERROR: {
             return {...state, fetching: false, error: action.payload}
