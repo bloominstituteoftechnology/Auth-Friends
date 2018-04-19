@@ -10,6 +10,7 @@ const initialState = {
 const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING:
+      state = initialState;
       return Object.assign({}, state, { fetching: true });
     case FETCHED:
       return Object.assign({}, state, {
