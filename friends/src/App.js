@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { fetchFriends, createFriends } from './actions/fetchFriends';
-import { connect } from 'react-redux';
-import Friends from './components/Friends';
+import { fetchFriends, createFriends } from "./actions/fetchFriends";
+import { connect } from "react-redux";
+import Friends from "./components/Friends";
+import CreateFriendsForm from "./components/CreateFriendsForm";
 
 class App extends Component {
   state = {
-    newFriend: ''
+    newFriend: ""
   };
   componentDidMount() {
     this.props.fetchFriends();
   }
 
-  handleNewFriend = (e) => {
-    this.setState()
-  }
+  handleNewFriend = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
   render() {
     console.log("PROPS", this.props);
     return (
@@ -28,21 +29,13 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         {/* Render CreateFriendForm here - fire action from App*/}
+        <CreateFriendsForm />
         {/* Render Friends here - send list of friends as props */}
-        <input
-         type=“text”
-         placeholder=“avenger”
-         name=“avenger”
-         value={this.state.avenger}
-         onChange={e => this.setState({ [e.target.name]: e.target.value })}
-       />
-        <Friends friendsList={this.props.friends}/>
+        <Friends friendsList={this.props.friends} />
       </div>
     );
   }
 }
-
-
 
 // mapStateToProps here and connect App with Redux store
 const mapStateToProps = state => {
