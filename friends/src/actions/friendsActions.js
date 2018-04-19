@@ -21,9 +21,7 @@ export const fetchFriends = () => {
           dispatch({ 
             type: FETCHING_FRIENDS_ERROR, 
             payload: "No friends found!"
-          })
-        })
-        }
-      )
-  }
-}
+          });
+        });
+      };
+    };
