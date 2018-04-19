@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { fetchFriends, createFriends } from "./actions/fetchFriends";
+import {
+  fetchFriends,
+  createFriends,
+  updateFriends
+} from "./actions/fetchFriends";
 import { connect } from "react-redux";
 import Friends from "./components/Friends";
 import CreateFriendsForm from "./components/CreateFriendsForm";
@@ -56,4 +60,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchFriends, createFriends })(App);
+export default connect(mapStateToProps, {
+  fetchFriends,
+  createFriends,
+  updateFriends
+})(App);
