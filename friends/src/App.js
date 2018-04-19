@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import CreateFriend from './components/CreateFriend';
+import CreateFriendForm from './components/CreateFriendForm';
 import Friends from './components/Friends';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
       <div className="box">
         <Friends friends={this.friends} />
         <p className="App-intro">
-        <CreateFriend />
+        <CreateFriendForm />
           Let's Watch this in Action!
         </p>
       </div>
