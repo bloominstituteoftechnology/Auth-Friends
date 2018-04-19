@@ -47,7 +47,7 @@ class App extends Component {
         >
           Add Friend
         </button>
-        {this.props.erro !== null ? <h4>{this.props.error}</h4> : null }
+        {this.props.error !== null ? <h4>{this.props.error}</h4> : null }
         <ul>
           {this.props.friends.map(friend => <li className='friend' key={friend.id}>
           <h3>{friend.name}</h3>
