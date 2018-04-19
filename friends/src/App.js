@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
 import logo from './logo.svg';
 import './App.css';
-import {getFriends} from './actions';
+import FriendList from './components/FriendList';
 class App extends Component {
 
-    componentDidMount() {
-        this.props.getFriends();
-    }
+    // componentDidMount() {
+    //     this.props.getFriends();
+    // }
   render() {
     return (
       <div className="App">
@@ -15,21 +14,23 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-          <ul>
-              {this.props.friends.map(friend => {
-                  return <li key={friend.id}>{friend.name}</li>
-              })}
-          </ul>
+          {/*<ul>*/}
+              {/*{this.props.friends.map(friend => {*/}
+                  {/*return <li key={friend.id}>{friend.name}</li>*/}
+              {/*})}*/}
+          {/*</ul>*/}
+          <FriendList/>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = state => {
-  return {
-      friends: state.friends,
-      gettingFriends: state.gettingFriends
-  };
-};
+// const mapDispatchToProps = state => {
+//   return {
+//       friends: state.friends,
+//       gettingFriends: state.gettingFriends
+//   };
+// };
 
-export default connect(mapDispatchToProps, {getFriends}) (App);
+export default (App);
+// export default connect(mapDispatchToProps, {getFriends}) (App);
