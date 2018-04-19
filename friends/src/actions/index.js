@@ -10,7 +10,6 @@ export const DELETING_FRIENDS = 'DELETING_FRIENDS'
 export const FRIENDS_DELETED = 'FRIENDS_DELETED'
 export const ERROR = 'ERROR'
 
-'http://localhost:5000/api/friends';
 
 export function fetchFriends() {
     return(dispatch) => {
