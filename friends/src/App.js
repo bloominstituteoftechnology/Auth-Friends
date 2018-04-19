@@ -4,10 +4,23 @@ import { fetchFriends } from './actions/friendsActions.js';
 import { connect } from 'react-redux';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchFriends();
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div className="App">
         Time to build  friends app
+        {this.props.friends.map(friend => {
+          
+          return <div>{friend.name}</div>
+        })}
       </div>
     );
   }
@@ -28,4 +41,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, {fetchFriends})(App);
+export default connect(mapStateToProps, { fetchFriends })(App);

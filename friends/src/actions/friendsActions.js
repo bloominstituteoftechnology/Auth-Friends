@@ -6,18 +6,17 @@ export const FETCHING_FRIENDS_ERROR = 'FETCHING_FRIENDS_ERROR';
 
 export const fetchFriends = () => {
   // Set up actions here
-  const friends = axios.get('/api/friends');
+  const friends = axios.get('http://localhost:5000/api/friends');
   return dispatch => {
     dispatch({ type: FETCHING_FRIENDS });
     friends
-      .then(
-        response => {
+      .then(response => {
           dispatch({
             type: FETCHING_FRIENDS_SUCCESS,
             payload: response.data
           });
         })
-        .catch( error => {
+        .catch(error => {
           dispatch({ 
             type: FETCHING_FRIENDS_ERROR, 
             payload: "No friends found!"

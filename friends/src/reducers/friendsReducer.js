@@ -17,19 +17,19 @@ export const friendsReducer = ( state = initialState, action ) => {
   // Set up switch here
   switch ( action.type ) {
     case FETCHING_FRIENDS: 
-    return Object.assign({}, state, { fetchingFriends: true });
+      return Object.assign({}, state, { fetchingFriends: true });
     case FETCHING_FRIENDS_SUCCESS:
-    return Object.assign({}, state, { 
-      fetchingFriends: false, 
-      error: null,
-      friends: [...action.payload]
-    } );
+      return Object.assign({}, state, { 
+        fetchingFriends: false, 
+        error: null,
+        friends: [...action.payload]
+      });
     case FETCHING_FRIENDS_ERROR:
-    return Object.assign({}, state, {
-      fetchingFriends: false,
-      error: action.payload
-    });
+      return Object.assign({}, state, {
+        fetchingFriends: false,
+        error: action.payload
+      });
     default: 
-    return state;
+      return state;
   }
 };

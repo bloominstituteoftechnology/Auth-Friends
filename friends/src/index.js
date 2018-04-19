@@ -9,8 +9,11 @@ import './index.css';
 import App from './App';
 import { friendsReducer } from './reducers/friendsReducer.js';
 
-const store = createStore (friendsReducer, applyMiddleware(thunk, logger));
-//window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const store = createStore (
+  friendsReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(thunk, logger)
+);
 
 ReactDOM.render(
   <Provider store={store}>
