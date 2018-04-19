@@ -22,16 +22,41 @@ class App extends Component {
           type="text"
           placeholder="friend"
           name="friend"
-          value={this.state.friend}
+          value={this.state.name}
+          onChange={e => this.setState({ [e.target.name]: e.target.value })}
+        />
+        <input 
+          type="text"
+          placeholder="age"
+          name="age"
+          value={this.state.age}
+          onChange={e => this.setState({ [e.target.name]: e.target.value })}
+        />
+        <input 
+          type="text"
+          placeholder="email"
+          name="email"
+          value={this.state.email}
           onChange={e => this.setState({ [e.target.name]: e.target.value })}
         />
         <button
-          onClick={() => this.props.createFriend({ friend: this.state.friend })}
+          onClick={() => {
+            this.props.createFriend({name: this.state.name, age: this.state.age, email: this.state.email});
+            this.setState({name: '', age: '', email: ''});
+          }}
         >
           Add Friend
         </button>
         <ul>
-          {this.props.friends.map(friend => <li key={friend}>{friend}</li>)}
+          {this.props.friends.map(friend => <li key={friend.id}>
+          {friend.name}
+          <div>
+            {friend.age}
+          </div>
+          <div>
+            {friend.email}
+          </div>
+          </li>)}
         </ul>
       </div>
     );
