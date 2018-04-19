@@ -1,7 +1,7 @@
 import React from "react";
 
 const CreateFriendsForm = props => {
-	console.log("Create props: ", props);
+	console.log("Form: ", props);
 	return (
 		<form>
 			<input
