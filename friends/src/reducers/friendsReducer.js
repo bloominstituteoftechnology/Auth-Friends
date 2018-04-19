@@ -14,12 +14,12 @@ const initialState = {
 };
 
 export const friendsReducer = ( state = initialState, action ) => {
-  // Set up switch here
   switch ( action.type ) {
     case FETCHING_FRIENDS: 
       return Object.assign({}, state, { fetchingFriends: true });
     case FETCHING_FRIENDS_SUCCESS:
-      return Object.assign({}, state, { 
+      return Object.assign({}, state, {
+        friendsFetched: true, 
         fetchingFriends: false, 
         error: null,
         friends: [...action.payload]

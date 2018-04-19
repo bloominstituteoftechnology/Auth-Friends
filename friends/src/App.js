@@ -4,22 +4,25 @@ import { fetchFriends } from './actions/friendsActions.js';
 import { connect } from 'react-redux';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.fetchFriends();
+    console.log(this.props);
+  }
+
+  displayFriends() {
+    if(this.props.friendsFetched) {
+      this.props.friends.map(friend => { 
+        return <div key={friend.name}>{friend.name}</div>
+      })
+    }
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="App">
-        Time to build  friends app
-        {this.props.friends.map(friend => {
-          
-          return <div>{friend.name}</div>
+        -Friends-
+        {this.props.friends.map(friend => { 
+          return <div key={friend.name}>{friend.name}</div>
         })}
       </div>
     );
@@ -27,17 +30,18 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    fetchingFriends: false,
-    friendsFetched: false,
-    friendsSaved: false,
-    savingFriends: false,
-    updatingFriend: false,
-    friendUpdated: false,
-    deletingFriend: false,
-    friendDeleted: false,
-    friends: [],
-    error: null
+    fetchingFriends: state.fetchFriends,
+    friendsFetched: state.friendsFetched,
+    friendsSaved: state.friendsSaved,
+    savingFriends: state.savingFriends,
+    updatingFriend: state.updatingFriend,
+    friendUpdated: state.friendUpdated,
+    deletingFriend: state.deletingFriend,
+    friendDeleted: state.friendDeleted,
+    friends: state.friends,
+    error: state.error
   };
 }
 
