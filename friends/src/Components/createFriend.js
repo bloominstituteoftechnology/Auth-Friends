@@ -23,7 +23,8 @@ class CreateFriend extends Component {
                     <input type="text" onChange={this.handleInputChange} placeholder="Age" name="age"/>
                     <input type="text" onChange={this.handleInputChange} placeholder="Email" name="email"/>
                 </div>
-                <button>Add</button>
+                <button onClick={() =>
+                this.props.post_Friend({name: this.state.name, age: this.state.age, email: this.state.email}) }>Add</button>
             </div>
         )
     }
