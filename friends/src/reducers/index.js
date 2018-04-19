@@ -1,4 +1,12 @@
-import { FETCHING, FETCHED, ERROR, SAVING, SAVED } from "../actions";
+import {
+  FETCHING,
+  FETCHED,
+  ERROR,
+  SAVING,
+  SAVED,
+  DELETING,
+  DELETED
+} from "../actions";
 const initialState = {
   friends: [],
   fetching: false,
@@ -19,6 +27,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         friends: [...state.friends, action.payload],
+        fetching: false
+      };
+    case DELETING:
+      return { ...state, fetching: true };
+    case DELETED:
+      return {
+        ...state,
+        friends: action.payload,
         fetching: false
       };
     default:

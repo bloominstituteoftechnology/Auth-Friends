@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { connect } from "react-redux";
-import { getFriends, addFriend } from "./actions";
+import { getFriends, addFriend, deleteFriend } from "./actions";
 
 class App extends Component {
   componentDidMount() {
@@ -24,6 +24,9 @@ class App extends Component {
                   <li className="friendName">{friend.name}</li>
                   <li className="friendAge">{friend.age}</li>
                   <li className="friendEmail">{friend.email}</li>
+                  <button onClick={() => this.props.deleteFriend(friend.id)}>
+                    Remove Friend
+                  </button>
                   <hr />
                 </div>
               );
@@ -70,4 +73,8 @@ const mapStateToProps = state => {
     friends: state.friends
   };
 };
-export default connect(mapStateToProps, { getFriends, addFriend })(App);
+export default connect(mapStateToProps, {
+  getFriends,
+  addFriend,
+  deleteFriend
+})(App);
