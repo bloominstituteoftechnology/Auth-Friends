@@ -1,6 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createFriend, updateFriend, fetchFriend } from '../actions'
+import styled from 'styled-components'
+
+const Wrapper = styled.form`
+  display: flex;
+  background-color: ${(props) => props.updatingFriend
+    ? 'tomato'
+    : 'steelblue'
+  };
+  padding: 20px;
+  width: 300px;
+`
+
+const Inputs = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const Input = styled.input`
+  box-sizing: border-box;
+  height: 40px;
+  width: 200px;
+  padding-left: 20px;
+`
+
+const Button = styled.button`
+  height: 120px;
+  padding: 20px;
+`
 
 class Form extends Component {
   constructor(props) {
@@ -28,26 +56,28 @@ class Form extends Component {
   
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          name='name'
-          placeholder="Friend's name"
-          value={this.state.name}
-          onChange={this.handleChange} />
-        <input
-          name='age'
-          placeholder="Friend's age"
-          value={this.state.age}
-          onChange={this.handleChange} />
-        <input
-          name='email'
-          placeholder="Friend's email"
-          value={this.state.email}
-          onChange={this.handleChange} />
-        <button type='submit'>
+      <Wrapper onSubmit={this.handleSubmit} updatingFriend={this.props.updatingFriend}>
+        <Inputs>
+          <Input
+            name='name'
+            placeholder="Friend's name"
+            value={this.state.name}
+            onChange={this.handleChange} />
+          <Input
+            name='age'
+            placeholder="Friend's age"
+            value={this.state.age}
+            onChange={this.handleChange} />
+          <Input
+            name='email'
+            placeholder="Friend's email"
+            value={this.state.email}
+              onChange={this.handleChange} />
+        </Inputs>
+        <Button type='submit'>
           {this.buttonText()}
-        </button>
-      </form>
+        </Button>
+      </Wrapper>
     )
   }
 }
