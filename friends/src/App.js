@@ -20,8 +20,8 @@ class App extends Component {
         </header>
         <input
           type="text"
-          placeholder="friend"
-          name="friend"
+          placeholder="name"
+          name="name"
           value={this.state.name}
           onChange={e => this.setState({ [e.target.name]: e.target.value })}
         />
