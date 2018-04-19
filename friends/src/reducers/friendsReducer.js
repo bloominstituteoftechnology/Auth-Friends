@@ -1,4 +1,4 @@
-import { FETCHING_FRIENDS,FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_ERROR } from './actions/friendsActions.js';
+import { FETCHING_FRIENDS,FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_ERROR } from '../actions/friendsActions.js';
 
 const initialState = {
   fetchingFriends: false,

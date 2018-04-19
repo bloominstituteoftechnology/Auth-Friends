@@ -7,11 +7,13 @@ import logger from 'redux-logger';
 
 import './index.css';
 import App from './App';
-import friendsReducer from './reducers/friendsReducer.js';
+import { friendsReducer } from './reducers/friendsReducer.js';
+
 const store = createStore (friendsReducer, applyMiddleware(thunk, logger));
 //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
 ReactDOM.render(
-  <Provider>
+  <Provider store={store}>
     <App />
   </Provider>, 
   document.getElementById('root'));
