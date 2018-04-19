@@ -19,7 +19,7 @@ export const fetchFriends = () => {
 }
 
 export const createFriend = data => {
-    const friends = axios.post('http://localhost:5000/api/friends');
+    const friends = axios.post('http://localhost:5000/api/friends', data);
     return dispatch => {
         dispatch({ type: PENDING_FRIENDS });
         friends 

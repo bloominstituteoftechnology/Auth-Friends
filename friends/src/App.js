@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { fetchFriends, createFriend } from './actions';
 import { connect } from 'react-redux';
@@ -17,12 +16,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1>Friends List</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
         <input
           type="text"
           placeholder="friend"
@@ -35,6 +30,9 @@ class App extends Component {
         >
           Add Friend
         </button>
+        <ul>
+          {this.props.friends.map(friend => <li key={friend}>{friend}</li>)}
+        </ul>
       </div>
     );
   }
