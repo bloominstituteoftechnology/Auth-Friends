@@ -11,17 +11,17 @@ const initialState = {
 };
 
 const friendsReducer = (state = initialState, action) => {
-	console.log(state);
+	// console.log(state);
 	switch (action.type) {
 		case FETCHING_FRIENDS:
 			return Object.assign({}, state, { fetching: true });
 		case FETCHED_FRIENDS:
-			return Object.assign({} , state, {
+			return Object.assign({}, state, {
 				fetching: false,
 				friends: [...action.payload]
 			});
 		case ERROR:
-			return Object.assign({} , state, {
+			return Object.assign({}, state, {
 				pending: false,
 				error: action.payload
 			});
