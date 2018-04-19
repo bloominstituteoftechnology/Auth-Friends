@@ -12,7 +12,7 @@ export const getFriends = () => {
     dispatch({ type: FETCHING });
 
     promise
-      .then(reponse => {
+      .then(response => {
         dispatch({ type: FETCHED, payload: response.data });
       })
       .catch(err => {
@@ -27,7 +27,7 @@ export const addFriend = data => {
     dispatch({ type: SAVING });
 
     promise
-      .then(reponse => {
+      .then(response => {
         dispatch({ type: SAVED, payload: data });
       })
       .catch(err => {
