@@ -5,18 +5,14 @@ import { fetchFriends, createFriend } from './actions';
 import { connect } from 'react-redux';
 
 class App extends Component {
-  constructor() {
-    super();
-    state = { 
-      friends: ''
-    };
-
-    componentDidMount() {
-      this.props.fetchFriends();
-    }
-    
+  state = {
+    friends: ""
   };
-  
+
+  componentDidMount() {
+    this.props.fetchFriends();
+  }
+
   render() {
     return (
       <div className="App">
@@ -27,17 +23,18 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <input type="text" 
-        placeholder="friend" 
-        name="friend" 
-        value={this.state.friend} 
-        onChange={e => this.setState({ [e.target.name]: e.target.value })}
+        <input
+          type="text"
+          placeholder="friend"
+          name="friend"
+          value={this.state.friend}
+          onChange={e => this.setState({ [e.target.name]: e.target.value })}
         />
-        <button onClick={() => 
-          this.props.createFriend({ friend: this.state.friend })
-          }>
+        <button
+          onClick={() => this.props.createFriend({ friend: this.state.friend })}
+        >
           Add Friend
-          </button>
+        </button>
       </div>
     );
   }
