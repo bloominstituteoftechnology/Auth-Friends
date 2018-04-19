@@ -8,37 +8,55 @@ import {
   CANCEL_UPDATE
 } from '../actions'
 
-const initialState = {
-  fetchingFriends: false,
-  friendsSaved: false,
-  savingFriends: false,
-  friendsFetched: false,
-  updatingFriend: false,
-  friendUpdated: false,
-  deletingFriend: false,
-  friendDeleted: false,
-  selectedFriend: null,
-  friends: [],
-  error: null
+import { combineReducers } from 'redux'
+
+const friendsReducer = (state = [], { type, payload }) => {
+  switch (type) {
+    case MULTI_FETCH_SUCCESS:
+      return payload
+    default:
+      return state  
+  }
 }
 
-export default (state = initialState, { type, payload }) => {
+const selectedFriendReducer = (state = null, { type, payload }) => {
+  switch (type) {
+    case SINGLE_FETCH_SUCCESS:
+      return payload
+    case CANCEL_UPDATE:
+    case UPDATED_FRIEND:  
+      return null
+    default:
+      return state  
+  }
+}
+
+const errorReducer = (state = null, { type, payload }) => {
   switch (type) {
     case FETCH_START:
-      return Object.assign({}, state, { fetchingFriends: true, friendsFetched: false })
-    case MULTI_FETCH_SUCCESS:
-      return Object.assign({}, state, { friends: payload, fetchingFriends: false, friendsFetched: true })
-    case SINGLE_FETCH_SUCCESS:
-      return Object.assign({}, state, { selectedFriend: payload }) 
+      return null  
     case FETCH_ERROR:
-      return Object.assign({}, state, { error: payload, fetchingFriends: false, friendsFetched: false })
+      return payload
+    default:
+      return state  
+  }
+}
+
+const updatingFriendReducer = (state = false, { type, payload }) => {
+  switch (type) {
     case UPDATING_FRIEND:
-      return Object.assign({}, state, { friendUpdated: false, updatingFriend: true })
-    case UPDATED_FRIEND:
-      return Object.assign({}, state, { friendUpdated: true, updatingFriend: false, selectedFriend: null })  
+      return true
     case CANCEL_UPDATE:
-      return Object.assign({}, state, { updatingFriend: false, selectedFriend: null })  
+    case UPDATED_FRIEND:  
+      return false
     default:
       return state
   }
 }
+
+export default combineReducers({
+  friends: friendsReducer,
+  updatingFriend: updatingFriendReducer,
+  selectedFriend: selectedFriendReducer,
+  error: errorReducer
+})
