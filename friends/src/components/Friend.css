@@ -1,0 +1,26 @@
+.Friend-container {
+  display: inline-block;
+  margin-top: 5px;
+  width: 250px;
+  height: 250px;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 15px;
+  background-image: url("http://img.southtracks.com/full/b940c06a0b528fb2-post-it-pink.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 22px;
+} 
+
+.form {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.button {
+    background-color: palevioletred;
+    color: white;
+    font-family: 'Shadows Into Light', cursive;
+}

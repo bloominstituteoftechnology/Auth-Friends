@@ -2,4 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-image: url("https://images.unsplash.com/photo-1520082379916-7cf029de2c1f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5a09af53643d08441c59f2d50cc11f3d&auto=format&fit=crop&w=967&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
 }

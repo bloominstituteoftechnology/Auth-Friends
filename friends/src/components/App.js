@@ -30,11 +30,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <h1 className="App-title">Kaitlyn's Friend List</h1>
         </header>
 
-      <form onSubmit={this.onFormSubmit}>
+      <form className="form" onSubmit={this.onFormSubmit}>
         <input
           type="text"
           name="name"
@@ -56,7 +56,7 @@ class App extends Component {
           value={this.state.email}
           onChange={this.onInputChange}
         />
-        <button type='submit'>Add New Friend</button>
+        <button className='button' type='submit'>Add New Friend</button>
       </form>
       {this.props.friends.map(friend => (
         <Friend key={`friend${friend.id}`} friend={friend}/>

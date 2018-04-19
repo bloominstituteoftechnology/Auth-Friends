@@ -8,14 +8,16 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: black;
+  height: 50px;
   padding: 20px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 35px;
+  font-family: 'Shadows Into Light', cursive;
+  margin-top: 3px;
 }
 
 .App-intro {
