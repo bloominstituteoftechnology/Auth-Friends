@@ -21,19 +21,14 @@ export const fetchFriends = friends => {
   };
 };
 
-export const addFriend = (id, name, age, email) => {
-  const promise = axios.post(
-    "http://localhost:5000/api/friends",
-    id,
-    name,
-    age,
-    email
-  );
+export const addFriend = newFriend => {
+  console.log(newFriend);
+  const promise = axios.post("http://localhost:5000/api/friends", newFriend);
   return dispatch => {
-    dispatch({ type: POSTING });
+    dispatch({ type: FETCHING });
     promise
       .then(({ data }) => {
-        dispatch({ type: POSTED, payload: data });
+        dispatch({ type: FETCHED, payload: data });
       })
       .catch(error => {
         console.log(error);

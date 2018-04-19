@@ -21,12 +21,14 @@ export class CreateFriendForm extends Component {
 
   handleAddNewFriend = () => {
     console.log(this.state.newFriendName);
-    this.props.addFriend(
-      this.state.newFriendId,
-      this.state.newFriendName,
-      this.state.newFriendAge,
-      this.state.newFriendEmail
-    );
+    const newFriend = {
+      id: this.state.newFriendId,
+      name: this.state.newFriendName,
+      age: this.state.newFriendAge,
+      email: this.state.newFriendEmail
+    };
+    this.props.addFriend(newFriend);
+    this.setState({ newFriendName: "", newFriendAge: "", newFriendEmail: "" });
   };
 
   render() {
