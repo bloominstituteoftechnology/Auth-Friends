@@ -6,8 +6,9 @@ import { connect } from "react-redux";
 
 class App extends Component {
   state = {
-    friend: ""
+    friend: { name: "", age: "", email: "" }
   };
+
   componentDidMount() {
     this.props.fetchFriends();
   }
@@ -22,14 +23,33 @@ class App extends Component {
         </p>
         <input
           type="text"
-          placeholder="friend"
+          placeholder="name"
           name="friend"
-          value={this.state.friend}
+          value={this.state.friend.name}
+          onChange={e => this.setState({ [e.target.name]: e.target.value })}
+        />
+        <input
+          type="number"
+          placeholder="age"
+          name="friend.age"
+          value={this.state.friend.age}
+          onChange={e => this.setState({ [e.target.name]: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="email"
+          name="friend.email"
+          value={this.state.friend.email}
           onChange={e => this.setState({ [e.target.name]: e.target.value })}
         />
         <button
           onClick={() => {
-            this.props.createFriend({ friend: this.state.friend });
+            console.log(this.state);
+            this.props.createFriend({
+              name: this.state.friend.name,
+              age: this.state.friend.age,
+              email: this.state.friend.email
+            });
             this.setState({ friend: "" });
           }}
         >

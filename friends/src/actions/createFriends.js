@@ -3,7 +3,8 @@ import axios from "axios";
 import { ERROR_FRIENDS } from "./actionTypes";
 import { fetchFriends } from "./fetchFriends";
 
-export const createAvenger = data => {
+export const createFriend = data => {
+  console.log(data);
   const friends = axios.post("http://localhost:5000/api/friends/", data);
   return dispatch => {
     friends
