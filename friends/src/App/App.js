@@ -1,17 +1,17 @@
-import React, { Component } from "react"
-import { connect } from "react-redux"
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import Friends from "../components/Friends"
-import { fetchFriends } from "../actions"
+import Friends from '../components/Friends'
+import { fetchFriends } from '../actions'
 
 class App extends Component {
-  componentDidMount() {
+  componentDidMount () {
     this.props.fetchFriends()
   }
-  render() {
+  render () {
     return (
-      <div className="App">
-        <Friends greet="hello" />
+      <div className='App'>
+        <Friends greet='hello' />
       </div>
     )
   }

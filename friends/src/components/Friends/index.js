@@ -1,3 +1,3 @@
-import { Friends } from "./Friends"
+import { Friends } from './Friends'
 
 export default Friends

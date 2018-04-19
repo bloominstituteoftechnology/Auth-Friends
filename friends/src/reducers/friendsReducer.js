@@ -1,4 +1,4 @@
-import { FETCHINGFRIENDS, FRIENDSFETCHED, ERROR } from "../actions"
+import { FETCHINGFRIENDS, FRIENDSFETCHED, ERROR } from '../actions'
 
 const initialState = {
   fetchingFriends: false,
