@@ -7,13 +7,19 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 `
 
 const Left = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 0.5s ease-in-out
+  transform: ${(props) => props.transition
+    ? 'translateX(0px)'
+    : 'translateX(-600px)'
+  };
+  margin-left: 50px
 `
 
 const Mat = styled.div`
@@ -28,14 +34,20 @@ const Button = styled.button`
 `
 
 class App extends Component {
+  state = { transition: false }
+  componentDidMount() {
+    setTimeout(() => this.setState({ transition: true }))
+  }
+
   goHome = () => {
     this.props.cancelUpdate()
     this.props.history.push('/')
   }
   render() {
+    const { transition } = this.state
     return (
       <Wrapper>
-        <Left>
+        <Left transition={transition}>
           <Route path='/edit/:id' render={(props) => (
             <FriendForm {...props} key={props.match.params.id} />
           )} />
