@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import { Add_todo } from './ActionCall';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+        fetchingFriends: false,
+        friendsFetched: false,
+        friendsSaved: false,
+        savingFriends: false,
+        updatingFriend: false,
+        friendUpdated: false,
+        deletingFriend: false,
+        friendDeleted: false,
+        friends: [],
+        error: null
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -18,4 +35,12 @@ class App extends Component {
   }
 }
 
-export default App;
+
+const mapStateToProps = (props) => {
+  return {
+      friends: props
+  };
+};
+
+export default connect(mapStateToProps, { Add_todo })(App);
+
