@@ -4,6 +4,10 @@ import { fetchFriends } from './actions/friendsActions.js';
 import { connect } from 'react-redux';
 
 class App extends Component {
+  state = {
+    friend: ''
+  };
+
   componentDidMount() {
     this.props.fetchFriends();
     console.log(this.props);
@@ -24,6 +28,14 @@ class App extends Component {
         {this.props.friends.map(friend => { 
           return <div key={friend.name}>{friend.name}</div>
         })}
+        <input 
+          type='text'
+          placeholder='Add Friend'
+          name="friend"
+          value={this.state.friend}
+          onChange={e => this.setState({ [e.target.name]: e.target.value })}
+        />
+        <button>Submit</button>
       </div>
     );
   }
