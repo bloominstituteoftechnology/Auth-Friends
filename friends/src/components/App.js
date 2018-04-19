@@ -4,6 +4,7 @@ import "./App.css";
 
 import { fetchFriends } from "../actions";
 import Friends from "./Friends";
+import CreateFriendForm from "./CreateFriendForm";
 
 class App extends Component {
   componentDidMount() {
@@ -13,6 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <Friends friends={this.props.friends} />
+        <CreateFriendForm friends={this.props.friends} />
       </div>
     );
   }
