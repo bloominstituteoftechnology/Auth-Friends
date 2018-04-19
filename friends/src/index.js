@@ -10,7 +10,7 @@ import logger from 'redux-logger';
 import friendsReducer from './Reducers';
 
 
-const store = createStore(friendsReducer, applyMiddleware(thunk, logger));
+const store = createStore(friendsReducer, applyMiddleware(thunk));
 
 
 
