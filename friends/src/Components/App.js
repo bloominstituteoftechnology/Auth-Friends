@@ -56,6 +56,7 @@ class App extends Component {
           <FriendList
             friends={this.props.friends}
             updateFriend={this.props.updateFriend}
+            deleteFriend={this.props.deleteFriend}
           />
         </div>
       </div>

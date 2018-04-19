@@ -49,6 +49,7 @@ class Friend extends React.Component {
                         show={this.state.show}
                     /> :
                     <button onClick={this.toggleShow} className="button button-update" >Update Friend</button>}
+                    <button onClick={() => this.props.deleteFriend(this.props.id)} className="button button-delete">Remove Friend</button>
             </div>
         )
     }
