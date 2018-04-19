@@ -9,4 +9,8 @@ import './index.css';
 import App from './App';
 import friendsReducer from './reducers';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider>
+    <App />
+  </Provider>, 
+  document.getElementById('root'));
