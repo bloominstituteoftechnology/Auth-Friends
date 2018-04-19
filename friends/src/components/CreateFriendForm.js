@@ -7,8 +7,8 @@ export class CreateFriendForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      friends: this.props.friends,
-      newFriendId: this.props.friends.length,
+      // friends: this.props.friends,
+      // newFriendId: this.props.friends.length,
       newFriendName: "",
       newFriendAge: "",
       newFriendEmail: ""
@@ -22,7 +22,7 @@ export class CreateFriendForm extends Component {
   handleAddNewFriend = () => {
     console.log(this.state.newFriendName);
     const newFriend = {
-      id: this.state.newFriendId,
+      id: this.props.friends.length + 1,
       name: this.state.newFriendName,
       age: this.state.newFriendAge,
       email: this.state.newFriendEmail
@@ -63,7 +63,7 @@ export class CreateFriendForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    // friends: state.friendsReducer.friends,
+    friends: state.friendsReducer.friends,
     posting: state.friendsReducer.posting
   };
 };

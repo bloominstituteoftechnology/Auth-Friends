@@ -25,10 +25,10 @@ export const addFriend = newFriend => {
   console.log(newFriend);
   const promise = axios.post("http://localhost:5000/api/friends", newFriend);
   return dispatch => {
-    dispatch({ type: FETCHING });
+    dispatch({ type: POSTING });
     promise
       .then(({ data }) => {
-        dispatch({ type: FETCHED, payload: data });
+        dispatch({ type: POSTED, payload: data });
       })
       .catch(error => {
         console.log(error);

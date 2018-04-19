@@ -1,8 +1,10 @@
-import { FETCHING, FETCHED, ERROR } from "../actions";
+import { FETCHING, FETCHED, POSTING, POSTED, ERROR } from "../actions";
 
 const initialState = {
   fetching: false,
   fetched: false,
+  posting: false,
+  posted: false,
   friends: [],
   error: null
 };
@@ -10,7 +12,6 @@ const initialState = {
 const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING:
-      state = initialState;
       return Object.assign({}, state, { fetching: true });
     case FETCHED:
       return Object.assign({}, state, {
@@ -18,10 +19,18 @@ const friendsReducer = (state = initialState, action) => {
         fetching: false,
         fetched: true
       });
+    case POSTING:
+      return Object.assign({}, state, { posting: true });
+    case POSTED:
+      return Object.assign({}, state, {
+        friends: [...action.payload],
+        posting: false,
+        posted: true
+      });
     case ERROR:
       return Object.assign({}, state, {
         fetching: false,
-        error: "Error fetching friends"
+        error: "Error fetching or posting friends"
       });
     default:
       return state;
