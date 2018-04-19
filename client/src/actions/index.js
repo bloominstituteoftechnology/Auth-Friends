@@ -50,6 +50,20 @@ const updateFriend = (friend) => {
   }
 }
 
+const deleteFriend = (id) => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_START })
+    axios.delete(`http://localhost:5000/api/friends/${id}`)
+      .then(({ data }) => dispatch(multiFetchSuccess(data)))
+      .catch((error) => dispatch(fetchError(error)))
+  }
+}
+
+// internal actions dispatchers
+
+const multiFetchSuccess = (payload) => ({ type: MULTI_FETCH_SUCCESS, payload })
+const fetchError = (payload) => ({ type: FETCH_ERROR, payload })
+
 export {
   FETCH_START,
   MULTI_FETCH_SUCCESS,
@@ -60,5 +74,6 @@ export {
   fetchFriends,
   fetchFriend,
   createFriend,
-  updateFriend
+  updateFriend,
+  deleteFriend
 }

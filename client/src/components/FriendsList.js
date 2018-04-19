@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchFriends } from '../actions'
+import { fetchFriends, deleteFriend } from '../actions'
 import { Friend } from '.'
 
 class FriendsList extends Component {
@@ -8,7 +8,11 @@ class FriendsList extends Component {
     this.props.fetchFriends()
   }
   friendElements = () => (
-    this.props.friends.map((friend) => <Friend key={friend.id} {...friend} />)
+    this.props.friends.map((friend) => (
+      <Friend {...friend} 
+        key={friend.id}
+        deleteFriend={this.props.deleteFriend} />
+    ))
   )
   render() {
     return (
@@ -23,4 +27,4 @@ const mapStateToProps = (state) => ({
   friends: state.friends
 })
 
-export default connect(mapStateToProps, { fetchFriends })(FriendsList)
+export default connect(mapStateToProps, { fetchFriends, deleteFriend })(FriendsList)

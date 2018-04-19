@@ -7,7 +7,8 @@ const Friend = (props) => (
     {props.name}
     {props.age}
     {props.email}
-    <Link to={`/edit/${props.id}`}>Edit</Link>
+    <Link to={`/edit/${props.id}`}><button>Edit</button></Link>
+    <button onClick={() => props.deleteFriend(props.id)}>Delete</button>
   </div>
 )
 
