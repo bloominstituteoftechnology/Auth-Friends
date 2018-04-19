@@ -13,7 +13,7 @@ const initialState = {
     error: null,
 };
 
-export const friendsReducer = (state = initialState, action) => {
+const friendsReducer = (state = initialState, action) => {
     switch(action.type) {
         case FETCH_START: 
             return Object.assign({}, state, {
@@ -36,3 +36,5 @@ export const friendsReducer = (state = initialState, action) => {
             return state;
     }
 }
+
+export default friendsReducer;
