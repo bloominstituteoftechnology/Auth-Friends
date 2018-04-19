@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { fetchFriend, createFriend } from './actions';
+import { fetchFriends, createFriend } from './actions';
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
     friend: ''
   };
   componentDidMount() {
-    this.props.fetchFriend();
+    this.props.fetchFriends();
   }
   render() {
     return (
@@ -35,18 +35,19 @@ class App extends Component {
         </button>
         {this.props.error !== null ? <h4>{this.props.error}</h4> : null}
         <ul>
-          {this.props.friends.map(friend => <li key={friend}>{friend}</li>)}
+          {this.props.friends.map(friend => <li key={friend.name}>{friend.name}</li>)}
         </ul>
       </div>
     );
   }
 }
-
+// handler
 const mapStateToProps = state => {
   return {
     friends: state.friends,
     error: state.error,
-    pending: state.pending
+    pending: state.pending,
+    createFriend: state.createFriend
   };
 };
 

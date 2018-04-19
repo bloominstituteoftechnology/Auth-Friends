@@ -6,9 +6,10 @@ export const ERROR_FRIENDS = 'ERROR_FRIENDS';
 
 export const fetchFriends = () => {
     const friends = axios.get('http://localhost:5000/api/friends');
+    console.log(friends); 
     return dispatch => {
       dispatch({ type: PENDING_FRIENDS });
-      friends
+        friends
         .then(response => {
           dispatch({
             type: SUCCESS_FRIENDS,
@@ -18,7 +19,7 @@ export const fetchFriends = () => {
         .catch(err => {
           dispatch({
             type: ERROR_FRIENDS,
-            payload: 'ERROR Fetching Friends'
+            errorMessage: 'ERROR Fetching Friends'
           });
         });
     };
