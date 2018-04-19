@@ -12,7 +12,7 @@ Topics:
 ## Project Description
 
 * Last week we built an app that interfaced with a `RESTful` API. That same project is now to be built using React & Redux.
-* Take your examples from the mini project and use them to build a more sophisticated Application. Have fun!
+* Take your examples from the mini project and use them to build a more sophisticated application. Have fun!
 * Once your server is up and running, the URL you'll be able to hit from within your action creators is `http://localhost:5000`.
 * Take a look at the endpoints that our API has to offer in `server.js`.
 
