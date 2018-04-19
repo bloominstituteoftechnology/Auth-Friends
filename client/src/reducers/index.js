@@ -4,7 +4,8 @@ import {
   SINGLE_FETCH_SUCCESS,
   FETCH_ERROR,
   UPDATING_FRIEND,
-  UPDATED_FRIEND
+  UPDATED_FRIEND,
+  CANCEL_UPDATE
 } from '../actions'
 
 const initialState = {
@@ -35,6 +36,8 @@ export default (state = initialState, { type, payload }) => {
       return Object.assign({}, state, { friendUpdated: false, updatingFriend: true })
     case UPDATED_FRIEND:
       return Object.assign({}, state, { friendUpdated: true, updatingFriend: false, selectedFriend: null })  
+    case CANCEL_UPDATE:
+      return Object.assign({}, state, { updatingFriend: false, selectedFriend: null })  
     default:
       return state
   }

@@ -7,6 +7,7 @@ const FETCH_ERROR = 'fetch-error'
 const SINGLE_FETCH_SUCCESS = 'single-fetch-success'
 const UPDATING_FRIEND = 'updating-friend'
 const UPDATED_FRIEND = 'updated-friend'
+const CANCEL_UPDATE = 'cancel-updates'
 
 // internal actions dispatchers
 const fetchStart = () => ({ type: FETCH_START })
@@ -15,6 +16,7 @@ const singleFetchSuccess = (payload) => ({ type: SINGLE_FETCH_SUCCESS, payload }
 const updatingFriend = () => ({ type: UPDATING_FRIEND })
 const updatedFriend = () => ({ type: UPDATED_FRIEND })
 const fetchError = (payload) => ({ type: FETCH_ERROR, payload })
+const cancelUpdate = () => ({ type: CANCEL_UPDATE })
 
 // exposed action dispatchers
 const fetchFriends = () => {
@@ -77,9 +79,11 @@ export {
   SINGLE_FETCH_SUCCESS,
   UPDATING_FRIEND,
   UPDATED_FRIEND,
+  CANCEL_UPDATE,
   fetchFriends,
   fetchFriend,
   createFriend,
   updateFriend,
-  deleteFriend
+  deleteFriend,
+  cancelUpdate
 }

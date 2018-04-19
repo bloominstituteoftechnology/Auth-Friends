@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router'
-import { Link } from 'react-router-dom'
+import { Route, withRouter } from 'react-router'
+import { connect } from 'react-redux'
 import { FriendsList, FriendForm } from '.'
+import { cancelUpdate } from '../actions'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -27,6 +28,10 @@ const Button = styled.button`
 `
 
 class App extends Component {
+  goHome = () => {
+    this.props.cancelUpdate()
+    this.props.history.push('/')
+  }
   render() {
     return (
       <Wrapper>
@@ -35,12 +40,12 @@ class App extends Component {
             <FriendForm {...props} key={props.match.params.id} />
           )} />
           <Route exact path='/' component={FriendForm} />
-          <Mat><Link to='/'><Button>Home</Button></Link></Mat>
-        </Left>  
+          <Mat><Button onClick={this.goHome}>Home</Button></Mat>
+        </Left>
         <Route path='/' component={FriendsList} />  
       </Wrapper>
     )
   }
 }
 
-export default App
+export default withRouter(connect(null, { cancelUpdate })(App))
