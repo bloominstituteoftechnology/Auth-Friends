@@ -9,8 +9,8 @@ return (dispatch) => {
   dispatch({ type: PENDING });
   promise
     .then(response => {
-      console.log(response);
-      dispatch({ type: SUCCESS, payload: response.data.friends });
+      console.log('response ' ,response);
+      dispatch({ type: SUCCESS, payload: response.data});
     })
     .catch(err => {
       console.log(err);
@@ -19,3 +19,19 @@ return (dispatch) => {
 };
 
 };
+
+export const updateFriend = (friend)=> {
+    const promise = axios.put(`http://localhost:5000/api/friends/${friend.id}`, friend);
+      return (dispatch) => {
+      dispatch({ type: PENDING });
+      promise
+        .then(response => {
+          console.log('response ' ,response);
+          dispatch({ type: SUCCESS, payload: response.data});
+        })
+        .catch(err => {
+          console.log(err);
+          dispatch({ type: ERRORS });
+        });
+    };
+}

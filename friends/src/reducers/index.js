@@ -1,21 +1,24 @@
-// import { combineReducers } from 'redux';
-// import { charsReducer } from './starWarsReducer';
-//
-// export default combineReducers({
-//   chars: charsReducer
-// });
+import {PENDING, SUCCESS, ERRORS} from '../actions';
 
 
-export const reducer = (state, action)=> {
+const initialState = {
+  friends: [],
+  pending: false,
+  success: false,
+  error: null
 
-return {
-    friends: [
-      {
-        id: 1,
-        name: "Joe",
-        age: 24,
-        email: "joe@lambdaschool.com",
-      }
-    ]
-  }
+}
+export const reducer = (state=initialState, action)=> {
+switch (action.type) {
+    case PENDING:
+      return {...state, pending: true};
+    case SUCCESS:
+      return {...state, success: true, friends: action.payload, pending:false};
+    case ERRORS:
+      return {...state, pending: true};
+    default:
+    return state;
+
+}
+
 };
