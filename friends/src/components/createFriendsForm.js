@@ -4,9 +4,27 @@ const CreateFriendsForm = props => {
 	console.log("Create props: ", props);
 	return (
 		<form>
-			<input type="text" name="friendName" placeholder="Enter friend's name" />
-			<input type="text" name="age" placeholder="Enter friend's age" />
-			<input type="text" name="email" placeholder="Enter friend's email" />
+			<input
+				type="text"
+				name="friendName"
+				placeholder="Enter friend's name"
+				onChange={props.handleNewFriend}
+			/>
+			<input
+				type="text"
+				name="age"
+				placeholder="Enter friend's age"
+				onChange={props.handleNewFriend}
+			/>
+			<input
+				type="text"
+				name="email"
+				placeholder="Enter friend's email"
+				onChange={props.handleNewFriend}
+			/>
+			<button type="button" onClick={props.createFriends}>
+				Create Friend
+			</button>
 		</form>
 	);
 };

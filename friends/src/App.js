@@ -8,17 +8,20 @@ import CreateFriendsForm from "./components/CreateFriendsForm";
 
 class App extends Component {
   state = {
-    newFriend: ""
+    name: "",
+    age: "",
+    email: ""
   };
   componentDidMount() {
     this.props.fetchFriends();
   }
-
   handleNewFriend = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
   render() {
-    console.log("PROPS", this.props);
+    // console.log("PROPS", this.props);
+    console.log(this.state);
     return (
       <div className="App">
         <header className="App-header">
@@ -29,7 +32,10 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         {/* Render CreateFriendForm here - fire action from App*/}
-        <CreateFriendsForm />
+        <CreateFriendsForm
+          createFriends={this.props.createFriends}
+          handleNewFriend={this.props.handleNewFriend}
+        />
         {/* Render Friends here - send list of friends as props */}
         <Friends friendsList={this.props.friends} />
       </div>
