@@ -21,11 +21,11 @@ export const fetchFriends = () => {
 export const createFriend = data => {
     const friends = axios.post('http://localhost:5000/api/friends');
     return dispatch => {
-        dispatch({ type: PENDING_FRIEND });
+        dispatch({ type: PENDING_FRIENDS });
         friends 
             .then(response => {
                 console.log(response);
-                dispatch({ type: SUCCESS_FRIEND, payload: []});
+                dispatch({ type: SUCCESS_FRIENDS, payload: []});
             })
             .catch(err => {
                 dispatch({ type: ERROR_FRIENDS, payload: 'ERROR POSTING FRIENDS' });
