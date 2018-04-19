@@ -15,7 +15,7 @@ const store = createStore(friendsReducer, applyMiddleware(thunk, logger));
 
 
 ReactDOM.render(
-<Provider>
+<Provider store={store}>
     <App />
 </Provider>, document.getElementById('root'));
 registerServiceWorker();

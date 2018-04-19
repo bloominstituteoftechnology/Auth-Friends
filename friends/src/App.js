@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import {fetch_Friends} from './Actions';
+
 
 class App extends Component {
   render() {
@@ -19,5 +22,14 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
+  return {
+    fetching: state.fetching,
+    fetched: state.fetched,
+    friends: state.friends
+  }
 }
-export default App;
+export default connect(mapStateToProps, {
+  /* actions go here */
+  fetch_Friends
+})(App);
