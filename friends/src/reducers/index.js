@@ -7,15 +7,15 @@
 
 
 export const reducer = (state, action)=> {
-return
-  {
+
+return {
     friends: [
       {
         id: 1,
         name: "Joe",
         age: 24,
-        email: "joe@lambdaschool.com"
+        email: "joe@lambdaschool.com",
       }
-    ];
+    ]
   }
 };
