@@ -49,8 +49,7 @@ class CreateFriendForm extends Component {
           />
           <button type='submit'>Add Friend</button>
           </form>
-          {this.props.friends.map(friend => { 
-             <Friend key={friend.name}>{friend.name}/>
+          // {this.props.friends.map(friend => { 
+          //    <Friend key={friend.name}>{friend.name}/>
       )}
     }
-
