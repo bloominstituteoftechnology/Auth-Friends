@@ -11,7 +11,7 @@ class Friends extends Component {
         return (
             <div>
                 <ul>
-                    {this.props.friends.map(friend, i) => {
+                    {this.props.friends.map((friend, i) => {
                         return (
                             <li key={friend.i}>
                                 <p>{friend.name}</p>
@@ -19,7 +19,7 @@ class Friends extends Component {
                                 <p>{friend.email}</p>
                             </li>
                         );
-                    }}}
+                    })}
                 </ul>
             </div>
         );
