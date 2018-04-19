@@ -20,3 +20,17 @@ export const fetchFriends = () => {
 			});
 	};
 };
+
+export const createFriends = friend => {
+	const friends = axios.post("http://localhost:5000/api/friends", friend);
+	return dispatch => {
+		friends
+			.then(response => {
+				dispatch(fetchFriends());
+			})
+			.catch(error => {
+				console.log(error);
+				dispatch({ type: ERROR, payload: "Error posting friend!" });
+			});
+	};
+};
