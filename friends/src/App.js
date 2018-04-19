@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { fetchFriends, createFriend } from './actions';
+import { connect } from 'react-redux';
 
 class App extends Component {
+  constructor() {
+    super();
+    state = { 
+      friends: ''
+    };
+
+    componentDidMount() {
+      this.props.fetchFriends();
+    }
+    
+  };
+  
   render() {
     return (
       <div className="App">
@@ -13,9 +27,28 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <input type="text" 
+        placeholder="friend" 
+        name="friend" 
+        value={this.state.friend} 
+        onChange={e => this.setState({ [e.target.name]: e.target.value })}
+        />
+        <button onClick={() => 
+          this.props.createFriend({ friend: this.state.friend })
+          }>
+          Add Friend
+          </button>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    friends: state.friends,
+    error: state.error,
+    pending: state.pending
+  };
+};
+
+export default connect(mapStateToProps, {fetchFriends, createFriend})(App);
