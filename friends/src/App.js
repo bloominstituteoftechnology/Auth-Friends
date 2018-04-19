@@ -25,10 +25,10 @@ class App extends Component {
         {this.props.fetching ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
-          <div>
-            <ul>
+          <div className="flex">
+            <ul className="list card">
               {this.props.friends.map(friend => {
-                return <li key={friend.name}>{friend.name}</li>;
+                return <li className="listItem" key={friend.name}>{friend.name}</li>;
               })}
             </ul>
             <CreateFriend/>

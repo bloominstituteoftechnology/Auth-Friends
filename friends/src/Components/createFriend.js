@@ -16,14 +16,14 @@ class CreateFriend extends Component {
 
     render() {
         return (
-            <div>
+            <div className="addForm">
                 <div>
-                    <h3>Add a new friend</h3>
-                    <input type="text" onChange={this.handleInputChange} placeholder="Name" name="name"/>
-                    <input type="text" onChange={this.handleInputChange} placeholder="Age" name="age"/>
-                    <input type="text" onChange={this.handleInputChange} placeholder="Email" name="email"/>
+                    <h2>Add a new friend</h2>
+                    <input className="input" type="text" onChange={this.handleInputChange} placeholder="Name" name="name"/>
+                    <input className="input" type="text" onChange={this.handleInputChange} placeholder="Age" name="age"/>
+                    <input className="input" type="text" onChange={this.handleInputChange} placeholder="Email" name="email"/>
                 </div>
-                <button onClick={() =>
+                <button className="button-Add" onClick={() =>
                 this.props.post_Friend({name: this.state.name, age: this.state.age, email: this.state.email}) }>Add</button>
             </div>
         )

@@ -26,3 +26,42 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+.list {
+  list-style: none;
+  font-size: 1.5rem;
+  
+}
+
+.listItem {
+  margin: 5%;
+}
+
+h2 {
+  text-decoration: underline;
+}
+
+.input {
+  margin: 2%;
+  font-size: 1.1rem;
+}
+.flex {
+  display: flex;
+}
+.button-Add {
+  width: 15%;
+}
+.addForm {
+  color: rgb(228, 113, 113);
+  background-color: rgb(235, 225, 225);
+}
+
+.card {
+  border: 2px solid rgb(70, 127, 218);
+  background-color: rgb(186, 227, 250);
+  width: 50%;
+  color: rgb(124, 122, 122);
+  height: 100%;
+  margin: 0;
+}
