@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { fetchFriends, createFriends } from './actions/fetchFriends';
 import { connect } from 'react-redux';
+import Friends from './components/Friends';
 
 class App extends Component {
   state = {
@@ -13,6 +14,7 @@ class App extends Component {
   }
 
   render() {
+    console.log("PROPS", this.props);
     return (
       <div className="App">
         <header className="App-header">
@@ -24,6 +26,7 @@ class App extends Component {
         </p>
         {/* Render CreateFriendForm here - fire action from App*/}
         {/* Render Friends here - send list of friends as props */}
+        <Friends friendsList={this.props.friends}/>
       </div>
     );
   }
