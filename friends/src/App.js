@@ -5,11 +5,6 @@ import { connect } from "react-redux";
 import { getFriends, addFriend } from "./actions";
 
 class App extends Component {
-  state = {
-    newName: "",
-    newAge: "",
-    newEmail: ""
-  };
   componentDidMount() {
     this.props.getFriends();
   }
@@ -44,12 +39,22 @@ class App extends Component {
               age: ageInput.value,
               email: emailInput.value
             });
-            nameInput.value, ageInput.value, (emailInput.value = "");
+            (nameInput.value = ""),
+              (ageInput.value = ""),
+              (emailInput.value = "");
           }}
         >
-          <input ref={name => (nameInput = name)} placeholder="Friend Name" />
-          <input ref={age => (ageInput = age)} placeholder="Age" />
-          <input ref={email => (emailInput = email)} placeholder="Email" />
+          <input
+            ref={name => (nameInput = name)}
+            placeholder="Friend Name"
+            required
+          />
+          <input ref={age => (ageInput = age)} placeholder="Age" required />
+          <input
+            ref={email => (emailInput = email)}
+            placeholder="Email"
+            required
+          />
           <button type="submit">Add New Friend </button>
         </form>
       </div>
@@ -58,6 +63,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     fetching: state.fetching,
     error: state.error,
