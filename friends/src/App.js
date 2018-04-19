@@ -17,8 +17,9 @@ class App extends Component {
     console.log(this.props);
     return (
       <div className="App">
-      <h1>Your Friends!</h1>
+      
       <div className="mainForm">
+      <h1>Your Friends!</h1>
         <input
           type="text"
           placeholder="Name"

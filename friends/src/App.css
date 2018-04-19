@@ -54,10 +54,12 @@ html {
   border-radius: 10px;
   border: 1px solid black;
   margin-bottom: 5px;
-  text-indent: 67px;
+  text-indent: 72px;
   outline: none;
   padding: 5px;
   transition: all .3s ease-in-out;
+  width: 35%;
+  margin: 5px auto;
 }
 
 input:focus {
@@ -67,11 +69,10 @@ input:focus {
   outline: none;
 }
 
-
 .button {
   display: flex;
   align-items: center;
-  margin: auto;
+  margin: 5px auto;
   padding: 5px 15px;
   font-size: 14px;
   cursor: pointer;
@@ -95,6 +96,13 @@ input:focus {
 
 .email {
   margin-bottom: 10px;
+}
+
+.mainForm {
+  width: 33%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 @keyframes App-logo-spin {
