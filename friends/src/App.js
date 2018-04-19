@@ -11,15 +11,27 @@ class App extends Component {
     this.props.fetch_Friends()
   }
   render() {
+    console.log("APPPP", this.props.friends)
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
+        
+        <div className="App">
+        {this.props.fetching ? (
+          <img src={logo} className="App-logo" alt="logo" />
+        ) : (
+          <ul>
+            {this.props.friends.map(friend => {
+              return <li key={friend.name}>{friend.name}</li>;
+            })}
+          </ul>
+        )}
+      </div>
+        
       </div>
     ); 
   }
