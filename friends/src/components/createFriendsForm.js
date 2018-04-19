@@ -1,7 +1,7 @@
 import React from "react";
 
 const CreateFriendsForm = props => {
-	console.log("Form: ", props);
+	// console.log("Form: ", props);
 	return (
 		<form>
 			<input
@@ -22,7 +22,7 @@ const CreateFriendsForm = props => {
 				placeholder="Enter friend's email"
 				onChange={props.handleNewFriend}
 			/>
-			<button type="button" onClick={props.createFriends}>
+			<button type="button" onClick={() => props.createFriends(props.friend)}>
 				Create Friend
 			</button>
 		</form>
