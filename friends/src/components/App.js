@@ -6,7 +6,9 @@ import { fetchFriends, createFriends } from '../actions/';
 
 class App extends Component {
 state = {
-  friends: ''
+  name: '',
+  age:'',
+  email:''
 }
 componentDidMount(){
    this.props.fetchFriends();
@@ -23,23 +25,52 @@ componentDidMount(){
         </p>
         <input
           type="text"
-          placeholder="friends"
-          name="friends"
-          value={this.state.friends}
+          placeholder="add name"
+          name="name"
+          value={this.state.name}
+          onChange={e => this.setState({ [e.target.name]: e.target.value })}
+        />
+           <input
+          type="text"
+          placeholder="add age"
+          name="age"
+          value={this.state.age}
+          onChange={e => this.setState({ [e.target.name]: e.target.value })}
+        />
+           <input
+          type="text"
+          placeholder="add email"
+          name="email"
+          value={this.state.email}
           onChange={e => this.setState({ [e.target.name]: e.target.value })}
         />
         <button
           onClick={() => {
-            this.props.createfriends({ friends: this.state.friends });
-            this.setState({ friends: '' });
+            this.props.createFriends({ name: this.state.name, age: this.state.age, email:this.state.email });
+            this.setState({ name: '',age:'',email:'' });
           }}
         >
           Add friends
         </button>
         {this.props.error !== null ? <h4>{this.props.error}</h4> : null}
+        <div className="container">
         <ul>
-          {this.props.friends.map(friends => <li key={friends}>{friends.name}</li>)}
+          {this.props.friends.map(friends => 
+          
+          <li key={friends.id} className="li-styles">
+         
+          {friends.name}
+          <div>
+          {friends.age}
+          </div>
+          <div>
+          {friends.email}
+          </div>
+         
+          </li>
+          )}
         </ul>
+        </div>
       </div>
     );
   }

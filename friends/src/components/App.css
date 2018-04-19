@@ -26,3 +26,17 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.container{
+width: 300px;
+border: 1px solid white;
+margin: 0 auto;
+margin-top: 10px;
+background:#800020; 
+color: white;
+}
+.li-styles{
+  margin-bottom: 10px;
+}
+li{
+  list-style:square;
+}
