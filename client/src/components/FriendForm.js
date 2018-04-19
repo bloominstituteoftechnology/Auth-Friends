@@ -41,16 +41,16 @@ class Form extends Component {
   }
   
   buttonText = () => this.props.updatingFriend
-  ? 'Update Friend'
-  : 'Create Friend'
+    ? 'Update Friend'
+    : 'Create Friend'
   
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value })
   
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.updatingFriend
-    ? this.props.updateFriend(this.state)
-    : this.props.createFriend(this.state)
+      ? this.props.updateFriend(this.state)
+      : this.props.createFriend(this.state)
     this.props.history.push('/')
   }
   
