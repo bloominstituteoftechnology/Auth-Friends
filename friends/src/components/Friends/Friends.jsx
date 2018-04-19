@@ -1,3 +1,3 @@
 import React from "react"
 
-export const Friends = prop => <div>{prop.greet}</div>
+export const Friends = ({ greet }) => <div>{greet}</div>
