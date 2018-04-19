@@ -47,17 +47,16 @@ class UpdateFriends extends React.Component {
     }
 
     render() {
-        // console.log(this.state)
         return (
             <div className="Container">
                <form onSubmit={this.handleSubmit}>
-                   <fieldset>
-                       <legend>Edit Friend </legend>
+                   <p>
+                       <p>Edit Friend </p>
                         <input onChange={this.handleInputChange} value={this.state.Fields.name} type="text"   name="name" placeholder="Enter Name" />
                         <input onChange={this.handleInputChange} value={this.state.Fields.age} type="number" name="age" placeholder="Enter Age" />
                         <input onChange={this.handleInputChange} value={this.state.Fields.email} type="email"  name="email" placeholder="Enter Email" />
                         <button>Update Friend</button> 
-                   </fieldset>            
+                   </p>            
                </form>
             </div>
         )
