@@ -9,10 +9,11 @@ export function fetch_Friends() {
         dispatch({type: FETCHING})
         axios.get('http://localhost:5000/api/friends')
         .then((response) => {
-            console.log('response', response)
+            console.log('response', response.data)
+            dispatch({type: FETCHED, payload: response.data})
         })
         .catch((err) => {
-            console.log(err)
+            dispatch({type: ERROR, payload: err})
         })
     }
 }

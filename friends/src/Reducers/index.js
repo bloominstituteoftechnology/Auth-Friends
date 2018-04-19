@@ -10,7 +10,13 @@ const initialState = {
 const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCHING: {
-            console.log('fetching in reducers')
+            return{...state, fetching: true}
+        }
+        case FETCHED: {
+            return {...state, fetching: false, fetched: true, friends: action.payload}
+        }
+        case ERROR: {
+            return {...state, fetching: false, error: action.payload}
         }
         default: 
         return state;

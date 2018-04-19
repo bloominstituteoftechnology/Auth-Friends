@@ -6,6 +6,10 @@ import {fetch_Friends} from './Actions';
 
 
 class App extends Component {
+  componentDidMount() {
+    // call our action
+    this.props.fetch_Friends()
+  }
   render() {
     return (
       <div className="App">
