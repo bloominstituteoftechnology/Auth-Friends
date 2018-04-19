@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, CardHeader, CardText, Row, Col} from 'reactstrap'
+import {Card, CardHeader, CardText, Row, Col, Button} from 'reactstrap'
 import './Friends.css';
 const FriendCard = props => {
 
@@ -21,7 +21,9 @@ const FriendCard = props => {
                             </Col>
                         </Row>
                     </CardText>
+                    <Button color='danger'>Remove Me</Button>
                 </Card>
+
             </div>
 
     );
