@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import Friends from '../components/Friends'
 import { fetchFriends } from '../actions'
@@ -11,10 +12,15 @@ class App extends Component {
   render () {
     return (
       <div className='App'>
-        <Friends greet='hello' />
+        <Friends friends={this.props.friends.friends} />
       </div>
     )
   }
+}
+
+App.propTypes = {
+  fetchFriends: PropTypes.func,
+  friends: PropTypes.object
 }
 
 const mapStateToProps = state => ({
