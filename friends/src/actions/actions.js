@@ -17,54 +17,53 @@ export const FRIEND_UPDATED = 'FRIEND_UPDATED';
 export const ERROR_UPDATING_FRIEND = 'ERROR_UPDATING_FRIEND';
 
 export const getFriends = () => {
-    return dispatch => {
-        dispatch({ type: GETTING_FRIENDS });
-        axios
-            .get('http://localhost:5000/api/friends/get')
-            .then(({ data }) => dispatch({ type: FRIENDS_RECEIVED, payload: data }))
-            .catch(error => {
-                dispatch({ type: ERROR_GETTING_FRIENDS, payload: error });
-            });
-        
-    };
+  return dispatch => {
+    dispatch({ type: GETTING_FRIENDS });
+    axios
+      .get('http://localhost:5000/api/friends/get')
+      .then(({ data }) => dispatch({ type: FRIENDS_RECEIVED, payload: data }))
+      .catch(error => {
+        dispatch({ type: ERROR_GETTING_FRIENDS, payload: error });
+      });
+  };
 };
 
 export const createFriend = data => {
-    return dispatch => {
-        dispatch({ type: CREATE_FRIEND });
-        axios
-            .post('http://localhost:5000/api/friends/create', data)
-            .then(({ data }) => {
-                dispatch({ type: FRIEND_CREATED, payload: data });
-            })
-            .catch(error => {
-                dispatch({ type: ERROR_CREATING_FRIEND, payload: error });
-            });
-    };
+  return dispatch => {
+    dispatch({ type: CREATE_FRIEND });
+    axios
+      .post('http://localhost:5000/api/friends/create', data)
+      .then(({ data }) => {
+        dispatch({ type: FRIEND_CREATED, payload: data });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR_CREATING_FRIEND, payload: error });
+      });
+  };
 };
 
 export const deleteFriend = () => {
-    return dispatch => {
-        dispatch({ type: DELETE_FRIEND });
-        axios
-            .delete('http://localhost:5000/api/friends/delete')
-            .then(({ data }) => dispatch({ type: FRIEND_DELETED, payload: data }))
-            .catch(error => {
-                dispatch({ type: ERROR_DELETING_FRIEND, payload: error });
-            });
-    };
+  return dispatch => {
+    dispatch({ type: DELETE_FRIEND });
+    axios
+      .delete(`http://localhost:5000/api/friends/delete`)
+      .then(({ data }) => dispatch({ type: FRIEND_DELETED, payload: data }))
+      .catch(error => {
+        dispatch({ type: ERROR_DELETING_FRIEND, payload: error });
+      });
+  };
 };
 
 export const updateFriend = () => {
-    return dispatch => {
-        dispatch({ type: UPDATE_FRIEND });
-        axios
-            .put('http://localhost:5000/api/friends/update')
-            .then(({ data }) => {
-                dispatch({ type: FRIEND_UPDATED, payload: data });
-            })
-            .catch(error => {
-                dispatch({ type: ERROR_UPDATING_FRIEND, payload: error });
-            });
-    };
+  return dispatch => {
+    dispatch({ type: UPDATE_FRIEND });
+    axios
+      .put(`http://localhost:5000/api/friends/update`)
+      .then(({ data }) => {
+        dispatch({ type: FRIEND_UPDATED, payload: data });
+      })
+      .catch(error => {
+        dispatch({ type: ERROR_UPDATING_FRIEND, payload: error });
+      });
+  };
 };
