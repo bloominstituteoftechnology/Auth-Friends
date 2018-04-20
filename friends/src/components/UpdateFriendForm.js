@@ -1,7 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
+import { updateFriends } from "../actions/fetchFriends";
 
 const UpdateFriendForm = props => {
-	// console.log("Update: ", props.friend);
+	console.log("Props: ", props);
 	return (
 		<form>
 			<input type="text" name="name" placeholder="Enter friend's name" />
@@ -14,4 +16,13 @@ const UpdateFriendForm = props => {
 	);
 };
 
-export default UpdateFriendForm;
+const mapStateToProps = state => {
+	// console.log("State: ", state);
+	return {
+		friends: state.friends
+	};
+};
+
+export default connect(mapStateToProps, {
+	updateFriends
+})(UpdateFriendForm);
