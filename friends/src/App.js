@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchFriends, addFriend } from './actions';
+import { fetchFriends, addFriend, deleteFriend } from './actions';
 
 class App extends Component {
   constructor(props) {
@@ -63,12 +63,12 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         {this.friendForm()}
-        {this.props.friends.map((friend, index) => (
-          <div key={friend+index}>
+        {this.props.friends.map(friend => (
+          <ul key={friend.id} onClick={() => this.props.deleteFriend(friend.id)}>
             <div>{friend.name}</div>
             <div>{friend.email}</div>
             <div>{friend.age}</div>
-          </div>
+          </ul>
         ))}
       </div>
     );
@@ -81,4 +81,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchFriends, addFriend })(App);
+export default connect(mapStateToProps, { fetchFriends, addFriend, deleteFriend })(App);

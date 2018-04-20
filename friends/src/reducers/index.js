@@ -1,7 +1,8 @@
 // import { combineReducers } from 'redux';
 import { 
   FETCHING_FRIENDS, FETCH_SUCCESS, FETCH_NEW_FRIEND, ERROR_FETCHING, 
-  SAVING_FRIEND, SAVE_SUCCESS, ERROR_SAVING
+  SAVING_FRIEND, SAVE_SUCCESS, ERROR_SAVING, 
+  DESTROY_FRIEND, DESTROY_ERROR
 } from '../actions';
 
 const initialState = {
@@ -45,7 +46,6 @@ export const reducer = (state = initialState, action ) => {
       return { ...state, saving: true };
 
     case SAVE_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         friends: [...action.payload],
@@ -59,33 +59,20 @@ export const reducer = (state = initialState, action ) => {
         saving: false,
         error: "We're having trouble saving!"
       }
+/******************************************************************************************************/
+    case DESTROY_FRIEND:
+      return {
+        ...state,
+        friends: [...action.payload]
+      }
 
+    case DESTROY_ERROR:
+      return { 
+        ...state, 
+        error: "Darn! We can delete that friend." 
+      }
+/******************************************************************************************************/
     default:
       return state;
   }
 }
-
-// export const addFriend = (state = initialState, action) => {
-//   switch(action.type) {
-//     case SAVING_FRIEND:
-//       return { ...state, saving: true };
-
-//     case SAVE_SUCCESS:
-//       return {
-//         ...state,
-//         friends: [...state.friends, action.payload],
-//         saving: false,
-//         saved: true
-//       }
-
-//     case ERROR_SAVING:
-//       return {
-//         ...state,
-//         saving: false,
-//         error: "We're having trouble saving!"
-//       }
-
-//     default:
-//       return state;
-//   }
-// }

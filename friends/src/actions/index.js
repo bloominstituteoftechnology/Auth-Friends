@@ -7,6 +7,8 @@ export const ERROR_FETCHING = "ERROR_FETCHING";
 export const SAVING_FRIEND = "SAVING_FRIEND";
 export const SAVE_SUCCESS = "SAVE_SUCCESS";
 export const ERROR_SAVING = "ERROR_SAVING";
+export const DESTROY_FRIEND = "DESTROY_FRIEND";
+export const DESTROY_ERROR = "DESTROY_ERROR";
 
 export const fetchFriends = () => {
   const promise = axios.get("http://localhost:5000/api/friends");
@@ -24,14 +26,24 @@ export const fetchFriends = () => {
 
 export const addFriend = data => {
   return dispatch => {
-    console.log(data);
     axios.post("http://localhost:5000/api/friends", data)
       .then(response => {
-        console.log(response);
         dispatch({ type: FETCH_NEW_FRIEND, payload: response.data });
       })
       .catch(error => {
         dispatch({ type: ERROR_SAVING });
+      })
+  }
+}
+
+export const deleteFriend = id => {
+  return dispatch => {
+    axios.delete(`http://localhost:5000/api/friends/${id}`)
+      .then(response => {
+        dispatch({ type: DESTROY_FRIEND, payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: DESTROY_ERROR });
       })
   }
 }
