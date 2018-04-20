@@ -1,0 +1,17 @@
+.friendsHeader {
+    margin-left: 40%;
+    margin-top: 25px;
+}
+
+.friendsRow {
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.friendCard {
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+    width: 33%;
+    margin-bottom: 20px;
+}
