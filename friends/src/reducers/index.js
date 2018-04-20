@@ -16,7 +16,7 @@ export const Reducer = (state = initialState, action) => {
         console.log(action.payload) 
             return {...state, success: true, pending: false, friends: action.payload};
         case ERRORS:
-            return {}
+            return {...state, pending: true};
 
         default:
         return state;
