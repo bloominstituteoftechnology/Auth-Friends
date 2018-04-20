@@ -21,12 +21,13 @@ return (dispatch) => {
 };
 
 export const updateFriend = (friend)=> {
-    const promise = axios.put(`http://localhost:5000/api/friends/${friend.id}`, friend);
+      const promise = axios.put(`http://localhost:5000/api/friends/${friend.id}`, friend);
+
       return (dispatch) => {
       dispatch({ type: PENDING });
       promise
         .then(response => {
-          console.log('response ' ,response);
+          console.log('response from updateFriendAction' ,response);
           dispatch({ type: SUCCESS, payload: response.data});
         })
         .catch(err => {

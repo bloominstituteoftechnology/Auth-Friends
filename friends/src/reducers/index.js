@@ -13,6 +13,7 @@ switch (action.type) {
     case PENDING:
       return {...state, pending: true};
     case SUCCESS:
+    console.log('from success reducer',action.payload )
       return {...state, success: true, friends: action.payload, pending:false};
     case ERRORS:
       return {...state, pending: true};

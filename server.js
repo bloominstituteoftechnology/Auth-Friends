@@ -74,7 +74,7 @@ app.put('/api/friends/:id', (req, res) => {
 
   if (friendIndex > -1) {
     const friend = { ...friends[friendIndex], ...req.body };
-
+    console.log('from server', req.body)
     friends = [
       ...friends.slice(0, friendIndex),
       friend,
