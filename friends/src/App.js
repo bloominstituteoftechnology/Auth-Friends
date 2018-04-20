@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import {
-  fetchFriends,
-  createFriends,
-  updateFriends
-} from "./actions/fetchFriends";
+import { fetchFriends, createFriends } from "./actions/fetchFriends";
 import { connect } from "react-redux";
 import Friends from "./components/Friends";
 import CreateFriendsForm from "./components/CreateFriendsForm";
@@ -44,10 +40,7 @@ class App extends Component {
           friend={this.state}
         />
         {/* Render Friends here - send list of friends as props */}
-        <Friends
-          friendsList={this.props.friends}
-          updateFriends={this.props.updateFriends}
-        />
+        <Friends friendsList={this.props.friends} />
       </div>
     );
   }
@@ -64,6 +57,5 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   fetchFriends,
-  createFriends,
-  updateFriends
+  createFriends
 })(App);

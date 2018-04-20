@@ -10,7 +10,7 @@ const Friends = props => {
           <div key={friend.name}>{friend.name}</div>,
           <div key={friend.age}>{friend.age}</div>,
           <div key={friend.email}>{friend.email}</div>,
-          <UpdateFriendForm friend={props.friend} />
+          <UpdateFriendForm friend={friend.id} />
         ];
       })}
     </div>
