@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { fetchFriends, createFriend } from "./actions";
 import { connect } from "react-redux";
 
 class App extends Component {
   state = {
-    friend: { name: "", age: "", email: "" }
+    name: "",
+    age: "",
+    email: ""
   };
 
   componentDidMount() {
@@ -15,52 +16,53 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.pending ? (
-          <img src={logo} className="App-logo" alt="logo" />
-        ) : null}
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <input
-          type="text"
-          placeholder="name"
-          name="friend"
-          value={this.state.friend.name}
-          onChange={e => this.setState({ [e.target.name]: e.target.value })}
-        />
-        <input
-          type="number"
-          placeholder="age"
-          name="friend.age"
-          value={this.state.friend.age}
-          onChange={e => this.setState({ [e.target.name]: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="email"
-          name="friend.email"
-          value={this.state.friend.email}
-          onChange={e => this.setState({ [e.target.name]: e.target.value })}
-        />
+        <h1>Friends</h1>
+        <div>
+          <input
+            type="text"
+            placeholder="name"
+            name="name"
+            value={this.state.name}
+            onChange={e => this.setState({ [e.target.name]: e.target.value })}
+          />
+          <input
+            type="number"
+            placeholder="age"
+            name="age"
+            value={this.state.age}
+            onChange={e => this.setState({ [e.target.name]: e.target.value })}
+          />
+          <input
+            type="text"
+            placeholder="email"
+            name="email"
+            value={this.state.email}
+            onChange={e => this.setState({ [e.target.name]: e.target.value })}
+          />
+        </div>
         <button
           onClick={() => {
-            console.log(this.state);
             this.props.createFriend({
-              name: this.state.friend.name,
-              age: this.state.friend.age,
-              email: this.state.friend.email
+              name: this.state.name,
+              age: Number(this.state.age),
+              email: this.state.email
             });
             this.setState({ friend: "" });
           }}
         >
           Add Friend
         </button>
+        {this.props.pending ? <h3>Loading Friends...</h3> : null}
         {this.props.error !== null ? <h4>{this.props.error}</h4> : null}
-        <ul>
+        <div className="card-container">
           {this.props.friends.map(friend => (
-            <li key={friend.id}>{friend.name}</li>
+            <div key={friend.id} className="friend-card">
+              <div>{friend.name}</div>
+              <div>{friend.age}</div>
+              <div>{friend.email}</div>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     );
   }
