@@ -27,6 +27,12 @@ class App extends Component {
     })
   }
 
+  handleNameFieldChange = (e) => {
+    this.setState({
+      friendNameInputFieldValue: e.target.value,
+    })
+  }
+
   handleSubmitUpdateName = (e) => {
     const updatedFriend = {...this.state.selectedFriend, name: this.state.friendNameInputFieldValue} ;
     this.props.updateFriend(updatedFriend);
@@ -35,12 +41,6 @@ class App extends Component {
       showUpdateNameInput: false,
       friendNameInputFieldValue: ''
     });
-  }
-
-  handleNameFieldChange = (e) => {
-    this.setState({
-      friendNameInputFieldValue: e.target.value,
-    })
   }
 
   render() {
