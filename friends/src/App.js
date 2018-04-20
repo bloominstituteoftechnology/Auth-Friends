@@ -17,6 +17,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Friends</h1>
+        <form>
         <div className="form-div">
           <input
             type="text"
@@ -52,6 +53,7 @@ class App extends Component {
         >
           Add Friend
         </button>
+        </form>
         {this.props.pending ? <h3>Loading Friends...</h3> : null}
         {this.props.error !== null ? <h4>{this.props.error}</h4> : null}
         <div className="card-container">
