@@ -40,12 +40,14 @@ class App extends Component {
         {/* Render CreateFriendForm here - fire action from App*/}
         <CreateFriendsForm
           createFriends={this.props.createFriends}
-          updateFriends={this.props.updateFriends}
           handleNewFriend={this.handleNewFriend}
           friend={this.state}
         />
         {/* Render Friends here - send list of friends as props */}
-        <Friends friendsList={this.props.friends} />
+        <Friends
+          friendsList={this.props.friends}
+          updateFriends={this.props.updateFriends}
+        />
       </div>
     );
   }
