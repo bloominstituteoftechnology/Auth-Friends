@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Friends</h1>
-        <div>
+        <div className="form-div">
           <input
             type="text"
             placeholder="name"
@@ -47,7 +47,7 @@ class App extends Component {
               age: Number(this.state.age),
               email: this.state.email
             });
-            this.setState({ friend: "" });
+            this.setState({ name: "", age: "", email: "" });
           }}
         >
           Add Friend
