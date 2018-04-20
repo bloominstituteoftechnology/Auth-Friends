@@ -1,21 +1,43 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Friends from './Friends';
+// import FriendForm from './FriendForm';
+import { getFriends } from '../actions';
+import { connect } from 'react-redux';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getFriends();
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">My Friends</h1>
+          {/* <FriendForm /> */}
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {this.props.error ? <h3>Error Fetching Friends</h3> : null}
+        <div className="Flex-Container">
+        {this.props.gettingFriends ? (
+          <img src={logo} className="App-logo" alt="logo" />
+        ) : (
+          <Friends friends={this.props.friends} />
+        )}
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  const { friendsReducer } = state;
+  return {
+    friends: friendsReducer.friends,
+    error: friendsReducer.error,
+    gettingFriends: friendsReducer.gettingFriends
+  };
+};
+
+export default connect(mapStateToProps, { getFriends })(App);
