@@ -1,6 +1,11 @@
+body {
+    background-color: #222C48;
+}
+
 .friendsHeader {
     margin-left: 40%;
     margin-top: 25px;
+    color: #FFF;
 }
 
 .friendsRow {
@@ -14,4 +19,14 @@
     font-size: 15px;
     width: 33%;
     margin-bottom: 20px;
+    text-align: center;
+}
+
+.editFriend {
+    display: flex;
+    justify-content: center;
+}
+
+.editFriendButton {
+    margin-left: 10px;
 }

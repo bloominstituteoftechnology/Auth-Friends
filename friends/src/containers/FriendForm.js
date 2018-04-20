@@ -28,7 +28,7 @@ class FriendForm extends Component {
     render() {
         return <Form className="friendForm" inline>
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                <Label for="name" className="mr-sm-2">Name:</Label>
+                <Label for="name" className="mr-sm-2 friendLabel">Name:</Label>
                 <Input 
                     type="text"
                     id="name" 
@@ -40,7 +40,7 @@ class FriendForm extends Component {
                 />
             </FormGroup>
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                <Label for="age" className="mr-sm-2">Age:</Label>
+                <Label for="age" className="mr-sm-2 friendLabel">Age:</Label>
                 <Input 
                     type="number"
                     id="age" 
@@ -52,7 +52,7 @@ class FriendForm extends Component {
                 />
             </FormGroup>
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                <Label for="email" className="mr-sm-2">Email:</Label>
+                <Label for="email" className="mr-sm-2 friendLabel">Email:</Label>
                 <Input 
                     type="email" 
                     id="email"
