@@ -4,16 +4,14 @@ import './App.css';
 import { connect } from 'react-redux';
 import {getFriends, updateFriend} from './actions';
 
-
-
 class App extends Component {
   constructor(){
     super();
-    this.state = {
-      updateFriendName: '',
-      showUpdateField: false,
-      currentFriend: {},
 
+    this.state = {
+      friendNameInputFieldValue: '',
+      showUpdateNameInput: false,
+      selectedFriend: {},
     }
   }
 
@@ -21,49 +19,48 @@ class App extends Component {
     this.props.getFriends();
   }
 
-  handleUpdateFriend = (e, friend) => {
-
+  handleClickFriend = (e, friend) => {
     this.setState({
-      showUpdateField: !this.state.showUpdateField,
-      currentFriend: friend,
+      showUpdateNameInput: true,
+      selectedFriend: friend,
+      friendNameInputFieldValue: friend.name
     })
   }
 
-
-  handleSubmitUpdate = (e) => {
-    this.props.updateFriend(this.state.updateFriendName)
+  handleNameFieldChange = (e) => {
+    this.setState({
+      friendNameInputFieldValue: e.target.value,
+    })
   }
 
-handleUpdateFieldChange = (e) => {
-  this.setState({
-    updateFriendName: e.target.value,
-  })
-}
+  handleSubmitUpdateName = (e) => {
+    const updatedFriend = {...this.state.selectedFriend, name: this.state.friendNameInputFieldValue} ;
+    this.props.updateFriend(updatedFriend);
+
+    this.setState({
+      showUpdateNameInput: false,
+      friendNameInputFieldValue: ''
+    });
+  }
 
   render() {
     return (
       <div className="App">
-      <ul>
-        {this.props.friends.map(friend => <li onClick={(e) => this.handleUpdateFriend(e,friend) }>{friend.name}</li>)}
+        <ul>
+          {this.props.friends.map(friend => <li onClick={(e) => this.handleClickFriend(e, friend) }>{friend.name}</li>)}
+        </ul>
 
-      </ul>
-
-        {this.state.showUpdateField ? <div><input onChange={this.handleUpdateFieldChange} name='updateField' type="text" value={this.state.updateFriendName}/>
-      <button onClick={this.handleSubmitUpdate}> Update</button> </div>: null}
-
-
-
-
+        {this.state.showUpdateNameInput ? <div><input onChange={this.handleNameFieldChange} type="text" value={this.state.friendNameInputFieldValue}/>
+          <button onClick={this.handleSubmitUpdateName}> Update</button> </div>: null}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-    console.log(state);
   return {
-
     friends: state.friends,
   }
 }
+
 export default connect(mapStateToProps, {getFriends, updateFriend})(App);
