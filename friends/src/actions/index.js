@@ -1,4 +1,6 @@
 import { fetchFriends } from './fetchFriends';
-import { createFriend } from './createFriends';
+import { createFriend } from './createFriend';
+import { deleteFriend } from './deleteFriend';
+import { updateFriend } from './updateFriend';
 
-export { fetchFriends, createFriend };
+export { fetchFriends, createFriend, deleteFriend, updateFriend };
