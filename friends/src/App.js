@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Friends from './Friends';
-// import FriendForm from './FriendForm';
+import FriendForm from './FriendForm';
 import { getFriends } from '../actions';
 import { connect } from 'react-redux';
 
@@ -16,7 +16,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">My Friends</h1>
-          {/* <FriendForm /> */}
+          <FriendForm />
         </header>
         {this.props.error ? <h3>Error Fetching Friends</h3> : null}
         <div className="Flex-Container">
