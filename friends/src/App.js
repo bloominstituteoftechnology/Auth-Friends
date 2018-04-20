@@ -31,7 +31,8 @@ class App extends Component {
 
 
   handleSubmitUpdate = (e) => {
-    this.props.updateFriend(this.state.updateFriendName)
+    const updatedFriend = {...this.state.currentFriend, name: this.state.updateFriendName } ;
+    this.props.updateFriend(updatedFriend);
   }
 
 handleUpdateFieldChange = (e) => {
