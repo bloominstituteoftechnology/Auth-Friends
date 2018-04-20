@@ -1,65 +1,63 @@
-import React, { Component } from 'react';
-import { createFriend } from '../actions/actions';
+import React from 'react';
 import { connect } from 'react-redux';
+import { addFriend } from '../actions';
 
-class CreateFriendForm extends Component {
+class CreateFriendForm extends React.Component {
   state = {
     name: '',
     age: '',
     email: '',
-  };
-  handleInput = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  }
 
-  submitFriend = e => {
-    e.preventDefault();
-    this.props.createFriend({
-      name: this.state.name,
-      age: this.state.age,
-      email: this.state.email,
-    });
-    this.setState({
+  submitNewFriend = event => {
+    event.preventDefault();
+    this.props.addFriend(this.state);
+    this.setState( {
       name: '',
       age: '',
       email: '',
     });
-  };
+  }
+
+  updateField = event => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  }
 
   render() {
     return (
-      <div className="col-one-half friend-form">
-        <form onSubmit={this.submitFriend}>
+      <div>
+        <form onSubmit={this.submitNewFriend}>
           <input
-            onChange={this.handleInput}
-            type="text"
-            name="name"
-            placeholder="name"
+            type='text'
+            onChange={this.updateField}
+            placeholder='name'
+            value={this.state.name}
+            name='name'
+            required
           />
           <input
-            onChange={this.handleInput}
-            type="number"
-            name="age"
-            placeholder="age"
+            type='number'
+            onChange={this.updateField}
+            placeholder='age'
+            value={this.state.age}
+            name='age'
+            required
           />
           <input
-            onChange={this.handleInput}
-            type="email"
-            name="email"
-            placeholder="email"
+            type='email'
+            onChange={this.updateField}
+            placeholder='email'
+            value={this.state.email}
+            name='email'
+            required
           />
-          <button type="submit">Add/Update Friend</button>
+        <button type='submit'>SUBMIT</button>
         </form>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    savingFriends: state.savingFriends,
-    error: state.error,
-  };
-};
-
-export default connect(mapStateToProps, { createFriend })(CreateFriendForm);
+export default connect(null, { addFriend })(CreateFriendForm);
