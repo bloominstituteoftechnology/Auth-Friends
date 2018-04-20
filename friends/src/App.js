@@ -7,21 +7,43 @@ import {getFriends, updateFriend} from './actions';
 
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      updateFriendName: '',
+      showUpdateField: false,
+
+    }
+  }
 
   componentDidMount(){
     this.props.getFriends();
   }
 
   handleUpdateFriend(e, friend){
-     this.props.updateFriend(friend);
+    this.setState({
+      showUpdateField: !this.state.showUpdateField,
+    })
   }
+
+
+  handleSubmitUpdate(e){
+
+  }
+
 
   render() {
     return (
       <div className="App">
       <ul>
-        {this.props.friends.map(friend => <li onSubmit={() => this.handleUpdateFriend(friend) }>{friend.name}</li>)}
+        {this.props.friends.map(friend => <li onClick={() => this.handleUpdateFriend(friend) }>{friend.name}</li>)}
+
       </ul>
+
+        {this.state.showUpdateField ? <div><input type="text" value={this.state.updateFriendName}/>
+      <button onClick={this.handleSubmitUpdate}> Update</button> </div>: null}
+
+
 
 
       </div>
