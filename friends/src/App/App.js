@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Friends from '../components/Friends'
+import { Friends, UpdateFriendForm } from '../components'
 import { fetchFriends } from '../actions'
 
 class App extends Component {
@@ -13,6 +13,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Friends friends={this.props.friends.friends} />
+        <UpdateFriendForm />
       </div>
     )
   }

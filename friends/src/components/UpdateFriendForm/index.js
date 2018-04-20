@@ -1,3 +1,3 @@
-import UpdateFriendForm from './UpdateFriendForm'
+import { UpdateFriendForm } from './UpdateFriendForm'
 
 export default UpdateFriendForm
