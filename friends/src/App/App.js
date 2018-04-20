@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { Friends, UpdateFriendForm } from '../components'
-import { fetchFriends } from '../actions'
+import { fetchFriends, postFriend } from '../actions'
 
 class App extends Component {
   componentDidMount () {
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Friends friends={this.props.friends.friends} />
-        <UpdateFriendForm />
+        <UpdateFriendForm onUpdate={friend => this.props.postFriend(friend)} />
       </div>
     )
   }
@@ -21,6 +21,7 @@ class App extends Component {
 
 App.propTypes = {
   fetchFriends: PropTypes.func,
+  postFriend: PropTypes.func,
   friends: PropTypes.object
 }
 
@@ -30,4 +31,4 @@ const mapStateToProps = state => ({
   fetchingFriends: false,
   FriendsFetched: false
 })
-export default connect(mapStateToProps, { fetchFriends })(App)
+export default connect(mapStateToProps, { fetchFriends, postFriend })(App)

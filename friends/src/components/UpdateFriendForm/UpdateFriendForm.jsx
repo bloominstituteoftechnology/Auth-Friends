@@ -10,7 +10,7 @@ export const UpdateFriendForm = prop => (
         age: Math.floor(updates[1].value) || 0,
         email: updates[2].value
       }
-      console.log(UpdatedFriend)
+      prop.onUpdate(UpdatedFriend)
     }}
   >
     <label htmlFor='name'>Name</label>
