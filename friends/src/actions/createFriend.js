@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { ERROR_FRIENDS } from './actionTypes';
-import fetchFriends from './fetchFriends';
+import { fetchFriends } from './fetchFriends';
 
 export const createFriend = data => {
     const friends = axios.post(`http://localhost:5000/api/friends`, data);
