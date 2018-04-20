@@ -34,18 +34,12 @@ export const createFriends = friend => {
 	};
 };
 
-export const updateFriends = id => {
-	const friend = {};
-	// if (friend.name !== "") {
-	// 	updateFriend.name = friend.name;
-	// }
-	// if (friend.age !== "") {
-	// 	updateFriend.age = friend.age;
-	// }
-	// if (friend.email !== "") {
-	// 	updateFriend.email = friend.email;
-	// }
-	const friends = axios.put(`http://localhost:5000/api/friends/${id}`, friend);
+export const updateFriends = friend => {
+	console.log("friend: ", friend);
+	const friends = axios.put(
+		`http://localhost:5000/api/friends/${friend.id}`,
+		friend
+	);
 	return dispatch => {
 		friends
 			.then(response => {
