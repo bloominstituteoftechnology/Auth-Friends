@@ -22,11 +22,11 @@ const CreateFriendsForm = props => {
 				placeholder="Enter friend's email"
 				onChange={props.handleNewFriend}
 			/>
-			<button type="button" onClick={() => props.createFriends(props.friend)}>
+			<button
+				type="button"
+				onClick={() => props.createFriends(props.friend)}
+			>
 				Create Friend
-			</button>
-			<button type="button" onClick={() => props.updateFriends(props.friend)}>
-				Update Friend
 			</button>
 		</form>
 	);

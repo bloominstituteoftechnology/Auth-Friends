@@ -1,4 +1,5 @@
 import React from "react";
+import UpdateFriendForm from "./UpdateFriendForm";
 
 const Friends = props => {
   // console.log("FRIEND PROPS", props);
@@ -8,7 +9,8 @@ const Friends = props => {
         return [
           <div key={friend.name}>{friend.name}</div>,
           <div key={friend.age}>{friend.age}</div>,
-          <div key={friend.email}>{friend.email}</div>
+          <div key={friend.email}>{friend.email}</div>,
+          <UpdateFriendForm friend={props.friend} />
         ];
       })}
     </div>
