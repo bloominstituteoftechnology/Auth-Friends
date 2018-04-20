@@ -2,7 +2,6 @@ import React from "react";
 import UpdateFriendForm from "./UpdateFriendForm";
 
 const Friends = props => {
-  // console.log("FRIEND PROPS", props);
   return (
     <div>
       {props.friendsList.map(friend => {

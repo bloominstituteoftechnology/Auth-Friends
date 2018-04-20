@@ -29,8 +29,6 @@ class UpdateFriendForm extends React.Component {
 		this.setState({ name: "", age: "", email: "" });
 	};
 	render() {
-		// console.log("Props: ", this.props);
-		// console.log(this.state.name);
 		return (
 			<form>
 				<input
@@ -63,7 +61,6 @@ class UpdateFriendForm extends React.Component {
 }
 
 const mapStateToProps = state => {
-	// console.log("State: ", state);
 	return {
 		friends: state.friends
 	};

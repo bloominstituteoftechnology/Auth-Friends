@@ -20,10 +20,6 @@ class App extends Component {
   };
 
   render() {
-    // console.log("PROPS", this.props);
-    // console.log(this.state.name);
-    // console.log(this.state.age);
-    // console.log(this.state.email);
     return (
       <div className="App">
         <header className="App-header">
@@ -33,20 +29,17 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        {/* Render CreateFriendForm here - fire action from App*/}
         <CreateFriendsForm
           createFriends={this.props.createFriends}
           handleNewFriend={this.handleNewFriend}
           friend={this.state}
         />
-        {/* Render Friends here - send list of friends as props */}
         <Friends friendsList={this.props.friends} />
       </div>
     );
   }
 }
 
-// mapStateToProps here and connect App with Redux store
 const mapStateToProps = state => {
   return {
     friends: state.friends,
