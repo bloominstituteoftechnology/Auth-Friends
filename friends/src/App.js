@@ -4,8 +4,6 @@ import './App.css';
 import { connect } from 'react-redux';
 import {getFriends, updateFriend} from './actions';
 
-
-
 class App extends Component {
   constructor(){
     super();
@@ -22,17 +20,21 @@ class App extends Component {
   }
 
   handleClickFriend = (e, friend) => {
-
     this.setState({
-      showUpdateNameInput: !this.state.showUpdateNameInput,
+      showUpdateNameInput: true,
       selectedFriend: friend,
+      friendNameInputFieldValue: friend.name
     })
   }
-
 
   handleSubmitUpdateName = (e) => {
     const updatedFriend = {...this.state.selectedFriend, name: this.state.friendNameInputFieldValue} ;
     this.props.updateFriend(updatedFriend);
+
+    this.setState({
+      showUpdateNameInput: false,
+      friendNameInputFieldValue: ''
+    });
   }
 
   handleNameFieldChange = (e) => {
@@ -60,4 +62,5 @@ const mapStateToProps = state => {
     friends: state.friends,
   }
 }
+
 export default connect(mapStateToProps, {getFriends, updateFriend})(App);
