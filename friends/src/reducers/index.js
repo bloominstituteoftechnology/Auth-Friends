@@ -14,5 +14,10 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action) => {
-    return {}
+    switch(action.type) {
+        case(GET_FRIENDS):
+            return Object.assign({}, state, { friends: action.payload, friendsFetched: true });
+        default:
+            return state
+    }
 }

@@ -12,8 +12,9 @@ export const getFriends = () => {
 
     return (dispatch) => {
         request.then((response) => {
+            console.log(response);
             dispatch({
-                type: GET_FRIENDS, 
+                type: GET_FRIENDS,
                 payload: response.data
             })
         })

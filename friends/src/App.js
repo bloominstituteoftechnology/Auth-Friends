@@ -5,29 +5,34 @@ import { connect } from 'react-redux';
 
 class App extends Component {
   componentDidMount() {
-    console.log('props', this.props)
     this.props.getFriends();
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        { this.props.friendsFetched
+          ? this.props.friends.map((friend, index) => {
+            return (
+                <div key={index}>
+                  { friend.name }
+                </div>
+              )
+          })
+          : <h3>FETCHING FRIENDS</h3>
+        }
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(`state`, state)
+  // console.log(`state`, state)
   return {
-    state: state,
+    friends: state.friends,
+    friendsFetched: state.friendsFetched
   }
 }
 
-export default connect(mapStateToProps, { getFriends, getFriend, addFriend, updateFriend, deleteFriend })(App);
+export default connect(mapStateToProps,
+            { getFriends, getFriend, addFriend, updateFriend, deleteFriend })(App);
