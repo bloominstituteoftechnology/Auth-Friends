@@ -1,4 +1,4 @@
-import { GET_FRIENDS, GET_A_FRIEND, ADD_FRIEND, UPDATE_FRIEND, DELETE_FRIEND } from '../actions';
+import { GET_FRIENDS, GET_A_FRIEND, ADD_FRIEND, UPDATE_FRIEND, DELETE_FRIEND, ERROR } from '../actions';
 
 const initialState = {
     fetchingFriends: false,
@@ -16,7 +16,10 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
     switch(action.type) {
         case(GET_FRIENDS):
-            return Object.assign({}, state, { friends: action.payload, friendsFetched: true });
+            return Object.assign({}, state, { friends: action.payload, friendsFetched: true,
+                                              error: null });
+        case(ERROR):
+            return Object.assign({}, state, { error: action.error });
         default:
             return state
     }

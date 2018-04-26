@@ -34,9 +34,18 @@ export const getFriend = () => {
     }
 }
 
-export const addFriend = () => {
-    return {
-        // type: ADD_FRIEND, payload: ''
+export const addFriend = (friend) => {
+    const request = axios.post(`http://localhost:5000/api/friends`, friend)
+
+    return (dispatch) => {
+        request.then(response => {
+            setTimeout(() => {
+                dispatch(getFriends());
+            }, 1000)
+        })
+        .catch(err => {
+            dispatch({ type: "ERROR", error: "ERROR in ADDING FRIEND" });
+        })
     }
 }
 
