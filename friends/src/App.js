@@ -45,16 +45,18 @@ class App extends Component {
                  value={this.state.email} onChange={this.handleChange} />
           <button type="submit">Add Friend</button>
         </form>
-        { this.props.friendsFetched
-          ? this.props.friends.map((friend, index) => {
-            return (
-                <div key={index}>
-                  { friend.name }
-                </div>
-              )
-          })
-          : <h3>FETCHING FRIENDS</h3>
-        }
+        
+          { this.props.friendsFetched
+            ? this.props.friends.map((friend, index) => {
+              return (
+                  <div key={friend.id}>
+                    <button onClick={getFriend(friend.id)}>{ friend.name } </button>
+                  </div>
+                )
+              })
+              : <h3>FETCHING FRIENDS</h3>
+            }
+            
       </div>
     );
   }
@@ -64,7 +66,9 @@ const mapStateToProps = (state) => {
   return {
     friends: state.friends,
     friendsFetched: state.friendsFetched,
-    error: state.error
+    error: state.error,
+    friend: state.friend,
+    friendFetched: state.friendFetched
   }
 }
 

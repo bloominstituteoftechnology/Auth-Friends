@@ -12,9 +12,8 @@ export const getFriends = () => {
 
     return (dispatch) => {
         request.then((response) => {
-            console.log(response);
             dispatch({
-                type: GET_FRIENDS,
+                type: GET_FRIENDS, 
                 payload: response.data
             })
         })
@@ -24,28 +23,31 @@ export const getFriends = () => {
                 payload: error
             })
         })
-        // {type: GET_FRIENDS, payload: ''}
     }
 }
 
-export const getFriend = () => {
-    return {
-        // type: GET_A_FRIEND, payload: ''
-    }
-}
-
-export const addFriend = (friend) => {
-    const request = axios.post(`http://localhost:5000/api/friends`, friend)
+export const getFriend = (id) => {
+    const request = axios.get(`http://localhost:5000/api/friends/${id}`)
 
     return (dispatch) => {
-        request.then(response => {
-            setTimeout(() => {
-                dispatch(getFriends());
-            }, 1000)
+        request.then((response) => {
+            dispatch({
+                type: GET_A_FRIEND, 
+                payload: response.data
+            })
         })
-        .catch(err => {
-            dispatch({ type: "ERROR", error: "ERROR in ADDING FRIEND" });
+        request.catch((error) => {
+            dispatch ({
+                type: ERROR,
+                payload: error
+            })
         })
+    }
+}
+
+export const addFriend = () => {
+    return {
+        // type: ADD_FRIEND, payload: ''
     }
 }
 
