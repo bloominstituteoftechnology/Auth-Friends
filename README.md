@@ -38,7 +38,7 @@ Topics:
 [x]  * Redux store. 
 [x]    * initialState? in friendsReducer.js
 
-2.  use the Provider component from `react-redux` to pass the store to your root component and 
+[x] 2.  use the Provider component from `react-redux` to pass the store to your root component and 
 
 3.  `connect` the React components to `Provider` that need access to the store.
 
