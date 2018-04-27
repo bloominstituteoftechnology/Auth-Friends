@@ -4,6 +4,7 @@ import { getFriends } from './actions';
 import { connect } from 'react-redux';
 import Friend from './components/Friend';
 import CreateFriendForm from './components/CreateFriendForm';
+import UpdateFriend from './components/UpdateFriend';
 
 class App extends Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends Component {
           return <Friend key={friend.id} friend={friend} />
         })}
         {this.props.pending ? <h1>LOADING</h1> : null}
+        {this.props.updating ? <UpdateFriend /> : null}
         <CreateFriendForm/>
       </div>
     );
@@ -29,7 +31,8 @@ const mapStateToProps = state => {
   return {
     friends: state.friends,
     error: state.error,
-    pending: state.pending
+    pending: state.pending,
+    updating: state.updating
   }
 }
 

@@ -1,10 +1,10 @@
-import { PENDING, ERROR, SUCCESS } from '../actions';
+import { PENDING, ERROR, SUCCESS, UPDATING } from '../actions';
 
 const initialState = {
     pending: false,
     error: null,
-    friends: []
-
+    friends: [],
+    friend: {}
 }
 
 const friendReducer = (state = initialState, action) => {
@@ -12,9 +12,20 @@ const friendReducer = (state = initialState, action) => {
         case PENDING:
             return Object.assign({}, state, { pending: true });
         case SUCCESS:
-            return Object.assign({}, state, {friends: action.friends, pending: false });
+            return Object.assign({}, state, {
+                friends: action.friends, 
+                pending: false 
+            });
         case ERROR:
-            return Object.assign({}, state, {error: action.error, pending: false });
+            return Object.assign({}, state, {
+                error: action.error, 
+                pending: false 
+            });
+        case UPDATING:
+            return Object.assign({}, state, {
+                updating: true,
+                friend: action.friend
+            });
         default:
             return state;
     }

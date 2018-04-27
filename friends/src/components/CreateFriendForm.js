@@ -16,8 +16,6 @@ class CreateFriendForm extends Component {
 
 handleChange = e => {
     this.setState({ [e.target.name]: e.target.value});
-    console.log(this.state);
-
 }
 
 handleSubmit = e => {
