@@ -1,0 +1,9 @@
+export const FETCH_FRIENDS = 'FETCH_FRIENDS';
+export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
+export const ADD_FRIEND = 'ADD_FRIEND';
+export const ADDING_FRIEND = 'ADDING_FRIEND';
+export const REMOVE_FRIEND = 'REMOVE_FRIEND';
+export const REMOVING_FRIEND = 'REMOVING_FRIEND';
+export const UPDATE_FRIEND = 'UPDATE_FRIEND';
+export const UPDATING_FRIEND = 'UPDATING_FRIEND';
+export const ERROR = 'ERROR';
