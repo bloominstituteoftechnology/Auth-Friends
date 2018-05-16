@@ -4,7 +4,10 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^0.18.0",
+=======
+>>>>>>> upstream/master
     "body-parser": "^1.18.3",
     "cors": "^2.8.3",
     "express": "^4.15.2",
