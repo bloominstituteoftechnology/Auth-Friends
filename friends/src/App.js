@@ -7,10 +7,16 @@ class App extends Component {
     this.props.getFriends()
   }
   render() {
-    console.log(this.props)
+    const {friends} = this.props
     return (
       <div>
-        
+        { friends.map(friend => 
+        <div key={friend.id}>
+          <div>{friend.name}</div>
+          <div>{friend.age}</div>
+          <div>{friend.email}</div>
+        </div>
+        )}
       </div>
     );
   }
