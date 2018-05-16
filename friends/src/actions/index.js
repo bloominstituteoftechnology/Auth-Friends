@@ -33,17 +33,23 @@ export const updating = () => {
     };
 };
 
+export const deleting = (id) => {
+    return {
+        type: DELETING_FRIEND,
+    };
+}
+
 
 
 export const fetched = () => {
-    const request = axios.get('http://localhost.5000/api/friends/')
+    const request = axios.get('http://localhost:5000/api/friends/')
     return (dispatch) => {
         dispatch({ type: FETCHING_FRIENDS });
         request
             .then(data => {
                 dispatch({
                     type: FETCHED_FRIENDS,
-                    payload: data.friends
+                    payload: data
                 })
             })
             .catch(err => {
@@ -55,26 +61,22 @@ export const fetched = () => {
     }
 }
 
-export const deleting = (id) => {
-    const request = axios.delete(`http://localhost.5000/api/friends/${id}`);
-}
-
 export const deleted = (id) => {
     const request = axios.delete(`http://localhost:5000/api/friends/${id}`);
     return (dispatch) => {
-      dispatch({ type: DELETING_FRIEND });
-      request
-        .then(data => {
-          dispatch({
-            type: DELETED_FRIEND,
-            payload: data.friends
-          })
-        })
-        .catch(err => {
-          dispatch({
-            type: ERROR,
-            payload: err,
-          })
-        })
+        dispatch({ type: DELETING_FRIEND });
+        request
+            .then(data => {
+                dispatch({
+                    type: DELETED_FRIEND,
+                    payload: data.friends
+                })
+            })
+            .catch(err => {
+                dispatch({
+                    type: ERROR,
+                    payload: err,
+                })
+            })
     }
 };

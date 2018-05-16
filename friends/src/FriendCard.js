@@ -3,9 +3,11 @@ import {
     Card, CardText, CardBody,
     CardTitle, Button
 } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const FriendCard = (props) => {
+    console.log("FriendCard props",props);
     return (
         <div className="card-container row">
             {props.friends.map((e, i) => {
@@ -25,4 +27,10 @@ const FriendCard = (props) => {
     );
 };
 
-export default FriendCard;
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+  }
+}
+
+export default connect(mapStateToProps, null)(FriendCard);

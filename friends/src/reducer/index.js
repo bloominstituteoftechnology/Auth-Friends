@@ -24,7 +24,7 @@ export const friendsReducer = (state = initialState, action) => {
         case SAVED_FRIEND:
             return {
                 ...state,
-                friends: state.friends.concat(action.payload),
+                friends: state.friends.concat(action.payload.data),
                 savingFriends: !state.savingFriends,
                 friendsSaved: !state.friendsSaved
             }
@@ -36,7 +36,7 @@ export const friendsReducer = (state = initialState, action) => {
         case UPDATED_FRIEND:
             return {
                 ...state,
-                friends: state.friends.concat(action.payload),
+                friends: state.friends.concat(action.payload.data),
                 updatingFriend: !state.updatingFriend,
                 friendUpdated: !state.friendUpdated
             }
@@ -48,7 +48,7 @@ export const friendsReducer = (state = initialState, action) => {
         case FETCHED_FRIENDS:
             return {
                 ...state,
-                friends: state.friends.concat(action.payload),
+                friends: state.friends.concat(action.payload.data),
                 fetchingFriends: !state.fetchingFriends,
                 friendsFetched: !state.friendsFetched
             }
@@ -62,7 +62,7 @@ export const friendsReducer = (state = initialState, action) => {
                 ...state,
                 deletingFriend: !state.deletingFriend,
                 friendDeleted: !state.friendDeleted,
-                friends: state.friends.concat(action.payload),
+                friends: state.friends.concat(action.payload.data),
             }
         case ERROR:
             return {

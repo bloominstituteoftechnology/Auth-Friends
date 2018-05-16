@@ -3,13 +3,14 @@ import axios from 'axios';
 import './App.css';
 import FriendCard from './FriendCard'
 import AddFriend from './AddFriend'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetched, deleted } from './actions';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      friends: [],
       name: '',
       age: '',
       email: ''
@@ -17,14 +18,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    axios.get('http://localhost:5000/friends/')
-      .then(response => this.setState({
-        friends: response.data,
-        name: '',
-        age: '',
-        email: ''
-      }))
-      .catch(err => console.log(err));
+    this.props.fetched();
   }
 
   updateDataText = e => {
@@ -52,9 +46,9 @@ class App extends Component {
       .catch(err => console.log(err));
   }
   deleteFriend = id => {
-    axios.delete(`http://localhost:5000/friends/${id}`)
-      .then(data => this.setState({ friends: data.data }))
+    this.props.deleted(id);
   }
+//{...props} friends={this.props.friends} delete={this.deleteFriend} update={this.updateFriend} 
   render() {
     // console.log(this.state)
     return (
@@ -62,7 +56,7 @@ class App extends Component {
         <h1>Awesome Friendslist!</h1>
         <p>Should you have any</p>
         <div className="friend-list">
-          <Route path="/" render={(props) => <FriendCard {...props} friends={this.state.friends} delete={this.deleteFriend} update={this.updateFriend} />} />
+          <Route path="/" render={(props) => <FriendCard />} />
         </div>
         <Route exact path="/updatefriend" render={(props) => <AddFriend {...props} name={this.state.name} age={this.state.age} email={this.state.email} function={this.updateDataText} function2={this.postNewFriend} />} />
         <Route exact path="/addfriend" render={(props) => <AddFriend {...props} name={this.state.name} age={this.state.age} email={this.state.email} function={this.updateDataText} function2={this.postNewFriend} />} />
@@ -73,4 +67,18 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+    fetchStatus: state.fetchingFriends,
+    updateStatus: state.updatingFriend,
+    deleteStatus: state.deletingFriend,
+    savingStatus: state.savingFriends,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, {
+  fetched,
+  deleted,
+})(App);
