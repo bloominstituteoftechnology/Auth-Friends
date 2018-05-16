@@ -1,0 +1,36 @@
+.Nav-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(166, 105, 207);
+    color: white;
+    padding: 10px 0;
+    font-size: 15px;
+  }
+  .Nav-header a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .Nav-header p {
+    color: white;
+    padding: 0;
+  }
+  
+  .SubNav-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    color: black;
+    margin: 10px 0;
+  }
+  
+  .SubNav-container a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .SubNav-itsem {
+    font-size: 15px;
+  }
+  
