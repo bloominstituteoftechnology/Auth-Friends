@@ -17,11 +17,12 @@ class AddFriendForm extends Component {
         })        
     }
     render() {
+        const { name, age, email } = this.state
         return (
         <div>
-            <input name='name' placeholder='name' onChange={e => this.handleChange(e)}/>
-            <input name='age' placeholder='age' onChange={e => this.handleChange(e)}/>
-            <input name='email' placeholder='email' onChange={e => this.handleChange(e)}/>
+            <input name='name' placeholder='name' value={name} onChange={e => this.handleChange(e)}/>
+            <input name='age' placeholder='age' value={age} onChange={e => this.handleChange(e)}/>
+            <input name='email' placeholder='email' value={email} onChange={e => this.handleChange(e)}/>
             <button onClick={this.handleAddFriend}>Submit</button>
         </div>
         );

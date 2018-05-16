@@ -28,3 +28,15 @@ export const addFriend = (newFriend) => {
         });
       };
 }
+
+export const deleteFriend = (id) => {
+    const request = axios.delete(`http://localhost:5000/api/friends/${id}`)
+    return (dispatch) => {
+        request.then(({data}) => {
+            dispatch({type: FETCHED_FRIENDS, friends: data});
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+}
