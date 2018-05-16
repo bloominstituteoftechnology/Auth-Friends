@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -22,7 +26,13 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.form-group {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-control {
+  width: 200px;
+  align-self: center;
 }

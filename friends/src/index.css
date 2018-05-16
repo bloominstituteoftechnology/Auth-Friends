@@ -2,4 +2,33 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: lightgray;
+}
+
+.friend-card {
+  max-width: 200px;
+  margin-top: 20px;
+}
+
+.card-container {
+  justify-content: space-around
+}
+
+.friend-list {
+  max-width: 900px;
+  padding: 0 10% 0 10%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-bottom: 20px;
+}
+
+.btn {
+  height: 25px;
+  font-size: 0.6rem;
+  margin: 5px 10px 5px 10px;
+}
+
+h5 {
+  font-weight: bold;
 }
