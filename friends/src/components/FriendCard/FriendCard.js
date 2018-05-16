@@ -1,10 +1,11 @@
 import React from 'react';
 import { Card, CardBody, CardTitle } from 'reactstrap';
+import './FriendCard.css';
 
 const FriendCard = props => {
   return (
     <React.Fragment>
-      <Card>
+      <Card className="FriendCard">
         <CardBody>
           <CardTitle>{props.friend.name}</CardTitle>
           <ul>

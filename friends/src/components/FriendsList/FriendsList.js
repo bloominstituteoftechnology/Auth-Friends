@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FriendCard from '../FriendCard/FriendCard';
 import { connect } from 'react-redux';
 import { fetchFriends } from '../../actions';
+import './FriendsList.css';
 
 class FriendsList extends Component {
   componentDidMount(){
