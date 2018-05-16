@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import AddFriendForm from './components/AddFriendForm';
 import { getFriends } from './actions';
 
 class App extends Component {
@@ -7,10 +8,11 @@ class App extends Component {
     this.props.getFriends()
   }
   render() {
-    const {friends} = this.props
+    const { isFetching, friends} = this.props
     return (
       <div>
-        { friends.map(friend => 
+        <AddFriendForm />
+        { !isFetching && friends.map(friend => 
         <div key={friend.id}>
           <div>{friend.name}</div>
           <div>{friend.age}</div>

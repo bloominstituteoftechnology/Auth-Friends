@@ -15,3 +15,16 @@ export const getFriends = () => {
         });
       };
 }
+
+export const addFriend = (newFriend) => {
+    const request = axios.post('http://localhost:5000/api/friends', newFriend)
+    return (dispatch) => {
+        dispatch({type: FETCHING_FRIENDS})
+        request.then(({data}) => {
+          dispatch({type: FETCHED_FRIENDS, friends: data});
+        })
+        .catch(err => {
+            console.log(err);
+        });
+      };
+}

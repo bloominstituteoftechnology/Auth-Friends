@@ -1,9 +1,12 @@
-import {FETCHING_FRIENDS, FETCHED_FRIENDS} from '../actions';
+import {
+    FETCHING_FRIENDS, 
+    FETCHED_FRIENDS,
+} from '../actions';
 
 const initialState = {
     friends: [],
-    fetching: false,
-    fetched: false,
+    isFetching: false,
+    isFetched: false,
 }
 
 export const friendsReducer = (state=initialState, {type, friends}) => {
@@ -11,13 +14,13 @@ export const friendsReducer = (state=initialState, {type, friends}) => {
         case FETCHING_FRIENDS:
             return {
                 ...state, 
-                fetching: true
+                isFetching: true
             }
         case FETCHED_FRIENDS:
             return {
                 ...state,
-                fetching: false,
-                fetched: true,
+                isFetching: false,
+                isFetched: true,
                 friends
             }
         default:
