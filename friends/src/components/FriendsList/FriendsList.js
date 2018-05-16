@@ -10,7 +10,7 @@ class FriendsList extends Component {
   render() {
     return (
       <div className="FriendsList">
-        <FriendCard />
+        {this.props.friends.map(friend => <FriendCard key={friend.id} friend={friend}/>)}
       </div>
     );
   };
