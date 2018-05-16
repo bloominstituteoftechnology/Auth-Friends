@@ -1,13 +1,10 @@
-.App {
-  text-align: center;
-}
-
-.App-header {
+.Header {
   background-color: #222;
   padding: 5px;
   color: white;
 }
 
-.App-title {
+.Header h1 {
   font-size: 1.5em;
+  text-align: center;
 }
