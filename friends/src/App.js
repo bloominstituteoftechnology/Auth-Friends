@@ -21,11 +21,10 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">My Amazing Friends</h1>
-          {/* <Friends friends={this.props.friends}/>
-          <CreateFriendForm />
+          {/* <CreateFriendForm />
           <UpdateFriendForm /> */}
-          {this.props.friends.map(friend => <div>{friend.name}</div>)}
         </header>
+        <Friends friends={this.props.friends}/>
       </div>
     );
   }
