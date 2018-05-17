@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import fetcher from '../actions';
 import { Route } from 'react-router-dom';
 import Friends from './friends.js';
+import Front from './front.js'
+import './app.css';
 
 class App extends Component {
 
@@ -14,7 +16,11 @@ class App extends Component {
     return (
       <div className="App">
 
-        <Route path="/" render={() => (
+        <Route exact path="/" render={() => (
+          <Front fetched={this.props.fetched} />
+        )} />
+
+        <Route path="/friends" render={() => (
           <Friends friendData={this.props.friends} />
         )} />
 
