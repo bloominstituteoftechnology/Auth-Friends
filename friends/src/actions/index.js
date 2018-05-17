@@ -4,7 +4,7 @@ export const PENDING_FRIENDS = "PENDING_FRIENDS";
 export const SUCCESS_FRIENDS = "SUCCESS_FRIENDS";
 export const ERROR_FRIENDS = "ERROR_FRIENDS";
 
-export const fecthFriends = () => {
+export const fetchFriends = () => {
   const friends = axios.get("http://localhost:5000/api/friends");
   return dispatch => {
     dispatch({ type: PENDING_FRIENDS });
