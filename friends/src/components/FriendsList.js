@@ -11,15 +11,19 @@ class FriendsList extends Component {
 
     render() {
         return (
-            <ul>
-                {this.props.friends.map(friend => {
-                return  <li key = {friend}> {friend.name} </li>;
-            })}
-            </ul>
+            <div>
+                {this.props.error ? <div>404 Oh Snap</div> : null}
+                {this.props.fetchingFriends ? <div>Loading...</div> : null}
+                <ul>
+                    {this.props.friends.map(friend => {
+                    return  <li key = {friend}> {friend.name} </li>;
+                })}
+                </ul>
+            </div>
         )
     }
 
-    
+
 
 
 
@@ -27,9 +31,10 @@ class FriendsList extends Component {
 
 const mapStateToProps = state => {
     return {
-        friends: state.friends
+        friends: state.friends,
+        fetchingFriends: state.fetchingFriends,
+        error: state.error
     };
   };
-  
+
 export default connect(mapStateToProps, { fetchFriends })(FriendsList);
-  
