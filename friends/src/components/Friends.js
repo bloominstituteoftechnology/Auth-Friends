@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchFriends } from '../actions';
 import logo from '../logo.svg';
+import Friend from './Friend';
 
 class Friends extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showForm: false,
-
+            showForm: false
         }
     }
 
@@ -23,11 +23,8 @@ class Friends extends Component {
             <div className="friends-list">
                 {this.props.friends.map( friend => {
                     return (
-                    <div className="friend-container" key={friend.id}>
-                        <h1>{friend.name}</h1>
-                        <span>{friend.age}</span>
-                        <span>{friend.email}</span>
-                    </div>)
+                        <Friend key={friend.id} friend={friend}/>
+                    )
                 })}
                 {this.props.fetching ? 
                     <img src={logo} className="App-logo" alt="logo" /> : null}
