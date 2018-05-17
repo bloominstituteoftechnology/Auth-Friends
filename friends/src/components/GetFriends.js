@@ -10,10 +10,10 @@ class GetFriends extends Component {
   }
   
   render() {
-    console.log(this.props.friends)
-    // return <h1>HELLO</h1>
-
-    if (this.props.friends.length > 0) {
+    if (this.props.friendsData.fetchingFriends) {
+      return <h1>GETTING FRIENDS</h1>;
+    }
+    else {
       return (
         <ul>
           {
@@ -30,14 +30,12 @@ class GetFriends extends Component {
         </ul>
       );
     }
-    else {
-      return <h1>GETTING FRIENDS</h1>;
-    }
   }
 }
 
 const mapStateToProps = (state) => {
   return {
+    friendsData: state.getFriendsReducer,
     friends: state.getFriendsReducer.friends
   }
 };

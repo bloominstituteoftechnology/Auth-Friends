@@ -2,6 +2,7 @@
 import axios from 'axios';
 
 // actions types
+export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
 export const GET_FRIENDS = 'GET_FRIENDS';
 export const ERROR = 'ERROR';
 
@@ -9,21 +10,20 @@ export const ERROR = 'ERROR';
 // getFriends
 export const getFriends = () => {
   return dispatch => {
-    return (
+    dispatch({ type: FETCHING_FRIENDS });
       axios.get('http://localhost:5000/api/friends')
         .then(({ data }) => {
-          return dispatch({
+          dispatch({
             type: GET_FRIENDS,
             payload: data
           });
         })
         .catch(err => {
           console.log('ERR', err)
-          return dispatch({
+          dispatch({
             type: ERROR,
             payload: err
           });
         })
-    );
   };
 };
