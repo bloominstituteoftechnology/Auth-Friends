@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import fetcher from '../actions';
-import { Route } from 'react-router-dom';
 import Friends from './friends.js';
 import Front from './front.js'
 import './app.css';
@@ -13,16 +12,17 @@ class App extends Component {
   }
 
   render() {
-    return (
+    if (this.props.fetched) return (
+      <div className="App mb-5">
+
+          <Friends friendData={this.props.friends} />
+
+      </div>
+    );
+    else return (
       <div className="App">
 
-        <Route exact path="/" render={() => (
-          <Front fetched={this.props.fetched} />
-        )} />
-
-        <Route path="/friends" render={() => (
-          <Friends friendData={this.props.friends} />
-        )} />
+          <Front />
 
       </div>
     );

@@ -1,7 +1,6 @@
 import React from 'react';
 import './front.css';
-import { Alert, Card, CardTitle, CardText, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Alert } from 'reactstrap';
 
 
 const Front = (props) => {
