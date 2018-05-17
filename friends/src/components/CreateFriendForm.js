@@ -11,6 +11,7 @@ class CreateFriendForm extends React.Component {
       name: '',
       age: '',
       email: '',
+      likes: '',
     }
   }
 
@@ -24,12 +25,14 @@ class CreateFriendForm extends React.Component {
       name: this.state.name,
       age: this.state.age,
       email: this.state.email,
+      likes: this.state.likes,
     };
     this.props.postFriend(newFriend);
     this.setState({
       name: '',
       age: '',
       email: '',
+      likes: '',
     })
   }
 
@@ -65,6 +68,16 @@ class CreateFriendForm extends React.Component {
                 type="text" 
                 name="age"  
                 id="age"
+                value={this.state.age}
+                onChange={(e) => this.handleTextChange(e)}  
+              />
+            </div>
+            <div className="mv3">
+              <label className="db fw6 lh-copy f6" htmlFor="likes">What does your friend like?</label>
+              <input className="b pa2 input-reset ba bg-transparent hover-bg-dark-gray hover-white w-100" 
+                type="text" 
+                name="likes"  
+                id="likes"
                 value={this.state.age}
                 onChange={(e) => this.handleTextChange(e)}  
               />

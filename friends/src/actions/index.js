@@ -55,6 +55,7 @@ export const putFriend = (id, friendObj) => {
         payload: data.data,
       }))
       .catch(err => {
+        console.log("putFriend error", err);
         dispatch({
           type: ERROR,
           payload: err,
