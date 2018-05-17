@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from '../Header/Header';
-import AddFriendForm from '../AddFriendForm/AddFriendForm';
+import AddFriend from '../AddFriend/AddFriend';
 import FriendsList from '../FriendsList/FriendsList';
 
 const Friends = () => {
   return (
     <React.Fragment>
       <Header title={'Friends'}/>
-      <AddFriendForm />
+      <AddFriend />
       <FriendsList />
     </React.Fragment>
   );
