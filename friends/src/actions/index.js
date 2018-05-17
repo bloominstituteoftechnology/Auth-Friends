@@ -11,7 +11,7 @@ const fetcher = (url) => {
   return (dispatch) => {
     dispatch({type: FETCHING_FRIENDS});
     request.then((data) => {
-      dispatch({type: FETCHED_FRIENDS, payload: data});
+      dispatch({type: FETCHED_FRIENDS, payload: data.data});
     })
     .catch(err => {
       dispatch({type: ERROR, payload: err});
