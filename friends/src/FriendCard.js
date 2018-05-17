@@ -5,10 +5,11 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deleted } from './actions'
+import { deleted, updated } from './actions'
 
 const FriendCard = (props) => {
     // console.log("FriendCard props", props);
+    // let values = { name: props.name, age: props.age, email: props.email }
     return (
         <div className="card-container row">
             {props.friends.map((e, i) => {
@@ -18,7 +19,7 @@ const FriendCard = (props) => {
                         <CardTitle>{e.name}</CardTitle>
                         <CardText>{e.age} Years</CardText>
                         <CardText>{e.email}</CardText>
-                        <Link to="/" className="btn btn-success" onClick={() => props.update(e.id)}>UPDATE!</Link>
+                        <Link to="/" className="btn btn-success" onClick={() => props.updated(e.id)}>UPDATE!</Link>
                         <Button className="btn-danger" onClick={() => props.deleted(e.id)}>DELETE</Button>
                     </CardBody>
                 </Card>
@@ -29,9 +30,13 @@ const FriendCard = (props) => {
 };
 
 const mapStateToProps = (state) => {
+    console.log("STATE", state)
     return {
-        friends: state.friends,
+        friends: state.friendsReducer.friends,
+        // name: state.form.friend.values.name,
+        // age: state.form.friend.values.age,
+        // email: state.form.friend.values.email
     }
 }
 
-export default connect(mapStateToProps, { deleted })(FriendCard);
+export default connect(mapStateToProps, { deleted, updated })(FriendCard);

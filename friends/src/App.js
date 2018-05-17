@@ -2,50 +2,28 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import FriendCard from './FriendCard'
-import AddFriend from './AddFriend'
+import FriendForm from './AddFriend'
 import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetched, deleted } from './actions';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      age: '',
-      email: ''
-    };
-  }
-
   componentDidMount = () => {
     this.props.fetched();
   }
 
-
-  updateFriend = id => {
-    axios.put(`http://localhost:5000/friends/${id}`, { name: this.state.name, age: this.state.age, email: this.state.email })
-      .then((data) => this.setState({
-        friends: data.data,
-        name: '',
-        age: '',
-        email: ''
-      }))
-      .catch(err => console.log(err));
-  }
   //{...props} friends={this.props.friends} delete={this.deleteFriend} update={this.updateFriend} 
   render() {
     // console.log(this.state)
     return (
       <div className="App">
         <h1>Awesome Friendslist!</h1>
-        <p>Should you have any</p>
         <div className="friend-list">
 
           <FriendCard />
         </div>
-        <AddFriend />
+        <FriendForm />
         {/* <Route exact path="/updatefriend" render={(props) => <AddFriend {...props} name={this.state.name} age={this.state.age} email={this.state.email} function={this.updateDataText} function2={this.postNewFriend} />} /> */}
-
       </div>
     );
   }

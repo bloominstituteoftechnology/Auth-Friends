@@ -83,12 +83,13 @@ export const deleted = (id) => {
     }
 };
 
-export const added = (newFriend) => {
-    const request = axios.post('http://localhost:5000/api/friends', newFriend)
+export const added = (values) => {
+    const request = axios.post('http://localhost:5000/api/friends', values)
     return (dispatch) => {
         dispatch({ type: SAVING_FRIEND })
         request
             .then((data) => {
+                console.log("data", data)
                 dispatch({
                     type: SAVED_FRIEND,
                     payload: data.data
@@ -98,3 +99,19 @@ export const added = (newFriend) => {
     }
 }
 
+export const updated = (newFriend, id) => {
+    const request = axios.post(`http://localhost:5000/api/friends${id}`, newFriend)
+    return (dispatch) => {
+        dispatch({ type: UPDATING_FRIEND })
+        request
+            .then((data) => {
+                dispatch({
+                    type: UPDATED_FRIEND,
+                    payload: data.data
+                })
+            })
+            .catch(err => console.log(err));
+    }
+}
+
+// const mapStateToProps = (state) => ( mapStateToProps, null }(updated)
