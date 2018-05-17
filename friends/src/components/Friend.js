@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UpdateFriend from "./UpdateFriend";
 import { connect } from 'react-redux';
-import { deleteFriend } from "../actions";
+import { deleteFriend, fetchFriends } from "../actions";
 
 class Friend extends Component {
     constructor(props) {
@@ -17,7 +17,8 @@ class Friend extends Component {
     }
 
     handleDelete = () => {
-        this.props.deleteFriend(this.state.friend)
+        this.props.deleteFriend(this.state.friend);
+        this.props.fetchFriends();
     }
     
     render() { 
@@ -60,4 +61,4 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps, { deleteFriend })(Friend);
+export default connect(mapStateToProps, { deleteFriend, fetchFriends })(Friend);
