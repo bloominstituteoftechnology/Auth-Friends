@@ -6,6 +6,7 @@ export const FETCHING_FRIENDS = "FETCHING_FRIENDS";
 export const ERROR = "ERROR";
 export const SAVING_FRIENDS = "SAVING_FRIENDS";
 export const FRIENDS_SAVED = "FRIENDS_SAVED";
+export const DELETE_FRIEND = "DELETE_FRIEND";
 
 export const fetchFriends = () => {
     const getFriends = axios.get('http://localhost:5000/api/friends');
@@ -38,3 +39,16 @@ export const addFriend = (friend) => {
     }
 }
 
+export const deleteFriend = (friend) => {
+    const deleteFriends = axios.delete(`http://localhost:5000/api/friends/${friend.id}`);
+    return function(dispatch) {
+        deleteFriends
+            .then(res => {
+                console.log(res);
+                dispatch({type: DELETE_FRIEND , payload: res.data});
+            })
+            .catch(err => {
+                dispatch({type: ERROR, payload: true})
+            })
+    }
+}

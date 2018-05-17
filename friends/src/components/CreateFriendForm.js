@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import { addFriend } from "../actions";
 import { connect } from "react-redux";
 
-
-
 class CreateFriendForm extends Component {
     constructor(props) {
       super(props);
@@ -37,7 +35,5 @@ class CreateFriendForm extends Component {
         )
     }
 }
-
-
 
 export default connect(null, { addFriend })(CreateFriendForm);

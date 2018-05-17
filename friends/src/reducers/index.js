@@ -1,4 +1,5 @@
-import { FETCHED_FRIENDS, ADD_FRIEND, FETCHING_FRIENDS, ERROR, SAVING_FRIENDS, FRIENDS_SAVED } from "../actions";
+import { FETCHED_FRIENDS, ADD_FRIEND, FETCHING_FRIENDS, ERROR, SAVING_FRIENDS, FRIENDS_SAVED, DELETE_FRIEND } from "../actions";
+import { STATUS_CODES } from "http";
 
 const initialState = {
     friends: [],
@@ -41,6 +42,11 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 error: action.payload,
                 fetchingFriends: false
+            })
+        case DELETE_FRIEND:
+            const realFriends = action.payload;
+            return Object.assign({}, state, {
+                friends: realFriends
             })
         default:
             return state;

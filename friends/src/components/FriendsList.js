@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFriends } from '../actions';
-
+import { fetchFriends, deleteFriend } from '../actions';
 
 class FriendsList extends Component {
 
@@ -16,17 +15,17 @@ class FriendsList extends Component {
                 {this.props.fetchingFriends ? <div>Loading...</div> : null}
                 <ul>
                     {this.props.friends.map(friend => {
-                    return  <li key = {friend}> {friend.name} </li>;
+                    return (
+                        <div>
+                            <li key = {friend}> {friend.name}</li>
+                            <button onClick={() => this.props.deleteFriend(friend)}>^Delete^</button>
+                        </div>
+                    );
                 })}
                 </ul>
             </div>
         )
     }
-
-
-
-
-
 }
 
 const mapStateToProps = state => {
@@ -37,4 +36,4 @@ const mapStateToProps = state => {
     };
   };
 
-export default connect(mapStateToProps, { fetchFriends })(FriendsList);
+export default connect(mapStateToProps, { fetchFriends, deleteFriend })(FriendsList);
