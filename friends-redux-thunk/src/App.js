@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 
 import logo from './logo.svg';
 import './App.css';
 import {Cards, AddNew} from './components';
 
+
 class App extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className="App">
         <header className="App-header">
@@ -24,10 +23,5 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    state: state
-  }
-}
-export default connect(mapStateToProps, {})(App);
+export default App;
  

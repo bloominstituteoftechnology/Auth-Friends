@@ -1,3 +1,15 @@
+import {
+    FETCHINGFRIENDS,
+    FRIENDSFETCHED,
+    FRIENDSSAVED,
+    SAVINGFRIENDS,
+    UPDATINGFRIEND,
+    FRIENDUPDATED,
+    DELETINGFRIEND,
+    FRIENDDELETED,
+    ERROR
+} from '../actions';
+
 const initialState = {
     fetchingFriends: false,
     friendsFetched: false,
@@ -12,7 +24,20 @@ const initialState = {
 }
 
 export const friendsReducer = (state = initialState, action) => {
+
     switch (action.type) {
+        case FETCHINGFRIENDS:
+            return { ...state,
+                fetchingFriends: true
+            };
+        case FRIENDSFETCHED:
+        case FRIENDSSAVED:
+        case SAVINGFRIENDS:
+        case UPDATINGFRIEND:
+        case FRIENDUPDATED:
+        case DELETINGFRIEND:
+        case FRIENDDELETED:
+        case FETCHINGFRIENDS:
         default:
             return state;
     }

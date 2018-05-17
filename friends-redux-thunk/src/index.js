@@ -11,9 +11,6 @@ import registerServiceWorker from './registerServiceWorker';
 import combineReducers from './reducers'
 
 const store = createStore( combineReducers, applyMiddleware(thunk, logger) )
-console.log("store",store);
-console.log("store.friendsReducer",store.friendsReducer);
-console.log(combineReducers);
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
