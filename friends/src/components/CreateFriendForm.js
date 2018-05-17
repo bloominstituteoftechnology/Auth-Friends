@@ -8,18 +8,22 @@ export default class CreateFriendForm extends Component {
       this.state = {
         name: '',
         age: '', 
-        email: '',  
+        email: '',
       };
 
     }
 
+    handleFriendName = e => {
+        this.setState({ [e.target.name]: e.target.value });
+      };
+
+    
     render () {
         return (
             <form>
-                <input placeholder='name' name='name' value={this.state.name}/>
-                <input placeholder='age' name='age' value={this.state.age}/>
-                <input placeholder='email' name='email' value={this.state.email}/>
-
+                <input onChange={ this.handleFriendName } placeholder='name' name='name' value={this.state.name}/>
+                <input onChange={this.handleFriendName } placeholder='age' name='age' value={this.state.age}/>
+                <input onChange={this.handleFriendName } placeholder='email' name='email' value={this.state.email}/>
             </form>
         )
     }
