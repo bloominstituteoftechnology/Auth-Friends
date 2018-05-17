@@ -1,12 +1,12 @@
 import {
-  FETCH_FRIENDS,
   FETCHING_FRIENDS,
-  ADD_FRIEND,
+  FRIENDS_FETCHED,
   ADDING_FRIEND,
-  REMOVE_FRIEND,
+  FRIEND_ADDED,
   REMOVING_FRIEND,
-  UPDATE_FRIEND,
+  FRIEND_REMOVED,
   UPDATING_FRIEND,
+  FRIEND_UPDATED,
   ERROR
 } from '../actions/ActionTypes';
 
@@ -14,35 +14,74 @@ const initialState = {
   friends: [],
   error: null,
   fetchingFriends: false,
-  friendsFetched: false,
   addingFriend: false,
-  friendAdded: true,
   removingFriend: false,
-  friendRemoved: true,
   updatingFriend: false,
-  friendUpdated: true
 };
 
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_FRIENDS:
-      return Object.assign({}, state, { friends: state.friends.concat(action.payload), fetchingFriends:false, friendsFetched:true });
     case FETCHING_FRIENDS:
-      return Object.assign({}, state, { fetchingFriends:true });
-    case ADD_FRIEND:
-      return Object.assign({}, state, { friends: action.payload, addingFriend: false, friendAdded: true });
+      return Object.assign({}, state, {
+        fetchingFriends: true,
+        error: null
+      });
+
+    case FRIENDS_FETCHED:
+      return Object.assign({}, state, { 
+        friends: state.friends.concat(action.payload),
+        fetchingFriends: false,
+        error: null
+      });
+
     case ADDING_FRIEND:
-      return Object.assign({}, state, { addingFriend: true });
-    case REMOVE_FRIEND:
-      return Object.assign({}, state, { friends: action.payload, removingFriend: false, friendRemoved: true });
+      return Object.assign({}, state, {
+        addingFriend: true,
+        error: null
+      });
+
+    case FRIEND_ADDED:
+      return Object.assign({}, state, {
+        friends: action.payload,
+        addingFriend: false,
+        error: null
+      });
+
     case REMOVING_FRIEND:
-      return Object.assign({}, state, { removingFriend: true });
-    case UPDATE_FRIEND:
-      return Object.assign({}, state, { friends: action.payload, updatingFriend: false, friendUpdated: true });
+      return Object.assign({}, state, {
+        removingFriend: true,
+        error: null
+      });
+
+    case FRIEND_REMOVED:
+      return Object.assign({}, state, {
+        friends: action.payload,
+        removingFriend: false,
+        error: null
+      });
+
     case UPDATING_FRIEND:
-      return Object.assign({}, state, { updatingFriend: true });
+      return Object.assign({}, state, {
+        updatingFriend: true,
+        error: null
+      });
+
+    case FRIEND_UPDATED:
+      return Object.assign({}, state, {
+        friends: action.payload,
+        updatingFriend: false,
+        error: null
+      });
+
     case ERROR:
-      return state;
+      return Object.assign({}, state, { 
+        error: action.payload,
+        fetchingFriends: false,
+        addingFriend: false,
+        removingFriend: false,
+        updatingFriend: false,
+      });
+
     default:
       return state;
   }

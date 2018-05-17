@@ -21,19 +21,23 @@ class FriendModal extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
   primaryAction = () => {
-    const friendObj = (this.state.name !== '' && this.state.age !== '' && this.state.email !== '')
-      ? {
-          name: this.state.name,
-          age: this.state.age,
-          email: this.state.email
-        }
-      : null;
-      
-    (this.props.friend !== undefined)
-      ? this.props.action(friendObj, this.props.friend.id)
-      : this.props.action(friendObj);
+    if (this.props.friend !== undefined){
+      this.props.action(this.getStateObj(), this.props.friend.id);
+    } else {
+      this.props.action(this.getStateObj());
+      this.setState({ name: '', age: '', email: '' });  
+    }
     
     this.toggle();
+  };
+  getStateObj = () => {
+    return (this.state.name !== '' && this.state.age !== '' && this.state.email !== '')
+      ? {
+        name: this.state.name,
+        age: this.state.age,
+        email: this.state.email
+      }
+      : null;
   };
   render(){
     return (

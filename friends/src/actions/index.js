@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { 
-  FETCH_FRIENDS,
   FETCHING_FRIENDS,
-  ADD_FRIEND,
+  FRIENDS_FETCHED,
   ADDING_FRIEND,
-  REMOVE_FRIEND,
+  FRIEND_ADDED,
   REMOVING_FRIEND,
-  UPDATE_FRIEND,
+  FRIEND_REMOVED,
   UPDATING_FRIEND,
+  FRIEND_UPDATED,
   ERROR
 } from './ActionTypes';
 
@@ -18,7 +18,7 @@ export const fetchFriends = () => {
     getFriends
       .then(response => {
         dispatch({
-          type: FETCH_FRIENDS,
+          type: FRIENDS_FETCHED,
           payload: response.data
         });
       })
@@ -38,7 +38,7 @@ export const addFriend = friendObj => {
     addNewFriend
       .then(response => {
         dispatch({
-          type: ADD_FRIEND,
+          type: FRIEND_ADDED,
           payload: response.data
         });
       })
@@ -59,7 +59,7 @@ export const removeFriend = friendId => {
       .then(response => {
         console.log('Friend removed:', response.data);
         dispatch({
-          type: REMOVE_FRIEND,
+          type: FRIEND_REMOVED,
           payload: response.data
         })
       })
@@ -79,7 +79,7 @@ export const updateFriend = (friendId, friendObj) => {
       editFriend
         .then(response => {
           dispatch({
-            type: UPDATE_FRIEND,
+            type: FRIEND_UPDATED,
             payload: response.data
           })
         })
