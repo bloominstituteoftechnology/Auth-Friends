@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import friendsReducer from './reducers';
 
-const store = createStore(friendsReducer, applyMiddleware(thunk, logger()));
+const store = createStore(friendsReducer, applyMiddleware(thunk, logger));
 ReactDOM.render(
     <Provider store={store}>
         <App />
