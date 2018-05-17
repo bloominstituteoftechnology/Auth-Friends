@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { nfriend } from "../actions";
+import { newfriend } from "../actions";
 
 class CreateFriendForm extends Component {
   state = {
@@ -9,7 +9,7 @@ class CreateFriendForm extends Component {
     email: ""
   };
   handleAddFriend = () => {
-    this.props.nFriend(this.state);
+    this.props.newfriend(this.state);
   };
   handleChange = e => {
     this.setState({
@@ -44,4 +44,4 @@ class CreateFriendForm extends Component {
   }
 }
 
-export default connect(null, { nFriend })(CreateFriendForm);
+export default connect(null, { newfriend })(CreateFriendForm);
