@@ -31,6 +31,7 @@ export const friendsReducer = (state = initialState, action) => {
                 fetchingFriends: true
             };
         case FRIENDSFETCHED:
+            return {...state, fetchingFriends: false};
         case FRIENDSSAVED:
         case SAVINGFRIENDS:
         case UPDATINGFRIEND:

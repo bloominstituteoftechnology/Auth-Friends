@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 /** FETCH FRINEDS */
 export const FETCHINGFRIENDS = "FETCHINGFRIENDS";
 export const FRIENDSFETCHED = "FRIENDSFETCHED";
@@ -15,9 +15,15 @@ export const FRIENDDELETED = "FRIENDDELETED";
 export const ERROR = "ERROR";
 
 export const getFriends = () => {
-    const fetchFriends = axios.get('http://localhost:5000/api/friends');
-    return function (dispatch) {
-        dispatch({type: FETCHINGFRIENDS})
-        fetchFriends.then(response => console.log(response.data)).catch(e => console.log(e));        
-    }
-}
+  const fetchFriends = axios.get("http://localhost:5000/api/friends");
+  return function(dispatch) {
+    dispatch({ type: FETCHINGFRIENDS });
+    fetchFriends
+      .then(response => {
+          dispatch({
+              type: FRIENDSFETCHED
+          })
+          console.log(response.data)})
+      .catch(e => console.log(e));
+  };
+};
