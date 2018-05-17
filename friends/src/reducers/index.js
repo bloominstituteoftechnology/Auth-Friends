@@ -38,9 +38,9 @@ export const friendsReducer = (state = initialState, action) => {
     case REMOVING_FRIEND:
       return Object.assign({}, state, { removingFriend: true });
     case UPDATE_FRIEND:
-      return state;
+      return Object.assign({}, state, { friends: action.payload, updatingFriend: false, friendUpdated: true });
     case UPDATING_FRIEND:
-      return state;
+      return Object.assign({}, state, { updatingFriend: true });
     case ERROR:
       return state;
     default:

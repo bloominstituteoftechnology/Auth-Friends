@@ -64,7 +64,7 @@ class AddFriend extends Component {
             />
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.addAFriend}>Add</Button>{' '}
+            <Button color="primary" onClick={this.addAFriend}>Add</Button>
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
