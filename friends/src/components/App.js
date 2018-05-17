@@ -3,6 +3,7 @@ import logo from '../logo.svg'
 import '../styles/App.css'
 import { connect } from 'react-redux';
 import { fetchFriends } from '../actions'
+import AddFriend from '../components/AddFriend'
 
 class App extends Component {
   componentDidMount() {
@@ -15,13 +16,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
           {this.props.friends.map(friend => {
             return (
-              <p> {friend.name} </p>
+              <p key={friend.id}> {friend.name} </p>
             )
           })}
-        </p>
+        <AddFriend />
       </div>
     );
   }

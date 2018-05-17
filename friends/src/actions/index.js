@@ -29,8 +29,9 @@ export const fetchFriends = () => {
             })
     }
 }
-export const addFriend = () => {
-    const add = axios.post('http://localhost:5000/api/friends', newFriend);
+let nextID = 42;
+export const addFriend = input => {
+    const add = axios.post(`http://localhost:5000/api/friends/`, input)
     return function(dispatch) {
         dispatch({ type: ADDING_FRIEND })
         add
@@ -38,13 +39,14 @@ export const addFriend = () => {
                 dispatch({
                     type: ADD_FRIEND,
                     payload: {
-                        name: res.data.name,
-                        id: res.data.id,
-                        age: res.data.age,
-                        email: res.data.email
+                        id: nextID++,
+                        name: input,
+                        email: null,
+                        age: null,
                     }
                 })
-            })
+         this.fetchFriends()
+        })
             .catch(error => {
                 dispatch({
                     type: ERROR,
