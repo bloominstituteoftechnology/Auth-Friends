@@ -1,6 +1,9 @@
 import {
     FETCHING_FRIENDS, 
     FETCHED_FRIENDS,
+    DELETE_FRIEND,
+    SUBMIT_FRIEND,
+    EDIT_FRIEND,
 } from '../actions';
 
 const initialState = {
@@ -9,7 +12,7 @@ const initialState = {
     isFetched: false,
 }
 
-export const friendsReducer = (state=initialState, {type, friends}) => {
+export const friendsReducer = (state=initialState, {type, friends, id}) => {
     switch (type) {
         case FETCHING_FRIENDS:
             return {
@@ -22,6 +25,33 @@ export const friendsReducer = (state=initialState, {type, friends}) => {
                 isFetching: false,
                 isFetched: true,
                 friends
+            }
+        case DELETE_FRIEND:
+            return {
+                ...state, 
+                isFetching: false,
+                isFetched: true,
+                friends 
+            }
+        case SUBMIT_FRIEND:
+            return {
+                ...state, 
+                isFetching: false,
+                isFetched: true,
+                friends 
+            }
+        case EDIT_FRIEND:
+            const index = friends.findIndex(friend => friend.id === id)
+            return {
+                ...state,
+                friends: [
+                    ...friends.slice(0,index),
+                    friends[index] = {
+                        ...friends[index],
+                        isEditing: true
+                    },
+                    ...friends.slice(index+1)
+                ]
             }
         default:
             return state
