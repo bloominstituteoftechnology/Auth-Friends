@@ -10,8 +10,7 @@ export const fetchFriends = () => {
     dispatch({ type: PENDING_FRIENDS });
     friends
       .then(response => {
-        console.log(response);
-        dispatch({ type: SUCCESS_FRIENDS, payload: response });
+        dispatch({ type: SUCCESS_FRIENDS, payload: response.data });
       })
       .catch(err => {
         dispatch({
@@ -22,14 +21,13 @@ export const fetchFriends = () => {
   };
 };
 
-export const createFriend = data => {
-  const friends = axios.post("http://localhost:5000/api/friends", data);
+export const createFriend = FriendData => {
+  const friends = axios.post("http://localhost:5000/api/friends", FriendData);
   return dispatch => {
     dispatch({ type: PENDING_FRIENDS });
     friends
       .then(response => {
-        console.log(response);
-        dispatch({ type: SUCCESS_FRIENDS, payload: response});
+        dispatch({ type: SUCCESS_FRIENDS, payload: response.data});
       })
       .catch(err => {
         dispatch({
