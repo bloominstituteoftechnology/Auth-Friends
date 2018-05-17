@@ -12,28 +12,39 @@ class AddFriend extends Component {
     handleFriendInput = e => {
         this.setState({
             [e.target.name]: e.target.value,
-            [e.target.age]: e.target.value,
-            [e.target.email]: e.target.value
+            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value
         });
   };
 
+
+
         
     render () {
-        return (
-            <div>
-                <form>
-                    <input onChange={this.handleFriendInput} value={this.props.name} name= 'name' placeholder="Name" />
-                    <input onChange={this.handleFriendInput} value={this.props.age} name= 'age' placeholder="Age" />
-                    <input onChange={this.handleFriendInput} value={this.props.email} name= 'email' placeholder="Email" />
-                    <button onClick={(e) => {
-                        createFriend(this.state)
-                        }
-                    }
-                        > Add Friend</button>
-                </form>
-        </div>
-        )
+        console.log(this.state)
+        return <div>
+            <div >
+              <input onChange={this.handleFriendInput} value={this.props.name} name="name" placeholder="Name" />
+              <input onChange={this.handleFriendInput} value={this.props.age} name="age" placeholder="Age" />
+              <input onChange={this.handleFriendInput} value={this.props.email} name="email" placeholder="Email" />
+              <button onClick={() => {
+                  this.props.createFriend(this.state);
+                }}>
+                Add Friend
+              </button>
+            </div>
+          </div>;
     }
 }   
 
-export default connect(null, { createFriend})(AddFriend);
+// const mapStateToProps = state => {
+//   console.log(state);
+//   return {
+//     friends: state.friends,
+//     error: state.error,
+//     pending: state.pending
+//   };
+// };
+
+
+export default connect(null, { createFriend })(AddFriend);

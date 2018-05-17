@@ -24,10 +24,11 @@ export const fetchFriends = () => {
 export const createFriend = FriendData => {
   const friends = axios.post("http://localhost:5000/api/friends", FriendData);
   return dispatch => {
+      console.log('successFriend action')
     dispatch({ type: PENDING_FRIENDS });
     friends
       .then(response => {
-        dispatch({ type: SUCCESS_FRIENDS, payload: response.data});
+          dispatch({ type: SUCCESS_FRIENDS, payload: response.data});
       })
       .catch(err => {
         dispatch({

@@ -11,9 +11,10 @@ const friendsReducer = (state = initialState, action) => {
     case PENDING_FRIENDS:
       return Object.assign({}, state, { pending: true });
     case SUCCESS_FRIENDS:
+        console.log('SUCCESS')
       return Object.assign({}, state, {
         pending: false,
-        friends: [...action.payload] //this concats 2 arrays
+        friends: action.payload
       });
     case ERROR_FRIENDS:
       return Object.assign({}, state, {
