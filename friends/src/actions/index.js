@@ -4,8 +4,13 @@ import axios from 'axios';
 // one for fetching, one for fetched and one for errors
 export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
+
 export const FRIEND_FETCHED = 'FRIEND_FETCHED';
 export const FETCHING_FRIEND = 'FETCHING_FRIEND';
+
+export const FRIEND_DELETED = 'FRIEND_DELETED';
+export const DELETING_FRIEND = 'DELETING_FRIEND';
+
 export const ERROR = 'ERROR';
 
 
@@ -32,9 +37,26 @@ export const fetchFriend = (id) => {
     dispatch({ type: FETCHING_FRIEND });
     getData
       .then(someData => {
-        console.log("some" , someData)
         setTimeout(() => {
           dispatch({ type: FRIEND_FETCHED, payload: someData.data });
+        }, 500);
+      })
+      .catch(err => {
+        dispatch({type: ERROR, payload: err});
+      });
+  };
+};
+
+export const deleteFriend = (friend) => {
+  const getData = axios.delete(`http://localhost:5000/api/friends/${friend.id}`)
+
+  return function(dispatch) {
+    dispatch({ type: DELETING_FRIEND });
+    getData
+      .then(someData => {
+        console.log("DELETED" , someData)
+        setTimeout(() => {
+          dispatch({ type: FRIEND_DELETED, payload: someData.data });
         }, 500);
       })
       .catch(err => {
