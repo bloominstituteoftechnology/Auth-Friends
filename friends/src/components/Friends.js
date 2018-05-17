@@ -23,7 +23,11 @@ class Friends extends Component {
             <div className="friends-list">
                 {this.props.friends.map( friend => {
                     return (
+                        this.props.deleting ? (
+                            <span>Deleting</span>
+                        ) : (
                         <Friend key={friend.id} friend={friend}/>
+                        )
                     )
                 })}
                 {this.props.fetching ? 
@@ -40,6 +44,8 @@ const mapStateToProps = state => {
         friends: state.friends,
         fetching: state.fetching,
         fetched: state.fetched,
+        deleting: state.deleting,
+        deleted: state.deleted,
         error: state.error
     };
 }

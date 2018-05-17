@@ -17,7 +17,7 @@ class UpdateFriend extends Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = () => {
         const newFriend = {
             name: this.state.name,
             age: this.state.age,
@@ -29,24 +29,22 @@ class UpdateFriend extends Component {
     
     render() { 
         return (
-            <React.Fragment>
-                <form className="change-friend" onSubmit={this.handleSubmit}>
-                    <input value={this.state.name} 
-                        name="name" 
-                        onChange={this.handleChange}/>
-                    <input value={this.state.age} 
-                        name="age" 
-                        onChange={this.handleChange}/>
-                    <input value={this.state.email} 
-                        name="email" 
-                        onChange={this.handleChange}/>
-                    <button 
-                        className="btn submit"
-                        onClick={this.handleSubmit}>
-                        Submit
-                    </button>
-                </form>
-            </React.Fragment>
+            <form className="change-friend" onSubmit={this.handleSubmit}>
+                <input value={this.state.name} 
+                    name="name" 
+                    onChange={this.handleChange}/>
+                <input value={this.state.age} 
+                    name="age" 
+                    onChange={this.handleChange}/>
+                <input value={this.state.email} 
+                    name="email" 
+                    onChange={this.handleChange}/>
+                <button 
+                    className="btn submit"
+                    onClick={this.handleSubmit}>
+                    Submit
+                </button>
+            </form>
         )
     }
 }

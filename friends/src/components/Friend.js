@@ -15,6 +15,10 @@ class Friend extends Component {
     componentDidMount() {
         this.setState({showForm: this.props.updated});
     }
+
+    handleDelete = () => {
+        this.props.deleteFriend(this.state.friend)
+    }
     
     render() { 
         return (
@@ -25,6 +29,11 @@ class Friend extends Component {
                 {this.state.showForm ? (
                     <React.Fragment>
                         <UpdateFriend friend={this.state.friend}/>
+                        <button 
+                            className="btn cancel"
+                            onClick={() => {this.setState({showForm: false})}}>
+                            Cancel
+                        </button>
                     </React.Fragment>
                 ) : (
                     <div className="buttons">
@@ -34,7 +43,8 @@ class Friend extends Component {
                             Update
                         </button>
                         <button 
-                            className="btn delete">
+                            className="btn delete"
+                            onClick={this.handleDelete}>
                             Delete
                         </button>
                     </div>
@@ -46,9 +56,6 @@ class Friend extends Component {
 
 const mapStateToProps = state => {
     return {
-        deleting: state.deleting,
-        deleted: state.deleted,
-        error: state.error,
         updated: state.updated
     };
 }
