@@ -8,13 +8,13 @@ export const ERROR = 'ERROR';
 
 
 export const fetchData = () => {
-  const getData = axios.get('https://swapi.co/api/people/');
+  const getData = axios.get('http://localhost:5000/api/friends/');
   return function(dispatch) {
     dispatch({ type: FETCHING });
     getData
       .then(someData => {
         setTimeout(() => {
-          dispatch({ type: FETCHED, payload: someData.data.results });
+          dispatch({ type: FETCHED, payload: someData.data });
         }, 1000);
       })
       .catch(err => {

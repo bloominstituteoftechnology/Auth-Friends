@@ -2,10 +2,16 @@ import { FETCHING, FETCHED, ERROR} from '../actions';
 
 const initialState = {
   friends: [],
-  fetching: false,
-  fetched: false,
+  fetchingFriends: false,
+  friendsFetched: false,
+  friendsSaved: false,
+  savingFriends: false,
+  updatingFriend: false,
+  friendUpdated: false,
+  deletingFriend: false,
+  friendDeleted: false,
   error: null
-};
+}
 
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -14,14 +20,14 @@ export const friendsReducer = (state = initialState, action) => {
     // your switch statement should handle all of these cases.
     case FETCHED:
       return Object.assign({}, state, {
-        chars: action.payload,
-        fetched: true,
-        fetching: false
+        friends: action.payload,
+        friendsFetched: false,
+        fetchingFriends: false
       });
     case FETCHING:
-      return Object.assign({}, state, { fetching: true });
+      return Object.assign({}, state, { fetchingFriends: false });
     case ERROR:
-      return Object.assign( {}, state, { fetched: false, fetching: false, error: action.payload } );
+      return Object.assign( {}, state, { friendsFetched: false, fetchingFriends: false, error: action.payload } );
     default:
       return state;
     }

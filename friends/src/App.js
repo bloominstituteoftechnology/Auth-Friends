@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import {Route} from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import axios from 'axios';
+import {Route} from 'react-router';
 
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,10 +10,13 @@ import FriendsList from "./components/Friends/FriendsList";
 import SaveFriend from "./components/Friends/SaveFriend";
 import Friend from "./components/Friends/Friend";
 
-
 import './components/Nav/Nav.css'
 import NavWrapper from './components/Nav/NavWrapper';
 import menuData from "./menuData";
+
+// pull in actions from action/index
+import { fetchData } from './actions';
+
 
 class App extends Component {
   constructor() {
@@ -28,14 +31,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios     
-    .get(`http://localhost:5000/api/friends`)
-       .then(response => {
-          this.setState({ friends: response.data });
-       })
-       .catch(err => {
-         console.log(err);
-       });
+      // call our action
+      this.props.fetchData();
   }
 
   render() {
@@ -48,9 +45,17 @@ class App extends Component {
         <Route exact path="/add-friend" component={SaveFriend} />
         <Route exact path="/search" component={FriendsList} />
         <Route path="/friend/:id" component={Friend}/>
+        <FriendsList />
       </div>
     );
   }
 }
 
-export default App;
+
+const mapDispatchToProps = state => {
+  const { friendsReducer } = state;
+  return friendsReducer;
+};
+
+export default connect(mapDispatchToProps, { fetchData })(App);
+// export default (App);
