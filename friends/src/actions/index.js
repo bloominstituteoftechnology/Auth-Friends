@@ -3,7 +3,7 @@ import axios from "axios";
 export const FETCHING_FRIEND = "FETCHING_FRIEND";
 export const FETCHED_FRIEND = "FETCHED_FRIEND";
 export const DELETE_FRIEND = 'DELETE_FRIEND'
-export const SUBMITFRIEND = "SUBMITFRIEND";
+export const SUBMIT_FRIEND = "SUBMIT_FRIEND";
 export const EDIT_FRIEND = 'EDIT_FRIEND'
 
 
