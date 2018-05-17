@@ -10,7 +10,7 @@ const Friends = (props) => {
     <div className="row">
       {props.friends.map(friend => {
         return(
-          <div key={friend.id} className="col-4 mb-3">
+          <div key={friend.id} className="col-4 mt-4">
             <Card>
               <CardBody>
                 <CardTitle>Name: {friend.name}</CardTitle>

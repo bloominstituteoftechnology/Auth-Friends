@@ -6,8 +6,10 @@ import './App.css';
 
 import { fetchFriends } from './actions/index';
 import Friends from './components/Friends';
+import CreateFriendsForm from './components/CreateFriendForm';
 
 class App extends Component {
+  
   componentDidMount() {
     this.props.fetchFriends();
   }
@@ -16,21 +18,25 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Friends />
+      <div className="container App">
+        <header className="App-header">          
+          <h1 className="App-title">Welcome to another Friends App</h1>
+        </header>        
+        {this.props.fetchingFriends 
+          ? <img src={logo} className="App-logo" alt="logo" /> 
+          : <Friends /> }
+        <CreateFriendsForm />
       </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+  
+  return {
+    fetchingFriends: state.friendsReducer.fetchingFriends
+  }
+}
 
 
-
-export default connect(null, { fetchFriends })(App);
+export default connect(mapStateToProps, { fetchFriends })(App);
