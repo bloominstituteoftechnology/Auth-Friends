@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 // Redux
 import { connect } from 'react-redux';
@@ -19,8 +18,8 @@ class App extends Component {
       <div className="App">
         <h1>Friends</h1>
         <h5>Who needs 'em anyways?</h5>
-        <Friends />
         <CreateFriendForm />
+        <Friends />
         {/* <UpdateFriendForm /> */}
       </div>
     );

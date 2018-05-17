@@ -4,7 +4,7 @@ const cors = require('cors');
 const port = 5000;
 const app = express();
 
-let nextId = 6;
+let nextId = 7;
 
 let friends = [
   {
@@ -12,31 +12,43 @@ let friends = [
     name: 'Ben',
     age: 30,
     email: 'ben@lambdaschool.com',
+    likes: 'tennis',
   },
   {
     id: 2,
     name: 'Austen',
     age: 45,
     email: 'austen@lambdaschool.com',
+    likes: 'Q&A\'s and AMA\'s',
   },
   {
     id: 3,
     name: 'Ryan',
     age: 15,
     email: 'ryan@lambdaschool.com',
+    likes: 'pop culture',
   },
   {
     id: 4,
     name: 'Sean',
-    age: 35,
-    email: 'sean@lambdaschool.com',
+    age: 48,
+    email: 'sean@puffy.com',
+    likes: 'combs',
   },
   {
     id: 5,
     name: 'Michelle',
     age: 67,
     email: 'michelle@gmail.com',
+    likes: 'video games',
   },
+  {
+    id: 6,
+    name: 'Lil\' Dicky',
+    age: 30,
+    email: 'lil@dicky.com',
+    likes: 'being Chris Brown',
+  }
 ];
 
 app.use(bodyParser.json());

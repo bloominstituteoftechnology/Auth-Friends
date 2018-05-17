@@ -1,6 +1,10 @@
 import React from 'react';
+// Redux
+import { connect } from 'react-redux';
+// Redux--Actions
+import { postFriend } from '../actions';
 
-export default class CreateFriendForm extends React.Component {
+class CreateFriendForm extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -14,10 +18,25 @@ export default class CreateFriendForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  goPostFriend = (e) => {
+    e.preventDefault();
+    const newFriend = {
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email,
+    };
+    this.props.postFriend(newFriend);
+    this.setState({
+      name: '',
+      age: '',
+      email: '',
+    })
+  }
+
   render() {
     return (
       <main className="pa4 black-80">
-        <form className="measure center">
+        <form onSubmit={(e) => this.goPostFriend(e)} className="measure center">
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
             <legend className="f4 fw6 ph0 mh0">Who's your new friend?</legend>
             <div className="mt3">
@@ -54,11 +73,13 @@ export default class CreateFriendForm extends React.Component {
           <div className="">
             <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Add to the List" />
           </div>
-          <div className="lh-copy mt3">
+          {/* <div className="lh-copy mt3">
             <a href="#0" className="f6 link dim black db">Go back</a>
-          </div>
+          </div> */}
         </form>
       </main>
     );
   }
 }
+
+export default connect(null, { postFriend })(CreateFriendForm);

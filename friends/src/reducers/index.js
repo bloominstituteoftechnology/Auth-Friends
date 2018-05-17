@@ -1,8 +1,9 @@
 // Import Action Types from Actions
 import {
   FINDING,
-  FOUND,
   ERROR,
+  LOADING,
+  LOADED,
 } from '../actions';
 
 const initialState = {
@@ -14,23 +15,25 @@ const initialState = {
   friendUpdated: false,
   deletingFriend: false,
   friendDeleted: false,
+  loading: false,
+  loaded: false,
   friends: [],
   error: null
 }
 
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FINDING:
+    case LOADING:
       return {
         ...state,
-        findingFriends: true,
+        loading: true,
       };
-    case FOUND:
+    case LOADED:
       return {
         ...state,
-        friends: [...state.friends, ...action.payload],
-        findingFriends: false,
-        foundFriends: true,
+        friends: [...action.payload],
+        loading: false,
+        loaded: true,
       };
     case ERROR:
       return {

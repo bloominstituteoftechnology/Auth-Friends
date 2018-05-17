@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -21,4 +23,10 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.friend {
+  border-bottom: 2px dotted black;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.5rem;
 }
