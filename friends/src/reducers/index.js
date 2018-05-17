@@ -26,7 +26,7 @@ const initialState = {
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_FRIENDS:
-      return Object.assign({}, state, { friends: state.friends.concat(action.payload), fetchingFriends:false, friendsFetched:true});
+      return Object.assign({}, state, { friends: state.friends.concat(action.payload), fetchingFriends:false, friendsFetched:true });
     case FETCHING_FRIENDS:
       return Object.assign({}, state, { fetchingFriends:true });
     case ADD_FRIEND:
@@ -34,9 +34,9 @@ export const friendsReducer = (state = initialState, action) => {
     case ADDING_FRIEND:
       return state;
     case REMOVE_FRIEND:
-      return state;
+      return Object.assign({}, state, { friends: action.payload, removingFriend: false, friendRemoved: true });
     case REMOVING_FRIEND:
-      return state;
+      return Object.assign({}, state, { removingFriend: true });
     case UPDATE_FRIEND:
       return state;
     case UPDATING_FRIEND:

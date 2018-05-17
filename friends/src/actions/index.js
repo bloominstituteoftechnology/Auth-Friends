@@ -57,6 +57,7 @@ export const removeFriend = friendId => {
     dispatch({ type: REMOVING_FRIEND });
     deleteFriend
       .then(response => {
+        console.log('Friend removed:', response.data);
         dispatch({
           type: REMOVE_FRIEND,
           payload: response.data
