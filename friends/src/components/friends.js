@@ -6,7 +6,7 @@ import './friends.css';
 const Friends = (props) => {
   return(
     <div className="friends" >
-      <Button color="success">Add Friend</Button>
+      <Button color="success" onClick={props.addButton} >Add Friend</Button>
       {props.friendData.map((friend) => {
         return (
           <div key={friend.id} className="mt-5 friend">
