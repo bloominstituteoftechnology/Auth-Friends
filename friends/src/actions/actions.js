@@ -12,7 +12,7 @@ export const fetchFriends = () => {
        .then(response => {
          dispatch({ type: FETCHED, payload: response.data });
        })
-       .catch(err => {
+       .catch(error => {
           dispatch({ type: ERROR, payload: error });
        });
     };
@@ -25,7 +25,7 @@ export const createFriends = data => {
       .then(response => {
 	dispatch({ type: FETCHED, payload: response.data });
       })
-      .catch(err => {
+      .catch(error => {
 	dispatch({ type: ERROR, payload: error });
       });
   };

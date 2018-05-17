@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { createFriends } from '../actions';
 
 class AddFriend extends Component {
   state = {
@@ -15,7 +16,7 @@ class AddFriend extends Component {
   handleSubmit = event => {
     const { name, age, email } = this.state;
     const newFriend = { name, age, email };
-    this.props.createFriend(newFriend);
+    this.props.createFriends(newFriend);
     this.setState({
       name:'',
       age:'',
@@ -26,6 +27,7 @@ class AddFriend extends Component {
   
   render() {
     return (
+      <div>
       <input
 	name='name'
 	value={this.state.name}
@@ -39,8 +41,11 @@ class AddFriend extends Component {
       <input
 	name='email'
 	value={this.state.email}
-	onChange=(this.handleInput}
+	onChange={this.handleInput}
 	/>;
-      <button onClick={this.handleSubmit}>add friend</button>
+      <button onClick={this.handleSubmit}>add friend</button>;
+      </div>
      );
   }
+
+export default connect(null, {createFriends})(AddFriend);
