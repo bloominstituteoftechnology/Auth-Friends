@@ -24,8 +24,8 @@ class Friend extends Component {
         return (
             <div className="friend-container">
                 <h1>{this.state.friend.name}</h1>
-                <span>{this.state.friend.age}</span>
-                <span>{this.state.friend.email}</span>
+                <span>Age: {this.state.friend.age}</span>
+                <span>email: {this.state.friend.email}</span>
                 {this.state.showForm ? (
                     <React.Fragment>
                         <UpdateFriend friend={this.state.friend}/>

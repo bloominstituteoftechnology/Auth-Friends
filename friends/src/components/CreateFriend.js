@@ -27,7 +27,7 @@ class CreateFriend extends Component {
     
     render() { 
         return (
-            <form className="change-friend" onSubmit={this.handleSubmit}>
+            <form className="create-friend" onSubmit={this.handleSubmit}>
                 <input 
                     // value={this.state.name} 
                     label="Name"
@@ -46,7 +46,7 @@ class CreateFriend extends Component {
                     placeholder="john@example.com"
                     name="email" 
                     onChange={this.handleChange}/>
-                <button className="btn submit">Submit</button>
+                <button className="btn submit">Add Friend</button>
             </form>
         )
     }
