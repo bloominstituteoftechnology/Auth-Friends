@@ -23,4 +23,19 @@ export const fetchFriends = () => {
   }
 }
 
-// you need to create a post action next. you'll still need to create the reducer for that. 
+export const newFriend = friend => {
+  const postFriends = axios.post('http://localhost:5000/api/friends/', friend);
+  return function(dispatch) {
+    dispatch({ type: SAVING_FRIENDS })
+    postFriends
+      .then(data => {
+        dispatch({ type: FRIENDS_SAVED, payload: data.data })
+        console.log("newFriend Fired", data.data)
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err })
+        console.log("newFriend fired with error", err)
+      })
+  }
+}
+// you need to create a delete and put action next. you'll still need to create the reducer for that. 
