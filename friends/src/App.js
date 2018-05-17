@@ -1,6 +1,11 @@
+import Friends from './components/Friends';
+import CreateFriendForm from './components/CreateFriendForm';
+import UpdateFriendForm from './components/UpdateFriendForm';
+
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+
 
 class App extends Component {
   render() {
@@ -8,11 +13,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">My Amazing Friends</h1>
+          <Friends />
+          <CreateFriendForm />
+          <UpdateFriendForm />
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
