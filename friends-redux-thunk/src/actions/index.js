@@ -21,9 +21,10 @@ export const getFriends = () => {
     fetchFriends
       .then(response => {
           dispatch({
-              type: FRIENDSFETCHED
+              type: FRIENDSFETCHED,
+              friends: response.data
           })
-          console.log(response.data)})
+          console.log("GET",response.data)})
       .catch(e => console.log(e));
   };
 };
