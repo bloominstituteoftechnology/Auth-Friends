@@ -2,8 +2,9 @@ import axios from "axios";
 
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
 export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
+export const SAVING_FRIEND = 'SAVING_FRIEND';
+export const FRIEND_SAVED = 'FRIEND_SAVED';
 export const ERROR = 'ERROR';
-
 
 export const fetchingFriends = () => {
     const getData = axios.get(`http://localhost:5000/api/friends`);
@@ -17,4 +18,18 @@ export const fetchingFriends = () => {
                 dispatch({type: ERROR, payload: err})
             })
     }
-}
+};
+
+export const addFriend = ({friend}) => {
+    const putData = axios.post(`http://localhost:5000/api/friends`, friend);
+    return function(dispatch) {
+        dispatch({type: SAVING_FRIEND})
+        putData
+            .then(response => {
+                dispatch({type: FRIEND_SAVED, payload: friend})
+            })
+            .catch(err => {
+                dispatch({type: ERROR, payload: err})
+            })
+    }
+};
