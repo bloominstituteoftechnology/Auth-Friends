@@ -1,10 +1,12 @@
 .App {
   text-align: center;
+  background-color: black;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  
 }
 
 .App-header {
@@ -44,8 +46,8 @@ input::-webkit-inner-spin-button {
   border: 1px solid black;
   margin: 0 auto;
   margin-top: 30px;
-  background-color: lightgreen;
-  color: salmon;
+  background-color: rgb(3, 3, 3);
+  color:rgb(80, 187, 219);
 }
 
 .NewFriend__Input {
@@ -96,14 +98,14 @@ input::-webkit-inner-spin-button {
   padding: 10px 0;
   border-bottom: 1px solid black;
   border-radius: 20px 20px 0 0;
-  background-color: cadetblue;
+  background-color: rgb(43, 178, 219);
   color: white;
 }
 
 .Friend__Info {
   height: 50px;
   padding: 20px 0;
-  background-color: #FFAE42;
+  background-color:rgb(72, 4, 75);
   border-radius: 0 0 10px 10px;
   font-weight: bold;
   display: flex;
