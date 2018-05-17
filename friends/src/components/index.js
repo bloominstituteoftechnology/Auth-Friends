@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import fetcher from '../actions';
+import { fetcher, beginEdit, cancelEdit } from '../actions';
 import Friends from './friends.js';
 import Front from './front.js';
 import AddFriend from './addfriend.js';
@@ -50,5 +50,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-  fetcher
+  fetcher, beginEdit, cancelEdit
 })(App);

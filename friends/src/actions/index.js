@@ -3,10 +3,13 @@ import axios from 'axios';
 export const FETCHING_FRIENDS = "FETCHING_FRIENDS";
 export const FETCHED_FRIENDS = "FETCHED_FRIENDS";
 export const ERROR = "ERROR";
+export const BEGIN_EDIT = "BEGIN_EDIT";
+export const CANCEL_EDIT = "CANCEL_EDIT";
+export const BEGIN_ADD = "BEGIN_ADD";
+export const CANCEL_ADD = "CANCEL_ADD";
 
 
-
-const fetcher = (url) => {
+export const fetcher = (url) => {
   const request = axios.get(url);
   return (dispatch) => {
     dispatch({type: FETCHING_FRIENDS});
@@ -19,4 +22,26 @@ const fetcher = (url) => {
   };
 };
 
-export default fetcher;
+export const cancelEdit = () => {
+  return (dispatch) => {
+    dispatch({type: CANCEL_EDIT});
+  }
+}
+
+export const beginEdit = () => {
+  return (dispatch) => {
+    dispatch({type: BEGIN_EDIT});
+  }
+}
+
+export const cancelAdd = () => {
+  return (dispatch) => {
+    dispatch({type: CANCEL_ADD});
+  }
+}
+
+export const beginAdd = () => {
+  return (dispatch) => {
+    dispatch({type: BEGIN_ADD});
+  }
+}
