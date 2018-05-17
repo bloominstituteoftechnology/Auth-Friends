@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import fetcher from '../actions';
 import Friends from './friends.js';
-import Front from './front.js'
+import Front from './front.js';
+import AddFriend from './addfriend.js';
 import './app.css';
 
 class App extends Component {
@@ -12,7 +13,19 @@ class App extends Component {
   }
 
   render() {
-    if (this.props.fetched) return (
+    if (this.props.fetching) return (
+      <div className="App">
+
+          <Front />
+
+      </div>
+    );
+    else if (this.props.add) return (
+      <div>
+        <AddFriend />
+      </div>
+    );
+    else if (this.props.fetched) return (
       <div className="App mb-5">
 
           <Friends friendData={this.props.friends} />
@@ -20,12 +33,9 @@ class App extends Component {
       </div>
     );
     else return (
-      <div className="App">
-
-          <Front />
-
+      <div>
       </div>
-    );
+    )
   }
 }
 
