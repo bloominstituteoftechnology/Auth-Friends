@@ -1,11 +1,12 @@
 import React from 'react';
-import { Media } from 'reactstrap';
+import { Media, Button } from 'reactstrap';
 import './friends.css';
 
 
 const Friends = (props) => {
   return(
-    <div>
+    <div className="friends" >
+      <Button color="success">Add Friend</Button>
       {props.friendData.map((friend) => {
         return (
           <div key={friend.id} className="mt-5 friend">
