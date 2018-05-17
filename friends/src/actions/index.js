@@ -62,14 +62,16 @@ export const fetched = () => {
 }
 
 export const deleted = (id) => {
+    console.log("action del", id)
     const request = axios.delete(`http://localhost:5000/api/friends/${id}`);
     return (dispatch) => {
         dispatch({ type: DELETING_FRIEND });
         request
             .then(data => {
+                console.log("data", data)
                 dispatch({
                     type: DELETED_FRIEND,
-                    payload: data.friends
+                    payload: data.data
                 })
             })
             .catch(err => {
@@ -80,3 +82,19 @@ export const deleted = (id) => {
             })
     }
 };
+
+export const added = (newFriend) => {
+    const request = axios.post('http://localhost:5000/api/friends', newFriend)
+    return (dispatch) => {
+        dispatch({ type: SAVING_FRIEND })
+        request
+            .then((data) => {
+                dispatch({
+                    type: SAVED_FRIEND,
+                    payload: data.data
+                })
+            })
+            .catch(err => console.log(err));
+    }
+}
+
