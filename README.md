@@ -100,3 +100,4 @@ index.js
 * Expand the number of properties that you put on each friend object. Feel free to remove the dummy data on the server or modify it in any way.
 
 # Xang Thao
+# Govi Escudero
