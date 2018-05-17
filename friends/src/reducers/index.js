@@ -1,4 +1,4 @@
-import { FETCHED_FRIENDS } from "../actions";
+import { FETCHED_FRIENDS, ADD_FRIEND } from "../actions";
 
 const initialState = {
     friends: [],
@@ -19,6 +19,10 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 friends: state.friends.concat(action.payload)
             });
+        case ADD_FRIEND:
+            return Object.action({}, state, {
+                friends: state.friends.concat(action.payload)
+            })
         default:
             return state;
     }
