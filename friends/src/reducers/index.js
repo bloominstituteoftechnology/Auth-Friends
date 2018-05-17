@@ -1,9 +1,10 @@
-import { FETCHING_FRIENDS, FETCHED_FRIENDS, ERROR } from '../actions';
+import { FETCHING_FRIENDS, FETCHED_FRIENDS, ERROR, BEGIN_EDIT, CANCEL_EDIT } from '../actions';
 const initialState = {
   friends: [],
   fetching: false,
   fetched: false,
-  error: null
+  error: null,
+  edit: false
 };
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -13,6 +14,10 @@ export const friendsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {friends: action.payload, fetching: false, fetched: true});
     case ERROR:
       return Object.assign({}, state, {fetching: false, error: action.payload});
+    case BEGIN_EDIT:
+      return Object.assign({}, state, {edit: true});
+    case CANCEL_EDIT:
+      return Object.assign({}, state, {edit: false});
     default:
       return state;
   }
