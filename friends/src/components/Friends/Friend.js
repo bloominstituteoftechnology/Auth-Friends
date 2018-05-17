@@ -3,18 +3,22 @@ import axios from 'axios';
 import FriendCard from './FriendCard';
 import { Redirect } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+import { fetchFriend } from '../../actions';
+
+
+
 class Friend extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            friend: {},
             deleted: false
         }
     }
 
     componentDidMount() {
         const id = this.props.match.params.id;
-        this.fetchFriend(id)
+        this.props.fetchFriend(id)
     }
 
     deleteFriend = () => {
@@ -25,27 +29,36 @@ class Friend extends Component {
             .catch(err => console.log(err))
     }
 
-    fetchFriend = (id) => {
-        axios
-            .get(`http://localhost:5000/api/friends/${id}`)
-            .then(resp => {
-                this.setState(() => ({friend: resp.data}))
-            })
-            .catch(err => console.log(err))
-    }
+    // fetchFriend = (id) => {
+    //     axios
+    //         .get(`http://localhost:5000/api/friends/${id}`)
+    //         .then(resp => {
+    //             this.setState(() => ({friend: resp.data}))
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
     render() { 
-        return this.state.deleted ? (
+        return this.props.deleted ? (
             <Redirect to="/search"/>
         ) : (
+            this.props.friendFetched ?
             <div className="card">
-                <FriendCard friend={this.state.friend}/>
+                {console.log(this.props.friend)}
+                <FriendCard friend={this.props.friend}/>
                 <button className="delete" 
                     onClick={this.deleteFriend}>Delete from Friends
                 </button>
-            </div>
+            </div> : null
         )
     }
 }
  
-export default Friend;
+// export default Friend;
+
+const mapDispatchToProps = state => {
+    const { friendReducer } = state;
+    return friendReducer;
+  };
+  
+  export default connect(mapDispatchToProps, { fetchFriend })(Friend);

@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 
 import FriendCard from "./FriendCard";
 // pull in actions from action/index
+import { fetchFriends } from '../../actions';
+
 
 
 class FriendsList extends Component {
@@ -14,8 +16,7 @@ class FriendsList extends Component {
   }
 
   componentDidMount() {
-    console.log("hi friends");
-
+    this.props.fetchFriends();
   }
 
 
@@ -41,4 +42,5 @@ const mapDispatchToProps = state => {
   return friendsReducer;
 };
 
-export default connect(mapDispatchToProps)(FriendsList);
+export default connect(mapDispatchToProps, { fetchFriends })(FriendsList);
+

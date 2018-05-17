@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 import {Route} from 'react-router';
+// import { withRouter } from 'react-router-dom';
+
 
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,7 +17,7 @@ import NavWrapper from './components/Nav/NavWrapper';
 import menuData from "./menuData";
 
 // pull in actions from action/index
-import { fetchData } from './actions';
+// import { fetchData } from './actions';
 
 
 class App extends Component {
@@ -30,11 +32,6 @@ class App extends Component {
     this.setState({ menu: menuData.data });
   }
 
-  componentDidMount() {
-      // call our action
-      this.props.fetchData();
-  }
-
   render() {
     return (
       <div className="App">
@@ -45,17 +42,20 @@ class App extends Component {
         <Route exact path="/add-friend" component={SaveFriend} />
         <Route exact path="/search" component={FriendsList} />
         <Route path="/friend/:id" component={Friend}/>
-        <FriendsList />
       </div>
     );
   }
 }
 
+export default (App);
 
-const mapDispatchToProps = state => {
-  const { friendsReducer } = state;
-  return friendsReducer;
-};
+// const mapDispatchToProps = state => {
+//   const { friendsReducer } = state;
+//   return friendsReducer;
+// };
 
-export default connect(mapDispatchToProps, { fetchData })(App);
-// export default (App);
+
+// React Router Redux
+// export default withRouter(
+//     connect(mapDispatchToProps)(App)
+// );
