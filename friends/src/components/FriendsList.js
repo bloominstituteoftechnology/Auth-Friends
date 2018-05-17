@@ -3,6 +3,7 @@ import logo from '../logo.svg';
 import { connect } from 'react-redux';
 import { Card, CardText, CardBody, Row, Col } from 'reactstrap';
 import './Friends.css';
+import { deleteData } from '../actions';
 
 class FriendsList extends Component {
 
@@ -20,6 +21,7 @@ class FriendsList extends Component {
                                                 <CardText>Name: {friend.name}</CardText>
                                                 <CardText>Age: {friend.age}</CardText>
                                                 <CardText>Email: {friend.email}</CardText>
+                                                <button onClick={() => this.props.deleteData(friend.id)}>Delete</button>
                                             </CardBody>
                                         </Card>
                                     </Col>
@@ -49,4 +51,4 @@ const mapStateToProps = (state) => {
     )
 }
 
-export default connect(mapStateToProps)(FriendsList); 
+export default connect(mapStateToProps, { deleteData })(FriendsList); 

@@ -1,4 +1,4 @@
-import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR, SAVING_FRIENDS, FRIENDS_SAVED } from '../actions'; 
+import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR, SAVING_FRIENDS, FRIENDS_SAVED, DELETING_FRIEND, FRIEND_DELETED } from '../actions';
 
 const initialState = {
     friends: [],
@@ -14,18 +14,22 @@ const initialState = {
 }
 
 export const friendsReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case FETCHING_FRIENDS:
-            return Object.assign({}, state, { fetchingFriends: true }); 
-        case FRIENDS_FETCHED: 
-            return Object.assign({}, state, { friends: action.payload, fetchingFriends: false, friendsFetched: true });  
-        case SAVING_FRIENDS: 
-            return Object.assign({}, state, { friendsFetched: false, savingFriends: true }); 
-        case FRIENDS_SAVED: 
-            return Object.assign({}, state, { friends: action.payload, savingFriends: false, friendsSaved: true }); 
-        case ERROR: 
-            return Object.assign({}, state, { error: action.payload }); 
-        default: 
-            return state; 
+            return Object.assign({}, state, { fetchingFriends: true });
+        case FRIENDS_FETCHED:
+            return Object.assign({}, state, { friends: action.payload, fetchingFriends: false, friendsFetched: true });
+        case SAVING_FRIENDS:
+            return Object.assign({}, state, { friendsFetched: false, savingFriends: true });
+        case FRIENDS_SAVED:
+            return Object.assign({}, state, { friends: action.payload, savingFriends: false, friendsSaved: true });
+        case DELETING_FRIEND: 
+            return Object.assign({}, state, { friendsSaved: false, deletingFriend: true }); 
+        case FRIEND_DELETED: 
+            return Object.assign({}, state, { friends: action.payload, deletingFriend: false, friendDeleted: true }); 
+        case ERROR:
+            return Object.assign({}, state, { error: action.payload });
+        default:
+            return state;
     }
 }

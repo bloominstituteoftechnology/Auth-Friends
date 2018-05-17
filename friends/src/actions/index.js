@@ -55,9 +55,10 @@ export const deletingFriend = () => {
     }
 }
 
-export const friendDeleted = () => {
+export const friendDeleted = (data) => {
     return {
-        type: FRIEND_DELETED
+        type: FRIEND_DELETED, 
+        payload: data
     }
 }
 
@@ -84,6 +85,16 @@ export const addData = (obj) => {
         dispatch(savingFriends());
         addFriend
             .then(response => dispatch(friendsSaved(response.data)))
+            .catch(err => dispatch(error(error)))
+    }
+}
+
+export const deleteData = (id) => {
+    const deleteFriend = axios.delete(`http://localhost:5000/api/friends/${id}`)
+    return function (dispatch) {
+        dispatch(deletingFriend());
+        deleteFriend
+            .then(response => dispatch(friendDeleted(response.data)))
             .catch(err => dispatch(error(error)))
     }
 }
