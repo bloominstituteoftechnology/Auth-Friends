@@ -16,3 +16,7 @@ const store = createStore( combineReducers, applyMiddleware(thunk, logger) )
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
  
+var card = document.querySelector('.card');
+card.addEventListener( 'click', function() {
+  card.classList.toggle('is-flipped');
+});
