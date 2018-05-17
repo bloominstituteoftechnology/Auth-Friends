@@ -13,5 +13,9 @@ const AddFriend = props => {
         </div>
     )
 }
-
-export default connect(null, { addFriend })(AddFriend)
+const mapStateToProps = state => {
+    return {
+      friends: state.friends,
+    }
+  }
+export default connect(mapStateToProps, { addFriend })(AddFriend)

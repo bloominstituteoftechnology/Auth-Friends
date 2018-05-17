@@ -31,21 +31,20 @@ export const fetchFriends = () => {
 }
 let nextID = 42;
 export const addFriend = input => {
-    const add = axios.post(`http://localhost:5000/api/friends/`, input)
+    const add = axios.post(`http://localhost:5000/api/friends/`, {
+        name: input,
+        email: null,
+        age: null,
+    })
     return function(dispatch) {
         dispatch({ type: ADDING_FRIEND })
         add
             .then(res => {
                 dispatch({
                     type: ADD_FRIEND,
-                    payload: {
-                        id: nextID++,
-                        name: input,
-                        email: null,
-                        age: null,
-                    }
+                    payload: res.data,
                 })
-         this.fetchFriends()
+         
         })
             .catch(error => {
                 dispatch({

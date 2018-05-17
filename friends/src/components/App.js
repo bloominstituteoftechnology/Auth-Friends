@@ -16,11 +16,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
+        <p className="App-intro">
           {this.props.friends.map(friend => {
             return (
-              <p key={friend.id}> {friend.name} </p>
+              <p> {friend.name} </p>
             )
           })}
+        </p>
         <AddFriend />
       </div>
     );

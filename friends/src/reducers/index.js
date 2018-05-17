@@ -20,7 +20,7 @@ export const friendReducer = (state = initialState, action) => {
             })
         case ADD_FRIEND:
             return Object.assign({}, state, {
-                friends: state.friends.concat(action.payload),
+                friends: action.payload,
                 input: '',
                 saving: false,
                 saved: true,
