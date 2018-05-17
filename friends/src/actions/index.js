@@ -11,7 +11,7 @@ export const fetchFriends = () => {
     friends
       .then(response => {
         console.log(response);
-        dispatch({ type: SUCCESS_FRIENDS, payload: response.data });
+        dispatch({ type: SUCCESS_FRIENDS, payload: response });
       })
       .catch(err => {
         dispatch({
@@ -29,7 +29,7 @@ export const createFriend = data => {
     friends
       .then(response => {
         console.log(response);
-        dispatch({ type: SUCCESS_FRIENDS, payload: response.data });
+        dispatch({ type: SUCCESS_FRIENDS, payload: response});
       })
       .catch(err => {
         dispatch({

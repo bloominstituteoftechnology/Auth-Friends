@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchFriend, createFriend } from './actions';
+import { fetchFriends, createFriend } from './actions';
+import { connect } from 'react-redux';
 
 class App extends Component {
 
@@ -29,11 +30,11 @@ state = {
 }
 
 
-mapStateToProps = state => {
+const mapStateToProps = state => {
   return {
     friends: state.friends,
     error: state.error,
     pending: state.pending
   }
 }
-export default App;
+export default connect(mapStateToProps, {fetchFriends, createFriend})(App);
