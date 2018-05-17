@@ -2,7 +2,10 @@ import {
   FETCHING_FRIENDS, 
   FRIENDS_FETCHED, 
   FRIENDS_SAVED, 
-  SAVING_FRIENDS, 
+  SAVING_FRIENDS,
+  DELETING_FRIEND,
+  FRIEND_DELETED, 
+  GOODBYE_HAPPINESS,
   ERROR 
 } from "../actions";
 
@@ -36,6 +39,17 @@ export const friendsReducer = ( state = initialState, action ) => {
         friends: action.payload,
         savingFriends: false,
       })
+
+    case DELETING_FRIEND:
+      return Object.assign({}, state, { deletingFriend: true })
+    case FRIEND_DELETED:
+      return Object.assign({}, state, {
+        friends: action.payload,
+        deletingFriend: false,
+        friendDeleted: true,
+      })
+    case GOODBYE_HAPPINESS:
+      return Object.assign({}, state, {friendDeleted: false })
 
 
     case ERROR:

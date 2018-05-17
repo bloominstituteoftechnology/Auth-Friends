@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { removeFriend } from '../actions/index'
 import { Card, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
@@ -16,7 +17,7 @@ const Friends = (props) => {
                 <CardTitle>Name: {friend.name}</CardTitle>
                 <CardSubtitle>Age: {friend.age}</CardSubtitle>
                 <CardText>Email: {friend.email}</CardText>
-                <Button>Delete</Button>                
+                <Button onClick={() => props.removeFriend(friend)}>Delete</Button>                
               </CardBody>
             </Card>
           </div>
@@ -34,4 +35,4 @@ const mapStateToProps = state => {
   }
 }
  
-export default connect(mapStateToProps, {})(Friends);
+export default connect(mapStateToProps, { removeFriend })(Friends);

@@ -19,9 +19,11 @@ class App extends Component {
   render() {
     return (
       <div className="container App">
-        <header className="App-header">          
-          <h1 className="App-title">Welcome to another Friends App</h1>
-        </header>        
+        {this.props.goodbye ? <h1 className="display-1">But why? If you keep acting like this you will die alone!</h1> :   
+          <header className="App-header">          
+            <h1 className="App-title">Welcome to another Friends App</h1>
+          </header>
+        }
         {this.props.fetchingFriends 
           ? <img src={logo} className="App-logo" alt="logo" /> 
           : <Friends /> }
@@ -34,7 +36,8 @@ class App extends Component {
 const mapStateToProps = state => {
   
   return {
-    fetchingFriends: state.friendsReducer.fetchingFriends
+    fetchingFriends: state.friendsReducer.fetchingFriends,
+    goodbye: state.friendsReducer.friendDeleted
   }
 }
 
