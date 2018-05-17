@@ -11,19 +11,25 @@ class Cards extends Component {
     this.props.getFriends();
   }
   render() {
-    console.log("this.props.state", this.props.state);
+    // console.log("this.props.state", this.props.state);
     const state = this.props.state;
-    const { fetchingFriends, friends } = state;
-    console.log("friends",friends)
+    const { fetchingFriends, friendsFetched, error, friends } = state;
+    // console.log("friends",friends)
+    console.log("fetchingFriends",fetchingFriends)
     return (
       <React.Fragment>
-        {fetchingFriends ? (
+        {fetchingFriends && !friendsFetched ? (
           <div>
             <img src={logo} className="App-logo" alt="logo" />
             <div>Fetching friends</div>
           </div>
-        ) : 
-            friends.map(friend => (this.fillFriendCard(friend)))
+        ) : friendsFetched ?
+            friends.map(friend => (this.fillFriendCard(friend))) : (
+                <div>
+                    <h3>Something went wrong, plese, reload the page</h3>
+                    <h4>{error}</h4>
+                </div>
+            )
         }
       </React.Fragment>
     );
