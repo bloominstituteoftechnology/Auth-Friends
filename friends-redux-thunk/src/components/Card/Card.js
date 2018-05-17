@@ -1,50 +1,81 @@
 import React, { Component } from "react";
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button,
+  Fade,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Input
+} from "reactstrap";
+import { ListGroup, ListGroupItem } from "reactstrap";
+import { connect } from "react-redux";
+
+import { modifyFriend } from "../../actions";
 import "./Card.css";
 
-class Card extends Component {
+class FriendCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      toggle: false
+    this.state = { fadeIn: true,
+        newName: '',
+        age: '',
+        email: ''
     };
+    this.toggle = this.toggle.bind(this);
   }
 
-  toggleCard = () => {
-    console.log("toggleCard clicked");
-    this.setState({ toggle: !this.state.toggle });
-  };
+  toggle() {
+    this.setState({
+      fadeIn: !this.state.fadeIn
+    });
+  }
+  handleChange = (e) => {
+      e.target.key === "Enter" ? this.props.modifyFriend() : null
+      console.log(e.target.name);
+      this.setState({ [e.target.name]: e.target.value });
+  }
+  componentDidMount() {
+    const { name, age, email } = this.props.friend;
+    this.setState({ name, age, email });
+  }
+  
 
   render() {
-    const { name } = this.props.friend;
-    const { toggle } = this.state.toggle;
-    console.log("toggle", this.state.toggle);
+    const { name, age, email } = this.props.friend;
     return (
       <div className="scene scene--card">
-        <div className={this.state.toggle ? "card is-flipped" : "card"}>
-          <div
-            onClick={this.toggleCard}
-            className={`card__face card__face--front`}
-          >
+        <Card>
+          <CardBody>
+            <CardTitle>{name}</CardTitle>
+            <CardSubtitle>{`${age} yeras old`}</CardSubtitle>
+            <CardSubtitle>{`${email}`}</CardSubtitle>
+            <Button onClick={this.toggle}>Modify</Button>
+            <Button className="danger">Delete</Button>
+          </CardBody>
+          <Fade onChange={this.handleChange} in={this.state.fadeIn} className="mt-3">
             <InputGroup>
               <InputGroupAddon addonType="prepend">Name</InputGroupAddon>
-              <h6>{name}</h6>
+              <Input name="name" placeholder="name" value={this.state.name} />
             </InputGroup>
-            <br />
-          </div>
-          <div
-            onClick={this.toggleCard}
-            className={`card__face card__face--back`}
-          >
             <InputGroup>
               <InputGroupAddon addonType="prepend">Name</InputGroupAddon>
-              <Input placeholder={name} />
+              <Input name="age" placeholder="age" value={this.state.age} />
             </InputGroup>
-            <br />
-          </div>
-        </div>
+            <InputGroup>
+              <InputGroupAddon addonType="prepend">Name</InputGroupAddon>
+              <Input name="email" placeholder="email" value={this.state.email} />
+            </InputGroup>
+          </Fade>
+        </Card>
       </div>
     );
   }
 }
-export default Card;
+
+export default connect(null, { modifyFriend })(FriendCard);

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import logo from "../../logo.svg";
 
 import { getFriends } from "../../actions";
-import Card from "../Card/Card";
+import FriendCard from "../Card/Card";
 
 class Cards extends Component {
   componentDidMount() {
@@ -37,7 +37,7 @@ class Cards extends Component {
 
   fillFriendCard(friend) {
     console.log("friend", friend);
-    return <Card id={friend.id} friend={friend} key={Date.now()} />;
+    return <FriendCard id={friend.id} friend={friend} key={Date.now()} />;
   }
 }
 const stateToProps = state => {

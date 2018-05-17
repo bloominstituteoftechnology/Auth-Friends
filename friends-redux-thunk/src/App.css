@@ -29,23 +29,23 @@
 
 /* CUSTOM STYLES */
 .scene {
-  width: 200px;
-  height: 260px;
+  /* width: 200px;
+  height: 260px; */
   border: 1px solid #CCC;
-  margin: 40px 0;
+  /* margin: 40px 0; */
   perspective: 600px;
 }
 
-.card {
-  width: 100%;
-  height: 100%;
+.toggle-card {
+  /* width: 100%;
+  height: 100%; */
   transition: transform 1s;
   transform-style: preserve-3d;
   cursor: pointer;
   position: relative;
 }
 
-.card.is-flipped {
+.toggle-card.is-flipped {
   transform: rotateY(180deg);
 }
 

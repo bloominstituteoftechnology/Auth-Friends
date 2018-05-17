@@ -35,3 +35,11 @@ export const getFriends = () => {
         });
   };
 };
+
+export const modifyFriend = (id) => {
+    const modify = axios.put(`http://localhost:5000/api/friends/${id}`);
+    return (dispatch) => {
+        dispatch({type: UPDATINGFRIEND});
+        modify.then(response => {console.log(response.data)}).catch(e => {console.log(e)});
+    }
+}
