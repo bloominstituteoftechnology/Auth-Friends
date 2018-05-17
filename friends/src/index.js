@@ -9,5 +9,12 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './reducers' 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+const store = createStore(applyMiddleware(thunk, logger), rootReducer)
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root'));
 registerServiceWorker();
