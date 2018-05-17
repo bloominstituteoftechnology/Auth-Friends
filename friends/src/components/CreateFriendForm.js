@@ -29,7 +29,7 @@ class CreateFriendForm extends Component {
     render () {
         return (
             <form>
-                <input onChange={ this.handleFriendName } placeholder='name' name='name' value={this.state.name}/>
+                <input onChange={this.handleFriendName } placeholder='name' name='name' value={this.state.name}/>
                 <input onChange={this.handleFriendName } placeholder='age' name='age' value={this.state.age}/>
                 <input onChange={this.handleFriendName } placeholder='email' name='email' value={this.state.email}/>
                 <button onClick={this.handleAddFriend}>Add Friend</button>

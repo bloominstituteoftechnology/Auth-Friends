@@ -28,3 +28,4 @@ export const addFriend = (friend) => {
             })
     }
 }
+
