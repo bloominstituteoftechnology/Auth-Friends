@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import logo from './logo.svg';
 import './App.css';
 
+import { fetchFriends } from './actions/index';
+
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchFriends();
+  }
+
+
+
   render() {
     return (
       <div className="App">
@@ -18,4 +28,7 @@ class App extends Component {
   }
 }
 
-export default App;
+
+
+
+export default connect(null, { fetchFriends })(App);
