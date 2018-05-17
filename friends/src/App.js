@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Friends from './components/Friends';
+import CreateFriend from './components/CreateFriend';
 
 class App extends Component {
   render() {
@@ -9,7 +10,8 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">My Friends</h1>
         </header>
-        <Friends />
+        <CreateFriend/>
+        <Friends/>
       </div>
     );
   }

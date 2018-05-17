@@ -1,6 +1,8 @@
 import axios from 'axios';
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
+export const SAVING = 'SAVING';
+export const SAVED = 'SAVED';
 export const UPDATING = 'UPDATING';
 export const UPDATED = 'UPDATED';
 export const DELETING = 'DELETING';
@@ -16,6 +18,19 @@ const fetching = () => {
 const fetched = (data) => {
     return {
         type: FETCHED,
+        payload: data
+    }
+}
+
+const saving = () => {
+    return {
+        type: SAVING
+    }
+}
+
+const saved = (data) => {
+    return {
+        type: SAVED,
         payload: data
     }
 }
@@ -60,6 +75,20 @@ export const fetchFriends = () => {
             .then( res => {
                 // console.log("result of get request: ", res.data)
                 dispatch(fetched(res.data));
+            })
+            .catch( err => {
+                dispatch(error(err));
+            })
+    }
+}
+
+export const createFriend = (friend) => {
+    const addFriend = axios.post('http://localhost:5000/api/friends', friend);
+    return function(dispatch) {
+        dispatch(saving());
+        addFriend
+            .then( res => {
+                dispatch(saved(res.data))
             })
             .catch( err => {
                 dispatch(error(err));
