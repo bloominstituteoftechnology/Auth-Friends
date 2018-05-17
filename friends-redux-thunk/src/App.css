@@ -57,7 +57,7 @@
   color: white;
   text-align: center;
   font-weight: bold;
-  font-size: 40px;
+  /* font-size: 40px; */
   backface-visibility: hidden;
 }
 

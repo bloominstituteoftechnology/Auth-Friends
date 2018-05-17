@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
 import "./Card.css";
 
 class Card extends Component {
@@ -23,15 +24,23 @@ class Card extends Component {
         <div className={this.state.toggle ? "card is-flipped" : "card"}>
           <div
             onClick={this.toggleCard}
-            className="card__face card__face--front"
+            className={`card__face card__face--front`}
           >
-            front-{name}
+            <InputGroup>
+              <InputGroupAddon addonType="prepend">Name</InputGroupAddon>
+              <h6>{name}</h6>
+            </InputGroup>
+            <br />
           </div>
           <div
             onClick={this.toggleCard}
-            className="card__face card__face--back"
+            className={`card__face card__face--back`}
           >
-            back-{name}
+            <InputGroup>
+              <InputGroupAddon addonType="prepend">Name</InputGroupAddon>
+              <Input placeholder={name} />
+            </InputGroup>
+            <br />
           </div>
         </div>
       </div>
