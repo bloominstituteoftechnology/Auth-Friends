@@ -12,7 +12,7 @@ const Friends = (props) => {
           <div key={friend.id} className="mt-5 friend">
             <Media>
               <Media left>
-                <img src="https://picsum.photos/64/64/?random" alt="Random placeholder" />
+                <img src="https://picsum.photos/64/64/?random" alt="Random placeholder" className="mr-1" />
               </Media>
               <Media body>
                 <Media heading>
