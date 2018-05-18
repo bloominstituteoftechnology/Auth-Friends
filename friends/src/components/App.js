@@ -16,11 +16,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Friends</h1>
-        <h5>Who needs 'em anyways?</h5>
-        <CreateFriendForm />
+        <h1>My Friends Notebook</h1>
         <Friends />
-        {/* <UpdateFriendForm /> */}
+        <CreateFriendForm />
       </div>
     );
   }

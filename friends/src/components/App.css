@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
 
+.App h1 {
+  font-family: 'Fredoka One', cursive;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -34,4 +38,5 @@
 .friend input {
   font-family: 'Shadows Into Light', cursive;
   font-size: 1.5rem;
+  border: 1px dashed darkgray;
 }
