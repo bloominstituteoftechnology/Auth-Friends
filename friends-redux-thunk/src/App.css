@@ -58,8 +58,8 @@ input.checkbox {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-transition: all 600ms;
-  transition: all 600ms;
-  z-index: 20;
+  transition: all 800ms;
+  /* z-index: 20; */
   /* border: 1px solid #F17563; */
 }
 
@@ -72,11 +72,17 @@ input.checkbox {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 2px;
+  z-index: 20;
   /* border: 1px solid blueviolet; */
 }
 
+.flippingCard .front {
+  border: 1px solid #63f1d9;
+}
+
 .flippingCard .back {
-  transform: rotateX(180deg);
+  transform: rotateY(180deg);
+  border: 1px solid #F17563;
 }
 
 .friend-card:hover .flippingCard {
@@ -84,5 +90,5 @@ input.checkbox {
 }
 
 :checked + .flippingCard {
-  transform: rotateX(180deg);
+  transform: rotateY(180deg);
 }

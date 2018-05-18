@@ -109,23 +109,22 @@ class FriendCard extends Component {
               </tr>
               <tr>
                 <td>
-                  <Button onClick={this.toggle}>Modify</Button>
+                  <Button color="info" onClick={this.toggle}>Modify</Button>
                 </td>
                 <td>
-                  <Button onClick={this.handleDelete} className="danger">
+                  <Button color="danger" onClick={this.handleDelete} className="danger">
                     Delete
                   </Button>
                 </td>
               </tr>
             </tbody>
           </Table>
-          <Table
+          <Table id="back"
             onKeyUp={this.handleKeyPress}
-            id="back"
             className={
               this.state.flipped === true ? "side back" : "side back d-none"
             }
-          >
+            >
             <thead>
               <th>Modify:</th>
               <th>
@@ -147,10 +146,10 @@ class FriendCard extends Component {
               </tr>
               <tr>
                 <td>
-                  <Button onClick={this.handleChange}>Apply</Button>
+                  <Button color="warning" onClick={this.handleChange}>Apply</Button>
                 </td>
                 <td>
-                  <Button onClick={this.handleDelete} className="danger">
+                  <Button color="danger" onClick={this.handleDelete} className="danger">
                     Delete
                   </Button>
                 </td>
