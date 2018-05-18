@@ -17,7 +17,7 @@ class Cards extends Component {
     // console.log("friends",friends)
     // console.log("fetchingFriends", fetchingFriends);
     return (
-      <React.Fragment>
+      <div className="row">
         {fetchingFriends && !friendsFetched ? (
           <div>
             <img src={logo} className="App-logo" alt="logo" />
@@ -31,7 +31,7 @@ class Cards extends Component {
             <h4>{error}</h4>
           </div>
         )}
-      </React.Fragment>
+      </div>
     );
   }
 

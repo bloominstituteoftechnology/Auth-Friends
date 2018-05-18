@@ -11,7 +11,8 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
-  Input
+  Input,
+  Table
 } from "reactstrap";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import { connect } from "react-redux";
@@ -23,38 +24,53 @@ class FriendCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fadeIn: false,
+      flipped: false,
+      somethingChange: false,
       name: "",
       age: "",
       email: "",
-      id: ''
+      id: ""
     };
     this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
     this.setState({
-      fadeIn: !this.state.fadeIn
+      flipped: !this.state.flipped
     });
   }
   handleChange = e => {
-    console.log("hello from handleChange");
-    console.log("e.target.name",e.target.name);
-    this.setState({ [e.target.name]: e.target.value });
+    /** 
+     * OLD CODE: AIMED TO WORK NOT WITH FLIPPING-CARDS
+    // console.log("hello from handleChange");
+    // console.log("e.target.name", e.target.value);
+    // this.setState({ [e.target.name]: e.target.value });
+    */
+
+    /** If there any property had changed -> update Friends on Server, else -> toggle the card */
+    this.state.somethingChange === true ?
+    this.props.modifyFriend(this.props.id, this.state)
+    : this.toggle();
   };
   /** Submit to modify Friend by pressing 'Enter */
   handleKeyPress = e => {
-      console.log("hello form handleKeyPress"), e.key;
-      e.key === "Enter"
+    this.state.somethingChange === false ? this.setState({ somethingChange: true }) : null;
+    console.log("hello form handleKeyPress", e.key, e.target.dataset.property);
+    console.log("hello form handleKeyPress", e.key, e.target.innerText);
+    const elementInnerText = e.target.innerText;
+    const propertyToUpdate = e.target.dataset.property;
+    this.setState({ [propertyToUpdate] : elementInnerText });
+
+    e.key === "Enter"
       ? this.props.modifyFriend(this.props.id, this.state)
       : null;
   };
-  handleDelete = (e) => {
-      const {id} = this.state;
-      const index = this.props.id;
-      console.log(index,id)
-      this.props.deleteFriend(index, id)
-  }
+  handleDelete = e => {
+    const { id } = this.state;
+    const index = this.props.id;
+    console.log(index, id);
+    this.props.deleteFriend(index, id);
+  };
 
   componentDidMount() {
     const { name, age, email, id } = this.props.friend;
@@ -62,41 +78,86 @@ class FriendCard extends Component {
   }
 
   render() {
-    const { name, age, email } = this.props.friend;
+    const { id, name, age, email } = this.props.friend;
     return (
-      <div className="scene scene--card">
-        <Card>
-          <CardBody>
-            <CardTitle>{name}</CardTitle>
-            <CardSubtitle>{`${age} yeras old`}</CardSubtitle>
-            <CardSubtitle>{`${email}`}</CardSubtitle>
-            <Button onClick={this.toggle}>Modify</Button>
-            <Button onClick={this.handleDelete} className="danger">Delete</Button>
-          </CardBody>
-          <Fade
-            onChange={this.handleChange}
-            onKeyDown={this.handleKeyPress}
-            in={this.state.fadeIn}
-            className="mt-3"
+      <div className="friend-card">
+        {this.state.flipped === true ? (
+          <input className="d-none" type="checkbox" checked />
+        ) : (
+          <input className="d-none" type="checkbox" />
+        )}
+        <div className="flippingCard">
+          <Table id="front"
+            className={
+              this.state.flipped === true ? "side front d-none" : "side front"
+            }
+            >
+            <thead>
+              <th>Name</th>
+              <th name="name" value="">
+                {name}
+              </th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Age</td>
+                <td>{age}</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>{email}</td>
+              </tr>
+              <tr>
+                <td>
+                  <Button onClick={this.toggle}>Modify</Button>
+                </td>
+                <td>
+                  <Button onClick={this.handleDelete} className="danger">
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+          <Table
+            onKeyUp={this.handleKeyPress}
+            id="back"
+            className={
+              this.state.flipped === true ? "side back" : "side back d-none"
+            }
           >
-            <InputGroup>
-              <InputGroupAddon addonType="prepend">Name</InputGroupAddon>
-              <Input name="name" placeholder="name" value={this.state.name} />
-            </InputGroup>
-            <InputGroup>
-              <InputGroupAddon addonType="prepend">Age</InputGroupAddon>
-              <Input name="age" placeholder="age" value={this.state.age} />
-            </InputGroup>
-            <InputGroup>
-              <InputGroupAddon addonType="prepend">Email</InputGroupAddon>
-              <Input
-                name="email"
-                placeholder="email"
-                value={this.state.email}
-              />
-            </InputGroup>
-          </Fade>
-        </Card>
+            <thead>
+              <th>Modify:</th>
+              <th>
+                <div data-property="name" data-id={id} contenteditable="true">{name}</div>
+              </th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Age</td>
+                <td>
+                  <div data-property="age" contenteditable="true">{age}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>
+                  <div data-property="email" contenteditable="true">{email}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Button onClick={this.handleChange}>Apply</Button>
+                </td>
+                <td>
+                  <Button onClick={this.handleDelete} className="danger">
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+        </div>
       </div>
     );
   }

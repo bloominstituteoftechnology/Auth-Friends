@@ -1,74 +1,88 @@
 * {
-  margin: 10px;
+    /* margin: 10px; */
 }
+
 .App {
-  text-align: center;
+    text-align: center;
+    /* background: #F17563; */
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* CUSTOM STYLES */
-.scene {
-  /* width: 200px;
-  height: 260px; */
-  border: 1px solid #CCC;
-  /* margin: 40px 0; */
-  perspective: 600px;
+
+input.checkbox {
+    color: black;
 }
 
-.toggle-card {
-  /* width: 100%;
-  height: 100%; */
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  cursor: pointer;
+.friend-card {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    display: block;
+    width: 350px;
+    /* height: 200px; */
+}
+
+
+.flippingCard {
   position: relative;
-}
-
-.toggle-card.is-flipped {
-  transform: rotateY(180deg);
-}
-
-.card__face {
-  position: absolute;
-  width: 100%;
   height: 100%;
-  line-height: 260px;
-  color: white;
+  width: 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: all 600ms;
+  transition: all 600ms;
+  z-index: 20;
+  /* border: 1px solid #F17563; */
+}
+
+.flippingCard div{
+  position: relative;
+  top: 0px;
+  height: 100%;
+  width: 100%;
   text-align: center;
-  font-weight: bold;
-  /* font-size: 40px; */
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  border-radius: 2px;
+  /* border: 1px solid blueviolet; */
 }
 
-.card__face--front {
-  background: red;
+.flippingCard .back {
+  transform: rotateX(180deg);
 }
 
-.card__face--back {
-  background: blue;
-  transform: rotateY(180deg);
+.friend-card:hover .flippingCard {
+  box-shadow: 20px 20px 20px rgba(50, 50, 50, 0.2);
+}
+
+:checked + .flippingCard {
+  transform: rotateX(180deg);
 }
