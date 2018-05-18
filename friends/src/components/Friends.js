@@ -8,8 +8,18 @@ class Friends extends Component {
     }
 
     render() {
+        console.log("this.props:", this.props)
         return (
-            <div>friend</div>
+            <div>
+                {this.props.friends.map(friend => {
+                    return(
+                    <div key={friend.id}> 
+                        <li>{friend.name}</li>
+                        <li>{friend.age}</li>
+                        <li>{friend.email}</li>
+                    </div>)
+                })}
+            </div>
         )
     }
 }
