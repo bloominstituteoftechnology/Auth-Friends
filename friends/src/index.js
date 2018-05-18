@@ -9,7 +9,9 @@ import logger from 'redux-logger';
 import rootReducer from './reducers';
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
-console.log(rootReducer)
+console.log("store:", store)
+console.log("Root Reducer:", rootReducer)
+
 ReactDOM.render(
 <Provider store={store}>
     <App />
