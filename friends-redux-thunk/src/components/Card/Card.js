@@ -38,6 +38,13 @@ class FriendCard extends Component {
     this.setState({
       flipped: !this.state.flipped
     });
+    this.state.somethingChange === true
+      ? 
+      setTimeout(
+        this.props.modifyFriend(this.props.id, this.state)
+        , 1010
+      )
+      : null;
   }
   handleChange = e => {
     /** 
@@ -48,22 +55,24 @@ class FriendCard extends Component {
     */
 
     /** If there any property had changed -> update Friends on Server, else -> toggle the card */
-    this.state.somethingChange === true ?
-    this.props.modifyFriend(this.props.id, this.state)
-    : this.toggle();
+    this.state.somethingChange === true
+      ? this.props.modifyFriend(this.props.id, this.state)
+      : this.toggle();
   };
   /** Submit to modify Friend by pressing 'Enter */
   handleKeyPress = e => {
-    this.state.somethingChange === false ? this.setState({ somethingChange: true }) : null;
+    this.state.somethingChange === false
+      ? this.setState({ somethingChange: true })
+      : null;
     console.log("hello form handleKeyPress", e.key, e.target.dataset.property);
     console.log("hello form handleKeyPress", e.key, e.target.innerText);
     const elementInnerText = e.target.innerText;
     const propertyToUpdate = e.target.dataset.property;
-    this.setState({ [propertyToUpdate] : elementInnerText });
+    this.setState({ [propertyToUpdate]: elementInnerText });
 
-    e.key === "Enter"
-      ? this.props.modifyFriend(this.props.id, this.state)
-      : null;
+    if (e.key === "Enter") {
+      this.toggle();
+    }
   };
   handleDelete = e => {
     const { id } = this.state;
@@ -87,11 +96,12 @@ class FriendCard extends Component {
           <input className="d-none" type="checkbox" />
         )}
         <div className="flippingCard">
-          <Table id="front"
+          <Table
+            id="front"
             className={
               this.state.flipped === true ? "side front d-none" : "side front"
             }
-            >
+          >
             <thead>
               <th>Name</th>
               <th name="name" value="">
@@ -109,47 +119,66 @@ class FriendCard extends Component {
               </tr>
               <tr>
                 <td>
-                  <Button color="info" onClick={this.toggle}>Modify</Button>
+                  <Button color="info" onClick={this.toggle}>
+                    Modify
+                  </Button>
                 </td>
                 <td>
-                  <Button color="danger" onClick={this.handleDelete} className="danger">
+                  <Button
+                    color="danger"
+                    onClick={this.handleDelete}
+                    className="danger"
+                  >
                     Delete
                   </Button>
                 </td>
               </tr>
             </tbody>
           </Table>
-          <Table id="back"
+          <Table
+            id="back"
             onKeyUp={this.handleKeyPress}
             className={
               this.state.flipped === true ? "side back" : "side back d-none"
             }
-            >
+          >
             <thead>
               <th>Modify:</th>
               <th>
-                <div data-property="name" data-id={id} contenteditable="true">{name}</div>
+                <div data-property="name" data-id={id} contenteditable="true">
+                  {name}
+                </div>
               </th>
             </thead>
             <tbody>
               <tr>
                 <td>Age</td>
                 <td>
-                  <div data-property="age" contenteditable="true">{age}</div>
+                  <div data-property="age" contenteditable="true">
+                    {age}
+                  </div>
                 </td>
               </tr>
               <tr>
                 <td>Email</td>
                 <td>
-                  <div data-property="email" contenteditable="true">{email}</div>
+                  <div data-property="email" contenteditable="true">
+                    {email}
+                  </div>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <Button color="warning" onClick={this.handleChange}>Apply</Button>
+                  <Button color="warning" onClick={this.toggle}>
+                    Apply
+                  </Button>
                 </td>
                 <td>
-                  <Button color="danger" onClick={this.handleDelete} className="danger">
+                  <Button
+                    color="danger"
+                    onClick={this.handleDelete}
+                    className="danger"
+                  >
                     Delete
                   </Button>
                 </td>

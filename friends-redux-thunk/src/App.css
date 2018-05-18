@@ -81,7 +81,7 @@ input.checkbox {
 }
 
 .flippingCard .back {
-  transform: rotateY(180deg);
+  transform: rotateX(180deg);
   border: 1px solid #F17563;
 }
 
@@ -90,5 +90,5 @@ input.checkbox {
 }
 
 :checked + .flippingCard {
-  transform: rotateY(180deg);
+  transform: rotateX(180deg);
 }
