@@ -29,12 +29,11 @@ export const fetchFriends = () => {
             })
     }
 }
-let nextID = 42;
-export const addFriend = input => {
+export const addFriend = (friendAge, friendName, friendEmail) => {
     const add = axios.post(`http://localhost:5000/api/friends/`, {
-        name: input,
-        email: null,
-        age: null,
+        name: friendName,
+        email: friendEmail,
+        age: friendAge,
     })
     return function(dispatch) {
         dispatch({ type: ADDING_FRIEND })
