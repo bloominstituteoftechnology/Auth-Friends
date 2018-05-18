@@ -9,9 +9,9 @@ class AddFriend extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      age: "",
-      email: ""
+      name: props.nameText,
+      age: props.ageText,
+      email: props.emailText
     }
   }
 
@@ -22,6 +22,7 @@ class AddFriend extends Component {
   render() {
     return(
       <div>
+        <h1>{this.props.headerText}</h1>
         <Form>
           <FormGroup>
             <Label for="name">Name</Label>

@@ -1,28 +1,26 @@
 import { FETCHING_FRIENDS, FETCHED_FRIENDS, ERROR, BEGIN_EDIT, CANCEL_EDIT, BEGIN_ADD, CANCEL_ADD } from '../actions';
 const initialState = {
   friends: [],
-  fetching: false,
-  fetched: false,
   error: null,
-  edit: false,
-  add: false
+  appState: "default",
+  editIndex: null
 };
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_FRIENDS:
-      return Object.assign({}, state, {fetching: true});
+      return Object.assign({}, state, {appState: "fetching"});
     case FETCHED_FRIENDS:
-      return Object.assign({}, state, {friends: action.payload, fetching: false, fetched: true});
+      return Object.assign({}, state, {friends: action.payload, appState: "fetched"});
     case ERROR:
-      return Object.assign({}, state, {fetching: false, error: action.payload});
+      return Object.assign({}, state, {appState: "error", error: action.payload});
     case BEGIN_EDIT:
-      return Object.assign({}, state, {edit: true});
+      return Object.assign({}, state, {appState: "edit", editIndex: action.payload});
     case CANCEL_EDIT:
-      return Object.assign({}, state, {edit: false});
+      return Object.assign({}, state, {appState: "fetched", editIndex: null});
     case BEGIN_ADD:
-      return Object.assign({}, state, {add: true});
+      return Object.assign({}, state, {appState: "add"});
     case CANCEL_ADD:
-      return Object.assign({}, state, {add: false});
+      return Object.assign({}, state, {appState: "fetched"});
     default:
       return state;
   }

@@ -7,7 +7,7 @@ const Friends = (props) => {
   return(
     <div className="friends" >
       <Button color="success" onClick={props.addButton} >Add Friend</Button>
-      {props.friendData.map((friend) => {
+      {props.friendData.map((friend, index) => {
         return (
           <div key={friend.id} className="mt-5 friend">
             <Media>
@@ -22,6 +22,7 @@ const Friends = (props) => {
                 <p>email: {friend.email}</p>
               </Media>
             </Media>
+            <Button color="warning" onClick={() => props.editButton(index)} >Edit Friend</Button>
           </div>
         );
       })}

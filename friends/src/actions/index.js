@@ -28,9 +28,9 @@ export const cancelEdit = () => {
   }
 }
 
-export const beginEdit = () => {
+export const beginEdit = (index) => {
   return (dispatch) => {
-    dispatch({type: BEGIN_EDIT});
+    dispatch({type: BEGIN_EDIT, payload: index});
   }
 }
 
