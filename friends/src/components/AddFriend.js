@@ -6,12 +6,17 @@ import { addFriend } from '../actions'
 const AddFriend = props => {
     return (
         <div>
-            <form onSubmit={(event)=> { event.preventDefault(); props.addFriend(this.friendName, this.friendAge, this.friendEmail)}}>
-                    <input type="text" ref={(friendName) => this.friendName = friendName} />
-                    <input type="text" ref={(friendAge) => this.friendAge = friendAge} />
-                    <input type="text" ref={(friendEmail) => this.friendEmail = friendEmail} />
-                <button type="submit" value="Add Friend"> Add Friend </button>
-        </form>
+            <form onSubmit={(event) => { props.addFriend(this.input.value); event.preventDefault(); this.input.value = ''}}>
+                    <input type="text" ref={(name) => this.input = name} />
+            </form>
+            <form onSubmit={(event) => { props.addFriend(this.input.value); event.preventDefault(); this.input.value = ''}}>
+                    <input type="text" ref={(age) => this.input = age} />
+            </form>
+            <form onSubmit={(event) => { props.addFriend(this.input.value); event.preventDefault(); this.input.value = ''}}>
+                    <input type="text" ref={(input) => this.input = input} />
+            </form>
+                <button onClick={() => props.addFriend} type="submit" value="Add Friend"> Add </button>
+
         </div>
     )
 }
