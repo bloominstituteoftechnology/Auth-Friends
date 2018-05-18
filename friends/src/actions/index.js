@@ -20,13 +20,13 @@ export const fetchingFriends = () => {
     }
 };
 
-export const addFriend = ({friend}) => {
-    const putData = axios.post(`http://localhost:5000/api/friends`, friend);
+export const addFriend = (friend) => {
+    const postData = axios.post(`http://localhost:5000/api/friends`, friend);
     return function(dispatch) {
         dispatch({type: SAVING_FRIEND})
-        putData
+        postData
             .then(response => {
-                dispatch({type: FRIEND_SAVED, payload: friend})
+                dispatch({type: FRIEND_SAVED, payload: response.data})
             })
             .catch(err => {
                 dispatch({type: ERROR, payload: err})

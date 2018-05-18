@@ -18,11 +18,11 @@ export const friendsReducer = (state = initialState, action) => {
         case FETCHING_FRIENDS:
           return {...state, fetchingFriends: true};
         case FRIENDS_FETCHED:
-          return {...state, fetchingFriends: false, friendsFetched: true, chars: state.chars.concat(action.payload)};
+          return {...state, fetchingFriends: false, friendsFetched: true, friends: state.friends.concat(action.payload)};
         case SAVING_FRIEND:
           return {...state, savingFriend: true};
         case FRIEND_SAVED:
-          return {...state, savingFriend: false, friendSaved: true, chars: state.chars.concat(action.payload)};
+          return {...state, savingFriend: false, friendSaved: true, friends: state.friends.concat(action.payload)};
         case ERROR:
           return {...state, error: action.payload}; 
         default:
