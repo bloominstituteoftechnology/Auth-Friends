@@ -39,8 +39,8 @@ class CreateFriendForm extends Component {
     
     render() { 
         return ( 
-            <div className="form-container">
-                <form className='friend-form'>
+            <div>
+                <form>
                     <input type="text" onChange={this.handleInput} name='name' value={this.state.name} placeholder="Name"/>
                     <input type="number" onChange={this.handleInput} name='age' value={this.state.age} placeholder="Age"/>
                     <input type="text" onChange={this.handleInput} name='email' value={this.state.email} placeholder="Email"/>
