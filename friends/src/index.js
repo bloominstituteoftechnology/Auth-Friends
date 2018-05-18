@@ -9,7 +9,7 @@ import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import friendsReducer from './reducers/reducer';
 
-const store = createStore(friendsReducer, applyMiddleware(thunk, logger));
+const store = createStore(friendsReducer, applyMiddleware(thunk));
 
 
 ReactDOM.render(
@@ -19,4 +19,4 @@ ReactDOM.render(
   document.getElementById('root'));
 registerServiceWorker();
 
-// This is modeled off my Redux-Swapi index.js and probably won't change much. I think.
+// This is modeled off my Redux-Swapi index.js.

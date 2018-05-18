@@ -1,53 +1,50 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { createFriends } from '../actions';
 
-class AddFriend extends Component {
-  state = {
-    name: '',
-    age: '',
-    email:''
-  };
-
-  handleInput = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  }
-
-  handleSubmit = event => {
-    const { name, age, email } = this.state;
-    const newFriend = { name, age, email };
-    this.props.createFriends(newFriend);
-    this.setState({
+export class AddFriend extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
       name:'',
       age:'',
-      email:'',
-    });
-  };
-}
-  
+      email:''
+    };
+  }
+ 
   render() {
     return (
+      const { id, name, age, email } = this.props.friend;
       <div>
-      <input
+	<h3>Add Friend</h3>
+	{console.log(this.state, 'kelly')}
+	<input
 	name='name'
+	placeholder='name'
 	value={this.state.name}
 	onChange={this.handleInput}
 	/>;
       <input
 	name='age'
+	placeholder='age'
 	value={this.state.age}
 	onChange={this.handleInput}
 	/>;
       <input
 	name='email'
+	placeholder='email'
 	value={this.state.email}
 	onChange={this.handleInput}
 	/>;
-      <button onClick={this.handleSubmit}>add friend</button>;
+      <button onClick={() => this.handleSubmit}>Add</button>
       </div>
-     );
+    );
   }
+}
 
-export default connect(null, {createFriends})(AddFriend);
+const mapStateToProps = state => {
+  return {
+    posting: state.posting,
+    friends: state.friends
+  };
+};
 
-// Yeah, this is kind of a mess right now. I don't even know if I really want to mess with a whole bunch of different components but the README suggested I try so I'm going to work on this awhile and see if I can make it work. If not, I'll try some other way.
+export default connect(mapStateToProps, {createFriends})(AddFriend);

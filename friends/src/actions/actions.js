@@ -3,10 +3,12 @@ import axios from 'axios';
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
+export const POSTING = 'POSTING';
+export const SAVED = 'SAVED';
 
-export const fetchFriends = () => {
+export function fetchFriends() {
   const promise = axios.get(`http://localhost:5000/api/friends`);
-  return dispatch => {
+  return(dispatch) => {
     dispatch ({ type: FETCHING });
     promise
        .then(response => {
@@ -18,12 +20,13 @@ export const fetchFriends = () => {
     };
 };
 
-export const createFriends = data => {
-  const promise = axios.post(`http://localhost:5000/api/friends`, data);
+export const createFriends = (friend) => {
+  const promise = axios.post(`http://localhost:5000/api/friends`, friend);
   return dispatch => {
+    dispatch({ type: POSTING });
     promise
       .then(response => {
-	dispatch({ type: FETCHED, payload: response.data });
+	dispatch({type: SAVED, payload: response.data });
       })
       .catch(error => {
 	dispatch({ type: ERROR, payload: error });
@@ -31,4 +34,4 @@ export const createFriends = data => {
   };
 };
 
-// This is still very much a work in progress. I'm modeling this off of what I did with the swapi project for now and will probably need to edit this later.
+// I modeled this off of what I did with the swapi project.

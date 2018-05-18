@@ -1,46 +1,32 @@
-import { FETCHING, FETCHED, ERROR } from '../actions/actions';
+import { FETCHING, FETCHED, ERROR, POSTING } from '../actions/actions';
 
 const initialState = {
   friends: [],
-  fetchingFriends: false,
-  friendsFetched: false,
-  friendsSaved: false,
-  savingFriends: false,
-  updatingFriend: false,
-  friendUpdated: false,
-  deleteFriend: false,
-  friendDeleted: false,
+  fetching: false,
+  fetched: false,
+  posting: false,
   error:null
 };
 
 const friendsReducer = (state = initialState, action) => {
   switch(action.type) {
+
   case FETCHING:
-    return Object.assign({}, state, {
-      fetchingFriends: true,
-      friendsFetched: false
-    });
+    return {...state, fetching: true};
+
 
   case FETCHED:
-    return Object.assign({}, state, {
-      friends: [...state.friends, ...action.payload],
-      fetchingFriends: false,
-      friendsFetched: true
-    });
+  return {...state, friends: action.payload, fetching: false, fetched: true};
+
+  case POSTING:
+    return {...state, posting: true,};
     
   case ERROR:
-    return Object.assign({}, state, {
-      fetchingFriends: false,
-      friendsFetched: false,
-      error: action.payload
-    });
+    return {...state, fetching: false, error: action.payload};
     
   default:
   return state;
-  };
+  }
 };
 
 export default friendsReducer;
-
-
-// Still a work in progress. Will keep working on this.
