@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // actions
-import { getFriends } from '../actions/actions';
+import { getFriends, getFriend } from '../actions/actions';
 
 class GetFriends extends Component {
   componentDidMount() {
+    console.log('cDM')
     this.props.getFriends();
   }
   
   render() {
+    console.log(this.props)
     if (this.props.friendsData.fetchingFriends) {
       return <h1>GETTING FRIENDS</h1>;
     }
@@ -19,7 +21,7 @@ class GetFriends extends Component {
           {
             this.props.friends.map(friend => {
               return (
-                <ul key={ friend.id }>
+                <ul key={ friend.id } onClick={ () => this.props.getFriend(friend.id) }>
                   <li>{ friend.name }</li>
                   <li>{ friend.email }</li>
                   <li>{ friend.age }</li>
@@ -40,4 +42,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps, { getFriends })(GetFriends);
+export default connect(mapStateToProps, { getFriends, getFriend })(GetFriends);
