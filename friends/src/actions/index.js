@@ -48,7 +48,7 @@ export const updateFriend = (friend) => {
     return function(dispatch) {
         dispatch({type: UPDATING_FRIEND})
         putData
-            .then(reponse => {
+            .then(response => {
                 dispatch({type: FRIEND_UPDATED, payload: response.data})
             })
             .catch(err => {

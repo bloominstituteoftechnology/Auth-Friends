@@ -1,28 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+  background: white;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.friend-container {
+  width: 31%;
+  min-width: 250px;
+  margin: 1%;
+  background: rgb(241, 241, 241);
+  border-radius: 2px;
+  border: 1px solid gray;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.friend-list {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 900px;
 }
