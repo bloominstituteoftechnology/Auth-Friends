@@ -21,7 +21,7 @@ class Friends extends Component {
                     <ul>
                         {this.props.friends.map(friend => {
                             return(
-                                <div key={friend.name} className="friend-card">
+                                <div key={friend.id} className="friend-card">
                                     <h2>{friend.name}</h2>
                                     <h4>{friend.email}</h4>
                                     <h4>{friend.age}</h4>
