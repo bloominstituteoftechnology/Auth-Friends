@@ -23,6 +23,10 @@ export const friendsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {appState: "fetched"});
     case DELETE_FRIEND:
       return Object.assign({}, state, {appState: "fetching"});
+    case EDIT_FRIEND:
+      return Object.assign({}, state, {appState: "fetching"});
+    case ADD_FRIEND:
+      return Object.assign({}, state, {appState: "fetching"});
     default:
       return state;
   }
