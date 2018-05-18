@@ -36,10 +36,26 @@ export const getFriends = () => {
   };
 };
 
-export const modifyFriend = (id) => {
-    const modify = axios.put(`http://localhost:5000/api/friends/${id}`);
+export const modifyFriend = (id, data) => {
+    const { name, age, email } = data
+    const modify = axios.put(`http://localhost:5000/api/friends/${id}`, data);
+    console.log("Hellofrom modifyFriend");
     return (dispatch) => {
+        
         dispatch({type: UPDATINGFRIEND});
-        modify.then(response => {console.log(response.data)}).catch(e => {console.log(e)});
+        modify.then(response => {
+            console.log("response.data",response.data);
+            dispatch({
+                type: FRIENDUPDATED,
+                data: { id, name, age, email },
+                id                
+            })
+        }).catch(e => {
+            console.log(e)
+        });
     }
+}
+
+export const deleteFriend = (id) => {
+    const modify = axios.delete(`http://localhost:5000/api/friends/${id}`);
 }

@@ -37,6 +37,9 @@ export const friendsReducer = (state = initialState, action) => {
     case SAVINGFRIENDS:
     case UPDATINGFRIEND:
     case FRIENDUPDATED:
+      console.log("[...state.friends]",[...state.friends]);
+      console.log("{[action.id]: action.data}",{[action.id]: action.data});
+      return {...state, friends: Object.assign([...state.friends], {[action.id - 1]: action.data})}
     case DELETINGFRIEND:
     case FRIENDDELETED:
     case FETCHINGFRIENDS:

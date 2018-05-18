@@ -15,7 +15,7 @@ class Cards extends Component {
     const state = this.props.state;
     const { fetchingFriends, friendsFetched, error, friends } = state;
     // console.log("friends",friends)
-    console.log("fetchingFriends", fetchingFriends);
+    // console.log("fetchingFriends", fetchingFriends);
     return (
       <React.Fragment>
         {fetchingFriends && !friendsFetched ? (
@@ -36,8 +36,8 @@ class Cards extends Component {
   }
 
   fillFriendCard(friend) {
-    console.log("friend", friend);
-    return <FriendCard id={friend.id} friend={friend} key={Date.now()} />;
+    // console.log("friend", friend);
+    return <FriendCard id={friend.id} friend={friend} key={Date.now()+friend.id} />;
   }
 }
 const stateToProps = state => {
