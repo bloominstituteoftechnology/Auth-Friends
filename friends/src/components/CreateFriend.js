@@ -49,3 +49,5 @@ class AddFriend extends Component {
   }
 
 export default connect(null, {createFriends})(AddFriend);
+
+// Yeah, this is kind of a mess right now. I don't even know if I really want to mess with a whole bunch of different components but the README suggested I try so I'm going to work on this awhile and see if I can make it work. If not, I'll try some other way.

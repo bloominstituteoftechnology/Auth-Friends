@@ -30,3 +30,5 @@ export const createFriends = data => {
       });
   };
 };
+
+// This is still very much a work in progress. I'm modeling this off of what I did with the swapi project for now and will probably need to edit this later.

@@ -18,3 +18,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();
+
+// This is modeled off my Redux-Swapi index.js and probably won't change much. I think.
