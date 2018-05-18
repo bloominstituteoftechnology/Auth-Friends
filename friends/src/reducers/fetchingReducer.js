@@ -3,12 +3,6 @@ import {FETCHING_FRIENDS, FETCHED_FRIENDS, ERROR} from '../actionCreators/fetchi
 const initialState = {
   fetchingFriends: false,
   fetchedFriends: false,
-  savingFriends: false,
-  savedFriends: false,
-  updatingFriends: false,
-  updatedFriends: false,
-  deletingFriend: false,
-  deletedFriend: false,
   friends: [],
   error: null,
 }

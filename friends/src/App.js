@@ -12,11 +12,11 @@ class App extends Component {
           <h1 className="App-title">Redux-Friends Project</h1>
         </header>
         
-        <span>
-          <FriendForm/>
+        <div className="Main-content">
           <Friends/>
-        </span>
-        
+          <FriendForm/>
+        </div>
+
       </div>
     );
   }
