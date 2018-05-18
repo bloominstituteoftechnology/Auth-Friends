@@ -4,8 +4,9 @@ export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
 export const ERROR = 'ERROR';
 
 export const fetchFriends = () => {
-    const getFriends = axios.get('http://http://localhost:5000/api/friends');
-    return dispatch => { // return function(dispatch) here to c+p if return dispatch doesn't work
+    console.log("here!")
+    const getFriends = axios.get('http://localhost:5000/api/friends');
+    return dispatch => { 
         dispatch({ type: FETCHING_FRIENDS });
         getFriends
             .then(friendData => { 
@@ -16,7 +17,9 @@ export const fetchFriends = () => {
                 });
             })
             .catch(err => {
-                dispatch({ type: ERROR, 
+                console.log(err)
+                dispatch({ 
+                    type: ERROR, 
                     payload: err })
             })
     }
