@@ -1,25 +1,62 @@
-import actionTypes from '../Actions/actionTypes';
+import { combineReducers } from 'redux';
+import { friendsReducer } from './FriendReducer';
+import {FETCHING_FRIEND,FETCHED_FRIEND,DELETE_FRIEND,SUBMIT_FRIEND,EDIT_FRIEND} from "../actions";
+
+export default combineReducers({
+  friendsReducer
+});
+
+
+
 
 const initialState = {
-  pending: false,
-  error: null,
-  friends: []
+  friends: [],
+  isFetching: false,
+  isFetched: false
 };
 
-const friendsReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case actionTypes.PENDING_FRIENDS:
-      return Object.assign({}, state, { pending: true });
-    case actionTypes.SUCCESS_FRIENDS:
-      return Object.assign({}, state, { friends: [...action.payload], pending: false });
-    case actionTypes.ERROR_FRIENDS:
-      return Object.assign({}, state, { error: action.payload });
+export const friendReducer = (state = initialState, { type, friends, id }) => {
+  switch (type) {
+    case FETCHING_FRIEND:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case FETCHED_FRIEND:
+      return {
+        ...state,
+        isFetching: false,
+        isFetched: true,
+        friends
+      };
+    case DELETE_FRIEND:
+      return {
+        ...state,
+        isFetching: false,
+        isFetched: true,
+        friends
+      };
+    case SUBMIT_FRIEND:
+      return {
+        ...state,
+        isFetching: false,
+        isFetched: true,
+        friends
+      };
+    case EDIT_FRIEND:
+      const index = friends.findIndex(friend => friend.id === id);
+      return {
+        ...state,
+        friends: [
+          ...friends.slice(0, index),
+          (friends[index] = {
+            ...friends[index],
+            isEditing: true
+          }),
+          ...friends.slice(index + 1)
+        ]
+      };
     default:
       return state;
   }
 };
-
-export default friendsReducer;
-
-
-
