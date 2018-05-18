@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import FriendCard from '../FriendCard/FriendCard';
 import { connect } from 'react-redux';
+import Masonry from 'react-masonry-css';
+import FriendCard from '../FriendCard/FriendCard';
 import { fetchFriends } from '../../actions';
 import './FriendsList.css';
 
@@ -9,9 +10,21 @@ class FriendsList extends Component {
     this.props.fetchFriends();
   };
   render() {
+    const friendCards = this.props.friends.map(friend => <FriendCard key={friend.id} friend={friend} />);
+    const masonryBreakpoints = {
+      default: 4,
+      1200: 3,
+      992: 2,
+      576: 1
+    };
     return (
-      <div className="FriendsList">
-        {this.props.friends.map(friend => <FriendCard key={friend.id} friend={friend}/>)}
+      <div className="friends-list">
+        <Masonry
+          breakpointCols={masonryBreakpoints}
+          className="friends-masonry-grid"
+          columnClassName="friends-masonry-grid_column">
+          {friendCards}
+        </Masonry>
       </div>
     );
   };

@@ -24,7 +24,7 @@ class FriendCard extends Component {
   render() {
     return (
       <React.Fragment>
-        <Card className="FriendCard">
+        <Card className="friend-card">
           <CardBody>
             <CardTitle>{this.props.friend.name}</CardTitle>
             <ul>

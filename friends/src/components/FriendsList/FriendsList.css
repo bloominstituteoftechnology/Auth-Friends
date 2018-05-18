@@ -1,3 +1,19 @@
-.FriendsList {
+.friends-list {
+  margin: 20px 40px;
+}
+
+.friends-masonry-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  margin-left: -20px;
+  width: auto;
+}
+.friends-masonry-grid_column {
+  padding-left: 20px;
+  background-clip: padding-box;
+}
+
+.friends-masonry-grid_column > .friend-card {
+  margin-bottom: 20px;
 }
