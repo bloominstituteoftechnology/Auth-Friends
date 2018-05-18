@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Friends from './components/Friends';
-import CreateFriendForm from './components/Friends';
+import CreateFriendForm from './components/CreateFriendForm';
 
 
 class App extends Component {
