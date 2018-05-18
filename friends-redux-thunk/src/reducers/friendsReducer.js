@@ -56,7 +56,6 @@ export const friendsReducer = (state = initialState, action) => {
       return {...state, deletingFriend: true}
     case FRIENDDELETED:
       return {...state, friends: [...state.friends.slice(0,action.index), ...state.friends.slice(action.index + 1)]}
-    //   return {...state, deletingFriend: false}
     case FETCHINGFRIENDS:
     case ERROR:
       return { ...state, error: action.error, fetchingFriends: false };

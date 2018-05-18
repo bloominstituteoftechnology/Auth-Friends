@@ -23,7 +23,7 @@ class FriendCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fadeIn: true,
+      fadeIn: false,
       name: "",
       age: "",
       email: "",
