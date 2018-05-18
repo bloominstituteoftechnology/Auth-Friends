@@ -21,7 +21,7 @@ class FriendsList extends Component {
 
 
   render() {
-  console.log("state " ,this.props.friends);
+  console.log("state " ,this.props);
   return (
       <div>
         {this.props.friends.map(friend => {
@@ -38,7 +38,8 @@ class FriendsList extends Component {
 
 
 const mapDispatchToProps = state => {
-  const { friendsReducer } = state;
+  console.log(state.friendsReducer);
+  const  friendsReducer  = state.friendsReducer;
   return friendsReducer;
 };
 

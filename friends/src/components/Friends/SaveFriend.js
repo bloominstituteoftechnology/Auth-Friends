@@ -2,8 +2,10 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
+import { saveFriend } from '../../actions';
 
-export default class SaveFriend extends React.Component {
+class SaveFriend extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,13 +21,10 @@ export default class SaveFriend extends React.Component {
     };
 
     submit() {
-        axios.post('http://localhost:5000/api/friends', this.state)
-          .then( (response) => {
-            window.history.back();
-          })
-          .catch( (error) => {
-            console.log(error);
-          });
+        const friend = this.state;
+        console.log("here " , friend);
+        this.props.saveFriend(friend);
+        window.history.back();
     }
 
     render() {
@@ -52,3 +51,9 @@ export default class SaveFriend extends React.Component {
   }
 }
 
+const mapDispatchToProps = state => {
+    const  friendReducer = state.friendReducer;
+    return friendReducer;
+  };
+  
+export default connect(mapDispatchToProps, { saveFriend })(SaveFriend);

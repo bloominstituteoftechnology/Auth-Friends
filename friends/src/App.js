@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import {Route} from 'react-router';
 // import { withRouter } from 'react-router-dom';
 
-
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,10 +14,6 @@ import Friend from "./components/Friends/Friend";
 import './components/Nav/Nav.css'
 import NavWrapper from './components/Nav/NavWrapper';
 import menuData from "./menuData";
-
-// pull in actions from action/index
-// import { fetchData } from './actions';
-
 
 class App extends Component {
   constructor() {

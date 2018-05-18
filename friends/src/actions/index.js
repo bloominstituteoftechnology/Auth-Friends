@@ -2,14 +2,17 @@
 import axios from 'axios';
 // we'll need to create 3 different action types here.
 // one for fetching, one for fetched and one for errors
-export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
+export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
 
-export const FRIEND_FETCHED = 'FRIEND_FETCHED';
 export const FETCHING_FRIEND = 'FETCHING_FRIEND';
+export const FRIEND_FETCHED = 'FRIEND_FETCHED';
 
-export const FRIEND_DELETED = 'FRIEND_DELETED';
+export const SAVING_FRIEND = 'SAVING_FRIEND';
+export const FRIEND_SAVED = 'FRIEND_SAVED';
+
 export const DELETING_FRIEND = 'DELETING_FRIEND';
+export const FRIEND_DELETED = 'FRIEND_DELETED';
 
 export const ERROR = 'ERROR';
 
@@ -47,6 +50,24 @@ export const fetchFriend = (id) => {
   };
 };
 
+export const saveFriend = (friend) => {
+  const getData = axios.post('http://localhost:5000/api/friends', friend)
+
+  return function(dispatch) {
+    dispatch({ type: SAVING_FRIEND });
+    getData
+      .then(someData => {
+        console.log("SAVED" , someData)
+        setTimeout(() => {
+          dispatch({ type: FRIEND_SAVED, payload: someData.data });
+        }, 500);
+      })
+      .catch(err => {
+        dispatch({type: ERROR, payload: err});
+      });
+  };
+};
+
 export const deleteFriend = (friend) => {
   const getData = axios.delete(`http://localhost:5000/api/friends/${friend.id}`)
 
@@ -54,7 +75,6 @@ export const deleteFriend = (friend) => {
     dispatch({ type: DELETING_FRIEND });
     getData
       .then(someData => {
-        console.log("DELETED" , someData)
         setTimeout(() => {
           dispatch({ type: FRIEND_DELETED, payload: someData.data });
         }, 500);

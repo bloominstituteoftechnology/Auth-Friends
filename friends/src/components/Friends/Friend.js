@@ -6,17 +6,12 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchFriend, deleteFriend } from '../../actions';
 
-
-
 class Friend extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            deleted: false
-        }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const id = this.props.match.params.id;
         this.props.fetchFriend(id);
     }
@@ -25,19 +20,16 @@ class Friend extends Component {
         const friend = this.props.friend;
         console.log("here " , friend);
         this.props.deleteFriend(friend);
-    //     axios
-    //         .delete(`http://localhost:5000/api/friends/${id}`)
-    //         .then(resp => this.setState({deleted: true}))
-    //         .catch(err => console.log(err))
     }
 
+
     render() { 
-        return this.props.friendDeleted ? (
+        {console.log("render", this.props)}
+        return this.props.deletingFriend ? (
             <Redirect to="/search"/>
         ) : (
             this.props.friendFetched ?
             <div className="card">
-                {console.log(this.props.friend)}
                 <FriendCard friend={this.props.friend}/>
                 <button className="delete" 
                     onClick={this.deleteFriend}>Delete from Friends
@@ -48,8 +40,8 @@ class Friend extends Component {
 }
  
 const mapDispatchToProps = state => {
-    const { friendReducer } = state;
+    const  friendReducer = state.friendReducer;
     return friendReducer;
   };
   
-  export default connect(mapDispatchToProps, { fetchFriend, deleteFriend })(Friend);
+export default connect(mapDispatchToProps, { fetchFriend, deleteFriend })(Friend);

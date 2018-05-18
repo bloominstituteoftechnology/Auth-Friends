@@ -5,6 +5,9 @@ import {
   FETCHING_FRIEND, 
   FRIEND_FETCHED,
 
+  SAVING_FRIEND, 
+  FRIEND_SAVED,
+
   DELETING_FRIEND,
   FRIEND_DELETED,
 
@@ -26,6 +29,9 @@ const initialStateFriend = {
   fetchingFriend: false,
   friendFetched: false,
 
+  savingFriend: false,
+  friendSaved: false,
+
   updatingFriend: false,
   friendUpdated: false,
 
@@ -44,18 +50,19 @@ export const friendsReducer = (state = initialStateFriends, action) => {
       return Object.assign({}, state, { 
         fetchingFriends: true, 
         friendsFetched: false
+
       });
     case FRIENDS_FETCHED:
       return Object.assign({}, state, {
         friends: action.payload,
-        friendsFetched: true,
-        fetchingFriends: false
+        fetchingFriends: false,
+        friendsFetched: true
       });
 
     case ERROR:
       return Object.assign( {}, state, { 
-        friendsFetched: false, 
         fetchingFriends: false, 
+        friendsFetched: false, 
         error: action.payload 
       });
     default:
@@ -71,35 +78,43 @@ export const friendReducer = (state = initialStateFriend, action) => {
     case FETCHING_FRIEND:
       return Object.assign({}, state, { 
         fetchingFriend: true, 
-        friendFetched: false,
-        deletingFriend: false,
-        friendDeleted: false
+        friendFetched: false
       });
     case FRIEND_FETCHED:
       return Object.assign({}, state, {
         friend: action.payload,
-        friendFetched: true,
         fetchingFriend: false,
-        deletingFriend: false,
-        friendDeleted: false
+        friendFetched: true
+      });
+
+    case SAVING_FRIEND:
+      return Object.assign({}, state, { 
+        fetchingFriend: true, 
+        friendFetched: false
+      });
+    case FRIEND_SAVED:
+      return Object.assign({}, state, {
+        friend: action.payload,
+        savingFriend: false,
+        friendSaved: true
       });
 
     case DELETING_FRIEND:
       return Object.assign({}, state, { 
         deletingFriend: true,
-        friendDeleted: false, 
+        friendDeleted: false 
       });
     case FRIEND_DELETED:
       return Object.assign({}, state, {
         friends: action.payload,
         deletingFriend: false,
-        friendDeleted: true,
+        friendDeleted: true
       });
 
     case ERROR:
       return Object.assign( {}, state, { 
-        friendFetched: false, 
         fetchingFriend: false, 
+        friendFetched: false, 
         error: action.payload 
       });
     default:
