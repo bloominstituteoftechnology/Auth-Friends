@@ -2,12 +2,12 @@ import axios from 'axios';
 
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
 export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
-export const FRIENDS_SAVED = 'FRIENDS_SAVED';
 export const SAVING_FRIENDS = 'SAVING_FRIENDS';
-export const UPDATING_FRIEND = 'UPDATING_FRIEND';
-export const FRIEND_UPDATED = 'FRIEND_UPDATED';
+export const FRIENDS_SAVED = 'FRIENDS_SAVED';
 export const DELETING_FRIEND = 'DELETING_FRIEND';
 export const FRIEND_DELETED = 'FRIEND_DELETED';
+export const UPDATING_FRIEND = 'UPDATING_FRIEND';
+export const FRIEND_UPDATED = 'FRIEND_UPDATED';
 export const ERROR = 'ERROR';
 
 
@@ -43,9 +43,10 @@ export const updatingFriend = () => {
     }
 }
 
-export const friendUpdated = () => {
+export const friendUpdated = (data) => {
     return {
-        type: FRIEND_UPDATED
+        type: FRIEND_UPDATED,
+        payload: data
     }
 }
 
@@ -57,7 +58,7 @@ export const deletingFriend = () => {
 
 export const friendDeleted = (data) => {
     return {
-        type: FRIEND_DELETED, 
+        type: FRIEND_DELETED,
         payload: data
     }
 }
@@ -95,6 +96,16 @@ export const deleteData = (id) => {
         dispatch(deletingFriend());
         deleteFriend
             .then(response => dispatch(friendDeleted(response.data)))
+            .catch(err => dispatch(error(error)))
+    }
+}
+
+export const updateData = (id, obj) => {
+    const updateFriend = axios.put(`http://localhost:5000/api/friends/${id}`, obj)
+    return function (dispatch) {
+        dispatch(updatingFriend());
+        updateFriend
+            .then(response => dispatch(friendUpdated(response.data)))
             .catch(err => dispatch(error(error)))
     }
 }
