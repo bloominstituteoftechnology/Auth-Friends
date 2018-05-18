@@ -33,7 +33,7 @@ class App extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    avengers: state.friends,
+    friends: state.friends,
     fetching: state.fetching,
     error: state.error
   };

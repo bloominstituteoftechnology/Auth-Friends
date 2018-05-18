@@ -25,12 +25,12 @@ export const fetchFriends = () => {
 
 
 export const createFriend = friend => {
-    const addFriend = axios.post(`http://localhost:5000/api/friends${friends/*error not defined*/.id}`,
+    const addFriend = axios.post(`http://localhost:5000/api/friends${friend/*error not defined*/.id}`,
     { newFriend: friend.name }
 );
     return function(dispatch) {
         dispatch({ type: ADD_FRIEND });
-        getFriend /*error not defined*/
+        getFriends /*error not defined*/
          .then(response => {
             dispatch({ type: FRIEND_UPDATED, payload: response.data});
         })
@@ -43,12 +43,12 @@ export const createFriend = friend => {
 
 
 export const deleteFriend = friend => {
-    const removeFriend = axios.delete(`http://localhost:5000/api/friends${friends/*error not defined*/.id}`,
+    const removeFriend = axios.delete(`http://localhost:5000/api/friends${friend/*error not defined*/.id}`,
     { newFriend: friend.name }
 );
     return function(dispatch) {
         dispatch({ type: REMOVE_FRIEND });
-        getFriend/*error not defined*/
+        getFriends/*error not defined*/
          .then(response => {
             dispatch({ type: FRIEND_REMOVED, payload: response.data});
         })
