@@ -52,46 +52,51 @@ app.get('/api/friends', (req, res) => {
 app.get('/api/friends/:id', (req, res) => {
   const friend = friends.find(f => f.id == req.params.id);
 
-  if (friend) {
-    res.status(200).json(friend);
-  } else {
-    res.status(404).send({ msg: 'Friend not found' });
-  }
+  setTimeout(() => {
+    if (friend) {
+      res.status(200).json(friend);
+    } else {
+      res.status(404).send({ msg: 'Friend not found' });
+    }
+  }, 1000);
 });
 
 app.post('/api/friends', (req, res) => {
   const friend = { id: getNextId(), ...req.body };
 
   friends = [...friends, friend];
-
-  res.send(friends);
+  setTimeout(() => {
+    res.send(friends);
+  }, 1000);
 });
 
 app.put('/api/friends/:id', (req, res) => {
   const { id } = req.params;
 
   const friendIndex = friends.findIndex(f => f.id == id);
+  setTimeout(() => {
+    if (friendIndex > -1) {
+      const friend = { ...friends[friendIndex], ...req.body };
 
-  if (friendIndex > -1) {
-    const friend = { ...friends[friendIndex], ...req.body };
-
-    friends = [
-      ...friends.slice(0, friendIndex),
-      friend,
-      ...friends.slice(friendIndex + 1),
-    ];
-    res.send(friends);
-  } else {
-    res.status(404).send({ msg: 'Friend not found' });
-  }
+      friends = [
+        ...friends.slice(0, friendIndex),
+        friend,
+        ...friends.slice(friendIndex + 1),
+      ];
+      res.send(friends);
+    } else {
+      res.status(404).send({ msg: 'Friend not found' });
+    }
+  }, 1000);
 });
 
 app.delete('/api/friends/:id', (req, res) => {
   const { id } = req.params;
 
   friends = friends.filter(f => f.id !== Number(id));
-
-  res.send(friends);
+  setTimeout(() => {
+    res.send(friends);
+  }, 1000);
 });
 
 function getNextId() {
