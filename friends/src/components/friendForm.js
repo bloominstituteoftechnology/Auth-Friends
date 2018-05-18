@@ -21,16 +21,12 @@ class FriendForm extends Component {
     onSubmit(e){
         e.preventDefault();
 
-        const {
-            name: name,
-            age: age,
-            email: email
-        } = this.state;
+        const {name, age, email} = this.state;
 
 
-        axios.post(URL, friend)
+        axios.post(URL, {name, age, email})
             .then((result)=> {
-                this.setState({state, friend: ''})
+                this.setState({friends})
             })
             .catch((err) => console.log(err));
     }
