@@ -1,0 +1,60 @@
+.friend-card {
+  border: none;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  text-align: center;
+}
+
+.friend-card .friend-name {
+  font-weight: 700;
+}
+
+.friend-card .friend-details {
+  list-style-type: none;
+  padding: 1rem;
+  text-align: center;
+}
+
+.friend-card .friend-details.striped li {
+  border-bottom: 1px solid rgba(153,153,153,.10);
+  margin-bottom: 1rem;
+}
+
+.actions button {
+  border: none;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+  cursor: pointer;
+  height: 47px;
+  margin: 10px;
+  padding: 0;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  width: 47px;
+}
+
+.actions button:hover {
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+}
+
+.actions button:focus {
+  outline: 0;
+}
+
+.actions .edit {
+  background: -webkit-linear-gradient(50deg,#45cafc,#303f9f);
+  background: -o-linear-gradient(50deg,#45cafc,#303f9f);
+  background: linear-gradient(40deg,#45cafc,#303f9f);
+  color: #FFF;
+}
+
+.actions .remove {
+  background: -webkit-linear-gradient(50deg,#fc4549,#9f4830);
+  background: -o-linear-gradient(50deg,#fc4549,#9f4830);
+  background: linear-gradient(40deg,#fc4549,#9f4830);
+  color: #FFF;
+}

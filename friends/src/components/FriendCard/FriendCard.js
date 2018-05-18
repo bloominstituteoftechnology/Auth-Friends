@@ -24,17 +24,18 @@ class FriendCard extends Component {
   render() {
     return (
       <React.Fragment>
-        <Card className="friend-card">
+        <Card className="friend-card" data-type="card">
           <CardBody>
-            <CardTitle>{this.props.friend.name}</CardTitle>
-            <ul>
-              <li><strong>Age:</strong> {this.props.friend.age}</li>
-              <li><strong>Email:</strong> {this.props.friend.email}</li>
+            <CardTitle className="friend-name">{this.props.friend.name}</CardTitle>
+            <ul className="friend-details striped">
+              <li>
+                <p>{this.props.friend.age} years old</p>
+              </li>
+              <li>
+                <p>{this.props.friend.email}</p>
+              </li>
             </ul>
             <div className="actions">
-              <button className="remove" onClick={() => { this.props.removeFriend(this.props.friend.id) }}>
-                <i className="fas fa-trash-alt"></i>
-              </button>
               <FriendModal
                 friend={this.props.friend}
                 modalBtn={this.state.editButtonProps}
@@ -42,6 +43,9 @@ class FriendCard extends Component {
                 actionTitle="Update"
                 action={this.updateThisFriend}
               />
+              <button className="remove" onClick={() => { this.props.removeFriend(this.props.friend.id) }}>
+                <i className="fas fa-trash-alt"></i>
+              </button>
             </div>
           </CardBody>
         </Card>
