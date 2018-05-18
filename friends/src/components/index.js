@@ -35,7 +35,7 @@ class App extends Component {
       case "edit":
         return (
           <div className="App mb-5">
-            <AddFriend nameText="" ageText="" emailText="" headerText="Edit a friend" cancelButton={this.props.cancelEdit}/>
+            <AddFriend nameText={this.props.friends[this.props.editIndex].name} ageText={this.props.friends[this.props.editIndex].age} emailText={this.props.friends[this.props.editIndex].email} headerText={"Edit " + this.props.friends[this.props.editIndex].name} cancelButton={this.props.cancelEdit}/>
           </div>
         );
       default:
