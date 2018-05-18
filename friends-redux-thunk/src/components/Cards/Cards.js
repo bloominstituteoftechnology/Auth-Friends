@@ -24,7 +24,7 @@ class Cards extends Component {
             <div>Fetching friends</div>
           </div>
         ) : friendsFetched ? (
-          friends.map(friend => this.fillFriendCard(friend))
+          friends.map(((friend, i) => this.fillFriendCard(friend, i)))
         ) : (
           <div>
             <h3>Something went wrong, please, reload the page</h3>
@@ -35,9 +35,9 @@ class Cards extends Component {
     );
   }
 
-  fillFriendCard(friend) {
+  fillFriendCard(friend, i) {
     // console.log("friend", friend);
-    return <FriendCard id={friend.id} friend={friend} key={Date.now()+friend.id} />;
+    return <FriendCard id={i} friend={friend} key={Date.now()+friend.id} />;
   }
 }
 const stateToProps = state => {

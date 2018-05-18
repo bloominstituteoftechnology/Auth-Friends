@@ -16,7 +16,7 @@ import {
 import { ListGroup, ListGroupItem } from "reactstrap";
 import { connect } from "react-redux";
 
-import { modifyFriend } from "../../actions";
+import { modifyFriend, deleteFriend } from "../../actions";
 import "./Card.css";
 
 class FriendCard extends Component {
@@ -26,7 +26,8 @@ class FriendCard extends Component {
       fadeIn: true,
       name: "",
       age: "",
-      email: ""
+      email: "",
+      id: ''
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -41,16 +42,23 @@ class FriendCard extends Component {
     console.log("e.target.name",e.target.name);
     this.setState({ [e.target.name]: e.target.value });
   };
+  /** Submit to modify Friend by pressing 'Enter */
   handleKeyPress = e => {
       console.log("hello form handleKeyPress"), e.key;
       e.key === "Enter"
-      ? this.props.modifyFriend(this.props.friend.id, this.state)
+      ? this.props.modifyFriend(this.props.id, this.state)
       : null;
-    //   e.preventDefault();
   };
+  handleDelete = (e) => {
+      const {id} = this.state;
+      const index = this.props.id;
+      console.log(index,id)
+      this.props.deleteFriend(index, id)
+  }
+
   componentDidMount() {
-    const { name, age, email } = this.props.friend;
-    this.setState({ name, age, email });
+    const { name, age, email, id } = this.props.friend;
+    this.setState({ name, age, email, id });
   }
 
   render() {
@@ -63,7 +71,7 @@ class FriendCard extends Component {
             <CardSubtitle>{`${age} yeras old`}</CardSubtitle>
             <CardSubtitle>{`${email}`}</CardSubtitle>
             <Button onClick={this.toggle}>Modify</Button>
-            <Button className="danger">Delete</Button>
+            <Button onClick={this.handleDelete} className="danger">Delete</Button>
           </CardBody>
           <Fade
             onChange={this.handleChange}
@@ -94,4 +102,4 @@ class FriendCard extends Component {
   }
 }
 
-export default connect(null, { modifyFriend })(FriendCard);
+export default connect(null, { modifyFriend, deleteFriend })(FriendCard);

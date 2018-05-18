@@ -27,35 +27,63 @@ export const getFriends = () => {
         // console.log("GET", response.data);
       })
       .catch(e => {
-          dispatch({
-              type: ERROR,
-              error: e.message
-          })
-          console.log(e.message);
+        dispatch({
+          type: ERROR,
+          error: e.message
         });
+        console.log(e.message);
+      });
   };
 };
 
-export const modifyFriend = (id, data) => {
-    const { name, age, email } = data
-    const modify = axios.put(`http://localhost:5000/api/friends/${id}`, data);
-    console.log("Hellofrom modifyFriend");
-    return (dispatch) => {
-        
-        dispatch({type: UPDATINGFRIEND});
-        modify.then(response => {
-            console.log("response.data",response.data);
-            dispatch({
-                type: FRIENDUPDATED,
-                data: { id, name, age, email },
-                id                
-            })
-        }).catch(e => {
-            console.log(e)
+export const modifyFriend = (index, data) => {
+  const { name, age, email, id } = data;
+  console.log(data);
+  const modify = axios.put(
+    `http://localhost:5000/api/friends/${data.id}`,
+    data
+  );
+  console.log("Hellofrom modifyFriend");
+  return dispatch => {
+    dispatch({ type: UPDATINGFRIEND });
+    modify
+      .then(response => {
+        // console.log("response.data", response.data);
+        dispatch({
+          type: FRIENDUPDATED,
+          data: { id, name, age, email },
+          index
         });
-    }
-}
+      })
+      .catch(e => {
+        console.log(e);
+        dispatch({
+            type: ERROR,
+            error: e.message
+          });
+      });
+  };
+};
 
-export const deleteFriend = (id) => {
-    const modify = axios.delete(`http://localhost:5000/api/friends/${id}`);
-}
+export const deleteFriend = (index, id) => {
+    console.log("Hello from deleteFriend",index,id);
+  const deleteFriend = axios.delete(`http://localhost:5000/api/friends/${id}`);
+  return dispatch => {
+    dispatch({type: DELETINGFRIEND});
+    deleteFriend
+      .then(response => {
+        console.log("response.data".response);
+        dispatch({
+            type: FRIENDDELETED,
+            index
+        })
+      })
+      .catch(e => {
+        console.log("error deleting",e.message);
+        dispatch({
+            type: ERROR,
+            error: e.message
+          });
+      });
+  };
+};
