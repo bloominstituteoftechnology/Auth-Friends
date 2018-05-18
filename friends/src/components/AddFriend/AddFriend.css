@@ -1,0 +1,11 @@
+.AddFriend .add {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.4em;
+}
+
+.AddFriend .add:hover {
+  opacity: 0.8;
+}

@@ -1,5 +1,18 @@
+html {
+  height: 100%;
+}
+
 body {
+  background: #F6F9FA;
+  font-family: 'Lato', sans-serif;
   margin: 0;
+  min-height: 100%;
   padding: 0;
-  font-family: sans-serif;
+}
+
+/* Global classes */
+
+.animate {
+  -webkit-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }

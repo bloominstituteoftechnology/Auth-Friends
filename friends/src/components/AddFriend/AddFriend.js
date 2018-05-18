@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FriendModal from '../FriendModal/FriendModal';
 import { addFriend } from '../../actions';
+import './AddFriend.css';
 
 class AddFriend extends Component {
   constructor(props) {
     super(props);
     this.state = {
       addButtonProps: {
-        class: 'add',
-        isIcon: false,
-        innerHTML: 'Add Friend'
+        class: 'add animate',
+        isIcon: true,
+        icon: 'fas fa-plus-square'
       }
     }
   };
