@@ -20,9 +20,10 @@ class App extends Component {
         <h1>Awesome Friendslist!</h1>
         <div className="friend-list">
 
-          <FriendCard />
+
         </div>
         <FriendForm />
+        <FriendCard />
         {/* <Route exact path="/updatefriend" render={(props) => <AddFriend {...props} name={this.state.name} age={this.state.age} email={this.state.email} function={this.updateDataText} function2={this.postNewFriend} />} /> */}
       </div>
     );

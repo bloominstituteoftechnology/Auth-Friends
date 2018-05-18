@@ -99,12 +99,13 @@ export const added = (values) => {
     }
 }
 
-export const updated = (newFriend, id) => {
-    const request = axios.post(`http://localhost:5000/api/friends${id}`, newFriend)
+export const updated = (Obj, id) => {
+    const request = axios.put(`http://localhost:5000/api/friends/${id}`, Obj)
     return (dispatch) => {
         dispatch({ type: UPDATING_FRIEND })
         request
             .then((data) => {
+                console.log("data", data)
                 dispatch({
                     type: UPDATED_FRIEND,
                     payload: data.data
