@@ -22,7 +22,7 @@ const Friends = (props) => {
                 <p>email: {friend.email}</p>
               </Media>
             </Media>
-            <Button color="warning" onClick={() => props.editButton(index)} >Edit Friend</Button>
+            <Button color="warning" onClick={() => props.editButton(index)} >Edit Friend</Button><Button color="danger" onClick={() => props.deleteButton('http://localhost:5000/api/friends/' + friend.id)} >Delete Friend</Button>
           </div>
         );
       })}

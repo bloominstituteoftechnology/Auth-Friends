@@ -1,4 +1,4 @@
-import { FETCHING_FRIENDS, FETCHED_FRIENDS, ERROR, BEGIN_EDIT, CANCEL_EDIT, BEGIN_ADD, CANCEL_ADD } from '../actions';
+import { FETCHING_FRIENDS, FETCHED_FRIENDS, ERROR, BEGIN_EDIT, CANCEL_EDIT, BEGIN_ADD, CANCEL_ADD, DELETE_FRIEND, EDIT_FRIEND, ADD_FRIEND } from '../actions';
 const initialState = {
   friends: [],
   error: null,
@@ -21,6 +21,8 @@ export const friendsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {appState: "add"});
     case CANCEL_ADD:
       return Object.assign({}, state, {appState: "fetched"});
+    case DELETE_FRIEND:
+      return Object.assign({}, state, {appState: "fetching"});
     default:
       return state;
   }
