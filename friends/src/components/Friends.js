@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Friends.css';
 
 import { connect } from 'react-redux';
 import { fetchFriends } from  '../actions/index';
@@ -13,13 +14,20 @@ class Friends extends Component {
     render() { 
         console.log('props:', this.props)
         return ( 
-            <div>
+            <div className="friend-container">
                 {this.props.fetchingFriends ? (
                     <span>Fetching Friends</span>
                 ) : (
                     <ul>
                         {this.props.friends.map(friend => {
-                            return <li key={friend.name}>{friend.name}</li>;
+                            return(
+                                <div key={friend.name} className="friend-card">
+                                    <h2>{friend.name}</h2>
+                                    <h4>{friend.email}</h4>
+                                    <h4>{friend.age}</h4>
+                                    <h4>{friend.id}</h4>
+                                </div>
+                            ) 
                         })}
                     </ul>
                 )}

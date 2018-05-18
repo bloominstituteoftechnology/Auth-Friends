@@ -1,0 +1,10 @@
+.friend-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friend-card{
+    border: 1px solid black;
+    width: 400px;
+}
