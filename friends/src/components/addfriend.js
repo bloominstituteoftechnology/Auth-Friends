@@ -36,7 +36,8 @@ class AddFriend extends Component {
             <Label for="email">Email</Label>
             <Input name="email" id="email" placeholder="Enter Email" onChange={this.handleFormType} value={this.state.email} />
           </FormGroup>
-          <Button color="danger" onClick={this.props.cancelButton} >Cancel</Button><Button color="success" onClick={() => this.props.submitButton('http://localhost:5000/api/friends/', {name: this.state.name, age: this.state.age, email: this.state.email}, this.props.friendID )}>Submit</Button>
+          <Button color="danger" onClick={this.props.cancelButton} >Cancel</Button>
+          <Button color="success" onClick={() => this.props.submitButton('http://localhost:5000/api/friends/', {name: this.state.name, age: this.state.age, email: this.state.email}, this.props.friendID )}>Submit</Button>
         </Form>
       </div>
     );
