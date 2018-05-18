@@ -11,10 +11,11 @@ class App extends Component {
     this.props.fetchingFriends();
   }
   // componentDidUpdate(prevState) {
-  //   if (this.state !== prevState) {
+  //   if (this.props.friendsReducer !== prevState) {
   //     this.props.fetchingFriends();
   //   }
   // }
+
   render() {
     return (
       <div className="App">
