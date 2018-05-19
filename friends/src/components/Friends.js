@@ -1,83 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFriends, createFriends } from '../actions/actions.js';
+import { Button } from 'reactstrap';
+import { deleteFriend } from '../actions/actions.js';
+
 
 export class Friends extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state= {
-      friends:[],
-      name:'',
-      age:'',
-      email:''
-    };
-  }
+  handleDelete = (id) => {
+    this.props.deleteFriend(id);
+  };
   
-  componentDidMount() {
-    this.props.fetchFriends();
-    this.setState({ friends: this.props.friends });   
-  }
-
-  handleInput = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  handleSubmit = () => {
-    const friend = { name: this.state.name, age: this.state.age, email: this.state.email};
-    this.props.createFriends(friend);
-    this.setState({ name:'', age:'', email:''});
-  };
-
   render() {
+    const {id, name, age, email} = this.props.friend;
     return (
-      <div>
-	<div>
-	<h3>Add Friend</h3>
-	<input
-	name='name'
-	placeholder='name'
-	value={this.state.name}
-	onChange={this.handleInput}
-	/>
-      <input
-	name='age'
-	placeholder='age'
-	value={this.state.age}
-	onChange={this.handleInput}
-	/>
-      <input
-	name='email'
-	placeholder='email'
-	value={this.state.email}
-	onChange={this.handleInput}
-	/>
-      <button onClick={() => this.handleSubmit}>Add</button>
-      <h6>{this.state.friends}</h6>
-	</div>
-	<div>
-	  <h3>Friends List</h3>
-	{this.props.friends.map((friend,index) => (
-	  <ul key={index} friend={friend}>
-	  <li>{friend.name}</li>
-	  <li>{friend.age}</li>
-	  <li>{friend.email}</li>
-	  </ul>
-	))}
-      </div>
-    </div>
-	  
+      <tr>
+	<td>{id}</td>
+	<td>{name}</td>
+	<td>{age}</td>
+	<td>{email}</td>
+	{/*	<Button onClick={() => this.handleDelete(id)}>Delete</Button> */}
+      </tr>
+      
+      // Sadly, my delete functionality is not working for some reason, even though it works in my Smurfs code and this is basically the same. Maybe there's a typo somewhere. I don't think the delete part is required so I'm leaving it like this for now and might come back later when my brain is less fried.
+      
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    friends: state.friends,
-    fetching: state.fetching,
-    fetched: state.fetched,
-    posting: state.posting
   };
 };
 
-export default connect(mapStateToProps, { fetchFriends,createFriends })(Friends);
+export default connect(mapStateToProps, { deleteFriend })(Friends);
+
+

@@ -1,32 +1,27 @@
-import { FETCHING, FETCHED, ERROR, POSTING } from '../actions/actions';
+import { FETCHING, FETCHED, ERROR } from '../actions/actions';
 
 const initialState = {
   friends: [],
   fetching: false,
   fetched: false,
-  posting: false,
   error:null
 };
 
-const friendsReducer = (state = initialState, action) => {
+export const friendsReducer = (state = initialState, action) => {
   switch(action.type) {
 
   case FETCHING:
-    return {...state, fetching: true};
-
+    return {...state, pending: true};
 
   case FETCHED:
-  return {...state, friends: action.payload, fetching: false, fetched: true};
+  return {...state, friends: action.payload};
 
-  case POSTING:
-    return {...state, posting: true,};
-    
   case ERROR:
-    return {...state, fetching: false, error: action.payload};
+    return state;
     
   default:
   return state;
   }
 };
 
-export default friendsReducer;
+//I set this up like my Smurfs Sprint Challenge from today.

@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import { Provider } from 'react-redux';
+import App from './components/App';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
-import friendsReducer from './reducers/reducer';
+import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'react-redux';
+import { friendsReducer } from './reducers/reducer.js';
 
-const store = createStore(friendsReducer, applyMiddleware(thunk));
+
+const store = createStore(friendsReducer, applyMiddleware(thunk, logger));
 
 
 ReactDOM.render(
@@ -19,4 +21,4 @@ ReactDOM.render(
   document.getElementById('root'));
 registerServiceWorker();
 
-// This is modeled off my Redux-Swapi index.js.
+// This is modeled off my Smurfs and Redux-Swapi index.js.
