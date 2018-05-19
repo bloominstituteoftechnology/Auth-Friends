@@ -24,7 +24,7 @@ class FriendsForm extends Component {
     }
 
     addFriend = () => {
-        this.props.addData({ id: this.props.friends.length+1, name: this.state.name, age: this.state.age, email: this.state.email });
+        this.props.addData({ id: this.props.friends[this.props.friends.length-1].id+1, name: this.state.name, age: Number(this.state.age), email: this.state.email });
         this.setState({ name: '', age: 0, email: '' });
     }
 

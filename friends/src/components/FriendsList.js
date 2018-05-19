@@ -13,12 +13,12 @@ class FriendsList extends Component {
             name: '',
             age: '',
             email: '',
-            showForm: false,
         }
+        this.showForm = false;
+        this.click = false;
     }
 
     handleOnChange = (event) => {
-        console.log('Event Target Placeholder', event.target.placeholder);
         if (event.target.name === 'age' && isNaN(event.target.value) === true) {
             alert('You need to type a number in the age input field.')
         }
@@ -28,12 +28,33 @@ class FriendsList extends Component {
     }
 
     handleOnClick = (event) => {
-        this.state.showForm = !this.state.showForm;
+
+        const button = document.getElementsByTagName('button');
+
+        this.click = !this.click;
+
+        if (this.click) {
+            for (let i = 0; i < button.length; i++) {
+                if (button[i].getAttribute('id') !== `deleteButton${event.target.name}` &&
+                    button[i].getAttribute('id') !== `changeButton${event.target.name}` &&
+                    button[i].getAttribute('id') !== `updateButton${event.target.name}` &&
+                    button[i].getAttribute('id') !== `cancelButton${event.target.name}`) {
+                    button[i].disabled = true;
+                }
+            }
+        }
+        else {
+            for (let i = 0; i < button.length; i++) {
+                button[i].disabled = false;
+            }
+        }
+
+        this.showForm = !this.showForm;
 
         const divone = document.getElementById(`${event.target.name}`);
-        const divtwo = document.getElementById(`${event.target.name + 'friend'}`);
+        const divtwo = document.getElementById(`${'friend' + event.target.name}`);
 
-        if (this.state.showForm === true) {
+        if (this.showForm === true) {
             divone.style.display = "none";
             divtwo.style.display = "initial"
         }
@@ -44,15 +65,49 @@ class FriendsList extends Component {
     }
 
     updateOnClick = (event) => {
-        this.props.updateData(event.target.name, { id: Number(event.target.name), name: this.state.name, age: Number(this.state.age), email: this.state.email });
+
+        const button = document.getElementsByTagName('button');
+
+        this.click = !this.click;
+
+        for (let i = 0; i < button.length; i++) {
+            button[i].disabled = false;
+        }
+
+        const input = document.getElementsByTagName('input');
+
+        for (let i = 0; i < input.length; i++) {
+            if (input[i].getAttribute('id') === `inputName${event.target.name}` ||
+                input[i].getAttribute('id') === `inputAge${event.target.name}` ||
+                input[i].getAttribute('id') === `inputEmail${event.target.email}`) {
+                if (input[i].getAttribute('value') === '') {
+                    if (input[i].getAttribute('name') === 'age') {
+                        this.props.updateData(event.target.name, { [input[i].getAttribute('name')]: Number(input[i].getAttribute('placeholder')) });
+                    }
+                    else {
+                        this.props.updateData(event.target.name, { [input[i].getAttribute('name')]: input[i].getAttribute('placeholder') });
+                    }
+                }
+                else {
+                    if (input[i].getAttribute('name') === 'age') {
+                        this.props.updateData(event.target.name, { [input[i].getAttribute('name')]: this.state[input[i].getAttribute('name')] });
+                    }
+                    else {
+                        this.props.updateData(event.target.name, { [input[i].getAttribute('name')]: this.state[input[i].getAttribute('name')] });
+                    }
+                }
+            }
+        }
+
+        // this.props.updateData(event.target.name, { id: Number(event.target.name), name: this.state.name, age: Number(this.state.age), email: this.state.email });
         this.setState({ name: '', age: '', email: '' });
 
-        this.state.showForm = !this.state.showForm;
+        this.showForm = !this.showForm;
 
         const divone = document.getElementById(`${event.target.name}`);
-        const divtwo = document.getElementById(`${event.target.name + 'friend'}`);
+        const divtwo = document.getElementById(`${'friend' + event.target.name}`);
 
-        if (this.state.showForm === true) {
+        if (this.showForm === true) {
             divone.style.display = "none";
             divtwo.style.display = "initial"
         }
@@ -76,18 +131,18 @@ class FriendsList extends Component {
                                                 <CardText>Name: {friend.name}</CardText>
                                                 <CardText>Age: {friend.age}</CardText>
                                                 <CardText>Email: {friend.email}</CardText>
-                                                <button onClick={() => this.props.deleteData(friend.id)}>Delete</button>
-                                                <button name={friend.id} onClick={this.handleOnClick}>Change</button>
+                                                <button id={'deleteButton' + friend.id} onClick={() => this.props.deleteData(friend.id)}>Delete</button><br /><br />
+                                                <button id={'changeButton' + friend.id} name={friend.id} onClick={this.handleOnClick}>Change Friend Information</button>
                                             </CardBody>
                                         </Card>
                                     </Col>
                                 </Row>
-                                <div id={friend.id + 'friend'} style={{ display: 'none' }}>
-                                    <input type="text" name="name" value={this.state.name} placeholder={friend.name} onChange={this.handleOnChange} /><br />
-                                    <input type="type" name="age" value={this.state.age} placeholder={friend.age} onChange={this.handleOnChange} /><br />
-                                    <input type="email" name="email" value={this.state.email} placeholder={friend.email} onChange={this.handleOnChange} /><br />
-                                    <button name={friend.id} onClick={this.updateOnClick}>Update</button>
-                                    <button name={friend.id} onClick={this.updateOnClick}>Cancel</button>
+                                <div id={'friend' + friend.id} style={{ display: 'none' }}>
+                                    <input id={'inputName' + friend.id} type="text" name="name" value={this.state.name} placeholder={friend.name} onChange={this.handleOnChange} /><br /><br />
+                                    <input id={'inputAge' + friend.id} type="type" name="age" value={this.state.age} placeholder={friend.age} onChange={this.handleOnChange} /><br /><br />
+                                    <input id={'inputEmail' + friend.id} type="email" name="email" value={this.state.email} placeholder={friend.email} onChange={this.handleOnChange} /><br /><br />
+                                    <button id={'updateButton' + friend.id} name={friend.id} onClick={this.updateOnClick}>Update</button><br /><br />
+                                    <button id={'cancelButton' + friend.id} name={friend.id} onClick={this.handleOnClick}>Cancel</button>
                                 </div>
                             </div>
                         )
