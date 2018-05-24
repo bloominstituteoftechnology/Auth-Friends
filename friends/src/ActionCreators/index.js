@@ -15,7 +15,7 @@ export const ERROR = 'ERROR';
 const URL = 'http://localhost:5000/api/friends';
 
 export const fetchFriends = () => {
-    const friends = axios.get('${URL}/fetch');
+    const friends = axios.get(`${URL}/fetch`);
     return dispatch => {
         dispatch({ type: FETCHING_FRIENDS });
         friends

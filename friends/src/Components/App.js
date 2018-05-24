@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect} from 'react-redux';
 
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import './App.css';
 import Friends from './Friends';
-import FriendForm from './FriendForm';
-import { fetchFriends } from './ActionCreators/index.js';
+import FriendForm from './FriendForm.js';
+import { fetchFriends } from '../ActionCreators/index.js';
 
 class App extends Component {
   componentDidMount() {

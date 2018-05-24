@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import '.App.css';
-import logo from './logo.svg';
+import './App.css';
+import logo from '../logo.svg';
 import SelectedFriend from './SelectedFriend';
-import { deleteFriend, updateSingleFriend, toggleShowUpdate } from './ActionCreators/index.js';
-import UpdateFriendForm from './components/UpdateFriendForm.js';
+import { deleteFriend, updateSingleFriend, toggleShowUpdate } from '../ActionCreators/index.js';
+import UpdateFriendForm from './UpdateFriendForm.js';
 
 class Friends extends Component {
     handleDeleteFriend = () => {
@@ -13,7 +13,7 @@ class Friends extends Component {
         this.props.deleteFriend(id);
     };
 
-    handleShowFriend = () => {
+    handleShowFriend = friend => {
         this.props.updateSingleFriend(friend);
     };
 
@@ -52,7 +52,7 @@ class Friends extends Component {
     }
 }
 
-const mapToStateProps = state => {
+const mapStateToProps = state => {
     return {
         deletingFriend: state.friendsReducer.deletingFriend,
         error: state.friendsReducer.error,

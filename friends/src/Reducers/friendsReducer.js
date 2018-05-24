@@ -7,10 +7,10 @@ import {
     FRIEND_UPDATED,
     DELETING_FRIEND,
     FRIEND_DELETED,
-    SINGLE_FRIEND,
-    TOGGLE_UPDATE_FRIEND,
+    // SINGLE_FRIEND,
+    // TOGGLE_UPDATE_FRIEND,
     ERROR
-} from './ActionCreators/index.js'
+} from '../ActionCreators/index.js'
 
 const initialState = {
     friends: [] ,

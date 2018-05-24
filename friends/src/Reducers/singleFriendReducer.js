@@ -1,7 +1,7 @@
 import {
     SINGLE_FRIEND,
     TOGGLE_UPDATE_FRIEND
-} from './Reducers/index.js';
+} from '../ActionCreators/index.js';
 
 const initialState = {
     friendSelected: {},
