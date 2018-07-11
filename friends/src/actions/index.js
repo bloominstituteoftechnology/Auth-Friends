@@ -2,8 +2,10 @@ import axios from 'axios';
 
 export const FETCH_FRIENDS = 'FETCH_FRIENDS';
 export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
-export const FETCH_FAILED = 'FETCH_FAILED'
-export const FRIENDS_SAVED = 'FRIENDS_SAVED';
+export const FETCH_FAILED = 'FETCH_FAILED';
+export const SAVING_FRIEND = 'SAVING_FRIEND';
+export const FRIEND_SAVED = 'FRIEND_SAVED';
+export const FRIEND_NOT_SAVED = 'FRIEND_NOT_SAVED';
 export const UPDATING_FRIEND = 'UPDATING_FRIEND';
 export const FRIEND_UPDATED = 'FRIEND_UPDATED';
 export const DELETE_FRIEND = 'DELETE_FRIEND';
@@ -18,6 +20,21 @@ export function fetchFriends() {
         })
         .catch(err => {
             dispatch({type: FETCH_FAILED, error: err})
+        })
+    }
+}
+
+export function addNewFriend(friend) {
+    return (dispatch) => {
+        dispatch({type: FRIEND_SAVING})
+        axios.post('http://localhost:5000/api/friends', friend)
+        .then(({data}) => {
+            dispatch({type: FRIEND_SAVED,
+                payload: data
+            })
+        })
+        .catch(err => {
+            dispatch({type: FRIEND_NOT_SAVED, error: err})
         })
     }
 }

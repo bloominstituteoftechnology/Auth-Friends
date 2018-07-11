@@ -3,6 +3,7 @@ import './App.css';
 import { fetchFriends } from './actions';
 import { connect } from 'react-redux';
 import Friend from './components/Friend';
+import AddFriend from './components/AddFriend';
 
 class App extends Component {
 
@@ -15,9 +16,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <ul>
          {this.props.friends.map(friend => {
           return <Friend key={friend.id} friend={friend} />
         })}
+        </ul>
+        <AddFriend />
       </div>
     );
   }
