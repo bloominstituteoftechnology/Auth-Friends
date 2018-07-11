@@ -18,7 +18,11 @@ class CreateFriendForm extends React.Component {
     }
 
     addFriend = () => {
-        const friend = { name: this.state.name, email: this.state.email, age: this.state.age }
+        const { name, email, age } = this.state;
+        const friend = { name, email, age }
+
+        if (name === '' || email === '' || age === '') return;
+
         this.props.addFriend(friend);
         this.setState({ name: '', email: '', age: '' });
     }

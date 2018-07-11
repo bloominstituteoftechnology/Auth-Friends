@@ -25,7 +25,6 @@ export const friendsReducer = (state = initialState, action) => {
             return Object.assign({}, state, { savingFriends: true });
 
         case FRIENDS_SAVED:
-            console.log(action.payload);
             return Object.assign({}, state, { friends: action.payload, friendsSaved: true, savingFriends: false });
 
         case ERROR:
