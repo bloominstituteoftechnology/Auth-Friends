@@ -14,11 +14,21 @@ class App extends Component {
         {this.props.fetchingFriends ? (
          <h2>Fetching Friends</h2>
         ) : (
+          <div>
+          <h2>My Friends </h2>
            <ul>
              {this.props.friends.map(friend => {
-               return <p key={friend.id}>{friend.name}</p>;
+               return (
+                 <div className='friends-list' >
+               <p key={friend.id}>Name: {friend.name}</p>
+               <p key={friend.id}> Age: {friend.age}</p>
+               <p key={friend.id}> Email: {friend.email}</p>
+               </div>
+              )
+              ;
              })}
            </ul>
+           </div>
         )}
       </div>
     );

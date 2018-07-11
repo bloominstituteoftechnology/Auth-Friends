@@ -1,3 +1,14 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.friends-list {
+  background: dodgerblue;
+  color:white;
+  border-radius: 25%;
+  padding: 5%;
+  margin: 10px 0;
 }
