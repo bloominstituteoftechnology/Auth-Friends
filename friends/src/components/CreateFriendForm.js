@@ -10,7 +10,8 @@ class CreateFriendForm extends React.Component {
         this.state = {
             name: '',
             email: '',
-            age: ''
+            age: '',
+            food: ''
         }
     }
 
@@ -19,13 +20,13 @@ class CreateFriendForm extends React.Component {
     }
 
     addFriend = () => {
-        const { name, email, age } = this.state;
-        const friend = { name, email, age }
+        const { name, email, age, food } = this.state;
+        const friend = { name, email, age, food }
 
-        if (name === '' || email === '' || age === '') return;
+        if (name === '' || email === '' || age === '' || food === '') return;
 
         this.props.addFriend(friend);
-        this.setState({ name: '', email: '', age: '' });
+        this.setState({ name: '', email: '', age: '', food: '' });
     }
 
     render() {
@@ -34,6 +35,7 @@ class CreateFriendForm extends React.Component {
                 <Input className='add-field' onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='Name' />
                 <Input className='add-field' onChange={this.handleInput} value={this.state.email} type='text' name='email' placeholder='Email' />
                 <Input className='add-field' onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='Age' />
+                <Input className='add-field' onChange={this.handleInput} value={this.state.food} type='text' name='food' placeholder='Food' />
                 <Button className='add-button' color='info' type='submit' onClick={this.addFriend}>Add Friend</Button>
             </form>
         );

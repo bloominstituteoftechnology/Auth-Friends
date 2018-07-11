@@ -11,6 +11,7 @@ class UpdateFriendForm extends React.Component {
             name: this.props.name,
             email: this.props.email,
             age: this.props.age,
+            food: this.props.food,
             id: this.props.id
         }
     }
@@ -20,11 +21,11 @@ class UpdateFriendForm extends React.Component {
     }
 
     editFriend = () => {
-        const { name, email, age, id } = this.state;
-        const friend = { name, email, age, id }
+        const { name, email, age, food, id } = this.state;
+        const friend = { name, email, age, food, id }
 
         this.props.setEdit();
-        if (name === '' || email === '' || age === '') return;
+        if (name === '' || email === '' || age === '' || food === '') return;
 
         this.props.editFriend(friend);
     }
@@ -35,6 +36,7 @@ class UpdateFriendForm extends React.Component {
                 <Input className='edit-field' onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='Name' />
                 <Input className='edit-field' onChange={this.handleInput} value={this.state.email} type='text' name='email' placeholder='Email' />
                 <Input className='edit-field' onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='Age' />
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.food} type='text' name='food' placeholder='Food' />
                 <Button color='primary' type='submit' className='save-button' onClick={this.editFriend}>Save</Button>
             </form >
         );

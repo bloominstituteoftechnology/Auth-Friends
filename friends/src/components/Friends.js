@@ -5,7 +5,7 @@ import { deleteFriend, setName } from '../actions';
 
 const Friends = props => {
     const friends = props.friends.slice().reverse();
-
+    console.log(friends);
     return (
         <div className='friends-container'>
             {friends.map(friend => <Friend key={friend.id} friend={friend} deleteFriend={props.deleteFriend} setName={props.setName} />)}

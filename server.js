@@ -12,30 +12,35 @@ let friends = [
     name: 'Ben',
     age: 30,
     email: 'ben@lambdaschool.com',
+    food: 'Lasagna'
   },
   {
     id: 2,
     name: 'Austen',
     age: 45,
     email: 'austen@lambdaschool.com',
+    food: 'Soup'
   },
   {
     id: 3,
     name: 'Ryan',
     age: 15,
     email: 'ryan@lambdaschool.com',
+    food: 'Pizza'
   },
   {
     id: 4,
     name: 'Sean',
     age: 35,
     email: 'sean@lambdaschool.com',
+    food: 'Chicken'
   },
   {
     id: 5,
     name: 'Michelle',
     age: 67,
     email: 'michelle@gmail.com',
+    food: 'Pasta'
   },
 ];
 
