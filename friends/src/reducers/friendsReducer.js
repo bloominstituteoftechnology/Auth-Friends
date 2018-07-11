@@ -20,6 +20,8 @@ export const friendsReducer = (state = initialState, {type, payload}) => {
         case FRIENDS_FETCHED:
             return Object.assign({}, state, {fetching: false, fetched: true, friends: payload})
         case FETCH_FAILED:
-        return Object.assign({}, state, {fetching: false, error: error})
+            return Object.assign({}, state, {fetching: false, error: payload})
+        default: 
+            return state
     }
 }

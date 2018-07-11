@@ -8,16 +8,16 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchFriends()
-    console.log(this.props.fetchFriends);
+    console.log(this.props.fetchFriends());
     console.log(this.props.friends);
   }
 
   render() {
     return (
       <div className="App">
-         {/*{this.props.friends.map(friend => {
+         {this.props.friends.map(friend => {
           return <Friend key={friend.id} friend={friend} />
-        })}*/}
+        })}
       </div>
     );
   }
@@ -25,7 +25,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    friends: state.friends
+    friends: state.friends.friends
   }
 }
 
