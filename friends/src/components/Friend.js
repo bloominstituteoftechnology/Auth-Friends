@@ -1,13 +1,24 @@
 import React from 'react';
 
-const Friends = props => {
-    return (
-        <div className='friend-container'>
-            <p>{props.friend.name}</p>
-            <p>{props.friend.email}</p>
-            <p>{props.friend.age}</p>
-        </div>
-    );
+class Friend extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            toggleEdit: false
+        }
+    }
+
+    render() {
+        return (
+            <div className='friend-container'>
+                <button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} >Edit</button>
+                <p>{this.props.friend.name}</p>
+                <p>{this.props.friend.email}</p>
+                <p>{this.props.friend.age}</p>
+            </div>
+        );
+    }
 }
 
-export default Friends;
+export default Friend;

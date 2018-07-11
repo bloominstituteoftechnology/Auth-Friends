@@ -12,7 +12,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.friends);
     return (
       <div className="App">
 
