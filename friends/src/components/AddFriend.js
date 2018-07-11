@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { addNewFriend } from './../actions';
 
 class AddFriend extends React.Component {
     constructor(props) {
@@ -11,10 +12,27 @@ class AddFriend extends React.Component {
         }
     }
 
+    updateForm = (event) => {
+        event.preventDefault();
+        this.setState({[event.target.name]: event.target.value})
+        console.log(this.state.name);
+    }
+
+    addFriend = (event) => {
+        event.preventDefault();
+        this.props.addNewFriend(
+           { name: this.state.name,
+            age: this.state.age,
+            email: this.state.email}
+        );
+        console.log(this.state.name)
+        this.setState({name: '', age: 0, email: ''})
+    }
+
     render() {
     return (
         <div>
-        <form>
+        <form onChange={this.updateForm}>
             <input 
                 type='text'
                 name='name'
@@ -34,10 +52,20 @@ class AddFriend extends React.Component {
                 defaultValue=''
             />
         </form>
-        <button>Submit</button>
+        <button onClick={this.addFriend}>Submit</button>
         </div>
     )
 }
 }
 
-export default AddFriend;
+const mapStateToProps = state => {
+    return {
+      friends: state.friends.friends
+    }
+  }
+  
+  const mapActionsToProps = {
+    addNewFriend: addNewFriend
+  }
+
+export default connect(mapStateToProps, mapActionsToProps)(AddFriend);

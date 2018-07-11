@@ -26,7 +26,7 @@ export function fetchFriends() {
 
 export function addNewFriend(friend) {
     return (dispatch) => {
-        dispatch({type: FRIEND_SAVING})
+        dispatch({type: SAVING_FRIEND})
         axios.post('http://localhost:5000/api/friends', friend)
         .then(({data}) => {
             dispatch({type: FRIEND_SAVED,
