@@ -21,6 +21,12 @@ class App extends Component {
           ) :
             <div>
               <CreateFriendForm />
+
+              <div className='open-close-container'>
+                <button>Open All</button>
+                <button>Close All</button>
+              </div>
+
               <Friends friends={this.props.friends} />
             </div>
         }

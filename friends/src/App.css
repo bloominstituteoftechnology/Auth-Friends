@@ -39,3 +39,10 @@
 .friend-name:hover {
   cursor: pointer;
 }
+
+.open-close-container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
