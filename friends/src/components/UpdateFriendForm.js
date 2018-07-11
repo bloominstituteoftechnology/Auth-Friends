@@ -15,6 +15,10 @@ class UpdateFriendForm extends React.Component {
         this.setState({ [event.target.name]: event.target.value });
     }
 
+    editFriend = () => {
+        
+    }
+
     render() {
         return (
             <form onSubmit={event => event.preventDefault()} >
