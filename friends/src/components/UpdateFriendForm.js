@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { editFriend } from '../actions';
-
+import { Button, Input } from 'reactstrap';
 class UpdateFriendForm extends React.Component {
     constructor(props) {
         super(props);
@@ -21,7 +21,7 @@ class UpdateFriendForm extends React.Component {
     editFriend = () => {
         const { name, email, age, id } = this.state;
         const friend = { name, email, age, id }
-        
+
         this.props.setEdit();
         if (name === '' || email === '' || age === '') return;
 
@@ -30,11 +30,11 @@ class UpdateFriendForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={event => event.preventDefault()} >
-                <input onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='name' />
-                <input onChange={this.handleInput} value={this.state.email} type='text' name='email' placeholder='email' />
-                <input onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='age' />
-                <button onClick={this.editFriend}>Save</button>
+            <form className='edit-form' onSubmit={event => event.preventDefault()} >
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='name' />
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.email} type='text' name='email' placeholder='email' />
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='age' />
+                <Button color='primary' type='submit' className='save-button' onClick={this.editFriend}>Save</Button>
             </form >
         );
     }

@@ -1,25 +1,12 @@
 .App {
   text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
 }
 
 @keyframes App-logo-spin {
@@ -28,8 +15,22 @@
 }
 
 .friend-container {
+  width: 30%;
   margin: 10px;
   border: 1px solid black;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.friend-container p {
+  margin: 10px;
+}
+
+.friends-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .friend-name {
@@ -45,4 +46,36 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+}
+
+.delete-button {
+  width: 80%;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.edit-button {
+  width: 80%;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.edit-field {
+  width: 80%;
+  display: block;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.edit-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.save-button {
+  width: 80%;
+  font-size: 12px;
+  margin-bottom: 10px;
 }

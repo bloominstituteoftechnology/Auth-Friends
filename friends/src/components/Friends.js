@@ -7,8 +7,8 @@ const Friends = props => {
     const friends = props.friends.slice().reverse();
 
     return (
-        <div>
-            {friends.map(friend => <Friend key={friend.id} friend={friend} friendName={props.friendName} deleteFriend={props.deleteFriend} setName={props.setName} />)}
+        <div className='friends-container'>
+            {friends.map(friend => <Friend key={friend.id} friend={friend} deleteFriend={props.deleteFriend} setName={props.setName} />)}
         </div>
     );
 }
