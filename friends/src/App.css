@@ -79,3 +79,24 @@
   font-size: 12px;
   margin-bottom: 10px;
 }
+
+.add-field {
+  margin: 10px;
+  font-size: 12px;
+}
+
+.add-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-form .form-control {
+  width: 20%;
+}
+
+.add-button { 
+  max-height: 30px;
+  font-size: 12px;
+  padding: 5px;
+}

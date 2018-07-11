@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { editFriend } from '../actions';
 import { Button, Input } from 'reactstrap';
+
 class UpdateFriendForm extends React.Component {
     constructor(props) {
         super(props);
@@ -31,9 +32,9 @@ class UpdateFriendForm extends React.Component {
     render() {
         return (
             <form className='edit-form' onSubmit={event => event.preventDefault()} >
-                <Input className='edit-field' onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='name' />
-                <Input className='edit-field' onChange={this.handleInput} value={this.state.email} type='text' name='email' placeholder='email' />
-                <Input className='edit-field' onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='age' />
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='Name' />
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.email} type='text' name='email' placeholder='Email' />
+                <Input className='edit-field' onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='Age' />
                 <Button color='primary' type='submit' className='save-button' onClick={this.editFriend}>Save</Button>
             </form >
         );
