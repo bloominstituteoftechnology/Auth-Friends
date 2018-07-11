@@ -21,7 +21,8 @@ class UpdateFriendForm extends React.Component {
     editFriend = () => {
         const { name, email, age, id } = this.state;
         const friend = { name, email, age, id }
-
+        
+        this.props.setEdit();
         if (name === '' || email === '' || age === '') return;
 
         this.props.editFriend(friend);

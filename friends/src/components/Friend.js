@@ -12,8 +12,8 @@ class Friend extends React.Component {
         }
     }
 
-    deleteFriend = () => {
-
+    setEdit = () => {
+        this.setState({ toggleEdit: false });
     }
 
     render() {
@@ -28,6 +28,7 @@ class Friend extends React.Component {
 
                 {
                     this.state.toggleEdit ? <UpdateFriendForm
+                        setEdit={this.setEdit}
                         name={this.props.friend.name}
                         email={this.props.friend.email}
                         age={this.props.friend.age}
