@@ -8,7 +8,8 @@ class Friend extends React.Component {
         super(props);
 
         this.state = {
-            toggleEdit: false
+            toggleEdit: false,
+            toggleName: false
         }
     }
 
@@ -20,12 +21,17 @@ class Friend extends React.Component {
         return (
             <div className='friend-container'>
 
-                <button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} >Edit</button>
-                <button onClick={() => this.props.deleteFriend(this.props.friend.id)} >Delete</button>
-                <p>{this.props.friend.name}</p>
-                <p>{this.props.friend.email}</p>
-                <p>{this.props.friend.age}</p>
+                <p className='friend-name' onClick={() => this.setState({ toggleName: !this.state.toggleName })} >{this.props.friend.name}</p>
+                {
+                    this.state.toggleName ?
+                        <React.Fragment>
+                            <p>{this.props.friend.email}</p>
+                            <p>{this.props.friend.age}</p>
+                            <button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} >Edit</button>
+                            <button onClick={() => this.props.deleteFriend(this.props.friend.id)} >Delete</button>
+                        </React.Fragment> : null
 
+                }
                 {
                     this.state.toggleEdit ? <UpdateFriendForm
                         setEdit={this.setEdit}

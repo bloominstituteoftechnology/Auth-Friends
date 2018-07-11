@@ -31,3 +31,11 @@
   margin: 10px;
   border: 1px solid black;
 }
+
+.friend-name {
+  font-weight: 700;
+}
+
+.friend-name:hover {
+  cursor: pointer;
+}
