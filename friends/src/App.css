@@ -52,6 +52,7 @@
   width: 80%;
   font-size: 12px;
   margin: 5px;
+  margin-bottom: 10px;
 }
 
 .edit-button {
@@ -99,4 +100,10 @@
   max-height: 30px;
   font-size: 12px;
   padding: 5px;
+}
+
+.friend-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

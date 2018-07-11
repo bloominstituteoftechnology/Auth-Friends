@@ -27,8 +27,10 @@ class Friend extends React.Component {
                 {
                     this.state.toggleName ?
                         <React.Fragment>
-                            <p>{this.props.friend.email}</p>
-                            <p>{this.props.friend.age}</p>
+                            <div className='friend-info' >
+                                <p><strong>Email:</strong> {this.props.friend.email}</p>
+                                <p><strong>Age:</strong> {this.props.friend.age}</p>
+                            </div>
                             <Button className='edit-button' color='info' onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })}>Edit</Button>
                             <Button className='delete-button' color='danger' onClick={() => this.props.deleteFriend(this.props.friend.id)}>Delete</Button>
                         </React.Fragment> : null
