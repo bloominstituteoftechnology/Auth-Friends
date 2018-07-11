@@ -10,6 +10,9 @@ export const FRIENDS_SAVED = 'FRIENDS_SAVED';
 export const UPDATING_FRIEND = 'UPDATING_FRIEND';
 export const FRIEND_UPDATED = 'FRIEND_UPDATED';
 
+export const DELETING_FRIEND = 'DELETING_FRIEND';
+export const FRIEND_DELETED = 'FRIEND_DELETED';
+
 export const getFriends = () => {
     const request = axios.get('http://localhost:5000/api/friends/');
     return dispatch => {
@@ -29,11 +32,19 @@ export const addFriend = friend => {
 }
 
 export const editFriend = friend => {
-    console.log(friend);
     const request = axios.put(`http://localhost:5000/api/friends/${friend.id}`, friend);
     return dispatch => {
         dispatch({ type: UPDATING_FRIEND })
         request.then(response => dispatch({ type: FRIEND_UPDATED, payload: response.data }))
+            .catch(err => dispatch({ type: ERROR, payload: err }));
+    }
+}
+
+export const deleteFriend = id => {
+    const request = axios.delete(`http://localhost:5000/api/friends/${id}`);
+    return dispatch => {
+        dispatch({ type: DELETING_FRIEND })
+        request.then(response => dispatch({ type: FRIEND_DELETED, payload: response.data }))
             .catch(err => dispatch({ type: ERROR, payload: err }));
     }
 }

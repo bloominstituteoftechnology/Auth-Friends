@@ -1,4 +1,4 @@
-import { FETCHING_FRIENDS, FRIENDS_FETCHED, SAVING_FRIENDS, FRIENDS_SAVED, ERROR, UPDATING_FRIEND, FRIEND_UPDATED } from "../actions";
+import { FETCHING_FRIENDS, FRIENDS_FETCHED, SAVING_FRIENDS, FRIENDS_SAVED, ERROR, UPDATING_FRIEND, FRIEND_UPDATED, DELETING_FRIEND, FRIEND_DELETED } from "../actions";
 
 const initialState = {
     fetchingFriends: false,
@@ -32,6 +32,12 @@ export const friendsReducer = (state = initialState, action) => {
 
         case FRIEND_UPDATED:
             return Object.assign({}, state, { friends: action.payload, updatingFriend: false, friendUpdated: true });
+
+        case DELETING_FRIEND:
+            return Object.assign({}, state, { deletingFriend: true });
+
+        case FRIEND_DELETED:
+            return Object.assign({}, state, { friends: action.payload, deletingFriend: false, friendDeleted: true });
 
         case ERROR:
             return Object.assign({}, state, { error: action.payload });
