@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { editFriend } from '../actions';
 
 class UpdateFriendForm extends React.Component {
     constructor(props) {
@@ -7,7 +9,8 @@ class UpdateFriendForm extends React.Component {
         this.state = {
             name: this.props.name,
             email: this.props.email,
-            age: this.props.age
+            age: this.props.age,
+            id: this.props.id
         }
     }
 
@@ -16,7 +19,12 @@ class UpdateFriendForm extends React.Component {
     }
 
     editFriend = () => {
-        
+        const { name, email, age, id } = this.state;
+        const friend = { name, email, age, id }
+
+        if (name === '' || email === '' || age === '') return;
+
+        this.props.editFriend(friend);
     }
 
     render() {
@@ -25,10 +33,16 @@ class UpdateFriendForm extends React.Component {
                 <input onChange={this.handleInput} value={this.state.name} type='text' name='name' placeholder='name' />
                 <input onChange={this.handleInput} value={this.state.email} type='text' name='email' placeholder='email' />
                 <input onChange={this.handleInput} value={this.state.age} type='text' name='age' placeholder='age' />
-                <button onClick={this.addFriend}>Save</button>
+                <button onClick={this.editFriend}>Save</button>
             </form >
         );
     }
 }
 
-export default UpdateFriendForm;
+const mapStateToProps = state => {
+    return {
+        friends: state.friendsReducer.friends
+    }
+}
+
+export default connect(mapStateToProps, { editFriend })(UpdateFriendForm);

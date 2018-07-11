@@ -20,7 +20,11 @@ class Friend extends React.Component {
                 <p>{this.props.friend.age}</p>
 
                 {
-                    this.state.toggleEdit ? <UpdateFriendForm name={this.props.friend.name} email={this.props.friend.email} age={this.props.friend.age} /> : null
+                    this.state.toggleEdit ? <UpdateFriendForm
+                        name={this.props.friend.name}
+                        email={this.props.friend.email}
+                        age={this.props.friend.age}
+                        id={this.props.friend.id} /> : null
                 }
 
             </div>

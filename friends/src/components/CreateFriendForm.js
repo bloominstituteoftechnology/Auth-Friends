@@ -41,8 +41,7 @@ class CreateFriendForm extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        friends: state.friendsReducer.friends,
-        fetching: state.friendsReducer.fetchingFriends
+        friends: state.friendsReducer.friends
     }
 }
 

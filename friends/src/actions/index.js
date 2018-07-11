@@ -29,7 +29,8 @@ export const addFriend = friend => {
 }
 
 export const editFriend = friend => {
-    const request = axios.put('http://localhost:5000/api/friends/', friend);
+    console.log(friend);
+    const request = axios.put(`http://localhost:5000/api/friends/${friend.id}`, friend);
     return dispatch => {
         dispatch({ type: UPDATING_FRIEND })
         request.then(response => dispatch({ type: FRIEND_UPDATED, payload: response.data }))
