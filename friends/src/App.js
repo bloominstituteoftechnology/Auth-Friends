@@ -4,6 +4,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { getFriends } from './actions';
 import Friends from './components/Friends';
+import CreateFriendForm from './components/CreateFriendForm';
 
 class App extends Component {
   componentDidMount() {
@@ -19,7 +20,10 @@ class App extends Component {
           this.props.fetching ? (
             <img src={logo} className="App-logo" alt="logo" />
           ) :
-            <Friends friends={this.props.friends} />
+            <div>
+              <CreateFriendForm />
+              <Friends friends={this.props.friends} />
+            </div>
         }
 
       </div>
