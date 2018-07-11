@@ -21,7 +21,7 @@ class Friend extends React.Component {
         return (
             <div className='friend-container'>
 
-                <p className='friend-name' onClick={() => this.setState({ toggleName: !this.state.toggleName })} >{this.props.friend.name}</p>
+                <p className='friend-name' onClick={() => this.setState({ toggleName: !this.state.toggleName, toggleEdit: false })} >{this.props.friend.name}</p>
                 {
                     this.state.toggleName ?
                         <React.Fragment>
