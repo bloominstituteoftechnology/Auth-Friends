@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { getFriends } from './actions';
+import { getFriends, openAll, closeAll } from './actions';
 import Friends from './components/Friends';
 import CreateFriendForm from './components/CreateFriendForm';
 
@@ -23,8 +23,8 @@ class App extends Component {
               <CreateFriendForm />
 
               <div className='open-close-container'>
-                <button>Open All</button>
-                <button>Close All</button>
+                <button onClick={this.props.openAll}>Open All</button>
+                <button onClick={this.props.closeAll}>Close All</button>
               </div>
 
               <Friends friends={this.props.friends} />
@@ -43,4 +43,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getFriends })(App);
+export default connect(mapStateToProps, { getFriends, openAll, closeAll })(App);

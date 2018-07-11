@@ -1,7 +1,5 @@
 import React from 'react';
 import UpdateFriendForm from './UpdateFriendForm';
-import { connect } from 'react-redux';
-import { deleteFriend } from '../actions';
 
 class Friend extends React.Component {
     constructor(props) {
@@ -13,21 +11,32 @@ class Friend extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.setState({ toggleName: this.props.friendName });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.friendname !== this.state.toggleName) {
+            this.setState({ toggleName: nextProps.friendName });
+        }
+    }
+
     setEdit = () => {
         this.setState({ toggleEdit: false });
     }
 
     render() {
+        console.log(this.state.toggleName);
         return (
             <div className='friend-container'>
-                <p className='friend-name' onClick={() => this.setState({ toggleName: !this.state.toggleName, toggleEdit: false })} >{this.props.friend.name}</p>
+                <p className='friend-name' onClick={() => this.setState({ toggleName: !this.state.toggleName })}>{this.props.friend.name}</p>
                 {
                     this.state.toggleName ?
                         <React.Fragment>
                             <p>{this.props.friend.email}</p>
                             <p>{this.props.friend.age}</p>
-                            <button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })} >Edit</button>
-                            <button onClick={() => this.props.deleteFriend(this.props.friend.id)} >Delete</button>
+                            <button onClick={() => this.setState({ toggleEdit: !this.state.toggleEdit })}>Edit</button>
+                            <button onClick={() => this.props.deleteFriend(this.props.friend.id)}>Delete</button>
                         </React.Fragment> : null
 
                 }
@@ -40,15 +49,9 @@ class Friend extends React.Component {
                         id={this.props.friend.id} /> : null
                 }
 
-            </div>
+            </div >
         );
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        friends: state.friendsReducer.friends
-    }
-}
-
-export default connect(mapStateToProps, { deleteFriend })(Friend);
+export default Friend;

@@ -12,6 +12,10 @@ export const FRIEND_UPDATED = 'FRIEND_UPDATED';
 export const DELETING_FRIEND = 'DELETING_FRIEND';
 export const FRIEND_DELETED = 'FRIEND_DELETED';
 
+export const OPEN_ALL = 'OPEN_ALL';
+export const CLOSE_ALL = 'CLOSE_ALL';
+export const SET_NAME = 'SET_NAME';
+
 export const ERROR = 'ERROR';
 
 export const getFriends = () => {
@@ -47,5 +51,24 @@ export const deleteFriend = id => {
         dispatch({ type: DELETING_FRIEND })
         request.then(response => dispatch({ type: FRIEND_DELETED, payload: response.data }))
             .catch(err => dispatch({ type: ERROR, payload: err }));
+    }
+}
+
+export const setName = value => {
+    return {
+        type: SET_NAME,
+        payload: value
+    }
+}
+
+export const openAll = () => {
+    return {
+        type: OPEN_ALL
+    }
+}
+
+export const closeAll = () => {
+    return {
+        type: CLOSE_ALL
     }
 }
