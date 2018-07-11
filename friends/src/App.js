@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { getFriends } from './actions';
+import Friends from './components/Friends';
 
 class App extends Component {
   componentDidMount() {
@@ -18,9 +19,7 @@ class App extends Component {
           this.props.fetching ? (
             <img src={logo} className="App-logo" alt="logo" />
           ) :
-            <div>
-              test
-            </div>
+            <Friends friends={this.props.friends} />
         }
 
       </div>
