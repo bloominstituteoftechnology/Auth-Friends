@@ -7,7 +7,7 @@ export const ERROR = 'ERROR';
 export const getFriends = () => {
     const request = axios.get('http://localhost:5000/api/friends/');
     return dispatch => {
-        dispatch({ type: FRIENDS_FETCHED });
+        dispatch({ type: FETCHING_FRIENDS });
         request.then(response => dispatch({ type: FRIENDS_FETCHED, payload: response.data }))
             .catch(err => dispatch({ type: ERROR, payload: err }))
     }

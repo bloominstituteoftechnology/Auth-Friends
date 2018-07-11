@@ -10,6 +10,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.friends);
     return (
       <div className="App">
 
@@ -28,10 +29,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
-    friends: state.friends,
-    fetching: false
+    friends: state.friendsReducer.friends,
+    fetching: state.friendsReducer.fetchingFriends
   }
 }
 
