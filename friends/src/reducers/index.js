@@ -20,7 +20,7 @@ const initialState = {
         return Object.assign({}, state, {fetchingFriends: true, friendsFetched: false, error: null});
 
         case FETCHED:
-       return Object.assign({}, state, {fetchingFriends: false, friends: action.friends, friendsFetched: true});
+       return Object.assign({}, state, {fetchingFriends: false, savingFriends: false, friends: action.friends, friendsFetched: true});
 
 	case SAVING_FRIENDS:
         return Object.assign({}, state, {fetchingFriends: false, friendsFetched: false, savingFriends: true, friendsSaved: false, error: null});

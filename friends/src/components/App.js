@@ -28,12 +28,24 @@ changeHandler = event => {
 
 addFriendHandler = event => {
 	this.props.addFriend(this.state.name, this.state.age, this.state.email);
+	this.setState({name: "", age: "", email: ""});
 }
 
 
   render() {
     return (
       <div className="App">
+	<div>{this.props.savingFriends ? (
+                <h1>Saving Friend ..</h1>
+        ) : (null)}
+	   </div>
+
+	 <div>{this.props.friendsSaved ? (
+                <h1>A New Friend Saved To The List..</h1>
+        ) : (null)}
+           </div> 
+
+
         {this.props.fetching ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
@@ -43,10 +55,6 @@ addFriendHandler = event => {
             })}
           </ul>
 
-		<div>{this.props.savingFriends ? (
-                <h1>Saving Friends ..</h1>
-        ) : (null)}
-                        </div>
 		
 		<input onChange={this.changeHandler} type="text" name="name" placeholder="Name" value={this.state.name} />
 		<input onChange={this.changeHandler} type="number" name="age" placeholder="Age" value={this.state.age} />		
@@ -66,7 +74,8 @@ const mapStateToProps = state => {
   return {
           friends: state.friends,
           fetching: state.fetchingFriends,
-	  savingFriends: state.savingFriends
+	  savingFriends: state.savingFriends,
+	  friendsSaved: state.friendsSaved
 
   };
 };

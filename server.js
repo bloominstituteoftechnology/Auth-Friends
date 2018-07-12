@@ -65,7 +65,7 @@ app.post('/api/friends', (req, res) => {
   friends = [...friends, friend];
 setTimeout(() => {
   res.send(friends);
-}, 1000);
+}, 1500);
 });
 
 app.put('/api/friends/:id', (req, res) => {
