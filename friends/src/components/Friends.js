@@ -3,6 +3,7 @@ import Loading from './Loading'
 
 
 
+
 export class Friends extends Component {
     render() {
         return (

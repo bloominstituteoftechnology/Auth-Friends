@@ -7,8 +7,6 @@ const initialState = {
 }
 export const dataFetchReducer = (state = initialState, action) => {
     switch (action.type) {
-        case POSTING:
-            return Object.assign({}, state, { friends: action.payload })
         case FETCHING:
             return Object.assign({}, state, {
                 fetchingFriends: true,
@@ -30,6 +28,8 @@ export const dataFetchReducer = (state = initialState, action) => {
                 friends: [],
                 error: action.payload,
             })
+        case POSTING:
+            return Object.assign({}, state, { friends: action.payload })
         default: return state;
     }
 }

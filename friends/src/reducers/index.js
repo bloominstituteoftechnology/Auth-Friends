@@ -4,6 +4,6 @@ import { dataFetchReducer } from './dataFetchReducer'
 
 
 export default combineReducers({
-    dataFetchReducer,
+    dataFetchReducer
     // dataPostReducer
 });
