@@ -4,10 +4,18 @@ import { fetchingData } from "../actions/index";
 import { saveFriend } from "../actions/index";
 
 class CreateFriend extends Component {
-  handleSubmitFriend = e => {
+  handleChangeFriend = e => {
     this.setState({ [e.target.name]: e.target.value });
     return e.target.value;
   };
+
+  handleSubmitFriend = () =>{
+  this.props.saveFriend({
+    name: this.state.name,
+    age: this.state.age,
+    email: this.state.email
+  })
+  }
 
   render() {
     return (
@@ -17,36 +25,26 @@ class CreateFriend extends Component {
           <input
             className="input"
             type="text"
-            onChange={this.handleSubmitFriend}
+            onChange={this.handleChangeFriend}
             placeholder="Name"
             name="name"
           />
           <input
             className="input"
             type="text"
-            onChange={this.handleSubmitFriend}
+            onChange={this.handleChangeFriend}
             placeholder="Age"
             name="age"
           />
           <input
             className="input"
             type="text"
-            onChange={this.handleSubmitFriend}
+            onChange={this.handleChangeFriend}
             placeholder="Email"
             name="email"
           />
         </div>
-        <button
-          onClick={() =>
-            this.props.saveFriend({
-              name: this.state.name,
-              age: this.state.age,
-              email: this.state.email
-            })
-          }
-        >
-          Add
-        </button>
+        <button onClick={this.handleSubmitFriend}>Add</button>
       </div>
     );
   }
