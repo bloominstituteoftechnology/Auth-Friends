@@ -1,4 +1,4 @@
-import {FETCHING, FETCHED, ERROR} from '../actions';
+import {FETCHING, FETCHED, ERROR, SAVING, SAVED} from '../actions';
 const initialState = {
   friends: [],
   fetchingFriends: false,
@@ -20,6 +20,11 @@ export const friendsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {fetchingFriends: false, friendsFetched: true, friends: action.payload})
     case ERROR:
       return Object.assign({}, state, {fetchingFriends: false, error: action.payload})
+    case SAVING:
+      return Object.assign({}, state, {savingFriends: true})
+    case SAVED:
+      console.log("SAVED CASE Action payload", action.payload)
+      return Object.assign({}, state, {friendsSaved: true, savingFriends: false, friends: action.payload})
     default:
       return state;
   }
