@@ -1,5 +1,7 @@
 # dependencies
 /node_modules
+/friends/node_modules
+'node_modules'
 
 # testing
 /coverage
