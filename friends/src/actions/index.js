@@ -4,7 +4,7 @@ export const FETCHING_FRIENDS = "FETCHING_FRIENDS";
 export const FRIENDS_FETCHED = "FRIENDS_FETCHED";
 export const ERROR_FETCHING_FRIENDS = "ERROR_FETCHING_FRIENDS";
 
-export const fetchChars = URL => {
+export const fetchFriends = URL => {
   const promise = axios.get(URL);
   return function(dispatch) {
     dispatch({ type: FETCHING_FRIENDS });
