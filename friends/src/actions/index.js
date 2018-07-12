@@ -11,11 +11,11 @@ export const fetchingData = () => {
         dispatch({type:FETCHING});
         axios
         .get(url)
-        .then(({data}) => {
-            dispatch({type:FETCHED, payload: data});
+        .then(response => {
+            dispatch({type:FETCHED, payload: response.data});
         })
         .catch(error => {
-            dispatch({type:ERROR, payload:error});
+            dispatch({type:ERROR, payload: 'A wild Error appeared!'});
         });
     };
 };

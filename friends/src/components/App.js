@@ -30,19 +30,21 @@ class App extends Component {
            </ul>
            </div>
         )}
+        {this.props.error !== null ? <div> {this.props.error}</div> :null}
       </div>
     );
   }
 }
 
-const mapDispatchToProps = state => {
+const mapStateToProps = state => {
   return {
     friends: state.friends,
-    fetchingFriends: state.fetchingFriends
+    fetchingFriends: state.fetchingFriends,
+    error: state.error
   };
 }
 
 export default connect(
-  mapDispatchToProps,
+  mapStateToProps,
   { fetchingData }
 )(App);
