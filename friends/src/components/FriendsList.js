@@ -5,11 +5,6 @@ import Friend from './Friend';
 
 class FriendsList extends Component {
 
-  constructor(props) {
-    super(props);
-    this.props = props;
-  }
-
   componentDidMount() {
     this.props.getAllFriends();
     console.log('this.props', this.props);
