@@ -43,7 +43,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-app.get('/api/friends', (req, res) => {
+app.get('/api/friends/', (req, res) => {
   setTimeout(() => {
     res.send(friends);
   }, 1000);

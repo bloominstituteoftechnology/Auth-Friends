@@ -1,0 +1,3 @@
+{
+  "eslint.options": { "configFile": "./friends/.eslintrc.json" }
+}
