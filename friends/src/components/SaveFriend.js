@@ -26,8 +26,7 @@ const SaveFriend = props => {
                 <button type="submit">Submit</button>
                 {props.name !== '' || props.age !== '' || props.email !== '' ? <button onClick={() => props.handleClear()}>Clear</button> : null}
             </form>
-            <p>Fill in form and click Submit to add friend</p>
-            <p>Or click Edit to update friend</p>
+            <p>Use form to add or edit friend</p>
         </div>
     );
 };
