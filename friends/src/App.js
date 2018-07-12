@@ -6,6 +6,16 @@ import {fetchingFriendsAction} from "../actions";
 
 
 class App extends Component {
+constructor(props){
+	super(props);
+	
+	this.state={
+		name:"",
+		age:"",
+		email:""
+	};
+
+}
 
 
 
@@ -13,6 +23,10 @@ class App extends Component {
     this.props.fetchingFriendsAction();
   }
 
+handler = event => {
+	this.setState({[event.target.name]: event.target.value});	
+
+};
 
 
   render() {
@@ -25,7 +39,11 @@ class App extends Component {
             {this.props.friends.map(friend => {
               return <li key={friend.id}>{friend.name}</li>;
             })}
-          </ul>
+          
+<input onChange={this.handler} type="text" placeholder="Name" name="name" value={this.state.name} />
+<input onChange={this.handler} type="number" placeholder="Age" name="age" value={this.state.age} />
+<input onChange={this.handler} type="text" placeholder="Email" name="email" value={this.state.email} />
+</ul>
         )}
       </div>
     );
