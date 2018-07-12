@@ -5,6 +5,11 @@ import { connect } from 'react-redux';
 import { getFriends } from './actions';
 import Friends from './components/Friends';
 import CreateFriendForm from './components/CreateFriendForm';
+import ApolloClient from 'apollo-boost';
+
+const client = new ApolloClient ({
+  uri: 'http://localhost:5000/api/friends'
+});
 
 class App extends Component {
   constructor(props) {
