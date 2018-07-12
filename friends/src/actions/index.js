@@ -3,6 +3,7 @@ import axios from 'axios';
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
+export const SAVING_FRIEND = 'SAVING_FRIEND'
 
 const url = `http://localhost:5000/api/friends`;
 
@@ -19,3 +20,17 @@ export const fetchingData = () => {
         });
     };
 };
+
+export const saveFriend = friend => {
+    return(dispatch) => {
+        dispatch({type:SAVING_FRIEND})
+        axios
+        .post(url, friend)
+        .then(response => {
+            dispatch(fetchingData());
+        })
+        .catch(error => {
+            dispatch({type:ERROR, payload: 'A wild Error appeared! You cannot post that!'});
+        });
+    }
+}
