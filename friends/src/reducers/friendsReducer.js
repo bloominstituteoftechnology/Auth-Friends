@@ -1,5 +1,4 @@
-// import { combineReducers } from 'redux';
-
+import { combineReducers } from 'redux';
 import { FETCH_START } from '../actions/actions'
 import { FETCH_ERROR } from '../actions/actions'
 import { FETCH_SUCCESS } from '../actions/actions'
@@ -32,12 +31,8 @@ const allIds = (state = [], action) => {
   }
 };
 
-const friendsReducer = (state, action) => {
-  if (state === undefined) {
-    return {allIds: allIds(state, action), byId: byId(state, action)};
-  }
-  return {allIds: allIds(state.allIds, action), byId: byId(state.byId, action)};
-}
+const friendsReducer = combineReducers({allIds, byId});
+
 export default friendsReducer;
 
 export const getFriends = (state) => {
