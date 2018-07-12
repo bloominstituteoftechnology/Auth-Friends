@@ -18,3 +18,17 @@ export const fetchFriends = () => {
         })
     }
 }
+
+export const addFriend = friend => {
+    const promise = axios.post('http://localhost:5000/api/friends', friend)
+    return dispatch => {
+        dispatch({ type: FETCHING })
+        promise.then(response => {
+            console.log(response);
+            dispatch({ type: FETCHED, payload: response.data })
+        })
+        .catch(err => {
+            dispatch({ type: ERROR, payload: err })
+        })
+    }
+}
