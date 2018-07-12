@@ -2,12 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchFriends } from '../actions/'
 
-class App extends React.Component {
+class FriendsList extends React.Component {
   componentDidMount () {
     this.props.fetchFriends()
   }
   render () {
-    console.log(this.props.friends, this.props.api.fetching)
     return (
       <div className='App'>
         {this.props.api.fetching ? (
@@ -33,4 +32,4 @@ const mapStateToProps = (state) => {
     api: state.api
   }
 }
-export default connect(mapStateToProps, { fetchFriends })(App)
+export default connect(mapStateToProps, { fetchFriends })(FriendsList)
