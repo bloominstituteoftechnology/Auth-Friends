@@ -1,4 +1,4 @@
-import {} from '../actions';
+import {FETCHING_FRIENDS, FRIENDS_FETCHED } from '../actions';
 
 const initialState = {
     fetchingFriends: false,
@@ -10,12 +10,15 @@ const initialState = {
     deletingFriend: false,
     friendDeleted: false,
     friends: [],
-    error: null 
+    error: null
 }
 
 export const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
-            
+        case FETCHING_FRIENDS:
+            return { ...state, fetchingFriends: true };
+        case FRIENDS_FETCHED:
+            return { ...state, fetchingFriends: false, friendsFetched: true, friends: state.friends.concat(action.payload) };
 
         default:
             return state;
