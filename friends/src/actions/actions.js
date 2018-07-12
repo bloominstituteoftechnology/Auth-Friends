@@ -1,9 +1,10 @@
 import axios from "axios";
 
+export const ERROR = "ERROR";
 export const FETCHING = "FETCHING";
 export const FETCHED = "FETCHED";
-export const ERROR = "ERROR";
 export const ADDING = "ADDING";
+// export const ADDED = "ADDED";
 
 const URL = "http://localhost:5000/api/Friends";
 
@@ -21,13 +22,13 @@ export const fetchFriends = () => {
   };
 };
 
-export const savingFriends = () => {
+export const saveFriends = friend => {
   return dispatch => {
     dispatch({ type: ADDING });
     axios
-      .get(URL)
-      .then(response => {
-        dispath({ type: FETCHED, payload: response.data });
+      .post(URL, friend)
+      .then(() => {
+        dispatch(fetchFriends());
       })
       .catch(ERROR => {
         dispatch({ type: ERROR, payload: ERROR });

@@ -11,10 +11,6 @@ class App extends Component {
     this.props.fetchFriends();
   }
 
-  handleSetData = data => {
-    this.setState({ friendsData: data });
-  };
-
   render() {
     return (
       <div className="App">
@@ -27,7 +23,7 @@ class App extends Component {
             return <li key={friends.id}> {friends.name} </li>;
           })}
         </ul>
-        <FriendsForm handleSetData={this.handleSetData} />
+        <FriendsForm />
       </div>
     );
   }

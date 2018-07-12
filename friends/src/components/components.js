@@ -1,40 +1,51 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+
+import { saveFriends, fetchFriends } from "../actions/actions";
 
 class FriendsForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      age: "",
-      email: ""
-    };
+  //   constructor(props) {
+  //     super(props);
+  //     this.state = {
+  //       name: "",
+  //       age: "",
+  //       email: ""
+  //     };
+  //   }
 
-    const URL = "http://localhost:5000/api/Friends";
+  // const URL = "http://localhost:5000/api/Friends";
 
-    editFriendsHandler = e => {
-      this.setState({ [e.target.name]: e.target.value });
-    };
+  editFriendsHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-    handleSubmitFriend = () => {
-      const friend = {
-        name: this.state.name,
-        age: Number(this.state.age),
-        email: this.state.email
-      };
-      axios.post(URL, friend).then(response => {
-        this.props.handleSetData(response.data);
-        this.setState({
-          friendsData: response.data,
-          name: "",
-          age: "",
-          email: ""
-        }).catch(error => {
-          console.log(error);
-        });
-      });
-    };
-  }
+  handleSubmitFriend = () => {
+    this.props.saveFriend({
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email
+    });
+  };
+
+  // handleSubmitFriend = () => {
+  //   const friend = {
+  //     name: this.state.name,
+  //     age: Number(this.state.age),
+  //     email: this.state.email
+  //   };
+  //   axios.post(URL, friend).then(response => {
+  //     this.props.handleSetData(response.data);
+  //     this.setState({
+  //       friendsData: response.data,
+  //       name: "",
+  //       age: "",
+  //       email: ""
+  //     }).catch(error => {
+  //       console.log(error);
+  //     });
+  //   });
+  // };
+
   render() {
     return (
       <div>
@@ -43,7 +54,7 @@ class FriendsForm extends Component {
             type="text"
             name="name"
             onChange={this.editFriendsHandler}
-            value={this.state.name}
+            // value={this.state.name}
             placeholder="add friend name"
           />
           <br />
@@ -51,7 +62,7 @@ class FriendsForm extends Component {
             type="number"
             name="age"
             onChange={this.editFriendsHandler}
-            value={this.state.age}
+            // value={this.state.age}
             placeholder="add age"
           />
           <br />
@@ -59,15 +70,29 @@ class FriendsForm extends Component {
             type="text"
             name="email"
             onChange={this.editFriendsHandler}
-            value={this.state.email}
+            // value={this.state.email}
             placeholder="add email"
           />
           <br />
-          <button onClick={this.handleSubmitFriend}>Submit Edit</button>
+          <button onClick={this.handleSubmitFriend}>Add Friend</button>
         </form>
       </div>
     );
   }
 }
 
-export default FriendsForm;
+const mapStateToProps = state => {
+  return {
+    friends: state.friends,
+    addingFriend: state.friends,
+    error: state.error
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    saveFriends,
+    fetchFriends
+  }
+)(FriendsForm);
