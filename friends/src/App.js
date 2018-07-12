@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchReq, submitReq } from './actions';
+import { fetchReq, submitReq, deleteReq } from './actions';
 import Friends from './components/Friends';
 import SaveFriend from './components/SaveFriend';
 
@@ -41,6 +41,10 @@ class App extends Component {
     });
   };
 
+  handleDelete = (id) => {
+    this.props.deleteReq(id);
+  };
+
   render() {
     return (
       <div className="App">
@@ -48,7 +52,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Redux - Friends</h1>
         </header>
-        {this.props.fetched ? <Friends friends={this.props.friends} /> : <div>Loading...</div>}
+        {this.props.fetched ? <Friends friends={this.props.friends} handleDelete={this.handleDelete} /> : <div>Loading...</div>}
         {this.props.fetched ? <SaveFriend handleChange={this.handleChange} handleSubmit={this.handleSubmit} name={this.state.name} age={this.state.age} email={this.state.email} /> : null}
       </div>
     );
@@ -63,4 +67,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchReq, submitReq })(App);
+export default connect(mapStateToProps, { fetchReq, submitReq, deleteReq })(App);

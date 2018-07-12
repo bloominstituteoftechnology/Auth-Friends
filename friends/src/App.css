@@ -26,3 +26,14 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.friends {
+  width: 400px;
+  margin: 10px auto;
+}
+
+.friend {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgrey;
+}
