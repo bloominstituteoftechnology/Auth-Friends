@@ -16,6 +16,7 @@ export default class friends extends React.Component {
                                 age={friend.age}
                                 email={friend.email}
                                 updateFriend={this.props.updateFriend}
+                                deleteFriend={this.props.deleteFriend}
                             />
                         </div>)
                 })}
