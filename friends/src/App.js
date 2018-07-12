@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { getFriends } from './actions/index'
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getFriends()
+  }
   render() {
     return (
       <div>
@@ -26,4 +30,4 @@ const mapStateToProps = state => (
   }
 )
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { getFriends })(App);
