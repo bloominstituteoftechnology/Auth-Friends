@@ -14,11 +14,17 @@ class FriendsList extends React.Component {
                 {this.props.fetchingFriends ? (
                     <img src={logo} alt="logo" />
                 ) : (
-                <ul>
+                <React.Fragment>
                     {this.props.friends.map(friend => {
-                       return <li key={friend.id}>{friend.name}</li>
+                       return <div className="friend" key={friend.id}>
+                            <ul>
+                                <li>Name: {friend.name}</li>
+                                <li>Age: {friend.age}</li>
+                                <li>Email: {friend.email}</li>
+                            </ul>
+                       </div>
                     })}
-                </ul>
+                </React.Fragment>
                 )}
                 {this.props.error !== null ? <p>{this.props.error}</p> : null}
             </React.Fragment>
