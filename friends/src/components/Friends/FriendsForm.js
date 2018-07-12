@@ -3,9 +3,12 @@ import React from 'react';
 const FriendsForm = (props) => {
     return (  
         <form>
-            <input type = 'text' name = 'friendName'/>
-            <input type = 'text' name = 'friendAge'/>
-            <input type = 'text' name = 'friendEmail'/>
+            <label htmlFor = 'name'>Name</label>
+            <input type = 'text' id = 'name' name = 'friendName'/>
+            <label htmlFor = 'age'>Age</label>
+            <input type = 'text' id = 'age' name = 'friendAge'/>
+            <label htmlFor = 'email'>Email</label>
+            <input type = 'text' id = 'email' name = 'friendEmail'/>
             <button>Add New Friend</button>
         </form>
     );
