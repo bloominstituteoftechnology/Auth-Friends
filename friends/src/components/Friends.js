@@ -3,8 +3,7 @@ import Friend from './Friend';
 
 const Friends = props => (
   <React.Fragment>
-    {console.log('friends', props.friends)}
-    {props.friends.map(f => <Friend friend={f} />)}
+    {props.friends.map(f => <Friend friend={f} key={f.id} />)}
   </React.Fragment>
 );
 

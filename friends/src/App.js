@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchData } from './actions';
 import Friends from './components/Friends';
+import LoadingFriends from './components/LoadingFriends';
+import AddFriendForm from './components/AddFriendForm';
 import './App.css';
 
 class App extends Component {
@@ -10,13 +12,28 @@ class App extends Component {
     this.props.fetchData(URL);
   }
   render() {
-    return <Friends friends={this.props.friends} />;
+    return (
+      <React.Fragment>
+        <AddFriendForm />
+        {this.props.fetching ? <LoadingFriends /> : null}
+
+        {this.props.fetched ? <Friends friends={this.props.friends} /> : null}
+        {/* <Friends friends={this.props.friends} /> */}
+
+        {this.props.error ? (
+          <React.Fragment>Err: {this.props.error}</React.Fragment>
+        ) : null}
+      </React.Fragment>
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
     friends: state.friends,
+    fetching: state.fetchingFriends,
+    fetched: state.friendsFetched,
+    error: state.error,
   };
 };
 

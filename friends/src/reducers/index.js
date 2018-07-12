@@ -1,4 +1,4 @@
-// import { FETCHING, FETCHED, ERROR } from '../actions';
+import { FETCHING, FETCHED, ERROR, ADDING, ADDED } from '../actions';
 
 const initialState = {
   fetchingFriends: false,
@@ -15,21 +15,36 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCHING':
+    case FETCHING:
       return Object.assign({}, state, {
-        fetching: true,
+        fetchingFriends: true,
       });
 
-    case 'FETCHED':
+    case FETCHED:
       return Object.assign({}, state, {
         friends: action.payload,
-        fetching: false,
-        fetched: true,
+        fetchingFriends: false,
+        friendsFetched: true,
       });
 
-    case 'ERROR':
+    case ERROR:
       return Object.assign({}, state, {
-        error: action.payload,
+        fetchingFriends: false,
+        friendsFetched: false,
+        error: action.payload.stack,
+      });
+
+    case ADDING:
+      return Object.assign({}, state, {
+        savingFriends: true,
+        friendsSaved: false,
+      });
+
+    case ADDED:
+      return Object.assign({}, state, {
+        savingFriends: true,
+        friendsSaved: true,
+        friends: action.payload,
       });
 
     default:
