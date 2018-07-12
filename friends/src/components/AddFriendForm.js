@@ -18,7 +18,7 @@ class AddFriendForm extends React.Component {
 
         handleFormSubmit = event => {
             event.preventDefault();
-            const URL = 'http://localhost:5000/api/friends/create';
+            const URL = 'http://localhost:5000/api/friends/';
             const friend = {
                 name: this.state.name,
                 age: Number(this.state.age),

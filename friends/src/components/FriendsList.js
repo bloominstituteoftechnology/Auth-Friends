@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchFriends } from '../actions';
+import { fetchFriends, deleteFriend } from '../actions';
 import logo from '../logo.svg';
 
 class FriendsList extends React.Component {
@@ -22,6 +22,7 @@ class FriendsList extends React.Component {
                                 <li>Age: {friend.age}</li>
                                 <li>Email: {friend.email}</li>
                             </ul>
+                            <button type="button" onClick={() => this.props.deleteFriend(friend.id)}>Delete Friend</button>
                        </div>
                     })}
                 </React.Fragment>
@@ -41,4 +42,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchFriends })(FriendsList);
+export default connect(mapStateToProps, { fetchFriends, deleteFriend })(FriendsList);
