@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+
 import { connect } from 'react-redux';
 import { fetchData } from '../actions';
 
+import FriendList from './FriendList';
+
 class App extends Component {
+
   componentDidMount() {
     this.props.fetchData();
-  }
+}
 
   render() {
     return (
@@ -16,30 +20,7 @@ class App extends Component {
         {
           this.props.fetchingFriends
             ? <img src={logo} />
-            : <table>
-              <thead>
-                <tr>
-                  <th> Name </th>
-                  <th> Age </th>
-                  <th> Email </th>
-                  <th> Delete </th>
-                  <th> Update </th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.props.friends.map(friend => {
-                  return (
-                    <tr key={friend.id}>
-                      <td>{friend.name}</td>
-                      <td>{friend.age}</td>
-                      <td>{friend.email}</td>
-                      <td className="delete-update"><button className="deleteButton">X</button></td>
-                      <td className="delete-update"><button className="updateButton">&#10004;</button></td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
+            : <FriendList friends={this.props.friends}/>
         }
         <div className="add-form">
           <label htmlFor="name">Name</label>
@@ -57,17 +38,17 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    fetchingFriends: state.fetchingFriends,
-    friendsFetched: state.friendsFetched,
-    friendsSaved: state.friendsSaved,
-    savingFriends: state.savingFriends,
-    updatingFriend: state.updatingFriend,
-    friendUpdated: state.friendUpdated,
-    deletingFriend: state.deletingFriend,
-    friendDeleted: state.friendDeleted,
-    friends: state.friends,
-    error: state.error
+      fetchingFriends: state.fetchingFriends,
+      friendsFetched: state.friendsFetched,
+      friendsSaved: state.friendsSaved,
+      savingFriends: state.savingFriends,
+      updatingFriend: state.updatingFriend,
+      friendUpdated: state.friendUpdated,
+      deletingFriend: state.deletingFriend,
+      friendDeleted: state.friendDeleted,
+      friends: state.friends,
+      error: state.error
   }
 }
 
-export default connect(mapStateToProps, { fetchData })(App);
+export default connect(mapStateToProps, {fetchData})(App);
