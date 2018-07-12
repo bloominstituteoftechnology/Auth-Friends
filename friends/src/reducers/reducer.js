@@ -22,6 +22,8 @@ export const friendReducer = (state = initialState, action) => {
       let currentFriends = state.friends.slice();
       currentFriends.push(action.payload);
       return Object.assign({}, state, { friends: action.payload });
+    case ERROR:
+      return Object.assign({}, state, { error: "Error, no friends found!" });
     default:
       return state;
   }

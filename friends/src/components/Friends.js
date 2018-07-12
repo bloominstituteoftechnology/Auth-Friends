@@ -1,5 +1,5 @@
 import React from "react";
-import { getFriends, submitNewFriend } from "../actions/action";
+import { getFriends, submitNewFriend, deleteFriend } from "../actions/action";
 import { connect } from "react-redux";
 import logo from "../logo.svg";
 
@@ -38,7 +38,14 @@ class Friends extends React.Component {
         </header>
         <div>
           {this.props.friends.map(friend => {
-            return <div key={Math.random()}>{friend.name}</div>;
+            return (
+              <div key={Math.random()}>
+                {friend.name}
+                <button onClick={() => this.props.deleteFriend(friend.id)}>
+                  Delete
+                </button>
+              </div>
+            );
           })}
         </div>
         <form>
@@ -65,6 +72,7 @@ class Friends extends React.Component {
           />
           <button onClick={this.submitNewFriend}>Add New Friend</button>
         </form>
+        <p>{this.props.error}</p>
       </div>
     );
   }
@@ -73,11 +81,12 @@ class Friends extends React.Component {
 const mapStateToProps = state => {
   return {
     friends: state.friends,
-    fetching: state.fetchingFriends
+    fetching: state.fetchingFriends,
+    error: state.error
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getFriends, submitNewFriend }
+  { getFriends, submitNewFriend, deleteFriend }
 )(Friends);
