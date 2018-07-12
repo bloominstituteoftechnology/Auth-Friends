@@ -14,11 +14,14 @@ class App extends Component {
     return (
       <div className="App">
         {this.props.fetching ? (
-          <img
-            src="https://media3.giphy.com/media/IwSG1QKOwDjQk/giphy.gif"
-            alt="loading animation"
-            className="loading-animation"
-          />
+          <div>
+            <p>CONTACTING SERVER...</p>
+            <img
+              src="https://media1.giphy.com/media/3o8doMpxlWKWYqk6AM/giphy.gif"
+              alt="loading animation"
+              className="loading-animation"
+            />
+          </div>
         ) : null}
         {this.props.friends.map(friend => {
           return <div key={friend.name}>{friend.name}</div>;
