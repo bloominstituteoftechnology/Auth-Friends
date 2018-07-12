@@ -6,6 +6,7 @@ import './App.css';
 
 class App extends Component {
   componentDidMount() {
+    this.props.getFriends();
   }
   render() {
     return (
@@ -18,7 +19,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    friends: state
+    friends: state.friendReducer.friends.data
 
   }
 }
