@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddFriendForm from './components/AddFriendForm'
 import { connect } from 'react-redux'
 import { getFriends } from './actions/index'
 
@@ -10,7 +11,7 @@ class App extends Component {
     return (
       <div>
         {this.props.friends.map(friend => 
-          <div key={friend.id}>
+          <div key={friend.id} style={{border: '1px solid black'}}>
             <h3>NAME:</h3>
             <span>{friend.name}</span>
             <h3>AGE:</h3>
@@ -19,6 +20,7 @@ class App extends Component {
             <span>{friend.email}</span>
           </div>
         )}
+        <AddFriendForm />
       </div>
     );
   }
