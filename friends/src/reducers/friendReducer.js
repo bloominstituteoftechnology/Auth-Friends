@@ -1,4 +1,4 @@
-import {FETCHING_FRIENDS, FETCHED_FRIENDS, FETCHING_FRIENDS_ERROR, SAVING_FRIEND, SAVED_FRIEND SAVING_FRIEND_ERROR, UPDATING_FRIEND, UPDATED_FRIEND, DELETING_FRIEND, DELETED_FRIEND} from '../actions';
+import {FETCHING_FRIENDS, FETCHED_FRIENDS, FETCHING_FRIENDS_ERROR, SAVING_FRIEND, SAVED_FRIEND, SAVING_FRIEND_ERROR, UPDATING_FRIEND, UPDATED_FRIEND, DELETING_FRIEND, DELETED_FRIEND} from '../actions';
 const initialState ={
   fetchingFriends: false,
   friendsFetched: false,
@@ -11,7 +11,7 @@ const initialState ={
   friends: [],
   error: null
 };
-export const charsReducer = (state = initialState, action) => {
+export const friendReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_FRIENDS:
       return {...state, fetching: true};
