@@ -1,22 +1,13 @@
 import React from 'react';
 import Friend from './Friend';
-import { connect } from 'react-redux';
-import { deleteFriend, setName } from '../actions';
 
 const Friends = props => {
     const friends = props.friends.slice().reverse();
-    console.log(friends);
     return (
         <div className='friends-container'>
-            {friends.map(friend => <Friend key={friend.id} friend={friend} deleteFriend={props.deleteFriend} setName={props.setName} />)}
+            {friends.map(friend => <Friend key={friend.id} friend={friend} onRef={props.onRef} deleteFriend={props.deleteFriend} setName={props.setName} />)}
         </div>
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        friendName: state.friendsReducer.friendName
-    }
-}
-
-export default connect(mapStateToProps, { deleteFriend, setName })(Friends);
+export default Friends;

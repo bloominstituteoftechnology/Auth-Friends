@@ -9,7 +9,7 @@ const initialState = {
     friendUpdated: false,
     deletingFriend: false,
     friendDeleted: false,
-    friendName: null,
+    friendName: false,
     friends: [],
     error: null
 }

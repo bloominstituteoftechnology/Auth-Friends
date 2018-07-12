@@ -7,6 +7,15 @@ import Friends from './components/Friends';
 import CreateFriendForm from './components/CreateFriendForm';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.array = [];
+    this.state = {
+      onRef: null
+    }
+  }
+  
   componentDidMount() {
     this.props.getFriends();
   }
@@ -21,7 +30,24 @@ class App extends Component {
           ) :
             <div>
               <CreateFriendForm />
-              <Friends friends={this.props.friends} />
+
+              <div className='open-close-container'>
+                <button onClick={() => this.state.onRef.forEach(name => name.openCloseAll(true))}>Open All</button>
+                <button onClick={() => this.state.onRef.forEach(name => name.openCloseAll(false))}>Close All</button>
+              </div>
+
+              <Friends onRef={(ref, unmount) => {
+                if (unmount) {
+                  this.array.splice(ref.props.friend.id - 1, 1);
+                  this.array.sort((a, b) => a.props.friend.id > b.props.friend.id)
+                  this.setState({ onRef: this.array });
+                } else {
+                  this.array.push(ref);
+                  this.array.sort((a, b) => a.props.friend.id > b.props.friend.id)
+                  this.setState({ onRef: this.array });
+                }
+              }
+              } friends={this.props.friends} />
             </div>
         }
 
