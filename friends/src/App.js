@@ -46,11 +46,29 @@ class App extends Component {
   };
 
   handleUpdate = (id) => {
-    let friend = this.props.friends.filter((friend) => friend.id === id ? friend : null);
-    console.log(friend);
     if(this.state.name === '' && this.state.age === '' && this.state.email === '') {
       return null;
     }
+
+    const friend = this.props.friends.filter((friend) => friend.id === id ? friend : null);
+    const updatedFriend = {
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email
+    };
+
+    for(let key in updatedFriend) {
+      if(updatedFriend[key] === '') {
+        updatedFriend[key] = friend[0][key]
+      }  
+    };
+    
+    this.props.updateReq(id, updatedFriend);
+    this.setState({
+      name: '',
+      age: '',
+      email: ''
+    });
   };
 
   render() {
