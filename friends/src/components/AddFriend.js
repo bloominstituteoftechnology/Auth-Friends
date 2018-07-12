@@ -5,18 +5,14 @@ import Styled from 'styled-components';
 
 const FormContainer = Styled.div`
     display: flex;
-    flex-direction: column;
-    width: 30%;
+    width: 70%;
     align-items: center;
-    margin: 20px;
-    border: 1px solid black;
-    padding: 20px;
+
+
 `;
 
 const Formbox = Styled.form`
 display: flex;
-flex-direction: column;
-align-items: center;
 width: 100%;
 padding: 10px;
 `;
@@ -27,10 +23,9 @@ const InputField = Styled.input`
 `;
 
 const SubmitButton = Styled.button `
-    width: 50%;
-    height: 40px;
-    background: #A18A61;
-    border-radius: 10px;
+    width: 15%;
+    height: 30px;
+
     font-size: 16px;
 `;
 
@@ -64,7 +59,7 @@ class AddFriend extends React.Component {
     render() {
     return (
         <FormContainer>
-            <h2>Add a new friend</h2>
+            <h4>Add a new friend</h4>
         <Formbox onChange={this.updateForm}>
             <InputField 
                 type='text'

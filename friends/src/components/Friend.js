@@ -9,19 +9,22 @@ const Friendbox = Styled.div`
     width: 30%;
     padding: 20px;
     margin: 20px;
-    background: #DDDFAB;
+    background: #F7EAC7;
     text-align: center;
-    box-shadow: 5px 5px;
+    box-shadow: 5px 5px #637E74;
+`;
+
+const HeadText = Styled.h2`
+    color: #194850;
 `;
 
 const Friend = props => {
     return (
         <Friendbox>
-           <h2 onClick={() =>props.toggleInfo(props.friend.id)}> {props.friend.name}</h2>
+           <HeadText onClick={() =>props.toggleInfo(props.friend.id)}> {props.friend.name}</HeadText>
            {props.showInfo === true && 
            (<div><p> {props.friend.age} years old</p><p>{props.friend.email}</p></div>) }
            {console.log(props.friend.id)}
-           {console.log(props.friends[props.friend.id-1].id)}
             {props.showForm === true ? <UpdateForm id={props.friends[props.friend.id-1].id}/> : null} 
             <button onClick={() => props.toggleForm(props.friend.id)}>Edit</button>
             <button onClick={()=>props.deleteFriend(props.friend.id)}>Delete</button>
