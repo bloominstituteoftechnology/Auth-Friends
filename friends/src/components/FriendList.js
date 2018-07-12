@@ -11,7 +11,6 @@ const FriendList = props => {
                     <th> Age </th>
                     <th> Email </th>
                     <th> Delete </th>
-                    <th> Update </th>
                 </tr>
             </thead>
             <tbody>
