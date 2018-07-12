@@ -1,5 +1,4 @@
 import axios from 'axios'
-import NewFriend from '../containers/NewFriend'
 
 //   friendsSaved: false,
 //   savingFriends: false,
@@ -13,7 +12,7 @@ const url = `http://localhost:5000/api/friends`
 export const FETCHING = 'FETCHING'
 export const GET_FRIENDS = 'GET_FRIENDS'
 export const ERROR = 'ERROR'
-export const POST_FRIEND = 'POST_FRIEND'
+export const POSTED_FRIEND = 'POSTED_FRIEND'
 export const POSTING_FRIEND = 'POSTING_FRIEND'
 
 export const fetchFriends = () => {
@@ -31,17 +30,18 @@ export const fetchFriends = () => {
 
 export const addFriend = (newFriend) => {
   console.log(newFriend)
-  const request = axios.post(url, {
+  const friend = {
     name: newFriend.name,
     age: newFriend.age,
     email: newFriend.email
-  })
+  }
+  const request = axios.post(url, friend)
   return (dispatch) => {
     dispatch({ type: POSTING_FRIEND, payload: true })
     request
       .then((res) => {
-        dispatch({ type: POST_FRIEND, payload: res.data })
         dispatch({ type: POSTING_FRIEND, payload: false })
+        dispatch({ type: GET_FRIENDS, payload: res.data })
       })
       .catch((error) => dispatch({ type: ERROR, payload: error }))
   }

@@ -14,9 +14,7 @@ class FriendsList extends React.Component {
         ) : (
           <ul>
             {this.props.friends.map((friend) => {
-              return friend.map((friend, index) => {
-                return <li key={friend.name + index}>{friend.name}</li>
-              })
+              return <li key={friend.id}>{friend.name}</li>
             })}
           </ul>
         )}
