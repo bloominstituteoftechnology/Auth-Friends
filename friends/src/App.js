@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddFriendForm from './components/AddFriendForm'
 import { connect } from 'react-redux'
-import { getFriends } from './actions/index'
+import { getFriends, deleteFriend } from './actions/index'
 
 class App extends Component {
   componentDidMount() {
@@ -18,6 +18,7 @@ class App extends Component {
             <span>{friend.age}</span>
             <h3>EMAIL:</h3>
             <span>{friend.email}</span>
+            <button onClick={() => deleteFriend(friend.id)}>delete</button>
           </div>
         )}
         <AddFriendForm />
@@ -32,4 +33,4 @@ const mapStateToProps = state => (
   }
 )
 
-export default connect(mapStateToProps, { getFriends })(App);
+export default connect(mapStateToProps, { getFriends, deleteFriend })(App);
