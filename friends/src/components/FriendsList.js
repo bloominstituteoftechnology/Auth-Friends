@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import {getFriends, getFetchState } from '../reducers/reducerIndex';
-import { fetchFriends } from '../actions/actions';
+import * as actions from '../actions/actions';
 import Friend from './Friend';
 
  class FriendsList extends Component {
@@ -29,4 +29,4 @@ const mapStateToProps = state => (
   }
 );
 
-export default connect(mapStateToProps, { fetchFriends })(FriendsList);
+export default connect(mapStateToProps, actions)(FriendsList);
