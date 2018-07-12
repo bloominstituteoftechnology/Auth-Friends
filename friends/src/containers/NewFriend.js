@@ -1,29 +1,60 @@
 import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
+import { addFriend } from '../actions/index'
 
 class NewFriend extends Component {
-  renderField (field) {
-    return (
-      <div>
-        <label>{field.label}</label>
-        <input {...field.input} />
-      </div>
-    )
+  constructor (props) {
+    super(props)
+    this.state = {
+      name: '',
+      age: '',
+      email: ''
+    }
+  }
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
   }
   render () {
     return (
-      <form>
-        <Field
-          name='name'
-          label='Enter Contact Name'
-          component={this.renderField}
-        />
-        <Field name='age' label='Enter Age' component={this.renderField} />
-        <Field name='email' label='Enter Email' component={this.renderField} />
-        <button type='submit'>Submit</button>
-      </form>
+      <div>
+        <form
+          type='submit'
+          onSubmit={(e) => {
+            console.log(this.state)
+            e.preventDefault()
+            this.props.addFriend(this.state)
+            this.setState({ name: '', age: '', email: '' })
+          }}
+        >
+          <input
+            type='text'
+            name='name'
+            placeholder='Add new Friend'
+            value={this.state.name}
+            onChange={this.handleChange}
+            required
+          />
+          <input
+            type='number'
+            name='age'
+            placeholder='Age'
+            value={this.state.age}
+            onChange={this.handleChange}
+            required
+          />
+          <input
+            type='text'
+            name='email'
+            placeholder='Add email'
+            value={this.state.email}
+            onChange={this.handleChange}
+            required
+          />
+          <button type='submit'>Add Friend</button>
+        </form>
+      </div>
     )
   }
 }
 
-export default reduxForm({ form: 'NewFriendForm' })(NewFriend)
+export default connect(null, { addFriend })(NewFriend)
