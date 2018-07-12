@@ -5,6 +5,11 @@ import "./App.css";
 import { fetchFriends } from "./actions";
 
 class App extends Component {
+  componentDidMount() {
+    let URL = "http://localhost:5000/api/friends";
+    this.props.fetchFriends(URL);
+  }
+
   render() {
     return (
       <div className="App">
