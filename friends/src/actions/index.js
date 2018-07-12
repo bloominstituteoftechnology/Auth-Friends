@@ -8,9 +8,12 @@ export const FRIEND_SAVED = 'FRIEND_SAVED';
 export const FRIEND_NOT_SAVED = 'FRIEND_NOT_SAVED';
 export const UPDATING_FRIEND = 'UPDATING_FRIEND';
 export const FRIEND_UPDATED = 'FRIEND_UPDATED';
+export const FRIEND_NOT_UPDATED = 'FRIEND_NOT_UPDATED';
 export const DELETE_FRIEND = 'DELETE_FRIEND';
 export const FRIEND_DELETED = 'FRIEND_DELETED';
 export const FRIEND_NOT_DELETED = 'FRIEND_NOT_DELETED';
+export const TOGGLE_FORM = 'TOGGLE_FORM';
+export const TOGGLE_INFO = 'TOGGLE_INFO';
 
 export function fetchFriends() {
     return (dispatch) => {
@@ -41,7 +44,7 @@ export function addNewFriend(friend) {
 }
 
 export function deleteFriend(id) {
-    return (dispatch => {
+    return (dispatch) => {
         dispatch({type: DELETE_FRIEND})
         axios.delete(`http://localhost:5000/api/friends/${id}`)
         .then(({data}) => {
@@ -50,5 +53,35 @@ export function deleteFriend(id) {
         .catch(err => {
             dispatch({type: FRIEND_NOT_DELETED, error: err})
         })
-    })
+    }
 }
+
+export function updateFriend(id) {
+    return (dispatch) => {
+        dispatch({type: UPDATING_FRIEND})
+        console.log(id)
+        axios.put(`http://localhost:5000/api/friends/${id}`)
+        .then(({data}) => {
+          
+            dispatch({type: FRIEND_UPDATED, payload: data})
+        })
+        .catch(err => {
+            dispatch({type: FRIEND_NOT_UPDATED, error: err})
+        })
+    }
+}
+
+export const toggleForm = (id) => {
+    return {
+        type: TOGGLE_FORM, 
+        id: id
+    }
+}
+
+export const toggleInfo = (id) => {
+    return {
+        type: TOGGLE_INFO,
+        id: id
+    }
+}
+

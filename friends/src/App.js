@@ -4,6 +4,14 @@ import { fetchFriends } from './actions';
 import { connect } from 'react-redux';
 import Friend from './components/Friend';
 import AddFriend from './components/AddFriend';
+import Styled from 'styled-components';
+
+const Container = Styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100vw;
+`;
 
 class App extends Component {
 
@@ -15,14 +23,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-      <ul>
+      <Container>
+        <h1> Friends List</h1>
          {this.props.friends.map(friend => {
           return <Friend key={friend.id} friend={friend} />
         })}
-        </ul>
+        
         <AddFriend />
-      </div>
+      </Container>
     );
   }
 }

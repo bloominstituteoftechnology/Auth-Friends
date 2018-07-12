@@ -3,7 +3,9 @@ import { FETCH_FRIENDS,
     FRIENDS_FETCHED,
     SAVING_FRIEND,
     FRIEND_SAVED,
-    FRIEND_NOT_SAVED } from './../actions';
+    FRIEND_NOT_SAVED,
+    TOGGLE_INFO,
+    TOGGLE_FORM } from './../actions';
 
 const initialState = {
     friends: [],
@@ -15,7 +17,9 @@ const initialState = {
     friendUpdated: false,
     deletingFriend: false,
     friendsDeleted: false,
-    error: null
+    error: null,
+    showForm: false, 
+    showInfo: false 
 }
 
 export const friendsReducer = (state = initialState, {type, payload}) => {
@@ -26,6 +30,10 @@ export const friendsReducer = (state = initialState, {type, payload}) => {
             return Object.assign({}, state, {fetching: false, fetched: true, friends: payload})
         case FETCH_FAILED:
             return Object.assign({}, state, {fetching: false, error: payload})
+        case TOGGLE_INFO: 
+            return {...state, showInfo: !state.showInfo}
+        case TOGGLE_FORM:
+            return Object.assign({}, state, {showForm: !state.showForm});
         default: 
             return state
     }
