@@ -25,7 +25,8 @@ const SaveFriend = props => {
                 />
                 <button type="submit">Submit</button>
             </form>
-            <p>Fill in form and click Edit to update friend</p>
+            <p>Fill in form and click Submit to add friend</p>
+            <p>Or click Edit to update friend</p>
         </div>
     );
 };
