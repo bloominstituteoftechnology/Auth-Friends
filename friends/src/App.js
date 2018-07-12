@@ -23,14 +23,16 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
+     <div>
         <h1> Friends List</h1>
+        <Container>
          {this.props.friends.map(friend => {
           return <Friend key={friend.id} friend={friend} />
         })}
-        
+       
         <AddFriend />
       </Container>
+       </div>
     );
   }
 }

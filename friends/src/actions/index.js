@@ -56,13 +56,12 @@ export function deleteFriend(id) {
     }
 }
 
-export function updateFriend(id) {
+export function updateFriend(id, updatedFriend) {
     return (dispatch) => {
         dispatch({type: UPDATING_FRIEND})
         console.log(id)
-        axios.put(`http://localhost:5000/api/friends/${id}`)
+        axios.put(`http://localhost:5000/api/friends/${id}`, updatedFriend)
         .then(({data}) => {
-          
             dispatch({type: FRIEND_UPDATED, payload: data})
         })
         .catch(err => {

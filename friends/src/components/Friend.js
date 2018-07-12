@@ -20,7 +20,9 @@ const Friend = props => {
            <h2 onClick={() =>props.toggleInfo(props.friend.id)}> {props.friend.name}</h2>
            {props.showInfo === true && 
            (<div><p> {props.friend.age} years old</p><p>{props.friend.email}</p></div>) }
-            {props.showForm === true ? <UpdateForm friend={props.friend}/> : null} 
+           {console.log(props.friend.id)}
+           {console.log(props.friends[props.friend.id-1].id)}
+            {props.showForm === true ? <UpdateForm id={props.friends[props.friend.id-1].id}/> : null} 
             <button onClick={() => props.toggleForm(props.friend.id)}>Edit</button>
             <button onClick={()=>props.deleteFriend(props.friend.id)}>Delete</button>
         </Friendbox>

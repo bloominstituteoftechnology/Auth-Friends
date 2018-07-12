@@ -15,20 +15,19 @@ class UpdateForm extends React.Component {
     editForm = (event) => {
         event.preventDefault();
         this.setState({[event.target.name]: event.target.value})
-        console.log(this.props);
+        console.log(this.props.friends[this.props.id-1]);
     }
 
-    updateFriend = (event) => {
+    updateFriend = (event, index) => {
         event.preventDefault();
-        console.log(this.state);
-        const id = this.state.match.params.id
-        this.props.updateFriend(
+        const id = this.props.friends[this.props.id-1].id
+        console.log(id);
+        this.props.updateFriend(this.props.friends[this.props.id-1].id,
            { name: this.state.name,
             age: this.state.age,
             email: this.state.email,
-        id: id}
+        }
         );
-        console.log(this.state.name)
         this.setState({name: '', age: 0, email: ''})
     }
 
@@ -66,7 +65,7 @@ class UpdateForm extends React.Component {
 
 const mapStateToProps = state => {
     return {
-      friend: state.friends.friends.id
+      friends: state.friends.friends
     }
   }
   
