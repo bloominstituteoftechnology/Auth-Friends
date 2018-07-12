@@ -19,6 +19,7 @@ export const fetchFriends = () => {
     dispatch({ type: FETCHING, payload: true })
     request
       .then((res) => {
+        console.log(res)
         dispatch({ type: GET_FRIENDS, payload: res.data })
         dispatch({ type: FETCHING, payload: false })
       })

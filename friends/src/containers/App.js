@@ -7,20 +7,27 @@ class App extends React.Component {
     this.props.fetchFriends()
   }
   render () {
+    console.log(this.props.friends, this.props.api.fetching)
     return (
       <div className='App'>
-        <header className='App-header'>
-          <h1 className='App-title'>Welcome to React</h1>
-        </header>
-        <p className='App-intro'>
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {this.props.api.fetching ? (
+          <div>Loading ....</div>
+        ) : (
+          <ul>
+            {this.props.friends.map((friend) => {
+              return friend.map((friend, index) => {
+                return <li key={friend.name + index}>{friend.name}</li>
+              })
+            })}
+          </ul>
+        )}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log('in map state', state)
   return {
     friends: state.friends,
     api: state.api
