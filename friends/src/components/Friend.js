@@ -1,8 +1,11 @@
 import React from 'react';
+import '../App.css';
 
 const Friend = props => {
     return (
-        <div>Friend</div>
+        <div className="friend">
+            {props.friend.name}
+        </div>
     );
 };
 

@@ -16,10 +16,10 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          {/* <h1 className="App-title">Welcome to React</h1> */}
+          <h1 className="App-title">Welcome to Redux - Friends</h1>
         </header>
-        <Friends />
-        <SaveFriend />
+        {this.props.fetched ? <Friends friends={this.props.friends} /> : <div>Loading...</div>}
+        {this.props.fetched ? <SaveFriend /> : null}
       </div>
     );
   }
@@ -28,7 +28,8 @@ class App extends Component {
 const mapStateToProps = state => {
   // console.log(state);
   return {
-    friends: state.friendsReducer.friends
+    friends: state.friendsReducer.friends,
+    fetched: state.friendsReducer.fetched
   }
 }
 
