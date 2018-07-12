@@ -5,6 +5,8 @@ export const FETCHED = "FETCHED";
 export const ERROR = "ERROR";
 export const SAVING = "SAVING";
 export const SAVED = "SAVED";
+export const UPDATING = "UPDATING";
+export const UPDATED = "UPDATED";
 
 export const fetchData = () => {
   const request = axios.get('http://localhost:5000/api/friends');
@@ -20,13 +22,24 @@ export const fetchData = () => {
 
 export const saveData = friend => {
   const request = axios.post('http://localhost:5000/api/friends', friend);
-  console.log("no, didn't happen");
   return (dispatch) => {
     dispatch({type: SAVING});
     request.then(response => {
       dispatch({type: SAVED, payload: response.data});
     }).catch(err => {
       dispatch({type: ERROR, payload: err});
+    })
+  }
+}
+
+export const updateData = (id, friend) => {
+  const request = axios.put(`http://localhost:5000/api/friends/${id}`, friend);
+  return (dispatch) => {
+    dispatch({type: UPDATING});
+    request.then(response => {
+      dispatch({type: UPDATED, payload: response.data});
+    }).catch(err => {
+      dispatch({type: ERROR, payload: err})
     })
   }
 }
