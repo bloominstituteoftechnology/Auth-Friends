@@ -1,37 +1,47 @@
 import { combineReducers } from 'redux';
-import { FETCH_START } from '../actions/actions'
-import { FETCH_ERROR } from '../actions/actions'
-import { FETCH_SUCCESS } from '../actions/actions'
+import { FETCH_SUCCESS } from '../actions/actions';
+import { UPDATE_FRIEND_SUCCESS } from '../actions/actions';
 
 
-const byId = (state = {}, action) => {
+const fillFriendsById = (state, action) => {
+  const { payload: resultArr } = action;
+  const newState = {...state}
+  resultArr.forEach((friend) => {
+  newState[friend.id] = friend;
+});
+return newState;
+}
+
+
+const byIdReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_SUCCESS: {
-      const { payload: resultArr } = action;
-      const newState = {...state}
-      resultArr.forEach((friend) => {
-        newState[friend.id] = friend;
-      });
-      return newState;
+      return fillFriendsById (state, action);
+    }
+    case UPDATE_FRIEND_SUCCESS: {
+      return fillFriendsById (state, action);
     }
     default:
       return state;
   }
 };
 
-const allIds = (state = [], action) => {
+const allIdsReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_SUCCESS: {
       const { payload: resultArr } = action;
-      const resultArrIds = resultArr.map(friend => friend.id);
-      return [...state, ...resultArrIds];
+      return [...state, ...resultArr.map(friend => friend.id)];
+    }
+    case UPDATE_FRIEND_SUCCESS: {
+      const { payload: resultArr } = action;
+      return [...state, ...resultArr.map(friend => friend.id)];
     }
     default:
       return state;
   }
 };
 
-const friendsReducer = combineReducers({allIds, byId});
+const friendsReducer = combineReducers({allIds: allIdsReducer, byId: byIdReducer});
 
 export default friendsReducer;
 

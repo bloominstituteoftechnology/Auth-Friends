@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/actions';
 import FriendForm from './FriendForm';
 
-export default class Friend extends Component {
+class Friend extends Component {
   constructor(props) {
     super(props);
     const { friend } = props;
@@ -11,18 +13,19 @@ export default class Friend extends Component {
       email: friend.email,
       isEditing: false,
     };
-    this.handleFriendForm = this.handleFriendForm.bind(this);
+    this.id = friend.id;
+    this.handleFriendFormSubmit = this.handleFriendFormSubmit.bind(this);
   }
 
   editFriend = () => {
       this.setState({isEditing: !this.state.isEditing});
   };
 
-  handleFriendForm = (e) => {
+  handleFriendFormSubmit = (e) => {
       e.preventDefault();
       const {isEditing, ...rest} = this.state;
-      let updatedFriend = Object.assign({id: this.props.id}, rest);
-      this.props.handleFriendUpdate(updatedFriend);
+      let updatedFriend = {id: this.id, ...rest};
+      this.props.updateFriend(updatedFriend);
       this.setState({isEditing: false});
   };
 
@@ -41,7 +44,7 @@ export default class Friend extends Component {
             ageInput={this.state.age}
             emailInput={this.state.email}
             handleInput={this.handleInput}
-            handleFriendForm={this.handleFriendForm}
+            handleSubmit={this.handleFriendFormSubmit}
         />
       );
   }
@@ -54,6 +57,11 @@ export default class Friend extends Component {
       <button onClick={() => {this.props.handleDeleteFriend(this.props.id)}}>Delete</button>
       {this.presentEdit()}
     </li>
-  
   )};
 }
+
+// const mapStateToProps = (state, ownProps) => ({
+  
+// });
+
+export default connect(null, actions)(Friend);

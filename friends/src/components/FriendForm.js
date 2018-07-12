@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function FriendForm(props) {
   return (
-    <form onSubmit={props.handleFriendForm}>
+    <form onSubmit={props.handleSubmit}>
       <div>
         <input
           type="text"
