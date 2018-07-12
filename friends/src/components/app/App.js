@@ -10,8 +10,14 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-          Hello World
+      <div className="App" friends={this.props.friends}>
+        {this.props.fetching ? (<img src="http://placekitten.com/200/300" className="App-logo" alt="logo" />) : (
+          <ul friends={this.props.friends}>
+            {this.props.friends.map(friend => {
+               return <li key={friend.name}>{friend.name}</li>;
+             })}
+          </ul>)
+          }
       </div>
     );
   }
@@ -19,7 +25,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    friends: state.friendReducer.friends.data
+    friends: state.friendReducer.friends.data,
+    fetching: state.friendReducer.fetchingFriends
 
   }
 }
