@@ -55,6 +55,11 @@ class SingleFriend extends React.Component {
           onChange={this.handleChange}
         />
         <button>Update</button>
+        <div>
+          <p>{this.props.friends.friend.name}</p>
+          <p>{this.props.friends.friend.age}</p>
+          <p>{this.props.friends.friend.email}</p>
+        </div>
       </form>
     );
   }
