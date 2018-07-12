@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import { fetchReq } from './actions';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchReq();
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,4 +24,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  // console.log(state);
+  return {
+    friends: state.friendsReducer.friends
+  }
+}
+
+export default connect(mapStateToProps, { fetchReq })(App);
