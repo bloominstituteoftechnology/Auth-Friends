@@ -26,6 +26,7 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    if(this.state.name === '' || this.state.age === '' || this.state.email === '') return null;
 
     const friend = {
       name: this.state.name,
@@ -71,6 +72,14 @@ class App extends Component {
     });
   };
 
+  handleClear = () => {
+    this.setState({
+      name: '',
+      age: '',
+      email: ''
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -82,7 +91,7 @@ class App extends Component {
           ? <Friends friends={this.props.friends} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate} />
           : <div>Loading...</div>}
         {this.props.fetched
-          ? <SaveFriend handleChange={this.handleChange} handleSubmit={this.handleSubmit} name={this.state.name} age={this.state.age} email={this.state.email} />
+          ? <SaveFriend handleChange={this.handleChange} handleSubmit={this.handleSubmit} handleClear={this.handleClear} name={this.state.name} age={this.state.age} email={this.state.email} />
           : null}
       </div>
     );
