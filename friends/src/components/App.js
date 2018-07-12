@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import './App.css';
 import {connect} from 'react-redux';
-import {fetchData, saveData, updateData} from '../actions';
+import {fetchData, saveData, updateData, deleteData} from '../actions';
 import FriendsList from './FriendsList'
 
 
@@ -40,6 +40,10 @@ class App extends Component {
     this.props.updateData(id, newEdits);
   }
 
+  handleDelete = (id) => {
+    this.props.deleteData(id);
+  }
+
 
   render() {
     return (
@@ -47,7 +51,7 @@ class App extends Component {
         <h1>Rest Assured...something is here</h1>
         <div>{this.props.fetching ? (
           <img src={logo} className="App-logo" alt="logo" />
-        ): <FriendsList friends={this.props.friends} handleUpdate={this.handleUpdate} />
+        ): <FriendsList friends={this.props.friends} handleUpdate={this.handleUpdate} handleDelete={this.handleDelete}/>
       }</div>
       <div className="add-friend">
         <form className="af-form" onSubmit={this.handleSubmit}>
@@ -85,8 +89,9 @@ const mapStateToProps = state => {
     fetching: state.friendsReducer.fetchingFriends,
     saving: state.friendsReducer.savingFriends,
     updating: state.friendsReducer.updatingFriend,
+    deleting: state.friendsReducer.deletingFriend,
     test: state
   }
 }
 
-export default connect(mapStateToProps, {fetchData, saveData, updateData})(App);
+export default connect(mapStateToProps, {fetchData, saveData, updateData, deleteData})(App);

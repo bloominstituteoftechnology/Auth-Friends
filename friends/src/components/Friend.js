@@ -23,6 +23,7 @@ class Friend extends React.Component {
       </div>
       {this.state.showEditForm ? <EditFriend handleUpdate={this.props.handleUpdate} friendID={this.props.friend.id} />: null}
       <button type="button" onClick={this.toggleEditForm}>Edit Friend</button>
+      <button type="button" onClick={() => this.props.handleDelete(this.props.friend.id)}>Delete Friend</button>
     </div>
   )
 }

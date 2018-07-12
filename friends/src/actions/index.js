@@ -7,6 +7,8 @@ export const SAVING = "SAVING";
 export const SAVED = "SAVED";
 export const UPDATING = "UPDATING";
 export const UPDATED = "UPDATED";
+export const DELETING = "DELETING";
+export const DELETED = "DELETED";
 
 export const fetchData = () => {
   const request = axios.get('http://localhost:5000/api/friends');
@@ -38,6 +40,18 @@ export const updateData = (id, friend) => {
     dispatch({type: UPDATING});
     request.then(response => {
       dispatch({type: UPDATED, payload: response.data});
+    }).catch(err => {
+      dispatch({type: ERROR, payload: err})
+    })
+  }
+}
+
+export const deleteData = (id) => {
+  const request = axios.delete(`http://localhost:5000/api/friends/${id}`);
+  return (dispatch) => {
+    dispatch({type: DELETING});
+    request.then(response => {
+      dispatch({type: DELETED, payload: response.data});
     }).catch(err => {
       dispatch({type: ERROR, payload: err})
     })
