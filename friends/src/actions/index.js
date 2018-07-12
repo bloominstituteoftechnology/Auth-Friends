@@ -3,6 +3,8 @@ import axios from 'axios';
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
+export const SAVING_FRIEND = 'SAVING_FRIEND';
+export const FRIEND_SAVED = 'FRIEND_SAVED';
 
 export const fetchData = () => {
     return (dispatch) => {
@@ -18,4 +20,19 @@ export const fetchData = () => {
                     error: err
                 }));
     }
-}
+};
+
+export const addFriend = (newFriend) => {
+    return (dispatch) => {
+        console.log(newFriend);
+        dispatch({type: SAVING_FRIEND});
+        
+        setTimeout(
+            dispatch({
+                type: FRIEND_SAVED,
+                payload: newFriend
+            }), 2000
+        )
+        
+    }
+};

@@ -1,4 +1,4 @@
-import { FETCHING, FETCHED, ERROR} from '../actions';
+import { FETCHING, FETCHED, ERROR, SAVING_FRIEND, FRIEND_SAVED } from '../actions';
 
 const initialState = {
     fetchingFriends: false,
@@ -16,11 +16,32 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case (FETCHING):
-            return Object.assign({}, state, {fetchingFriends: true})
+            return Object.assign({}, state, { fetchingFriends: true })
         case (FETCHED):
-            return Object.assign({}, state, {fetchingFriends: false, friendsFetched: true, friends: action.payload})
+            return Object.assign({}, state, { fetchingFriends: false, friendsFetched: true, friends: action.payload })
         case (ERROR):
-            return Object.assign({}, state, {error: action.error})
+            return Object.assign({}, state, { error: action.error })
+        case (SAVING_FRIEND):
+            return Object.assign({}, state, { fetchingFriends: false, friendsFetched: false, savingFriend: true, friendsSave: false })
+        case (FRIEND_SAVED):
+            //get next id
+            const currentIds = state.friends.map(friend => friend.id);
+            const nextId = Math.max(...currentIds) + 1;
+            let newFriends = state.friends.concat({...action.payload, id: nextId})
+            console.log(newFriends);
+                
+            return Object.assign({}, state, {
+                fetchingFriends: false, 
+                friendsFetched: false,
+                savingFriend: false,
+                friendsSave: true, 
+                friends: state.friends.concat({
+                    id: nextId, 
+                    name: action.payload.newName,
+                    age: Number(action.payload.newAge),
+                    email: action.payload.newEmail
+                })
+            })
         default:
             return state;
     }

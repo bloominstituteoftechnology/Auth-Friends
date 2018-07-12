@@ -88,3 +88,7 @@ input {
 .updateButton {
   float: right;
 }
+
+img {
+  height: 50px;
+}

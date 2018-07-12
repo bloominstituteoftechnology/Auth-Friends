@@ -6,12 +6,13 @@ import { connect } from 'react-redux';
 import { fetchData } from '../actions';
 
 import FriendList from './FriendList';
+import AddForm from './AddForm';
 
 class App extends Component {
 
   componentDidMount() {
     this.props.fetchData();
-}
+  }
 
   render() {
     return (
@@ -20,17 +21,13 @@ class App extends Component {
         {
           this.props.fetchingFriends
             ? <img src={logo} />
-            : <FriendList friends={this.props.friends}/>
+            : <FriendList friends={this.props.friends} />
         }
-        <div className="add-form">
-          <label htmlFor="name">Name</label>
-          <input type="text" id="name"/>
-          <label htmlFor="age">Age</label>
-          <input type="text" id="age"/>
-          <label htmlFor="email">Email</label>
-          <input type="text" id="email"/>
-          <button className="add-button">Add Friend</button>
-        </div>
+        {
+          (this.props.savingFriends && !this.props.friendsSaved)
+          ? <div>...Adding to Friend List</div>
+          : <AddForm />
+        }
       </div>
     );
   }
@@ -38,17 +35,17 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-      fetchingFriends: state.fetchingFriends,
-      friendsFetched: state.friendsFetched,
-      friendsSaved: state.friendsSaved,
-      savingFriends: state.savingFriends,
-      updatingFriend: state.updatingFriend,
-      friendUpdated: state.friendUpdated,
-      deletingFriend: state.deletingFriend,
-      friendDeleted: state.friendDeleted,
-      friends: state.friends,
-      error: state.error
+    fetchingFriends: state.fetchingFriends,
+    friendsFetched: state.friendsFetched,
+    friendsSaved: state.friendsSaved,
+    savingFriends: state.savingFriends,
+    updatingFriend: state.updatingFriend,
+    friendUpdated: state.friendUpdated,
+    deletingFriend: state.deletingFriend,
+    friendDeleted: state.friendDeleted,
+    friends: state.friends,
+    error: state.error
   }
 }
 
-export default connect(mapStateToProps, {fetchData})(App);
+export default connect(mapStateToProps, { fetchData })(App);
