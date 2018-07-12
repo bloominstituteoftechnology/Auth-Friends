@@ -6,6 +6,8 @@ import {
   ADDED,
   DELETING,
   DELETED,
+  EDITING,
+  EDITED,
 } from '../actions';
 
 const initialState = {
@@ -65,6 +67,19 @@ const rootReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         deletingFriend: true,
         friendDeleted: true,
+        friends: action.payload,
+      });
+
+    case EDITING:
+      return Object.assign({}, state, {
+        updatingFriend: true,
+        friendUpdated: false,
+      });
+
+    case EDITED:
+      return Object.assign({}, state, {
+        updatingFriend: true,
+        friendUpdated: true,
         friends: action.payload,
       });
 

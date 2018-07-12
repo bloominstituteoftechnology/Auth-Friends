@@ -7,6 +7,8 @@ export const ADDING = 'ADDING';
 export const ADDED = 'ADDED';
 export const DELETING = 'DELETING';
 export const DELETED = 'DELETED';
+export const EDITING = 'EDITING';
+export const EDITED = 'EDITED';
 
 export const fetchData = url => {
   return function(dispatch) {
@@ -39,6 +41,18 @@ export const deleteFriend = url => {
       .delete(url)
       .then(response => {
         dispatch({ type: DELETED, payload: response.data });
+      })
+      .catch(err => dispatch({ type: ERROR, payload: err }));
+  };
+};
+
+export const editFriend = (url, editedFriend) => {
+  return function(dispatch) {
+    dispatch({ type: EDITING });
+    axios
+      .put(url, editedFriend)
+      .then(response => {
+        dispatch({ type: EDITED, payload: response.data });
       })
       .catch(err => dispatch({ type: ERROR, payload: err }));
   };
