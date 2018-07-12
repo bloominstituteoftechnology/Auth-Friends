@@ -1,0 +1,9 @@
+export const MAKING_REQUEST = 'MAKING_REQUEST'; // request
+export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
+export const REQUEST_FAILED = 'REQUEST_FAILED';
+export const FETCH_FRIENDS = 'FETCH_FRIENDS';
+export const FETCH_SINGLE_FRIEND = 'FETCH_SINGLE_FRIEND';
+export const CREATE_FRIEND = 'CREATE_FRIEND';
+export const UPDATE_FRIEND = 'UPDATE_FRIEND';
+export const DELETE_FRIEND = 'DELETE_FRIEND';
+export const ERROR = 'ERROR';
