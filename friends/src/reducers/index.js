@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux';
-import { friendsReducer } from './friendsReducer';
+import { friendsReducer, newFriendReducer } from './friendsReducer';
+import { deleteFriendReducer } from './updateReducer';
 
 export const rootReducer = combineReducers({
-    friends: friendsReducer
+    friends: friendsReducer,
+    deleteFriendReducer,
+    newFriendReducer
 })

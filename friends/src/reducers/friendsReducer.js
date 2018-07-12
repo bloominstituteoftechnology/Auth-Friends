@@ -31,7 +31,7 @@ export const friendsReducer = (state = initialState, {type, payload}) => {
     }
 }
 
-export const newFriend = (state = initialState, {type, payload}) => {
+export const newFriendReducer = (state = initialState, {type, payload}) => {
     switch(type) {
         case SAVING_FRIEND:
             return Object.assign({}, state, {savingFriend: true})
@@ -39,5 +39,7 @@ export const newFriend = (state = initialState, {type, payload}) => {
             return Object.assign({}, state, {savingFriend: false, friendSaved: true, friends: payload})
         case FRIEND_NOT_SAVED:
         return Object.assign({}, state, {savingFriend: false, error: payload})
+        default: 
+            return state
     }
 }

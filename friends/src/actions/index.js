@@ -10,6 +10,7 @@ export const UPDATING_FRIEND = 'UPDATING_FRIEND';
 export const FRIEND_UPDATED = 'FRIEND_UPDATED';
 export const DELETE_FRIEND = 'DELETE_FRIEND';
 export const FRIEND_DELETED = 'FRIEND_DELETED';
+export const FRIEND_NOT_DELETED = 'FRIEND_NOT_DELETED';
 
 export function fetchFriends() {
     return (dispatch) => {
@@ -37,4 +38,17 @@ export function addNewFriend(friend) {
             dispatch({type: FRIEND_NOT_SAVED, error: err})
         })
     }
+}
+
+export function deleteFriend(id) {
+    return (dispatch => {
+        dispatch({type: DELETE_FRIEND})
+        axios.delete(`http://localhost:5000/api/friends/${id}`)
+        .then(({data}) => {
+            dispatch({type: FRIEND_DELETED, payload: data})
+        })
+        .catch(err => {
+            dispatch({type: FRIEND_NOT_DELETED, error: err})
+        })
+    })
 }
