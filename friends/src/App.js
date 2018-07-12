@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Friends from './components/Friends';
 import './App.css';
 
 class App extends Component {
   render() {
-    return <div className="App">howdy</div>;
+    return <Friends friends={this.props.friends} />;
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    friends: state.friends,
+  };
+};
+
+export default connect(mapStateToProps)(App);
