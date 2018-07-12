@@ -44,14 +44,43 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-.delete {
+.delete-update {
   text-align: center;
 }
 
-button {
+.updateButton {
+  border: none;
+  background: none;
+  color: green;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.deleteButton {
   border: none;
   background: none;
   color: red;
   font-weight: bold;
   cursor: pointer;
+}
+
+.add-form {
+  margin: 20px auto;
+  height: 180px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-button {
+  width: 100px;
+  margin-top: 20px;
+  background: green;
+  color: white;
+}
+
+input {
+  margin: 0 20px;
 }

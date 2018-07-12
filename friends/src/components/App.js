@@ -23,6 +23,7 @@ class App extends Component {
                   <th> Age </th>
                   <th> Email </th>
                   <th> Delete </th>
+                  <th> Update </th>
                 </tr>
               </thead>
               <tbody>
@@ -32,16 +33,23 @@ class App extends Component {
                       <td>{friend.name}</td>
                       <td>{friend.age}</td>
                       <td>{friend.email}</td>
-                      <td className="delete"><button>X</button></td>
+                      <td className="delete-update"><button className="deleteButton">X</button></td>
+                      <td className="delete-update"><button className="updateButton">&#10004;</button></td>
                     </tr>
                   )
                 })}
               </tbody>
             </table>
-          // <ul style={{}}>
-          //   {this.props.friends.map(friend => <li>{friend.name}</li>)}
-          // </ul>
         }
+        <div className="add-form">
+          <label htmlFor="name">Name</label>
+          <input type="text" id="name"/>
+          <label htmlFor="age">Age</label>
+          <input type="text" id="age"/>
+          <label htmlFor="email">Email</label>
+          <input type="text" id="email"/>
+          <button className="add-button">Add Friend</button>
+        </div>
       </div>
     );
   }
