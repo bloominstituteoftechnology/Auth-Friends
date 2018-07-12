@@ -15,6 +15,7 @@ class Friend extends Component {
     };
     this.id = friend.id;
     this.handleFriendFormSubmit = this.handleFriendFormSubmit.bind(this);
+    this.handleDeleteFriend = this.handleDeleteFriend.bind(this);
   }
 
   editFriend = () => {
@@ -28,6 +29,10 @@ class Friend extends Component {
       this.props.updateFriend(updatedFriend);
       this.setState({isEditing: false});
   };
+
+  handleDeleteFriend = () => {
+    this.props.deleteFriend(this.id);
+  }
 
   handleInput = e => {
     let fieldName = e.target.name;
@@ -54,7 +59,7 @@ class Friend extends Component {
     <li>
       <div>{`${friend.name}, age: ${friend.age}, email: ${friend.email}`}</div>
       <button onClick={this.editFriend}>Edit</button>
-      <button onClick={() => {this.props.handleDeleteFriend(this.props.id)}}>Delete</button>
+      <button onClick={this.handleDeleteFriend}>Delete</button>
       {this.presentEdit()}
     </li>
   )};

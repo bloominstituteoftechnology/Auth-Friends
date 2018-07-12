@@ -34,7 +34,7 @@ const allIdsReducer = (state = [], action) => {
     }
     case UPDATE_FRIEND_SUCCESS: {
       const { payload: resultArr } = action;
-      return [...state, ...resultArr.map(friend => friend.id)];
+      return [...resultArr.map(friend => friend.id)];
     }
     default:
       return state;

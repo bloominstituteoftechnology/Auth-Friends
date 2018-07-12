@@ -31,6 +31,19 @@ export const updateFriend = (friend) => dispatch => {
     })
     .catch(err => {
       console.log(err);
-      dispatch({ type: UPDATE_FRIEND_ERROR });
+      dispatch({ type: UPDATE_FRIEND_ERROR, payload: 'update' });
+    });
+};
+
+export const deleteFriend = (id) => dispatch => {
+  dispatch({ type: UPDATE_FRIEND_START });
+  axios
+    .delete(`${url}/friends/${id}`)
+    .then(response => {
+      dispatch({ type: UPDATE_FRIEND_SUCCESS, payload: response.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: UPDATE_FRIEND_ERROR, payload: 'delete'});
     });
 };
