@@ -63,8 +63,9 @@ app.post('/api/friends', (req, res) => {
   const friend = { id: getNextId(), ...req.body };
 
   friends = [...friends, friend];
-
+setTimeout(() => {
   res.send(friends);
+}, 1000);
 });
 
 app.put('/api/friends/:id', (req, res) => {

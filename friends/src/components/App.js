@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from '../logo.svg';
 import '../App.css';
-import {fetchingFriendsAction} from "../actions";
+import {fetchingFriendsAction, addFriend} from "../actions";
 
 
 class App extends Component {
@@ -26,6 +26,11 @@ changeHandler = event => {
 
 };
 
+addFriendHandler = event => {
+	this.props.addFriend(this.state.name, this.state.age, this.state.email);
+}
+
+
   render() {
     return (
       <div className="App">
@@ -34,13 +39,20 @@ changeHandler = event => {
         ) : (
         <div>  <ul>
             {this.props.friends.map(friend => {
-              return <li key={friend.id}>{friend.name}</li>;
+              return <li key={friend.id}>{friend.name}, {friend.age}, {friend.email}</li>;
             })}
           </ul>
+
+		<div>{this.props.savingFriends ? (
+                <h1>Saving Friends ..</h1>
+        ) : (null)}
+                        </div>
 		
 		<input onChange={this.changeHandler} type="text" name="name" placeholder="Name" value={this.state.name} />
 		<input onChange={this.changeHandler} type="number" name="age" placeholder="Age" value={this.state.age} />		
 		<input onChange={this.changeHandler} type="text" name="email" placeholder="Email" value={this.state.email} />
+
+		<button onClick={()=> this.addFriendHandler()}>Add New Friend</button>
 
 </div>
         )}
@@ -53,10 +65,11 @@ changeHandler = event => {
 const mapStateToProps = state => {
   return {
           friends: state.friends,
-          fetching: state.fetchingFriends
+          fetching: state.fetchingFriends,
+	  savingFriends: state.savingFriends
 
   };
 };
 
 
-export default connect(mapStateToProps, {fetchingFriendsAction})(App);
+export default connect(mapStateToProps, {fetchingFriendsAction, addFriend})(App);
