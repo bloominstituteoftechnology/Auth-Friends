@@ -46,6 +46,16 @@ const friendsReducer = (state = initialState, action) => {
                 deleted: !state.deleted,
                 friends: action.payload
             });
+        case UPDATING:
+            return Object.assign({}, state, {
+                updating: !state.updating
+            });
+        case UPDATED:
+            return Object.assign({}, state, {
+                updating: !state.updating,
+                updated: !state.updated,
+                friends: action.payload
+            });
         case ERROR:
             return Object.assign({}, state, {
                 error: action.payload

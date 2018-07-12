@@ -3,7 +3,7 @@ import '../App.css';
 
 const SaveFriend = props => {
     return (
-        <div className="save-friend">
+        <div className="save-friend">  
             <form onSubmit={props.handleSubmit}>
                 <input
                     name='name'
@@ -25,6 +25,7 @@ const SaveFriend = props => {
                 />
                 <button type="submit">Submit</button>
             </form>
+            <p>Fill in form and click Edit to update friend</p>
         </div>
     );
 };
