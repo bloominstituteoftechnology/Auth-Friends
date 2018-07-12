@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from "react-redux";
 
-class Friend extends Component {
-  render() {
-    return (
-      <li className="friend"></li>
-    );
-  }
+const Friend = props => {
+  return (
+    <li className="friend">{props.friend.name}</li>
+  );
 }
 
-export default Friend;
+export default connect(null, null)(Friend);

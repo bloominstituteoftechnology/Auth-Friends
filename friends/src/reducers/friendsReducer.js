@@ -18,11 +18,15 @@ export const friendsReducer = (state = initialState, action) => {
     case FETCHING_DATA:
       return Object.assign({}, state, { fetchingFriends: true });
     case ON_DATA_FETCHED:
-      return Object.assign({}, state, { 
-        friends: action.payload.results,
+      console.log('state', state);
+      console.log('action.payload', action.payload);
+      const lars = Object.assign({}, state, { 
+        friends: action.payload,
         fetchingFriends: false,
         friendsFetched: true
       });
+      console.log('L A R S', lars);
+      return lars;
     case ON_DATA_ERROR:
       return Object.assign({}, state, { error: action.payload });
     default:
