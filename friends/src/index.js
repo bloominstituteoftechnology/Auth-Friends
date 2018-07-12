@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';
 
-const store = createStore(reducer, {fetchState: 'resting', friends: {byId: {}, allIds: []}}, composeWithDevTools(
+const store = createStore(reducer, /* {fetchState: 'resting', friends: {byId: {}, allIds: []}}, */ composeWithDevTools(
   applyMiddleware(thunk, logger)));
 
 
