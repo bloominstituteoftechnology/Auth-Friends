@@ -18,10 +18,11 @@ class App extends Component {
 
   componentDidMount() {
     // call our action 
-    this.props.getFriends;
+    this.props.getFriends();
   }
 
   handleSubmit = () => {
+    console.log('this.props handle submit', this.props)
     this.props.addFriend(this.state)
   }
 
@@ -75,7 +76,7 @@ class App extends Component {
             <div>
               Age: {friend.email}
             </div>
-            <button onClick={() => this.handleDelete(friend._id)}>X</button>
+            <button onClick={() => this.handleDelete(friend.id)}>X</button>
           </div>
         ); 
       })}  
@@ -93,5 +94,7 @@ const mapStateToProps = (state) => {
 // the chars and the fetching boolean
 export default connect(mapStateToProps, {
   /* actions go here */
-  getFriends
+  getFriends,
+  addFriend,
+  updateFriend
 })(App);
