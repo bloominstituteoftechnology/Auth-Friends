@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 
 import logo from '../logo.svg';
 import './App.css';
-import { getFriends, addFriend, submitFriend } from '../actions';
+import { getFriends, addFriend, updateFriend } from '../actions';
 // pull in actions from action/index
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      friends: [],
       name: '',
       email: '',
       age: ''
@@ -19,7 +18,11 @@ class App extends Component {
 
   componentDidMount() {
     // call our action 
-    this.props.getFriends();
+    this.props.getFriends;
+  }
+
+  handleSubmit = () => {
+    this.props.addFriend(this.state)
   }
 
   handleChange = (e) => {
@@ -29,7 +32,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
+    console.log('this.props.friends', this.props.friends)
     return (
       // <div className="App">
       //   {this.props.fetching ? (
@@ -60,22 +63,22 @@ class App extends Component {
         onChange={(e) => this.handleChange(e)} /><br />
       <button onClick={() => this.handleSubmit()}>Submit</button>
 
-      {this.state.friends.map(friend => {
+      {this.props.friends.map(friend => {
         return ( 
-          <div key={friend._id + ''}>
+          <div key={friend.id}>
             <div>
-              First Name: {friend.firstName}
+              First Name: {friend.name}
             </div>
             <div>
-              Last Name:{friend.lastName}
+              Last Name:{friend.age}
             </div>
             <div>
-              Age: {friend.age}
+              Age: {friend.email}
             </div>
             <button onClick={() => this.handleDelete(friend._id)}>X</button>
           </div>
-        )
-      })}
+        ); 
+      })}  
     </div>
     );
   }
@@ -83,7 +86,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   console.log('state.friendsReducer', state.friendsReducer)
-  return state.charsReducer;
+  console.log('this.props', this.props) 
+  return state.friendsReducer;
 }
 // our mapDispatchToProps needs to have two properties inherited from state
 // the chars and the fetching boolean
