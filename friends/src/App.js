@@ -18,7 +18,7 @@ class App extends Component {
             <span>{friend.age}</span>
             <h3>EMAIL:</h3>
             <span>{friend.email}</span>
-            <button onClick={() => deleteFriend(friend.id)}>delete</button>
+            <button onClick={() => this.props.deleteFriend(friend.id)}>delete</button>
           </div>
         )}
         <AddFriendForm />
