@@ -1,21 +1,41 @@
-import { FETCHING, FETCHED, ERROR } from '../actions';
+import { PENDING, SUCCESS, ERROR } from '../actions';
 
 const initialState = {
     friends: [],
-    fetching: false,
-    fetched: false,
-    error: null
+    pending: false,
+    success: false,
+    error: null,
 };
 
 export const friendsReducers = (state = initialState, action) => {
     switch (action.type) {
-        case FETCHING:
-            return Object.assign({}, state, { fetching: true });
-        case FETCHED:
-            return Object.assign({}, state, { friends: [...action.payload], fetched: true, fetching: false });
+        case PENDING:
+            return Object.assign(
+                {},
+                state,
+                { pending: true });
+        case SUCCESS:
+            return Object.assign(
+                {},
+                state,
+                {
+                    friends: [...action.payload],
+                    success: true,
+                    pending: false,
+                    error: null
+                }
+            );
         case ERROR:
             console.error(action.payload);
-            return Object.assign({}, state, { fetching: false, fetched: false, error: 'Error fetching friends' });
+            return Object.assign(
+                {},
+                state,
+                {
+                    pending: false,
+                    success: false,
+                    error: 'Error pending friends'
+                }
+            );
         default:
             return state;
     }

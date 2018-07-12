@@ -17,7 +17,7 @@ const store = createStore(
     reducer,
     load,
     middleware,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
 store.subscribe(() => {
