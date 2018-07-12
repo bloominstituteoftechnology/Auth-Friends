@@ -1,5 +1,6 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { deleteFriend } from '../actions';
 import { Card, CardTitle, CardText, Button } from 'reactstrap';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import styled from 'styled-components';
@@ -31,7 +32,9 @@ class Friend extends React.Component {
   };
 
   handleDelClick = id => {
-    this.props.deleteHandler(id);
+    const URL = `http://localhost:5000/api/friends/${id}`;
+    console.log('clicked delete', URL);
+    this.props.deleteFriend(URL);
   };
 
   handleEditClick = () => {
@@ -164,4 +167,7 @@ class Friend extends React.Component {
   }
 }
 
-export default Friend;
+export default connect(
+  null,
+  { deleteFriend },
+)(Friend);

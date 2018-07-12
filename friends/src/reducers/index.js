@@ -1,4 +1,12 @@
-import { FETCHING, FETCHED, ERROR, ADDING, ADDED } from '../actions';
+import {
+  FETCHING,
+  FETCHED,
+  ERROR,
+  ADDING,
+  ADDED,
+  DELETING,
+  DELETED,
+} from '../actions';
 
 const initialState = {
   fetchingFriends: false,
@@ -44,6 +52,19 @@ const rootReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         savingFriends: true,
         friendsSaved: true,
+        friends: action.payload,
+      });
+
+    case DELETING:
+      return Object.assign({}, state, {
+        deletingFriend: true,
+        friendDeleted: false,
+      });
+
+    case DELETED:
+      return Object.assign({}, state, {
+        deletingFriend: true,
+        friendDeleted: true,
         friends: action.payload,
       });
 
