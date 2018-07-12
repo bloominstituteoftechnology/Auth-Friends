@@ -1,6 +1,8 @@
 import axios from 'axios';
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
+export const SAVING = 'SAVING';
+export const SAVED = 'SAVED';
 export const ERROR = 'ERROR';
 
 const URL = 'http://localhost:5000/api/friends/';
@@ -10,7 +12,7 @@ export const fetchReq = () => {
         dispatch({type: FETCHING});
         axios.get(URL)
         .then(({data}) => {
-            console.log(data);
+            // console.log(data);
             dispatch({type: FETCHED, payload: data});
         })
         .catch((err) => {
@@ -18,3 +20,10 @@ export const fetchReq = () => {
         });
     };
 };
+
+// export const saveReq = () => {
+//     return (dispatch) => {
+//         dispatch({type: SAVING});
+//         axios.post()
+//     }
+// }

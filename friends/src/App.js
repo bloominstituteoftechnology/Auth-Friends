@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { fetchReq } from './actions';
+import Friends from './components/Friends';
+import SaveFriend from './components/SaveFriend';
 
 class App extends Component {
   componentDidMount() {
@@ -14,11 +16,10 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          {/* <h1 className="App-title">Welcome to React</h1> */}
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Friends />
+        <SaveFriend />
       </div>
     );
   }
