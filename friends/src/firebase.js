@@ -1,12 +1,12 @@
 import firebase from 'firebase';
 
 const config = {
-    apiKey: "AIzaSyALOAZIsePrVFG0voKxG4WWc1zgzztUzmo",
-    authDomain: "friends-d7d17.firebaseapp.com",
-    databaseURL: "https://friends-d7d17.firebaseio.com",
-    projectId: "friends-d7d17",
-    storageBucket: "friends-d7d17.appspot.com",
-    messagingSenderId: "601138510393"
+    apiKey: "AIzaSyCgqN4PnWXCIxSzm73Cj0UitO7GJQCqVPo",
+        authDomain: "friends-1c05a.firebaseapp.com",
+        databaseURL: "https://friends-1c05a.firebaseio.com",
+        projectId: "friends-1c05a",
+        storageBucket: "friends-1c05a.appspot.com",
+        messagingSenderId: "1026485834176"
 };
 firebase.initializeApp(config);
 

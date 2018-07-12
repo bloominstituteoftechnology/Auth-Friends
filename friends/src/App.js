@@ -21,8 +21,8 @@ border: 1px solid grey;
 const LogButton = styled.button`
 height: 55px;
 width: 230px;
-background-color: #363636;
-color: white;
+background-color: #7ef487;
+color: black;
 border: none;
 cursor: pointer;
 font-size: 22px;
@@ -30,7 +30,7 @@ font-size: 22px;
 const SignUpButton = styled.button`
 height: 55px;
 width: 250px;
-background-color: #ff0080;
+background-color: #3b7e89;
 color: white;
 border: none;
 cursor: not-allowed;
@@ -87,7 +87,7 @@ class App extends Component {
   }
   componentDidMount(){
 
-    let db = firebase.database().ref('dropzones');
+    let db = firebase.database().ref('users');
     db.on('value', snapshot => {
       let records = snapshot.val();
       let newRecords = Object.entries(records);
@@ -161,7 +161,7 @@ this.setState({
          {this.state.user ? 
           <MessageDiv><div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', paddingLeft: '5px' }}>
           
-          <p style={{ paddingLeft: '10px', paddingRight:'15px', borderRight: '1px solid grey', fontSize: '28px', color: '#ff0080', fontWeight: 'bold' }}>ReactChat</p> 
+          <p style={{ paddingLeft: '10px', paddingRight:'15px', borderRight: '1px solid grey', fontSize: '28px', color: '#ff0080', fontWeight: 'bold' }}>FriendsAgain</p> 
           
           <img style={{ width: '40px', height: '40px', paddingLeft: '15px', paddingRight: '10px' }} src={this.state.user.photoURL} /> 
           
@@ -174,7 +174,7 @@ this.setState({
           <LogButton onClick={this.logout}>Logout</LogButton>
           </MessageDiv>
            : <MessageDiv> 
-            <p style={{ paddingLeft: '10px', fontSize: '28px', color:'#ff0080', fontWeight:'bold'}}>ReactChat</p> <div><LogButton onClick={this.login}>Login</LogButton> <SignUpButton >Sign up</SignUpButton></div>
+            <p style={{ paddingLeft: '10px', fontSize: '28px', color:'#7ef487', fontWeight:'bold'}}>FriendsAgain</p> <div><LogButton onClick={this.login}>Login</LogButton> <SignUpButton >Sign up</SignUpButton></div>
           
           </MessageDiv>} 
       </div>
@@ -187,7 +187,7 @@ this.setState({
       <div>
 
         <FriendsList user={this.state.user} friends={this.state.friends} onChange={this.onChange} nameValue={this.state.first_name} emailValue={this.state.email} formSubmit={this.formSubmit} /> </div> :
-        <div>  <DisplayText>Welcome to ReactChat! </DisplayText> <SubText> Another random chat app (but prettier than Slack).<br/><br/> <LogButton onClick={this.login}>Login with Google</LogButton> </SubText> </div>}
+        <div>  <DisplayText>Welcome to FriendsAgain! </DisplayText> <SubText> Another random chat app (but prettier than Slack).<br/><br/> <LogButton onClick={this.login}>Login with Google</LogButton> </SubText> </div>}
     
       
         
