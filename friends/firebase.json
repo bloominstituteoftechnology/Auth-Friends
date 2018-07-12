@@ -1,0 +1,19 @@
+{
+  "database": {
+    "rules": "y"
+  },
+  "hosting": {
+    "public": "/friends/build/",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
