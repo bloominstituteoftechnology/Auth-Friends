@@ -3,8 +3,8 @@
 const initialState = {
     fetchingFriends: false,
     friendsFetched: false,
-    friendsSaved: false,
     savingFriends: false,
+    friendsSaved: false,
     updatingFriend: false,
     friendUpdated: false,
     deletingFriend: false,
@@ -15,6 +15,7 @@ const initialState = {
 
 export const friendsReducer = (state = initialState, action) => {
     switch(action.type) {
+
         default: 
             return state;
     }
