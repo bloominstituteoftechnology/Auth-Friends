@@ -28,6 +28,7 @@ export default (state = initialState, action) => {
             ...state,
             fetchingFriends: false,
             friendsFetched: true,
+            friends: action.payload
         }
         case ERROR_FETCHING_FRIENDS:
         return {
