@@ -26,6 +26,16 @@ const friendsReducer = (state = initialState, action) => {
                 fetched: !state.fetched,
                 friends: action.payload
             });
+        case SAVING:
+            return Object.assign({}, state, {
+                saving: !state.saving
+            });
+        case SAVED:
+            return Object.assign({}, state, {
+                saving: !state.saving,
+                saved: !state.saved,
+                friends: action.payload
+            });
         case ERROR:
             return Object.assign({}, state, {
                 error: action.payload

@@ -21,9 +21,15 @@ export const fetchReq = () => {
     };
 };
 
-// export const saveReq = () => {
-//     return (dispatch) => {
-//         dispatch({type: SAVING});
-//         axios.post()
-//     }
-// }
+export const submitReq = (friend) => {
+    return (dispatch) => {
+        dispatch({type: SAVING});
+        axios.post(URL, friend)
+        .then(({data}) => {
+            dispatch({type: SAVED, payload: data});
+        })
+        .catch((err) => {
+            dispatch({type: ERROR, payload: err})
+        });
+    };
+}

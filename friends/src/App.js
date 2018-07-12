@@ -2,14 +2,44 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchReq } from './actions';
+import { fetchReq, submitReq } from './actions';
 import Friends from './components/Friends';
 import SaveFriend from './components/SaveFriend';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: '',
+      email: ''
+    };
+  }
+
   componentDidMount() {
     this.props.fetchReq();
   }
+
+  handleChange = (e) => {
+    this.setState({[e.target.name]: e.target.value});
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const friend = {
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email
+    };
+
+    this.props.submitReq(friend);
+    this.setState({
+      name: '',
+      age: '',
+      email: ''
+    });
+  };
 
   render() {
     return (
@@ -19,7 +49,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Redux - Friends</h1>
         </header>
         {this.props.fetched ? <Friends friends={this.props.friends} /> : <div>Loading...</div>}
-        {this.props.fetched ? <SaveFriend /> : null}
+        {this.props.fetched ? <SaveFriend handleChange={this.handleChange} handleSubmit={this.handleSubmit} name={this.state.name} age={this.state.age} email={this.state.email} /> : null}
       </div>
     );
   }
@@ -33,4 +63,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchReq })(App);
+export default connect(mapStateToProps, { fetchReq, submitReq })(App);
