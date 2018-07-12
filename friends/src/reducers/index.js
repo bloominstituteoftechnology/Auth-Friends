@@ -1,4 +1,4 @@
-import {FETCHING, FETCHED, ERROR, SAVING_FRIENDS, FRIENDS_SAVED} from  '../actions';
+import {FETCHING, FETCHED, ERROR, SAVING_FRIENDS, FRIENDS_SAVED, DELETING_FRIEND, FRIEND_DELETED} from  '../actions';
 
 
 const initialState = {
@@ -21,6 +21,13 @@ const initialState = {
 
         case FETCHED:
        return Object.assign({}, state, {fetchingFriends: false, savingFriends: false, friends: action.friends, friendsFetched: true});
+
+	case DELETING_FRIEND:
+        return Object.assign({}, state, {deletingFriend: true, friendsFetched: false, friendDeleted: false, fetchingFriends: false, error: null});
+		
+	
+	case FRIEND_DELETED:
+        return Object.assign({}, state, {deletingFriend: false, friendsFetched: true, friendDeleted: true, fetchingFriends: false, friends: action.friends, error: null});
 
 	case SAVING_FRIENDS:
         return Object.assign({}, state, {fetchingFriends: false, friendsFetched: false, savingFriends: true, friendsSaved: false, error: null});

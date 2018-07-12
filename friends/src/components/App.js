@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from '../logo.svg';
 import '../App.css';
-import {fetchingFriendsAction, addFriend} from "../actions";
+import {fetchingFriendsAction, addFriend, deleteFriend} from "../actions";
 
 
 class App extends Component {
@@ -31,10 +31,21 @@ addFriendHandler = event => {
 	this.setState({name: "", age: "", email: ""});
 }
 
+deleteFriend = friendId => {
+	this.props.deleteFriend(friendId);
+}
+
+
 
   render() {
     return (
       <div className="App">
+	<div>{this.props.deletingFriend ? (
+                <h1>Deleting Friend ..</h1>
+        ) : (null)}
+           </div>
+
+
 	<div>{this.props.savingFriends ? (
                 <h1>Saving Friend ..</h1>
         ) : (null)}
@@ -51,7 +62,9 @@ addFriendHandler = event => {
         ) : (
         <div>  <ul>
             {this.props.friends.map(friend => {
-              return <li key={friend.id}>{friend.name}, {friend.age}, {friend.email}</li>;
+              return <div key={friend.id}><li>{friend.name}, {friend.age}, {friend.email}</li>
+	      <button onClick={()=>this.deleteFriend(friend.id)}>delete</button></div>;
+
             })}
           </ul>
 
@@ -75,10 +88,11 @@ const mapStateToProps = state => {
           friends: state.friends,
           fetching: state.fetchingFriends,
 	  savingFriends: state.savingFriends,
-	  friendsSaved: state.friendsSaved
+	  friendsSaved: state.friendsSaved,
+	  deletingFriend: state.deletingFriend
 
   };
 };
 
 
-export default connect(mapStateToProps, {fetchingFriendsAction, addFriend})(App);
+export default connect(mapStateToProps, {fetchingFriendsAction, addFriend, deleteFriend})(App);

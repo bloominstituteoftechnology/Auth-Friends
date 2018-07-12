@@ -91,8 +91,9 @@ app.delete('/api/friends/:id', (req, res) => {
   const { id } = req.params;
 
   friends = friends.filter(f => f.id !== Number(id));
-
+setTimeout(() => {
   res.send(friends);
+}, 1500);	
 });
 
 function getNextId() {

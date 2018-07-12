@@ -5,6 +5,8 @@ export const FETCHED = "FETCHED";
 export const ERROR = "ERROR";
 export const SAVING_FRIENDS ="SAVING_FRIENDS";
 export const FRIENDS_SAVED = "FRIENDS_SAVED";
+export const DELETING_FRIEND = "DELETING_FRIEND";
+export const FRIEND_DELETED = "FRIEND_DELETED";
 
 
 export const fetchingFriendsAction = () => {
@@ -43,3 +45,24 @@ export const addFriend = (name, age, email) => {
   };
 };
 
+
+export const deleteFriend = (friendId) => {
+        const friend = {id:friendId};
+       
+	const request = axios.delete(`http://localhost:5000/api/friends/${friendId}`,
+        friend)
+
+
+        return (dispatch) => {
+        dispatch({type: DELETING_FRIEND});
+
+        request.then(response => {
+        dispatch({type: FRIEND_DELETED, friends: response.data});
+    })
+
+        .catch(err => {
+        dispatch({type: ERROR, error: err});
+
+    });
+  };
+};
