@@ -4,8 +4,7 @@ import { fetchFriends } from "../../actions";
 import { connect } from "react-redux";
 class FriendsList extends React.Component {
   componentDidMount() {
-    const URL = "http://localhost:5000/api/friends";
-    this.props.fetchFriends(URL);
+    this.props.fetchFriends();
   }
   render() {
     return (

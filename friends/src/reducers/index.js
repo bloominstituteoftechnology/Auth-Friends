@@ -1,4 +1,4 @@
-import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS } from "../actions";
+import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR_FETCHING_FRIENDS, POSTING_FRIEND, POST_FRIEND, ERROR_POSTING_FRIEND } from "../actions";
 
 const initialState = {
     fetchingFriends: false,
@@ -31,6 +31,24 @@ export default (state = initialState, action) => {
             friends: action.payload
         }
         case ERROR_FETCHING_FRIENDS:
+        return {
+            ...state,
+            error: action.payload
+        }
+        case POSTING_FRIEND:
+        return {
+            ...state,
+            savingFriends: true,
+            friendsSaved: false,
+        }
+        case POST_FRIEND:
+        return {
+            ...state,
+            savingFriends: false,
+            friendsSaved: true,
+            friends: action.payload
+        }
+        case ERROR_POSTING_FRIEND:
         return {
             ...state,
             error: action.payload
