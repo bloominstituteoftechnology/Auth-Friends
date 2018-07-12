@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-
-export class CreateFriendForm extends Component {
+import { connect } from 'react-redux'
+import { dataPost } from '../actions/index'
+class CreateFriendForm extends Component {
     constructor() {
         super();
         this.state = {
@@ -51,3 +52,6 @@ export class CreateFriendForm extends Component {
             </div>);
     }
 }
+
+  
+  export default connect(null, { dataPost })(CreateFriendForm);

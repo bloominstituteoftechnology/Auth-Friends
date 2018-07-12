@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Loading from './Loading'
+import { connect } from 'react-redux'
 
-
-
-
-export class Friends extends Component {
+class Friends extends Component {
     render() {
         return (
             <div>
@@ -15,3 +13,15 @@ export class Friends extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        friends: state.dataFetchReducer.friends,
+        fetchingFriends: state.dataFetchReducer.fetchingFriends,
+        friendsFetched: state.dataFetchReducer.friendsFetched,
+        error: state.dataFetchReducer.error
+    }
+}
+
+export default connect(mapStateToProps)(Friends);
