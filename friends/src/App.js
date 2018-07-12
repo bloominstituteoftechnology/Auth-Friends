@@ -6,7 +6,21 @@ import { fetchFriends } from "./actions";
 
 class App extends Component {
   render() {
-    return <div className="App">APP</div>;
+    return (
+      <div className="App">
+        {this.props.fetching ? (
+          <img
+            src="https://media3.giphy.com/media/IwSG1QKOwDjQk/giphy.gif"
+            alt="loading animation"
+            className="loading-animation"
+          />
+        ) : null}
+        {this.props.friends.map(friend => {
+          return <div key={friend.name}>{friend.name}</div>;
+        })}
+        {this.props.error !== null ? <div>{this.props.error}</div> : null}
+      </div>
+    );
   }
 }
 
