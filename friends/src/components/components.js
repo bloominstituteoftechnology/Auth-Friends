@@ -20,7 +20,7 @@ class FriendsForm extends Component {
   };
 
   handleSubmitFriend = () => {
-    this.props.saveFriend({
+    this.props.saveFriends({
       name: this.state.name,
       age: this.state.age,
       email: this.state.email
@@ -84,7 +84,7 @@ class FriendsForm extends Component {
 const mapStateToProps = state => {
   return {
     friends: state.friends,
-    addingFriend: state.friends,
+    addingFriend: state.addingFriend,
     error: state.error
   };
 };
