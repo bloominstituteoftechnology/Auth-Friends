@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { FETCH_SUCCESS } from '../actions/actions';
 import { UPDATE_FRIEND_SUCCESS } from '../actions/actions';
+import { ADD_FRIEND_SUCCESS } from '../actions/actions';
 
 
 const fillFriendsById = (state, action) => {
@@ -21,6 +22,9 @@ const byIdReducer = (state = {}, action) => {
     case UPDATE_FRIEND_SUCCESS: {
       return fillFriendsById (state, action);
     }
+    case ADD_FRIEND_SUCCESS: {
+      return fillFriendsById (state, action);
+    }
     default:
       return state;
   }
@@ -33,6 +37,10 @@ const allIdsReducer = (state = [], action) => {
       return [...state, ...resultArr.map(friend => friend.id)];
     }
     case UPDATE_FRIEND_SUCCESS: {
+      const { payload: resultArr } = action;
+      return [...resultArr.map(friend => friend.id)];
+    }
+    case ADD_FRIEND_SUCCESS: {
       const { payload: resultArr } = action;
       return [...resultArr.map(friend => friend.id)];
     }

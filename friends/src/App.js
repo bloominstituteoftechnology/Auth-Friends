@@ -20,9 +20,21 @@ class App extends Component {
 
     const { pageContentState } = this.props;
     const mainPageContent = (
-      pageContentState === 'addFriend' ?
-      (<AddFriendForm />)
-      : (<FriendsList />)
+      (pageContentState === 'addFriend') ?
+      (
+      <main>
+        <AddFriendForm />
+        <button onClick={this.props.goToAddFriend}>
+          {'Add Friend'}
+        </button>
+      </main>)
+      : (
+      <main>
+        <FriendsList />
+        <button onClick={this.props.goToAddFriend}>
+          {'Add Friend'}
+        </button>
+      </main>)
     );
 
     return (
@@ -32,7 +44,6 @@ class App extends Component {
           <h1 className="App-title">Friends List</h1>
         </header>
         {mainPageContent}
-        <button onClick={this.props.goToAddFriend}>Add Friend</button>
       </div>
     );
   }

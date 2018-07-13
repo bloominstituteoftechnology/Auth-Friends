@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { addFriend } from '../actions/actions';
 import FriendForm from './FriendForm';
 
-export default class AddFriendForm extends Component {
+class AddFriendForm extends Component {
   constructor(props) {
     super(props);
     this.url = 'http://localhost:5000/friends';
@@ -21,19 +22,10 @@ export default class AddFriendForm extends Component {
     this.setState({ [fieldName]: value });
   };
 
-  handleNewFriend(e) {
+  handleNewFriend = e => {
     e.preventDefault();
     let { friendList, ...rest } = this.state;
-    let context = this;
-    let friendRequest = axios.post(this.url, rest);
-    friendRequest
-      .then(response => {
-        context.setState({ friendList: response.data });
-        context.props.history.push('/');
-      })
-      .catch(response => {
-        alert('Add friend failed! ' + response);
-      });
+    this.props.handleSubmit(rest);
     this.setState({
       name: '',
       age: '',
@@ -48,7 +40,9 @@ export default class AddFriendForm extends Component {
               ageInput={this.state.age}
               emailInput={this.state.email}
               handleInput={this.handleInput}
-              handleFriendForm={this.handleNewFriend}
+              handleSubmit={this.handleNewFriend}
             />
           )}
 }
+
+export default connect(null, {handleSubmit: addFriend})(AddFriendForm);

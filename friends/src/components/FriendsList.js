@@ -9,7 +9,9 @@ import Friend from './Friend';
      super(props);
    }
   componentDidMount() {
-    this.props.fetchFriends();
+    if (this.props.friends.length === 0) {
+      this.props.fetchFriends();
+    }
   }
 
   render() {

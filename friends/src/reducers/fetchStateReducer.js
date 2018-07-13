@@ -4,6 +4,9 @@ import { FETCH_SUCCESS } from '../actions/actions';
 import { UPDATE_FRIEND_START } from '../actions/actions';
 import { UPDATE_FRIEND_SUCCESS } from '../actions/actions';
 import { UPDATE_FRIEND_ERROR } from '../actions/actions';
+import { ADD_FRIEND_START } from '../actions/actions';
+import { ADD_FRIEND_SUCCESS } from '../actions/actions';
+import { ADD_FRIEND_ERROR } from '../actions/actions';
 
 export default (state = 'resting', action) => {
   switch (action.type) {
@@ -18,6 +21,12 @@ export default (state = 'resting', action) => {
     case UPDATE_FRIEND_SUCCESS:
       return 'resting';
     case UPDATE_FRIEND_ERROR:
+      return 'resting';
+    case ADD_FRIEND_START:
+      return 'adding_friend';
+    case ADD_FRIEND_SUCCESS:
+      return 'resting';
+    case ADD_FRIEND_ERROR:
       return 'resting';
     default:
     return state;
