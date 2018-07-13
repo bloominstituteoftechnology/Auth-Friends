@@ -6,6 +6,8 @@ import { fetchFriends } from "./actions";
 
 // components
 import Loading from "./components/Loading";
+import FriendsList from "./components/FriendsList";
+import Error from "./components/Error";
 
 class App extends Component {
   componentDidMount() {
@@ -17,10 +19,8 @@ class App extends Component {
     return (
       <div className="App">
         <Loading fetching={this.props.fetching} />
-        {this.props.friends.map(friend => {
-          return <div key={friend.name}>{friend.name}</div>;
-        })}
-        {this.props.error !== null ? <div>{this.props.error}</div> : null}
+        <FriendsList friends={this.props.friends} />
+        <Error error={this.props.error} />
       </div>
     );
   }
