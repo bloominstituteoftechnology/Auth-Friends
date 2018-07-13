@@ -1,0 +1,15 @@
+### MVP
+* 
+* [ ] Part I
+
+* [ ] part II
+
+### Stretch Goals
+
+* [ ] Refactor so that code is DRY
+
+* [ ] Add Save Movie functionality
+ 
+* [ ] Turn your Saved Movie list into Links
+ 
+* [ ] Turn your Saved Movie Links into NavLinks
