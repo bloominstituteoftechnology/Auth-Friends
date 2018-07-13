@@ -3,9 +3,9 @@ import '../App.css';
 
 const FriendsList = props => {
   return (
-    <div>
+    <div className="friend-list">
       {props.friends.map(friend => {
-        return <div>{friend.name}</div>;
+        return <div className="friend-card">{friend.name}</div>;
       })}
     </div>
   )
