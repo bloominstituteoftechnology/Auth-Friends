@@ -12,6 +12,10 @@ export const DELETING_FRIEND = 'DELETING_FRIEND'
 export const FRIEND_DELETED = 'FRIEND_DELETED'
 export const FRIEND_DELETING_ERROR = 'FRIEND_DELETING_ERROR'
 
+export const FETCHING_FRIEND = 'FETCHING_FRIEND'
+export const FRIEND_FETCHED = 'FRIEND_FETCHED'
+export const FRIEND_FETCH_ERROR = 'FRIEND_FETCH_ERROR'
+
 const baseURL = 'http://localhost:5000/api/friends/'
 
 export function getFriends(baseURL){
@@ -57,4 +61,19 @@ export function deleteFriend(id){
         dispatch({ type: FRIEND_DELETING_ERROR, payload:err });
       });
   }
+}
+
+export function getFriend(id){
+  return function(dispatch) {
+    dispatch({type:FETCHING_FRIEND});
+
+    axios
+      .get(baseURL+id)
+      .then(({ data }) => {
+        dispatch({ type: FRIEND_FETCHED, payload:data });
+      })
+      .catch(err => {
+        dispatch({ type: FRIEND_FETCH_ERROR, payload:err });
+      });
+  };
 }

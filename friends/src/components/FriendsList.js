@@ -3,6 +3,22 @@ import '../App.css';
 import logo from '../logo.svg';
 import { connect } from 'react-redux'
 import { deleteFriend } from '../actions'
+import { getFriend } from '../actions'
+import styled from 'styled-components'
+
+const FriendSpan = styled.span`
+  &:hover {
+    cursor:pointer;
+    text-decoration:underline;
+  }
+`
+
+const XButton = styled.span`
+    &:hover {
+    cursor:pointer;
+    font-weight:bold;
+  }
+`
 
 class FriendsList extends React.Component{
 
@@ -11,7 +27,11 @@ class FriendsList extends React.Component{
       <div>
         { (this.props.fetching) ? 
             <img src={logo} className="App-logo" alt="logo" /> : 
-            this.props.friends.map (friend => <p key={Math.random()}>{friend.name}<span onClick={() => this.props.deleteFriend(friend.id)}> &#10006;</span></p> )
+            this.props.friends.map (friend =>
+              <div key={Math.random()}>
+                <FriendSpan onClick={()=>this.props.getFriend(friend.id)}>{friend.name}</FriendSpan>
+                <XButton onClick={() => this.props.deleteFriend(friend.id)}> &#10006;</XButton> 
+              </div>)
         }     
       </div>
     );  
@@ -24,4 +44,4 @@ const MapStateToProps = (state) => {
   }
 }
 
-export default connect(MapStateToProps,{deleteFriend})(FriendsList);
+export default connect(MapStateToProps,{deleteFriend, getFriend})(FriendsList);

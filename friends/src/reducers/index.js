@@ -1,6 +1,7 @@
 import {FETCHING_FRIENDS, FRIENDS_FETCHED, FRIENDS_FETCH_ERROR} from '../actions';
 import {POSTING_FRIEND, FRIEND_POSTED, FRIEND_POSTING_ERROR} from '../actions';
 import {DELETING_FRIEND, FRIEND_DELETED, FRIEND_DELETING_ERROR} from '../actions';
+import {FETCHING_FRIEND, FRIEND_FETCHED, FRIEND_FETCH_ERROR} from '../actions';
 
 const initialState = {
   friends: [],
@@ -42,6 +43,15 @@ const friendsReducer = (state = initialState, action) => {
       return {...state, friends:action.payload, fetching:false, fetched:false, posting:true, posted:false, deleting:false, deleted:true}
     case FRIEND_DELETING_ERROR:
       return {...state, err:action.payload}
+
+    //Getting Friend
+    case FETCHING_FRIEND:
+      return {...state, fetching:false, fetched:false, posting:false, posted:false, deleting:false, deleted:false}
+    case FRIEND_FETCHED:
+      return {...state, friend:action.payload, fetching:false, fetched:true, posting:false, posted:false, deleting:false, deleted:false}
+    case FRIEND_FETCH_ERROR:
+      return {...state, err:action.payload}
+
     default:
       return state
   }
