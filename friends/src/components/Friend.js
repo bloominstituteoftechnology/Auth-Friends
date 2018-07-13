@@ -17,13 +17,16 @@ class Friend extends React.Component {
   }
 
   componentWillMount() {
-    this.props.getFriend();
+    this.props.getFriend(this.id);
   }
 
   toggleEditMode = e => {
     e.preventDefault();
 
-    this.setState({ isEditing: true });
+    this.setState({ isEditing: true,
+                    name: this.props.friend.name,
+                    age: this.props.friend.age,
+                    email: this.props.friend.email });
   }
 
   handleEditCancel = e => {
@@ -39,13 +42,13 @@ class Friend extends React.Component {
   handleEditFriend = e => {
     e.preventDefault();
 
-    this.props.editFriend();
+    this.props.editFriend(this.id);
   }
 
   handleDelete = e => {
     e.preventDefault();
 
-    this.props.deleteFriend();
+    this.props.deleteFriend(this.id);
   }
 
   render() {
@@ -59,18 +62,18 @@ class Friend extends React.Component {
       return (
         <Form name={this.state.name}
               age={this.state.age}
-              height={this.state.height}
+              email={this.state.email}
               handleInputChange={this.handleInputChange}
               handleCancel={this.handleEditCancel}
-              handleSmurfSubmit={this.handleEditFriend}/>
+              handleFriendSubmit={this.handleEditFriend}/>
       )
     }
 
     return (
       <div className="friend-page">
-        <h3>{this.state.name}</h3>
-        <h3>{this.state.age}</h3>
-        <h3>{this.state.email}</h3>
+        <h3>{this.props.friend.name}</h3>
+        <h3>{this.props.friend.age}</h3>
+        <h3>{this.props.friend.email}</h3>
         <div className="buttons-container">
           <button onClick={this.toggleEditMode}>Edit</button>
           <button onClick={this.handleDelete}>Delete</button>

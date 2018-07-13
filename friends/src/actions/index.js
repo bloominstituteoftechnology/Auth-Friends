@@ -28,9 +28,17 @@ export const submitFriend = (newFriend) => {
   }
 }
 
-export const getFriend = () => {
-  return {
-
+export const getFriend = (id) => {
+  return dispatch => {
+    dispatch({ type: 'FETCHING_FRIEND' });
+    axios
+      .get(`http://localhost:5000/api/friends/${id}`)
+      .then(response => {
+        dispatch({ type: 'FRIEND_FETCHED', payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: 'ERROR', payload: error });
+      });
   }
 }
 
