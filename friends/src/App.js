@@ -17,7 +17,7 @@ const Header = Styled.div`
 
 const Container = Styled.div`
   display: flex;
-  flex-direction: column;
+
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100vw;

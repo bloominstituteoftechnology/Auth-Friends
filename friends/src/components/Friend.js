@@ -18,12 +18,16 @@ const HeadText = Styled.h2`
     color: #194850;
 `;
 
+const Info = Styled.div`
+    color: #194850;
+`;
+
 const Friend = props => {
     return (
         <Friendbox>
            <HeadText onClick={() =>props.toggleInfo(props.friend.id)}> {props.friend.name}</HeadText>
            {props.showInfo === true && 
-           (<div><p> {props.friend.age} years old</p><p>{props.friend.email}</p></div>) }
+           (<Info><p> {props.friend.age} years old</p><p>{props.friend.email}</p></Info>) }
            {console.log(props.friend.id)}
             {props.showForm === true ? <UpdateForm id={props.friends[props.friend.id-1].id}/> : null} 
             <button onClick={() => props.toggleForm(props.friend.id)}>Edit</button>
