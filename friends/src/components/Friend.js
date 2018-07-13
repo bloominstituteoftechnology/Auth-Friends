@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { deleteFriend } from '../actions';
+import { connect } from 'react-redux';
 
 const Friend = props => {
     return (
@@ -7,10 +9,14 @@ const Friend = props => {
             <td className="field">{props.friend.name}<button className="updateButton"><i className="fa">&#xf044;</i></button></td>
             <td className="field">{props.friend.age}<button className="updateButton"><i className="fa">&#xf044;</i></button></td>
             <td className="field">{props.friend.email}<button className="updateButton"><i className="fa">&#xf044;</i></button></td>
-            <td className="delete"><button className="deleteButton">X</button></td>
+            <td className="delete">
+                <button className="deleteButton" onClick={() => props.deleteFriend(props.friend.id)}>X</button>
+            </td>
         </tr>
     )
 }
+
+
 
 Friend.propTypes = {
     friend: PropTypes.shape({
@@ -21,4 +27,4 @@ Friend.propTypes = {
     })
 }
 
-export default Friend;
+export default connect(null, { deleteFriend })(Friend);

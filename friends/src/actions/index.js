@@ -5,8 +5,8 @@ export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
 export const SAVING_FRIEND = 'SAVING_FRIEND';
 export const FRIEND_SAVED = 'FRIEND_SAVED';
-export const REMOVE_FRIEND = 'REMOVE_FRIEND';
-export const UPDATE_FRIEND = 'UPDATE_FRIEND';
+export const DELETING_FRIEND = 'DELETING_FRIEND';
+export const FRIEND_DELETED = 'FRIEND_DELETED';
 
 export const fetchData = () => {
     return (dispatch) => {
@@ -32,8 +32,22 @@ export const addFriend = (newFriend) => {
             dispatch({
                 type: FRIEND_SAVED,
                 payload: newFriend
-            })}, 2000
+            })}, 1000
         )
         
     }
 };
+
+export const deleteFriend = (id) => {
+    return (dispatch) => {
+        dispatch({type: DELETING_FRIEND});
+
+        setTimeout(()=> {
+            dispatch({
+                type: FRIEND_DELETED,
+                id: id
+                
+            })
+        }, 1000)
+    }
+}

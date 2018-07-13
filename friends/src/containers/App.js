@@ -11,7 +11,7 @@ import AddForm from '../components/AddForm';
 class App extends Component {
 
   componentDidMount() {
-    
+
     this.props.fetchData();
   }
 
@@ -22,12 +22,15 @@ class App extends Component {
         {
           this.props.fetchingFriends
             ? <img src={logo} />
-            : <FriendList friends={this.props.friends} />
+            : <FriendList friends={this.props.friends} deletingFriend={this.props.deletingFriend} />
         }
-        { 
+        {this.props.deletingFriend
+          ? <div style={{color: 'red', margin: '20px 0'}}>...Deleting Friend</div>
+          : null}
+        {
           (this.props.savingFriends && !this.props.friendsSaved)
-          ? <div>...Adding to Friend List</div>
-          : <AddForm />
+            ? <div style={{color: 'green', margin: '20px 0'}}>...Adding to Friend List</div>
+            : <AddForm />
         }
       </div>
     );

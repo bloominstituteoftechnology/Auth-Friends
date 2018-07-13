@@ -1,4 +1,4 @@
-import { FETCHING, FETCHED, ERROR, SAVING_FRIEND, FRIEND_SAVED } from '../actions';
+import { FETCHING, FETCHED, ERROR, SAVING_FRIEND, FRIEND_SAVED, DELETING_FRIEND, FRIEND_DELETED } from '../actions';
 
 const initialState = {
     fetchingFriends: false,
@@ -27,21 +27,37 @@ export default (state = initialState, action) => {
             //get next id
             const currentIds = state.friends.map(friend => friend.id);
             const nextId = Math.max(...currentIds) + 1;
-            let newFriends = state.friends.concat({...action.payload, id: nextId})
+            let newFriends = state.friends.concat({ ...action.payload, id: nextId })
             console.log(newFriends);
-                
+
             return Object.assign({}, state, {
-                fetchingFriends: false, 
+                fetchingFriends: false,
                 friendsFetched: false,
                 savingFriends: false,
-                friendsSave: true, 
+                friendsSave: true,
                 friends: state.friends.concat({
-                    id: nextId, 
+                    id: nextId,
                     name: action.payload.newName,
                     age: Number(action.payload.newAge),
                     email: action.payload.newEmail
                 })
             })
+        case (DELETING_FRIEND):
+            return Object.assign({}, state, { 
+                fetchingFriends: false,
+                friendsFetched: false,
+                friendsSaved: false,
+                savingFriends: false,
+                deletingFriend: true })
+        case (FRIEND_DELETED):
+            return Object.assign({}, state, {
+                fetchingFriends: false,
+                friendsFetched: false,
+                friendsSaved: false,
+                savingFriends: false,
+                deletingFriend: false,
+                friendDeleted: true,
+                friends: state.friends.filter(friend => friend.id !== action.id)})
         default:
             return state;
     }
