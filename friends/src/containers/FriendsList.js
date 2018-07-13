@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchFriends } from '../actions/'
+import { fetchFriends, deleteFriend } from '../actions/'
+import Friend from '../components/Friend'
 
 class FriendsList extends React.Component {
   componentDidMount () {
@@ -12,11 +13,17 @@ class FriendsList extends React.Component {
         {this.props.api.fetching ? (
           <div>Loading ....</div>
         ) : (
-          <ul>
+          <div>
             {this.props.friends.map((friend) => {
-              return <li key={friend.id}>{friend.name}</li>
+              return (
+                <Friend
+                  key={friend.id}
+                  friend={friend}
+                  deleteFriend={deleteFriend}
+                />
+              )
             })}
-          </ul>
+          </div>
         )}
       </div>
     )
@@ -30,4 +37,6 @@ const mapStateToProps = (state) => {
     api: state.api
   }
 }
-export default connect(mapStateToProps, { fetchFriends })(FriendsList)
+export default connect(mapStateToProps, { fetchFriends, deleteFriend })(
+  FriendsList
+)
