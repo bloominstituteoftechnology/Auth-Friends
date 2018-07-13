@@ -48,21 +48,21 @@ class App extends Component {
       // </div>
       <div className="App">
       <input 
-        name="firstName" 
+        name="name" 
         type="text" 
-        placeholder="First Name" 
-        onChange={(e) => this.handleChange(e)} /><br />
-      <input 
-        name="lastName" 
-        type="text" 
-        placeholder="Last Name" 
+        placeholder="Name" 
         onChange={(e) => this.handleChange(e)} /><br />
       <input 
         name="age" 
         type="text" 
         placeholder="Age" 
         onChange={(e) => this.handleChange(e)} /><br />
-      <button onClick={() => this.handleSubmit()}>Submit</button>
+      <input 
+        name="email" 
+        type="text" 
+        placeholder="Email" 
+        onChange={(e) => this.handleChange(e)} /><br />
+      <button onClick={() => this.handleSubmit()}> Add </button>
 
       {this.props.friends.map(friend => {
         return ( 
@@ -71,12 +71,11 @@ class App extends Component {
               First Name: {friend.name}
             </div>
             <div>
-              Last Name:{friend.age}
+              Age:{friend.age}
             </div>
             <div>
-              Age: {friend.email}
-            </div>
-            <button onClick={() => this.handleDelete(friend.id)}>X</button>
+              Email: {friend.email}
+            </div><br />
           </div>
         ); 
       })}  

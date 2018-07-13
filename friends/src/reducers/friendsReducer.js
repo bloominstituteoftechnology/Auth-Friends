@@ -8,6 +8,7 @@ const initialState = {
   friends: [],
   isFetching: false,
   isFetched: false,
+  isAdded: false
 }
 
 export const friendsReducer = (state = initialState, action) => {
@@ -30,6 +31,7 @@ export const friendsReducer = (state = initialState, action) => {
               ...state, 
               isFetching: false,
               isFetched: true,
+              isAdded: true,
               friends: action.friends 
           }
       default:

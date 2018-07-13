@@ -29,8 +29,8 @@ export const addFriend = (newFriend) => {
       request.then(({ data }) => {
         console.log('post data', data)
         dispatch({
-          type: FETCHED_FRIENDS, 
-          friends: data.friends
+          type: UPDATE_FRIEND, 
+          friends: data
         });
       })
       .catch(err => {
