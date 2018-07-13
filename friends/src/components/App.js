@@ -1,13 +1,14 @@
 import React from 'react'
-import NewFriend from '../containers/NewFriend'
 import FriendsList from '../containers/FriendsList'
+import { Route } from 'react-router-dom'
+import FriendDetails from '../containers/FriendDetails'
 
 class App extends React.Component {
   render () {
     return (
       <div>
-        <NewFriend />
-        <FriendsList />
+        <Route exact path='/' component={FriendsList} />
+        <Route path='/friends/:id' component={FriendDetails} />
       </div>
     )
   }
