@@ -1,35 +1,44 @@
 import {
-  FETCHING_FRIENDS,
+  DATA_REQUESTED,
+  ERROR_GETTING_DATA,
   FRIENDS_FETCHED,
-  ERROR_FETCHING_FRIENDS
+  POST_SUCCESS
 } from "../actions";
 
 const initialState = {
   friends: [],
   fetching: false,
   fetched: false,
-  error: null
+  error: null,
+  newFriend: {}
 };
 
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCHING_FRIENDS:
+    case DATA_REQUESTED:
       return Object.assign({}, state, {
         fetching: true,
         fetched: false,
         error: null
       });
-    case FRIENDS_FETCHED:
-      return Object.assign({}, state, {
-        fetching: false,
-        fetched: true,
-        chars: action.payload
-      });
-    case ERROR_FETCHING_FRIENDS:
+    case ERROR_GETTING_DATA:
       return Object.assign({}, state, {
         fetching: false,
         fetched: false,
         error: action.payload
+      });
+    case FRIENDS_FETCHED:
+      return Object.assign({}, state, {
+        fetching: false,
+        fetched: true,
+        friends: action.payload
+      });
+    case POST_SUCCESS:
+      return Object.assign({}, state, {
+        fetching: false,
+        fetched: true,
+        newFriend: {},
+        friends: action.payload
       });
     default:
       return state;

@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import "./App.css";
 import { fetchFriends } from "./actions";
 
+// components
+import Loading from "./components/Loading";
+
 class App extends Component {
   componentDidMount() {
     let URL = "http://localhost:5000/api/friends";
@@ -13,16 +16,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.fetching ? (
-          <div>
-            <p>CONTACTING SERVER...</p>
-            <img
-              src="https://media1.giphy.com/media/3o8doMpxlWKWYqk6AM/giphy.gif"
-              alt="loading animation"
-              className="loading-animation"
-            />
-          </div>
-        ) : null}
+        <Loading fetching={this.props.fetching} />
         {this.props.friends.map(friend => {
           return <div key={friend.name}>{friend.name}</div>;
         })}
