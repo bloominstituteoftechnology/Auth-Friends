@@ -28,10 +28,10 @@ export const friendsReducer = (state = initialState, action) => {
                 fetching: false,
                 error: action.payload
             });
-            case ADDING:
-                return Object.assign({}, state, {
-                    addingFriend: true
-                });
+        case ADDING:
+            return Object.assign({}, state, {
+                addingFriend: true
+            });
         // case ADDED_FRIEND:
         //     return Object.assign({}, state, {
         //         addedFriend: true,

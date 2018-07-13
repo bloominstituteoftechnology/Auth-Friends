@@ -3,7 +3,7 @@ import axios from 'axios';
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
-export const ADDING = 'ADDING';
+export const ADDING = 'ADDING'
 
 export const fetchData = () => {
     return (dispatch) => {

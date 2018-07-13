@@ -23,7 +23,7 @@ class App extends Component {
         ) : (
           <Friends friends={this.props.friends} />
         )}
-
+        
         <CreateFriendForm addedFriend={this.props.addedFriend} />
       </div>
     );
@@ -36,6 +36,7 @@ const mapStatetoProps = state => {
     fetching: state.fetchingFriends,
     fetched: state.friendsFetched,
     addedFriend: state.addedFriends,
+    addingFriend: state.addingFriend,
     friends: state.friends,
     error: state.error
   }
