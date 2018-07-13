@@ -10,7 +10,8 @@ const initialState = {
   fetching: false,
   fetched: false,
   error: null,
-  newFriend: {}
+  newFriend: {},
+  showForm: true
 };
 
 export const friendsReducer = (state = initialState, action) => {

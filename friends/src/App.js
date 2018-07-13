@@ -8,6 +8,7 @@ import { fetchFriends } from "./actions";
 import Loading from "./components/Loading";
 import FriendsList from "./components/FriendsList";
 import Error from "./components/Error";
+import AddFriendForm from "./components/AddFriendForm";
 
 class App extends Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <AddFriendForm showForm={this.props.showForm} />
         <Loading fetching={this.props.fetching} />
         <FriendsList friends={this.props.friends} />
         <Error error={this.props.error} />
@@ -31,7 +33,8 @@ const mapStateToProps = state => {
     fetching: state.friends.fetching,
     fetched: state.friends.fetched,
     error: state.friends.error,
-    friends: state.friends.friends
+    friends: state.friends.friends,
+    showForm: state.friends.showForm
   };
 };
 
