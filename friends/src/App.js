@@ -18,10 +18,11 @@ class App extends Component {
         {this.props.fetching ? <LoadingFriends /> : null}
 
         {this.props.fetched ? <Friends friends={this.props.friends} /> : null}
-        {/* <Friends friends={this.props.friends} /> */}
 
         {this.props.error ? (
-          <React.Fragment>Err: {this.props.error}</React.Fragment>
+          <div style={{ color: 'red', fontSize: '30px', padding: '20px' }}>
+            {this.props.error}
+          </div>
         ) : null}
       </React.Fragment>
     );

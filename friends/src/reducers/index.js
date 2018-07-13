@@ -1,14 +1,5 @@
-import {
-  FETCHING,
-  FETCHED,
-  ERROR,
-  ADDING,
-  ADDED,
-  DELETING,
-  DELETED,
-  EDITING,
-  EDITED,
-} from '../actions';
+/* prettier-ignore */
+import {FETCHING, FETCHED, ERROR, ADDING, ADDED, DELETING, DELETED, EDITING, EDITED} from '../actions';
 
 const initialState = {
   fetchingFriends: false,
