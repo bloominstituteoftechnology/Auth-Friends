@@ -35,7 +35,7 @@ export const friendsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {  });
 
     case 'FRIEND_DELETED':
-      return
+      return Object.assign({}, state, {  });
 
     case 'ERROR':
       return Object.assign({}, state, { error: action.payload });

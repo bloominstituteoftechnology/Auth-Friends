@@ -27,3 +27,21 @@ export const submitFriend = (newFriend) => {
       });
   }
 }
+
+export const getFriend = () => {
+  return {
+
+  }
+}
+
+export const editFriend = () => {
+  return {
+
+  }
+}
+
+export const deleteFriend = () => {
+  return {
+
+  }
+}

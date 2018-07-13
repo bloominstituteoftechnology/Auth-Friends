@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import FriendsForm from './components/FriendsForm';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import Header from './components/Header';
+import Form from './components/Form';
 import FriendsList from './components/FriendsList';
+import Friend from './components/Friend';
 import { getFriends, submitFriend } from './actions';
 
 class App extends Component {
@@ -24,6 +27,8 @@ class App extends Component {
                        email: this.state.email };
 
     this.props.submitFriend(newFriend);
+
+    this.props.history.push('/');
   }
 
   handleInputChange = e => {
@@ -41,21 +46,41 @@ class App extends Component {
   }
 
   render() {
+
+    if (this.props.fetchingFriends) {
+      return (
+        <div>Loading friends...</div>
+      )
+    }
+
     return (
       <div className="container">
-        {this.props.fetchingFriends ? (
-          <div>Loading friends...</div>
-        ) : (
-          <div className="container">
-            <FriendsForm name={this.state.name}
+        <Header />
+
+        <Route exact path="/" render={ props =>
+            <FriendsList friends={this.props.friends} />
+          }
+        />
+
+        <Switch>
+
+          <Route path="/api/friends/add" render={ props =>
+            <Form name={this.state.name}
                          age={this.state.age}
                          email={this.state.email}
                          handleFriendSubmit={this.handleFriendSubmit}
                          handleInputChange={this.handleInputChange}
                          handleCancel={this.handleCancel} />
-            <FriendsList friends={this.props.friends}/>
-          </div>
-        )}
+            }
+          />
+
+          <Route path="/api/friends/:id" render={ props =>
+             <Friend {...props} />
+            }
+          />
+
+        </Switch>
+
       </div>
     );
   }
@@ -68,4 +93,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapDispatchToProps, { getFriends, submitFriend })(App);
+export default withRouter(connect(mapDispatchToProps, { getFriends, submitFriend })(App));
