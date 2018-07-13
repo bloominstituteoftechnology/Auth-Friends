@@ -44,8 +44,10 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-.delete {
-  text-align: center;
+.delete-update {
+  width: 50px;
+  padding: 0;
+  margin: 0;
 }
 
 .updateButton {
@@ -62,6 +64,7 @@ tr:nth-child(even) {
   color: red;
   font-weight: bold;
   cursor: pointer;
+  width: 10px;
 }
 
 .add-form {
