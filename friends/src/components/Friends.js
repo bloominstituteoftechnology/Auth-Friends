@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FETCHING } from '../actions';
+import { fetchData } from '../actions';
 import logo from '../logo.svg';
 
 class Friends extends Component {
@@ -47,4 +47,4 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps, { FETCHING })(Friends);
+export default connect(mapStateToProps, { fetchData })(Friends);
