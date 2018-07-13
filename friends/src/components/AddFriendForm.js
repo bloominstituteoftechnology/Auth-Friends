@@ -10,16 +10,6 @@ class AddFriendForm extends React.Component {
     };
   }
 
-  //   handleNewFriendText = event => {
-  //     const target = event.target;
-  //     const value = target.type === "checkbox" ? target.checked : target.value;
-  //     const name = target.name;
-
-  //     this.setState({
-  //       [name]: value
-  //     });
-  //   };
-
   handleChange = event => {
     console.log("INPUT FORM EVENT: ", event);
     const target = event.target;
@@ -29,6 +19,10 @@ class AddFriendForm extends React.Component {
     this.setState({
       [name]: value
     });
+  };
+
+  handleSubmit = event => {
+    console.log(event);
   };
 
   render() {
