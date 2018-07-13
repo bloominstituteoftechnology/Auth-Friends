@@ -5,12 +5,13 @@ import './App.css';
 import { connect } from 'react-redux';
 import { fetchData } from '../actions';
 
-import FriendList from './FriendList';
-import AddForm from './AddForm';
+import FriendList from '../components/FriendList';
+import AddForm from '../components/AddForm';
 
 class App extends Component {
 
   componentDidMount() {
+    
     this.props.fetchData();
   }
 
@@ -23,7 +24,7 @@ class App extends Component {
             ? <img src={logo} />
             : <FriendList friends={this.props.friends} />
         }
-        {
+        { 
           (this.props.savingFriends && !this.props.friendsSaved)
           ? <div>...Adding to Friend List</div>
           : <AddForm />

@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
         case (ERROR):
             return Object.assign({}, state, { error: action.error })
         case (SAVING_FRIEND):
-            return Object.assign({}, state, { fetchingFriends: false, friendsFetched: false, savingFriend: true, friendsSave: false })
+            return Object.assign({}, state, { fetchingFriends: false, friendsFetched: false, savingFriends: true, friendsSave: false })
         case (FRIEND_SAVED):
             //get next id
             const currentIds = state.friends.map(friend => friend.id);
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 fetchingFriends: false, 
                 friendsFetched: false,
-                savingFriend: false,
+                savingFriends: false,
                 friendsSave: true, 
                 friends: state.friends.concat({
                     id: nextId, 

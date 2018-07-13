@@ -17,16 +17,16 @@ const AddFriend = (props) => {
                     newEmail: emailInput.value
                 })
                 nameInput.value = '';
-                ageInput.value = '';
+                ageInput.value = 0;
                 emailInput.value = '';
             }
         }>
             <label htmlFor="name">Name</label>
             <input type="text" id="name" ref={node => nameInput = node} />
             <label htmlFor="age">Age</label>
-            <input type="text" id="age" ref={node => ageInput = node} />
+            <input type="number" id="age" ref={node => ageInput = node} />
             <label htmlFor="email">Email</label>
-            <input type="text" id="email" ref={node => emailInput = node} />
+            <input type="email" id="email" ref={node => emailInput = node} />
             <button className="add-button" type="submit">Add Friend</button>
         </form>
     );
