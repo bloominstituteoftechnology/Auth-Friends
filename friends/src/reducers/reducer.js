@@ -1,4 +1,9 @@
-import { GET_FRIENDS, GOT_FRIENDS, ERROR } from "../actions/action";
+import {
+  GET_FRIENDS,
+  GOT_FRIENDS,
+  ERROR,
+  SUBMIT_EDIT
+} from "../actions/action";
 
 const initialState = {
   fetchingFriends: false,
@@ -19,8 +24,8 @@ export const friendReducer = (state = initialState, action) => {
       return Object.assign({}, state, { fetchingFriends: true });
     case GOT_FRIENDS:
       console.log("action.payload is: ", action.payload);
-      let currentFriends = state.friends.slice();
-      currentFriends.push(action.payload);
+      return Object.assign({}, state, { friends: action.payload });
+    case SUBMIT_EDIT:
       return Object.assign({}, state, { friends: action.payload });
     case ERROR:
       return Object.assign({}, state, { error: "Error, no friends found!" });
