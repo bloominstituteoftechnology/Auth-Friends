@@ -27,7 +27,7 @@ class AddFriendForm extends React.Component {
 
   render() {
     return this.props.showForm ? (
-      <form>
+      <form className="form-group">
         <input
           type="text"
           name="name"
@@ -49,6 +49,7 @@ class AddFriendForm extends React.Component {
           value={this.state.email}
           onChange={this.handleChange}
         />
+        <button type="submit">SUBMIT</button>
       </form>
     ) : null;
   }

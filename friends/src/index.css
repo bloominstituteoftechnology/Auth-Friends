@@ -1,5 +1,30 @@
+html {
+  font-size: 62.5%;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: monospace;
+  font-size: 3rem;
+  background-color: #2b2b2b;
+  background: url("https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg");
+  /* background: url("https://images.pexels.com/photos/733475/pexels-photo-733475.jpeg"); */
+  color: white;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.form-group {
+  margin-bottom: 30vh;
 }
