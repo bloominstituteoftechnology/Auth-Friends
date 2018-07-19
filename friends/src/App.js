@@ -27,9 +27,9 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    friends: state.friends.friends,
-    error: state.error,
-    fetchingFriends: state.fetchingFriends
+    friends: state.friendsReducer.friends,
+    error: state.friendsReducer.error,
+    fetchingFriends: state.friendsReducer.fetchingFriends
   };
 };
 
