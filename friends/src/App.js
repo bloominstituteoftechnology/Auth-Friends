@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import { fetchFriends } from './friendAction';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.props.fetchFriends();
   }
@@ -17,7 +21,7 @@ class App extends Component {
         </header>
         <div className="App-intro">
          {this.props.friends.map(friends => {
-           return <div key={friends.id} />
+           return <div key={friends.name}>{friends.name}</div>
          })}
         </div>
       </div>
