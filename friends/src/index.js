@@ -5,6 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { createStore } from 'redux';
 import { applyMiddleware } from '../../../../../Library/Caches/typescript/2.9/node_modules/redux';
 
 const store = createStore(
