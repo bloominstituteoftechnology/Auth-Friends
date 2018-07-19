@@ -1,8 +1,16 @@
-import { FETCHING_FRIENDS, FRIENDS_FETCH_SUCCESS, FRIENDS_FETCH_ERROR } from './friendAction';
+import { FETCHING_FRIENDS,
+     FRIENDS_FETCH_SUCCESS, 
+     FRIENDS_FETCH_ERROR } 
+     from './friendAction';
 
-const initialState = { friends: [], fetchingFriends: false, error: '' };
+const initialState = {
+     friends: [], 
+     fetchingFriends: false,
+     friendsFetchSuccess: false, 
+     friendsFetchError: null 
+    };
 
-export default (state = initialState, action) => {
+export const friendsReducer = (state = initialState, action) => {
     switch(action.type) {
         case FETCHING_FRIENDS:
         return Object.assign({}, state, { fetchingFriends: true });

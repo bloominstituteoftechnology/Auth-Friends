@@ -17,7 +17,7 @@ class App extends Component {
         </header>
         <div className="App-intro">
          {this.props.friends.map(friends => {
-           return <div key={friend.id} />
+           return <div key={friends.id} />
          })}
         </div>
       </div>
@@ -27,7 +27,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    friends: state.friends,
+    friends: state.friends.friends,
     error: state.error,
     fetchingFriends: state.fetchingFriends
   };
