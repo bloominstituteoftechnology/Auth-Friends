@@ -22,7 +22,7 @@ const initialState = {
     friends: []
   };
 
-  export const friendsReducer = (state = initialState, action) => {
+  const friendsReducer = (state = initialState, action) => {
       switch(action.type) {
           case FETCHING_FRIENDS:
             return Object.assign({},state, {
@@ -139,3 +139,4 @@ const initialState = {
             return state;
       }
   }
+  export default friendsReducer

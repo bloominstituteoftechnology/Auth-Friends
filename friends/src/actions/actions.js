@@ -10,14 +10,14 @@ export const FRIENDS_DELETING = 'FRIENDS_DELETING';
 export const FRIENDS_DELETED = 'FRIENDS_DELETED';
 export const FRIENDS_ERROR = 'FRIENDS_ERROR';
 
-export const fetchFriends = () => {
-    const promise = axios.get('http://localhost:500/api/friends');
+const fetchFriends = () => {
+    const promise = axios.get('http://localhost:5000/api/friends');
 
     return function(dispatch) {
         dispatch({type: FETCHING_FRIENDS});
 
         promise.then((response) => {
-            console.log(response);
+            console.log(response.data);
             dispatch({type: FREINDS_FETCHED, payload: response.data})
         })
         .catch(error => {
@@ -25,3 +25,5 @@ export const fetchFriends = () => {
         })
     }
 }
+
+export default fetchFriends
