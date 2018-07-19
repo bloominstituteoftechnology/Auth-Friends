@@ -47,6 +47,8 @@ const initialState = {
                 deletingFriend: false,
                 friendDeleted: false,
                 error: null,
+                friends: action.payload
+
             })
             case FRIENDS_SAVED:
             return Object.assign({},state, {
