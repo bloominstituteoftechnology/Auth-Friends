@@ -1,21 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import { fetchingAll } from './action';
+import logo from './logo.svg';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchingAll();
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        {this.props.fetchingFriends ? (
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        ) : (
+          <div>{this.props.friends.map((friend) => <div key={friend.id}>{friend.name}</div>)}</div>
+        )}
       </div>
     );
   }
 }
+// must display friend.name b/c friend is an object
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+    fetchingFriends: state.fetchingFriends,
+    friendsFetched: state.friendsFetched,
+    error: state.error
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchingAll }
+)(App);
