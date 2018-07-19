@@ -1,13 +1,13 @@
 import { FETCHING_FRIENDS,
      FRIENDS_FETCH_SUCCESS, 
      FRIENDS_FETCH_ERROR } 
-     from './friendAction';
+     from '../friendAction';
 
 const initialState = {
      friends: [], 
      fetchingFriends: false,
      friendsFetchSuccess: false, 
-     friendsFetchError: null 
+     friendsFetchError: false 
     };
 
 export const friendsReducer = (state = initialState, action) => {
