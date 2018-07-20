@@ -9,20 +9,23 @@ class AddFriendForm extends React.Component {
     }
   }
   inputHandler = (e) => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   }
   render() {
-    <div>
-      <h3>Add a friend:</h3>
-      <form>
-        <input onChange={props.inputHandler} type="text" name="name" placeholder="name"/>
-        <input onChange={props.inputHandler} type="text" name="age" placeholder="age"/>
-        <input onChange={props.inputHandler} type="text" name="email" placeholder="email"/>
-        <button onClick={props.addFriend}>Add</button>
-      </form>
-    </div>
+    return (
+      <div>
+        <h3>Add a friend:</h3>
+        <form>
+          <input onChange={this.inputHandler} type="text" name="name" placeholder="name"/>
+          <input onChange={this.inputHandler} type="text" name="age" placeholder="age"/>
+          <input onChange={this.inputHandler} type="text" name="email" placeholder="email"/>
+          <button onClick={this.addFriend}>Add</button>
+        </form>
+      </div>
+    );
+    
   }
 }
  
-export default connect(mapStateToProps, { })(AddFriendForm);
+//export default connect(mapStateToProps, { })(AddFriendForm);
 

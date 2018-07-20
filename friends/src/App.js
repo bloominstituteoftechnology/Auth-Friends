@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import FriendsList from './components/FriendsList';
+import AddFriendForm from './components/AddFriendForm';
+import { connect } from 'react-redux';
+import { fetchFriends } from './actions/index';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchFriends();
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <FriendsList />
+        
       </div>
     );
   }
 }
 
-export default App;
+export default connect(null, { fetchFriends })(App);
