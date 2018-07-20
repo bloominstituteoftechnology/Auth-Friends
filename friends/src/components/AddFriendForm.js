@@ -1,12 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addFriend } from '../actions/index';
 
 class AddFriendForm extends React.Component {
   state = {
-    newFriend: {
+    
       name: '',
       age: '',
       email: '',
-    }
+    
   }
   inputHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -19,7 +21,7 @@ class AddFriendForm extends React.Component {
           <input onChange={this.inputHandler} type="text" name="name" placeholder="name"/>
           <input onChange={this.inputHandler} type="text" name="age" placeholder="age"/>
           <input onChange={this.inputHandler} type="text" name="email" placeholder="email"/>
-          <button onClick={this.addFriend}>Add</button>
+          <button onClick={() => this.props.addFriend(this.state)}>Add</button>
         </form>
       </div>
     );
@@ -27,5 +29,6 @@ class AddFriendForm extends React.Component {
   }
 }
  
-//export default connect(mapStateToProps, { })(AddFriendForm);
+//export default AddFriendForm;
+export default connect(null, {addFriend})(AddFriendForm);
 

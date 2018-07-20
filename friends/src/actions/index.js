@@ -3,8 +3,8 @@ import axios from 'axios';
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
 export const FETCH_FRIENDS = 'FETCH_FRIENDS';
 export const ERROR = 'ERROR';
-
-const URL = 'http://localhost:5000/api/friends';
+export const ADD_FRIEND = 'ADD_FRIEND';
+export const ADDING_FRIEND = 'ADDING_FRIEND';
 
 export const fetchFriends = () => {
   return dispatch => {
@@ -20,3 +20,17 @@ export const fetchFriends = () => {
       });   
   };
 };
+
+export const addFriend = (friend) => {
+  return dispatch => {
+    dispatch({type: ADDING_FRIEND});
+    axios
+      .post('http://localhost:5000/api/friends/', friend)
+      .then(response => {
+        dispatch({type: ADD_FRIEND, payload: response.data})
+      })
+      .catch(err => {
+        dispatch({type: ERROR, payload: err});
+      });
+  }
+}
