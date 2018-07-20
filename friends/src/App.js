@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchingAll } from './action';
+import { fetchingAll, addFriend } from './action';
 import logo from './logo.svg';
+import FriendForm from './FriendForm';
 
 class App extends Component {
   componentDidMount() {
@@ -16,6 +17,7 @@ class App extends Component {
         ) : (
           <div>{this.props.friends.map((friend) => <div key={friend.id}>{friend.name}</div>)}</div>
         )}
+        <FriendForm addFriend={this.props.addFriend} />
       </div>
     );
   }
@@ -33,5 +35,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { fetchingAll }
+  { fetchingAll, addFriend }
 )(App);

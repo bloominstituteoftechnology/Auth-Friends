@@ -2,8 +2,9 @@ import axios from 'axios';
 
 // fetchingFriends: false,
 //   friendsFetched: false,
-//   friendsSaved: false,
-//   savingFriends: false,
+//   friendsSaved: false, //friends saved
+//   savingFriends: false, // adding friend
+
 //   updatingFriend: false,
 //   friendUpdated: false,
 //   deletingFriend: false,
@@ -34,3 +35,29 @@ export const fetchingSingle = (id) => {
       });
   };
 };
+
+export const addFriend = (friend) => {
+  return (dispatch) => {
+    dispatch({ type: 'ADDING_FRIEND' });
+    axios
+      .post('http://localhost:5000/api/friends/', friend)
+      .then(
+        ({ data }) =>
+          dispatch({
+            type: 'FRIENDS_SAVED',
+            payload: { name: friend.name, age: friend.age, email: friend.email }
+          })
+        // payload is an object with 3 key value pairs
+      )
+      .catch((error) => {
+        dispatch({ type: 'ERROR', msg: 'error saving friend' });
+      });
+  };
+};
+
+// export const deleteFriend = (id) => {
+//   return (dispatch) => {
+//     axios
+//       .delete(`http://localhost:5000/api/friends/${id}`)
+//   }
+// }
