@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display:flex;
+  margin-left:45%;
 }
 
 .App-logo {
@@ -25,4 +27,13 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.list{
+	margin-right:20px;
+}
+
+.formGroup{
+	display:flex;
+	flex-direction:column;
 }
