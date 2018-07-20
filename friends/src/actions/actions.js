@@ -1,23 +1,23 @@
 import axios from 'axios';
 
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
-export const FRIEND_FETCHED = 'FRIEND_FETCHED';
-export const SAVING_FRIENDS = 'SAVING_FRIENDS';
+export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
+export const SAVING_FRIEND = 'SAVING_FRIEND';
 export const SAVED_FRIEND = 'SAVED_FRIEND';
-export const UPDATING_FRIENDS = 'UPDATING_FRIENDS';
+export const UPDATING_FRIEND = 'UPDATING_FRIEND';
 export const UPDATED_FRIEND = 'UPDATED_FRIEND';
-export const DELETING_FRIENDS = 'DELETING_FRIENDS';
+export const DELETING_FRIEND = 'DELETING_FRIEND';
 export const DELETED_FRIEND = 'DELETED_FRIEND';
 export const ERROR = 'ERROR';
 
 const URL = 'http://localhost:5000/api/friends';
-export const fetchFriends = friends => {
-    const promise = axios.get(URL);
+export const fetchFriends = () => {
+    const promise = axios.get(`${URL}/get`);
     return (dispatch) => {
         dispatch({ FETCHING_FRIENDS });
         promise
-            .then(({ data }) => {
-                dispatch({ type: FRIEND_FETCHED, payload: data.friends });
+            .then(res => {
+                dispatch({ type: FRIEND_FETCHED, payload: response.data });
             })
             .catch(err => {
                 dispatch({ type: ERROR, payload: err });
@@ -26,7 +26,9 @@ export const fetchFriends = friends => {
 };
 
 export const deleteFriend = id => {
-    const promise = axios.delete(URL);
+    const promise = axios.delete(`${URL}/delete`, {
+        data: {id}
+    });
     return (dispatch) => {
         dispatch({ DELETING_FRIENDS });
         promise
@@ -39,7 +41,17 @@ export const deleteFriend = id => {
 }
 }
 
-export const saveFriend = () => {
- const promise = axios.post(URL);
- return ()
-}
+export const saveFriend = friend => {
+    const promise = axios.post(`${URL}/create`, friend);
+    return dispatch => {
+      dispatch({ type: CREATING_FRIEND });
+      promise
+        .then(({ data }) => {
+          dispatch({ type: CREATE_FRIEND, payload: data });
+        })
+        .catch(err => {
+          dispatch({ type: ERROR, payload: err });
+        });
+    };
+  };
+  
