@@ -1,22 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Typography from 'typography';
-import theme from 'typography-theme-judah';
+import React from "react";
+import ReactDOM from "react-dom";
+import { applyMiddleware, createStore } from "redux";
+import { Provider } from "react-redux";
 
-import './index.css';
-import App from './App';
+import logger from "redux-logger";
+import thunk from "redux-thunk";
+import Typography from "typography";
+import theme from "typography-theme-judah";
 
-import { fetchFriends } from './Actions';
+import "./index.css";
+import App from "./App";
+import rootReducer from "./Reducers";
 
 const typography = new Typography(theme);
 
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
+
 typography.injectStyles();
 
-fetchFriends()(() =>{});
-
-
-ReactDOM.render(<App />, document.getElementById('root'));
-
-
-
-
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById("root"),
+);

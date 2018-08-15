@@ -6,16 +6,16 @@ const URL = '/api/friends'
 export const {
 	fetchFriendsRequest,
 	fetchFriendsFailure,
+	fetchFriendsSuccess,
 	saveFriendsRequest,
 	saveFriendsFailure,
+	saveFriendsSuccess,
 	updateFriendsRequest,
 	updateFriendsFailure,
+	updateFriendsSuccess,
 	deleteFriendsRequest,
 	deleteFriendsFailure,
-	fetchFriendsSuccess,
-	saveFriendsSuccess,
-	updateFriendsSuccess,
-	deleteFriendsSuccess
+	deleteFriendsSuccess,
 } = createActions(
 	"FETCH_FRIENDS_REQUEST",
 	"FETCH_FRIENDS_FAILURE",
@@ -28,15 +28,15 @@ export const {
 	"FETCH_FRIENDS_SUCCESS",
 	"SAVE_FRIENDS_SUCCESS",
 	"UPDATE_FRIENDS_SUCCESS",
-	"DELETE_FRIENDS_SUCCESS"
+	"DELETE_FRIENDS_SUCCESS",
 );
 
 export const fetchFriends = () => async dispatch => {
     dispatch(fetchFriendsRequest());
     try {
         let response = await axios.get(URL);
-        console.log(response.data)
+        dispatch(fetchFriendsSuccess(response.data));
     } catch(err) {
-        console.log(err);
+        dispatch(fetchFriendsFailure(err))
     }
 };
