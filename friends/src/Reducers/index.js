@@ -1,4 +1,4 @@
-import { handleAction, handleActions } from "redux-actions";
+import { handleAction, handleActions, combineActions } from "redux-actions";
 import { combineReducers } from "redux";
 
 import {
@@ -13,8 +13,17 @@ const friends = handleAction(
 	[],
 );
 
+const isFetching = handleActions(
+	{
+		[fetchFriendsRequest]: () => true,
+		[combineActions(fetchFriendsFailure, fetchFriendsSuccess)]: () => false,
+	},
+	false,
+);
+
 export default combineReducers({
 	friends,
+	isFetching,
 });
 
 // const intialState = { data: [], fetchingData: false, error: "" };
