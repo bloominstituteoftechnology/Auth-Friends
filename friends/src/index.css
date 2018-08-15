@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+body {
+  padding: 30px
+}
+
+.App {
+  margin: 0 auto;
+  max-width: 880px;
+  width: 100%;
+}
