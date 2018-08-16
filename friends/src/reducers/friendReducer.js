@@ -1,7 +1,8 @@
-import { } from '../actions';
+import { FETCHED_A_FRIEND, DONE_WITH_FRIEND, STARTED_EDITING, DONE_EDITING, ERROR } from '../actions';
 
 const initialState = {
   hasLoadedFriend: false,
+  isEditing: false,
   friend: null,
   error: null,
 }
@@ -19,6 +20,16 @@ export const friendReducer = (state = initialState, action) => {
         ...state,
         friend: null,
         hasLoadedFriend: false
+      }
+    case STARTED_EDITING:
+      return {
+        ...state,
+        isEditing: true
+      }
+    case DONE_EDITING:
+      return {
+        ...state,
+        isEditing: false
       }
     case ERROR:
       return {

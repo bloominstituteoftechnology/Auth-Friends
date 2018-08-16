@@ -8,6 +8,10 @@ export const UPDATING_FRIEND = 'UPDATING_FRIEND';
 export const FRIEND_UPDATED = 'FRIEND_UPDATED';
 export const DELETING_FRIEND = 'DELETING_FRIEND';
 export const FRIEND_DELETED = 'FRIEND_DELETED';
+export const FETCHED_A_FRIEND = 'FETCHED_A_FRIEND';
+export const DONE_WITH_FRIEND = 'DONE_WITH_FRIEND';
+export const STARTED_EDITING = 'STARTED_EDITING';
+export const DONE_EDITING = 'DONE_EDITING';
 export const ERROR = 'ERROR';
 
 const URL = 'http://localhost:5000/api/friends';
@@ -27,10 +31,7 @@ export const saveFriend = friend => {
     dispatch({ type: SAVING_FRIEND });
 
     axios.post(URL, friend)
-          .then( res => {
-            dispatch({ type: FRIEND_SAVED, payload: res.data });
-            dispatch(removeFriend());
-          })
+          .then( res => dispatch({ type: FRIEND_SAVED, payload: res.data }))
           .catch( err => dispatch({ type: ERROR, payload: err }));
   }
 };
@@ -40,7 +41,11 @@ export const updateFriend = (id, friend) => {
     dispatch({ type: UPDATING_FRIEND });
 
     axios.put(URL + '/' + id, friend)
-          .then( res => dispatch({ type: FRIEND_UPDATED, payload: res.data }))
+          .then( res => {
+            dispatch({ type: FRIEND_UPDATED, payload: res.data });
+            dispatch(stopEditingFriend());
+            dispatch(fetchFriend(id));
+          })
           .catch( err => dispatch({ type: ERROR, payload: err }));
   }
 };
@@ -50,7 +55,10 @@ export const deleteFriend = id => {
     dispatch({ type: DELETING_FRIEND });
 
     axios.delete(URL + '/' + id)
-          .then(res => dispatch({ type: FRIEND_DELETED, payload: res.data }))
+          .then(res => {
+            dispatch({ type: FRIEND_DELETED, payload: res.data });
+            dispatch(removeFriend());
+          })
           .catch( err => dispatch({ type: ERROR, payload: err }));
   }
 }
@@ -66,5 +74,17 @@ export const fetchFriend = id => {
 export const removeFriend = () => {
   return {
     type: DONE_WITH_FRIEND
+  }
+}
+
+export const editFriend = () => {
+  return {
+    type: STARTED_EDITING
+  }
+}
+
+export const stopEditingFriend = () => {
+  return {
+    type: DONE_EDITING
   }
 }

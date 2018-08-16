@@ -4,10 +4,16 @@ class FriendForm extends Component{
   constructor(){
     super();
     this.state = {
-      id: props.id,
-      name: props.name,
-      age: props.age,
-      email: props.email,
+      id: '',
+      name: '',
+      age: '',
+      email: '',
+    }
+  }
+
+  componentDidMount(){
+    if(this.props.editing === "true"){
+      this.setState({ id: this.props.id, name: this.props.name, age: this.props.age, email: this.props.email});
     }
   }
 
@@ -17,12 +23,27 @@ class FriendForm extends Component{
 
   handleSubmit = event => {
     event.preventDefault();
-    //trigger redux-thunk call passing in the data
+    if(this.props.editing === "true"){
+      const updatedFriend = {
+        name: this.state.name,
+        age: Number(this.state.age),
+        email: this.state.email
+      };
+      this.props.save(this.props.id, updatedFriend);
+    }else{
+        const newFriend = {
+        name: this.state.name,
+        age: Number(this.state.age),
+        email: this.state.email
+        };
+      this.props.save(newFriend);
+      this.setState({id: '', name: '', age: '', email: ''});
+    }
   }
 
   render(){
     return(
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <label htmlFor="name">Name: </label>
         <input
           type="text"
@@ -53,13 +74,6 @@ class FriendForm extends Component{
       </form>
     );
   }
-}
-
-FriendForm.defaultProps = {
-  id: null,
-  name: '',
-  age: null,
-  email: '',
 }
 
 export default FriendForm;

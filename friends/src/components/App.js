@@ -1,39 +1,67 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFriends, saveFriend, updateFriend, deleteFriend } from '../actions';
+import { fetchFriends, saveFriend, updateFriend,
+  deleteFriend, fetchFriend, editFriend, stopEditingFriend, removeFriend } from '../actions';
 import './App.css';
 import FriendForm from './FriendForm';
+import FriendDisplay from './FriendDisplay';
 
 class App extends Component {
   componentDidMount(){
     this.props.fetchFriends();
   }
 
+  getFriend = id => {
+    this.props.fetchFriend(id);
+  }
+
+  editFriend = () => {
+    this.props.editFriend();
+  }
+
+  removeFriend = () => {
+    this.props.removeFriend();
+  }
+
+  deleteFriend = () => {
+    this.props.deleteFriend();
+  }
+
   render() {
     return (
       <div className="App">
-        {this.props.editingFriend ? <FriendForm editing={true} {...this.props.friend} /> : <FriendForm />}
+        <FriendForm save={this.props.saveFriend} />
         {this.props.isFetching ? (
           <h1>Loading Friends...</h1>
         ) : (
           <ul>
             {this.props.friends.map(friend => {
-              return <li key={friend.id}>{friend.name}</li>
+              return <li
+                        key={friend.id}
+                        onClick={() => this.getFriend(friend.id)}
+                      >
+                        {friend.name}
+                      </li>
             })}
           </ul>
         )}
+        {this.props.showingFriend ? <FriendDisplay {...this.props.friend} edit={this.editFriend} del={this.deleteFriend} done={this.removeFriend} /> : null}
+        {this.props.isEditing ? <FriendForm {...this.props.friend} editing="true" save={this.props.updateFriend} /> : null}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     friends: state.friendsReducer.friends,
     isFetching: state.friendsReducer.isFetchingFriends,
-    editingFriend: state.friendReducer.hasLoadedFriend,
-    friend: state.friendReducer.friend
+    showingFriend: state.friendReducer.hasLoadedFriend,
+    friend: state.friendReducer.friend,
+    isEditing: state.friendReducer.isEditing,
   }
 }
 
-export default connect(mapStateToProps, { fetchFriends, saveFriend, updateFriend, deleteFriend })(App);
+export default connect(mapStateToProps,
+  { fetchFriends, saveFriend, updateFriend, deleteFriend, fetchFriend, editFriend, stopEditingFriend, removeFriend })(App);
