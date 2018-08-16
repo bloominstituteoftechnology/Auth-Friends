@@ -19,8 +19,10 @@ class App extends Component {
 
   inputChangeHandler = event => {
     console.log("InputChange handler Working", event.target.value);
+    this.setState({ newFriend: event.target.value });
   };
   render() {
+    console.log("NewFriend", this.state.newFriend);
     return (
       <div className="App">
         {this.props.isFetching ? (
@@ -35,7 +37,7 @@ class App extends Component {
             <form>
               <input
                 placeholder="name..."
-                name={this.state.newFriend}
+                value={this.state.newFriend}
                 onChange={this.inputChangeHandler}
               />
             </form>
