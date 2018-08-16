@@ -7,6 +7,8 @@ export const ADD_FRIEND = "ADD_FRIEND";
 export const FRIEND_ADDED = "FRIEND_ADDED";
 export const DELETE_FRIEND = "DELETE_FRIEND";
 export const FRIEND_DELETED = "FRIEND_DELETED";
+export const EDIT_FRIEND = "EDIT_FRIEND";
+export const FRIEND_EDITED = "FRIEND_EDITED";
 
 export const fetchFriends = () => {
     return function(dispatch) {
@@ -41,13 +43,30 @@ export const fetchFriends = () => {
 }
 
 export const deleteFriend = id => {
-    console.log(id);
     return function(dispatch) {
         dispatch({ type: DELETE_FRIEND });
         axios
        .delete(`http://localhost:5000/api/friends/${id}`)
         .then(response => {
             dispatch({ type: FRIEND_DELETED, payload: response.data });
+        })
+        .catch(error => {
+            dispatch({ type: ERROR, payload: error });
+        })
+   }
+}
+
+export const editFriend = (name, age, email, id) => {
+    return function(dispatch) {
+        dispatch({ type: EDIT_FRIEND });
+        axios
+        .put(`http://localhost:5000/api/friends/${id}`, {
+            name: name,
+            age: age,
+            email: email
+            })
+        .then(response => {
+            dispatch({ type: FRIEND_EDITED, payload: response.data });
         })
         .catch(error => {
             dispatch({ type: ERROR, payload: error });

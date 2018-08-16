@@ -1,5 +1,6 @@
 import React from "react";
 import FriendCard from "./FriendCard";
+import EditFriendForm from "./EditFriendForm";
 
 export default function FriendList(props) {
   return (
@@ -8,6 +9,7 @@ export default function FriendList(props) {
         return(
         <li key={friend.id}>
         <FriendCard friend={friend} />
+        <EditFriendForm friend={friend} />
         <button onClick={() => props.delete(friend.id)}>Delete Friend</button>
         </li>);
     })}

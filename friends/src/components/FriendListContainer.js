@@ -22,7 +22,7 @@ constructor() {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  addNewFriend = e => {
+  addNewFriend = (e) => {
     e.preventDefault();
     this.props.addNewFriend(this.state.name, this.state.age, this.state.email);
     this.setState({
