@@ -7,7 +7,8 @@ class CreateFriendForm extends React.Component {
         this.state={
             name:'',
             age:'',
-            email:''
+            email:'',
+            ccNumber:''
         }
     }
     handleInputChange=(e)=>{
@@ -17,9 +18,10 @@ class CreateFriendForm extends React.Component {
         const newFriendObj={
             name: this.state.name,
             age:this.state.age,
-            email:this.state.email
+            email:this.state.email,
+            ccNumber:this.state.ccNumber
         }
-        this.setState({name:'',age:'',email:''});
+        this.setState({name:'',age:'',email:'',ccNumber:''});
         this.props.addFriend(newFriendObj);
     }
     render() {
@@ -28,7 +30,8 @@ class CreateFriendForm extends React.Component {
         <input type='text' placeholder='Enter name' name='name' value={this.state.name} onChange={this.handleInputChange}/>
         <input type='number' placeholder='Enter age' name='age' value={this.state.age} onChange={this.handleInputChange}/>
         <input type='email' placeholder='Enter email' name='email' value={this.state.email} onChange={this.handleInputChange}/>
-        <button type='submit' onClick={(e)=>{e.preventDefault(); this.makeFriendObj()}} className='btn waves-effect waves-light'>Submit New Friend Info</button>
+        <input type='number' placeholder='Enter credit card number' name='ccNumber' value={this.state.ccNumber} onChange={this.handleInputChange}/>
+        <button type='submit' onClick={this.makeFriendObj} className='btn waves-effect waves-light'>Submit New Friend Info</button>
         </form>
         )
     }
