@@ -1,0 +1,48 @@
+.page {
+    display: flex;
+}
+.formy {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 4%;
+    margin-top: 3%;
+    background: rgba(211, 198, 255, 0.24);
+    position: fixed;
+    border-radius: 5px;
+
+}
+
+.formy > input {
+    margin: 10%;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Karla', sans-serif;
+    height: 18px;
+}
+
+.formy > button {
+    border-radius: 5px;
+    background: palegreen;
+    width: 80px;
+    margin-bottom: 5%;
+    font-family: 'Karla', sans-serif;
+}
+
+.formy2 {
+    width: 200px;
+    font-family: 'Pacifico', cursive;
+    font-size: 180%;
+    height: 289.858px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4%;
+    margin-top: 3%;
+    background: rgba(255, 198, 231, 0.24);
+    position: fixed;
+    border-radius: 5px;
+
+}

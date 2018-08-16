@@ -9,33 +9,38 @@ let nextId = 6;
 let friends = [
   {
     id: 1,
-    name: 'Ben',
+    name: 'Buca',
     age: 30,
-    email: 'ben@lambdaschool.com',
+    email: 'buca@lambdaschool.com',
+    pic: "https://vignette.wikia.nocookie.net/viewaskewniverse/images/e/e4/ImagesCA7F9MPB.jpg/revision/latest?cb=20120424105623"
   },
   {
     id: 2,
-    name: 'Austen',
+    name: 'Di',
     age: 45,
-    email: 'austen@lambdaschool.com',
+    email: 'di@lambdaschool.com',
+    pic: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Official_portrait_of_Barack_Obama.jpg"
   },
   {
     id: 3,
-    name: 'Ryan',
+    name: 'Beppo',
     age: 15,
-    email: 'ryan@lambdaschool.com',
+    email: 'beppo@lambdaschool.com',
+    pic: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Daniel_Radcliffe_2013.jpg/197px-Daniel_Radcliffe_2013.jpg"
   },
   {
     id: 4,
     name: 'Sean',
     age: 35,
     email: 'sean@lambdaschool.com',
+    pic: "https://vignette.wikia.nocookie.net/borgcollective/images/c/c6/Seven_of_Nine_2376.jpg/revision/latest?cb=20130722185203"
   },
   {
     id: 5,
     name: 'Michelle',
     age: 67,
     email: 'michelle@gmail.com',
+    pic: "https://statici.behindthevoiceactors.com/behindthevoiceactors/_img/chars/turanga-leela-futurama-92.5.jpg"
   },
 ];
 
