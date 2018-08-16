@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
     this.state = {
       name: '',
-      age: 0,
+      age: '',
       email: '',
       updated: null,
       updatedName: '',
@@ -34,7 +34,7 @@ class App extends Component {
     this.props.addFriend(newFriend);
     this.setState({
       name: '',
-      age: 0,
+      age: '',
       email: ''
     })
   }
@@ -84,7 +84,7 @@ class App extends Component {
     return (
       <div className="App">
         <Friends friends={this.props.friends} deleteFriend={this.deleteFriend} storeUpdate={this.storeUpdate} />
-        <FriendForm handleSubmit={this.addFriend} handleChange={this.handleChange} />
+        <FriendForm handleSubmit={this.addFriend} handleChange={this.handleChange} name={this.state.name} age={this.state.age} email={this.state.email} />
         {this.state.updated !== null 
           ? <FriendUpdate updatedName={this.state.updatedName} updatedAge={this.state.updatedAge} updatedEmail={this.state.updatedEmail} handleChange={this.handleChange} cancelUpdate={this.cancelUpdate} handleSubmit={this.updateFriend} /> 
         : null}
