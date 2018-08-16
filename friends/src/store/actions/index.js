@@ -11,7 +11,7 @@ export const FRIEND_DELETED = 'FRIEND_DELETED';
 export const ERROR = 'ERROR';
 
 export const fetchFriends = () => {
-    const promise = axios.get('http://localhost:5000');
+    const promise = axios.get('http://localhost:5000/api/friends');
     return dispatch => {
         dispatch({type: FETCHING_FRIENDS});
         promise

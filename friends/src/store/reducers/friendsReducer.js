@@ -23,7 +23,7 @@ const initialState = {
     error: null
 }
 
-export default (state = initialState, action) => {
+export const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCHING_FRIENDS:
             console.log('fetching friends');
