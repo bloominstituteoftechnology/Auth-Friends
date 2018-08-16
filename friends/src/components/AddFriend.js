@@ -14,11 +14,7 @@ export default class AddFriend extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.name && this.state.age && this.state.email) {
-       this.props.handleAddFriend({
-          name: this.state.name,
-          age: this.state.age,
-          email: this.state.email
-      })
+       this.props.handleAddFriend(this.state)
       this.setState({
         name: '',
         age: '',

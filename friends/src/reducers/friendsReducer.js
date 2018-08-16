@@ -25,7 +25,8 @@ export const friendsReducer = (state = initialState, action) => {
         ],
         fetchingFriends: false,
         friendsFetched: true,
-        addingFriend: false
+        addingFriend: false,
+        updatingFriend: false
       };
     case 'DATA_*_ERROR':
       return {
@@ -37,6 +38,11 @@ export const friendsReducer = (state = initialState, action) => {
         return {
           ...state,
           addingFriend: true
+        };
+    case 'UPDATE_DATA':
+        return {
+          ...state,
+          updatingFriend: true
         }
     default:
       return state;

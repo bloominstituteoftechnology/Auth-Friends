@@ -18,9 +18,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>My Friends</h1>
-        {this.props.friends.fetchingData ? (
-          <p> hold up ur friends are coming </p>
-        ) : (
+        {this.props.friends.fetchingData ? 
+          (<p> hold up ur friends are coming </p>)
+         : (
           <FriendsList friends={this.props.friends} />
         )}
         <p> Add a friend? </p>

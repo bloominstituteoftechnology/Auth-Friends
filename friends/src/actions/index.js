@@ -26,4 +26,17 @@ export const addFriend = friend => dispatch => {
       console.log(err)
       dispatch({type: 'DATA_*_ERROR', error: err})
     })
+} 
+
+export const updateFriend = (id, friend) => dispatch => {
+  dispatch({type: 'UPDATE_DATA'})
+  axios
+    .put(`${URL}/${id}`, friend)
+    .then(response => {
+      dispatch({type: 'DATA_*_SUCCESS', results: response.data})
+    })
+    .catch(err => {
+      console.log(err)
+      dispatch({type: 'DATA_*_ERROR', error: err})
+    })
 }
