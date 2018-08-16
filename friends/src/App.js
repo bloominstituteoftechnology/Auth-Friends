@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Friends from './components/Friends';
 import { connect } from 'react-redux';
-import { fetchFriends } from './actions';
+import * as actions from './actions';
 import FriendForm from './components/FriendForm';
 
 class App extends Component {
@@ -20,7 +20,17 @@ class App extends Component {
 
   addFriend = event => {
     event.preventDefault();
-    console.log('submit');
+    let newFriend = {
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email
+    }
+    this.props.addFriend(newFriend);
+    this.setState({
+      name: '',
+      age: 0,
+      email: ''
+    })
   }
 
   handleChange = event => {
@@ -46,4 +56,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchFriends })(App);
+export default connect(mapStateToProps, actions)(App);

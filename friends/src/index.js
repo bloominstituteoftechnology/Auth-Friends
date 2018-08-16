@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { friendsReducer } from './reducers';
 
-const store = createStore(friendsReducer, applyMiddleware(thunk));
+const store = createStore(friendsReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));
 
 ReactDOM.render(
     <Provider store={store}>
