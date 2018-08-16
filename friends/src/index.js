@@ -8,7 +8,8 @@ import {friendsReducer} from './reducers/friendsReducer';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
-const store = createStore(friendsReducer, applyMiddleware(thunk,logger));
+const store = createStore(friendsReducer, applyMiddleware(thunk,logger),
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(<Provider store={store}>
                     <FriendsListContainer />

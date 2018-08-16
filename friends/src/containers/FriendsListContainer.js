@@ -4,8 +4,8 @@ import FriendsList from '../components/FriendsList';
 import { getFriends } from '../actions/actions';
 
 class FriendsListContainer extends React.Component{
-    constructor(){
-        super();
+    componentDidMount(){
+        this.props.getFriends();
     }
     render(){
         return(
@@ -18,7 +18,6 @@ class FriendsListContainer extends React.Component{
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     return(
         {friends: state.friends}
     )
