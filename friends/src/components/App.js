@@ -22,6 +22,7 @@ class App extends Component {
 
 
 const mapStateToProps = state => {
+  console.log('logging state in mapStateToProps', state)
   return {
     friends: state.friends,
     fetching: true
