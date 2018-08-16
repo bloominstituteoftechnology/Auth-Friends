@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { getFriends } from './actions'
+import { getFriends, addFriend } from './actions'
 import Friends from './components/Friends';
+import FriendForm from './components/CreateFriendForm';
 
 class App extends Component {
   constructor (props){
@@ -20,6 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <Friends {...this.props}/>
+        <FriendForm {...this.props} />
       </div>
     );
   }
@@ -36,8 +38,7 @@ const mapStateToProsp = (state) => {
   }
 }
 
-const actions = {
-  getFriends
-}
-
-export default connect(mapStateToProsp, actions)(App);
+export default connect(mapStateToProsp, {
+  getFriends,
+  addFriend
+})(App);
