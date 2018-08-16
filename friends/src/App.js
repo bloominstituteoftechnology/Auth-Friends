@@ -33,6 +33,11 @@ class App extends Component {
     })
   }
 
+  handleDelete = event => {
+    console.log(event.target.id);
+    this.props.deleteFriend(event.target.id);
+  }
+
   handleChange = event => {
     this.setState({[event.target.name]: event.target.value});
   }
@@ -40,7 +45,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Friends friends={this.props.friends} />
+        <Friends friends={this.props.friends} handleDelete={this.handleDelete} />
         <FriendForm handleSubmit={this.addFriend} handleChange={this.handleChange} />
       </div>
     );

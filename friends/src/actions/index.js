@@ -40,3 +40,16 @@ export const addFriend = friend => {
         })
     }
 }
+
+export const deleteFriend = friendId => {
+    return dispatch => {
+        dispatch({ type: DELETING_FRIENDS });
+        axios.delete(`http://localhost:5000/api/friends/${friendId}`)
+        .then(res => {
+            dispatch({ type: DELETED_FRIENDS, payload: res.data})
+        })
+        .catch(err => {
+            dispatch({ TYPE: ERROR, payload: err});
+        })
+    }
+}
