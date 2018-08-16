@@ -8,11 +8,12 @@ const NewFriendDiv = styled.div `
 `;
 
 export default class NewFriendForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       inputName: '',
-      inputAge: null,
+      inputAge: '',
+      inputEmail: '',
     }
   }
 
@@ -23,29 +24,35 @@ export default class NewFriendForm extends React.Component {
     })
   }
 
-  addFriend = e => {
+  addFriendClick = e => {
     e.preventDefault();
-    this.setState({})
+    this.setState({
+      inputName: '',
+      inputAge: '',
+      inputEmail: '',
+    })
+    this.props.addFriend(this.state);
+
   }
 
   render() {
     return (<NewFriendDiv>
-      <form>
+      <form onSubmit={this.addFriendClick}>
         <input
           name="inputName"
-          value={this.state.inputValue}
+          value={this.state.inputName}
           placeholder="new friend name"
           onChange={this.inputHandler}
           >{this.value}</input>
         <input
           name="inputAge"
-          value={this.state.inputValue}
+          value={this.state.inputAge}
           placeholder="new friend age"
           onChange={this.inputHandler}
           >{this.value}</input>
         <input
           name="inputEmail"
-          value={this.state.inputValue}
+          value={this.state.inputEmail}
           placeholder="new friend email"
           onChange={this.inputHandler}
           >{this.value}</input>

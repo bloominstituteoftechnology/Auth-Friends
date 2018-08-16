@@ -2,10 +2,7 @@
 
 import axios from 'axios';
 
-export const FETCHING = 'FETCHING';
-export const FETCHED= 'FETCHED';
-export const ERROR = 'ERRROR';
-export const ADDFRIEND = 'ADDFRIEND';
+import {FETCHING, FETCHED, ERROR } from './types';
 
 export const getFriends = () => {
   return function(dispatch){
@@ -14,7 +11,7 @@ export const getFriends = () => {
       axios.get('http://localhost:5000/api/friends').then(res => {
         dispatch({type: FETCHED, payload: {
           friends: res.data,
-
+          status: 'fetched friends'
         }})
       }).catch(err => {
         console.log(err)
@@ -22,10 +19,4 @@ export const getFriends = () => {
       })
     })
 }
-
-export const addFriend = (friend) => {
-  return {
-    type: ADDFRIEND,
-    payload: friend,
-  };
-};
+}

@@ -1,13 +1,13 @@
 //reducer
 
-import {FETCHING,FETCHED, ERROR }from '../actions';
+import {FETCHING,FETCHED, ERROR } from '../actions/types.js';
 
 const initState = {
   friends: [],
   isFetching: false,
   isFetched: false,
   status: '',
-  count: null, 
+  count: null,
 }
 
 export const friendsReducer = (state = initState, action) => {
