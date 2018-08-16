@@ -8,6 +8,7 @@ export default function FriendList(props) {
         return(
         <li key={friend.id}>
         <FriendCard friend={friend} />
+        <button onClick={() => props.delete(friend.id)}>Delete Friend</button>
         </li>);
     })}
     </ul>

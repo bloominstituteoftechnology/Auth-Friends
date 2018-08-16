@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFriends, addNewFriend } from "../actions";
+import { fetchFriends, addNewFriend, deleteFriend } from "../actions";
 import FriendList from "./FriendList";
 import AddFriendForm from "./AddFriendForm";
 
@@ -32,6 +32,10 @@ constructor() {
     });
   };
 
+  deleteFriend = (id) => {
+    this.props.deleteFriend(id);
+  };
+
   render() {
     return (
       <div>
@@ -41,6 +45,7 @@ constructor() {
             <div>
             <FriendList
             friends={this.props.friends}
+            delete={this.deleteFriend}
             />
             <AddFriendForm
             name={this.state.name}
@@ -65,5 +70,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
     fetchFriends,
-    addNewFriend
+    addNewFriend,
+    deleteFriend
 })(FriendListContainer);

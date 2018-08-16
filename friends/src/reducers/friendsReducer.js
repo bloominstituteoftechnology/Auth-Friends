@@ -1,4 +1,4 @@
-import { FETCHING, FETCHED, ERROR, ADD_FRIEND, FRIEND_ADDED } from '../actions';
+import { FETCHING, FETCHED, ERROR, ADD_FRIEND, FRIEND_ADDED, DELETE_FRIEND, FRIEND_DELETED } from '../actions';
 
 const initialState = {
     fetchingFriends: false,
@@ -7,8 +7,8 @@ const initialState = {
     friendAdded: false,
     // updatingFriend: false,
     // friendUpdated: false,
-    // deletingFriend: false,
-    // friendDeleted: false,
+    deletingFriend: false,
+    friendDeleted: false,
     friends: [],
     hasErrors: null
 };
@@ -39,6 +39,18 @@ export const friendsReducer = (state = initialState, action) => {
         addingFriend: false,
         friendAdded: true,
         friends: [...state.friends, action.payload]
+      });
+
+
+      case DELETE_FRIEND:
+      return Object.assign({}, state, {
+        deletingFriend: true
+      });
+      case FRIEND_DELETED:
+      return Object.assign({}, state, {
+        deletingFriend: false,
+        friendDeleted: true,
+        friends: action.payload
       });
     default:
       return state;
