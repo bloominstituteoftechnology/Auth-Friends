@@ -56,8 +56,10 @@ export const deleteFriend = id => {
 
     axios.delete(URL + '/' + id)
           .then(res => {
-            dispatch({ type: FRIEND_DELETED, payload: res.data });
             dispatch(removeFriend());
+            dispatch(fetchFriends());
+            dispatch({ type: FRIEND_DELETED, payload: res.data });
+
           })
           .catch( err => dispatch({ type: ERROR, payload: err }));
   }
