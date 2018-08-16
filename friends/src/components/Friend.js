@@ -1,5 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import styled from 'styled-components';
+import {deleteFriend} from '../actions/actions';
 
 const Form = styled.div`
 
@@ -54,7 +56,6 @@ const ButtonWrap = styled.div`
 const Friend = (props) => {
     return(
         <Form>
-        <p>List number: {props.number}</p>
             <Name>
                 <h2>{props.name}</h2>
             </Name>
@@ -73,4 +74,4 @@ const Friend = (props) => {
     );
 }
 
-export default Friend;
+export default connect(null, {deleteFriend})(Friend);

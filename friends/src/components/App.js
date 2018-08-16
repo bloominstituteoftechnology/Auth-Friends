@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { getFriends, addFriend } from '../actions/actions';
+import { getFriends} from '../actions/actions';
 
 import AddForm from './AddForm';
-import Friend from './Friend';
+import List from './List';
 
 
 class App extends Component {
@@ -15,38 +15,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <div className="friends-list">
-      
-        {this.props.fetchingFriends ? (
-          <h1>Getting friends at the moment.....</h1>
-        ) : null }
-
-          
-            {this.props.friendsFetched ? (
-              this.props.friends.map((friend, index) => 
-                <Friend
-                  key={index}
-                  number={friend.id}
-                  name={friend.name}
-                  age={friend.age}
-                  email={friend.email}
-                />
-                )
-            ): null }         
-        </div>
-        <AddForm addFriend={this.props.addFriend}/>
+        <List />
+        <AddForm />
       </div>
     );
   }
 }
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    friends: state.friends,
-    fetchingFriends: state.fetchingFriends,
-    friendsFetched: state.friendsFetched
-  }
-}
 
-
-export default connect (mapStateToProps, {getFriends, addFriend})( App);
+export default connect (null, {getFriends})( App);

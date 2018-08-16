@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import styled from 'styled-components';
+import {addFriend} from '../actions/actions';
 
 
 const Form = styled.div`
@@ -18,22 +20,34 @@ const Form = styled.div`
 `
 const Name = styled.div`
 
+    > input {
+        padding-left: 5px;
+        margin-bottom: 5px;
+    }
 
 `
 const Age = styled.div`
     
+    > input {
+        padding-left: 5px;
+        margin-bottom: 5px;
+    }
 
 `
 
 const Email = styled.div`
-
+    
+    > input {
+        padding-left: 5px;
+        margin-bottom: 5px;
+    }
 
 `
 
 
 class AddForm extends Component {
-   constructor(props){
-       super(props);
+   constructor(){
+       super();
        this.state = {
            name: '',
            age: '',
@@ -51,9 +65,9 @@ class AddForm extends Component {
     event.preventDefault();
 
         const friend = {
-        name: this.state.name,
-        age: this.state.age,
-        email: this.state.email
+            name: this.state.name,
+            age: this.state.age,
+            email: this.state.email
         };
             this.props.addFriend(friend);
             this.setState ({
@@ -68,21 +82,15 @@ return(
     <Form>
     <h1>Add new friend</h1>
         <Name>
-            <label>
-                Name:
                 <input
                     type="text"
                     name="name"
                     placeholder="Name"
                     value={this.state.name}
                     onChange={this.handleChange}
-                />
-            </label>
-            
+                />            
         </Name>
         <Age>
-        <label>
-                Age:
                 <input
                     type="number"
                     name="age"
@@ -90,11 +98,8 @@ return(
                     value={this.state.age}
                     onChange={this.handleChange}
                 />
-            </label>
         </Age>
         <Email>
-        <label>
-                Email:
                 <input
                     type="email"
                     name="email"
@@ -102,7 +107,6 @@ return(
                     value={this.state.email}
                     onChange={this.handleChange}
                 />
-            </label>
         </Email>
 
         <button type="submit" onClick={this.handleAddFriend}>Add new friend</button>
@@ -112,4 +116,4 @@ return(
 }
 }
  
-export default AddForm;
+export default connect (null, {addFriend})(AddForm);
