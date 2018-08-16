@@ -9,24 +9,28 @@ class App extends Component {
     this.props.fetchData();
   }
 
+
+
   render() {
+    console.log(this.props.friends)
     return (
       <div className="App">
         <h1>My Friends</h1>
-        {this.props.friends ? (
-          <FriendsList friends={this.props.friends} />
+        {this.props.friends.fetchingData ? (
+          <p> hold up ur friends are coming </p>
         ) : (
-          <p> You have no friends.</p>
+          <FriendsList friends={this.props.friends} />
         )}
         <p> Add a friend? </p>
-        <AddFriend />
+        <AddFriend handleAddFriend={this.addFriend}/>
       </div>
     );
   }
 }
 
-mapStateToProps = state => ({
+const mapStateToProps = state => ({
   friends: state.friendsReducer.friends,
+  fetchingData: state.friendsReducer.fetchingData
 });
 
 export default connect(
