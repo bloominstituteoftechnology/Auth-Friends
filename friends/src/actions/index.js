@@ -11,5 +11,17 @@ export const fetchingData = () => {
             dispatch({type: "ERROR", payload: err})
         })
     }
-}; 
+};
+
+export const savingFriends = (newFriend) => {
+    const request = axios.post('http://localhost:5000/api/friends', newFriend); 
+    return(dispatch) => {
+        dispatch({type: "SAVING_FRIENDS"})
+        request.then(({data}) => {
+            dispatch({type: 'FRIENDS_SAVED', payload: data})
+        }).catch((err) => {
+            dispatch({type: 'ERROR', payload: err})
+        })
+    }
+}
 

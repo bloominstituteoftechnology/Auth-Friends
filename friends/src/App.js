@@ -3,7 +3,7 @@ import './App.css';
 import FriendsList from './components/FriendsList';
 import FriendsForm from './components/FriendsForm';
 import { connect } from 'react-redux'; 
-import { fetchingData } from './actions'; 
+import { fetchingData, savingFriends } from './actions'; 
 
 class App extends Component {
   constructor(props){
@@ -31,6 +31,8 @@ class App extends Component {
       age: this.state.age, 
       email: this.state.email
     }
+
+    this.props.savingFriends(friend);
   }
 
   render() {
@@ -54,4 +56,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {fetchingData} )(App);
+export default connect(mapStateToProps, {fetchingData, savingFriends} )(App);
