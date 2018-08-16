@@ -2,25 +2,26 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-import { setInitialStateReducer } from "./reducers/setInitialStateReducer";
+// import { setInitialStateReducer } from "./reducers/setInitialStateReducer";
+import { fetchFriendData } from "./actions/fetchApiAction";
 import { connect } from "react-redux";
 
 class App extends Component {
-  // componentDidMount() {
-  //   this.props.setInitialStateReducer();
-  // }
+  componentDidMount() {
+    this.props.fetchFriendData();
+  }
   render() {
     return (
       <div className="App">
-        {/* {this.props.isFetching ? (
+        {this.props.isFetching ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
           <ul style={{ listStyle: "none" }}>
-            {this.props.chars.map(char => {
-              return <li key={char.name}>{char.name}</li>;
+            {this.props.friends.map(friend => {
+              return <li key={friend.name}>{friend.name}</li>;
             })}
           </ul>
-        )} */}
+        )}
         <p>Hey</p>
       </div>
     );
@@ -37,6 +38,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    setInitialStateReducer
+    fetchFriendData
   }
 )(App);

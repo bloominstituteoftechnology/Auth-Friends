@@ -10,6 +10,7 @@ const initialState = {
 };
 
 export const setInitialStateReducer = (state = initialState, action) => {
+  console.log("ACTION", action);
   switch (action.type) {
     // Fill me in with the important reducers
     // action types should be FETCHING, FETCHED, and ERROR

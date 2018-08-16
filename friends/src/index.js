@@ -14,7 +14,7 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(logger, thunk)
 );
-
+console.log("Initial State", store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <App />

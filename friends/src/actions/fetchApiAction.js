@@ -8,7 +8,7 @@ export const fetchFriendData = () => {
     axios
       .get(url)
       .then(response =>
-        dispatch({ type: FETCH_SUCCESS, payload: response.data.results })
+        dispatch({ type: FETCH_SUCCESS, payload: response.data })
       )
       .catch(error => dispatch({ type: FETCH_FAILURE, payload: error }));
   };
