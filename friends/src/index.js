@@ -11,6 +11,7 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 //create a rootReducer in reducers/index using combine reducers
+import rootReducer from './reducers';
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 

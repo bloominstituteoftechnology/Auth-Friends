@@ -23,7 +23,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    friends: [],
+    friends: state.friends,
+    fetching: true
   }
 }
 
