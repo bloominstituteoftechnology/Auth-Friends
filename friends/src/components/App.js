@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 //import {friendsReducer} from '../reducers/friendsReducer' don't think i need this. 
 import {getFriends, postFriends, updateFriends, deleteFriends} from '../actions';
 import FriendsContainer from './FriendsContainer';
-import FriendsForm from './FriendsForm';
+
 import styled from 'styled-components'; 
 
 let currentId; 
@@ -41,7 +41,6 @@ class App extends Component {
   }
 
   friendClick = (id, name, age, email ) => {
-    console.log("clicked friend", id, name, age, email)
     this.name.value = name; 
     this.age.value = age;
     this.email.value = email; 
@@ -64,8 +63,6 @@ class App extends Component {
 
   render() {
     const friends = this.props.friends; 
-    console.log(friends); 
-    console.log(clickedOn)
     return (
       <div className="App">
         <FriendsContainer friends={friends} onClick = {this.friendClick} delete = {this.deleteFriend}/>
@@ -82,7 +79,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  //console.log(state); 
   return {
     fetchingFriends: state.friendsReducer.fetchingFriends,
     postingFriends:  state.friendsReducer.postingFriends,
