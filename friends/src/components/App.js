@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>My Friends</h1>
-        {this.props.friends.fetchingData ? 
+        {this.props.fetchingData ? 
           (<p> hold up ur friends are coming </p>)
          : (
           <FriendsList friends={this.props.friends} />
@@ -32,7 +32,7 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   friends: state.friendsReducer.friends,
-  fetchingData: state.friendsReducer.fetchingData
+  fetchingData: state.friendsReducer.fetchingFriends
 });
 
 export default connect(
