@@ -1,11 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchFriends, addFriend, deleteFriend } from "../Actions";
+import {
+	fetchFriends,
+	addFriend,
+	deleteFriend,
+	updateFriend,
+} from "../Actions";
 
 import FriendForm from "../Components/FriendForm";
+import Friend from "../Components/Friend";
 
 class Friends extends React.Component {
+	state = {
+		formVisible: false,
+	};
+
 	componentDidMount() {
 		this.props.fetchFriends();
 	}
@@ -18,6 +28,8 @@ class Friends extends React.Component {
 			isAdding,
 			isDeleting,
 			deleteFriend,
+			updateFriend,
+			isUpdating,
 		} = this.props;
 		return (
 			<div>
@@ -26,22 +38,14 @@ class Friends extends React.Component {
 					<p>Loading...</p>
 				) : (
 					friends.map(friend => (
-						<div
-							style={{
-								borderBottom: "1px solid #dbdbdb",
-								marginBottom: "1rem",
-							}}
-						>
-							<h3>
-								{friend.name},{friend.age}
-							</h3>
-							<a href={`mailto:${friend.email}`}>
-								<small>{friend.email}</small>
-							</a>
-							<button onClick={() => deleteFriend(friend.id)}>
-								Murder Friend
-							</button>
-						</div>
+						<Friend
+							friend={friend}
+							key={friend.id}
+							onFormSubmit={updateFriend}
+							isUpdating={isUpdating}
+							isDeleting={isDeleting}
+							deleteFriend={deleteFriend}
+						/>
 					))
 				)}
 				{isAdding ? (
@@ -54,12 +58,19 @@ class Friends extends React.Component {
 	}
 }
 
-function mapStateToProps({ friends, isFetching, isAdding, isDeleting }) {
+function mapStateToProps({
+	friends,
+	isFetching,
+	isAdding,
+	isDeleting,
+	isUpdating,
+}) {
 	return {
 		friends,
 		isFetching,
 		isAdding,
 		isDeleting,
+		isUpdating,
 	};
 }
 
@@ -71,5 +82,5 @@ function mapStateToProps({ friends, isFetching, isAdding, isDeleting }) {
 
 export default connect(
 	mapStateToProps,
-	{ fetchFriends, addFriend, deleteFriend }, //shortcut to mapDispatchToProps as written above
+	{ fetchFriends, addFriend, deleteFriend, updateFriend }, //shortcut to mapDispatchToProps as written above
 )(Friends);
