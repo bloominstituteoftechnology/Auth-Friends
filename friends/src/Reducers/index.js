@@ -8,12 +8,18 @@ import {
 	addFriendRequest,
 	addFriendFailure,
 	addFriendSuccess,
+	deleteFriendsRequest,
+	deleteFriendsFailure,
+	deleteFriendsSuccess,
 } from "../Actions";
 
 const friends = handleActions(
 	{
-		[combineActions(fetchFriendsSuccess, addFriendSuccess)]: (_, action) =>
-			action.payload,
+		[combineActions(
+			fetchFriendsSuccess,
+			addFriendSuccess,
+			deleteFriendsSuccess,
+		)]: (_, action) => action.payload,
 	},
 	[],
 );
@@ -34,10 +40,20 @@ const isAdding = handleActions(
 	false,
 );
 
+const isDeleting = handleActions(
+	{
+		[deleteFriendsRequest]: () => true,
+		[combineActions(deleteFriendsFailure, deleteFriendsSuccess)]: () =>
+			false,
+	},
+	false,
+);
+
 export default combineReducers({
 	friends,
 	isFetching,
 	isAdding,
+	isDeleting,
 });
 
 // const intialState = { data: [], fetchingData: false, error: "" };

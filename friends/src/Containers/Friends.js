@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchFriends, addFriend } from "../Actions";
+import { fetchFriends, addFriend, deleteFriend } from "../Actions";
 
 import FriendForm from "../Components/FriendForm";
 
@@ -11,7 +11,14 @@ class Friends extends React.Component {
 	}
 
 	render() {
-		const { friends, isFetching, addFriend, isAdding } = this.props;
+		const {
+			friends,
+			isFetching,
+			addFriend,
+			isAdding,
+			isDeleting,
+			deleteFriend,
+		} = this.props;
 		return (
 			<div>
 				<h1> Friends </h1>
@@ -31,6 +38,9 @@ class Friends extends React.Component {
 							<a href={`mailto:${friend.email}`}>
 								<small>{friend.email}</small>
 							</a>
+							<button onClick={() => deleteFriend(friend.id)}>
+								Murder Friend
+							</button>
 						</div>
 					))
 				)}
@@ -44,11 +54,12 @@ class Friends extends React.Component {
 	}
 }
 
-function mapStateToProps({ friends, isFetching, isAdding }) {
+function mapStateToProps({ friends, isFetching, isAdding, isDeleting }) {
 	return {
 		friends,
 		isFetching,
 		isAdding,
+		isDeleting,
 	};
 }
 
@@ -60,5 +71,5 @@ function mapStateToProps({ friends, isFetching, isAdding }) {
 
 export default connect(
 	mapStateToProps,
-	{ fetchFriends, addFriend }, //shortcut to mapDispatchToProps as written above
+	{ fetchFriends, addFriend, deleteFriend }, //shortcut to mapDispatchToProps as written above
 )(Friends);

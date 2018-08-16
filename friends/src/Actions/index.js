@@ -71,3 +71,14 @@ export const addFriend = data =>
 			dispatch(addFriendFailure(err));
 		}
 	};
+
+export const deleteFriend = id =>
+	async function(dispatch) {
+		dispatch(deleteFriendsRequest());
+		try {
+			let response = await axios.delete(`${URL}/${id}`);
+			dispatch(deleteFriendsSuccess(response.data));
+		} catch (err) {
+			dispatch(deleteFriendsFailure(err));
+		}
+	};
