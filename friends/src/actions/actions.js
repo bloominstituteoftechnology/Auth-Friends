@@ -37,7 +37,7 @@ export const addFriend = (friend) => {
         .then(data => dispatch({
           type: FRIENDS_SAVED,
           payload: {
-              name: friend.name,
+              name: friend.name.toUpperCase(),
               age: friend.age,
               email: friend.email
           }
