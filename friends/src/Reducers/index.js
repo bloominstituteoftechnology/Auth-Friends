@@ -5,11 +5,16 @@ import {
 	fetchFriendsRequest,
 	fetchFriendsFailure,
 	fetchFriendsSuccess,
+	addFriendRequest,
+	addFriendFailure,
+	addFriendSuccess,
 } from "../Actions";
 
-const friends = handleAction(
-	fetchFriendsSuccess,
-	(_, action) => action.payload,
+const friends = handleActions(
+	{
+		[combineActions(fetchFriendsSuccess, addFriendSuccess)]: (_, action) =>
+			action.payload,
+	},
 	[],
 );
 
@@ -21,9 +26,18 @@ const isFetching = handleActions(
 	false,
 );
 
+const isAdding = handleActions(
+	{
+		[addFriendRequest]: () => true,
+		[combineActions(addFriendFailure, addFriendSuccess)]: () => false,
+	},
+	false,
+);
+
 export default combineReducers({
 	friends,
 	isFetching,
+	isAdding,
 });
 
 // const intialState = { data: [], fetchingData: false, error: "" };
