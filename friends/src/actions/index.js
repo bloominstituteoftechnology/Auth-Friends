@@ -43,8 +43,8 @@ export const postFriends = friend => {
     }
 }
 
-export const updateFriends = id => {
-    const request = axios.post(`http://localhost:5000/api/friends${id}`)
+export const updateFriends = (id, data) => {
+    const request = axios.post(`http://localhost:5000/api/friends${id}`, data)
     return (dispatch) => {
         dispatch({type:UPDATING_FRIENDS})
         request.then(response => {

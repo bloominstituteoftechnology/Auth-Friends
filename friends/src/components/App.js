@@ -6,13 +6,14 @@ import {getFriends, postFriends, updateFriends, deleteFriends} from '../actions'
 import FriendsContainer from './FriendsContainer';
 import FriendsForm from './FriendsForm';
 
+let currentId; 
 class App extends Component {
 
   componentDidMount() {
     this.props.getFriends()
   }
 
-  addingFriend  = () => {
+  gatherFriend = () => {
     const name = this.name.value;
     const age = this.age.value;
     const email = this.email.value; 
@@ -24,7 +25,21 @@ class App extends Component {
     this.name.value = '';
     this.age.value = '';
     this.email.value = '';
-    this.props.postFriends(friend)
+    return friend; 
+  }
+  addingFriend  = () => {
+    this.props.postFriends(this.gatherFriend())
+  }
+
+  friendClick = (id, name, age, email ) => {
+    console.log("clicked friend", id, name, age, email)
+    this.name.value = name; 
+    this.age.value = age;
+    this.email.value = email; 
+    currentId = id; 
+  }
+  updateFriend = () => {
+    this.props.updateFriends(currentId, this.gatherFriend()); 
   }
 
   render() {
@@ -32,13 +47,13 @@ class App extends Component {
     console.log(friends); 
     return (
       <div className="App">
-        <FriendsContainer friends={friends}/>
+        <FriendsContainer friends={friends} onClick = {this.friendClick}/>
         <div>
           <input type="text" placeholder="...enter Name" name = 'name' ref={input => this.name = input}/>
           <input type="text" placeholder ="...enter Age" name = 'age' ref = {input => this.age = input}/>
           <input type="text" placeholder ="...enter email" name = 'email' ref = {input => this.email = input}/>
-          <button onClick = { this.addingFriend}>Add</button>
-          <button>Update</button>
+          <button onClick = {this.addingFriend}>Add</button>
+          <button onClick={this.updateFriend}>Update</button>
           <button>Delete</button>
         </div>
       </div>
