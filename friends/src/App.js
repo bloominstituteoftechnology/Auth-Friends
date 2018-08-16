@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 import FriendForm from './components/FriendForm';
 import FriendUpdate from './components/FriendUpdate';
+import axios from 'axios';
 
 class App extends Component {
   constructor(props){
@@ -47,8 +48,18 @@ class App extends Component {
   }
 
   storeUpdate = event => {
-    this.setState({
-      updated: event.target.id
+    let id = event.target.id;
+    axios.get(`http://localhost:5000/api/friends/${id}`)
+    .then(res => {
+      this.setState({
+        updated: id,
+        updatedName: res.data.name,
+        updatedAge: res.data.age,
+        updatedEmail: res.data.email
+      })
+    })
+    .catch (err => {
+      console.log(err);
     })
   }
 
@@ -74,7 +85,9 @@ class App extends Component {
       <div className="App">
         <Friends friends={this.props.friends} deleteFriend={this.deleteFriend} storeUpdate={this.storeUpdate} />
         <FriendForm handleSubmit={this.addFriend} handleChange={this.handleChange} />
-        {this.state.updated !== null ? <FriendUpdate handleChange={this.handleChange} cancelUpdate={this.cancelUpdate} handleSubmit={this.updateFriend} /> : null}
+        {this.state.updated !== null 
+          ? <FriendUpdate updatedName={this.state.updatedName} updatedAge={this.state.updatedAge} updatedEmail={this.state.updatedEmail} handleChange={this.handleChange} cancelUpdate={this.cancelUpdate} handleSubmit={this.updateFriend} /> 
+        : null}
       </div>
     );
   }

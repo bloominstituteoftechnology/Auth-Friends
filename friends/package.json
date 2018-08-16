@@ -10,7 +10,9 @@
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "typography": "^0.16.17",
+    "typography-theme-ocean-beach": "^0.15.11"
   },
   "scripts": {
     "start": "react-scripts start",
