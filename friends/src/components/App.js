@@ -3,6 +3,7 @@ import '../styles/App.css';
 import { connect } from 'react-redux';
 //import {friendsReducer} from '../reducers/friendsReducer' don't think i need this. 
 import {getFriends, postFriends, updateFriends, deleteFriends} from '../actions';
+import FriendsContainer from './FriendsContainer';
 
 class App extends Component {
 
@@ -11,15 +12,11 @@ class App extends Component {
   }
 
   render() {
+    const friends = this.props.friends; 
+    console.log(friends); 
     return (
       <div className="App">
-        <header className="App-header">
-        
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <FriendsContainer friends={friends}/>
       </div>
     );
   }
