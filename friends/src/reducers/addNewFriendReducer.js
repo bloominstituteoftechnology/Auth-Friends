@@ -1,4 +1,4 @@
-import { ADD_NEW_FRIEND } from "./actions/types";
+import { ADD_NEW_FRIEND } from "../actions/types";
 
 const initialState = {
   friends: []

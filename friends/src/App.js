@@ -2,20 +2,41 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
+import { setInitialStateReducer } from "./reducers/setInitialStateReducer";
+import { connect } from "react-redux";
+
 class App extends Component {
+  // componentDidMount() {
+  //   this.props.setInitialStateReducer();
+  // }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        {/* {this.props.isFetching ? (
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        ) : (
+          <ul style={{ listStyle: "none" }}>
+            {this.props.chars.map(char => {
+              return <li key={char.name}>{char.name}</li>;
+            })}
+          </ul>
+        )} */}
+        <p>Hey</p>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    friends: state.setInitialStateReducer.friends,
+    isFetching: state.setInitialStateReducer.isFetching
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    setInitialStateReducer
+  }
+)(App);
