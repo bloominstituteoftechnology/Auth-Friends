@@ -1,3 +1,4 @@
-export { FETCH_FRIENDS, FETCHED_FRIENDS, ERROR } from './types'
+export { FETCH_FRIENDS, FETCHED_FRIENDS, ERROR, SAVE_FRIENDS, SAVED_FRIENDS } from './types'
 
-export { fetchFriends } from './friendAction'
+export { fetchFriends } from './friendActions'
+export { addFriend } from './addFriendActions'

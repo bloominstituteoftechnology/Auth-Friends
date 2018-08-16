@@ -1,3 +1,5 @@
 export const FETCH_FRIENDS = 'FETCH_FRIENDS';
 export const FETCHED_FRIENDS = 'FETCHED_FRIENDS';
 export const ERROR = 'ERROR';
+export const SAVE_FRIENDS = 'SAVE_FRIENDS';
+export const SAVED_FRIENDS = 'SAVED_FRIENDS';

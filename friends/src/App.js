@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import FriendsList from './containers/FriendsList'
+import AddFriend from './containers/AddFriend';
 
 class App extends Component {
   render() {
     return (
-      <FriendsList />
+      <div>
+        <FriendsList />
+        <AddFriend />
+      </div>
+      
     );
   }
 }

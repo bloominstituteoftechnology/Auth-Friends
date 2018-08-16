@@ -9,11 +9,20 @@ class FriendsList extends Component {
     render(){
         return (
             <div>
-                <ul>
-                    {this.props.friends.map(friend => {
-                        return <li key={friend.id}>{friend.name}</li>;
-                    })}
-                </ul>
+                {this.props.saved ? (
+                    <ul>
+                        {this.props.newFriends.map(friend => {
+                            return <li key={friend.id}>{friend.name}</li>;
+                        })}
+                    </ul>
+                ) : (
+                    <ul>
+                        {this.props.friends.map(friend => {
+                            return <li key={friend.id}>{friend.name}</li>;
+                        })}
+                    </ul>
+                )}
+                
             </div>
         )
     }
@@ -21,7 +30,9 @@ class FriendsList extends Component {
 
 const mapStatetoProps = (state) => {
     return{
-        friends: state.friendsReducer.friends
+        friends: state.friendsReducer.friends,
+        newFriends: state.addFriendReducer.friends,
+        saved: state.addFriendReducer.friendsSaved
     }
 }
 
