@@ -48,7 +48,8 @@ export const friendsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 friendUpdated: true,
-                updatingFriend: false
+                updatingFriend: false,
+                friends: action.payload
             }
         case actionTypes.DELETING_FRIENDS:
             return {

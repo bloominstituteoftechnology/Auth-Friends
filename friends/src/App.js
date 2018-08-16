@@ -4,6 +4,7 @@ import Friends from './components/Friends';
 import { connect } from 'react-redux';
 import * as actions from './actions';
 import FriendForm from './components/FriendForm';
+import FriendUpdate from './components/FriendUpdate';
 
 class App extends Component {
   constructor(props){
@@ -11,7 +12,11 @@ class App extends Component {
     this.state = {
       name: '',
       age: 0,
-      email: ''
+      email: '',
+      updated: null,
+      updatedName: '',
+      updatedAge: 0,
+      updatedEmail: ''
     }
   }
   componentDidMount(){
@@ -33,8 +38,7 @@ class App extends Component {
     })
   }
 
-  handleDelete = event => {
-    console.log(event.target.id);
+  deleteFriend = event => {
     this.props.deleteFriend(event.target.id);
   }
 
@@ -42,11 +46,35 @@ class App extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
+  storeUpdate = event => {
+    this.setState({
+      updated: event.target.id
+    })
+  }
+
+  cancelUpdate = () => {
+    this.setState({
+      updated: null
+    })
+  }
+
+  updateFriend = event => {
+    event.preventDefault();
+    let updatedFriend = {
+      name: this.state.updatedName,
+      age: this.state.updatedAge,
+      email: this.state.updatedEmail,
+      id: this.state.updated
+    }
+    this.props.updateFriend(updatedFriend);
+  }
+
   render() {
     return (
       <div className="App">
-        <Friends friends={this.props.friends} handleDelete={this.handleDelete} />
+        <Friends friends={this.props.friends} deleteFriend={this.deleteFriend} storeUpdate={this.storeUpdate} />
         <FriendForm handleSubmit={this.addFriend} handleChange={this.handleChange} />
+        {this.state.updated !== null ? <FriendUpdate handleChange={this.handleChange} cancelUpdate={this.cancelUpdate} handleSubmit={this.updateFriend} /> : null}
       </div>
     );
   }
@@ -57,7 +85,9 @@ const mapStateToProps = state => {
     fetchingFriends: state.fetchingFriends,
     friendsFetched: state.friendsFetched,
     friends: state.friends,
-    error: state.error
+    error: state.error,
+    updatingFriend: state.updatingFriend,
+    friendUpdated: state.friendUpdated,
   }
 }
 

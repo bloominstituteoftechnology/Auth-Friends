@@ -53,3 +53,20 @@ export const deleteFriend = friendId => {
         })
     }
 }
+
+export const updateFriend = friend => {
+    return dispatch => {
+        dispatch({ type: UPDATING_FRIENDS });
+        axios.put(`http://localhost:5000/api/friends/${friend.id}`, {
+            name: friend.name,
+            age: friend.age,
+            email: friend.email
+        })
+            .then(res => {
+                dispatch({ type: UPDATED_FRIENDS, payload: res.data })
+            })
+            .catch(err => {
+                dispatch({ TYPE: ERROR, payload: err });
+            })
+    }
+}

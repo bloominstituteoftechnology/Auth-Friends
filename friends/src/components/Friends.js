@@ -8,7 +8,8 @@ class Friends extends Component {
                 return (
                     <div className="friend" key={friend.id}>
                         <li>{friend.name}</li>
-                        <button onClick={this.props.handleDelete} id={friend.id}>X</button>
+                        <button onClick={this.props.storeUpdate} id={friend.id}>Update</button>
+                        <button onClick={this.props.deleteFriend} id={friend.id}>X</button>
                     </div>
                 )
             })}
