@@ -1,7 +1,7 @@
 import {FETCHING_FRIENDS,
         FETCHED_FRIENDS,
-        // SAVING_FRIENDS,
-        // SAVED_FRIENDS,
+        ADDING_FRIENDS,
+        ADDED_FRIENDS,
         // UPDATING_FRIENDS,
         // UPDATED_FRIENDS,
         // DELETING_FRIENDS,
@@ -12,8 +12,8 @@ const initialState = {
     friends: [],
     fetchingFriends: false,
     fetchedFriends: false,
-    // savingFriends: false,
-    // savedFriends: false,
+    addingFriends: false,
+    addedFriends: false,
     // updatingFriends: false,
     // updatedFriends: false,
     // deleteingFriends: false,
@@ -32,6 +32,16 @@ export const friendsReducer = (state = initialState, action) => {
                 fetchingFriends: false,
                 fetchedFriends: true,
                 friends: action.payload
+            })
+        case ADDING_FRIENDS:
+            return Object.assign({}, state, {
+                savingFriends: true
+            })
+        case ADDED_FRIENDS:
+            return Object.assign({}, state, {
+                savingFriends: false,
+                savedFriends: true,
+                friends: [...state.friends, action.payload]
             })
         case ERROR:
             return Object.assign({}, state, {

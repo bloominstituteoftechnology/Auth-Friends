@@ -6,7 +6,8 @@ export default function FriendsList(props){
         <ul>
             {props.friends.map(friend => (
                 <Friend
-                    key={friend.id}
+                    key={friend.name}
+                    id={friend.id}
                     name={friend.name}
                     age = {friend.age}
                     email = {friend.email}
