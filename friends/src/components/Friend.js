@@ -1,12 +1,13 @@
 import React from 'react'; 
+import {Card} from 'react-materialize'
 
 const Friend = (props) => {
     return (
-        <div className = "friend">
-            <p> Name: {props.name}</p>
-            <p> Age: {props.age}</p>
-            <p> Email: {props.email}</p>
-        </div>
+        <Card className = "teal lighten-2 friend">
+            <p><strong> Name:</strong> {props.name}</p>
+            <p> <strong>Age: </strong>{props.age}</p>
+            <p><strong> Email: </strong>{props.email}</p>
+        </Card>
     )
 }
 

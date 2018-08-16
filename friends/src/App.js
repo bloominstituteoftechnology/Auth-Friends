@@ -33,14 +33,20 @@ class App extends Component {
     }
 
     this.props.savingFriends(friend);
+    this.setState({
+      name: '', 
+      age: '', 
+      email: ''
+    })
   }
 
   render() {
     return (
       <div className="App">
+        <h1>My Contacts</h1>
         <FriendsForm  submit = {this.submitFormDataHandler} change = {this.changeInputHandler} />
       {this.props.fetching ? (
-      <p> Loading Friends... </p>) 
+      <p className = "loading"> Loading Friends... </p>) 
       : ( <FriendsList list = {this.props.friends} />)
       }
        
