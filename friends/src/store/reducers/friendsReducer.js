@@ -16,3 +16,26 @@ const initialState = {
     friends: [],
     error: null,
 };
+
+export const friendsReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case LOADING_DATA:
+            return Object.assign({}, state, {
+                fetchingFriends: true,
+            });
+        
+        case DATA_LOADED:
+            return Object.assign({}, state, {
+                fetchingFriends: false,
+                friendsFetched: true,
+                friends: action.payload,
+            });
+        
+        case ERROR:
+            return Object.assign({}, state, {
+                fetchingFriends: false,
+                friendsFetched: false,
+                error: action.payload,
+            });
+    }
+};
