@@ -15,7 +15,7 @@ export const fetchStuff = () => {
             })
             .catch(err => {
                 console.log(err);
-                dispatch({ type: ERROR })
+                dispatch({ type: ERROR, payload: err  })
             });
             
     };
