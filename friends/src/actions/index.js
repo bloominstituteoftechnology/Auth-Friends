@@ -2,10 +2,10 @@
 
 import axios from 'axios';
 
-
 export const FETCHING = 'FETCHING';
 export const FETCHED= 'FETCHED';
 export const ERROR = 'ERRROR';
+export const ADDFRIEND = 'ADDFRIEND';
 
 export const getFriends = () => {
   return function(dispatch){
@@ -21,6 +21,11 @@ export const getFriends = () => {
         dispatch({type: ERROR, payload: "Error occured"})
       })
     })
-
-  }
 }
+
+export const addFriend = (friend) => {
+  return {
+    type: ADDFRIEND,
+    payload: friend,
+  };
+};

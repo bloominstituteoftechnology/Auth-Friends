@@ -6,7 +6,8 @@ const initState = {
   friends: [],
   isFetching: false,
   isFetched: false,
-  status: ''
+  status: '',
+  count: null, 
 }
 
 export const friendsReducer = (state = initState, action) => {
