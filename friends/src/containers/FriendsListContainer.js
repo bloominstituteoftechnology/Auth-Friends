@@ -27,4 +27,4 @@ mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { addNewFriendOnProps: addNewFriend }
-);
+)(FriendsListContainer);
