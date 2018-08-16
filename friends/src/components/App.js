@@ -5,8 +5,15 @@ import { connect } from 'react-redux';
 import {getFriends, postFriends, updateFriends, deleteFriends} from '../actions';
 import FriendsContainer from './FriendsContainer';
 import FriendsForm from './FriendsForm';
+import styled from 'styled-components'; 
 
 let currentId; 
+
+const FormDiv = styled.div `
+    margin: 0 auto; 
+    width: 600px; 
+
+`
 class App extends Component {
 
   componentDidMount() {
@@ -44,6 +51,7 @@ class App extends Component {
   deleteFriend = (id, name, email) => {
    const del =prompt(`You are about to delete your friend ${name} ${email} are you sure? This cannot be undone. 
    If you wish to delete ${name} enter in the word >>> delete  (just the word no special characters)`);
+
    if(del.length > 0 && del.toLowerCase() === 'delete'){
      this.props.deleteFriends(id); 
    }
@@ -55,13 +63,13 @@ class App extends Component {
     return (
       <div className="App">
         <FriendsContainer friends={friends} onClick = {this.friendClick} delete = {this.deleteFriend}/>
-        <div>
+        <FormDiv>
           <input type="text" placeholder="...enter Name" name = 'name' ref={input => this.name = input}/>
           <input type="text" placeholder ="...enter Age" name = 'age' ref = {input => this.age = input}/>
           <input type="text" placeholder ="...enter email" name = 'email' ref = {input => this.email = input}/>
           <button onClick = {this.addingFriend}>Add</button>
           <button onClick={this.updateFriend}>Update</button>
-        </div>
+        </FormDiv>
       </div>
     );
   }
