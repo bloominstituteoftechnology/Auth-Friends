@@ -8,18 +8,40 @@ import { fetchingData } from './actions';
 class App extends Component {
   constructor(props){
     super(props); 
-
+    this.state = {
+      name: '', 
+      age: '', 
+      email: '', 
+    }
   }
 
   componentDidMount = () =>{
     this.props.fetchingData(); 
   }
 
+  changeInputHandler = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  submitFormDataHandler = () => {
+    const friend = {
+      name: this.state.name, 
+      age: this.state.age, 
+      email: this.state.email
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <FriendsForm />
-        <FriendsList list = {this.props.friends} />
+        <FriendsForm  submit = {this.submitFormDataHandler} change = {this.changeInputHandler} />
+      {this.props.fetching ? (
+      <p> Loading Friends... </p>) 
+      : ( <FriendsList list = {this.props.friends} />)
+      }
+       
       </div>
     );
   }
@@ -27,6 +49,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    fetching: state.fetchingFriends,
     friends: state.friends
   }
 }
