@@ -5,10 +5,11 @@ export const fetchingData = () => {
     return (dispatch) => {
         dispatch({type: "FETCHING_FRIENDS"})
         request.then(({data}) => {
-            dispatch({type: "FRIENDS_FETCHED",  payload: data.results})
+            
+            dispatch({type: "FRIENDS_FETCHED",  payload: data})
         }).catch((err) => {
             dispatch({type: "ERROR", payload: err})
         })
     }
-}
+}; 
 
