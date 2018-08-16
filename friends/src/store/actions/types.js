@@ -1,6 +1,6 @@
 
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
-export const FREINDS_FETCHED = 'FREINDS_FETCHED';
+export const FRIENDS_FETCHED = 'FRIENDS_FETCHED';
 export const FRIENDS_SAVED = 'FRIENDS_SAVED';
 export const SAVING_FRIENDS = 'SAVING_FRIENDS';
 export const ERROR = 'ERROR';
