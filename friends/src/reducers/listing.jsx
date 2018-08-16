@@ -30,7 +30,18 @@ export const listReducer = (state = initialState, action) => {
       fetchingFriends: false,
       error:action.payload
     });
+    case ('SAVINGFRIENDS'):
+    return Object.assign({}, state, {
+      savingFriends: true
+    });
+    case ('FRIENDSSAVED'):
+    return Object.assign({}, state, {
+      savingFriends: false,
+      friendsSaved:true,
+      friends: action.payload
+    });
     default:
       return state;
   }
 };
+

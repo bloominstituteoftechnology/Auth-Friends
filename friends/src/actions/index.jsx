@@ -25,3 +25,18 @@ export const friendsFetch = () => {
       });
   };
 };
+
+export const friendsAdd = (friendObj) => {
+  return function(dispatch) {
+    dispatch({ type: SAVINGFRIENDS });
+    axios
+      .post("http://localhost:5000/api/friends",friendObj)
+      .then(function(response) {
+        dispatch({ type: FRIENDSSAVED, payload: response.data });
+      })
+      .catch(function(error) {
+        console.log(error);
+        dispatch({ type: ERROR, payload: error });
+      });
+  };
+};
