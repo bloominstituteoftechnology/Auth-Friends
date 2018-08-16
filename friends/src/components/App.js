@@ -8,6 +8,7 @@ import FriendsForm from './FriendsForm';
 import styled from 'styled-components'; 
 
 let currentId; 
+let clickedOn = false; 
 
 const FormDiv = styled.div `
     margin: 0 auto; 
@@ -35,6 +36,7 @@ class App extends Component {
     return friend; 
   }
   addingFriend  = () => {
+    clickedOn = false; 
     this.props.postFriends(this.gatherFriend())
   }
 
@@ -44,8 +46,11 @@ class App extends Component {
     this.age.value = age;
     this.email.value = email; 
     currentId = id; 
+    clickedOn = true; 
+    this.forceUpdate();
   }
   updateFriend = () => {
+    clickedOn = false; 
     this.props.updateFriends(currentId, this.gatherFriend()); 
   }
   deleteFriend = (id, name, email) => {
@@ -60,6 +65,7 @@ class App extends Component {
   render() {
     const friends = this.props.friends; 
     console.log(friends); 
+    console.log(clickedOn)
     return (
       <div className="App">
         <FriendsContainer friends={friends} onClick = {this.friendClick} delete = {this.deleteFriend}/>
@@ -68,7 +74,7 @@ class App extends Component {
           <input type="text" placeholder ="...enter Age" name = 'age' ref = {input => this.age = input}/>
           <input type="text" placeholder ="...enter email" name = 'email' ref = {input => this.email = input}/>
           <button onClick = {this.addingFriend}>Add</button>
-          <button onClick={this.updateFriend}>Update</button>
+          {clickedOn === true ? <button onClick={this.updateFriend}>Update</button> : null}
         </FormDiv>
       </div>
     );
