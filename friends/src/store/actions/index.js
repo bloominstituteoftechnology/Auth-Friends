@@ -39,3 +39,33 @@ export const addFriend = (name, age, email) => {
             })
     }
 }
+
+export const updateFriend = (id, name, age, email) => {
+    const promise = axios.put(`http://localhost:5000/api/friends/${id}`, {name: name, age: age, email: email});
+    return dispatch => {
+        dispatch({type: UPDATING_FRIEND});
+        promise
+            .then(response => {
+                dispatch({type: FRIEND_UPDATED, payload: response.data})
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({type: ERROR, payload: err})
+            })
+    }
+}
+
+export const deleteFriend = (id) => {
+    const promise = axios.delete(`http://localhost:5000/api/friends/${id}`);
+    return dispatch => {
+        dispatch({type: DELETING_FRIEND});
+        promise
+            .then(response => {
+                dispatch({type: FRIEND_DELETED, payload: response.data})
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({type: ERROR, payload: err})
+            })
+    }
+}
