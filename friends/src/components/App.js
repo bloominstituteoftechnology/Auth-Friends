@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchFriends, saveFriend, updateFriend, deleteFriend } from '../actions';
 import './App.css';
+import FriendForm from './FriendForm';
 
 class App extends Component {
   componentDidMount(){
     this.props.fetchFriends();
-    this.props.saveFriend({name: 'TestFriend', age: 5000, email: 'thisismytestfriend' });
-    this.props.updateFriend(1, {name: 'ChangedBen', age: 3230, email: 'testingupdatingfriend' });
-    this.props.deleteFriend(3);
   }
 
   render() {
     return (
       <div className="App">
+        {this.props.editingFriend ? <FriendForm editing={true} {...this.props.friend} /> : <FriendForm />}
         {this.props.isFetching ? (
           <h1>Loading Friends...</h1>
         ) : (
@@ -31,7 +30,9 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     friends: state.friendsReducer.friends,
-    isFetching: state.friendsReducer.isFetchingFriends
+    isFetching: state.friendsReducer.isFetchingFriends,
+    editingFriend: state.friendReducer.hasLoadedFriend,
+    friend: state.friendReducer.friend
   }
 }
 

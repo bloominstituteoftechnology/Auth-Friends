@@ -27,7 +27,10 @@ export const saveFriend = friend => {
     dispatch({ type: SAVING_FRIEND });
 
     axios.post(URL, friend)
-          .then( res => dispatch({ type: FRIEND_SAVED, payload: res.data }))
+          .then( res => {
+            dispatch({ type: FRIEND_SAVED, payload: res.data });
+            dispatch(removeFriend());
+          })
           .catch( err => dispatch({ type: ERROR, payload: err }));
   }
 };
@@ -49,5 +52,19 @@ export const deleteFriend = id => {
     axios.delete(URL + '/' + id)
           .then(res => dispatch({ type: FRIEND_DELETED, payload: res.data }))
           .catch( err => dispatch({ type: ERROR, payload: err }));
+  }
+}
+
+export const fetchFriend = id => {
+  return function(dispatch) {
+    axios.get(URL + '/' + id)
+          .then(res => dispatch({ type: FETCHED_A_FRIEND, payload: res.data }))
+          .catch( err => dispatch({ type: ERROR, payload: err }))
+  }
+}
+
+export const removeFriend = () => {
+  return {
+    type: DONE_WITH_FRIEND
   }
 }
