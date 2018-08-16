@@ -1,4 +1,4 @@
-import {FETCHING,FETCHED,ERROR,POSTING,POSTED,DELETING,DELETED} from '../actions'
+import {FETCHING,FETCHED,ERROR,POSTING,POSTED,DELETING,DELETED,UPDATING,UPDATED} from '../actions'
 
 const initialState={
     fetchingFriends: false,
@@ -28,6 +28,10 @@ export const friendsReducer=(state=initialState,action)=>{
             return Object.assign({},state,{deletingFriend:true})
         case DELETED:
             return Object.assign({},state,{friendDeleted:true,deletingFriend:false,friends:action.payload})
+        case UPDATING:
+            return Object.assign({},state,{updatingFriend:true})
+        case UPDATED:
+            return Object.assign({},state,{updatingFriend:false,friendUpdated:true,friends:action.payload})
         default:
             return state;
     }

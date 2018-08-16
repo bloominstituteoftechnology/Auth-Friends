@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {getFriends} from './actions';
 import Friends from './components/Friends.js';
 import CreateFriendForm from './components/CreateFriendForm.js';
-
+import UpdateFriendForm from './components/UpdateFriendForm.js';
 class App extends Component {
   
   componentDidMount() {
@@ -18,6 +18,7 @@ class App extends Component {
       <div>
       <CreateFriendForm/>
       {this.props.friends.data.map((e,i)=><Friends key={i} data={e}/>)}
+      <UpdateFriendForm/>
       </div>
     }
     </div>

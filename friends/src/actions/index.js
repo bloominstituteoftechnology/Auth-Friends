@@ -6,6 +6,8 @@ export const POSTING='POSTING';
 export const POSTED='POSTED';
 export const DELETING='DELETING';
 export const DELETED='DELETED';
+export const UPDATING='UPDATING';
+export const UPDATED='UPDATED';
 
 export const getFriends=()=>{
     const request=axios.get(`http://localhost:5000/api/friends/`);
@@ -31,5 +33,12 @@ export const deleteFriend=(id)=>{
     return function (dispatch ){
         dispatch({type: 'DELETING'});
         request.then(data=>{dispatch({type:'DELETED',payload:data})}).catch(err=>dispatch({type:'ERROR'}));
+    }
+}
+export const updateFriendInfo=(info,id)=>{
+    const request=axios.put(`http://localhost:5000/api/friends/${id}`,info);
+    return function(dispatch){
+        dispatch({type:'UPDATING'});
+        request.then(data=>dispatch({type:'UPDATED',payload:data})).catch(err=>dispatch({type:'Error'}));
     }
 }
