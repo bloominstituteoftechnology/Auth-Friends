@@ -6,8 +6,7 @@ class AddForm extends Component {
        this.state = {
            name: '',
            age: '',
-           email: '',
-           update: false
+           email: ''
        }
    }
 
@@ -32,9 +31,6 @@ class AddForm extends Component {
                 email: ''
             })
 }    
-    
- 
-
 
 render() {
 return(

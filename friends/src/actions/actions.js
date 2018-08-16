@@ -36,7 +36,11 @@ export const addFriend = (friend) => {
       request
         .then(data => dispatch({
           type: FRIENDS_SAVED,
-          payload: data.data
+          payload: {
+              name: friend.name,
+              age: friend.age,
+              email: friend.email
+          }
         }))
         .catch(err => {
           dispatch({

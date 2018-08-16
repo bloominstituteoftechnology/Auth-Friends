@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { getFriends } from '../actions/actions';
+import { getFriends, addFriend } from '../actions/actions';
 
 import '../App.css';
 import AddForm from './AddForm';
@@ -23,8 +23,8 @@ class App extends Component {
 
           
             {this.props.friendsFetched ? (
-              this.props.friends.map(friend => 
-                <div key={friend.id}>{friend.name}</div>)
+              this.props.friends.map((friend, index) => 
+                <div key={index}>{friend.name}</div>)
             ): null }         
         </div>
         <AddForm addFriend={this.props.addFriend}/>
@@ -42,4 +42,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect (mapStateToProps, {getFriends})( App);
+export default connect (mapStateToProps, {getFriends, addFriend})( App);
