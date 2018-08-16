@@ -41,20 +41,26 @@ class App extends Component {
   updateFriend = () => {
     this.props.updateFriends(currentId, this.gatherFriend()); 
   }
+  deleteFriend = (id, name, email) => {
+   const del =prompt(`You are about to delete your friend ${name} ${email} are you sure? This cannot be undone. 
+   If you wish to delete ${name} enter in the word >>> delete  (just the word no special characters)`);
+   if(del.length > 0 && del.toLowerCase() === 'delete'){
+     this.props.deleteFriends(id); 
+   }
+  }
 
   render() {
     const friends = this.props.friends; 
     console.log(friends); 
     return (
       <div className="App">
-        <FriendsContainer friends={friends} onClick = {this.friendClick}/>
+        <FriendsContainer friends={friends} onClick = {this.friendClick} delete = {this.deleteFriend}/>
         <div>
           <input type="text" placeholder="...enter Name" name = 'name' ref={input => this.name = input}/>
           <input type="text" placeholder ="...enter Age" name = 'age' ref = {input => this.age = input}/>
           <input type="text" placeholder ="...enter email" name = 'email' ref = {input => this.email = input}/>
           <button onClick = {this.addingFriend}>Add</button>
           <button onClick={this.updateFriend}>Update</button>
-          <button>Delete</button>
         </div>
       </div>
     );
