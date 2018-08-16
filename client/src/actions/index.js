@@ -63,3 +63,14 @@ export const updateFriend = (id, data) => async dispatch => {
     dispatch(updateFriendsFailure(err));
   }
 };
+
+export const deleteFriend = id => async dispatch => {
+  dispatch(deleteFriendsRequest());
+  try {
+    const response = await axios.delete(`${URL}/${id}`);
+    dispatch(deleteFriendsSuccess(response.data));
+  } catch (err) {
+    console.log(err);
+    dispatch(deleteFriendsFailure(err));
+  }
+};
