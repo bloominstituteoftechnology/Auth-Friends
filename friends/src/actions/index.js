@@ -44,7 +44,7 @@ export const postFriends = friend => {
 }
 
 export const updateFriends = (id, data) => {
-    const request = axios.post(`http://localhost:5000/api/friends${id}`, data)
+    const request = axios.put(`http://localhost:5000/api/friends${id}`, data)
     return (dispatch) => {
         dispatch({type:UPDATING_FRIENDS})
         request.then(response => {
@@ -57,7 +57,7 @@ export const updateFriends = (id, data) => {
 }
 
 export const deleteFriends = id => {
-    const request = axios.post(`http://localhost:5000/api/friends${id}`)
+    const request = axios.delete(`http://localhost:5000/api/friends${id}`)
     return (dispatch) => {
         dispatch({type: DELETING_FRIENDS}) 
         request.then(response => {
