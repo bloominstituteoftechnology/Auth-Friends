@@ -8,5 +8,7 @@ export const DELETING_FRIEND = 'DELETING_FRIEND';
 export const DELETED_FRIEND = 'DELETED_FRIEND';
 export const ADDING_FRIEND = 'ADDING_FRIEND';
 export const ADDED_FRIEND = 'ADDED_FRIEND';
+export const FETCHING_FRIEND = 'FETCHING_FRIEND';
+export const FETCHED_FRIEND = 'FETCHED_FRIEND';
 export const FRIENDS = 'FRIENDS';
 export const ERROR = 'ERROR';

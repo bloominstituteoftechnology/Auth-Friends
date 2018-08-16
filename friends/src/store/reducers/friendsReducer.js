@@ -53,6 +53,6 @@ export const singleFriend = (state, action) {
                 addingFriend: false,
                 friends: [ ...state.friends, action.payload ],
             });
-        case 
+        case DELETING
     }
 }
