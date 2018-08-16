@@ -26,3 +26,19 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.card {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.card p{
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 10px;
+}
+.createFriendForm{
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}

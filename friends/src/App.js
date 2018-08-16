@@ -3,6 +3,7 @@ import './App.css';
 import {connect} from 'react-redux';
 import {getFriends} from './actions';
 import Friends from './components/Friends.js';
+import CreateFriendForm from './components/CreateFriendForm.js';
 
 class App extends Component {
   
@@ -14,9 +15,12 @@ class App extends Component {
       <div>
       {!this.props.friendsFetched ? 
       <h1>Loading...</h1> :
-      this.props.friends.data.map((e,i)=><Friends key={i} data={e}/>)
-    }
+      <div>
+      <CreateFriendForm/>
+      {this.props.friends.data.map((e,i)=><Friends key={i} data={e}/>)}
       </div>
+    }
+    </div>
     );
   }
 }
