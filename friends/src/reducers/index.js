@@ -4,3 +4,4 @@ import { friendsReducer } from './friendsReducer';
 export default combineReducers({
   friendsReducer
 });
+
