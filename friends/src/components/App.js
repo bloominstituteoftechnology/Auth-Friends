@@ -73,7 +73,7 @@ class App extends Component {
           <input type="text" placeholder="...enter Name" name = 'name' ref={input => this.name = input}/>
           <input type="text" placeholder ="...enter Age" name = 'age' ref = {input => this.age = input}/>
           <input type="text" placeholder ="...enter email" name = 'email' ref = {input => this.email = input}/>
-          <button onClick = {this.addingFriend}>Add</button>
+          {clickedOn === false ? <button onClick = {this.addingFriend}>Add</button> : null}
           {clickedOn === true ? <button onClick={this.updateFriend}>Update</button> : null}
         </FormDiv>
       </div>
