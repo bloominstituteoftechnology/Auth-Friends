@@ -1,19 +1,36 @@
 import React, { Component } from 'react';
 import './App.css';
+import { fetchStuff } from './store/actions';
+import { connect } from 'react-redux';
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.fetchStuff();
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {this.props.fetching ? (<span>Loading...</span>) : (
+          <ul>
+            {this.props.friends.map(friend => {
+              return <li key={friend.name}>{friend.name}</li>;
+            })}
+          </ul>
+        )}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    friends: state.friendsReducer.friends,
+    error: state.friendsReducer.error,
+    fetchingFriends: state.friendsReducer.fetchingFriends,
+    friendsFetched: state.friendsReducer.friendsFetched,
+  };
+};
+
+export default connect(mapStateToProps, { fetchStuff })(App);
