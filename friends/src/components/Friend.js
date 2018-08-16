@@ -1,7 +1,15 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
-export default function Friend(props) {
+export default class Friend extends React.Component {
+
+  render() {
   return (
-    <div>{props.friend.name}</div>
+    <Fragment>
+    <span>{this.props.friend.name}</span>
+    <button> edit? </button>
+    <div>
+    </div>
+    </Fragment>
   )
+}
 }

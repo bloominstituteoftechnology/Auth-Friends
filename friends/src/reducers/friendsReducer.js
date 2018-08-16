@@ -1,8 +1,7 @@
 const initialState = {
   fetchingFriends: false,
   friendsFetched: false,
-  friendsSaved: false,
-  savingFriends: false,
+  addingFriend: false,
   updatingFriend: false,
   friendUpdated: false,
   deletingFriend: false,
@@ -14,25 +13,31 @@ const initialState = {
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCHING_DATA':
-      return {...state,
-        fetchingFriends: true
-      };
-    case 'DATA_FETCH_SUCCESS':
       return {
         ...state,
-        friends: [
-          ...state.friends, 
+        fetchingFriends: true
+      };
+    case 'DATA_*_SUCCESS':
+      return {
+        ...state,
+        friends: [ 
           ...action.results
         ],
         fetchingFriends: false,
-        friendsFetched: true
+        friendsFetched: true,
+        addingFriend: false
       };
-    case 'DATA_FETCH_ERROR':
+    case 'DATA_*_ERROR':
       return {
         ...state,
           fetchingFriends: false,
-          error: 'Error fetching data'
+          error: action.error
         };
+    case 'POST_DATA':
+        return {
+          ...state,
+          addingFriend: true
+        }
     default:
       return state;
   }

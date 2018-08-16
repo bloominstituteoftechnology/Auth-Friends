@@ -11,21 +11,32 @@ export default class AddFriend extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    if (this.state.name && this.state.age && this.state.email) {
+       this.props.handleAddFriend({
+          name: this.state.name,
+          age: this.state.age,
+          email: this.state.email
+      })
+      this.setState({
+        name: '',
+        age: '',
+        email: ''
+      })
+    }
+  };
+
   render() {
     return (
-      <form
-        onSubmit={
-          this.state.name && this.state.age && this.state.email
-            ? () => this.props.handleAddFriend(this.state.name, this.state.age, this.state.email)
-            : null
-        }
-      >
+      <form onSubmit={this.handleSubmit}>
         <input
           type="text"
           placeholder="name"
           name="name"
           value={this.state.name}
           onChange={this.handleChange}
+          required
         />
         <input
           type="number"
@@ -33,6 +44,7 @@ export default class AddFriend extends React.Component {
           name="age"
           value={this.state.age}
           onChange={this.handleChange}
+          required
         />
         <input
           type="email"
@@ -40,7 +52,9 @@ export default class AddFriend extends React.Component {
           name="email"
           value={this.state.email}
           onChange={this.handleChange}
+          required
         />
+        <input type="submit" value="add!" />
       </form>
     );
   }

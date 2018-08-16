@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchData } from "../actions";
+import {fetchData, addFriend} from "../actions";
 import FriendsList from "./FriendsList";
 import AddFriend from "./AddFriend";
 
@@ -9,7 +9,9 @@ class App extends Component {
     this.props.fetchData();
   }
 
-
+  addFriend = (friend) => {
+    this.props.addFriend(friend)
+  }
 
   render() {
     console.log(this.props.friends)
@@ -37,5 +39,6 @@ export default connect(
   mapStateToProps,
   {
     fetchData,
+    addFriend
   }
 )(App);
