@@ -1,8 +1,11 @@
-import {FETCHING }from '../actions';
+//reducer
+
+import {FETCHING,FETCHED, ERROR }from '../actions';
 
 const initState = {
   friends: [],
   isFetching: false,
+  isFetched: false,
   status: '',
 }
 
@@ -11,8 +14,19 @@ export const friendsReducer = (state = initState, action) => {
     case FETCHING:
       return {
         isFetching: true,
-        staus: action.payload
+        status: action.payload
       };
+    case FETCHED:
+      return {
+        isFetched: true,
+        isFetching: false,
+        friends: action.payload.friends,
+        status: action.payload.status
+      }
+      case ERROR:
+      return {
+        status: action.payload
+      }
     default:
       return state;
   }
