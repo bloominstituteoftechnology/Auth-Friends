@@ -6,7 +6,7 @@ Topics:
 - AJAX
 - Promises
 - Middleware
-- `redux-thunk` packagez
+- `redux-thunk` package
 - optional: `redux-logger` package
 
 ## Project Description
