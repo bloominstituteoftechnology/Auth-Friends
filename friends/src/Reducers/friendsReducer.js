@@ -1,4 +1,4 @@
-import * as actionTypes from '../Action';
+import * as actionTypes from '../Action ';
 
 const intialState = {
     friends: [], 
@@ -9,7 +9,7 @@ const intialState = {
     error: null 
 }; 
 
-export default friendsReducer =(state = intialState, action) =>{
+export const friendsReducer =(state = intialState, action) =>{
     switch(action.type){
         case actionTypes.GETTING_FRIENDS:
         return{ ...state, gettingFriends: true  }
@@ -23,7 +23,7 @@ export default friendsReducer =(state = intialState, action) =>{
         return{...state, deletingFriends: true }
         case actionTypes.DELETED_FRIENDS: 
         return{...state, friends: action.payload, deletingFriends: false}
-        case actionTypes.ERRORS:
+        case actionTypes.ERROR:
         return{ 
             ...state, 
             gettingFriends: false, 

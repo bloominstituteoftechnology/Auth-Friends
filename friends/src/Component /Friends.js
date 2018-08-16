@@ -7,7 +7,7 @@ import UpdateFriendForm from './UpdateFriendForm';
 
 class Friends extends Component {
     handleDeleteFriend = () =>{
-        const {id} = this.props.friendsSelected; 
+        const {id} = this.props.friendSelected; 
         this.props.deleteFriends(id); 
     }; 
 

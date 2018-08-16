@@ -42,4 +42,3 @@ const mapStateToProps = state => {
 
 export default connect (mapStateToProps, {getFriends})(App); 
 
-export default App;

@@ -12,10 +12,10 @@ export const DELETED_FRIENDS="DELETED_FRIENDS";
 export const SINGLE_FRIEND="SINGLE_FRIEND"; 
 export const TOGGLE_FRIEND="TOGGLE_FRIEND"; 
 
-const URL = "http://localhost:5000"
+const URL = 'http://localhost:5000/api/friends';
 
 export const getFriends = () =>{
-    const friends = axios.get(`${URL}/get`); 
+    const friends = axios.get(`${URL}`); 
     return dispatch => {
         dispatch({ type: GETTING_FRIENDS}); 
         friends
@@ -29,7 +29,7 @@ export const getFriends = () =>{
 };
 
 export const createFriends = friend =>{
-    const newFriend = axios.post(`${URL}/create`, friend); 
+    const newFriend = axios.post(`${URL}`, friend); 
     return dispatch => {
         dispatch({ type: CREATING_FRIENDS}); 
         newFriend
@@ -43,7 +43,7 @@ export const createFriends = friend =>{
 }; 
 
 export const deleteFriends = id =>{
-    const deletedFriend = axios.delete(`${URL}/delete`, {
+    const deletedFriend = axios.delete(`${URL}`, {
         data: {id}
     });
     return dispatch => {

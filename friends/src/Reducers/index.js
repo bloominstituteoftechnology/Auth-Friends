@@ -1,8 +1,8 @@
-import {combineReducer} from 'redux'; 
-import {friendReducer} from './friendsReducer'; 
+import {combineReducers} from 'redux'; 
+import {friendsReducer} from './friendsReducer'; 
 import {singleFriendReducer} from './singleFriendReducer'; 
 
-export default combineReducer({
-    friendReducer,
+export default combineReducers({
+    friendsReducer,
     singleFriendReducer
 }); 

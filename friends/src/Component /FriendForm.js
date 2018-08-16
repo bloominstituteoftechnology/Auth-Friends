@@ -12,7 +12,7 @@ class FriendForm extends Component {
         this.setState({ [event.target.name]: event.target.value}); 
     }; 
 
-    handleAddFriend = e => {
+    handleAddFriend = _ => {
         const {name, age, email} = this.state; 
         this.props.createFriends({name, age, email}); 
         this.setState({name: '', age:'', email:''}); 
@@ -20,7 +20,7 @@ class FriendForm extends Component {
     render() {
         return(
             <form className="layout">
-            <inupt 
+            <input 
             className="input"
             value={this.state.name}
             name="name"

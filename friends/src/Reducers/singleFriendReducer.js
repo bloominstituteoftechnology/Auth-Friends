@@ -5,7 +5,7 @@ const intialState = {
     showUpdate: false
 }
 
-export default singleFriendReducer = (state = intialState, action) =>{
+export const singleFriendReducer = (state = intialState, action) =>{
     switch(action.type) {
         case actionTypes.SINGLE_FRIEND: 
         return { ...state, friendSelected: action.payload, showUpdate: false};
