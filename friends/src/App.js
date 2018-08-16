@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import FriendsList from './container/FriendsList';
-// import get action
+import getAction from  './actions';
 
 class App extends Component {
-  // componentDidMount(){
-
-  // }
+  componentDidMount(){
+    getAction();//still have to map to props
+  }
   render() {
     return (
       <div className="App">
@@ -14,5 +14,11 @@ class App extends Component {
     );
   }
 }
+
+//const mapToProps = state=> {
+//   return(
+
+//   )
+// }
 
 export default App;

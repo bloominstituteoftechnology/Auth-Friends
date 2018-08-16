@@ -1,0 +1,20 @@
+//GETTERS
+export const GET_FRIENDS = "GET_FRIENDS";
+export const GET_SUCCESS = "GET_SUCCESS";
+export const GET_FAILURE = "GET_FAILURE";
+
+//SAVERS
+export const SAVE_FRIENDS = "SAVE_FRIENDS";
+export const SAVE_SUCCESS = "SAVE_SUCCESS";
+export const SAVE_FAILURE = "SAVE_FAILURE";
+
+//EDITERS
+export const EDIT_FRIENDS = "EDIT_FRIENDS";
+export const EDIT_SUCCESS = "EDIT_SUCCESS";
+export const EDIT_FAILURE = "EDIT_FAILURE";
+
+//DELETERS
+export const DELETE_FRIENDS = "DELETE_FRIENDS";
+export const DELETE_SUCCESS = "DELETE_SUCCESS";
+export const DELETE_FAILURE = "DELETE_FAILURE";
+

@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 deletingFriend: false,
                 friendDeleted: false,
-                errors: [...state.errors, action.payload]
+                errors: [...state.errors, action.console.error]
             })
         default :
             return state;
