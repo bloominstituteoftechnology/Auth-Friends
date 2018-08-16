@@ -1,55 +1,32 @@
+import {FETCHING_DATA, DATA_SUCCESS, DATA_ERROR} from '../actions'
+
 const initialState = {
   fetchingFriends: false,
-  friendsFetched: false,
-  addingFriend: false,
-  updatingFriend: false,
-  friendUpdated: false,
-  deletingFriend: false,
-  friendDeleted: false,
   friends: [],
   error: null
 };
 
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCHING_DATA':
+    case FETCHING_DATA:
       return {
         ...state,
         fetchingFriends: true
       };
-    case 'DATA_*_SUCCESS':
+    case DATA_SUCCESS:
       return {
         ...state,
         friends: [ 
           ...action.results
         ],
         fetchingFriends: false,
-        friendsFetched: true,
-        addingFriend: false,
-        updatingFriend: false,
-        friendDeleted: false
       };
-    case 'DATA_*_ERROR':
+    case DATA_ERROR:
       return {
         ...state,
           fetchingFriends: false,
           error: action.error
         };
-    case 'POST_DATA':
-        return {
-          ...state,
-          addingFriend: true
-        };
-    case 'UPDATE_DATA':
-        return {
-          ...state,
-          updatingFriend: true
-        };
-    case 'DELETE_DATA':
-        return {
-          ...state,
-          deletingFriend: true
-        }
     default:
       return state;
   }
