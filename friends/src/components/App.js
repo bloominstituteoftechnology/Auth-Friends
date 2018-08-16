@@ -5,6 +5,7 @@ import fetchFriends from '../actions';
 import logo from './logo.svg';
 import './App.css';
 
+
 class App extends Component {
 
   componentDidMount() {
@@ -12,27 +13,22 @@ class App extends Component {
   }
 
   render() {
-    console.log('friends props in app render',this.props.friends);
+    console.log('friends props in app render', this.props.friends);
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+        {this.props.friends.friends.map(friend =>
+          <div key={friend.id}>
+          <h4>Name: {friend.name}</h4>
+           <h5>Age: {friend.age}</h5>
+           <h5>Email: {friend.email}</h5>
+           </div>
+           )} 
         <p className="App-intro">
-            {this.props.friends.map(friend => {
-              return 
-              <div key={friend.id}> 
-              {friend.name}
-              </div>;
-            })}
-
          {this.props.fetching ? (
            <img src={logo} className = "App-logo" alt = "logo" />
          ) : null}
          {this.props.error !== null ? <div>{this.props.error}</div> : null}
-         )}     
 
-          To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       </div>
     );
@@ -41,12 +37,11 @@ class App extends Component {
 
 
 const mapStateToProps = state => {
-  console.log('logging state in mapStateToProps', state)
-  const {friendsReducer} = state;
+  console.log('logging state in mapStateToProps', state.friends)
   return {
-    friends: friendsReducer.friends, //comes from state defined in friendsReducer
-    fetchingFriends: friendsReducer.fetchingFriends,
-    error: friendsReducer.error
+    friends: state.friends, //comes from state defined in friendsReducer
+    fetchingFriends: state.fetchingFriends,
+    error: state.error
   }
 }
 

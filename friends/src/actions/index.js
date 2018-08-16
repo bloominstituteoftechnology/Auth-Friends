@@ -6,11 +6,12 @@ export const ERROR_FETCHING_FRIENDS = 'ERROR_FETCHING_FRIENDS';
 
 
 const fetchFriends = () => {
-    const friends = axios.get('http://localhost:5000/api/friends');
-    return function(dispatch)  {
+    const friendsData = axios.get('http://localhost:5000/api/friends');
+
+    return dispatch =>  {
         dispatch({ type: FETCHING_FRIENDS });
         //Fetching puts us in a pending state
-         friends
+         friendsData
            .then(results => {
                dispatch({ type: FRIENDS_FETCHED, payload: results.data});
         //fetched puts us in a resolved state
