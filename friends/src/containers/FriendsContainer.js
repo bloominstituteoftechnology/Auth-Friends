@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchFriend, deleteFriend, addFriend, updateFriend } from "../store/actions";
+import { fetchFriend, deleteFriend, addFriend, updateFriend, debugging } from "../store/actions";
 
 class FriendsContainer extends Component {
   constructor () {
@@ -25,14 +25,20 @@ class FriendsContainer extends Component {
   }
 
   render () {
-    console.log(this.props);
+    const { addFriend, deleteFriend, updateFriend } = this.props;
+    let newFriendObject = {
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email
+    };
+
     return (
       <div>
-        <input type="text" name="name" placeholder="name" /> 
-        <input type="text" name="age" placeholder="age" /> 
-        <input type="text" name="email" placeholder="email" />
+        <input onChange={this.handleOnChange} type="text" name="name" placeholder="name" value={this.state.name} /> 
+        <input onChange={this.handleOnChange} type="text" name="age" placeholder="age" value={this.state.age} /> 
+        <input onChange={this.handleOnChange} type="text" name="email" placeholder="email" value={this.state.email} />
         <button onClick={() => {
-          this.props.addFriend();
+          addFriend();
           this.handleClear();
         }}>Add Friend</button>
 
@@ -43,6 +49,11 @@ class FriendsContainer extends Component {
                 <li>${friend.name}</li>
                 <li>${friend.age}</li>
                 <li>${friend.email}</li>
+                <button onClick={() => deleteFriend(friend.id)}>Delete</button>
+                <button onClick={() => {
+                  updateFriend(friend.id, newFriendObject);
+                  this.handleClear();
+                }}>Update</button>
               </ul>
              })
         }
@@ -59,7 +70,8 @@ const mapDispatchToProps = () => ({
   fetchFriend,
   deleteFriend,
   addFriend,
-  updateFriend
+  updateFriend,
+  debugging
 })
 
 export default connect(
