@@ -2,32 +2,61 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { getFriends } from '../actions';
+import { getFriends, addFriend, updateFriend } from '../actions';
+import AddFriend from './AddFriend';
+import Friend from './Friend';
+import UpdateFriend from './UpdateFriend';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      newName: '',
+      newAge: 0,
+      newEmail: ''
+    }
+  }
+
+  changeHandler = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
+  submitHandler = event => {
+    event.preventDefault();
+    let newFriend = {
+      name: this.state.newName,
+      age: this.state.newAge,
+      email: this.state.newEmail
+    }
+    this.props.addFriend(newFriend);
+    this.setState({
+        newName: '',
+        newAge: 0,
+        newEmail: ''
+    });
+    this.props.getFriends();
+  }
 
   componentDidMount() {
     this.props.getFriends();
   }
 
   render() {
-    console.log(this);
     return (
       <div className="App">
-        {this.props.fetching ?
+        {(this.props.fetching || this.props.savingFriends) ?
           (<header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <h1 className="App-title">Welcome to React</h1>
           </header>) :
-          (<div>
-            <h1>Friends List</h1>
-            {this.props.friends.map(friend => {
-              return (
-                <p key={friend.id}>{friend.name}</p>
-              )}
-            )}
-          </div>)
+          <Friend friends={this.props.friends} />
         }
+        <div className='forms'>
+          <AddFriend name={this.state.newName} age={this.state.newAge} email={this.state.newEmail} change={this.changeHandler} submit={this.submitHandler} />
+          <UpdateFriend />
+        </div>
       </div>
     );
   }
@@ -48,4 +77,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getFriends })(App);
+export default connect(mapStateToProps, { getFriends, addFriend })(App);

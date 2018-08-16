@@ -1,4 +1,4 @@
-import { GET_FRIENDS, FETCHING_FRIENDS, ERROR } from '../actions';
+import { GET_FRIENDS, FETCHING_FRIENDS, ERROR, SAVING_FRIENDS, FRIENDS_SAVED } from '../actions';
 
 const initialState = {
   fetchingFriends: false,
@@ -21,6 +21,10 @@ export const friendsReducer = (state = initialState, action) => {
       return {...state, fetchingFriends: false, friendsFetched: true, friends: action.payload};
     case ERROR:
       return {...state, error: action.payload};
+    case SAVING_FRIENDS:
+      return {...state, savingFriends: true};
+    case FRIENDS_SAVED:
+      return {...state, savingFriends: false, friendsSaved: true, friends: action.payload};
     default:
       return state;
   }
