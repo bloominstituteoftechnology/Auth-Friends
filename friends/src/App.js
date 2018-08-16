@@ -4,6 +4,7 @@ import "./App.css";
 
 // import { setInitialStateReducer } from "./reducers/setInitialStateReducer";
 import { fetchFriendData } from "./actions/fetchApiAction";
+import { addNewFriend } from "./actions/addNewFriendAction";
 import { connect } from "react-redux";
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
     console.log("InputChange handler Working", event.target.value);
     this.setState({ newFriend: event.target.value });
   };
+
   render() {
     console.log("NewFriend", this.state.newFriend);
     return (
@@ -58,6 +60,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    fetchFriendData
+    fetchFriendData,
+    addNewFriend
   }
 )(App);
