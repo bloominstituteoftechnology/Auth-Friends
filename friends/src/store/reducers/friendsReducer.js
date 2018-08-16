@@ -16,7 +16,7 @@ const initState = {
     error: null
 }
 
-const friendsList = (state = initState, action) => {
+export const friendsList = (state = initState, action) => {
     switch (action.type) {
         case FETCHING_FRIENDS:
             return Object.assign({}, state, {fetchingFriends: true});
@@ -34,7 +34,9 @@ const friendsList = (state = initState, action) => {
                 savingFriends: false,
                 savedFriends: true,
             });
-        
-
+        case ERROR:
+            return state;
     }
 }
+
+export const singleFriend = (state, action)
