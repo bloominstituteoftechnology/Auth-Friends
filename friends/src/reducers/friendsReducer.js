@@ -1,6 +1,6 @@
 //reducer
 
-import {FETCHING,FETCHED, ERROR } from '../actions/types.js';
+import {FETCHING, FETCHED, ERROR } from '../actions';
 
 const initState = {
   friends: [],
@@ -18,14 +18,14 @@ export const friendsReducer = (state = initState, action) => {
         status: action.payload
       };
     case FETCHED:
-      return {
+      return Object.assign({}, state, {
         isFetched: true,
         isFetching: false,
         friends: action.payload.friends,
         status: action.payload.status,
-        idCount: action.payload.friends.length
-      }
-      case ERROR:
+        count: action.payload.friends.length
+      });
+    case ERROR:
       return {
         status: action.payload
       }

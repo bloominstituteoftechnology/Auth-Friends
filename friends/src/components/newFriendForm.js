@@ -4,6 +4,7 @@ import React from 'react';
 const NewFriendDiv = styled.div `
   display: flex;
   justify-content: center;
+  margin: 10px;
   ${'' /* border: 1px solid red; */}
 `;
 
@@ -32,7 +33,6 @@ export default class NewFriendForm extends React.Component {
       inputEmail: '',
     })
     this.props.addFriend(this.state);
-
   }
 
   render() {

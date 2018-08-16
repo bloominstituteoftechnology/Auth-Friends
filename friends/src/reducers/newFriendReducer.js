@@ -1,6 +1,6 @@
 //reducer
 
-import {REQUESTTOADD,  ADDINGFRIEND, NOTADDED } from '../actions/types.js';
+import {REQUESTTOADD,  ADDINGFRIEND, NOTADDED } from '../actions';
 
 const initState = {
   friends: [],
@@ -13,18 +13,18 @@ const initState = {
 export const newFriendReducer = (state = initState, action) => {
   switch (action.type) {
     case REQUESTTOADD:
-      return {
+      return Object.assign({}, state, {
         savingFriend: true,
         status: action.payload
-      }
+      });
     case ADDINGFRIEND:
-      return {
+      return Object.assign({}, state, {
         savingFriend: false,
         friendUpdated: true,
         status: action.payload.status,
-        friends: action.payload.friends,
+        friends: [...state.friends, action.payload.friends],
         count: state.count+1
-      }
+      });
     case NOTADDED:
       return {
         friendUpdated: false,

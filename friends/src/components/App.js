@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import '../styles/App.css';
-import {getFriends} from '../actions';
-import {addFriend} from '../actions/addFriend.js';
+import {getFriends} from '../store/actions';
+import {addFriend} from '../store/actions/addFriend.js';
 import NewFriendForm from './newFriendForm';
 import styled from 'styled-components';
 
@@ -11,7 +11,7 @@ const AppDiv = styled.div `
   width: 100%;
   display: flex;
   flex-direction: column;
-  ${'' /* align-items: space-between; */}
+  ${ ''/* align-items: space-between; */}
 
   .list {
     ${ ''/* border: 1px solid green; */}
@@ -40,7 +40,9 @@ class App extends Component {
           (this.props.state.friendsReducer.isFetched)
             ? (this.props.state.friendsReducer.friends.map(friend => {
               return (<div key={friend.id}>
-                {friend.name} - {friend.email} - {friend.age}
+                {friend.name} -
+                Email: {friend.email} -
+                Age: {friend.age}
               </div>)
             }))
             : null
@@ -57,7 +59,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  getFriends, addFriend
+  getFriends,
+  addFriend
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
