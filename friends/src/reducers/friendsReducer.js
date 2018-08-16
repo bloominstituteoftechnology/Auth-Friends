@@ -1,34 +1,38 @@
 const initialState = {
+  fetchingFriends: false,
+  friendsFetched: false,
+  friendsSaved: false,
+  savingFriends: false,
+  updatingFriend: false,
+  friendUpdated: false,
+  deletingFriend: false,
+  friendDeleted: false,
   friends: [],
-  fetchingData: false, 
-  fetchedData: false,
-  error: ''
+  error: null
 };
+
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCHING_DATA':
       return {...state,
-        fetchingData: true
+        fetchingFriends: true
       };
     case 'DATA_FETCH_SUCCESS':
       return {
         ...state,
-        chars: [
+        friends: [
           ...state.friends, 
           ...action.results
         ],
-        fetchingData: false,
-        fetchedData: true
+        fetchingFriends: false,
+        friendsFetched: true
       };
     case 'DATA_FETCH_ERROR':
       return {
         ...state,
-          fetchingData: false,
+          fetchingFriends: false,
           error: 'Error fetching data'
         };
-    // Fill me in with the important reducers
-    // action types should be FETCHING, FETCHED, and ERROR
-    // your switch statement should handle all of these cases.
     default:
       return state;
   }
