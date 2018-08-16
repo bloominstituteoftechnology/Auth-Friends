@@ -1,4 +1,35 @@
 import React, {Component} from 'react';
+import styled from 'styled-components';
+
+
+const Form = styled.div`
+
+    display: flex;
+    max-width: 525px;
+    width: 100%;
+    height: 300px;
+    border: 1px solid gray;
+    border-radius: 40px;
+    flex-direction: column;
+    margin: 20px auto;
+    background-color: rgba(255, 255,255, 0.8);
+    align-items: center;
+    justify-content: center;    
+`
+const Name = styled.div`
+
+
+`
+const Age = styled.div`
+    
+
+`
+
+const Email = styled.div`
+
+
+`
+
 
 class AddForm extends Component {
    constructor(props){
@@ -34,9 +65,9 @@ class AddForm extends Component {
 
 render() {
 return(
-    <div>
+    <Form>
     <h1>Add new friend</h1>
-        <div>
+        <Name>
             <label>
                 Name:
                 <input
@@ -48,8 +79,8 @@ return(
                 />
             </label>
             
-        </div>
-        <div>
+        </Name>
+        <Age>
         <label>
                 Age:
                 <input
@@ -60,8 +91,8 @@ return(
                     onChange={this.handleChange}
                 />
             </label>
-        </div>
-        <div>
+        </Age>
+        <Email>
         <label>
                 Email:
                 <input
@@ -72,10 +103,10 @@ return(
                     onChange={this.handleChange}
                 />
             </label>
-        </div>
+        </Email>
 
         <button type="submit" onClick={this.handleAddFriend}>Add new friend</button>
-    </div>
+    </Form>
     
 );
 }

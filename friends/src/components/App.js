@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { getFriends, addFriend } from '../actions/actions';
 
-import '../App.css';
 import AddForm from './AddForm';
+import Friend from './Friend';
 
 
 class App extends Component {
@@ -24,7 +24,14 @@ class App extends Component {
           
             {this.props.friendsFetched ? (
               this.props.friends.map((friend, index) => 
-                <div key={index}>{friend.name}</div>)
+                <Friend
+                  key={index}
+                  number={friend.id}
+                  name={friend.name}
+                  age={friend.age}
+                  email={friend.email}
+                />
+                )
             ): null }         
         </div>
         <AddForm addFriend={this.props.addFriend}/>
