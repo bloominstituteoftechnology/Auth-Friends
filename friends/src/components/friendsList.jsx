@@ -5,9 +5,9 @@ class FriendsList extends Component {
     super(props);
   }
   friendLister = () => {
-    return this.props.friends.map((e, i) => {
+    return this.props.friends.filter((e)=> {if ( this.props.friendID === -1 ){return e} else{  return e.id===this.props.friendID}}).map((e, i) => {
       return (
-        <div className="friendListRow" id={e.id} key={i}>
+        <div className="friendListRow" id={e.id} key={i} onClick={ ()=> {this.props.singleUserMode(e.id,"Edit")} }>
           <div className="friendsListItem">{e.name}</div>
           <div className="friendsListItem">{e.age}</div>
           <div className="friendsListItem">{e.email}</div>

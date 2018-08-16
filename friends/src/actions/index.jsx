@@ -40,3 +40,34 @@ export const friendsAdd = (friendObj) => {
       });
   };
 };
+
+export const friendsDelete = (friendID) => {
+  return function(dispatch) {
+    dispatch({ type: DELETINGFRIENDS });
+    axios
+      .delete(`http://localhost:5000/api/friends/${friendID}`)
+      .then(function(response) {
+        dispatch({ type: FRIENDSDELETED, payload: response.data });
+      })
+      .catch(function(error) {
+        console.log(error);
+        dispatch({ type: ERROR, payload: error });
+      });
+  };
+};
+
+export const friendsEdit = (friendID,friendObj) => {
+  return function(dispatch) {
+    dispatch({ type: UPDATINGFRIENDS });
+    axios
+      .put(`http://localhost:5000/api/friends/${friendID}`,friendObj)
+      .then(function(response) {
+        console.log(response)
+        dispatch({ type: FRIENDSUPDATED, payload: response.data });
+      })
+      .catch(function(error) {
+        console.log(error);
+        dispatch({ type: ERROR, payload: error });
+      });
+  };
+};

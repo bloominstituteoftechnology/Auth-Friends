@@ -40,6 +40,27 @@ export const listReducer = (state = initialState, action) => {
       friendsSaved:true,
       friends: action.payload
     });
+    case ('DELETINGFRIENDS'):
+    return Object.assign({}, state, {
+      deletingFriend: true
+    });
+    case ('FRIENDSDELETED'):
+    return Object.assign({}, state, {
+      deletingFriend: false,
+      friendDeleted:true,
+      friends: action.payload
+    });
+    case ('UPDATINGFRIENDS'):
+    return Object.assign({}, state, {
+      updatingFriend: true
+    });
+    case ('FRIENDSUPDATED'):
+    console.log(action.payload)
+    return Object.assign({}, state, {
+      updatingFriend: false,
+      friendUpdated:true,
+      friends: action.payload
+    });
     default:
       return state;
   }
