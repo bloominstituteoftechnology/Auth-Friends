@@ -6,7 +6,7 @@ const initState = {
   friends: [],
   isFetching: false,
   isFetched: false,
-  status: '',
+  status: ''
 }
 
 export const friendsReducer = (state = initState, action) => {
@@ -21,7 +21,8 @@ export const friendsReducer = (state = initState, action) => {
         isFetched: true,
         isFetching: false,
         friends: action.payload.friends,
-        status: action.payload.status
+        status: action.payload.status,
+        idCount: action.payload.friends.length
       }
       case ERROR:
       return {
