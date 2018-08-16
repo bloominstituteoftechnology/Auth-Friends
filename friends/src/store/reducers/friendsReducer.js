@@ -37,5 +37,8 @@ export const friendsReducer = (state = initialState, action) => {
                 friendsFetched: false,
                 error: action.payload,
             });
+
+        default:
+            return state;
     }
 };
