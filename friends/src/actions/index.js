@@ -23,7 +23,7 @@ export const getFriends = () => {
         })
         .catch(error => {
             console.log(error)
-            dispatch({type:ERROR, payload: error})
+            dispatch({type:ERROR, error: error})
         });
     };
 };
