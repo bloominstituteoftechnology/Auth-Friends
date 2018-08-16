@@ -24,3 +24,18 @@ export const fetchFriends = () => {
             })
     }
 }
+
+export const addFriend = (name, age, email) => {
+    const promise = axios.post('http://localhost:5000/api/friends', {name: name, age: age, email: email});
+    return dispatch => {
+        dispatch({type: SAVING_FRIENDS});
+        promise
+            .then(response => {
+                dispatch({type: FRIENDS_SAVED, payload: response.data})
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({type: ERROR, payload: err})
+            })
+    }
+}

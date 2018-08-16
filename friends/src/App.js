@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <Friends />
+        <CreateFriendForm />
       </div>
     );
   }

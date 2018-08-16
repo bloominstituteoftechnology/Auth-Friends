@@ -37,6 +37,18 @@ export const friendsReducer = (state = initialState, action) => {
                 friendsFetched: true,
                 friends: [...state.friends, ...action.payload]
             })
+        case SAVING_FRIENDS:
+            console.log('saving friends');
+            return Object.assign({}, state, {
+                savingFriends: true
+            })
+        case FRIENDS_SAVED:
+            console.log('friends saved');
+            return Object.assign({}, state, {
+                savingFriends: false,
+                friendsSaved: true,
+                friends: [...state.friends, ...action.payload]
+            })
         case ERROR:
             console.log('error fetching friends');
             return Object.assign({}, state, {
