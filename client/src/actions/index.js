@@ -52,3 +52,14 @@ export const addFriend = data => async dispatch => {
     dispatch(addFriendFailure(err));
   }
 };
+
+export const updateFriend = (id, data) => async dispatch => {
+  dispatch(updateFriendsRequest());
+  try {
+    const response = await axios.put(`${URL}/${id}`, data);
+    dispatch(updateFriendsSuccess(response.data));
+  } catch (err) {
+    console.log(err);
+    dispatch(updateFriendsFailure(err));
+  }
+};

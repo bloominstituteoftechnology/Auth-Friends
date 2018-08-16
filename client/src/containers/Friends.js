@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchFriends, addFriend } from '../actions';
+import { fetchFriends, addFriend, updateFriend } from '../actions';
 import FriendsForm from '../components/FriendsForm';
+import Friend from '../components/Friend';
 
 class Friends extends React.Component {
   componentDidMount() {
@@ -10,26 +11,26 @@ class Friends extends React.Component {
   }
 
   render() {
-    const { friends, isFetching, addFriend, isAdding } = this.props;
+    const {
+      friends,
+      isFetching,
+      addFriend,
+      isAdding,
+      isUpdating,
+      updateFriend,
+    } = this.props;
     return (
       <div>
         {isFetching ? (
           <p>Loading...</p>
         ) : (
           friends.map(friend => (
-            <div
-              style={{
-                borderBottom: '1px solid #dbdbdb',
-                marginBottom: '1rem',
-              }}
-            >
-              <h3>
-                {friend.name}, {friend.age}
-              </h3>
-              <a href={`mailto:${friend.email}`}>
-                <small>{friend.email}</small>
-              </a>
-            </div>
+            <Friend
+              key={friend.id}
+              friend={friend}
+              onFormSubmit={updateFriend}
+              isUpdating={isUpdating}
+            />
           ))
         )}
         {isAdding ? (
@@ -42,11 +43,12 @@ class Friends extends React.Component {
   }
 }
 
-function mapStateToProps({ friends, isFetching, isAdding }) {
+function mapStateToProps({ friends, isFetching, isAdding, isUpdating }) {
   return {
     friends,
     isFetching,
     isAdding,
+    isUpdating,
   };
 }
 
@@ -58,5 +60,5 @@ function mapStateToProps({ friends, isFetching, isAdding }) {
 
 export default connect(
   mapStateToProps,
-  { fetchFriends, addFriend },
+  { fetchFriends, addFriend, updateFriend },
 )(Friends);
