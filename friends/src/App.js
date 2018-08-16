@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loading_data } from './store/actions';
 
 import logo from './logo.svg';
 import './App.css';
+
+import { loading_data } from './store/actions/index';
 
 class App extends Component {
     componentDidMount() {
@@ -17,8 +18,10 @@ class App extends Component {
                 <img src={logo} className="App-logo" alt="logo" />
             ) : (
                 <ul>
-                    {this.props.friendsFetched.map(friend => {
-                    return <li key={friend.name}>{friend.name}</li>;
+                    {this.props.friends.map(friend => {
+                        return <li>
+                            {friend.name}
+                        </li>;
                     })}
                 </ul>
             )}
@@ -30,8 +33,8 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         fetchingFriends: state.friendsReducer.fetchingFriends,
-        friendsFetched: state.friendsReducer.friendsFetched,
-    };
+        friends: state.friendsReducer.friends,
+    }
 }
 
 export default connect(mapStateToProps, { loading_data })(App);

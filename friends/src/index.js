@@ -6,13 +6,13 @@ import App from './App';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from "./store/reducers";
+import { applyMiddleware, createStore } from 'redux';
+import combineReducers from './store/reducers/index.js';
 
-const store = createStore(rootReducer, applyMiddleware(logger, thunk));
+const store = createStore(combineReducers, applyMiddleware(logger, thunk));
 
 ReactDOM.render(
-    <Provider store={ store }>
+    <Provider store={store}>
         <App />
     </Provider>, 
     document.getElementById('root')
