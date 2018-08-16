@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import '../actions/types.js';
-import { FETCHING_FRIENDS, FETCHED_FRIENDS, SAVED_FRIENDS } from '../actions/types.js';
+import { FETCHING_FRIENDS, FETCHED_FRIENDS, SAVED_FRIENDS, ADDING_FRIEND, ADDED_FRIEND } from '../actions/types.js';
 
 const initState = {
     fetchingFriends: false,
     fetchedFriends: false,
     savedFriends: false,
     savingFriends: false,
+    addingFriend: false,
+    addedFriend: false,
     updatingFriend: false,
     updatedFriend: false,
     deletingFriend: false,
@@ -39,4 +41,18 @@ export const friendsList = (state = initState, action) => {
     }
 }
 
-export const singleFriend = (state, action)
+export const singleFriend = (state, action) {
+    switch(action.type){
+        case ADDING_FRIEND:
+            return Object.assign({}, state, {
+                addingFriend: true,
+            });
+        case ADDED_FRIEND:
+            return Object.assign({}, state, {
+                addedFriend: true,
+                addingFriend: false,
+                friends: [ ...state.friends, action.payload ],
+            });
+        case 
+    }
+}

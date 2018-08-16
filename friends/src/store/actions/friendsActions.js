@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FETCHED_FRIENDS, FETCHING_FRIENDS, SAVED_FRIENDS, SAVING_FRIENDS, ERROR } from './types.js';
 
-const URL = `http://localhost:5000`;
+const URL = `http://localhost:5000/api/friends`;
 export const fetchFriends = () => {
     const promise = axios.get(URL);
     return (dispatch) => {

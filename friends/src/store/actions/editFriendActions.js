@@ -1,4 +1,4 @@
-import {UPDATED_FRIEND, UPDATING_FRIEND, DELETED_FRIEND, DELETING_FRIEND } from './types.js';
+import {ADDING_FRIEND, ADDED_FRIEND, UPDATED_FRIEND, UPDATING_FRIEND, DELETED_FRIEND, DELETING_FRIEND } from './types.js';
 
 /**
  *  {
@@ -17,16 +17,38 @@ export const getFriend = () => {
 }
 
 export const addFriend = (friend) => {
-    axios.post(URL + `/${friend}`, {
+    const promise = axios.post(URL + `/${friend}`, {
         id: friend.id,
         name: friend.name,
         age: friend.age,
         email: friend.email,
     })
+    return (dispatch) {
+        dispatch({type: ADDING_FRIEND});
+        promise
+            .then((res)=>{
+                dispatch({type: ADDED_FRIEND, payload: res.data});
+            })
+            .catch(err => { type: ERROR });
+    }
+   
 }
 
-export const updateFriend = () => {
-
+export const updateFriend = (id) => {
+    const promise = axios.post(URL + `/${friend}`, {
+        id: friend.id,
+        name: friend.name,
+        age: friend.age,
+        email: friend.email,
+    })
+    return (dispatch) {
+        dispatch({ type: ADDING_FRIEND });
+        promise
+            .then((res) => {
+                dispatch({ type: ADDED_FRIEND, payload: res.data });
+            })
+            .catch(err => { type: ERROR });
+    }
 }
 
 export const deleteFriend = () => {

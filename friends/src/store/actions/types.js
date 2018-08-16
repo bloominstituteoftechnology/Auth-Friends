@@ -6,5 +6,7 @@ export const UPDATING_FRIEND = 'UPDATING_FRIEND';
 export const UPDATED_FRIEND = 'UPDATED_FRIEND';
 export const DELETING_FRIEND = 'DELETING_FRIEND';
 export const DELETED_FRIEND = 'DELETED_FRIEND';
+export const ADDING_FRIEND = 'ADDING_FRIEND';
+export const ADDED_FRIEND = 'ADDED_FRIEND';
 export const FRIENDS = 'FRIENDS';
 export const ERROR = 'ERROR';
