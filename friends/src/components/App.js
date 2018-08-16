@@ -4,11 +4,27 @@ import { connect } from 'react-redux';
 //import {friendsReducer} from '../reducers/friendsReducer' don't think i need this. 
 import {getFriends, postFriends, updateFriends, deleteFriends} from '../actions';
 import FriendsContainer from './FriendsContainer';
+import FriendsForm from './FriendsForm';
 
 class App extends Component {
 
   componentDidMount() {
     this.props.getFriends()
+  }
+
+  addingFriend  = () => {
+    const name = this.name.value;
+    const age = this.age.value;
+    const email = this.email.value; 
+    const friend =  {
+      name, 
+      age,
+      email,
+    }
+    this.name.value = '';
+    this.age.value = '';
+    this.email.value = '';
+    this.props.postFriends(friend)
   }
 
   render() {
@@ -17,6 +33,14 @@ class App extends Component {
     return (
       <div className="App">
         <FriendsContainer friends={friends}/>
+        <div>
+          <input type="text" placeholder="...enter Name" name = 'name' ref={input => this.name = input}/>
+          <input type="text" placeholder ="...enter Age" name = 'age' ref = {input => this.age = input}/>
+          <input type="text" placeholder ="...enter email" name = 'email' ref = {input => this.email = input}/>
+          <button onClick = { this.addingFriend}>Add</button>
+          <button>Update</button>
+          <button>Delete</button>
+        </div>
       </div>
     );
   }
