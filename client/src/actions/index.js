@@ -6,28 +6,28 @@ const URL = '/api/friends';
 export const {
   fetchFriendsRequest,
   fetchFriendsFailure,
-  saveFriendsRequest,
-  saveFriendsFailure,
+  fetchFriendsSuccess,
+  addFriendRequest,
+  addFriendFailure,
+  addFriendSuccess,
   updateFriendsRequest,
   updateFriendsFailure,
+  updateFriendsSuccess,
   deleteFriendsRequest,
   deleteFriendsFailure,
-  fetchFriendsSuccess,
-  saveFriendsSuccess,
-  updateFriendsSuccess,
   deleteFriendsSuccess,
 } = createActions(
   'FETCH_FRIENDS_REQUEST',
   'FETCH_FRIENDS_FAILURE',
-  'SAVE_FRIENDS_REQUEST',
-  'SAVE_FRIENDS_FAILURE',
+  'FETCH_FRIENDS_SUCCESS',
+  'ADD_FRIEND_REQUEST',
+  'ADD_FRIEND_FAILURE',
+  'ADD_FRIEND_SUCCESS',
   'UPDATE_FRIENDS_REQUEST',
   'UPDATE_FRIENDS_FAILURE',
+  'UPDATE_FRIENDS_SUCCESS',
   'DELETE_FRIENDS_REQUEST',
   'DELETE_FRIENDS_FAILURE',
-  'FETCH_FRIENDS_SUCCESS',
-  'SAVE_FRIENDS_SUCCESS',
-  'UPDATE_FRIENDS_SUCCESS',
   'DELETE_FRIENDS_SUCCESS',
 );
 
@@ -39,5 +39,16 @@ export const fetchFriends = () => async dispatch => {
   } catch (err) {
     console.log(err);
     dispatch(fetchFriendsFailure(err));
+  }
+};
+
+export const addFriend = data => async dispatch => {
+  dispatch(addFriendRequest());
+  try {
+    const response = await axios.post(URL, data);
+    dispatch(addFriendSuccess(response.data));
+  } catch (err) {
+    console.log(err);
+    dispatch(addFriendFailure(err));
   }
 };
