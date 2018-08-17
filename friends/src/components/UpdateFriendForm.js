@@ -3,10 +3,12 @@ import React from 'react'
 class FriendUpdateForm extends React.Component {
     constructor (props){
         super(props)
+
         this.state = {
-            name: '',
-            age: '',
-            email: ''
+            id: this.props.id,
+            name: this.props.name,
+            age: this.props.age,
+            email: this.props.email
         }
     }
 
@@ -22,7 +24,7 @@ class FriendUpdateForm extends React.Component {
     }
 
     onSubmit(event){
-        this.props.updateFriend(this.state)
+        this.props.friendUpdate(this.state)
     }
 
     render(){
@@ -31,13 +33,13 @@ class FriendUpdateForm extends React.Component {
                 <h1>Update Friend</h1>
                 <div className="newFriend">
                     <label>
-                        Name <input type="text" name="name" onChange={this.inputChange.bind(this)} value={this.props.name}/>
+                        Name <input type="text" name="name" onChange={this.inputChange.bind(this)} value={this.state.name}/>
                     </label>
                     <label>
-                        Age <input type="number" name="age" onChange={this.inputChange.bind(this)} value={this.props.age}/>
+                        Age <input type="number" name="age" onChange={this.inputChange.bind(this)} value={this.state.age}/>
                     </label>
                     <label>
-                        email <input type="email" name="email" onChange={this.inputChange.bind(this)} value={this.props.email}/>
+                        email <input type="email" name="email" onChange={this.inputChange.bind(this)} value={this.state.email}/>
                     </label>
                     <button onClick={this.onSubmit.bind(this)}>Submit</button>
                 </div>

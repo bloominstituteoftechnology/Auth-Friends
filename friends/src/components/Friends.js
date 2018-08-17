@@ -6,15 +6,11 @@ class Friends extends React.Component {
     handleDelete = event => {
         this.props.deleteFriend(event.target.id)
     }
-
-    handleUpdate = event => {
-        console.log(event)
-    }
     
     render() {
         return (<div>
             {this.props.friendsFetched 
-                ? this.props.friends.map(friend => <Friend key={friend.id} {...friend} onDelete={this.handleDelete} onUpdate={this.handleUpdate}/>)
+                ? this.props.friends.map(friend => <Friend key={friend.id} {...friend} onDelete={this.handleDelete} onUpdate={this.props.onUpdate}/>)
                 : <h1>Loading</h1>}
         </div>)
     } 
