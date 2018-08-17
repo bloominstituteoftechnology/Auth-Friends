@@ -9,7 +9,7 @@ export const UPDATING_FRIENDS = 'UPDATING_FRIENDS';
 export const UPDATED_FRIENDS = 'UPDATED_FRIENDS';
 export const ERROR = 'ERROR';
 
-export const getFriends = () => {
+export const fetchFriends = () => {
     const promise = axios.get('http://localhost:5000/');
     return function(dispatch){
         dispatch({type:FETCHING_FRIENDS});
