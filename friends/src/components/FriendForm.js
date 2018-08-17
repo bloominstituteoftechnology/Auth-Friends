@@ -6,16 +6,16 @@ class FriendForm extends Component {
     state = {
         name: '',
         age: '',
-        email: ''
+        Occupation: ''
     };
     handleInputChange = event => {
         this.setState({[event.target.name]: event.target.value });
     };
 
     handleAddFriend = _ => {
-    const {name, age, email} = this.state;
-    this.props.createFriend({name, age, email});
-    this.setState({name: '', age: '', email: ''});
+    const {name, age, occupation} = this.state;
+    this.props.createFriend({name, age, occupation});
+    this.setState({name: '', age: '', occupation: ''});
     };
 
     render() {
@@ -39,10 +39,10 @@ class FriendForm extends Component {
                 />
                 <input
                 className="input"
-                value={this.state.email}
-                name="email"
+                value={this.state.occupation}
+                name="occupation"
                 type="text"
-                placeholder="Email"
+                placeholder="Occupation"
                 onChange={this.handleInputChange}
                 />
                 <button onClick={() => this.handleAddFriend()} type="button">
