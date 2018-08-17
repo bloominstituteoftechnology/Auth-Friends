@@ -4,6 +4,15 @@ export default function InputForm (props) {
     return(
         <div>
           <form onSubmit={props.onSubmitAddHandler}>
+
+              <input 
+              onChange={props.inputChangeHandler}
+              type="number"
+              value={props.id}
+              placeholder="id"
+              name="id"
+              />
+
               <input 
               onChange={props.inputChangeHandler}
               type="text"
@@ -32,6 +41,7 @@ export default function InputForm (props) {
 
               <button>Add Friend</button>
               <button onClick={props.friendDeleter}>Delete Friend</button>
+              <button onClick={props.friendEditer}>Edit Friend</button>
 
           </form>
                 

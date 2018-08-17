@@ -6,6 +6,8 @@ export const UPDATED = "UPDATED";
 export const UPDATING = "UPDATING";
 export const DELETED = "DELETED";
 export const DELETING = "DELETING";
+export const EDITED = "EDITED";
+export const EDITING = "EDITING";
 
 export const friendFetcher = ( ) => {
   return function(dispatch) {
@@ -51,3 +53,16 @@ export const friendDeleter = (id) => {
     });
   };
 };
+
+export const friendEditer = (id, editedFriend) => {
+    return function(dispatch) {
+        dispatch({ type: EDITING });
+
+    axios
+      .put(`http://localhost:5000/api/friends/${id}`, editedFriend)
+      .then(data => {
+        dispatch({ type: EDITED, payload: data.data });
+    });
+  };
+};
+

@@ -4,7 +4,9 @@ import {
   UPDATING,
   UPDATED,
   DELETING,
-  DELETED
+  DELETED,
+  EDITING,
+  EDITED
 } from "../actions";
 
 const initialState = {
@@ -35,29 +37,42 @@ export const fetcher = (state = initialState, action) => {
         friends: action.payload
       });
 
-      case UPDATING:
+    case UPDATING:
       return Object.assign({}, state, {
         friendsUpdating: true 
       });
       
-      case UPDATED:
+    case UPDATED:
       return Object.assign({}, state, {
         friendsUpdating: false,
         friendsUpdated: true,
         friends: action.payload
       });
 
-      case DELETING:
+    case DELETING:
       return Object.assign({}, state, {
         friendsDeleting: true 
       });
       
-      case DELETED:
+    case DELETED:
       return Object.assign({}, state, {
         friendsDeleting: false,
         friendsDeleted: true,
         friends: action.payload
       });
+
+    case EDITING:
+      return Object.assign({}, state, {
+        friendsEditing: true 
+      });
+      
+    case EDITED:
+      return Object.assign({}, state, {
+        friendsEditing: false,
+        friendsEdited: true,
+        friends: action.payload
+      });
+
     default:
       return state;
   }

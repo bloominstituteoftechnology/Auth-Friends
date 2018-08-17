@@ -1,6 +1,6 @@
 import React, {Component} from 'react'; 
 import {connect} from 'react-redux';
-import {friendFetcher, friendUpdater, friendDeleter} from '../actions';
+import {friendFetcher, friendUpdater, friendDeleter, friendEditer} from '../actions';
 import FriendList from '../components/FriendsList';
 import InputForm from '../components/InputForm';
 
@@ -8,6 +8,7 @@ class FriendsContainer extends Component {
     constructor(){
         super();
         this.state={
+            id: null,
             name: '', 
             age: null,
             email: '',
@@ -36,8 +37,19 @@ friendDeleter = (e) => {
     });
 }
 
+friendEditer = (e) => {
+    e.preventDefault(); 
+    const editedFriend = {
+        name: this.state.name,
+        age: this.state.age,
+        email: this.state.email
+    }
+
+    this.props.friendEditer(this.state.id, editedFriend)
+}
+
     render(){
-        console.log(this.state)
+        console.log('this is id', this.state.id)
         return(
             <div>
                 <FriendList 
@@ -48,6 +60,7 @@ friendDeleter = (e) => {
                     onSubmitAddHandler={this.onSubmitAddHandler}
                     inputChangeHandler={this.inputChangeHandler}
                     friendDeleter={this.friendDeleter}
+                    friendEditer={this.friendEditer}
                 />
             </div>
         )
@@ -59,7 +72,7 @@ const mapStatetoProps = state =>({
 });
 
 export default connect(mapStatetoProps, {
-    actions: friendFetcher, friendUpdater, friendDeleter
+    actions: friendFetcher, friendUpdater, friendDeleter, friendEditer
     })(FriendsContainer);
 
 
