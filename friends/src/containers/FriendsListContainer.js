@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FriendsList from '../components/FriendsList';
-import { getFriends , addFriends } from '../actions/actions';
-import AddNewFriends from './AddNewFriend';
+import { getFriends , 
+        addFriends, 
+        updateFriends, 
+        deleteFriends } from '../actions/actions';
+import AddNewFriend from '../components/AddNewFriend';
 
 class FriendsListContainer extends React.Component{
     constructor(props){
@@ -21,6 +24,18 @@ class FriendsListContainer extends React.Component{
         window.location.reload();
         this.setState({name:'',age:'',email:''})
     }
+    update = e => {
+        this.props.updateFriends(
+                this.state.name,
+                this.state.age,
+                this.state.email,
+                e.target.id
+            )
+        this.setState({name:'',age:'',email:''})
+    }
+    delete = e => {
+        this.props.deleteFriends(e.target.id);
+    }
     componentDidMount() {
         this.props.getFriends();
       }
@@ -28,8 +43,11 @@ class FriendsListContainer extends React.Component{
         return(
             <div>
                 <FriendsList 
-                    friends={this.props.friends}/>
-                <AddNewFriends 
+                    friends={this.props.friends}
+                    submitUpdate={this.update}
+                    submitDelete={this.delete}
+                />
+                <AddNewFriend 
                     name={this.state.name}
                     age={this.state.age}
                     email={this.state.email}
@@ -47,4 +65,7 @@ const mapStateToProps = state => {
     )
 }
 
-export default connect(mapStateToProps, { getFriends, addFriends })(FriendsListContainer);
+export default connect(
+    mapStateToProps,
+    { getFriends, addFriends, updateFriends, deleteFriends })
+    (FriendsListContainer);

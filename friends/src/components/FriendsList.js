@@ -1,17 +1,28 @@
 import React from 'react';
 import Friend from './Friend';
 
-export default function FriendsList(props){
-    return(
-        <ul>
-            {props.friends.map(friend => (
-                <Friend
-                    key={friend.name}
-                    id={friend.id}
-                    name={friend.name}
-                    age = {friend.age}
-                    email = {friend.email}
-                />
-            ))}
-        </ul>
-)}
+class FriendsList extends React.Component{
+    render(){
+        return(
+            <ul>
+                {this.props.friends.map(friend => {
+                    return(
+                        <div>
+                            <Friend key={friend.id}
+                                    friend={friend} />
+                            <button onClick={this.props.submitUpdate}
+                                    id={friend.id}>
+                                Update Friend
+                            </button>
+                            <button onClick={this.props.submitDelete}
+                                    id={friend.id}>
+                                Delete Friend
+                            </button>
+                        </div>
+                    )
+                })}
+            </ul>
+    )}
+}
+
+export default FriendsList;
