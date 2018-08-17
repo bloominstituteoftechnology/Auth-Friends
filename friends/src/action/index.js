@@ -53,7 +53,9 @@ export const createFriend = () => {
   };
 };
 export const updateFriend = () => {
-  const promise = axios.put(`http://localhost:5000/api/friends/:id`);
+  const promise = axios.put(`http://localhost:5000/api/friends/`, {
+    data: { id }
+  });
   return dispatch => {
     dispatch({ type: UPDATING });
     promise
@@ -67,17 +69,17 @@ export const updateFriend = () => {
 };
 
 export const deleteFriend = () => {
-  const promise = axios.delete(`http://localhost:5000/api/friends/:id`);
+  const promise = axios.delete(`http://localhost:5000/api/friends/`, {
+    data: { id }
+  });
   return dispatch => {
     dispatch({ type: DELETING });
     promise
-      .then(response => {
-        dispatch({ type: DELETE_SUCCESS, payload: response.data.results });
+      .then(({ data }) => {
+        dispatch({ type: DELETE_SUCCESS, payload: data });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: err });
       });
   };
 };
-
-// replace all to have same error types
