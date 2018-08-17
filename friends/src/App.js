@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { getFriends, addFriend } from './actions'
+import { getFriends, addFriend, deleteFriend } from './actions'
 import Friends from './components/Friends';
 import FriendForm from './components/CreateFriendForm';
 
@@ -40,5 +40,6 @@ const mapStateToProsp = (state) => {
 
 export default connect(mapStateToProsp, {
   getFriends,
-  addFriend
+  addFriend,
+  deleteFriend
 })(App);

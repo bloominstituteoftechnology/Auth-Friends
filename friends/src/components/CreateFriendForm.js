@@ -22,9 +22,6 @@ class FriendForm extends React.Component {
     }
 
     onSubmit(event){
-        // Do something pass 
-        // this.props.
-        console.log(this.state)
         this.props.addFriend(this.state)
     }
 
