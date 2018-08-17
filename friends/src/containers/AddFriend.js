@@ -16,7 +16,7 @@ class AddFriend extends Component {
         this.setState({[e.target.name] : e.target.value})
     }
 
-    handleSubmit = e =>{
+    handleAdd = e =>{
         e.preventDefault();        
 
         const newFriend = {
@@ -31,7 +31,7 @@ class AddFriend extends Component {
 
     render(){
         return (
-            <form onSubmit = {this.handleSubmit} className="add">
+            <form onSubmit = {this.handleAdd} className="add">
                 <div>
                     <span>Name:</span>
                     <input onChange = {this.handleInputChange} value = {this.state.name} name = 'name' />
