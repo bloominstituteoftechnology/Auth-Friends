@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { fetchStuff } from './store/actions';
 import { connect } from 'react-redux';
+import FriendList from './components/friendsList';
 
 class App extends Component {
 
@@ -13,12 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         {this.props.fetching ? (<span>Loading...</span>) : (
-          <ul>
-            {this.props.friends.map(friend => {
-              return <li key={friend.name}>{friend.name}</li>;
-            })}
-          </ul>
-        )}
+        <FriendList fetching={this.props.fetching} friends={this.props.friends} />)}
       </div>
     );
   }
