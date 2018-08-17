@@ -9,7 +9,7 @@ class FriendsContainer extends Component {
         super();
         this.state={
             name: '', 
-            age: '',
+            age: null,
             email: '',
         }
     }
@@ -22,12 +22,13 @@ inputChangeHandler = (e) => {
    this.setState({[e.target.name]: e.target.value})
 }
 
-inputChangeHandler = (e) => {
+onSubmitAddHandler = (e) => {
     e.preventDefault(); 
-    this.props.friendUpdater(this.state.name, this.state.age, this.state.email)
+    this.props.friendUpdater(this.state)
 }
 
     render(){
+        console.log(this.state)
         return(
             <div>
                 <FriendList 

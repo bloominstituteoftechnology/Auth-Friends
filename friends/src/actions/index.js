@@ -26,9 +26,9 @@ export const friendUpdater = (props) => {
         dispatch({ type: UPDATING });
 
     const newFriend= {
-        name: props.state.name,
-        age: props.state.age,
-        email: props.state.email,
+        name: props.name,
+        age: props.age,
+        email: props.email,
     }
     axios
       .post("http://localhost:5000/api/friends", newFriend)

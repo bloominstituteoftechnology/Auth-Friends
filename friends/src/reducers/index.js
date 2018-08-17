@@ -8,8 +8,8 @@ import {
 const initialState = {
   friendsFetching: false,
   friendsFetched: false,
-  friendsSaved: false,
-  friendsSaving: false,
+  friendsEditing: false,
+  friendsEdited: false,
   friendsUpdating: false,
   friendsUpdated: false,
   friendsDeleting: false,
