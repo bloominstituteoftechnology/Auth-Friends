@@ -1,6 +1,8 @@
 import {
   FETCHING,
-  FETCHED
+  FETCHED,
+  UPDATING,
+  UPDATED
 } from "../actions";
 
 const initialState = {
@@ -18,16 +20,31 @@ const initialState = {
 
 export const fetcher = (state = initialState, action) => {
   switch (action.type) {
+      
     case FETCHING:
       return Object.assign({}, state, {
         friendsFetching: true
       });
+
     case FETCHED:
       return Object.assign({}, state, {
         friendsFetched: true,
         friendsFetching: false,
         friends: action.payload
       });
+
+      case UPDATING:
+      return Object.assign({}, state, {
+        friendsUpdating: true 
+      });
+      
+      case UPDATED:
+      return Object.assign({}, state, {
+        friendsUpdating: false,
+        friendsUpdated: true,
+        friends: action.payload
+      });
+
     default:
       return state;
   }
