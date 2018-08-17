@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {addFriend} from '../actions'
+import { addFriend, deleteFriend } from '../actions'
 
 class AddFriend extends Component {
     constructor(){
@@ -22,16 +22,22 @@ class AddFriend extends Component {
         const newFriend = {
             name: this.state.name,
             age: this.state.age,
-            email: this.state.email
+            email: this.state.email,
+            selected: false
         };
 
         this.props.addFriend(newFriend);
         this.setState({ name: '',  age: '', email: '' })
     }
 
-    render(){
+    handleDelete = e => {
+        e.preventDefault();
+        this.props.deleteFriend(this.props.id)
+    }
+
+    render(){console.log(this.props)
         return (
-            <form onSubmit = {this.handleAdd} className="add">
+            <form className="add">
                 <div>
                     <span>Name:</span>
                     <input onChange = {this.handleInputChange} value = {this.state.name} name = 'name' />
@@ -42,7 +48,8 @@ class AddFriend extends Component {
                 </div>
                 
                 <div>
-                    <button>Add Friend</button>
+                    <button onClick = {this.handleAdd}>Add Friend</button>
+                    <button onClick = {this.handleDelete}>Delete Friend</button>
                 </div>
             
             </form> 
@@ -50,6 +57,10 @@ class AddFriend extends Component {
     }
 }
 
+const mapStatetoProps = (state) => {
+    return{
+        id: state.friendsReducer.selectedId
+    }
+}
 
-
-export default connect(null,{addFriend})(AddFriend)
+export default connect(mapStatetoProps,{addFriend, deleteFriend})(AddFriend)
