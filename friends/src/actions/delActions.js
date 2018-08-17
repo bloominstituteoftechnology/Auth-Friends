@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { DELETE_FRIEND, DELETE_SUCCESS, DELETE_FAILURE } from "./types";
 
 const instance = axios.create({
     baseURL: 'http://localhost:5000/api/friends'
@@ -6,14 +7,14 @@ const instance = axios.create({
 
 export const delAction = (friend) => {
     return function(dispatch) {
-      dispatch({ type: SAVE_FRIENDS });
+      dispatch({ type: DELETE_FRIEND });
       axios.delete(instance/`${friend.id}`)       
         .then(function(response){
-             dispatch({type: SAVE_SUCCESS, payload: response.data })
+             dispatch({type: DELETE_SUCCESS, payload: response.data })
         })
         .catch(function(error){
             console.log(error)
-            dispatch({type: SAVE_FAILURE, error});
+            dispatch({type: DELETE_FAILURE, error});
         })
     }
 }

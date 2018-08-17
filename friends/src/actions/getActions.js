@@ -1,13 +1,12 @@
 import axios from 'axios';
+import { GET_FRIENDS, GET_SUCCESS, GET_FAILURE  } from "./types";
 
-const instance = axios.create({
-    baseURL: 'http://localhost:5000/api/friends'
-});
+const url = 'http://localhost:5000/api/friends';
 
 export const getAction = () => {
     return function(dispatch) {
       dispatch({ type: GET_FRIENDS });
-      axios.get(instance)
+      axios.get(url)
         .then(function(response){
              dispatch({type: GET_SUCCESS, payload: response.data })
         })

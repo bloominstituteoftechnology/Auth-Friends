@@ -1,6 +1,6 @@
 import { SAVE_FRIEND, SAVE_SUCCESS, SAVE_FAILURE } from '../actions';
 
-initialState = {
+const initialState = {
     savingFriends: false,
     friendsSaved: false,
     friends: [],

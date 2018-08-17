@@ -1,11 +1,16 @@
 import React from 'react';
-import Friend from '../components/Friend';
-import UpdateForm from './UpdateForm';
+import Friend from './Friend';
+import UpdateForm from '../components/UpdateForm';
 
 export default function FriendsList(props) {
+    let temp = props.friends['0'];
+    let friends= [];
+    for (let i in temp){
+        friends.push(temp[i]);
+    }
     return (
         <div className="FriendsList">
-            {this.props.friends.map(buddy=> <Friend>{/*{buddy.props}*/}</Friend>)}
+            {friends.map(buddy=> <Friend key={buddy.id} values={buddy} />)}                  
             <UpdateForm />
         </div>
     )

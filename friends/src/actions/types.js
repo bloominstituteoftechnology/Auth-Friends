@@ -9,12 +9,12 @@ export const SAVE_SUCCESS = "SAVE_SUCCESS";
 export const SAVE_FAILURE = "SAVE_FAILURE";
 
 //EDITERS
-export const EDIT_FRIENDS = "EDIT_FRIENDS";
+export const EDIT_FRIEND = "EDIT_FRIEND";
 export const EDIT_SUCCESS = "EDIT_SUCCESS";
 export const EDIT_FAILURE = "EDIT_FAILURE";
 
 //DELETERS
-export const DELETE_FRIENDS = "DELETE_FRIENDS";
+export const DELETE_FRIEND = "DELETE_FRIEND";
 export const DELETE_SUCCESS = "DELETE_SUCCESS";
 export const DELETE_FAILURE = "DELETE_FAILURE";
 

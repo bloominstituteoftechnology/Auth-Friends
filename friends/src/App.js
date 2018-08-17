@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import FriendsList from './container/FriendsList';
-import getAction from  './actions';
+import { getAction } from './actions';
+
+import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state= {
+      friends: []
+    }
+  }
   componentDidMount(){
-    getAction();//still have to map to props
+    this.props.getAction();
   }
   render() {
     return (
       <div className="App">
-        <FriendsList /* Some Props*/ />
+        <FriendsList friends={this.props.friends} />
       </div>
     );
   }
 }
 
-//const mapToProps = state=> {
-//   return(
+const mapStateToProps = state=> ({
+    friends: state.getReducer.friends,
+})
 
-//   )
-// }
-
-export default App;
+export default connect(
+  mapStateToProps,
+  { getAction } 
+)(App);
