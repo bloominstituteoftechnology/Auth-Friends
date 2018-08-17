@@ -10,14 +10,12 @@ class FriendsList extends Component {
         this.props.fetchFriends();
     }
 
-    
-
-    
-
-    render(){console.log(this.props)
+    render(){
         return (
-            <div>                
-                <ul>
+            <div>      
+                {(!this.props.initLoad) 
+                ?(<div>Your friends are loading...</div>)
+                :(<ul>
                     {this.props.friends.map(friend => {
                         return (
                              <li onClick = {() => 
@@ -29,7 +27,9 @@ class FriendsList extends Component {
                         ) 
                             
                     })}
-                </ul>
+                </ul>)
+                }          
+                
             </div>
         )
     }
@@ -37,8 +37,8 @@ class FriendsList extends Component {
 
 const mapStatetoProps = (state) => {
     return{
-        friends: state.friendsReducer.friends,        
-        saved: state.friendsReducer.friendsSaved
+        friends: state.friendsReducer.friends, 
+        initLoad: state.friendsReducer.friendsFetched,        
     }
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addFriend, deleteFriend } from '../actions'
+import { addFriend, deleteFriend, updateFriend } from '../actions'
 
 class AddFriend extends Component {
     constructor(){
@@ -19,14 +19,28 @@ class AddFriend extends Component {
     handleAdd = e =>{
         e.preventDefault();        
 
-        const newFriend = {
+        const friend = {
             name: this.state.name,
             age: this.state.age,
             email: this.state.email,
             selected: false
         };
 
-        this.props.addFriend(newFriend);
+        this.props.addFriend(friend);
+        this.setState({ name: '',  age: '', email: '' })
+    }
+
+    handleUpdate = e =>{
+        e.preventDefault();        
+
+        const friend = {
+            name: this.state.name,
+            age: this.state.age,
+            email: this.state.email,
+            selected: false
+        };
+
+        this.props.updateFriend(this.props.id, friend);
         this.setState({ name: '',  age: '', email: '' })
     }
 
@@ -49,7 +63,8 @@ class AddFriend extends Component {
                 
                 <div>
                     <button onClick = {this.handleAdd}>Add Friend</button>
-                    <button onClick = {this.handleDelete}>Delete Friend</button>
+                    <button onClick = {this.handleUpdate}>Update Selected</button>
+                    <button onClick = {this.handleDelete}>Delete Selected</button>
                 </div>
             
             </form> 
@@ -63,4 +78,4 @@ const mapStatetoProps = (state) => {
     }
 }
 
-export default connect(mapStatetoProps,{addFriend, deleteFriend})(AddFriend)
+export default connect(mapStatetoProps,{ addFriend, deleteFriend, updateFriend })(AddFriend)
