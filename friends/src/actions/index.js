@@ -4,7 +4,8 @@ export const FETCHED = "FETCHED";
 export const ERROR = "ERROR";
 export const UPDATED = "UPDATED";
 export const UPDATING = "UPDATING";
-
+export const DELETED = "DELETED";
+export const DELETING = "DELETING";
 
 export const friendFetcher = ( ) => {
   return function(dispatch) {
@@ -34,6 +35,19 @@ export const friendUpdater = (props) => {
       .post("http://localhost:5000/api/friends", newFriend)
       .then(data => {
         dispatch({ type: UPDATED, payload: data.data });
+    });
+  };
+};
+
+
+export const friendDeleter = (id) => {
+    return function(dispatch) {
+        dispatch({ type: DELETING });
+
+    axios
+      .delete(`http://localhost:5000/api/friends/${id}`)
+      .then(data => {
+        dispatch({ type: DELETED, payload: data.data });
     });
   };
 };

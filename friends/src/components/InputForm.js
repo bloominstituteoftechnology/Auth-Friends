@@ -31,7 +31,10 @@ export default function InputForm (props) {
 
 
               <button>Add Friend</button>
+              <button onClick={props.friendDeleter}>Delete Friend</button>
+
           </form>
+                
         </div>
     );
 }

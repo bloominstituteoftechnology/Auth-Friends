@@ -1,6 +1,6 @@
 import React, {Component} from 'react'; 
 import {connect} from 'react-redux';
-import {friendFetcher, friendUpdater} from '../actions';
+import {friendFetcher, friendUpdater, friendDeleter} from '../actions';
 import FriendList from '../components/FriendsList';
 import InputForm from '../components/InputForm';
 
@@ -27,6 +27,15 @@ onSubmitAddHandler = (e) => {
     this.props.friendUpdater(this.state)
 }
 
+friendDeleter = (e) => {
+    e.preventDefault(); 
+    this.props.friends.map(friend => {
+        if(friend.name === this.state.name){
+            return this.props.friendDeleter(friend.id)
+        } else return null;
+    });
+}
+
     render(){
         console.log(this.state)
         return(
@@ -38,6 +47,7 @@ onSubmitAddHandler = (e) => {
                     newFriend={this.state.newfriend}
                     onSubmitAddHandler={this.onSubmitAddHandler}
                     inputChangeHandler={this.inputChangeHandler}
+                    friendDeleter={this.friendDeleter}
                 />
             </div>
         )
@@ -49,7 +59,7 @@ const mapStatetoProps = state =>({
 });
 
 export default connect(mapStatetoProps, {
-    actions: friendFetcher, friendUpdater
+    actions: friendFetcher, friendUpdater, friendDeleter
     })(FriendsContainer);
 
 
