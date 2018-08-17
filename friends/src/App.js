@@ -42,7 +42,7 @@ class App extends Component {
       <div className="App">
         {this.props.fetchingFriends ? (<span>fabricating friends...</span>) : (
         <FriendList friends={this.props.friends} />)}
-        <FriendForm handleInputChange={this.handleInputChange} inputEmail={this.state.email} inputAge={this.state.email} inputName={this.state.name} />
+        <FriendForm handleInputChange={this.handleInputChange} inputEmail={this.state.email} inputAge={this.state.age} inputName={this.state.name} addFriendHandler={this.addFriendHandler} />
       </div>
     );
   }
@@ -54,6 +54,7 @@ const mapStateToProps = state => {
     error: state.friendsReducer.error,
     fetchingFriends: state.friendsReducer.fetchingFriends,
     friendsFetched: state.friendsReducer.friendsFetched,
+
   };
 };
 
