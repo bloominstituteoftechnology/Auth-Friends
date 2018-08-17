@@ -31,10 +31,12 @@ class FriendsListContainer extends React.Component{
                 this.state.email,
                 e.target.id
             )
+        window.location.reload();
         this.setState({name:'',age:'',email:''})
     }
     delete = e => {
         this.props.deleteFriends(e.target.id);
+        window.location.reload();
     }
     componentDidMount() {
         this.props.getFriends();

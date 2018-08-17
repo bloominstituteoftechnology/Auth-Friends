@@ -46,7 +46,7 @@ export const updateFriends = (name, age, email, id) => {
     return dispatch =>{
         dispatch({type: UPDATING_FRIENDS});
         axios
-            .put(`http://localhost:5000/api/friend/${id}`,{
+            .put(`http://localhost:5000/api/friends/${id}`,{
                 name: name,
                 age: age,
                 email: email
@@ -64,7 +64,7 @@ export const deleteFriends = id => {
     return dispatch =>{
         dispatch({type: DELETING_FRIENDS});
         axios
-            .delete(`http://localhost:5000/api/friend/${id}`)
+            .delete(`http://localhost:5000/api/friends/${id}`)
             .then(response => {
                 dispatch({type: DELETED_FRIENDS, payload: response.data});
             })
