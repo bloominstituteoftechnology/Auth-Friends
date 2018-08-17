@@ -11,7 +11,7 @@ const URL = 'http://localhost:5000/api/friends';
 
 
 export const getFriends = () => {
-    const friends = axios.get(`${URL}/get`);
+    const friends = axios.get(`${URL}`);
     return dispatch => {
         dispatch ({type: GETTING_FRIENDS});
         friends.then(response => {
@@ -25,7 +25,8 @@ export const getFriends = () => {
 
 
 export const createFriend = friend => {
-    const newFriend = axios.post(`${URL}/create`,friend);
+    const newFriend = axios.post(`${URL}`,friend);
+    console.log(newFriend);
     return dispatch => {
         dispatch({type: CREATING_FRIEND});
         newFriend

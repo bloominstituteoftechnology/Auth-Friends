@@ -26,5 +26,5 @@ export const friendsReducer = (state = initialState, action) => {
         };
         default:
         return state;
-    };
+    }
 };
