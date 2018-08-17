@@ -13,7 +13,7 @@ const initialState = {
   error: null
 };
 
-export default const friendsReducer = (state = initialState, action) => {
+export default function friendsReducer (state = initialState, action) {
   switch (action.type) {
     case FETCHING_FRIENDS:
       return Object.assign({}, state, {
@@ -54,7 +54,7 @@ export default const friendsReducer = (state = initialState, action) => {
         friendDeleted: true
       });
     case ERROR:
-      return Object.assign({}, state, {
+      return Object.assign({}, initialState, {
         error: action.payload
       });
     default:
