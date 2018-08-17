@@ -1,20 +1,48 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetchStuff } from './store/actions';
+import { fetchStuff, addFriend } from './store/actions';
 import { connect } from 'react-redux';
 import FriendList from './components/friendsList';
+import FriendForm from './components/friendForm';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: '',
+      email: ''
+    }
+  }
 
   componentDidMount() {
     this.props.fetchStuff();
   }
 
-  render() {
+  handleInputChange = ev => {
+    this.setState({ [ev.target.name]: ev.target.value });
+  };
+
+  addFriendHandler = ev => {
+    ev.preventDefault();
+    this.props.addFriend({
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email
+    });
+    this.setState({
+      name: '',
+      age: '',
+      email: ''
+    });
+  }
+
+  render() { 
     return (
       <div className="App">
-        {this.props.fetching ? (<span>Loading...</span>) : (
-        <FriendList fetching={this.props.fetching} friends={this.props.friends} />)}
+        {this.props.fetchingFriends ? (<span>fabricating friends...</span>) : (
+        <FriendList friends={this.props.friends} />)}
+        <FriendForm handleInputChange={this.handleInputChange} inputEmail={this.state.email} inputAge={this.state.email} inputName={this.state.name} />
       </div>
     );
   }
@@ -29,4 +57,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchStuff })(App);
+export default connect(mapStateToProps, { fetchStuff, addFriend })(App);

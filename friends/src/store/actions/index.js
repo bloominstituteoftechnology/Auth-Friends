@@ -1,2 +1,2 @@
-export { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR } from "./types";
-export { fetchStuff } from "./friendActions";
+export { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR, FRIENDS_SAVED, SAVING_FRIENDS } from "./types";
+export { fetchStuff, addFriend } from "./friendActions";
