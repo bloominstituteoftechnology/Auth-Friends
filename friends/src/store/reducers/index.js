@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
     case FETCHING:
       return { ...state, fetching: true };
     case IS_FETCHED:
-      return { ...state, fetching: false, isFetched: true };
+      return { ...state, fetching: false, isFetched: true, friends: action.friends };
     case ADDING:
       return { ...state, isFetched: false, adding: true };
     case IS_ADDED:
@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
     case UPDATING:
       return { ...state, isFetched: false, updating: true };
     case IS_UPDATED:
-      return { ...state, updating: false, isUpdated: true };
+      return { ...state, updating: false, isUpdated: true, friends: action.friends };
     case ERROR:
       return { ...state, isFetched: false, error: action.error };
     default:

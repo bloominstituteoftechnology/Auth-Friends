@@ -60,6 +60,7 @@ app.get('/api/friends/:id', (req, res) => {
 });
 
 app.post('/api/friends', (req, res) => {
+  console.log(req.body)
   const friend = { id: getNextId(), ...req.body };
 
   friends = [...friends, friend];
@@ -71,7 +72,6 @@ app.put('/api/friends/:id', (req, res) => {
   const { id } = req.params;
 
   const friendIndex = friends.findIndex(f => f.id == id);
-
   if (friendIndex > -1) {
     const friend = { ...friends[friendIndex], ...req.body };
 
@@ -80,6 +80,7 @@ app.put('/api/friends/:id', (req, res) => {
       friend,
       ...friends.slice(friendIndex + 1),
     ];
+
     res.send(friends);
   } else {
     res.status(404).send({ msg: 'Friend not found' });

@@ -25,8 +25,7 @@ export const fetchFriend = () => {
 
   return (dispatch) => {
     dispatch({ type: FETCHING });
-    request.then(data => data.response)
-            .then(data => console.log(data))
+    request.then(data => data.data)
             .then(data => dispatch({ type: IS_FETCHED, friends: data }))
             .catch(error => dispatch({ type: ERROR, error }))
   }
@@ -37,7 +36,7 @@ export const addFriend = (friend) => {
 
   return (dispatch) => {
     dispatch({ type: ADDING });
-    request.then(data => data.response)
+    request.then(data => data.data)
             .then(data => dispatch({ type: IS_ADDED, friends: data }))
             .catch(error => dispatch({ type: ERROR, error }))
   }
@@ -48,7 +47,7 @@ export const deleteFriend = (id) => {
 
   return (dispatch) => {
     dispatch({ type: DELETING });
-    request.then(data => data.response)
+    request.then(data => data.data)
             .then(data => dispatch({ type: IS_DELETED, friends: data }))
             .catch(error => dispatch({ type: ERROR, error }))
   } 
@@ -59,7 +58,7 @@ export const updateFriend = (id, friend) => {
 
   return (dispatch) => {
     dispatch({ type: UPDATING });
-    request.then(data => data.response)
+    request.then(data => data.data)
             .then(data => dispatch({ type: IS_UPDATED, friends: data }))
             .catch(error => dispatch({ type: ERROR, error }))
   } 
