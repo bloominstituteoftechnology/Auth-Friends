@@ -33,7 +33,7 @@ export const createFriends = friend =>{
     return dispatch => {
         dispatch({ type: CREATING_FRIENDS}); 
         newFriend
-        .then(data =>{
+        .then(({ data }) => {
             dispatch({ type: CREATED_FRIENDS, payload: data}); 
         })
         .catch(err =>{
@@ -43,7 +43,7 @@ export const createFriends = friend =>{
 }; 
 
 export const deleteFriends = id =>{
-    const deletedFriend = axios.delete(`${URL}`, {
+    const deletedFriend = axios.delete(`${URL}/123`, {
         data: {id}
     });
     return dispatch => {

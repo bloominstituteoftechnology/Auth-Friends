@@ -18,7 +18,9 @@ export const friendsReducer =(state = intialState, action) =>{
         case actionTypes.UPDATING_FRIENDS:
         return{...state, updatingFriends: true }
         case actionTypes.CREATING_FRIENDS: 
-        return {...state, friends: action.payload, updatingFriends: false}
+        return {...state, creatingFriends: true}
+        case actionTypes.CREATED_FRIENDS:
+        return {...state, friends: action.payload, creatingFriends: false}
         case actionTypes.DELETING_FRIENDS: 
         return{...state, deletingFriends: true }
         case actionTypes.DELETED_FRIENDS: 
