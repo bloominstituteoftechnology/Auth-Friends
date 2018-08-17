@@ -64,12 +64,12 @@ class AddForm extends Component {
   handleAddFriend = (event) => {
     event.preventDefault();
 
-        const friend = {
+        const newFriend = {
             name: this.state.name,
             age: this.state.age,
             email: this.state.email
         };
-            this.props.addFriend(friend);
+            this.props.addFriend(newFriend);
             this.setState ({
                 name: '',
                 age: '',

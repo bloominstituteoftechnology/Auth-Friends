@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
-import {deleteFriend} from '../actions/actions';
+
 
 const Form = styled.div`
 
@@ -69,9 +69,8 @@ const Friend = (props) => {
             <button onClick={props.delete}>Delete</button>
             <button onClick={props.update}>Update</button>
             </ButtonWrap>
-            
         </Form>
     );
 }
 
-export default connect(null, {deleteFriend})(Friend);
+export default connect(null)(Friend);

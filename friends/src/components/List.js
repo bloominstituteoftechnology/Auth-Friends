@@ -15,15 +15,16 @@ class List extends Component {
     
               
                 {this.props.friendsFetched ? (
-                  this.props.friends.map((friend, index) => 
+                  this.props.friends.map(friend => 
                     <Friend
-                      key={index}
-                      name={friend.name.toUpperCase()}
+                      key={friend.id}
+                      name={friend.name}
                       age={friend.age}
                       email={friend.email}
+                      delete={()=>this.props.deleteFriend(friend.id)}
                     />
                     )
-                ): null }         
+                ): null }
             </div>
         );
     }
@@ -34,7 +35,8 @@ const mapStateToProps = (state) => {
     return {
       friends: state.friends,
       fetchingFriends: state.fetchingFriends,
-      friendsFetched: state.friendsFetched
+      friendsFetched: state.friendsFetched,
+      friendDeleted: state.friendDeleted
     }
   }
  
