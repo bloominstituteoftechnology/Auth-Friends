@@ -2,24 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getFriends, addFriends } from '../actions';
 
-const Friends = () => {
+const Friends = (props) => {
     return (  
         <div>
-            {this.props.friends.map(friend => {
-                return (
+            {props.friends.map(friend =>
                     <div>
                         <h3>{friend.name}</h3>
                         <h4>{friend.age}</h4>
                         <h4>{friend.email}</h4>
                     </div>                    
-                )
-            })}
+                )}
         </div>
     );
 }
  
 const mapStateToProps = state => {
-    const {friends, fetchingFriends, friendsFetched, error }= state
+    const {friends, fetchingFriends, friendsFetched, error } = state
     return {
         friends: friends,
         fetchingFriends: fetchingFriends,

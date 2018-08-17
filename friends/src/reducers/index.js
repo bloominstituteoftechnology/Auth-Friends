@@ -14,7 +14,7 @@ export const rootReducer = ( state = initialState, action) => {
         case 'FETCHING':
             return {...state, fetchingFriends: true};
         case 'FETCHED':
-            return {...state, fetchingFriends: false};
+            return {...state, fetchingFriends: false, friendsFetched: true};
         case 'ADD_FRIEND':
             return {...state, fetchingFriends: false, friends: action.payload};
         case 'ERROR':
