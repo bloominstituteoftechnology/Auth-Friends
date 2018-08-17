@@ -42,10 +42,12 @@ class App extends Component {
         <FriendForm 
           onChange={this.onChange} 
           onSubmit={this.onSubmit} 
-          update={this.update} 
-          del={this.del} 
         />
-        <Friends friends={this.props.friends} />
+        <Friends 
+          friends={this.props.friends} 
+          update={this.update} 
+          del={this.delete}
+        />
         <footer>
           This friends list is a compilation of my and/or your friends, and no
           one else's.
