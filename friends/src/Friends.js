@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getFriends } from "../actions";
+import { getFriends } from "./actions";
 
 const Friends = props => {
   return (

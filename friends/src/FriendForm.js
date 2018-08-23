@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createFriend } from "../actions";
+import { createFriend } from "./actions";
 
 class FriendForm extends Component {
   state = {
@@ -59,4 +59,4 @@ const mapStateToProps = state => {
     };
 };
 
-export defautl connect (mapStateToProps, { createFriend })(FriendForm);
+export default connect (mapStateToProps, { createFriend })(FriendForm);

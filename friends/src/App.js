@@ -3,12 +3,12 @@ import logo from "./logo.svg";
 import "./App.css";
 import Friends from './Friends';
 import FriendForm from "./FriendForm";
-import { getFriends } from "../actions";
+import { getFriends } from "./actions";
 import { connect } from "react-redux";
 
 class App extends Component {
 
-  componentDidCatch() {
+  componentDidMount() {
     this.props.getFriends();
   }
 

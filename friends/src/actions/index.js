@@ -28,7 +28,7 @@ export const createFriend = friend => {
     dispatch({ type: CREATING_FRIENDS });
     newFriend
       .then(response => {
-        dispatch({ type: CREATE_FRIEND, payload: [] });
+        dispatch({ type: CREATE_FRIEND, payload: response.friend });
       })
       .catch(err => {
         dispatch({ type: ERROR, payload: "Error with posting" });
