@@ -42,7 +42,7 @@ class FriendForm extends Component {
           className="input"
           value={this.state.email}
           name="email"
-          type="email"
+          type="text"
           placeholder="Email"
           onChange={this.handleInputChange}
         />
