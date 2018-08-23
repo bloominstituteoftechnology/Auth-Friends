@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Friends from './Friends';
+import Friends from "./Friends";
 import FriendForm from "./FriendForm";
 import { getFriends } from "./actions";
 import { connect } from "react-redux";
 
 class App extends Component {
-
   componentDidMount() {
     this.props.getFriends();
   }
@@ -28,11 +27,10 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const { friendsReducer } = state;
   return {
-    friends: friendsReducer.friends,
-    error: friendsReducer.error,
-    gettingFriends: friendsReducer.gettingFriends
+    friends: state.friendsReducer.friends,
+    error: state.friendsReducer.error,
+    gettingFriends: state.friendsReducer.gettingFriends
   };
 };
 

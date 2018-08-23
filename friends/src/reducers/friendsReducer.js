@@ -12,11 +12,11 @@ export const friendsReducer = (state = initialState, action) => {
     case GETTING_FRIENDS:
       return { ...state, gettingFriends: true };
     case GET_FRIENDS:
-      return { ...state, friends: action.payload, gettingFriends: false };
+      return { ...state, friends: [...action.payload], gettingFriends: false };
     case CREATING_FRIENDS:
       return { ...state, creatingFriends: true };
     case CREATE_FRIEND:
-      return { ...state, friends: action.payload, creatingFriend: false };
+      return { ...state, friends: [...action.payload], creatingFriend: false };
     case ERROR:
       return {
         ...state,
