@@ -5,13 +5,13 @@ export const SUCCESS_FRIENDS = "SUCCESS_FRIENDS";
 export const ERROR_FRIENDS = "ERROR_FETCHING";
 
 export const getTheData = () => {
-  const friends = axios.get('http://localhost:5000/api/friends');
+  const friends = axios.get("http://localhost:5000/api/friends");
   return dispatch => {
     dispatch({ type: PENDING_FRIENDS });
     friends
       .then(response => {
         console.log(response);
-        dispatch({ type: SUCCESS_FRIENDS, payload: response.data});
+        dispatch({ type: SUCCESS_FRIENDS, payload: response.data });
       })
       .catch(err => {
         dispatch({ type: ERROR_FRIENDS, payload: "Error fetching friends" });
@@ -19,11 +19,11 @@ export const getTheData = () => {
   };
 };
 
-export const postTheData = (data) => {
-    const friends = axios.post('http://localhost:5000/api/friends', data);
-    return dispatch => {
-      dispatch({ type: PENDING_FRIENDS });
-      friends
+export const postTheData = data => {
+  const friends = axios.post("http://localhost:5000/api/friends", data);
+  return dispatch => {
+    dispatch({ type: PENDING_FRIENDS });
+    friends
         .then(response => {
           console.log(response);
           dispatch({ type: SUCCESS_FRIENDS, payload: response.data });
@@ -31,6 +31,5 @@ export const postTheData = (data) => {
         .catch(err => {
           dispatch({ type: ERROR_FRIENDS, payload: "Error posting friends" });
         });
-    };
   };
-  
+};
