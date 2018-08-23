@@ -1,4 +1,4 @@
-import { FETCH_FRIEND, FETCHED, ERROR, SAVE_FRIEND } from '../actions';
+import { FETCH_FRIEND, FETCHED, ERROR, SAVE_FRIEND, UPDATED, DELETE_FRIEND } from '../actions';
 const initialState = {
     fetchingFriends: false,
     friendsFetched: false,
@@ -29,6 +29,7 @@ export const friendsReducer = (state = initialState, action) => {
             })
         case SAVE_FRIEND:
             return {
+                ...state,
                 friendsFetched: true,
                 savingFriends: true,
             }
@@ -42,9 +43,26 @@ export const friendsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 updatingFriend: true,
-
             }
-
+        case UPDATED:
+            return {
+                ...state,
+                updatingFriend: false,
+                friendUpdated: true,
+                friends: [...state.friends, ...action.payload]
+            }
+        case DELETE_FRIEND:
+            return {
+                ...state,
+                deletingFriend: true
+            }
+        case DELETED:
+            return {
+                ...state,
+                deletingFriend: false,
+                friendDeleted: true,
+                friends: [...state.friends, ...action.payload]
+            }
         case ERROR:
             return {
                 ...state,
