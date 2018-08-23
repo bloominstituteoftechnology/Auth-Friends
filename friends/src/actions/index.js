@@ -25,7 +25,7 @@ export const getFriends = () => {
 export const createFriend = friend => {
   const newFriend = axios.post(`${URL}`, friend);
   return dispatch => {
-    dispatch({ type: CREATING_FRIEND });
+    dispatch({ type: CREATING_FRIENDS });
     newFriend
       .then(response => {
         dispatch({ type: CREATE_FRIEND, payload: [] });
