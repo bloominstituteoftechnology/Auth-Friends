@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const FETCH_FRIEND = 'FETCH_FRIEND';
-export const FECTHED = 'FETCHED';
+export const FETCHED = 'FETCHED';
 export const ERROR = 'ERROR';
 
 export const fetchingFriend = () => {
@@ -11,7 +11,7 @@ export const fetchingFriend = () => {
         })
         axios
             .get('/api/friends/:id')
-            .then(reponse => {
+            .then(response => {
                 dispatch({
                     type: FETCHED,
                     payload: response.data.results
