@@ -1,10 +1,7 @@
 import {
-  FETCHING_FRIENDS,
-  FETCHED,
-  ERROR_FETCHING,
-  POSTING_FRIEND,
-  POSTED,
-  ERROR_POSTING
+  PENDING_FRIENDS,
+  SUCCESS_FRIENDS,
+  ERROR_FRIENDS,
 } from "../actions";
 
 const initialState = {
