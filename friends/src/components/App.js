@@ -1,4 +1,4 @@
-import React, { Compopnent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchingFriend } from '../actions';
 
@@ -12,6 +12,7 @@ class App extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className='App'>
                 <ul>
@@ -31,4 +32,4 @@ const mapDispatchToProps = state => {
     };
 };
 
-export default connect(mapDispatchToProps, { fetchingFriends })(App);
+export default connect(mapDispatchToProps, { fetchingFriend })(App);

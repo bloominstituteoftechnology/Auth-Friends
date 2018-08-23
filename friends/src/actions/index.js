@@ -10,7 +10,7 @@ export const fetchingFriend = () => {
             type: FETCH_FRIEND
         })
         axios
-            .get('/api/friends/:id')
+            .get('http://localhost:5000/api/friends')
             .then(response => {
                 dispatch({
                     type: FETCHED,
