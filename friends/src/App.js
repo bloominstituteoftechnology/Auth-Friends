@@ -14,11 +14,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <FriendForm />
           <Friends />
-        </header>
         {this.props.error ? <h3>Error Fetching Friends</h3> : null}
       </div>
     );
