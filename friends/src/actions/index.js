@@ -4,10 +4,10 @@ export const FETCH_FRIEND = 'FETCH_FRIEND';
 export const FETCHED = 'FETCHED';
 export const SAVE_FRIEND = 'SAVE_FRIEND';
 export const SAVED = 'SAVED';
-export const UPDATE_FRIEND = 'UPDATE_FRIEND';
-export const UPDATED = 'UPDATED';
-export const DELETE_FRIEND = 'DELETE_FRIEND';
-export const DELETED = 'DELETED'
+// export const UPDATE_FRIEND = 'UPDATE_FRIEND';
+// export const UPDATED = 'UPDATED';
+// export const DELETE_FRIEND = 'DELETE_FRIEND';
+// export const DELETED = 'DELETED'
 export const ERROR = 'ERROR';
 
 export const fetchingFriend = () => {
@@ -18,9 +18,10 @@ export const fetchingFriend = () => {
         axios
             .get('http://localhost:5000/api/friends')
             .then(response => {
+                console.log(response)
                 dispatch({
                     type: FETCHED,
-                    payload: response.data.results
+                    payload: response.data
                 });
             })
             .catch(error => {
@@ -31,3 +32,15 @@ export const fetchingFriend = () => {
             })
     };
 };
+
+export const savingFriends = (newFriend) => {
+
+    return dispatch => {
+        dispatch({
+            type: SAVE_FRIEND
+        })
+        // axios
+        //     .post
+
+    }
+}

@@ -33,36 +33,36 @@ export const friendsReducer = (state = initialState, action) => {
                 friendsFetched: true,
                 savingFriends: true,
             }
-        case SAVED:
-            return Object.assign({}, state, {
-                savingFriend: false,
-                friendsSaved: true,
-                savedFriends: [...state.friends, ...action.payload],
-            })
-        case UPDATE_FRIEND:
-            return {
-                ...state,
-                updatingFriend: true,
-            }
-        case UPDATED:
-            return {
-                ...state,
-                updatingFriend: false,
-                friendUpdated: true,
-                friends: [...state.friends, ...action.payload]
-            }
-        case DELETE_FRIEND:
-            return {
-                ...state,
-                deletingFriend: true
-            }
-        case DELETED:
-            return {
-                ...state,
-                deletingFriend: false,
-                friendDeleted: true,
-                friends: [...state.friends, ...action.payload]
-            }
+        // case SAVED:
+        //     return Object.assign({}, state, {
+        //         savingFriend: false,
+        //         friendsSaved: true,
+        //         savedFriends: [...state.friends, ...action.payload],
+        //     })
+        // case UPDATE_FRIEND:
+        //     return {
+        //         ...state,
+        //         updatingFriend: true,
+        //     }
+        // case UPDATED:
+        //     return {
+        //         ...state,
+        //         updatingFriend: false,
+        //         friendUpdated: true,
+        //         friends: [...state.friends, ...action.payload]
+        //     }
+        // case DELETE_FRIEND:
+        //     return {
+        //         ...state,
+        //         deletingFriend: true
+        //     }
+        // case DELETED:
+        //     return {
+        //         ...state,
+        //         deletingFriend: false,
+        //         friendDeleted: true,
+        //         friends: [...state.friends, ...action.payload]
+        //     }
         case ERROR:
             return {
                 ...state,
