@@ -12,4 +12,4 @@ import thunk from 'redux-thunk';
 const rootReducer = null;
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Router><Provider store={store}><App /></Provider></Router>, document.getElementById('root'));
