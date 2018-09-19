@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './styles/App.css';
+import { connect } from 'react-redux';
 
 import FriendsList from './components/FriendsList';
+import './styles/App.css';
 
 class App extends Component {
   render() {
@@ -13,4 +14,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    fetchingData: state.friendsReducer.fetchingData,
+    friends: state.friendsReducer.friends,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(App);
