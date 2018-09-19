@@ -14,7 +14,11 @@ class App extends Component {
     // console.log(this.props);
     return (
       <div className="App">
-        <FriendsList />
+        {this.props.fetchingData ? (
+          <h1>Loading Data Please Hold...</h1>
+        ) : (
+          <FriendsList friends={this.props.friends} />
+        )}
       </div>
     );
   }
