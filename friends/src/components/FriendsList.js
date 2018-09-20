@@ -16,9 +16,10 @@ class FriendsList extends Component {
           <ul>
             {this.props.friends.map(friend => {
               return <Friend key={friend.id} friend={friend} />;
-            })}
+            }) || 'You have no friends :('}
           </ul>
         )}
+        {this.props.error ? <p>{this.props.error}</p> : null}
       </div>
     );
   }
@@ -26,7 +27,8 @@ class FriendsList extends Component {
 
 const mapStateToProps = state => ({
   friends: state.friendsReducer.friends,
-  fetching: state.friendsReducer.fetching
+  fetching: state.friendsReducer.fetching,
+  error: state.friendsReducer.error
 });
 
 export default connect(
