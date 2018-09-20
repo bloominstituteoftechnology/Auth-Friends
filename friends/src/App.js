@@ -19,6 +19,16 @@ class App extends Component {
     this.props.fetchData();
   }
 
+  resetForm() {
+    this.setState({
+      friendDataInput: {
+        name: '',
+        age: '',
+        email: '',
+      },
+    });
+  }
+
   handleInput = (event) => {
     this.setState({
       friendDataInput: {
@@ -32,6 +42,7 @@ class App extends Component {
     event.preventDefault();
     console.log('add friend test');
     this.props.addFriend(this.state.friendDataInput);
+    this.resetForm();
   };
 
   render() {
