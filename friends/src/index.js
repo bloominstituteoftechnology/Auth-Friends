@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { injectGlobal } from 'styled-components';
-import App from './components/';
+import { App } from './components/';
 import rootReducer from './store/reducers/';
 // import registerServiceWorker from './registerServiceWorker';
 

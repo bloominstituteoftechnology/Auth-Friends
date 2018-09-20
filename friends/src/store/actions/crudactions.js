@@ -1,20 +1,16 @@
 import Axios from 'axios';
 
+export const CRUD_ERROR = 'CRUD_ERROR';
 export const POSTING_FRIEND = 'POSTING_FRIEND';
 export const POSTED_FRIEND = 'POSTED_FRIEND';
-export const POST_ERROR = 'POST_ERROR';
-export const GETTING_FRIEND = 'GETTING_FRIEND';
-export const GOT_FRIEND = 'GOT_FRIEND';
-export const GET_ERROR = 'GET_ERROR';
+export const GETTING_FRIENDS = 'GETTING_FRIENDS';
+export const GOT_FRIENDS = 'GOT_FRIENDS';
 // export const GETTING_SINGLE_FRIEND = 'GETTING_SINGLE_FRIEND';
 // export const GOT_SINGLE_FRIEND = 'GOT_SINGLE_FRIEND';
-// export const GET_SINGLE_ERROR = 'GET_SINGLE_ERROR';
 // export const PUTTING_FRIEND = 'PUTTING_FRIEND';
 // export const PUT_FRIEND = 'PUT_FRIEND';
-// export const PUT_ERROR = 'PUT_ERROR';
 // export const DELETING_FRIEND = 'DELETING_FRIEND';
 // export const DELETED_FRIEND = 'DELETED_FRIEND';
-// export const DELETE_ERROR = 'DELETE_ERROR';
 
 const dataSource = 'http://localhost:5000/api/friends/';
 
@@ -25,25 +21,28 @@ export const postFriend = (newFriend) => {
         Axios
             .post(dataSource, newFriend)
             .then( (response) => {
-                dispatch( {type: POSTED_FRIEND, payload: response.data.results} );
+                dispatch( {type: POSTED_FRIEND, payload: response.data} );
             })
             .catch( (err) => {
-                dispatch( {type: POST_ERROR, payload: err.message} )
+                dispatch( {type: CRUD_ERROR, payload: err.message} )
             });
     };
 };
 
 // Read (GET)
 export const getFriends = () => {
+    console.log('getFriends');
     return (dispatch) => {
-        dispatch( {type: GETTING_FRIEND} );
+        dispatch( {type: GETTING_FRIENDS} );
         Axios
             .get(dataSource)
             .then( (response) => {
-                dispatch( { type: GOT_FRIEND, payload: response.data.results } );
+                console.log('response', response);
+                dispatch( {type: GOT_FRIENDS, payload: response.data} );
             })
             .catch( (err) => {
-                dispatch({ type: GET_ERROR, payload: err.message });
+                console.log('err', err);
+                dispatch( {type: CRUD_ERROR, payload: err.message} );
             });
     };
 };
@@ -56,10 +55,10 @@ export const getFriends = () => {
 //         Axios
 //             .get(`${dataSource}/${friendId}`)
 //             .then( (response) => {
-//                 dispatch( { type: GOT_SINGLE_FRIEND, payload: response.data.results } );
+//                 dispatch( {type: GOT_SINGLE_FRIEND, payload: response.data} );
 //             })
 //             .catch( (err) => {
-//                 dispatch({ type: GET_SINGLE_ERROR, payload: err.message });
+//                 dispatch( {type: CRUD_ERROR, payload: err.message} );
 //             });
 //     };
 // };
@@ -74,7 +73,7 @@ export const getFriends = () => {
 //                 dispatch( {type: PUT_FRIEND, payload: response.data.results} );
 //             })
 //             .catch( (err) => {
-//                 dispatch( {type: PUT_ERROR, payload: err.message} )
+//                 dispatch( {type: CRUD_ERROR, payload: err.message} )
 //             });
 //     };
 // };
@@ -86,10 +85,10 @@ export const getFriends = () => {
 //         Axios
 //             .delete(`${dataSource}/${friendId}`)
 //             .then( (response) => {
-//                 dispatch( { type: DELETED_FRIEND, payload: response.data.results } );
+//                 dispatch( {type: DELETED_FRIEND, payload: response.data} );
 //             })
 //             .catch( (err) => {
-//                 dispatch({ type: DELETE_ERROR, payload: err.message });
+//                 dispatch( {type: DELETE_ERROR, payload: err.message} );
 //             });
 //     };
 // };

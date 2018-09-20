@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import FriendsForm from '../components/FriendsForm/';
-import FriendsList from '../components/FriendsList/';
+import { FriendsForm } from '../components/FriendsForm/';
+import { FriendsList } from '../components/FriendsList/';
 import { postFriend, getFriends } from '../store/actions/';
 
 class FriendsContainer extends Component {
@@ -15,7 +15,8 @@ class FriendsContainer extends Component {
     };
 
     componentDidMount() {
-        // this.props.getFriends();
+        console.log('componentDidMount');
+        this.props.getFriends();
     };
 
     inputHandler = (event) => {
@@ -52,8 +53,10 @@ FriendsContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
+    console.log('mapStateToProps:', state);
     return {
-        // friends: state.crudReducers.friends
+        friends: state.crudReducers.friends,
+        gettingFriends: state.crudReducers.gettingFriends
     };
 };
 
