@@ -4,6 +4,7 @@ import './App.css';
 import {connect} from 'react-redux';
 import {getFriends} from './actions';
 import Friends from './components/Friends';
+import AddFriendForm from './components/AddFriendForm.js';
 
 class App extends Component {
   
@@ -13,11 +14,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        {!this.props.friendsFetched ? 
-        <h1>Loading...</h1> :
-        this.props.friends.data.map((e,i)=><Friends key={i} data={e}/>)
-        }
+      {!this.props.friendsFetched ? 
+      <h1>Loading...</h1> :
+      <div>
+      <AddFriendForm/>
+      {this.props.friends.data.map((e,i)=><Friends key={i} data={e}/>)}
       </div>
+    }
+    </div>
     );
   }
 }
