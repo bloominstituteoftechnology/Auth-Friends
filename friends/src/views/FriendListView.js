@@ -7,7 +7,6 @@ import FriendsList from '../components/Friends/FriendsList';
 
 class FriendListView extends Component {
     componentDidMount() {
-        console.log('PROPS', this.props);
         if (this.props.friendsList.length === 0) {
             this.props.getFriends();
         }
@@ -23,7 +22,6 @@ class FriendListView extends Component {
 };
 
 const mapStateToProps = state => {
-    console.log('STATE ', state);
     return {
         friendsList: state.friendsReducer.friends,
     };
