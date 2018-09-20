@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { getFriends, addFriend, deleteFriend, updateFriend } from './actions'
 import Friends from './components/Friends';
 import FriendForm from './components/CreateFriendForm';
-import FriendUpdateForm from './components/UpdateFriendForm';
 
 class App extends Component {
   constructor(props) {
@@ -39,9 +38,6 @@ class App extends Component {
       <div className="App">
         <Friends {...this.props} onUpdate={this.handleUpdate} />
         <FriendForm {...this.props} />
-        {this.state.isUpdate
-          ? <FriendUpdateForm {...this.state.upDatingFriend} friendUpdate={this.updateSubmit} />
-          : <div></div>}
       </div>
     );
   }

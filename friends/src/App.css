@@ -1,0 +1,17 @@
+.App {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.friends {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.friend {
+  border: 2px solid grey;
+  padding: 7px;
+  margin: 20px;
+}
