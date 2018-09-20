@@ -25,6 +25,8 @@ class Friend extends React.Component {
   deleteFriend = () => {
     const { id } = this.props.friend;
     this.props.deleteFriend(id);
+    const newState = { name: "", age: "", email: "" };
+    this.setState(newState);
     this.props.history.push("/");
   };
 

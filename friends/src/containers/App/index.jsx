@@ -27,7 +27,8 @@ class App extends Component {
                        email: this.state.email };
 
     this.props.addFriend(newFriend);
-
+    const newState = { name: "", age: "", email: "" };
+    this.setState(newState);
     this.props.history.push('/');
   }
 
