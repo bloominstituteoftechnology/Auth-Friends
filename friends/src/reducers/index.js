@@ -1,6 +1,6 @@
 // create friends reducer
 
-import { FETCHING, SUCCESS, ERROR } from "../actions";
+import { FETCHING, SUCCESS, ERROR, SAVING, SAVED } from "../actions";
 
 const initialState = {
   friends: [],
@@ -24,6 +24,15 @@ export const friendsReducer = (state = initialState, action) => {
         friends: action.payload,
         fetchingFriends: false,
         friendsFeteched: true
+      };
+    case SAVING:
+      console.log("saving");
+    case SAVED:
+      console.log("reducer called");
+      return {
+        ...state,
+        friends: action.payload,
+        friendsSaved: true
       };
     case ERROR:
       return { ...state, error: "There was an error retrieveing Friends data" };

@@ -37,3 +37,34 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.nav-link {
+  display: flex;
+
+  text-decoration: none;
+  text-align: center;
+  flex-direction: column;
+  width: 150px;
+  height: 40px;
+  padding-top: 20px;
+  margin: 25px auto;
+  background-color: coral;
+  color: white;
+  border-radius: 5px;
+}
+
+.active {
+  color: coral;
+  background-color: white;
+  border: 2px solid coral;
+}
+
+nav {
+  display: flex;
+  margin: 0 auto;
+  width: 500px;
+}
+
+h1 {
+  color: coral;
+}

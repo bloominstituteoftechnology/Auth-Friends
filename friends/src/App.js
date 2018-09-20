@@ -3,8 +3,9 @@ import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
 import { connect } from "react-redux";
-import { getFriendsData } from "./actions";
+import { getFriendsData, addNewFriend } from "./actions";
 import FriendCard from "./components/Friend";
+import FriendForm from "./components/FriendForm";
 
 class App extends Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class App extends Component {
     return (
       <div className="App">
         <h2>Friends app:</h2>
+        <FriendForm addNewFriend={addNewFriend} />
         <div className="friends-container">
           {this.props.friends.map(friend => (
             <FriendCard friend={friend} />
