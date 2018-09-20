@@ -1,6 +1,6 @@
-import { FETCHING, FETCHED, ERRORS } from '../actions';
+import { FETCHING, FETCHED, FRIEND_FETCHED, ERRORS } from '../actions';
 
-const initialState = { friends: [], fetching: false, error: '' };
+const initialState = { friends: [], friend: {}, fetching: false, error: '' };
 
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -11,6 +11,13 @@ export const friendsReducer = (state = initialState, action) => {
       return {
         ...state,
         friends: action.payload,
+        fetching: false
+      };
+
+    case FRIEND_FETCHED:
+      return {
+        ...state,
+        friend: action.payload,
         fetching: false
       };
 
