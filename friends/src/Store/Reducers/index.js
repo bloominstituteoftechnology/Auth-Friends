@@ -1,4 +1,4 @@
-import { FRIENDS_SUCCESS,  FETCH_FRIENDS, FRIENDS_ERROR } from '../Actions';
+import { FRIENDS_SUCCESS,  FETCH_FRIENDS, FRIENDS_ERROR, ADD_FRIEND, SUCCESS_ADD, ERROR_ADD  } from '../Actions';
 
 const initalState = {
   friends: [],
@@ -15,7 +15,16 @@ export const friendReducers = (state = initalState, action) => {
     return Object.assign({}, state, { fetching: false, friends: action.payload });
 
     case FRIENDS_ERROR:
-      return Object.assign({}, state, { error: `Error fetching friends ${action.payload}` })
+      return Object.assign({}, state, { error: `Error fetching friends ${action.payload}` });
+
+    case ADD_FRIEND:
+      return Object.assign({}, state, { fetching: true });
+
+    case SUCCESS_ADD: 
+      return Object.assign({}, state, { fetching: false, friends: action.payload });
+
+    case ERROR_ADD:
+      return Object.assign({}, state, { error: `Error adding friends ${action.payload}` });
 
     default: 
       return state;
