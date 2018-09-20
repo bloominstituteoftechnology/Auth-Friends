@@ -1,12 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 
+// My additions
+import FriendList from './FriendList';
+
+
 class App extends Component {
+  componentDidMount()  {
+    this.props.fetchFriends();
+  }
+
   render() {
     return (
-      <div className="App">
-       <h1>here we go</h1>
+      <Fragment>
+      <div className="CTA">
+       <h1>let's get weird friendos</h1>
       </div>
+      <FriendList />      
+      </Fragment>
     );
   }
 }
