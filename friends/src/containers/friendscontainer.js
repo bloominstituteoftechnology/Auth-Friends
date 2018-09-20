@@ -86,10 +86,15 @@ class FriendsContainer extends Component {
     render() {
         return (
             <Fragment>
-                <FriendsForm friend={this.state.friend} inputHandler={this.inputHandler} submitHandler={this.submitHandler} />
+                <FriendsForm 
+                    friend={this.state.friend} 
+                    inputHandler={this.inputHandler} 
+                    submitHandler={this.submitHandler} 
+                />
                 <FriendsList 
                     friends={this.props.friends} 
                     editHandler={this.editHandler} 
+                    deleteFriend={this.props.deleteFriend} 
                     gettingFriends={this.props.gettingFriends} 
                     // gettingSingleFriend={this.props.gettingSingleFriend} 
                     postingFriend={this.props.postingFriend} 

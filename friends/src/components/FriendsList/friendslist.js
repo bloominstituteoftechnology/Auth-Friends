@@ -9,7 +9,14 @@ const FriendsList = (props) => {
             <p>Getting friends. Please wait. :)</p> 
         : 
             <div>
-                {props.friends.map( (friend) => <Friend friend={friend} editHandler={props.editHandler} key={friend.id} /> )}
+                {props.friends.map( (friend) => 
+                    <Friend 
+                        friend={friend} 
+                        editHandler={props.editHandler} 
+                        deleteFriend={props.deleteFriend} 
+                        key={friend.id} 
+                    /> 
+                )}
             </div>
     );
 };
@@ -24,6 +31,7 @@ FriendsList.propTypes = {
     editHandler: PropTypes.func,
     postingFriend: PropTypes.bool.isRequired,
     gettingFriends: PropTypes.bool.isRequired,
+    // gettingSingleFriend: PropTypes.bool, 
     puttingFriend: PropTypes.bool.isRequired,
     deletingFriend: PropTypes.bool.isRequired
 };
