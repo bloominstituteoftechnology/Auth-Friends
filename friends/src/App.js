@@ -22,12 +22,17 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+				<h1>Welcome to your friends list</h1>
+
 				<p>{ this.props.fetchingFriendsListError }</p>
 				<p>{ this.props.postingNewFriendError }</p>
-				<Link to = '/'>Home</Link>
+				<Link to = '/'>Go Home</Link><br />
+				<Link to = '/friendslist'>View Friends List</Link><br />
 				<Link to = '/postfriendform'>Post New Friend</Link>
 
-				<Route exact path = '/' render = { () => this.props.fetchingFriendsList ? <p>Fetching your friends list...</p> : <FriendsListView /> } />
+				<Route exact path = '/' component = { () => <p>Click on a link</p> } />
+
+				<Route path = '/friendslist' render = { () => this.props.fetchingFriendsList ? <p>Fetching your friends list...</p> : <FriendsListView /> } />
 
 				<Route path = '/postfriendform' render = { props => <PostFriendFormView {...props} /> } />
 			</div>
