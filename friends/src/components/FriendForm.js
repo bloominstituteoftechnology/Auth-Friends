@@ -25,10 +25,23 @@ class FriendForm extends Component {
   render() {
     return (
       <form onSubmit={this.submitHandler}>
-        <input type="text" name="name" onChange={this.changeHandler} required />
-        <input type="text" name="age" onChange={this.changeHandler} required />
         <input
           type="text"
+          value={this.state.name}
+          name="name"
+          onChange={this.changeHandler}
+          required
+        />
+        <input
+          type="text"
+          value={this.state.age}
+          name="age"
+          onChange={this.changeHandler}
+          required
+        />
+        <input
+          type="text"
+          value={this.state.email}
           name="email"
           onChange={this.changeHandler}
           required
