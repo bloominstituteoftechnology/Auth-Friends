@@ -1,5 +1,7 @@
-export { 
-	FRIENDS_LIST_FETCH_COMPLETE,
+export {
+	FETCHING_FRIENDS_LIST,
+	FETCHING_FRIENDS_LIST_COMPLETE,
+	FETCHING_FRIENDS_LIST_ERROR,
 
 	getFriendsList
 } from "./friendsListActions";

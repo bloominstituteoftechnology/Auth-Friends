@@ -21,14 +21,19 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<FriendsListView friendsList = { this.props.friendsList } />
+				{ this.props.fetchingFriendsList ? <p>Fetching your friends list...</p> : <FriendsListView friendsList = { this.props.friendsList } /> }
+
+				{/* { this.props.fetchingFriendsListError === '' ? null : <p>{ this.props.fetchingFriendsListError }</p>} */}
+				<p>{ this.props.fetchingFriendsListError }</p>
 			</div>
 		);
 	}
 }
 
 const mapStateToProps = state => ({
-	friendsList: state.friendsListReducer.friendsList
+	friendsList: state.friendsListReducer.friendsList,
+	fetchingFriendsList: state.friendsListReducer.fetchingFriendsList,
+	fetchingFriendsListError: state.friendsListReducer.fetchingFriendsListError
 });
 
 export default connect (mapStateToProps, { getFriendsList })(App);
