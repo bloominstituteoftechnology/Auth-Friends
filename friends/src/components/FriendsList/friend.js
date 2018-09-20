@@ -4,10 +4,8 @@ import PropTypes from 'prop-types';
 const Friend = (props) => {
     return (
         <div>
-            <h3 onClick={() => props.editHandler(props.friend) } >
-                {props.friend.name}
-                <div onClick={ () => props.deleteFriend(props.friend.id) } >X</div>
-            </h3>
+            <h3 onClick={() => props.editHandler(props.friend) }>{props.friend.name}</h3>
+            <div onClick={ () => props.deleteFriend(props.friend.id) }>X</div>
             <p>Age: {props.friend.age}</p>
             <p>Email: {props.friend.email}</p>
         </div>
