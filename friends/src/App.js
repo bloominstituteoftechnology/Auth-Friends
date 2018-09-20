@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {fetchFriends} from './actions/index';
 import { connect } from 'react-redux';
+import FriendsList from './components/FriendsList';
 
 
 class App extends Component {
@@ -18,12 +19,7 @@ class App extends Component {
         {this.props.fetching ? (
           <img src = {logo} className = "App-logo" alt="logo" />
         ) : (
-          <ul>
-            {this.props.friends.map(friend => {
-              return <li key = {friend.name}>{friend.name}</li>
-            })}
-
-          </ul>
+          <FriendsList friends = {this.props.friends} />
         )}
 
 
