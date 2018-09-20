@@ -1,4 +1,4 @@
-import { FETCHING, FETCHED, ERROR } from '../actions';
+import { FETCHING, FETCHED, ERROR, SAVING, SAVED } from '../actions';
 
 const initialState = {
     fetchingFriends: false,
@@ -35,6 +35,21 @@ export const friendsReducer = (state = initialState, action) => {
                 ...state,
                 fetchingFriends: false,
                 error: "Error occured, cannot fetch requested data"
+            }
+        
+        case SAVING:
+            return {
+                ...state,
+                savingFriends: true,
+                friendsSaved: false
+            }
+        
+        case SAVED:
+            return {
+                ...state,
+                savingFriends: false,
+                friendsSaved: true,
+                friends: action.payload
             }
 
         default:
