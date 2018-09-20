@@ -11,7 +11,19 @@ export const getFriends = () => {
   };
 };
 
-export const addFriend = newFriend => {};
+export const addFriend = newFriend => {
+  return dispatch => {
+    dispatch({ type: 'SAVING_FRIENDS' });
+    axios
+      .post(`http://localhost:5000/api/friends`, newFriend)
+      .then(response => {
+        dispatch({ type: 'FRIENDS_SAVED', payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: 'ERROR', payload: error });
+      });
+  }
+}
 
 export const getFriend = (id) => {
   return dispatch => {
