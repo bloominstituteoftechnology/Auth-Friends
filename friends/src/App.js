@@ -14,6 +14,7 @@ class App extends Component {
     return (
       <div className="App">
           <h1 className="App-title">Friends App!</h1>
+          <Friends friends = {this.props.friends} />
       </div>
     );
   }
