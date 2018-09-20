@@ -13,11 +13,29 @@ export default class Friends extends Component {
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const newFriend = {
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email,
+    }
+    
+    const emptyFriend = {
+      name: '',
+      age: '',
+      email: '',
+    }
+
+    this.props.createFriend(newFriend)
+    this.setState(emptyFriend)
+  }
+  
   render() {
     return (
       <div>
         <h2>Create Friends Component</h2>
-        <form>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
           <input
             name="name"
             type="text"

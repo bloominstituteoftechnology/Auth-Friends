@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 const Friends = (props) => {
   return (
@@ -6,11 +6,11 @@ const Friends = (props) => {
       <h2>Friends Component</h2>
       { props.friends.map(friend => {
           return (
-            <Fragment>
+            <div key={friend.id}>
               <h3>{friend.name}</h3>
               <h5>{friend.age}</h5>
               <p>{friend.email}</p>
-            </Fragment>
+            </div>
           )
         })
       }

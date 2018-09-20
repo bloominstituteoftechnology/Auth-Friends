@@ -3,7 +3,7 @@ import Friends from './components/Friends'
 import CreateFriendForm from './components/CreateFriendForm'
 import UpdateFriendForm from './components/UpdateFriendForm'
 import { connect } from 'react-redux'
-import { fetchingData } from './actions'
+import { fetchingData, createFriend } from './actions'
 
 class App extends Component {
   componentDidMount() {
@@ -15,7 +15,7 @@ class App extends Component {
       <div className="App">
         <h1>Friends App</h1>
         <Friends friends={this.props.friends} />
-        <CreateFriendForm />
+        <CreateFriendForm createFriend={this.props.createFriend} />
         <UpdateFriendForm />
       </div>
     );
@@ -27,7 +27,8 @@ const mapStateToProps = (state, action) => ({
 })
 
 const mapDispatchToProps = {
-  fetchingData
+  fetchingData,
+  createFriend
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
