@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         {this.props.fetchingData ? (
-          <h1>Friends List</h1>
+          <h1>Loading friends...</h1>
         ) : (
           <FriendsList friends={this.props.friends} />
         )}
@@ -20,7 +20,6 @@ class App extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  // console.log(state);
   return {
     fetchingData: state.friendsReducer.fetchingData,
     friends: state.friendsReducer.friends,
