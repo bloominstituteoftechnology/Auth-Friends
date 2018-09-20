@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Friend = () => {
+const Friend = props => {
   return (
     <li className="Friend">
       <h3>{props.friends.name}</h3>
