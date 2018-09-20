@@ -1,12 +1,15 @@
 import React from 'react';
-import FriendsList from './FriendsList';
-import FriendForm from '../components/FriendForm';
+import HomePage from '../components/HomePage';
+import FriendPage from '../components/FriendPage';
+import { Route } from 'react-router-dom';
+import FriendNav from './FriendNav';
 
 const App = () => {
   return (
     <div className="App">
-      <FriendsList />
-      <FriendForm />
+      <FriendNav />
+      <Route path="/friend/:id" component={FriendPage} />
+      <Route exact path="/" component={HomePage} />
     </div>
   );
 };
