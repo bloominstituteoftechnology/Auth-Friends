@@ -1,7 +1,7 @@
-import React from '../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
-import ReactDOM from '../../../../Library/Caches/typescript/2.9/node_modules/@types/react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';

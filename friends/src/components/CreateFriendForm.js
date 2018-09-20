@@ -1,4 +1,4 @@
-import React from '../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
+import React from 'react';
 
 class CreateFriendForm extends React.Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class CreateFriendForm extends React.Component {
                     <input type="text" placeholder="name"/>
                     <input type="text" placeholder="age"/>
                     <input type="text" placeholder="email"/>
-                    <input type="submit" OnClick={console.log('submit')}/>
+                    <input type="submit" onClick={console.log('submit')}/>
                 </form>
             </div>
         )
