@@ -1,4 +1,4 @@
-import './styles/index.css';
+// import './styles/index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -11,6 +11,7 @@ import { createStore, applyMiddleware } from 'redux';
 
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

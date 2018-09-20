@@ -2,7 +2,7 @@ import React from 'react';
 const Friend = (props) => {
   return (
     <div>
-      <h1> {/* Friend name goes here */}</h1>
+       {/* Friend info goes here */}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FriendsList from './components/FriendsList';
-import './styles/App.css';
+// import './styles/App.css';
 import { fetchData } from './actions';
 class App extends Component {
   componentDidMount() {
