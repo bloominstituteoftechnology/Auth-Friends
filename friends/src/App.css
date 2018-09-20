@@ -1,14 +1,23 @@
+#root {
+  background: #3b5998;
+  max-width: 2500px;
+  height: 1000px;
+}
+
 .App {
+  background: white;
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
+  padding: 25px 0;
 }
 
 h1 {
   color: #3b5998;
   text-align: center;
   font-size: 3rem;
-  margin: 10px 0;
+  margin: 0;
+  padding-bottom: 20px;
 }
 
 .friends {
@@ -27,11 +36,12 @@ h1 {
   margin: 20px 0;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: flex-end; 
 }
 
 label {
   margin: 0 10px;
+  width: 25%;
 }
 
 input {
