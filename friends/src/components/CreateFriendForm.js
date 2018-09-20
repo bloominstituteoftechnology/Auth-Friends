@@ -4,7 +4,7 @@ class CreateFriendForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            newFriend: {}
         }
     }
 
