@@ -1,0 +1,1 @@
+export { friendsReducer } from './friendsReducer';
