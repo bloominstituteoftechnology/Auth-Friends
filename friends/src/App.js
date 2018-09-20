@@ -15,11 +15,5 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   console.log(state);
-//   return {
-
-//   };
-// };
 
 export default connect(null, { fetchFriends })(App);
