@@ -1,3 +1,5 @@
+import { FETCHING_DATA, FETCHED_DATA, FETCHING_COMPLETE, FETCHING_ERROR, ADD_FRIEND } from '../actions';
+
 const initialState = {
   fetching: false,
   fetched: false,
