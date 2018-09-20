@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import '../App.css';
-import Form from './Form';
-import { getFriend } from '../actions';
+import '../../containers/App/App.css';
+import Form from '../Form';
+import { getFriend } from '../../actions';
 
 class Friend extends React.Component {
   state = {
@@ -42,7 +42,7 @@ class Friend extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    friend: dispatch.friendsReducer.friend
+    friend: dispatch.friendReducer.friend
   }
 }
 
