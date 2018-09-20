@@ -51,14 +51,7 @@ class FriendForm extends React.Component {
           className="nav-link button"
           onClick={event => {
             console.log(this.state.newFriend);
-            axios
-              .post("http://localhost:5000/api/friends", this.state.newFriend)
-              .then(response => {
-                getFriendsData();
-
-                console.log(response);
-              })
-              .catch(err => console.log(err));
+            this.props.addNewFriend(this.state.newFriend);
             // this.props.addNewFriend(this.state.newFriend);
             // this.props.history.push("/friends");
           }}

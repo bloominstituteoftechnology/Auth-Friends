@@ -16,4 +16,9 @@
 a {
   text-decoration: none;
   color: black;
+  cursor: pointer;
+}
+
+a:hover {
+  box-shadow: 5px 5px 5px;
 }

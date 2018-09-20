@@ -18,17 +18,13 @@ export const getFriendsData = () => {
   };
 };
 
-export const addNewFriend = () => {
+export const addNewFriend = friend => {
   console.log("add new friend action");
   return dispatch => {
-    console.log("dispatch");
     dispatch({ type: SAVING });
     axios
-      .get(URL)
-      .then(response => {
-        console.log("got");
-        dispatch({ type: SAVED, payload: response.data });
-      })
+      .post(`${URL}/create`, friend)
+      .then(response => dispatch({ type: SAVED, payload: response.data }))
       .catch(err => dispatch({ type: ERROR }));
   };
 };
