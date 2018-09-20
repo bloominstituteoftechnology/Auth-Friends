@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import "../../containers/App/App.css";
-import Form from "../Form";
 import { getFriend, deleteFriend } from "../../actions";
 
 class Friend extends React.Component {
@@ -26,7 +25,7 @@ class Friend extends React.Component {
   deleteFriend = () => {
     const { id } = this.props.friend;
     this.props.deleteFriend(id);
-    this.props.history.push('/');
+    this.props.history.push("/");
   };
 
   render() {
@@ -35,14 +34,18 @@ class Friend extends React.Component {
     }
 
     return (
-      <div className="friend-page">
-        <h3>{this.props.friend.name}</h3>
-        <h3>{this.props.friend.age}</h3>
-        <h3>{this.props.friend.email}</h3>
-        <div className="buttons-container">
-          <button onClick={() => this.deleteFriend()}>{`Delete ${
-            this.props.friend.name
-          }`}</button>
+      <div className="outer-wrapper">
+        <div className="friend-wrapper">
+          <h3>
+            <strong>{this.props.friend.name}</strong>
+          </h3>
+          <p>{this.props.friend.age}</p>
+          <p>{this.props.friend.email}</p>
+          <div className="buttons-container">
+            <button onClick={() => this.deleteFriend()}>{`Delete ${
+              this.props.friend.name
+            }`}</button>
+          </div>
         </div>
       </div>
     );

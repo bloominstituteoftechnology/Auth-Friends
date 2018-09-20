@@ -1,9 +1,9 @@
 * {
-  /*border: 1px solid black;*/
+  
 }
 
 body {
-  background: lightgray;
+  background: #ccc;
 }
 
 a {
@@ -33,7 +33,7 @@ form input {
   height: 50px;
   padding: 0 15px;
   margin-bottom: 10px;
-  border: 1px solid black;
+  border: 1px solid #333;
   border-radius: 4px;
   font-size: 15px;
 }
@@ -43,9 +43,9 @@ button {
   height: 50px;
   padding: 0;
   margin-top: 10px;
-  color: white;
-  background: blue;
-  border: 1px solid black;
+  color: #fff;
+  background: #4477ff;
+  border: 1px solid #333;
   border-radius: 4px;
   font-size: 20px;
   font-weight: bold;
@@ -67,7 +67,7 @@ button {
   justify-content: center;
   align-items: center;
   margin: 20px 0;
-  border: 2px solid black;
+  border: 2px solid #333;
   background: #4477ff;
   border-radius: 4px;
 }
@@ -91,7 +91,14 @@ button {
   text-align: left;
   padding-left: 20px;
 }
-
+@media(min-width: 400px) {
+  .add-friend-link {
+    width: 25%;
+    font-size: 16px;
+    text-align: left;
+    padding-left: 20px;
+  }
+}
 .header-title {
   width: 50%;
   text-align: center;
@@ -113,34 +120,38 @@ button {
   text-align: center;
   background: #4477ff;
   margin: 10px;
-  border: 2px solid black;
+  border: 2px solid #333;
   border-radius: 4px;
 }
 
 .friend-wrapper {
-  width: 100%;
+  width: 90%;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 20px 0 20px 0;
   text-align: center;
-  background: white;
+  background: #fff;
   margin: 0;
-  border: 2px solid black;
+  border: 2px solid #333;
   border-radius: 4px;
 }
 
 .friend-wrapper h3 {
   font-size: 30px;
-  margin: 0 0 15px 0;
+  margin: 0;
 }
 
+
 .friend-wrapper strong {
-  font-size: 20px;
+  font-size: 25px;
+  margin: 0;
 }
 
 .friend-wrapper p {
-  font-size: 20px;
+  font-size: 25px;
+  margin: 10px;
 }
 
 .buttons-wrapper {
@@ -153,5 +164,10 @@ button {
 .form-wrapper {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+
+.outer-wrapper {
+  display: flex;
   justify-content: center;
 }
