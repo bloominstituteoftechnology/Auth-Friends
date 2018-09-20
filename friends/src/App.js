@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchingData } from '.actions';
+import { fetchingData, createFriend } from '.actions';
 
 class App extends Component {
 
@@ -23,6 +23,6 @@ class App extends Component {
 const mapStateToProps = (state, action) => ({
   friends: state.rootReducer.friends
 });
-const mapDispatchToProps = { fetchingData };
+const mapDispatchToProps = { fetchingData, createFriend };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
