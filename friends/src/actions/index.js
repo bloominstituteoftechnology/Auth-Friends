@@ -12,7 +12,6 @@ export const fetchFriends = () => {
 
         request.then(res => {
             dispatch({type: FETCHED, payload: res.data})
-            console.log(res.data, 'FRIENDS');
         }).catch(err => {
             console.log(err);
             dispatch({type: ERROR})

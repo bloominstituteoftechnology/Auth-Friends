@@ -4,6 +4,7 @@ import './App.css';
 import {fetchFriends} from './actions/index';
 import { connect } from 'react-redux';
 import FriendsList from './components/FriendsList';
+import AddFriendForm from './containers/AddFriendForm';
 
 
 class App extends Component {
@@ -16,6 +17,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <AddFriendForm />
+
         {this.props.fetching ? (
           <img src = {logo} className = "App-logo" alt="logo" />
         ) : (
