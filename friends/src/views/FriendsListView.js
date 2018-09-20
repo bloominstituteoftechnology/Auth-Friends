@@ -1,10 +1,13 @@
 // React
 import React from 'react';
 
+// Dependencies
+import { connect } from 'react-redux';
+
 // Components
 import { Friend } from '../components/Friend/Friend';
 
-export const FriendsListView = props => {
+const FriendsListView = props => {
 	return(
 		<div>
 			{ props.friendsList.map((friend, i) => 
@@ -16,3 +19,9 @@ export const FriendsListView = props => {
 		</div>
 	);
 }
+
+const mapStateToProps = state => ({
+	friendsList: state.friendsListReducer.friendsList,
+});
+
+export default connect (mapStateToProps, null)(FriendsListView);

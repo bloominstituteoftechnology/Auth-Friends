@@ -4,4 +4,12 @@ export {
 	FETCHING_FRIENDS_LIST_ERROR,
 
 	getFriendsList
-} from "./friendsListActions";
+} from './friendsListActions';
+
+export {
+	POSTING_NEW_FRIEND,
+	POSTING_NEW_FRIEND_COMPLETE,
+	POSTING_NEW_FRIEND_ERROR,
+
+	postNewFriend
+} from './postFriendFormActions';

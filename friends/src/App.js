@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Components
-import { FriendsListView } from './views';
+import { FriendsListView, PostFriendFormView } from './views';
 
 // Actions
 import { getFriendsList } from './store/actions';
@@ -21,17 +21,17 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				{ this.props.fetchingFriendsList ? <p>Fetching your friends list...</p> : <FriendsListView friendsList = { this.props.friendsList } /> }
-
-				{/* { this.props.fetchingFriendsListError === '' ? null : <p>{ this.props.fetchingFriendsListError }</p>} */}
 				<p>{ this.props.fetchingFriendsListError }</p>
+
+				{ this.props.fetchingFriendsList ? <p>Fetching your friends list...</p> : <FriendsListView /> }
+
+				<PostFriendFormView />
 			</div>
 		);
 	}
 }
 
 const mapStateToProps = state => ({
-	friendsList: state.friendsListReducer.friendsList,
 	fetchingFriendsList: state.friendsListReducer.fetchingFriendsList,
 	fetchingFriendsListError: state.friendsListReducer.fetchingFriendsListError
 });
