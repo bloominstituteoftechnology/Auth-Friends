@@ -35,13 +35,15 @@ class PostFriendForm extends React.Component {
 	render() {
 		return(
 			<form onSubmit = { this.handleSubmit }>
+				Name:
 				<input 
 					type = 'text' 
 					name = 'name' 
 					value = { this.state.name } 
 					onChange = { this.handleInputChange }
 				/>
-				
+
+				Age:
 				<input 
 					type = 'number' 
 					name = 'age' 
@@ -49,6 +51,7 @@ class PostFriendForm extends React.Component {
 					onChange = { this.handleInputChange }
 				/>
 				
+				Email:
 				<input 
 					type = 'text' 
 					name = 'email' 

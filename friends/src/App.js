@@ -23,6 +23,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<p>{ this.props.fetchingFriendsListError }</p>
+				<p>{ this.props.postingNewFriendError }</p>
 				<Link to = '/'>Home</Link>
 				<Link to = '/postfriendform'>Post New Friend</Link>
 
@@ -36,7 +37,8 @@ class App extends Component {
 
 const mapStateToProps = state => ({
 	fetchingFriendsList: state.friendsListReducer.fetchingFriendsList,
-	fetchingFriendsListError: state.friendsListReducer.fetchingFriendsListError
+	fetchingFriendsListError: state.friendsListReducer.fetchingFriendsListError,
+	postingNewFriendError: state.postFriendFormReducer.postingNewFriendError,
 });
 
 export default connect (mapStateToProps, { getFriendsList })(App);

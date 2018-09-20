@@ -11,7 +11,6 @@ class PostFriendFormView extends React.Component {
 	render() {
 		return(
 			<div>
-				<p>{ this.props.postingNewFriendError }</p>
 				{ this.props.postingNewFriend ? <p>Adding your new friend...</p> : <PostFriendForm history = { this.props.history } /> }
 			</div>
 		);
@@ -20,7 +19,6 @@ class PostFriendFormView extends React.Component {
 
 const mapStateToProps = state => ({
 	postingNewFriend: state.postFriendFormReducer.postingNewFriend,
-	postingNewFriendError: state.postFriendFormReducer.postingNewFriendError,
 });
 
 export default connect (mapStateToProps, null)(PostFriendFormView);
