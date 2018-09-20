@@ -26,7 +26,6 @@ export const friendsReducer = (state = initialState, action) => {
             return Object.assign({}, state,
                 {
                     friends: [...state.friends, action.payload],
-                    addingFriend: false,
                     friendAdded: true,
                 });
         case ERROR:
