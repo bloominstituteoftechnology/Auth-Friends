@@ -4,7 +4,10 @@ export default class Friends extends Component {
   render() {
     return (
       <div>
-        <h1>Create Friends Component</h1>
+        <h2>Create Friends Component</h2>
+        <form>
+
+        </form>
       </div>
     )
   }
