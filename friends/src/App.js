@@ -18,22 +18,17 @@ class App extends Component {
 		this.props.getFriendsList();
 	}
 
-	myFunc = e => {
-		e.preventDefault();
-		console.log('my funk');
-	}
-
 	render() {
 		return (
 			<div className="App">
-				<FriendsListView myFunc = { this.myFunc } />
+				<FriendsListView friendsList = { this.props.friendsList } />
 			</div>
 		);
 	}
 }
 
 const mapStateToProps = state => ({
-	friendsList: state.friendsList
+	friendsList: state.friendsListReducer.friendsList
 });
 
 export default connect (mapStateToProps, { getFriendsList })(App);

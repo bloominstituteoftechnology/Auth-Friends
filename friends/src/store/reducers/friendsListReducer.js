@@ -9,7 +9,7 @@ const initialState = {
 export const friendsListReducer = (state = initialState, action) => {
 	switch(action.type) {
 		case FRIENDS_LIST_FETCH_COMPLETE: {
-			return state;
+			return { ...state, friendsList: action.payload };
 		}
 		default: {
 			return state;
