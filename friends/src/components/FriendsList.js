@@ -3,12 +3,15 @@ import Friend from './Friend';
 
 const FriendsList = (props) => {
   return (
-    <div>
-      <h1>Friend List</h1>
-      {props.friends.map((friend) => {
-        return <Friend friend={friend} key={friend.id} />;
-      })}
-    </div>
+    console.log(props.friends),
+    (
+      <div>
+        <h1>Friend List</h1>
+        {props.friends.map((friend) => {
+          return <Friend friend={friend} key={friend.id} />;
+        })}
+      </div>
+    )
   );
 };
 
