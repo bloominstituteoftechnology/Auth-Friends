@@ -1,28 +1,157 @@
-.App {
+* {
+  /*border: 1px solid black;*/
+}
+
+body {
+  background: lightgray;
+}
+
+a {
+  color: #fff;
+  background: #333;
+  padding: 20px;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #fff;
+  background: #225599;
+}
+
+form {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+form input {
+  box-sizing: border-box;
+  width: 200px;
+  height: 50px;
+  padding: 0 15px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+button {
+  width: 200px;
+  height: 50px;
+  padding: 0;
+  margin-top: 10px;
+  color: white;
+  background: blue;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  border: 2px solid black;
+  background: #4477ff;
+  border-radius: 4px;
+}
+
+.header h1 {
+  font-size: 200px;
+}
+
+.header a {
+  font-size: 20px;
+}
+
+.home-link {
+  width: 25%;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.add-friend-link {
+  width: 25%;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.header-title {
+  width: 50%;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.header h2 {
+  font-size: 35px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.friend-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.App-title {
-  font-size: 1.5em;
+.friend-card {
+  padding: 10px;
+  text-align: center;
+  background: #4477ff;
+  margin: 10px;
+  border: 2px solid black;
+  border-radius: 4px;
 }
 
-.App-intro {
-  font-size: large;
+.friend-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0 20px 0;
+  text-align: center;
+  background: white;
+  margin: 0;
+  border: 2px solid black;
+  border-radius: 4px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.friend-wrapper h3 {
+  font-size: 30px;
+  margin: 0 0 15px 0;
+}
+
+.friend-wrapper strong {
+  font-size: 20px;
+}
+
+.friend-wrapper p {
+  font-size: 20px;
+}
+
+.buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

@@ -42,6 +42,14 @@ export const friendReducer = (state = initialState, action) => {
         friendFetched: true,
         fetchingFriend: false
       });
+      case "DELETING_FRIEND":
+      return { ...state, deletingFriend: true };
+    case "DELETE_FRIEND":
+      return { ...state, friends: action.payload, deletingFriend: false };
+    case "CREATING_FRIEND":
+      return { ...state, creatingFriend: true };
+    case "CREATE_FRIEND":
+      return { ...state, friends: action.payload, creatingFriend: false };
 
     case "ERROR":
       return Object.assign({}, state, { error: action.payload });
