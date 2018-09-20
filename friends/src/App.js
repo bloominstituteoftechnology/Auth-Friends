@@ -40,7 +40,6 @@ class App extends Component {
 
   handleAddFriend = (event) => {
     event.preventDefault();
-    console.log('add friend test');
     this.props.addFriend(this.state.friendDataInput);
     this.resetForm();
   };

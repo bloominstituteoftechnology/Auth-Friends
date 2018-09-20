@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FriendForm = (props) => {
-  console.log('friend form', props);
+  // console.log('friend form', props);
   return (
     <form>
       Name:
