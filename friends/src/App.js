@@ -6,6 +6,9 @@ import logo from './logo.svg';
 import './App.css';
 
 import { fetchFriends } from './actions'
+import { addNewFriend } from "./actions";
+import Friends from './components/Friends'
+import FriendForm from "./components/FriendForm";
 
 class App extends Component {
   componentDidMount() {
@@ -18,11 +21,10 @@ class App extends Component {
         {this.props.fetchingFriends ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
-            <ul>
-              {this.props.friends.map(friend => {
-                return <li key={friend.name}>{friend.name}</li>;
-              })}
-            </ul>
+          <div>
+            <Friends {...this.props}/>
+            <FriendForm {...this.state} />
+          </div>
           )}
       </div>
     );
@@ -39,7 +41,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {
-  /* actions go here */
-  fetchFriends
-})(App);
+export default connect(
+  mapStateToProps,
+  {
+    /* actions go here */
+    fetchFriends,
+    addNewFriend
+  }
+)(App);
