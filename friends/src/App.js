@@ -36,6 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1>Hello, friends!</h1>
         <Friends {...this.props} onUpdate={this.handleUpdate} />
         <FriendForm {...this.props} />
       </div>

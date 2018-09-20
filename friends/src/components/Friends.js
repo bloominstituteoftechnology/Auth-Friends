@@ -19,7 +19,7 @@ class Friends extends React.Component {
             />
           ))
         ) : (
-          <h1>Loading friends...</h1>
+          <h2>Loading friends...</h2>
         )}
       </div>
     );

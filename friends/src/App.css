@@ -4,6 +4,13 @@
   margin: 0 auto;
 }
 
+h1 {
+  color: #3b5998;
+  text-align: center;
+  font-size: 3rem;
+  margin: 10px 0;
+}
+
 .friends {
   display: flex;
   justify-content: center;
@@ -11,7 +18,35 @@
 }
 
 .friend {
-  border: 2px solid grey;
+  border: 2px solid #3b5998;
   padding: 7px;
-  margin: 20px;
+  margin: 10px 20px;
+}
+
+.newFriend {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+label {
+  margin: 0 10px;
+}
+
+input {
+  font-size: 1rem;
+}
+
+button {
+  font-size: .7rem;
+  border-radius: 5px;
+  margin: 0 4px;
+  width: 60px;
+  height: 25px;
+}
+
+button:hover {
+  background: rgb(219, 219, 219);
+  cursor: pointer;
 }

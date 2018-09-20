@@ -30,15 +30,15 @@ import React from "react";
     return (
       <div className="newFriend">
         <label>
-          Name <input type="text" name="name" onChange={this.inputChange.bind(this)} />
+          <strong>Name: </strong><input type="text" name="name" onChange={this.inputChange.bind(this)} />
         </label>
         <label>
-          Age <input type="number" name="age" onChange={this.inputChange.bind(this)} />
+        <strong>Age: </strong><input type="number" name="age" onChange={this.inputChange.bind(this)} />
         </label>
         <label>
-          email <input type="email" name="email" onChange={this.inputChange.bind(this)} />
+        <strong>E-mail: </strong><input type="email" name="email" onChange={this.inputChange.bind(this)} />
         </label>
-        <button onClick={this.onSubmit.bind(this)}>Submit</button>
+        <button onClick={this.onSubmit.bind(this)}>Add</button>
       </div>
     )
   }
