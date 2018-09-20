@@ -16,11 +16,11 @@ class AddFriendForm extends React.Component {
         }
     }
 
-    componentDidMount(){
-        console.log(this.state);
-    }
+    // componentDidMount(){
+    //     console.log(this.state);
+    // }
 
-    handleInput(event){
+    handleInput = event => {
         event.preventDefault();
         let newInput = event.target.value;
         if(event.target.name === 'input-name'){
@@ -44,15 +44,28 @@ class AddFriendForm extends React.Component {
         
     }
 
-    handleSubmit(event){
+    handleSubmit = (event) =>{
         event.preventDefault();
-        this.props.addFriend(this.state.input);
+        let currentState = this.state;
+
+        let newFriend = {
+            name: currentState.name,
+            age: currentState.age,
+            email: currentState.email
+        }
+        
+        this.props.addFriend(newFriend);
+
+        console.log(newFriend);
+
         this.setState({
             input: '',
             name: '',
             age: '',
             email: '',
         })
+
+        window.location.reload();
     }
     render(){
 
@@ -60,9 +73,9 @@ class AddFriendForm extends React.Component {
         <div>
             <form onSubmit={this.handleSubmit}>
             
-            <input type = 'text' placeholder='Name' name='input-name' onChange={this.handleInput.bind(this)} value={this.state.name}></input>
-            <input type = 'number' placeholder='Age' name='input-age' onChange={this.handleInput.bind(this)} value={this.state.age}></input>
-            <input type = 'email' placeholder='Email' name='input-email' onChange={this.handleInput.bind(this)} value={this.state.email}></input>
+            <input type = 'text' placeholder='Name' name='input-name' onChange={this.handleInput} value={this.state.name}></input>
+            <input type = 'number' placeholder='Age' name='input-age' onChange={this.handleInput} value={this.state.age}></input>
+            <input type = 'email' placeholder='Email' name='input-email' onChange={this.handleInput} value={this.state.email}></input>
             <button type = 'submit'>Add Friend</button>
             
             </form>
@@ -71,4 +84,13 @@ class AddFriendForm extends React.Component {
 }
 }
 
-export default AddFriendForm;
+
+// export default AddFriendForm;
+
+const mapStateToProps = () => {
+    return {}
+}
+
+export default connect(
+    mapStateToProps, {addFriend}
+)(AddFriendForm);
