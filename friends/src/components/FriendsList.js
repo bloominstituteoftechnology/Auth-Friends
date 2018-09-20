@@ -3,15 +3,17 @@ import React from 'react';
 
 
 export const FriendsList = (props) => {
-  <div className='friends-list'>
+  return (
+    <div className='friends-list'>
     <ul>
       {props.friends.map(friend => {
         return (
           <li key={friend.id}>
-            <Friend friend={friend}/>
+            <Friend friend={friend} id={friend.id}/>
           </li>
         )
       })}
     </ul>
   </div>
+  ) 
 }

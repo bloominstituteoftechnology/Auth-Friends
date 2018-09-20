@@ -16,7 +16,7 @@ export const FRIEND_EDITED = 'FRIEND_EDITED';
 
 // First we need our fetch reducers
 
-export const fetchReducer = () => {
+export const fetchDaBois = () => {
   return dispatch => {
     dispatch({ type: FETCHING });
     
@@ -39,14 +39,15 @@ export const fetchReducer = () => {
 
 export const addFriend = friend => {
   return dispatch => {
-    dispatch({ ADD_FRIEND });
+    dispatch({ type: ADD_FRIEND });
 
-    axios.post('http://localhost:5000/api/friends', friend = {
-      name: name,
-      age: age,
-      email: email
+    axios.post('http://localhost:5000/api/friends', {
+      name: friend.name,
+      age: friend.age,
+      email: friend.email
     })
     .then(res => {
+      console.log(res);
       dispatch({ type: FRIEND_ADDED, payload: res.data })
     })
     .catch(err => {
