@@ -47,3 +47,18 @@ export const fetchFriends = () => {
       .catch(error => dispatch({ type: ERRORS, error: error }));
   };
 };
+
+export const fetchFriend = id => {
+  return dispatch => {
+    dispatch({ type: FETCHING });
+    axios
+      .get(`http://localhost:5000/api/friends/${id}`)
+
+      .then(response => {
+        console.log(response);
+        dispatch({ type: FETCHED, payload: response.data });
+      })
+
+      .catch(error => dispatch({ type: ERRORS, payload: error }));
+  };
+};
