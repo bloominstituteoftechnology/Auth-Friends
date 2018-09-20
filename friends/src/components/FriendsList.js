@@ -14,9 +14,11 @@ class FriendsList extends Component {
           <p>Reticulating Splines...</p>
         ) : (
           <ul>
-            {this.props.friends.map(friend => {
-              return <Friend key={friend.id} friend={friend} />;
-            }) || 'You have no friends :('}
+            {this.props.friends.length && !this.props.error
+              ? this.props.friends.map(friend => {
+                  return <Friend key={friend.id} friend={friend} />;
+                })
+              : 'You have no friends ;_;'}
           </ul>
         )}
         {this.props.error ? <p>{this.props.error}</p> : null}
