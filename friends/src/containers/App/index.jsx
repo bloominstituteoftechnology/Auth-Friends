@@ -26,7 +26,7 @@ class App extends Component {
                        age: this.state.age,
                        email: this.state.email };
 
-    this.props.submitFriend(newFriend);
+    this.props.addFriend(newFriend);
 
     this.props.history.push('/');
   }
