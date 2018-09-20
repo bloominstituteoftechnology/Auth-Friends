@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getFriends } from '../store/actions';
+import { getFriends, removeFriend } from '../store/actions';
 
 import FriendsList from '../components/Friends/FriendsList';
 
@@ -12,10 +12,15 @@ class FriendListView extends Component {
         }
     };
 
+    handleDeleteFriend = id => {
+        this.props.removeFriend();
+    }
+
     render() {
         return (
             <FriendsList
                 {...this.props}
+                handleDelete={this.handleDeleteFriend}
             />
         );
     }
@@ -27,4 +32,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { getFriends })(FriendListView);
+export default connect(mapStateToProps, { getFriends, removeFriend })(FriendListView);
