@@ -37,15 +37,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-   
-        {this.props.fetchingFriends ? (
-          <img src={logo} className="App-logo" alt="logo" />
-        ) : (
-          <div>
-             <FriendsList friends={this.props.friends} />
-          </div>
-
-        )}
 
         <div>
         <FriendForm 
@@ -56,6 +47,17 @@ class App extends Component {
             textInputHandler={this.textInput}
         />
         </div>
+        
+        {this.props.fetchingFriends ? (
+          <img src={logo} className="App-logo" alt="logo" />
+        ) : (
+          <div>
+             <FriendsList friends={this.props.friends} />
+          </div>
+
+        )}
+
+        
         
       </div>
     );
