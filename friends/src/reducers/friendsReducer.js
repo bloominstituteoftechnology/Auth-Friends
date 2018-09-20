@@ -5,6 +5,10 @@ import {
   ADD_FRIEND_START,
   ADD_FRIEND_COMPLETE,
   ADD_FRIEND_ERROR,
+  DISPLAY_UPDATE_FORM,
+  UPDATING_FRIEND,
+  UPDATED_FRIEND,
+  UPDATE_ERROR,
 } from '../actions';
 
 const initialState = {
@@ -25,6 +29,7 @@ export const friendsReducer = (state = initialState, action) => {
         friends: action.payload,
         fetchingData: false,
         dataFetched: true,
+        updatingFriend: false,
       };
     case FETCH_ERROR:
       return {
@@ -48,6 +53,26 @@ export const friendsReducer = (state = initialState, action) => {
         error: 'Error adding friend',
         addingFriend: false,
       };
+    case DISPLAY_UPDATE_FORM:
+      return {
+        ...state,
+        friends: state.friends.filter(
+          (friend) => friend.id === action.payload.id
+        ),
+        updatingFriend: true,
+        // friendDataInput: {
+        //   name: action.payload.name,
+        //   age: action.payload.age,
+        //   email: action.payload.email,
+        // },
+      };
+
+    case UPDATING_FRIEND:
+      break;
+    case UPDATED_FRIEND:
+      break;
+    case UPDATE_ERROR:
+      break;
     default:
       return state;
   }

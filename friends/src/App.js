@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import FriendsList from './components/FriendsList';
 import FriendForm from './components/FriendForm';
 import './styles/App.css';
-import { fetchData, addFriend } from './actions';
+import { fetchData, addFriend, displayUpdateForm } from './actions';
 
 class App extends Component {
   state = {
@@ -44,15 +44,23 @@ class App extends Component {
     this.resetForm();
   };
 
+  handleUpdateFriend = (event) => {
+    event.preventDefault();
+    console.log('test');
+  };
+
   render() {
-    // console.log(this.state);
+    // console.log(this.props);
     return (
       <div className="App">
         {!this.props.dataFetched ? (
           <h1>Loading Data Please Wait...</h1>
         ) : (
           <React.Fragment>
-            <FriendsList friends={this.props.friends} />
+            <FriendsList
+              friends={this.props.friends}
+              displayUpdateForm={this.props.displayUpdateForm}
+            />
             <FriendForm
               friendDataInput={this.state.friendDataInput}
               handleInput={this.handleInput}
@@ -71,6 +79,7 @@ const mapStateToProps = (state) => {
     fetchingData: state.friendsReducer.fetchingData,
     dataFetched: state.friendsReducer.dataFetched,
     addingFriend: state.friendsReducer.addingFriend,
+    updatingFriend: state.friendsReducer.updatingFriend,
     friends: state.friendsReducer.friends,
     error: state.friendsReducer.error,
   };
@@ -81,5 +90,6 @@ export default connect(
   {
     fetchData,
     addFriend,
+    displayUpdateForm,
   }
 )(App);

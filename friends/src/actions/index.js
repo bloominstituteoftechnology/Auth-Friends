@@ -8,6 +8,12 @@ export const ADD_FRIEND_START = 'ADD_FRIEND_START';
 export const ADD_FRIEND_COMPLETE = 'ADD_FRIEND_COMPLETE';
 export const ADD_FRIEND_ERROR = 'ADD_FRIEND_ERROR';
 
+export const DISPLAY_UPDATE_FORM = 'DISPLAY_UPDATE_FORM';
+
+export const UPDATING_FRIEND = 'UPDATING_FRIEND';
+export const UPDATED_FRIEND = 'UPDATED_FRIEND';
+export const UPDATE_ERROR = 'UPDATE_ERROR';
+
 export const fetchData = () => {
   return (dispatch) => {
     dispatch({ type: FETCHING_DATA });
@@ -36,5 +42,19 @@ export const addFriend = (newFriend) => {
         console.log(err);
         dispatch({ type: ADD_FRIEND_ERROR });
       });
+  };
+};
+
+export const displayUpdateForm = (friend) => {
+  return (dispatch) => {
+    dispatch({ type: DISPLAY_UPDATE_FORM, payload: friend });
+  };
+};
+
+export const updateFriend = (updatedFriend) => {
+  return (dispatch) => {
+    dispatch({ type: UPDATING_FRIEND });
+
+    axios.put('http://localhost:5000/api/friends');
   };
 };
