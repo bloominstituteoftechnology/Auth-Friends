@@ -41,7 +41,7 @@ class FriendsList extends Component {
           ))}
         </div>
         <FreindsForm 
-          name={this.state.name}
+          input={this.state}
           handleChange={this.handleChange}
           handleClick={this.handleClick}
         />
