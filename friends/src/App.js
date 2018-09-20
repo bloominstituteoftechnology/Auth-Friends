@@ -26,10 +26,9 @@ class App extends Component {
 				<Link to = '/'>Home</Link>
 				<Link to = '/postfriendform'>Post New Friend</Link>
 
-				{/* <Route path = '/' component = { this.props.fetchingFriendsList ? <p>Fetching your friends list...</p> : <FriendsListView /> } /> */}
-				<Route exact path = '/' component = { FriendsListView } />
+				<Route exact path = '/' render = { () => this.props.fetchingFriendsList ? <p>Fetching your friends list...</p> : <FriendsListView /> } />
 
-				<Route path = '/postfriendform' component = { PostFriendFormView } />
+				<Route path = '/postfriendform' render = { props => <PostFriendFormView {...props} /> } />
 			</div>
 		);
 	}

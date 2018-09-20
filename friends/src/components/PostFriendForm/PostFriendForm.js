@@ -27,7 +27,9 @@ class PostFriendForm extends React.Component {
 				age: Number(e.target[1].value),
 				email: e.target[2].value,
 			});
-		}).then(this.props.getFriendsList());
+		})
+			.then(this.props.getFriendsList())
+			.then(this.props.history.push('/'));
 	}
 
 	render() {
