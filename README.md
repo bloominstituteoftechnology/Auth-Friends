@@ -84,7 +84,7 @@ index.js
 ```
 
 * If you'd like, you can create multiple components and `connect` them all up to your `redux` state tree. You could have a component who's sole purpose is to render a form for updating a user; another component who's sole purpose is for creating users; and then another component who's sole purpose is to delete a user.
-* It really is up to you how you build this project. You'll be given a couple of days to work on it so don't feel too overwhelmed at first.
+* It really is up to you how you build this project. I suggest writing down the flow you want to follow, and then writing down each individual piece you need for each step in the flow (ie step 3, build containers - import connect, write mapStateToProps function, import action creators and pass them to connect, etc. etc.) so that this process doesn't feel as overwhelming.
 
 #### App.js
 
