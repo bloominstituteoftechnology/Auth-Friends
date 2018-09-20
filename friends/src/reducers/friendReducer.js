@@ -11,7 +11,7 @@ const initialState = {
   error: null
 };
 
-export const friendsReducer = (state = initialState, action) => {
+export const friendReducer = (state = initialState, action) => {
   switch (action.type) {
     case "FETCHING_FRIENDS":
       return Object.assign({}, state, { fetchingFriends: true });
