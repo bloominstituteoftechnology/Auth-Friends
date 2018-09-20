@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Friends extends Component {
+export default class CreateFriendForm extends Component {
   state = {
     name: '',
     age: '',

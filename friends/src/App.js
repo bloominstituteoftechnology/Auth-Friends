@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Friends from './components/Friends'
 import CreateFriendForm from './components/CreateFriendForm'
-import UpdateFriendForm from './components/UpdateFriendForm'
 import { connect } from 'react-redux'
-import { fetchingData, createFriend } from './actions'
+import { fetchingData, createFriend, updateFriend } from './actions'
 
 class App extends Component {
   componentDidMount() {
@@ -14,21 +13,24 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Friends App</h1>
-        <Friends friends={this.props.friends} />
         <CreateFriendForm createFriend={this.props.createFriend} />
-        <UpdateFriendForm />
+        <Friends
+          friends={this.props.friends}
+          updateFriend={this.props.updateFriend}
+        />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, action) => ({
-  friends: state.rootReducer.friends
+  friends: state.rootReducer.friends,
 })
 
 const mapDispatchToProps = {
   fetchingData,
-  createFriend
+  createFriend,
+  updateFriend
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

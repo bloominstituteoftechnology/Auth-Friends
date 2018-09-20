@@ -1,4 +1,4 @@
-import { FETCHING_DATA, FETCHED_DATA, FETCHING_COMPLETE, FETCHING_ERROR, ADD_FRIEND } from '../actions'
+import { FETCHING_DATA, FETCHED_DATA, FETCHING_COMPLETE, FETCHING_ERROR, ADD_FRIEND, UPDATE_FRIEND } from '../actions'
 
 const initialState = {
   fetching: false,
@@ -10,12 +10,6 @@ const initialState = {
   deleting: false,
   deleted: false,
   friends: [
-    {
-      id: 0,
-      name: 'Joe',
-      age: 24,
-      email: 'joe@lambdaschool.com',
-    }
   ],
   error: null
 }
@@ -43,18 +37,23 @@ export default function (state = initialState, action) {
       fetching: false
     }
 
-  case FETCHING_ERROR:
-    return {
-      ...state,
-      error: action.payload
-    }
+    case FETCHING_ERROR:
+      return {
+        ...state,
+        error: action.payload
+      }
 
-  case ADD_FRIEND:
-  console.log(action.payload)
-    return {
-      ...state,
-      friends: action.payload
-    }
+    case ADD_FRIEND:
+      return {
+        ...state,
+        friends: action.payload
+      }
+
+    case UPDATE_FRIEND:
+      return {
+        ...state,
+        friends: action.payload
+      }
 
     default:
       return state
