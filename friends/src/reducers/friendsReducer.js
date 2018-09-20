@@ -18,7 +18,7 @@ export const friendsReducer = (state = initialState, action) => {
       return {
         ...state,
         fetching: false,
-        error: 'Error fetching friends'
+        error: `${action.payload}`
       };
 
     default:
