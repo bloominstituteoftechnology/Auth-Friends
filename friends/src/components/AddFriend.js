@@ -8,7 +8,8 @@ class AddFriend extends Component {
 		this.state = {
 			name: "",
 			age: null,
-			email: ""
+			email: "",
+			image: ""
 		};
 	}
 
@@ -31,6 +32,7 @@ class AddFriend extends Component {
 		return (
 			<div>
 				<form>
+					<label>Name:</label>
 					<input
 						type="text"
 						value={this.state.inputName}
@@ -38,6 +40,7 @@ class AddFriend extends Component {
 						onChange={this.handleChange}
 						placeholder="Name"
 					/>
+					<label>Age:</label>
 					<input
 						type="number"
 						name="age"
@@ -45,12 +48,21 @@ class AddFriend extends Component {
 						onChange={this.handleChange}
 						placeholder="Age"
 					/>
+					<label>Email:</label>
 					<input
 						type="email"
 						name="email"
 						value={this.state.inputEmail}
 						onChange={this.handleChange}
 						placeholder="Email"
+					/>
+					<label>Image:</label>
+					<input
+						type="text"
+						value={this.state.inputImage}
+						name="image"
+						onChange={this.handleChange}
+						placeholder="Enter an image address"
 					/>
 					<button onClick={this.addNewFriend}>Add Friend!</button>
 				</form>
