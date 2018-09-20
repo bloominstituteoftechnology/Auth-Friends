@@ -1,43 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from '../logo.svg';
-import '../styles/App.css';
-import { getData } from '../actions';
-
+import FriendsList from './components/FriendsList';
+import './styles/App.css';
+import { fetchData } from './actions';
 class App extends Component {
   componentDidMount() {
-    // this.props.getData();
+    this.props.fetchData();
   }
   render() {
     return (
       <div className="App">
-        {/* {this.props.fetching ? (
-          <img src={logo} className="App-logo" alt="logo" />
+        {this.props.fetchingData ? (
+          <h1>Friends List</h1>
         ) : (
-          <ul>
-            {this.props.chars.map(char => {
-              return <li key={char.name}>{char.name}</li>;
-            })}
-          </ul>
-        )} */}
+          <FriendsList friends={this.props.friends} />
+        )}
       </div>
     );
   }
 }
-
-// our mapDispatchToProps needs to have two properties inherited from state
-// the chars and the fetching boolean
-const mapDispatchToProps = (state) => {
+const mapStateToProps = (state) => {
+  // console.log(state);
   return {
-    // chars: state.charsReducer.chars,
-    // error: state.charsReducer.error,
-    // fetching: state.charsReducer.fetching,
+    fetchingData: state.friendsReducer.fetchingData,
+    friends: state.friendsReducer.friends,
+    error: state.friendsReducer.error,
   };
 };
-
 export default connect(
-  mapDispatchToProps,
+  mapStateToProps,
   {
-    // getData,
+    fetchData,
   }
 )(App);
