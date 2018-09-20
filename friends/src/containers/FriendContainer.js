@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchFriends } from '../store/actions';
 
 import Friends from '../components/Friends';
+import CreateFriendForm from '../components/CreateFriendForm';
 
 class FriendContainer extends React.Component {
     state = {
-        inputText: ''
+        nameInput: '',
+        ageInput: 0,
+        emailInput: '',
     };
     componentDidMount = () => {
         this.props.fetchFriends();
     }
-    handleChange = event => this.setState({ inputText: event.target.value });
+    handleChange = event => this.setState({ [event.target.name]: event.target.value });
 
     addFriend = event => {
         event.preventDefault();
@@ -21,10 +24,20 @@ class FriendContainer extends React.Component {
 
     render() {
         return (
+            <Fragment>
+            <div>
             <Friends 
                 friends={this.props.friends}
 
             />
+            </div>
+            <div>
+            <CreateFriendForm
+            handleChange={this.handleChange}
+
+            />
+            </div>
+            </Fragment>
         );
     }
 }
