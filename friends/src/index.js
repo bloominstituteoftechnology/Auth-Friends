@@ -5,7 +5,7 @@ import  Friends  from './components';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux';
-import {friendsReducer}  from './reducers'
+import { friendsReducer }  from './reducers'
 
 const store = createStore(friendsReducer, applyMiddleware(thunk))
 

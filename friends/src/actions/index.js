@@ -10,3 +10,15 @@ export const DELETING_FRIEND = 'DELETING_FRIEND'
 export const FRIEND_DELETED = 'FRIEND_DELETED'
 export const FRIENDS = 'FRIENDS'
 export const ERROR = 'ERROR'
+
+export const fetchFriends = () => {
+  return dispatch => {
+    dispatch({type: FETCHING_FRIENDS})
+    axios
+      .get('http://localhost:5000/api/friends/')
+      .then(response => { dispatch({type: FRIENDS_FETCHED, payload: response.data}) })
+      .catch(error => {
+        dispatch({type: ERROR, payload: 'Houston, we have a problem', error})
+      })
+  }
+}
