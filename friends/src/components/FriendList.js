@@ -6,7 +6,10 @@ const FriendList = props => {
     <React.Fragment>
 
     {props.friends.map(friend => (
-      <Friend key={friend.id} info={friend} />
+      <Friend
+        key={friend.id}
+        info={friend}
+        handleClick={props.handleClick} />
     ))}
   </React.Fragment>
   )

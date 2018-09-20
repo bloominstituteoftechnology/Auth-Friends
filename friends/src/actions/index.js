@@ -26,11 +26,27 @@ export const fetchFriends = () => {
 export const saveFriend = (friend) => {
   return dispatch => {
     dispatch({type: SAVING_FRIENDS})
-    console.log('dispatch fired');
     axios
-      .post('http://localhost:5000/api/friends/', friend)
-      .then(response => {console.log('success!');})
-      .catch(error => {console.log('failure!');})
-    console.log('axios fired');
+      .post('http://localhost:5000/api/friends', friend)
+      .then(response => {dispatch({type: FRIENDS_SAVED,}) })
+      .catch(error => {
+        dispatch({type: ERROR, payload: 'Houston, we have a problem', error})
+      })
   }
 }
+
+export const deleteFriend = (id) => {
+  // console.log('delFriend action fired');
+  // return dispatch => {
+  //   dispatch({type: DELETING_FRIEND})
+  //   console.log('delFriend dispatch fired');
+    axios
+      .get(`http://localhost:5000/api/friends/${id}`)
+      .then(response => { console.log(response);
+        // dispatch({type: FRIEND_DELETED, payload: response.data})
+      })
+      .catch(error => {
+        console.log('error');
+        // dispatch({type: ERROR, payload: 'Houston, we have a problem', error})
+      })
+  }

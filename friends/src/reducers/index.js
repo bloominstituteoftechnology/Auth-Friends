@@ -40,13 +40,14 @@ export const friendsReducer = (state = initState, action) => {
       }
     case FRIENDS_SAVED:
       return {
-        ...state
-
+        ...state,
+        savingFriends: false,
+        friends: state.friends.concat(action.payload)
       }
     case SAVING_FRIENDS:
       return {
-        ...state
-
+        ...state,
+        savingFriends: true,
       }
     case UPDATING_FRIEND:
       return {

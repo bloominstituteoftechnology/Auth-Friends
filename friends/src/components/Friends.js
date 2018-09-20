@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../Friends.css';
-import { fetchFriends, saveFriend } from '../actions'
+import { fetchFriends, saveFriend, deleteFriend } from '../actions'
 import { connect } from 'react-redux'
 
 import FriendList from './FriendList'
@@ -27,6 +27,12 @@ class Friends extends Component {
     saveFriend(this.state)
   }
 
+  deleteFriend = (id) => {
+    console.log('Delete Friend Firing');
+    console.log('Ex-friends id', id);
+    deleteFriend(id)
+  }
+
 
   render() {
     // console.log('Friends');
@@ -43,7 +49,10 @@ class Friends extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.saveFriend}
         />
-        <FriendList friends={this.props.friends} />
+        <FriendList
+          friends={this.props.friends}
+          handleClick={this.deleteFriend}
+         />
       </div>
     );
   }
@@ -57,6 +66,6 @@ const mapStatetoProps = state => {
 }
 
 export default connect(mapStatetoProps,
-  {fetchFriends, saveFriend})
+  {fetchFriends, saveFriend, deleteFriend})
   (Friends)
 // export default Friends;
