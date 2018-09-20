@@ -11,7 +11,7 @@ const initialState = {
   deleted: false,
   friends: [
     {
-      id: 1,
+      id: 0,
       name: 'Joe',
       age: 24,
       email: 'joe@lambdaschool.com',
@@ -27,24 +27,34 @@ export default function (state = initialState, action) {
       ...state,
       fetching: true
     }
-     case FETCHED_DATA:
-    return {
-      ...state,
-      friends: [
-        ...state.friends,
-        ...action.payload
-      ]
-    }
-     case FETCHING_COMPLETE:
-    return {
-      ...state,
-      fetching: false
-    }
+
+    case FETCHED_DATA:
+      return {
+        ...state,
+        friends: [
+          ...state.friends,
+          ...action.payload
+        ]
+      }
+
+    case FETCHING_COMPLETE:
+      return {
+        ...state,
+        fetching: false
+      }
+
    case FETCHING_ERROR:
-    return {
-      ...state,
-      error: action.payload
-    }
+      return {
+        ...state,
+        error: action.payload
+      }
+
+    case ADD_FRIEND:
+      console.log(action.payload)
+      return {
+        ...state,
+        friends: action.payload
+      }
      default:
       return state
   };
