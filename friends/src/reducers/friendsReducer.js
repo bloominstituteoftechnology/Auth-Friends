@@ -13,7 +13,7 @@ const initialState = {
   error: null
 }
 
-export const friendsReducer = (state = initialState, action) {
+export const friendsReducer = (state = initialState, action) => {
   switch(action.type) {
     
     default:
