@@ -22,3 +22,15 @@ export const fetchFriends = () => {
       })
   }
 }
+
+export const saveFriend = (friend) => {
+  return dispatch => {
+    dispatch({type: SAVING_FRIENDS})
+    console.log('dispatch fired');
+    axios
+      .post('http://localhost:5000/api/friends/', friend)
+      .then(response => {console.log('success!');})
+      .catch(error => {console.log('failure!');})
+    console.log('axios fired');
+  }
+}

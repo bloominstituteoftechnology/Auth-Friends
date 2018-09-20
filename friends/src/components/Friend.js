@@ -5,7 +5,8 @@ const Friend = props => {
 
   <React.Fragment>
     <h3>{props.info.name}</h3>
-    <p> Get in touch at: <br></br> {props.info.email} </p>
+    <p> They just turned {props.info.age} </p>
+    <p> Say happy birthday at: <br></br> {props.info.email} </p>
   </React.Fragment>
 )
 }
