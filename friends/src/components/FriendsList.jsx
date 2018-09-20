@@ -1,10 +1,11 @@
 import React from 'react';
 
 const FriendList = (props) => {
-  return ( 
+  const friends = props.friends.slice(); 
+  return (
     <div className="friends-container">
         
-          {props.friendsList.map(friend => <div className={"friend"} key={friend.id} friend={friend} >
+          {friends.map(friend => <div className={"friend"} key={friend.id} friend={friend} >
             {/* Friend's Info Here */}
             <p>Name: {friend.name}</p>
             <p>Age: {friend.age}</p>

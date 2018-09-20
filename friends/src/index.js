@@ -12,7 +12,7 @@ import logger from 'redux-logger';
 // createStore and applyMiddleware from redux
 import { createStore, applyMiddleware } from 'redux';
 // rootReducer from ./reducers
-import combineReducers from './reducers';
+import combineReducers from './store/reducers';
 
 
 // This line instantiates our central Redux store.

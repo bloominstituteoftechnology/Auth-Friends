@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import {connect} from 'react-redux';
 // import axios from 'axios';
-// import FriendForm from './components/FriendForm';
-// import FriendsList from './components/FriendsList';
+import FriendForm from './components/FriendForm';
+import FriendsList from './components/FriendsList';
 
 // pull in actions from action/index
-import { fetchFriends } from '../actions/index';
+import { fetchFriends } from './store/actions';
 
 class App extends Component {
   // constructor() {
@@ -23,18 +24,6 @@ class App extends Component {
       // call our action
       this.props.fetchFriends();
     }
-  //}
-  // componentDidMount() {
-  //   axios
-  //     .get(`http://localhost:5000/api/friends`)
-  //     .then(response => {
-  //       // console.log(response.data);
-  //       this.setState({ friends: response.data });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
 
   // textInput = e => {
   //   this.setState({ [e.target.name]: e.target.value });
@@ -60,15 +49,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header> */}
-        {this.props.fetchingChars ? (
+   
+        {this.props.fetchingFriends ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : (
           <div>
-             <FriendsList friendsList={this.state.friends} />
+             <FriendsList friends={this.props.friends} />
           </div>
           // <ul>
           //   {this.props.chars.map(char => {
@@ -79,9 +65,9 @@ class App extends Component {
 
         <div>
         <FriendForm 
-            name={this.state.name} 
-            age={this.state.age} 
-            email={this.state.email} 
+            name={this.props.name} 
+            age={this.props.age} 
+            email={this.props.email} 
             saveFriendData={this.saveFriendData}
             textInputHandler={this.textInput}
         />
@@ -98,7 +84,7 @@ class App extends Component {
 // the friends and the fetching boolean
 const mapDispatchToProps = state => {
   return {
-    friends: state.friendsReducer.chars,
+    friends: state.friendsReducer.friends,
     fetchingFriends: state.friendsReducer.fetchingFriends,
     error: state.friendsReducer.error
   };
