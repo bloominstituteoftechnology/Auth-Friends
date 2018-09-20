@@ -9,16 +9,18 @@ export const fetchFriends = () => {
     return dispatch => {
         dispatch({ type: FETCHING });
         axios
-        .get('/api/friends')
+        .get('http://localhost:5000/api/friends')
         .then(response => {
             dispatch({
                 type: FETCHED,
                 payload: response.data
             });
+            console.log(response.data);
         })
         .catch(err => {
             console.log(err);
             dispatch({ type: ERROR });
         })
+        
     }
 }

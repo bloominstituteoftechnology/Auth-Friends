@@ -1,3 +1,5 @@
+import { FETCHING, FETCHED, ERROR } from '../actions';
+
 const initialState = {
     fetchingFriends: false,
     friendsFetched: false,
@@ -13,6 +15,18 @@ const initialState = {
 
   export const friendsReducer = (state = initialState, action) => {
       switch (action.type) {
+          case FETCHING:
+          return Object.assign({}, state, { fetchingFriends: true });
+          case FETCHED:
+          return Object.assign({}, state, {
+              friends: [...state.friends, ...action.payload],
+              fetchingFriends: false
+          });
+          case ERROR:
+          return Object.assign({}, state, { 
+              fetching: false, 
+              error: "Error in fetching!!"
+            });
           default:
           return state;
       }
