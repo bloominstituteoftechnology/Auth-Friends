@@ -8,7 +8,8 @@ import CreateFriendForm from '../components/CreateFriendForm';
 class App extends Component {
   componentDidMount() {
     this.props.fetchFriends();
-  } 
+  }
+  
 
   render() {
     return (
@@ -17,7 +18,8 @@ class App extends Component {
           <h2>fetching friends...</h2>
         ) : (
           <div>
-            <Friends />
+            <Friends friends={this.props.friends}/>
+            <CreateFriendForm />
           </div>
         )}
       </div>
@@ -28,7 +30,8 @@ class App extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    friends: []
+    friends: state.friendReducer.friends,
+    fetching: state.friendReducer.fetchingFriends
   }
 }
 

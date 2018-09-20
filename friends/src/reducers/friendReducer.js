@@ -1,8 +1,9 @@
-import { FETCHING_FRIENDS, FRIENDS_FETCHED, FETCH_ERROR } from '../actions';
+import { FETCHING_FRIENDS, FRIENDS_FETCHED, FETCH_ERROR, ADDING_FRIEND, FRIEND_ADDED, ADDING_ERROR } from '../actions';
 
 const initialState = {
     fetchingFriends: false,
     friendsFetched: false,
+    addingFriend: false,
     friendsSaved: false,   
     savingFriends: false,   
     updatingFriend: false,   
@@ -29,6 +30,15 @@ export const friendReducer = (state = initialState, action) => {
                 fetchingFriends: false,
                 error: "Error, can't fetch friends"
             });
+        
+        case ADDING_FRIEND:
+            return { ...state, addingFriend: true };
+        
+        case FRIEND_ADDED:
+            return { ...state, addingFriend: false, friends: action.payload };
+
+        case ADDING_ERROR:
+            return { ...state, addingFriend: false, error: action.payload };
         
         default:
             return state;

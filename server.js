@@ -1,6 +1,6 @@
-const express = require('../../Library/Caches/typescript/2.9/node_modules/@types/express');
-const bodyParser = require('../../Library/Caches/typescript/2.9/node_modules/@types/body-parser');
-const cors = require('../../Library/Caches/typescript/2.9/node_modules/@types/cors');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const port = 5000;
 const app = express();
 
