@@ -27,12 +27,12 @@ export const crudReducers = (state = initialState, action) => {
             console.error(action.payload);
             return {...state, postingFriend: false, gettingFriends: false, gettingSingleFriend: false, puttingFriend: false, deletingFriend: false, error: action.payload};
         case POSTING_FRIEND: 
-            return {data: action.payload};
+            return {...state, postedFriend: false, postingFriend: true};
         case POSTED_FRIEND: 
-            return {data: action.payload};
+            return {...state, postedFriend: true, postingFriend: false, friends: action.payload};
         case GETTING_FRIENDS: 
             console.log('GETTING_FRIENDS reducer')
-            return {...state, gettingFriends: true};
+            return {...state, gotFriends: false, gettingFriends: true};
         case GOT_FRIENDS: 
             console.log('GOT_FRIENDS reducer action payload', action.payload);
             return {...state, gettingFriends: false, gotFriends: true, friends: [...state.friends, ...action.payload]};

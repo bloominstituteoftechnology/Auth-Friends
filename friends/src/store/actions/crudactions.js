@@ -16,6 +16,7 @@ const dataSource = 'http://localhost:5000/api/friends/';
 
 // Create (POST)
 export const postFriend = (newFriend) => {
+    console.log('postFriends newFriend', newFriend);
     return (dispatch) => {
         dispatch( {type: POSTING_FRIEND} );
         Axios

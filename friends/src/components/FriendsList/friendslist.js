@@ -5,9 +5,12 @@ import Friend from './friend';
 
 const FriendsList = (props) => {
     return (
-        <div>
-            {props.friends.map( (friend) => <Friend friend={friend} key={friend.id} /> )}
-        </div>
+        props.gettingFriends ? 
+            <p>Getting Friends. Please wait...</p> 
+        : 
+            <div>
+                {props.friends.map( (friend) => <Friend friend={friend} key={friend.id} /> )}
+            </div>
     );
 };
 
@@ -17,7 +20,8 @@ FriendsList.propTypes = {
         name: PropTypes.string,
         age: PropTypes.number,
         email: PropTypes.string
-    })).isRequired
+    })).isRequired,
+    gettingFriends: PropTypes.bool.isRequired
 };
 
 export default FriendsList;

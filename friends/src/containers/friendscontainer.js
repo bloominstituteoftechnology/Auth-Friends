@@ -10,7 +10,12 @@ class FriendsContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //some input fields or something
+            friend: {
+                id: -1,
+                name: '',
+                age: '',
+                email: ''
+            }
         };
     };
 
@@ -20,23 +25,53 @@ class FriendsContainer extends Component {
     };
 
     inputHandler = (event) => {
-        this.setState({
-            ...this.state,
-            [event.target.name]: event.target.value
-        });
+        if(event.target.name === 'age') {
+            this.setState({
+                ...this.state,
+                friend: {
+                    ...this.state.friend,
+                    [event.target.name]: Number(event.target.value)
+                }
+            });
+        } else {
+            this.setState({
+                ...this.state,
+                friend: {
+                    ...this.state.friend,
+                    [event.target.name]: event.target.value.toString()
+                }
+            });
+        }
     };
 
     submitHandler = (event) => {
         event.preventDefault();
-        // some action creator
-        // reset component state
-    }
+        console.log('submitHandler');
+        if(this.state.friend.name && this.state.friend.age && this.state.friend.email) {
+            console.log('state fields filled in');
+            // some action creator
+            if(this.state.friend.id === -1) {
+                this.props.postFriend( {name: this.state.friend.name, age: this.state.friend.age, email: this.state.friend.email} );
+            } else {
+                this.props.putFriend( this.state.friend );
+            }
+            // reset component state
+            this.setState({
+                friend: {
+                    id: -1,
+                    name: '',
+                    age: 0,
+                    email: ''
+                }
+            });
+        }
+    };
 
     render() {
         return (
             <Fragment>
-                <FriendsForm inputHandler={this.inputHandler} submitHandler={this.submitHandler} />
-                <FriendsList friends={this.props.friends} />
+                <FriendsForm friend={this.state.friend} inputHandler={this.inputHandler} submitHandler={this.submitHandler} />
+                <FriendsList friends={this.props.friends} gettingFriends={this.props.gettingFriends} />
             </Fragment>
         )
     };
@@ -49,14 +84,23 @@ FriendsContainer.propTypes = {
         name: PropTypes.string,
         age: PropTypes.number,
         email: PropTypes.string
-    }))
+    })),
+    gettingFriends: PropTypes.bool,
+    // gettingSingleFriend: PropTypes.bool,
+    postingFriend: PropTypes.bool,
+    puttingFriend: PropTypes.bool,
+    deletingFriend: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
     console.log('mapStateToProps:', state);
     return {
         friends: state.crudReducers.friends,
-        gettingFriends: state.crudReducers.gettingFriends
+        gettingFriends: state.crudReducers.gettingFriends,
+        // gettingSingleFriend: state.crudReducers.gettingSingleFriend,
+        postingFriend: state.crudReducers.postingFriend,
+        puttingFriend: state.crudReducers.puttingFriend,
+        deletingFriend: state.crudReducers.deletingFriend
     };
 };
 
