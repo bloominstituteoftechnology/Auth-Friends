@@ -24,7 +24,7 @@ FriendsForm.propTypes = {
     friend: PropTypes.shape({
         id: PropTypes.number,
         name: PropTypes.string, 
-        age: PropTypes.number,
+        age: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
         email: PropTypes.string
     })
 };

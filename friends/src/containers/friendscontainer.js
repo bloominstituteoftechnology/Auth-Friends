@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { FriendsForm } from '../components/FriendsForm/';
 import { FriendsList } from '../components/FriendsList/';
-import { postFriend, getFriends } from '../store/actions/';
+import { postFriend, getFriends, putFriend, deleteFriend } from '../store/actions/';
 
 class FriendsContainer extends Component {
     constructor(props) {
@@ -20,8 +20,19 @@ class FriendsContainer extends Component {
     };
 
     componentDidMount() {
-        console.log('componentDidMount');
         this.props.getFriends();
+    };
+
+    resetCompState = () => {
+        this.setState({
+            ...this.state,
+            friend: {
+                id: -1,
+                name: '',
+                age: '',
+                email: ''
+            }
+        });
     };
 
     inputHandler = (event) => {
@@ -46,36 +57,48 @@ class FriendsContainer extends Component {
 
     submitHandler = (event) => {
         event.preventDefault();
-        console.log('submitHandler');
         if(this.state.friend.name && this.state.friend.age && this.state.friend.email) {
-            console.log('state fields filled in');
-            // some action creator
+            // some action creator action creator action creator action.....
             if(this.state.friend.id === -1) {
                 this.props.postFriend( {name: this.state.friend.name, age: this.state.friend.age, email: this.state.friend.email} );
             } else {
                 this.props.putFriend( this.state.friend );
             }
             // reset component state
-            this.setState({
-                friend: {
-                    id: -1,
-                    name: '',
-                    age: 0,
-                    email: ''
-                }
-            });
+            this.resetCompState();
         }
     };
+
+    editHandler = (editFriend) => {
+        // something something something
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        this.setState({
+            ...this.state,
+            friend: {
+                id: editFriend.id,
+                name: editFriend.name,
+                age: editFriend.age,
+                email: editFriend.email
+            }
+        });
+    }
 
     render() {
         return (
             <Fragment>
                 <FriendsForm friend={this.state.friend} inputHandler={this.inputHandler} submitHandler={this.submitHandler} />
-                <FriendsList friends={this.props.friends} gettingFriends={this.props.gettingFriends} />
+                <FriendsList 
+                    friends={this.props.friends} 
+                    editHandler={this.editHandler} 
+                    gettingFriends={this.props.gettingFriends} 
+                    // gettingSingleFriend={this.props.gettingSingleFriend} 
+                    postingFriend={this.props.postingFriend} 
+                    puttingFriend={this.props.puttingFriend} 
+                    deletingFriend={this.props.deletingFriend} 
+                />
             </Fragment>
         )
     };
-
 };
 
 FriendsContainer.propTypes = {
@@ -93,7 +116,6 @@ FriendsContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-    console.log('mapStateToProps:', state);
     return {
         friends: state.crudReducers.friends,
         gettingFriends: state.crudReducers.gettingFriends,
@@ -104,4 +126,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {postFriend, getFriends})(FriendsContainer);
+export default connect(mapStateToProps, { postFriend, getFriends, putFriend, deleteFriend })(FriendsContainer);

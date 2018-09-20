@@ -7,12 +7,12 @@ export const GETTING_FRIENDS = 'GETTING_FRIENDS';
 export const GOT_FRIENDS = 'GOT_FRIENDS';
 // export const GETTING_SINGLE_FRIEND = 'GETTING_SINGLE_FRIEND';
 // export const GOT_SINGLE_FRIEND = 'GOT_SINGLE_FRIEND';
-// export const PUTTING_FRIEND = 'PUTTING_FRIEND';
-// export const PUT_FRIEND = 'PUT_FRIEND';
-// export const DELETING_FRIEND = 'DELETING_FRIEND';
-// export const DELETED_FRIEND = 'DELETED_FRIEND';
+export const PUTTING_FRIEND = 'PUTTING_FRIEND';
+export const PUT_FRIEND = 'PUT_FRIEND';
+export const DELETING_FRIEND = 'DELETING_FRIEND';
+export const DELETED_FRIEND = 'DELETED_FRIEND';
 
-const dataSource = 'http://localhost:5000/api/friends/';
+const dataSource = 'http://localhost:5000/api/friends';
 
 // Create (POST)
 export const postFriend = (newFriend) => {
@@ -32,17 +32,14 @@ export const postFriend = (newFriend) => {
 
 // Read (GET)
 export const getFriends = () => {
-    console.log('getFriends');
     return (dispatch) => {
         dispatch( {type: GETTING_FRIENDS} );
         Axios
             .get(dataSource)
             .then( (response) => {
-                console.log('response', response);
                 dispatch( {type: GOT_FRIENDS, payload: response.data} );
             })
             .catch( (err) => {
-                console.log('err', err);
                 dispatch( {type: CRUD_ERROR, payload: err.message} );
             });
     };
@@ -65,31 +62,31 @@ export const getFriends = () => {
 // };
 
 // Update (PUT)
-// export const putFriend = (updatedFriend) => {
-//     return (dispatch) => {
-//         dispatch( {type: PUTTING_FRIEND} );
-//         Axios
-//             .put(`${dataSource}/${updatedFriend.id}`, updatedFriend)
-//             .then( (response) => {
-//                 dispatch( {type: PUT_FRIEND, payload: response.data.results} );
-//             })
-//             .catch( (err) => {
-//                 dispatch( {type: CRUD_ERROR, payload: err.message} )
-//             });
-//     };
-// };
+export const putFriend = (updatedFriend) => {
+    return (dispatch) => {
+        dispatch( {type: PUTTING_FRIEND} );
+        Axios
+            .put(`${dataSource}/${updatedFriend.id}`, updatedFriend)
+            .then( (response) => {
+                dispatch( {type: PUT_FRIEND, payload: response.data} );
+            })
+            .catch( (err) => {
+                dispatch( {type: CRUD_ERROR, payload: err.message} )
+            });
+    };
+};
 
 // Delete (DELETE)
-// export const deleteFriend = (friendId) => {
-//     return (dispatch) => {
-//         dispatch( {type: DELETING_FRIEND} );
-//         Axios
-//             .delete(`${dataSource}/${friendId}`)
-//             .then( (response) => {
-//                 dispatch( {type: DELETED_FRIEND, payload: response.data} );
-//             })
-//             .catch( (err) => {
-//                 dispatch( {type: DELETE_ERROR, payload: err.message} );
-//             });
-//     };
-// };
+export const deleteFriend = (friendId) => {
+    return (dispatch) => {
+        dispatch( {type: DELETING_FRIEND} );
+        Axios
+            .delete(`${dataSource}/${friendId}`)
+            .then( (response) => {
+                dispatch( {type: DELETED_FRIEND, payload: response.data} );
+            })
+            .catch( (err) => {
+                dispatch( {type: CRUD_ERROR, payload: err.message} );
+            });
+    };
+};

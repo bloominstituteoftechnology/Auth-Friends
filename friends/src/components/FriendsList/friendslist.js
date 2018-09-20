@@ -5,11 +5,11 @@ import Friend from './friend';
 
 const FriendsList = (props) => {
     return (
-        props.gettingFriends ? 
-            <p>Getting Friends. Please wait...</p> 
+        props.postingFriend || props.gettingFriends || props.puttingFriend || props.deletingFriend ? 
+            <p>Getting friends. Please wait. :)</p> 
         : 
             <div>
-                {props.friends.map( (friend) => <Friend friend={friend} key={friend.id} /> )}
+                {props.friends.map( (friend) => <Friend friend={friend} editHandler={props.editHandler} key={friend.id} /> )}
             </div>
     );
 };
@@ -21,7 +21,11 @@ FriendsList.propTypes = {
         age: PropTypes.number,
         email: PropTypes.string
     })).isRequired,
-    gettingFriends: PropTypes.bool.isRequired
+    editHandler: PropTypes.func,
+    postingFriend: PropTypes.bool.isRequired,
+    gettingFriends: PropTypes.bool.isRequired,
+    puttingFriend: PropTypes.bool.isRequired,
+    deletingFriend: PropTypes.bool.isRequired
 };
 
 export default FriendsList;

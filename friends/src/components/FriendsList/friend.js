@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Friend = (props) => {
     return (
         <div>
-            <h3>{props.friend.name}</h3>
+            <h3 onClick={() => props.editHandler(props.friend) } >{props.friend.name}</h3>
             <p>Age: {props.friend.age}</p>
             <p>Email: {props.friend.email}</p>
         </div>
@@ -17,7 +17,8 @@ Friend.propTypes = {
         name: PropTypes.string.isRequired,
         age: PropTypes.number.isRequired,
         email: PropTypes.string.isRequired
-    })
+    }),
+    editHandler: PropTypes.func.isRequired
 };
 
 export default Friend;
