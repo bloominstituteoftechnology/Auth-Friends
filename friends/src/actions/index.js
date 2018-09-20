@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const FETCHING = 'FETCHING';
 export const FETCHED = 'FETCHED';
+export const FRIEND_FETCHED = 'FRIEND_FETCHED';
 export const ERRORS = 'ERRORS';
 
 export const deleteFriend = id => {
@@ -55,8 +56,25 @@ export const fetchFriend = id => {
       .get(`http://localhost:5000/api/friends/${id}`)
 
       .then(response => {
+        // console.log(response);
+        dispatch({ type: FRIEND_FETCHED, payload: response.data });
+      })
+
+      .catch(error => dispatch({ type: ERRORS, payload: error }));
+  };
+};
+
+export const editFriend = updatedFriend => {
+  return dispatch => {
+    dispatch({ type: FETCHING });
+    axios
+      .put(`http://localhost:5000/api/friends/${updatedFriend.id}`, {
+        updatedFriend
+      })
+
+      .then(response => {
         console.log(response);
-        dispatch({ type: FETCHED, payload: response.data });
+        dispatch({ type: FETCHED, payload: updatedFriend });
       })
 
       .catch(error => dispatch({ type: ERRORS, payload: error }));
