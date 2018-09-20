@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { friendsActions } from '../Store/Actions'
+import { friendFetch, friendPost } from '../Store/Actions'
 
 import Friend from '../Presentational/Friend'
 import FreindsForm from '../Presentational/FriendsForm';
 
 class FriendsList extends Component {
+
+  componentDidMount() {
+    this.props.friendFetch();
+  }
+
   render() {
     return (
       <div>
@@ -27,4 +32,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { friendsActions })(FriendsList);
+export default connect(mapStateToProps, { friendFetch, friendPost })(FriendsList);
