@@ -1,6 +1,8 @@
 import axios from 'axios';
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
 export const FETCHED_FRIENDS = 'FETCHED_FRIENDS';
+export const ADDING_FRIENDS = 'ADDING_FRIENDS';
+export const ADDED_FRIENDS = 'ADDED_FRIENDS';
 export const ERROR = 'ERROR';
 
 export const getFriends = () => {
@@ -13,6 +15,25 @@ export const getFriends = () => {
             })
             .catch(err=>{
                 dispatch({type: ERROR, payload: err});
+            })
+    }
+}
+
+export const addFriends = (name, age, email) => {
+    const promise = axios.post('http://localhost:5000/api/friends', {
+        name: name,
+        age: age,
+        email: email
+    });
+    return function(dispatch){
+        dispatch({type:ADDING_FRIENDS});
+        promise
+            .then(response => {
+                console.log(response.data)
+                dispatch({type: ADDED_FRIENDS, payload: response.data});
+            })
+            .catch(err => {
+                dispatch({type: ERROR, payload: err})
             })
     }
 }
