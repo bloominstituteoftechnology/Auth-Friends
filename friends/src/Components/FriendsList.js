@@ -8,8 +8,8 @@ import FreindsForm from '../Presentational/FriendsForm';
 class FriendsList extends Component {
   state = {
     name: '',
-    age: 15,
-    email: 'ginger@gmail.com'
+    age: 0,
+    email: ''
   }
 
   componentDidMount() {
@@ -17,13 +17,19 @@ class FriendsList extends Component {
   }
 
   handleChange = event => {
-    this.setState({[event.target.name]: event.target.value})
+    if(event.target.name === 'age') {
+      const number = parseInt(event.target.value);
+      this.setState({[event.target.name]: number})
+    } else {
+      this.setState({[event.target.name]: event.target.value})
+    }
+    
   }
 
   handleClick = event => {
     event.preventDefault();
     this.props.friendPost(this.state);
-    this.setState({name: ''})
+    this.setState({name: '', age: 0, email: ''});
   }
 
   render() {
@@ -35,6 +41,7 @@ class FriendsList extends Component {
           ))}
         </div>
         <FreindsForm 
+          name={this.state.name}
           handleChange={this.handleChange}
           handleClick={this.handleClick}
         />
@@ -44,7 +51,6 @@ class FriendsList extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     friends: state.friends
   }

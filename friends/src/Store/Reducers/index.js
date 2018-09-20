@@ -24,7 +24,7 @@ export const friendReducers = (state = initalState, action) => {
       return Object.assign({}, state, { fetching: false, friends: action.payload });
 
     case ERROR_ADD:
-      return Object.assign({}, state, { error: `Error adding friends ${action.payload}` });
+      return Object.assign({}, state, { error: `Error fetching friends ${action.payload}` });
 
     default: 
       return state;
