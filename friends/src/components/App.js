@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FriendsList from './FriendsList';
-import FriendForm from './FriendForm';
-export default class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <FriendsList />
-        <FriendForm />
-      </div>
-    );
-  }
-}
+import FriendForm from '../components/FriendForm';
+
+const App = () => {
+  return (
+    <div className="App">
+      <FriendsList />
+      <FriendForm />
+    </div>
+  );
+};
+
+export default App;
