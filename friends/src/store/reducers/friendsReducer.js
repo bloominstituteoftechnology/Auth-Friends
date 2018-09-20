@@ -1,4 +1,14 @@
-import { FETCHING_FRIEND, FRIEND_FETCH_SUCCESS, FRIEND_FETCH_ERROR } from '../actions';
+import { 
+  
+  FETCHING_FRIEND, 
+  FRIEND_FETCH_SUCCESS, 
+  FRIEND_FETCH_ERROR,
+
+  ADD_FRIEND_START,
+  ADD_FRIEND_COMPLETE,
+  ADD_FRIEND_FAILURE
+ } from '../actions';
+
 const initialState = {
   // define a few properties here.
   // Array friends, Boolean fetching, Boolean fetched, null error.
@@ -23,7 +33,14 @@ export const friendsReducer = (state = initialState, action) => {
         fetchingFriends: false, //we're also no longer fetching here so set the boolean to false
         error: "Error occured fetching Friends" // now we're getting an error back, set the error message
       });
-  
+    case ADD_FRIEND_START:
+      return { ...state, addingFriend: true };
+    case ADD_FRIEND_COMPLETE:
+      return { ...state, addingFriend: false, friends: action.payload};
+    case ADD_FRIEND_FAILURE:
+      console.log(action.payload);
+      return { ...state, addingFriend: false, error: action.payload};
+
     default:
       return state;
   }
