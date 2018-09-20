@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import { getFriends } from './actions';
+import Friends from './components/Friends.js';
 
 class App extends Component {
+  
+  state = {
+    name: '',
+    age: '',
+    email: ''
+  }
+
+  componentDidMount() {
+    this.props.getFriends();
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,4 +32,19 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStatetoProps = (state) => {
+  console.log(state);
+  return {
+    friends: state.friends,
+    
+    friendsFetched: state.friendsFetched,
+
+    error: state.error
+  }
+}
+
+const actions = {
+  getFriends
+}
+
+export default connect(mapStatetoProps, actions)(App);
