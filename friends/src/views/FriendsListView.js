@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { Friend } from '../components/Friend/Friend';
 
 const FriendsListView = props => {
+	console.log('rerender friendslistview')
 	return(
 		<div>
 			{ props.friendsList.map((friend, i) => 

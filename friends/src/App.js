@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 // Dependencies
 import { connect } from 'react-redux';
+import { Route, Link } from 'react-router-dom';
 
 // Components
 import { FriendsListView, PostFriendFormView } from './views';
@@ -22,10 +23,13 @@ class App extends Component {
 		return (
 			<div className="App">
 				<p>{ this.props.fetchingFriendsListError }</p>
+				<Link to = '/'>Home</Link>
+				<Link to = '/postfriendform'>Post New Friend</Link>
 
-				{ this.props.fetchingFriendsList ? <p>Fetching your friends list...</p> : <FriendsListView /> }
+				{/* <Route path = '/' component = { this.props.fetchingFriendsList ? <p>Fetching your friends list...</p> : <FriendsListView /> } /> */}
+				<Route exact path = '/' component = { FriendsListView } />
 
-				<PostFriendFormView />
+				<Route path = '/postfriendform' component = { PostFriendFormView } />
 			</div>
 		);
 	}

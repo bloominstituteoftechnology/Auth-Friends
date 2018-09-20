@@ -1,6 +1,7 @@
 // React
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Redux
 import { createStore, combineReducers, applyMiddleware } from 'redux';
@@ -29,7 +30,9 @@ const rootElement = document.getElementById('root');
 
 ReactDOM.render(
 	<Provider store = { store }>
-		<App />
+		<Router>
+			<Route path = '/' component = { App } />
+		</Router>
 	</Provider>, 
 	rootElement
 );
