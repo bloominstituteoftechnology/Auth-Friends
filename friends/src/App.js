@@ -5,7 +5,7 @@ import FriendForm from './components/FriendForm';
 // import './styles/App.css';
 import { fetchData, addFriend, updateForm } from './actions';
 class App extends Component {
-
+  //Set the initial state of the App component
   state = {
     inputData: {
       name: '',
@@ -15,10 +15,12 @@ class App extends Component {
   };
   
   componentDidMount() {
+    //When mounted, run the fetchData action which calls the API
     this.props.fetchData();
   }
   
   handleInput = (event) => {
+    //Event handler for when you start typing in a form
     this.setState({
       inputData: {
         ...this.state.inputData,
@@ -28,6 +30,7 @@ class App extends Component {
   };
 
   handleAdd = (event) => {
+    //Event handler for when you click a button that you want to trigger info added
     event.preventDefault();
     this.props.addFriend(this.state.inputData);
     this.resetForm();
@@ -70,6 +73,7 @@ class App extends Component {
 }
 const mapStateToProps = (state) => {
   return {
+    //Basically maps actions and reducers to the state
     fetchingData: state.friendsReducer.fetchingData,
     dataFetched: state.friendsReducer.dataFetched,
     addingFriend: state.friendsReducer.addingFriend,

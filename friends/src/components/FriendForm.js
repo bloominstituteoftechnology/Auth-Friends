@@ -8,6 +8,7 @@ const FriendForm = (props) => {
         type="text"
         name="name"
         placeholder="Name"
+        //Notice below, we're filling in the name prop thats part of the inputData prop object we set in App.js
         value={props.inputData.name}
         onChange={props.handleInput}
       />
