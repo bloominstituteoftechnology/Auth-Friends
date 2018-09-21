@@ -1,0 +1,28 @@
+.friend {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+	border: 1px solid white;
+	border-radius: 5px;
+	width: 50vw;
+	margin: 10px;
+}
+
+.friend * {
+	margin: 10px;
+}
+
+.friend a {
+	color: white;
+	text-decoration: none;
+	border: 1px solid white;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+
+.friend a:hover {
+	background: white;
+	color: #444;
+}

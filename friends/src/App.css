@@ -17,7 +17,8 @@
 	border-radius: 5px;
 }
 .App header a:hover {
-	text-decoration: underline;
+	background: white;
+	color: #444;
 }
 
 .active-link {

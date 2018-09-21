@@ -8,9 +8,12 @@ import { connect } from 'react-redux';
 // Components
 import { Friend } from '../components/Friend/Friend';
 
+// Styles
+import '../css/FriendsListView.css';
+
 const FriendsListView = props => {
 	return(
-		<div>
+		<div className = 'friends-list'>
 			<Route exact path = '/friendslist' component = { () => 
 				<div>
 					{ props.friendsList.map((friend, i) => 
