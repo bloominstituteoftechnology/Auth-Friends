@@ -1,12 +1,18 @@
 import React from 'react';
 import Friend from './Friend';
-
 const FriendsList = (props) => {
   return (
+    // console.log('Friend List', props),
     <div>
-      <h1>Here be your friends:</h1>
+      <h1>Friend List</h1>
       {props.friends.map((friend) => {
-        return <Friend friend={friend} key={friend.id} />;
+        return (
+          <Friend
+            friend={friend}
+            updateForm={props.updateForm}
+            key={friend.id}
+          />
+        );
       })}
     </div>
   );
