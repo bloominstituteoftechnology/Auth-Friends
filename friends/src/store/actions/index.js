@@ -13,3 +13,11 @@ export {
 
 	postNewFriend
 } from './postFriendFormActions';
+
+export {
+	PUTTING_NEW_FRIEND,
+	PUTTING_NEW_FRIEND_COMPLETE,
+	PUTTING_NEW_FRIEND_ERROR,
+
+	putNewFriend
+} from './putFriendFormActions';

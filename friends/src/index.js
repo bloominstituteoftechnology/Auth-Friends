@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 
 // Reducers
-import { friendsListReducer, postFriendFormReducer } from './store/reducers';
+import { friendsListReducer, postFriendFormReducer, putFriendFormReducer } from './store/reducers';
 
 // MiddleWare
 import thunk from 'redux-thunk';
@@ -23,7 +23,7 @@ import App from './App';
 // Styles
 import './index.css';
 
-const reducers = combineReducers({ friendsListReducer, postFriendFormReducer });
+const reducers = combineReducers({ friendsListReducer, postFriendFormReducer, putFriendFormReducer });
 const middleWareQueue = applyMiddleware(thunk, logger);
 const store = createStore(reducers, middleWareQueue);
 const rootElement = document.getElementById('root');

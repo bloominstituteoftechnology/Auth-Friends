@@ -5,22 +5,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Actions
-import { postNewFriend, getFriendsList } from '../../store/actions';
+import { putNewFriend, getFriendsList } from '../../store/actions';
 
-class PostFriendForm extends React.Component {
+class PutFriendForm extends React.Component {
 	state = {
 		name: '',
 		age: '',
 		email: ''
 	};
 
-	handleInputChange = e => this.setState({...this.state, [e.target.name]: e.target.value });
+	handleInputChange = e => this.setState({ ...this.state, [e.target.name]: e.target.value });
 
 	handleSubmit = e => {
 		e.preventDefault();
-		
+
 		new Promise(() => {
-			this.props.postNewFriend({
+			this.props.putNewFriend({
+				id: this.props.friend.id,
 				name: e.target[0].value,
 				age: Number(e.target[1].value),
 				email: e.target[2].value,
@@ -38,6 +39,7 @@ class PostFriendForm extends React.Component {
 					type = 'text' 
 					name = 'name' 
 					value = { this.state.name } 
+					placeholder = { this.props.friend.name } 
 					onChange = { this.handleInputChange }
 				/>
 
@@ -46,6 +48,7 @@ class PostFriendForm extends React.Component {
 					type = 'number' 
 					name = 'age' 
 					value = { this.state.age } 
+					placeholder = { this.props.friend.age } 
 					onChange = { this.handleInputChange }
 				/>
 				
@@ -54,10 +57,11 @@ class PostFriendForm extends React.Component {
 					type = 'text' 
 					name = 'email' 
 					value = { this.state.email } 
+					placeholder = { this.props.friend.email } 
 					onChange = { this.handleInputChange }
 				/>
 
-				<button>Add New Friend</button>
+				<button>Save Changes to { this.props.friend.name }</button>
 			</form>
 		);
 	}
@@ -65,4 +69,4 @@ class PostFriendForm extends React.Component {
 
 const mapStateToProps = state => ({});
 
-export default connect (mapStateToProps, { postNewFriend, getFriendsList })(PostFriendForm);
+export default connect (mapStateToProps, { putNewFriend, getFriendsList })(PutFriendForm);

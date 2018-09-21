@@ -1,5 +1,6 @@
 // React
 import React from 'react';
+import { Route } from 'react-router-dom';
 
 // Dependencies
 import { connect } from 'react-redux';
@@ -10,12 +11,16 @@ import { Friend } from '../components/Friend/Friend';
 const FriendsListView = props => {
 	return(
 		<div>
-			{ props.friendsList.map((friend, i) => 
-				<Friend 
-					key = { i } 
-					friend = { friend } 
-				/>
-			) }
+			<Route exact path = '/friendslist' component = { () => 
+				<div>
+					{ props.friendsList.map((friend, i) => 
+						<Friend 
+							key = { i } 
+							friend = { friend } 
+						/>
+					) }
+				</div>
+			} />
 		</div>
 	);
 }
