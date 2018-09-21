@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { FriendsForm } from '../components/FriendsForm/';
 import { FriendsList } from '../components/FriendsList/';
-import { postFriend, getFriends, putFriend, deleteFriend } from '../store/actions/';
+import { postFriend, getFriends,/* getSingleFriend,*/ putFriend, deleteFriend } from '../store/actions/';
 
 class FriendsContainer extends Component {
     constructor(props) {
@@ -60,7 +60,8 @@ class FriendsContainer extends Component {
         if(this.state.friend.name && this.state.friend.age && this.state.friend.email) {
             // some action creator action creator action creator action.....
             if(this.state.friend.id === -1) {
-                this.props.postFriend( {name: this.state.friend.name, age: this.state.friend.age, email: this.state.friend.email} );
+                const newFriend = {name: this.state.friend.name, age: this.state.friend.age, email: this.state.friend.email};
+                this.props.postFriend( newFriend );
             } else {
                 this.props.putFriend( this.state.friend );
             }
@@ -71,16 +72,11 @@ class FriendsContainer extends Component {
 
     editHandler = (editFriend) => {
         // something something something
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
         this.setState({
             ...this.state,
-            friend: {
-                id: editFriend.id,
-                name: editFriend.name,
-                age: editFriend.age,
-                email: editFriend.email
-            }
+            friend: editFriend
         });
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
 
     render() {
@@ -95,11 +91,7 @@ class FriendsContainer extends Component {
                     friends={this.props.friends} 
                     editHandler={this.editHandler} 
                     deleteFriend={this.props.deleteFriend} 
-                    gettingFriends={this.props.gettingFriends} 
-                    // gettingSingleFriend={this.props.gettingSingleFriend} 
-                    postingFriend={this.props.postingFriend} 
-                    puttingFriend={this.props.puttingFriend} 
-                    deletingFriend={this.props.deletingFriend} 
+                    crudStates={this.props.crudStates} 
                 />
             </Fragment>
         )
@@ -113,22 +105,30 @@ FriendsContainer.propTypes = {
         age: PropTypes.number,
         email: PropTypes.string
     })),
-    gettingFriends: PropTypes.bool,
-    // gettingSingleFriend: PropTypes.bool,
-    postingFriend: PropTypes.bool,
-    puttingFriend: PropTypes.bool,
-    deletingFriend: PropTypes.bool
+    postFriend: PropTypes.func, 
+    getFriends: PropTypes.func, 
+    // getSingleFriend: PropTypes.func, 
+    putFriend: PropTypes.func, 
+    deleteFriend: PropTypes.func, 
+    crudStates: PropTypes.shape({
+        postingFriend: PropTypes.bool,
+        postedFriend: PropTypes.bool, 
+        gettingFriends: PropTypes.bool,
+        gotFriends: PropTypes.bool, 
+        // gettingSingleFriend: PropTypes.bool,
+        // gotSingleFriend: PropTypes.bool, 
+        puttingFriend: PropTypes.bool,
+        putFriend: PropTypes.bool, 
+        deletingFriend: PropTypes.bool,
+        deletedFriend: PropTypes.bool
+    })
 };
 
 const mapStateToProps = (state) => {
     return {
         friends: state.crudReducers.friends,
-        gettingFriends: state.crudReducers.gettingFriends,
-        // gettingSingleFriend: state.crudReducers.gettingSingleFriend,
-        postingFriend: state.crudReducers.postingFriend,
-        puttingFriend: state.crudReducers.puttingFriend,
-        deletingFriend: state.crudReducers.deletingFriend
+        crudStates: state.crudReducers.crudStates
     };
 };
 
-export default connect(mapStateToProps, { postFriend, getFriends, putFriend, deleteFriend })(FriendsContainer);
+export default connect(mapStateToProps, { postFriend, getFriends,/* getSingleFriend,*/ putFriend, deleteFriend })(FriendsContainer);

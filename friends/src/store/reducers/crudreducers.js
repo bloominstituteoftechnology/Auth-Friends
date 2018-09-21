@@ -4,6 +4,8 @@ import {
     POSTED_FRIEND, 
     GETTING_FRIENDS, 
     GOT_FRIENDS, 
+    // GETTING_SINGLE_FRIEND, 
+    // GOT_SINGLE_FRIEND, 
     PUTTING_FRIEND, 
     PUT_FRIEND, 
     DELETING_FRIEND, 
@@ -11,16 +13,18 @@ import {
 } from '../actions/';
 
 const initialState = {
-    postingFriend: false,
-    postedFriend: false,
-    gettingFriends: false,
-    gotFriends: false,
-    gettingSingleFriend: false,
-    gotSingleFriend: false,
-    puttingFriend: false,
-    putFriend: false,
-    deletingFriend: false,
-    deletedFriend: false,
+    crudStates: {
+        postingFriend: false,
+        postedFriend: false,
+        gettingFriends: false,
+        gotFriends: false,
+        // gettingSingleFriend: false,
+        // gotSingleFriend: false,
+        puttingFriend: false,
+        putFriend: false,
+        deletingFriend: false,
+        deletedFriend: false,
+    },
     friends: [],
     error: null
   };
@@ -28,24 +32,26 @@ const initialState = {
 export const crudReducers = (state = initialState, action) => {
     switch(action.type) {
         case CRUD_ERROR:
-            console.error(action.payload);
-            return {...state, postingFriend: false, gettingFriends: false, gettingSingleFriend: false, puttingFriend: false, deletingFriend: false, error: action.payload};
+            console.error('Error:', action.payload);
+            return {...state, crudStates: {...state.crudStates, postingFriend: false, gettingFriends: false, gettingSingleFriend: false, puttingFriend: false, deletingFriend: false}, error: action.payload};
         case POSTING_FRIEND: 
-            return {...state, postedFriend: false, postingFriend: true};
+            return {...state, crudStates: {...state.crudStates, postedFriend: false, postingFriend: true}};
         case POSTED_FRIEND: 
-            return {...state, postedFriend: true, postingFriend: false, friends: action.payload};
+            return {...state, crudStates: {...state.crudStates, postedFriend: true, postingFriend: false}, friends: action.payload};
         case GETTING_FRIENDS: 
-            return {...state, gotFriends: false, gettingFriends: true};
+            return {...state, crudStates: {...state.crudStates, gotFriends: false, gettingFriends: true}};
         case GOT_FRIENDS: 
-            return {...state, gettingFriends: false, gotFriends: true, friends: action.payload};
+            return {...state, crudStates: {...state.crudStates, gettingFriends: false, gotFriends: true}, friends: action.payload};
+        // case GETTING_SINGLE_FRIEND:
+        // case GOT_SINGLE_FRIEND:
         case PUTTING_FRIEND:
-            return {...state, putFriend: false, puttingFriend: true};
+            return {...state, crudStates: {...state.crudStates, putFriend: false, puttingFriend: true}};
         case PUT_FRIEND:
-            return {...state, putFriend: true, puttingFriend: false, friends: action.payload};
+            return {...state, crudStates: {...state.crudStates, putFriend: true, puttingFriend: false}, friends: action.payload};
         case DELETING_FRIEND:
-            return {...state, deletedFriend: false, deletingFriend: true};
+            return {...state, crudStates: {...state.crudStates, deletedFriend: false, deletingFriend: true}};
         case DELETED_FRIEND:
-            return {...state, deletedFriend: true, deletingFriend: false, friends: action.payload};
+            return {...state, crudStates: {...state.crudStates, deletedFriend: true, deletingFriend: false}, friends: action.payload};
         default:
             return state;
     }

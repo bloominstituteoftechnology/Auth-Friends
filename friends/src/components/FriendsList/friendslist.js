@@ -5,7 +5,7 @@ import Friend from './friend';
 
 const FriendsList = (props) => {
     return (
-        props.postingFriend || props.gettingFriends || props.puttingFriend || props.deletingFriend ? 
+        props.crudStates.postingFriend || props.crudStates.gettingFriends || props.crudStates.puttingFriend || props.crudStates.deletingFriend /* || props.crudStates.gettingSingleFriend */ ? 
             <p>Getting friends. Please wait. :)</p> 
         : 
             <div>
@@ -29,11 +29,19 @@ FriendsList.propTypes = {
         email: PropTypes.string
     })).isRequired,
     editHandler: PropTypes.func,
-    postingFriend: PropTypes.bool.isRequired,
-    gettingFriends: PropTypes.bool.isRequired,
-    // gettingSingleFriend: PropTypes.bool, 
-    puttingFriend: PropTypes.bool.isRequired,
-    deletingFriend: PropTypes.bool.isRequired
+    deleteFriend: PropTypes.func, 
+    crudStates: PropTypes.shape({
+        postingFriend: PropTypes.bool.isRequired,
+        postedFriend: PropTypes.bool, 
+        gettingFriends: PropTypes.bool.isRequired,
+        gotFriends: PropTypes.bool, 
+        // gettingSingleFriend: PropTypes.bool.isRequired,
+        // gotSingleFriend: PropTypes.bool, 
+        puttingFriend: PropTypes.bool.isRequired,
+        putFriend: PropTypes.bool, 
+        deletingFriend: PropTypes.bool.isRequired,
+        deletedFriend: PropTypes.bool
+    })
 };
 
 export default FriendsList;
