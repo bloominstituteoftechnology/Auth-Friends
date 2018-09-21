@@ -15,8 +15,8 @@ const Friend = (props) => {
             <p>Age: {props.friend.age}</p>
             <p>Email: {props.friend.email}</p>
         </div>
-    );
-}
+    )
+};
 
 Friend.propTypes = {
     friend: PropTypes.shape({
@@ -25,8 +25,8 @@ Friend.propTypes = {
         age: PropTypes.number.isRequired,
         email: PropTypes.string.isRequired
     }),
-    deleteFriend: PropTypes.func.isRequired, 
-    editHandler: PropTypes.func.isRequired
+    editHandler: PropTypes.func.isRequired, 
+    deleteFriend: PropTypes.func.isRequired
 };
 
 export default Friend;

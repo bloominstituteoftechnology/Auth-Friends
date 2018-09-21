@@ -24,16 +24,16 @@ const initialState = {
         putFriend: false,
         deletingFriend: false,
         deletedFriend: false,
+        crudError: null
     },
-    friends: [],
-    error: null
+    friends: []
   };
 
 export const crudReducers = (state = initialState, action) => {
     switch(action.type) {
         case CRUD_ERROR:
             console.error('Error:', action.payload);
-            return {...state, crudStates: {...state.crudStates, postingFriend: false, gettingFriends: false, gettingSingleFriend: false, puttingFriend: false, deletingFriend: false}, error: action.payload};
+            return {...state, crudStates: {...state.crudStates, postingFriend: false, gettingFriends: false, /*gettingSingleFriend: false,*/ puttingFriend: false, deletingFriend: false, crudError: action.payload}};
         case POSTING_FRIEND: 
             return {...state, crudStates: {...state.crudStates, postedFriend: false, postingFriend: true}};
         case POSTED_FRIEND: 

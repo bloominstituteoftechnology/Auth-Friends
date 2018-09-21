@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Styled from 'styled-components';
 
 import Friend from './friend';
+
+const ErrorP = Styled.p`
+    color: #FF0000;
+`;
 
 const FriendsList = (props) => {
     return (
         props.crudStates.postingFriend || props.crudStates.gettingFriends || props.crudStates.puttingFriend || props.crudStates.deletingFriend /* || props.crudStates.gettingSingleFriend */ ? 
             <p>Getting friends. Please wait. :)</p> 
-        : 
+        : props.crudStates.crudError !== null ? 
+            <ErrorP>Friend {props.crudStates.crudError}</ErrorP>
+        :
             <div>
                 {props.friends.map( (friend) => 
                     <Friend 
@@ -18,7 +25,7 @@ const FriendsList = (props) => {
                     /> 
                 )}
             </div>
-    );
+    )
 };
 
 FriendsList.propTypes = {
@@ -28,8 +35,6 @@ FriendsList.propTypes = {
         age: PropTypes.number,
         email: PropTypes.string
     })).isRequired,
-    editHandler: PropTypes.func,
-    deleteFriend: PropTypes.func, 
     crudStates: PropTypes.shape({
         postingFriend: PropTypes.bool.isRequired,
         postedFriend: PropTypes.bool, 
@@ -40,8 +45,11 @@ FriendsList.propTypes = {
         puttingFriend: PropTypes.bool.isRequired,
         putFriend: PropTypes.bool, 
         deletingFriend: PropTypes.bool.isRequired,
-        deletedFriend: PropTypes.bool
-    })
+        deletedFriend: PropTypes.bool, 
+        crudError: PropTypes.string
+    }), 
+    editHandler: PropTypes.func,
+    deleteFriend: PropTypes.func, 
 };
 
 export default FriendsList;

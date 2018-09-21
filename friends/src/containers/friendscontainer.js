@@ -52,7 +52,7 @@ class FriendsContainer extends Component {
                     [event.target.name]: event.target.value.toString()
                 }
             });
-        }
+        };
     };
 
     submitHandler = (event) => {
@@ -64,10 +64,10 @@ class FriendsContainer extends Component {
                 this.props.postFriend( newFriend );
             } else {
                 this.props.putFriend( this.state.friend );
-            }
+            };
             // reset component state
             this.resetCompState();
-        }
+        };
     };
 
     editHandler = (editFriend) => {
@@ -77,7 +77,7 @@ class FriendsContainer extends Component {
             friend: editFriend
         });
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-    }
+    };
 
     render() {
         return (
@@ -105,11 +105,6 @@ FriendsContainer.propTypes = {
         age: PropTypes.number,
         email: PropTypes.string
     })),
-    postFriend: PropTypes.func, 
-    getFriends: PropTypes.func, 
-    // getSingleFriend: PropTypes.func, 
-    putFriend: PropTypes.func, 
-    deleteFriend: PropTypes.func, 
     crudStates: PropTypes.shape({
         postingFriend: PropTypes.bool,
         postedFriend: PropTypes.bool, 
@@ -120,8 +115,14 @@ FriendsContainer.propTypes = {
         puttingFriend: PropTypes.bool,
         putFriend: PropTypes.bool, 
         deletingFriend: PropTypes.bool,
-        deletedFriend: PropTypes.bool
-    })
+        deletedFriend: PropTypes.bool, 
+        crudError: PropTypes.string
+    }), 
+    postFriend: PropTypes.func, 
+    getFriends: PropTypes.func, 
+    // getSingleFriend: PropTypes.func, 
+    putFriend: PropTypes.func, 
+    deleteFriend: PropTypes.func
 };
 
 const mapStateToProps = (state) => {

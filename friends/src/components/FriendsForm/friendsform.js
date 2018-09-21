@@ -15,18 +15,18 @@ const FriendsForm = (props) => {
             <br /><br />
             <input type='submit' value='Add Friend' />
         </form>
-    );
+    )
 };
 
 FriendsForm.propTypes = {
-    inputHandler: PropTypes.func.isRequired,
-    submitHandler: PropTypes.func.isRequired,
     friend: PropTypes.shape({
         id: PropTypes.number,
         name: PropTypes.string, 
         age: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
         email: PropTypes.string
-    })
+    }), 
+    inputHandler: PropTypes.func.isRequired,
+    submitHandler: PropTypes.func.isRequired
 };
 
 export default FriendsForm;
