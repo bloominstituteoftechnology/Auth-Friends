@@ -1,3 +1,25 @@
 .App {
 	text-align: center;
+	color: white;
+}
+
+.App header .link-div {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.App header a {
+	color: white;
+	text-decoration: none;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+.App header a:hover {
+	text-decoration: underline;
+}
+
+.active-link {
+	border: 1px solid white;
 }

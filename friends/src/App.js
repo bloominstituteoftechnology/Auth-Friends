@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 // Dependencies
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 // Components
 import { FriendsListView, PostFriendFormView, PutFriendView, PutFriendFormView } from './views';
@@ -22,17 +22,21 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<h1>Welcome to your friends list</h1>
+				<header>
+					<h1>Friends</h1>
+
+					<div className = 'link-div'>
+						<NavLink activeClassName = 'active-link' exact to = '/'>Go Home</NavLink>
+						<NavLink activeClassName = 'active-link' to = '/friendslist'>View Friends List</NavLink>
+						<NavLink activeClassName = 'active-link' to = '/postfriendform'>Post New Friend</NavLink>
+					</div>
+				</header>
 
 				<p>{ this.props.fetchingFriendsListError }</p>
 				<p>{ this.props.postingNewFriendError }</p>
 				<p>{ this.props.puttingNewFriendError }</p>
 
-				<Link to = '/'>Go Home</Link><br />
-				<Link to = '/friendslist'>View Friends List</Link><br />
-				<Link to = '/postfriendform'>Post New Friend</Link>
-
-				<Route exact path = '/' component = { () => <p>Click on a link</p> } />
+				<Route exact path = '/' component = { () => <h3>Welcome to your Friends List!</h3> } />
 
 				<Route exact path = '/friendslist' render = { () => this.props.fetchingFriendsList ? <p>Fetching your friends list...</p> : <FriendsListView /> } />
 
