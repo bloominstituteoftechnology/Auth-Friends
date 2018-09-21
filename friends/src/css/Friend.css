@@ -8,6 +8,7 @@
 	border-radius: 5px;
 	width: 50vw;
 	margin: 10px;
+	background:#222;
 }
 
 .friend * {
@@ -24,5 +25,5 @@
 
 .friend a:hover {
 	background: white;
-	color: #444;
+	color: #222;
 }

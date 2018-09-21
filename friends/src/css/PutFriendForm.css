@@ -1,0 +1,44 @@
+.put-friend-form-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+	margin: 20px;
+}
+
+.put-friend-form-div .put-friend-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+	border: 1px solid white;
+	border-radius: 5px;
+	background-color: #222;
+	width: 50vw;
+	padding: 10px;
+}
+
+.put-friend-form-div .put-friend-form * {
+	margin: 10px;
+}
+
+.put-friend-form-div .put-friend-form input {
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.put-friend-form-div .put-friend-form .submit-btn {
+	border: 1px solid white;
+	border-radius: 5px;
+	padding: 5px 10px;
+	background-color: #222;
+	color: white;
+}
+
+.put-friend-form-div .put-friend-form .submit-btn:hover {
+	background-color: white;
+	color: #222;
+	cursor: pointer;
+}

@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 // Actions
 import { deleteFriend, getFriendsList } from '../store/actions';
 
+// Styles
+import '../css/PutFriendView.css';
+
 class PutFriendView extends React.Component {
 	state = {};
 
@@ -31,15 +34,17 @@ class PutFriendView extends React.Component {
 
 	render() {
 		return(
-			<div>
-				<p>Name: { this.state.name }</p>
-				<p>Age: { this.state.age }</p>
-				<p>Email: { this.state.email }</p>
-				<p>Favorite Color: { this.state.favColor }</p>
+			<div className = 'put-friend-container'>
+				<div className = 'put-friend-div'>
+					<p>Name: { this.state.name }</p>
+					<p>Age: { this.state.age }</p>
+					<p>Email: { this.state.email }</p>
+					<p>Favorite Color: { this.state.favColor }</p>
 
-				<Link to = { `/friendslist/${this.state.id}/edit` }>Edit</Link>
+					<button><Link to = { `/friendslist/${this.state.id}/edit` }>Edit</Link></button>
 
-				<button onClick = { this.handleDeleteFriend }>Delete</button>
+					<button className = 'delete-btn' onClick = { this.handleDeleteFriend }>Delete</button>
+				</div>
 			</div>
 		);
 	}

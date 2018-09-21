@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 // Actions
 import { postNewFriend, getFriendsList } from '../../store/actions';
 
+// Styles
+import '../../css/PostFriendForm.css';
+
 class PostFriendForm extends React.Component {
 	state = {
 		name: '',
@@ -45,10 +48,10 @@ class PostFriendForm extends React.Component {
 
 	render() {
 		return(
-			<div>
+			<div className = 'post-friend-div'>
 				<p>{ this.state.message }</p>
 
-				<form onSubmit = { this.handleSubmit }>
+				<form className = 'post-friend-form' onSubmit = { this.handleSubmit }>
 					Name:
 					<input 
 						type = 'text' 
@@ -81,7 +84,7 @@ class PostFriendForm extends React.Component {
 						onChange = { this.handleInputChange }
 					/>
 
-					<button>Add New Friend</button>
+					<button className = 'submit-btn'>Add New Friend</button>
 				</form>
 			</div>
 		);

@@ -1,0 +1,43 @@
+.post-friend-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.post-friend-div .post-friend-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+	border: 1px solid white;
+	border-radius: 5px;
+	background-color: #222;
+	width: 50vw;
+	padding: 10px;
+}
+
+.post-friend-div .post-friend-form * {
+	margin: 10px;
+}
+
+.post-friend-div .post-friend-form input {
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.post-friend-div .post-friend-form .submit-btn {
+	border: 1px solid white;
+	border-radius: 5px;
+	padding: 5px 10px;
+	background-color: #222;
+	color: white;
+}
+
+.post-friend-div .post-friend-form .submit-btn:hover {
+	background-color: white;
+	color: #222;
+	cursor: pointer;
+}

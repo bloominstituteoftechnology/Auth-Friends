@@ -1,0 +1,45 @@
+.put-friend-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.put-friend-div {
+	border: 1px solid white;
+	border-radius: 5px;
+	width: 50vw;
+	padding: 10px;
+}
+
+.put-friend-div * {
+	margin: 10px;
+}
+
+.put-friend-div button {
+	border: 1px solid white;
+	border-radius: 5px;
+	padding: 5px 10px;
+	background: #222;
+	color: white;
+}
+
+.put-friend-div button:hover {
+	background: white;
+	color: #222;
+	cursor: pointer;
+}
+
+.put-friend-div button a {
+	color: white;
+	text-decoration: none;
+}
+
+.put-friend-div button:hover a {
+	color: #222;
+}
+
+.put-friend-div .delete-btn {
+	background: darkred;
+}

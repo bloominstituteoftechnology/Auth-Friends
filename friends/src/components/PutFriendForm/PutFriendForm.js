@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 // Actions
 import { putNewFriend, getFriendsList } from '../../store/actions';
 
+// Styles
+import '../../css/PutFriendForm.css';
+
 class PutFriendForm extends React.Component {
 	state = {
 		name: '',
@@ -35,45 +38,47 @@ class PutFriendForm extends React.Component {
 
 	render() {
 		return(
-			<form onSubmit = { this.handleSubmit }>
-				Name:
-				<input 
-					type = 'text' 
-					name = 'name' 
-					value = { this.state.name } 
-					placeholder = { this.props.friend.name } 
-					onChange = { this.handleInputChange }
-				/>
+			<div className = 'put-friend-form-div'>
+				<form className = 'put-friend-form' onSubmit = { this.handleSubmit }>
+					Name:
+					<input 
+						type = 'text' 
+						name = 'name' 
+						value = { this.state.name } 
+						placeholder = { this.props.friend.name } 
+						onChange = { this.handleInputChange }
+					/>
 
-				Age:
-				<input 
-					type = 'number' 
-					name = 'age' 
-					value = { this.state.age } 
-					placeholder = { this.props.friend.age } 
-					onChange = { this.handleInputChange }
-				/>
-				
-				Email:
-				<input 
-					type = 'text' 
-					name = 'email' 
-					value = { this.state.email } 
-					placeholder = { this.props.friend.email } 
-					onChange = { this.handleInputChange }
-				/>
+					Age:
+					<input 
+						type = 'number' 
+						name = 'age' 
+						value = { this.state.age } 
+						placeholder = { this.props.friend.age } 
+						onChange = { this.handleInputChange }
+					/>
+					
+					Email:
+					<input 
+						type = 'text' 
+						name = 'email' 
+						value = { this.state.email } 
+						placeholder = { this.props.friend.email } 
+						onChange = { this.handleInputChange }
+					/>
 
-				Favorite Color:
-				<input 
-					type = 'text' 
-					name = 'favColor' 
-					value = { this.state.favColor } 
-					placeholder = { this.props.friend.favColor } 
-					onChange = { this.handleInputChange }
-				/>
+					Favorite Color:
+					<input 
+						type = 'text' 
+						name = 'favColor' 
+						value = { this.state.favColor } 
+						placeholder = { this.props.friend.favColor } 
+						onChange = { this.handleInputChange }
+					/>
 
-				<button>Save Changes to { this.props.friend.name }</button>
-			</form>
+					<button className = 'submit-btn'>Save Changes to { this.props.friend.name }</button>
+				</form>
+			</div>
 		);
 	}
 }
