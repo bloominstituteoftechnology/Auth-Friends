@@ -12,13 +12,24 @@ class PostFriendForm extends React.Component {
 		name: '',
 		age: '',
 		email: '',
-		favColor: ''
+		favColor: '',
+		message: ''
 	};
 
 	handleInputChange = e => this.setState({...this.state, [e.target.name]: e.target.value });
 
 	handleSubmit = e => {
 		e.preventDefault();
+		let blankInput = false;
+
+		for (let i = 0; i < e.target.length - 1; i++) {
+			if (e.target[i].value === '') {
+				blankInput = true;
+				break;
+			}
+		}
+
+		if (blankInput) return this.setState({...this.state, message: 'All fields must be filled out.'});
 		
 		new Promise(() => {
 			this.props.postNewFriend({
@@ -34,41 +45,45 @@ class PostFriendForm extends React.Component {
 
 	render() {
 		return(
-			<form onSubmit = { this.handleSubmit }>
-				Name:
-				<input 
-					type = 'text' 
-					name = 'name' 
-					value = { this.state.name } 
-					onChange = { this.handleInputChange }
-				/>
+			<div>
+				<p>{ this.state.message }</p>
 
-				Age:
-				<input 
-					type = 'number' 
-					name = 'age' 
-					value = { this.state.age } 
-					onChange = { this.handleInputChange }
-				/>
-				
-				Email:
-				<input 
-					type = 'text' 
-					name = 'email' 
-					value = { this.state.email } 
-					onChange = { this.handleInputChange }
-				/>
+				<form onSubmit = { this.handleSubmit }>
+					Name:
+					<input 
+						type = 'text' 
+						name = 'name' 
+						value = { this.state.name } 
+						onChange = { this.handleInputChange }
+					/>
 
-				Favorite Color:
-				<input 
-					type = 'text' 
-					name = 'favColor' 
-					value = { this.state.favColor } 
-					onChange = { this.handleInputChange }
-				/>
+					Age:
+					<input 
+						type = 'number' 
+						name = 'age' 
+						value = { this.state.age } 
+						onChange = { this.handleInputChange }
+					/>
+					
+					Email:
+					<input 
+						type = 'text' 
+						name = 'email' 
+						value = { this.state.email } 
+						onChange = { this.handleInputChange }
+					/>
 
-				<button>Add New Friend</button>
-			</form>
+					Favorite Color:
+					<input 
+						type = 'text' 
+						name = 'favColor' 
+						value = { this.state.favColor } 
+						onChange = { this.handleInputChange }
+					/>
+
+					<button>Add New Friend</button>
+				</form>
+			</div>
 		);
 	}
 }

@@ -23,10 +23,10 @@ class PutFriendForm extends React.Component {
 		new Promise(() => {
 			this.props.putNewFriend({
 				id: this.props.friend.id,
-				name: e.target[0].value,
-				age: Number(e.target[1].value),
-				email: e.target[2].value,
-				favColor: e.target[3].value,
+				name: e.target[0].value === '' ? undefined : e.target[0].value,
+				age: e.target[1].value === '' ? undefined : Number(e.target[1].value),
+				email: e.target[2].value === '' ? undefined : e.target[2].value,
+				favColor: e.target[3].value === '' ? undefined : e.target[3].value,
 			});
 		})
 			.then(this.props.getFriendsList())
