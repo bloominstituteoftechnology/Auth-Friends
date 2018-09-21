@@ -13,12 +13,54 @@ export const FETCHED_ERROR = 'FETCHED_ERROR';
 export const fetchFriends = () => {
   return dispatch => {
     dispatch({ type: FETCHING_FRIENDS });
-    axios.get('http://localhost:5000/api/friends')
+    const promise = axios.get('http://localhost:5000/api/friends')
+    promise
       .then(response => {
         dispatch({ type: FETCHED_FRIENDS, payload: response.data });
       })
       .catch(error => {
-        dispatch({ type: FETCHED_ERROR });
+        dispatch({ type: FETCHED_ERROR, payload: err });
+      });
+  };
+};
+
+export const saveFriend = friend => {
+  return dispatch => {
+    dispatch({ type: SAVING_FRIENDS })
+    axios.post('http://localhost:5000/api/friends', friend)
+      .then(response => {
+        dispatch({ type: SAVED_FRIENDS, payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: FETCHED_ERROR, payload: err });
+      });
+  };
+};
+
+export const updateFriend = Updatefriend => { 
+  return dispatch => {
+    dispatch({ type: UPDATING_FRIENDS })
+    axios.put(`http://localhost:5000/api/friends/${updateFriend.id}`, {
+      updateFriend
+    })
+      .then(response => {
+        dispatch({ type: UPDATED_FRIENDS, payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: FETCHED_ERROR, payload: err });
+      });
+  };
+};
+
+export const deleteFriend = deleteFriend => {
+  return dispatch => {
+    dispatch({ type: DELETING_FRIENDS })
+    axios.delete(`http://localhost:5000/api/friends/${deleteFriend.id}`)
+      .then(response => {
+        dispatch({ type: DELETED_FRIENDS, payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: FETCHED_ERROR, payload: err });
       });
   };
 };
