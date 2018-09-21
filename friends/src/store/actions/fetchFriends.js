@@ -8,8 +8,9 @@ export const ERROR = 'ERROR';
 export const fetchFriends = () => {
     return dispatch => {
         dispatch({ type: FETCHING });
-        axios
-        .get('http://localhost:5000/api/friends')
+        const promise = axios.get('http://localhost:5000/api/friends');
+
+        promise
         .then(response => {
             dispatch({
                 type: FETCHED,

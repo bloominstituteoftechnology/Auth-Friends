@@ -1,5 +1,6 @@
 import { FETCHING, FETCHED, ERROR } from '../actions';
 
+
 const initialState = {
     fetchingFriends: false,
     friendsFetched: false,
@@ -12,7 +13,7 @@ const initialState = {
     friends: [],
     error: null
   };
-
+  
   export const friendsReducer = (state = initialState, action) => {
       switch (action.type) {
           case FETCHING:
@@ -24,7 +25,7 @@ const initialState = {
           });
           case ERROR:
           return Object.assign({}, state, { 
-              fetching: false, 
+              fetchingFriends: false, 
               error: "Error in fetching!!"
             });
           default:

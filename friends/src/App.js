@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchFriends } from './store/actions';
+import { fetchFriends, addFriend } from './store/actions';
 
 import FriendContainer from './containers/FriendContainer';
 class App extends Component {
@@ -9,11 +9,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <FriendContainer />
+        <FriendContainer addFriend={addFriend} />
       </div>
     );
   }
 }
 
 
-export default connect(null, { fetchFriends })(App);
+export default connect(null, { fetchFriends, addFriend })(App);

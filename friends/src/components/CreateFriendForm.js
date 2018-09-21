@@ -21,7 +21,7 @@ export default function CreateFriendForm(props) {
             value={props.nameInput}
             onChange={props.handleChange}
             />
-            <button>Add Friend</button>
+            <button onClick={event => props.addNewFriend(event)}>Add Friend</button>
 
         </form>
     )
