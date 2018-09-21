@@ -8,6 +8,7 @@ export const CREATING_FRIEND = "CREATING_FRIEND";
 
 export const getFriends = () => {
     const friends = axios.get('http://localhost:5000/api/friends');
+    console.log(friends);
     return dispatch => {
         dispatch({type: GETTING_FRIENDS});
 

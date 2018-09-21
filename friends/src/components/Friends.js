@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import './App.css';
-
 class Friends extends Component {
     render() {
         <div>
@@ -9,6 +7,7 @@ class Friends extends Component {
                 return(
                     <div key={friend.id}>
                         {friend.name}
+                        {/* hello */}
                     </div>
                 )
             })}
