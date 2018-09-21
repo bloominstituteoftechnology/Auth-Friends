@@ -12,30 +12,35 @@ let friends = [
     name: 'Ben',
     age: 30,
     email: 'ben@lambdaschool.com',
+    favColor: 'blue',
   },
   {
     id: 2,
     name: 'Austen',
     age: 45,
     email: 'austen@lambdaschool.com',
+    favColor: 'red',
   },
   {
     id: 3,
     name: 'Ryan',
     age: 15,
     email: 'ryan@lambdaschool.com',
+    favColor: 'lime',
   },
   {
     id: 4,
     name: 'Sean',
     age: 35,
     email: 'sean@lambdaschool.com',
+    favColor: 'fuschia',
   },
   {
     id: 5,
     name: 'Michelle',
     age: 67,
     email: 'michelle@gmail.com',
+    favColor: 'yellow',
   },
 ];
 

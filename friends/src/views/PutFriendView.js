@@ -35,6 +35,7 @@ class PutFriendView extends React.Component {
 				<p>Name: { this.state.name }</p>
 				<p>Age: { this.state.age }</p>
 				<p>Email: { this.state.email }</p>
+				<p>Favorite Color: { this.state.favColor }</p>
 
 				<Link to = { `/friendslist/${this.state.id}/edit` }>Edit</Link>
 

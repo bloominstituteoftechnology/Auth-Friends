@@ -11,7 +11,8 @@ class PostFriendForm extends React.Component {
 	state = {
 		name: '',
 		age: '',
-		email: ''
+		email: '',
+		favColor: ''
 	};
 
 	handleInputChange = e => this.setState({...this.state, [e.target.name]: e.target.value });
@@ -24,6 +25,7 @@ class PostFriendForm extends React.Component {
 				name: e.target[0].value,
 				age: Number(e.target[1].value),
 				email: e.target[2].value,
+				favColor: e.target[3].value,
 			});
 		})
 			.then(this.props.getFriendsList())
@@ -54,6 +56,14 @@ class PostFriendForm extends React.Component {
 					type = 'text' 
 					name = 'email' 
 					value = { this.state.email } 
+					onChange = { this.handleInputChange }
+				/>
+
+				Favorite Color:
+				<input 
+					type = 'text' 
+					name = 'favColor' 
+					value = { this.state.favColor } 
 					onChange = { this.handleInputChange }
 				/>
 

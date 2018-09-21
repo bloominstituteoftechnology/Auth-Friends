@@ -8,6 +8,7 @@ export const Friend = props => {
 			<p><Link to = { `/friendslist/${ props.friend.id }` }>Name: { props.friend.name }</Link></p>
 			<p>Age: { props.friend.age }</p>
 			<p>Email: { props.friend.email }</p>
+			<p>Favorite Color: { props.friend.favColor }</p>
 		</div>
 	);
 }

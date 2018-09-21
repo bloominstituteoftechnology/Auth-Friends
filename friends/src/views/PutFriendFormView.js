@@ -13,7 +13,8 @@ class PutFriendFormView extends React.Component {
 		id: '',
 		name: '',
 		age: '',
-		email: ''
+		email: '',
+		favColor: ''
 	};
 
 	componentDidMount() {

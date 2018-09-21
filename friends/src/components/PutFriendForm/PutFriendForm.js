@@ -11,7 +11,8 @@ class PutFriendForm extends React.Component {
 	state = {
 		name: '',
 		age: '',
-		email: ''
+		email: '',
+		favColor: ''
 	};
 
 	handleInputChange = e => this.setState({ ...this.state, [e.target.name]: e.target.value });
@@ -25,6 +26,7 @@ class PutFriendForm extends React.Component {
 				name: e.target[0].value,
 				age: Number(e.target[1].value),
 				email: e.target[2].value,
+				favColor: e.target[3].value,
 			});
 		})
 			.then(this.props.getFriendsList())
@@ -58,6 +60,15 @@ class PutFriendForm extends React.Component {
 					name = 'email' 
 					value = { this.state.email } 
 					placeholder = { this.props.friend.email } 
+					onChange = { this.handleInputChange }
+				/>
+
+				Favorite Color:
+				<input 
+					type = 'text' 
+					name = 'favColor' 
+					value = { this.state.favColor } 
+					placeholder = { this.props.friend.favColor } 
 					onChange = { this.handleInputChange }
 				/>
 
