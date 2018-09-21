@@ -11,7 +11,7 @@ export const putNewFriend = friend => dispatch => {
 	dispatch({ type: PUTTING_NEW_FRIEND });
 
 	axios
-		.put(`http://localhost:5000/api/frieds/${ friend.id }`, friend)
+		.put(`http://localhost:5000/api/friends/${ friend.id }`, friend)
 		.then(res => {
 			dispatch({ type: PUTTING_NEW_FRIEND_COMPLETE });
 		})

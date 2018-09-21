@@ -6,8 +6,21 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
+// Actions
+import { deleteFriend, getFriendsList } from '../store/actions';
+
 class PutFriendView extends React.Component {
 	state = {};
+
+	handleDeleteFriend = e => {
+		e.preventDefault();
+
+		new Promise(() => {
+			this.props.deleteFriend(this.state.id);
+		})
+			.then(this.props.getFriendsList())
+			.then(this.props.history.push('/friendslist'));
+	}
 
 	componentDidMount() {
 		axios
@@ -24,6 +37,8 @@ class PutFriendView extends React.Component {
 				<p>Email: { this.state.email }</p>
 
 				<Link to = { `/friendslist/${this.state.id}/edit` }>Edit</Link>
+
+				<button onClick = { this.handleDeleteFriend }>Delete</button>
 			</div>
 		);
 	}
@@ -31,4 +46,4 @@ class PutFriendView extends React.Component {
 
 const mapStateToProps = state => ({});
 
-export default connect (mapStateToProps, null)(PutFriendView);
+export default connect (mapStateToProps, { deleteFriend, getFriendsList })(PutFriendView);

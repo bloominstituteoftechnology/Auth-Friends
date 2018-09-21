@@ -3,7 +3,12 @@ export {
 	FETCHING_FRIENDS_LIST_COMPLETE,
 	FETCHING_FRIENDS_LIST_ERROR,
 
-	getFriendsList
+	DELETING_FRIEND,
+	DELETING_FRIEND_COMPLETE,
+	DELETING_FRIEND_ERROR,
+
+	getFriendsList,
+	deleteFriend
 } from './friendsListActions';
 
 export {
