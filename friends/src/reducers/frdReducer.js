@@ -1,4 +1,4 @@
-import {  FRD_FTH_IP, FRD_FTH_SCS, FRD_FTH_FLR } from '../actions';
+import {  FRD_FTH_IP, FRD_FTH_SCS, FRD_FTH_FLR, FRD_AD_IP, FRD_AD_SCS, FRD_AD_FLR } from '../actions';
 
 const initialState = {
     frds_fthg: false,
@@ -28,6 +28,12 @@ export const frdReducer = (state = initialState, action) => {
                 frds_fthg: false,
                 err: "Error gathering information."
             });
+        case FRD_AD_IP:
+            return {...state, frds_svg: true };
+        case FRD_AD_SCS:
+            return {...state, frds_svg: false, frds_svd: true, frds_arr: action.payload };
+        case FRD_AD_FLR:
+            return {...state, frds_svg: false, err: "Error gathering information" };
         default:
             return state;
     }
