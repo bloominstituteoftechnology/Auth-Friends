@@ -12,4 +12,4 @@ export {
   deleteFriend,
   DELETING_FRIEND,
   DELETED_FRIEND
-} from "./crudactions";
+} from "./CRUD";
