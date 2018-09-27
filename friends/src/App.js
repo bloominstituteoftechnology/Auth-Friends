@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import FriendsContainer from "../containers/friendscontainer";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <FriendsContainer />
       </div>
     );
   }
