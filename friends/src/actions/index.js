@@ -1,0 +1,5 @@
+import axios from 'axios';
+
+export const PROCESSING_DATA = 'PROCESSING_DATA';
+export const PROCESSING_DATA_SUCCESS = 'PROCESSING_DATA_SUCCESS';
+export const PROCESSING_DATA_ERROR = 'PROCESSING_DATA_ERROR';
