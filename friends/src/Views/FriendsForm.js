@@ -1,9 +1,11 @@
 import React from 'react';
+import '../App.css';
 
 function FriendsForm(props) {
   return (
-    <form>
+    <form className="friend-form">
       <input
+        className="friend-input"
         name="name"
         type="text"
         placeholder="Friend's name"
@@ -11,6 +13,7 @@ function FriendsForm(props) {
         onChange={props.handleChange}
       />
       <input
+        className="friend-input"
         name="age"
         type="text"
         placeholder="Friend's age"
@@ -18,14 +21,19 @@ function FriendsForm(props) {
         onChange={props.handleChange}
       />
       <input
+        className="friend-input"
         name="email"
         type="text"
         placeholder="Friend's email"
         value={props.input.email}
         onChange={props.handleChange}
       />
-      <button type="submit" onClick={props.handleClick}>
-        Add your friend
+      <button
+        className="submit-button"
+        type="submit"
+        onClick={props.handleClick}
+      >
+        Add
       </button>
     </form>
   );

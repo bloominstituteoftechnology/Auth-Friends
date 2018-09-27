@@ -34,7 +34,7 @@ class FriendsList extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="friend-list">
           {this.props.friends.map(friend => (
             <Friend key={friend.id} friend={friend} />
           ))}

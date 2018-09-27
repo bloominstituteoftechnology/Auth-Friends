@@ -1,3 +1,27 @@
-.App {
+.friend-list {
+  font-family: 'KoHo', sans-serif;
   text-align: center;
+  padding: 20px 0px 40px 0px;
+}
+
+.friend-form {
+  display: flex;
+  justify-content: center;
+  margin: 0px 200px;
+  height: 40px;
+}
+
+.friend-input {
+  margin: 0 30px;
+  text-align: center;
+  width: 200px;
+  font-family: 'KoHo', sans-serif;
+  font-size: 24px;
+}
+
+.submit-button {
+  font-family: 'KoHo', sans-serif;
+  font-size: 24px;
+  border-radius: 5px;
+  background-color: lightslategray;
 }
