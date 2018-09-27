@@ -12,7 +12,7 @@ function FriendsForm(props) {
       />
       <input
         name="age"
-        type="number"
+        type="text"
         placeholder="Friend's age"
         value={props.input.age}
         onChange={props.handleChange}

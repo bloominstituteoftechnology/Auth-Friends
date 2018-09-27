@@ -33,5 +33,7 @@ export const friendReducers = (state = intitialState, action) => {
       });
     case ADD_ERROR:
       return Object.assign({}, state, { error: 'Error' });
+    default:
+      return state;
   }
 };
