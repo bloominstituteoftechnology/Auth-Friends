@@ -19,3 +19,17 @@ export const fetchFriends = () => {
       });
   };
 };
+
+export const saveFriend = friend => {
+  return dispatch => {
+    dispatch({ type: SAVING_FRIEND });
+    axios
+      .post('http://localhost:5000/api/friends/', friend)
+      .then(response => {
+        dispatch({ type: FRIEND_SAVED, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
+};
