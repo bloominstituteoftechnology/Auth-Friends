@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import FriendsContainer from "../containers/friendscontainer";
+import { FriendsContainer } from "./containers";
 
 class App extends Component {
   render() {
