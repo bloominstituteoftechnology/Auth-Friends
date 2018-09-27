@@ -28,7 +28,7 @@ class FriendsList extends Component {
   handleClick = event => {
     event.preventDefault();
     this.props.friendPost(this.state);
-    this.setState({ name: '', age: 0, email: '' });
+    this.setState({ name: '', age: '', email: '' });
   };
 
   render() {
