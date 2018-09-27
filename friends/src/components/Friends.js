@@ -3,9 +3,19 @@ import { connect } from 'react-redux';
 import { fetchFriends } from '../actions';
 
 const Friends = props => {
-  return {
-    
-  }
+  return (
+    <div>
+      {props.friends.map(friend => (
+        <div 
+          key={friend.id}
+        >
+          {friend.name}
+          {friend.age}
+          {friend.email}
+        </div>
+      ))}
+    </div>
+  )
 }
 
 const mapStateToProps = state => {
