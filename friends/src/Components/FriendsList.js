@@ -8,7 +8,7 @@ import FriendsForm from '../Views/FriendsForm';
 class FriendsList extends Component {
   state = {
     name: '',
-    age: 0,
+    age: '',
     email: ''
   };
 

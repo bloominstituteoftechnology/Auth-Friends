@@ -24,6 +24,9 @@ function FriendsForm(props) {
         value={props.input.email}
         onChange={props.handleChange}
       />
+      <button type="submit" onClick={props.handleClick}>
+        Add your friend
+      </button>
     </form>
   );
 }
