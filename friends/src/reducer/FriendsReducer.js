@@ -13,7 +13,7 @@ switch (action.type) {
     return Object.assign({},state,{processingData:true});
   case PROCESSING_DATA_SUCCESS:
       return Object.assign({},state,{
-          friends:[...state.friends,...action.payload]
+          friends:[...state.friends,...action.payload],
           processingData:true
       });
       case PROCESSING_DATA_ERROR:
