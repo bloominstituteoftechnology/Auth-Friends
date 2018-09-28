@@ -34,9 +34,9 @@ function FriendForm(props) {
                 <div className="friendInputBoxes">
                     <input
                         type="text"
-                        value={props.friend.dob}
+                        value={props.friend.age}
                         onChange={props.handleChange}
-                        placeholder="bffs bDay..."
+                        placeholder="bffs age..."
                     />
                 </div>
                 <div className="friendInputBoxes">

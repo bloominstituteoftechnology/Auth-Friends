@@ -7,7 +7,7 @@ const style = { textDecoration: "line-through"};
 const Friends = props => {
     return (
         <Fragment>
-            {props.friends.amp(friend => (
+            {props.friends.map(friend => (
                 <li
                     style={friend.completed ? style : null}
                     onClick={() => props.exFriend(friend.id)}

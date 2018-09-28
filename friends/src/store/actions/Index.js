@@ -1,9 +1,9 @@
 export {
     ADDING_FRIENDS,
     EXFRIEND,
-    ERROR_ADDING_FRIENDS,
+    REMOVE_FRIEND,
 
     addingFriends,
     exFriend,
-    errorAddingFreinds
+    removeFriend
 } from './friendsActions';
