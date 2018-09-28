@@ -19,12 +19,36 @@ class App extends Component {
     this.props.fetchFriends();
   }
 
+  handleInputChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleSaveFriendChange = event => {
+    event.preventDefault();
+    const newFriend = {
+      id: this.props.friends.length + 1,
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email,
+    };
+    this.props.saveFriend(newFriend);
+    this.setState({
+      name: '',
+      age: '',
+      email: ''
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Friends List</h1>
         <Friends friends={this.props.friends} />
-        <FriendForm state={this.state} />
+        <FriendForm 
+          state={this.state} 
+          handleInput={this.handleInputChange}
+          handleSaveFriend={this.handleSaveFriendChange}
+        />
       </div>
     );
   }
