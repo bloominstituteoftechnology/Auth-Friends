@@ -24,6 +24,7 @@ class App extends Component {
       <div className="App">
         <h1>Friends List</h1>
         <Friends friends={this.props.friends} />
+        <FriendForm state={this.state} />
       </div>
     );
   }
