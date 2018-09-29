@@ -22,7 +22,7 @@ const FriendForm = props => {
           value={props.state.email}
           onChange={props.handleInput}
         />
-        <button onClick={this.handleSaveFriend} type='submit'>Add Friend</button>
+        <button onClick={this.handleSaveFriend}>Add Friend</button>
       </form>
     </div>
   );
