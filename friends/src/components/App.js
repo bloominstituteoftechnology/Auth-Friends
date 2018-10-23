@@ -43,7 +43,7 @@ class App extends Component {
         <nav>Friends App</nav>
         <div className='wrapper'>
           <Form changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>
-          <Friends friends={this.props.friends} deleteHandler={this.props.deleteFriend}/>
+          {this.props.got ? <Friends friends={this.props.friends} deleteHandler={this.props.deleteFriend}/> : <div>Loading friends...</div>}
         </div>
       </div>
     );
