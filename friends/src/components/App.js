@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 import { connect } from 'react-redux';
-import { getFriends } from './actions';
+import { getFriends } from '../actions';
+import Friends from './Friends';
 
 class App extends Component {
 
@@ -12,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.friends.map(friend => <p key={friend.id}>{friend.name}</p>)}
+        <Friends friends={this.props.friends}/>
       </div>
     );
   }
@@ -21,6 +22,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     friends: state.friends,
+    got: state.got
   }
 }
 
