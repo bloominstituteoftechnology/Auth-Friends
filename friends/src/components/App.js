@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
-import { getFriends } from '../actions';
+import { getFriends, deleteFriend } from '../actions';
 import Friends from './Friends';
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Friends friends={this.props.friends}/>
+        <Friends friends={this.props.friends} deleteHandler={this.props.deleteFriend}/>
       </div>
     );
   }
@@ -26,4 +26,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {getFriends})(App);
+export default connect(mapStateToProps, {getFriends, deleteFriend})(App);
