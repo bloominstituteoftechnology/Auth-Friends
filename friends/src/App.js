@@ -1,28 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import FriendsList from './components/friendslist';
+import { fetchFriends } from './actions';
+import { connect } from 'react-redux'
+ 
 class App extends Component {
+  constructor() {
+    super();
+  }
+
+  componentDidMount() {
+    this.props.fetchFriends();
+    // call our action
+  }
+
   render() {
+    if (this.props.isfetching) {
+      return (
+        <h2>Please wait, fetching friends...</h2>
+      );
+    }
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <FriendsList friends = {this.props.friends} />
       </div>
     );
   }
 }
 
-export default App;
+
+const mapStateToProps = state => {
+  return {
+    friends: state.friendsReducer.friends,
+    isFetching: state.combineReducers.isFetching 
+  };
+};
+// our mapStateToProps needs to have two properties inherited from state
+// the characters and the fetching boolean
+export default connect(mapStateToProps,{ fetchFriends })(App);
