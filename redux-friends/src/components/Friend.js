@@ -1,8 +1,9 @@
 import React from 'react';
+import Card from '../styles/Card';
 
 const Friend = ({ friend }) => {
   return (
-    <div className="card" key={friend.id} id={friend.id}>
+    <Card className="card" key={friend.id} id={friend.id}>
       <h3>{friend.name}</h3>
       <p>Age: {friend.age}</p>
       <p>email: {friend.email}</p>
@@ -12,7 +13,7 @@ const Friend = ({ friend }) => {
       <button onClick={console.log('handleUpdateClick')} className="btn">
         Edit
       </button>
-    </div>
+    </Card>
   );
 };
 
