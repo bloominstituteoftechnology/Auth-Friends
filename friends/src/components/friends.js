@@ -27,6 +27,11 @@ class Friends extends Component {
     return (
       <div>
         <h1> Lambda Friends</h1>
+        <FriendsList
+          friends={this.props.friends}
+          singleFriend={this.props.singleFriend}
+          updateFriend={this.props.updateFriend}
+        />
         {this.props.friends.map((item, index) => {
           return (
             <div key={index}>
