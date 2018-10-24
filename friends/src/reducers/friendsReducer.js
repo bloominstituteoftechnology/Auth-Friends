@@ -2,7 +2,8 @@ import {
   FETCH_DATA,
   FETCH_ERROR,
   DATABASEADD_FRIEND,
-  DATABASEUPDATE_FRIEND
+  DATABASEUPDATE_FRIEND,
+  DATABASEDELETE_FRIEND
 } from '../actions';
 
 const initialState = {
@@ -30,7 +31,15 @@ export default (state = initialState, action) => {
         friends: action.payload
       };
     case DATABASEUPDATE_FRIEND:
-      return console.log(action.payload);
+      return {
+        ...state,
+        friends: action.payload
+      };
+    case DATABASEDELETE_FRIEND:
+      return {
+        ...state,
+        friends: action.payload
+      };
     default:
       return state;
   }

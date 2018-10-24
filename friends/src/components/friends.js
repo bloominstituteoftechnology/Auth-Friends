@@ -4,7 +4,8 @@ import {
   fetchData,
   updateFriend,
   addFriend,
-  databaseUpdateFriend
+  databaseUpdateFriend,
+  databaseDeleteFriend
 } from '../actions';
 import AddFriend from './AddFriend';
 import FriendsList from './FriendsList';
@@ -23,17 +24,6 @@ class Friends extends Component {
   }
   componentDidMount() {
     this.props.fetchData();
-  }
-  componentWillReceiveProps(newProps) {
-    if (this.props.singleFriend !== newProps.singleFriend) {
-      this.setState({
-        singleFriendFriend: newProps.singleFriend.name,
-        singleFriendAge: newProps.singleFriend.age,
-        singleFriendEmail: newProps.singleFriend.email
-      });
-    } else {
-      return this.props.singleFriend;
-    }
   }
 
   handleNewFriend = event => {
@@ -92,6 +82,7 @@ class Friends extends Component {
           updateFriend={this.props.updateFriend}
           singleFriendUpdate={this.singleFriendUpdate}
           updateSingleFriend={this.updateSingleFriend}
+          databaseDeleteFriend={this.props.databaseDeleteFriend}
         />
         <AddFriend
           handleNewFriend={this.handleNewFriend}
@@ -117,7 +108,8 @@ const mapDispatchToProps = dispatch => {
     updateFriend: friend => dispatch(updateFriend(friend)),
     addFriend: friend => dispatch(addFriend(friend)),
     databaseUpdateFriend: (friend, id) =>
-      dispatch(databaseUpdateFriend(friend, id))
+      dispatch(databaseUpdateFriend(friend, id)),
+    databaseDeleteFriend: id => dispatch(databaseDeleteFriend(id))
   };
 };
 

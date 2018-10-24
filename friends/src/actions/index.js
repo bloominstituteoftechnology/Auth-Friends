@@ -5,6 +5,7 @@ export const FETCH_ERROR = 'FETCH_ERROR';
 export const UPDATE_FRIEND = 'UPDATE_FRIEND';
 export const DATABASEADD_FRIEND = 'DATABASEADD_FRIEND';
 export const DATABASEUPDATE_FRIEND = 'DATABASEUPDATE_FRIEND';
+export const DATABASEDELETE_FRIEND = 'DATABASEDELETE_FRIEND';
 
 export const fetchData = () => dispatch => {
   axios
@@ -31,5 +32,12 @@ export const databaseUpdateFriend = (friend, id) => dispatch => {
   axios
     .put(`http://localhost:5000/api/friends/${id}`, friend)
     .then(res => dispatch({ type: DATABASEUPDATE_FRIEND, payload: res.data }))
+    .catch(err => dispatch({ type: FETCH_ERROR, payload: err }));
+};
+
+export const databaseDeleteFriend = id => dispatch => {
+  axios
+    .delete(`http://localhost:5000/api/friends/${id}`)
+    .then(res => dispatch({ type: DATABASEDELETE_FRIEND, payload: res.data }))
     .catch(err => dispatch({ type: FETCH_ERROR, payload: err }));
 };

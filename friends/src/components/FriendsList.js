@@ -37,7 +37,9 @@ export default props => {
                 <h1>{item.name}</h1>
                 <h1>{item.age}</h1>
                 <h1>{item.email}</h1>
-                <button>Delete</button>
+                <button onClick={() => props.databaseDeleteFriend(item.id)}>
+                  Delete
+                </button>
               </div>
             )}
           </div>
