@@ -1,8 +1,8 @@
 import React from "react";
 
-const Form = props => {
+const CreateFriendForm = props => {
   return (
-    <form>
+    <form className="createForm">
       <input
         type="text"
         name="name"
@@ -24,9 +24,9 @@ const Form = props => {
         value={props.email}
         placeholder="Email"
       />
-      <button>Add New Friend</button>
+      <button onClick={props.addToFriends}>Add New Friend</button>
     </form>
   );
 };
 
-export default Form;
+export default CreateFriendForm;

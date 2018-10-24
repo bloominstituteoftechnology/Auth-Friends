@@ -1,0 +1,8 @@
+.appComponents {
+  display: flex;
+}
+
+.createForm {
+  display: flex;
+  flex-direction: column;
+}

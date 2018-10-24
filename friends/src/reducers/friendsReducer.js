@@ -1,9 +1,17 @@
-import { FETCHING, FETCHING_SUCCESS, FETCHING_FAILURE } from "../actions";
+import {
+  FETCHING,
+  FETCHING_SUCCESS,
+  FETCHING_FAILURE,
+  ADDING,
+  ADDING_SUCCESS,
+  ADDING_FAILURE
+} from "../actions";
 
 const initialState = {
   friends: [],
   error: null,
-  fetchingFriends: false
+  fetchingFriends: false,
+  addingFriend: false
 };
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -20,6 +28,16 @@ export const friendsReducer = (state = initialState, action) => {
       };
     case FETCHING_FAILURE:
       return { ...state, fetchingFriends: false, error: action.payload };
+    case ADDING:
+      return { ...state, addingFriend: true };
+    case ADDING_SUCCESS:
+      return {
+        ...state,
+        friends: [...action.payload],
+        addingFriend: false
+      };
+    case ADDING_FAILURE:
+      return { ...state, addingFriend: false, error: action.payload };
     default:
       return state;
   }

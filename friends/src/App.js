@@ -3,15 +3,15 @@ import { connect } from "react-redux";
 
 import "./App.css";
 import FriendsList from "./components/FriendsList";
-import Form from "./components/Form";
-import { fetchFriends } from "./actions";
+import CreateFriendForm from "./components/CreateFriendForm";
+import { fetchFriends, addFriend } from "./actions";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: "",
-      age: null,
+      age: "",
       email: ""
     };
   }
@@ -22,17 +22,29 @@ class App extends Component {
   handleInput = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  addToFriends = e => {
+    e.preventDefault();
+    this.props.addFriend({
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email
+    });
+    this.setState({ name: "", age: "", email: "" });
+  };
   render() {
     return (
-      <div>
+      <div className="app">
         <h1>Welcome to Redux-Friends!</h1>
-        <FriendsList friends={this.props.friends} />
-        <Form
-          name={this.state.name}
-          age={this.state.age}
-          email={this.state.email}
-          handleInputChange={this.handleInput}
-        />
+        <div className="appComponents">
+          <FriendsList friends={this.props.friends} />
+          <CreateFriendForm
+            name={this.state.name}
+            age={this.state.age}
+            email={this.state.email}
+            handleInput={this.handleInput}
+            addToFriends={this.addToFriends}
+          />
+        </div>
       </div>
     );
   }
@@ -46,5 +58,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchFriends }
+  { fetchFriends, addFriend }
 )(App);
