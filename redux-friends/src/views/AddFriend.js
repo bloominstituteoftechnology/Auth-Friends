@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import Form from '../components/Form';
 
 class AddFriend extends Component {
   render() {
     return (
       <div>
-        <p>Hello this is were friends will be Added.</p>
+        <Form title="Add friend" btnValue="Add Friend" />
       </div>
     );
   }

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import Friend from '../components/Friend';
 class FriendList extends Component {
+  componentDidMount() {
+    // Get dat friend data
+  }
+
   render() {
     return (
       <div>
@@ -10,4 +15,7 @@ class FriendList extends Component {
   }
 }
 
-export default FriendList;
+export default connect(
+  null,
+  {}
+)(FriendList);
