@@ -1,0 +1,35 @@
+.App {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.App h1 {
+  text-transform: uppercase;
+  margin: 3rem 0 0;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.nav {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.nav a,
+.nav a:visited {
+  color: black;
+  font-size: 1rem;
+  text-decoration: none;
+  margin: 0 1rem;
+  transition: all 200ms;
+}
+
+.nav a:hover {
+  color: #ff3f34;
+}
+
+.nav .active,
+.nav .active:visited {
+  color: #ff3f34;
+}
