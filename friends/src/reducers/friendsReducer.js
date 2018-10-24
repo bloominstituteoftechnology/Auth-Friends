@@ -1,4 +1,9 @@
-import { FETCH_DATA, FETCH_ERROR, DATABASEADD_FRIEND } from '../actions';
+import {
+  FETCH_DATA,
+  FETCH_ERROR,
+  DATABASEADD_FRIEND,
+  DATABASEUPDATE_FRIEND
+} from '../actions';
 
 const initialState = {
   friends: [],
@@ -20,11 +25,12 @@ export default (state = initialState, action) => {
         err: action.payload
       };
     case DATABASEADD_FRIEND:
-      console.log(action.payload);
       return {
         ...state,
         friends: action.payload
       };
+    case DATABASEUPDATE_FRIEND:
+      return console.log(action.payload);
     default:
       return state;
   }

@@ -8,12 +8,37 @@ export default props => {
           <div key={index}>
             {/* {console.log(index + 1, this.props.singleFriend.id)} */}
             {props.singleFriend.id === index + 1 ? (
-              // <form>
-              //   <input type="text" />
-              // </form>
-              <h1>Sike</h1>
+              <form onSubmit={e => props.updateSingleFriend(e, item.id)}>
+                <input
+                  type="text"
+                  name="singleFriendFriend"
+                  onChange={props.singleFriendUpdate}
+                  placeholder="name"
+                />
+                <input
+                  type="text"
+                  name="singleFriendAge"
+                  onChange={props.singleFriendUpdate}
+                  placeholder="age"
+                />
+                <input
+                  type="text"
+                  name="singleFriendEmail"
+                  onChange={props.singleFriendUpdate}
+                  placeholder="email"
+                />
+                <button
+                  type="submit"
+                  onSubmit={e => props.updateSingleFriend(e, item.id)}
+                />
+              </form>
             ) : (
-              <h1 onClick={() => props.updateFriend(item)}>{item.name}</h1>
+              <div onClick={() => props.updateFriend(item)}>
+                <h1>{item.name}</h1>
+                <h1>{item.age}</h1>
+                <h1>{item.email}</h1>
+                <button>Delete</button>
+              </div>
             )}
           </div>
         );

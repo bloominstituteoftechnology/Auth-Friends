@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchData, updateFriend, addFriend } from '../actions';
+import {
+  fetchData,
+  updateFriend,
+  addFriend,
+  databaseUpdateFriend
+} from '../actions';
 import AddFriend from './AddFriend';
 import FriendsList from './FriendsList';
 
@@ -10,11 +15,25 @@ class Friends extends Component {
     this.state = {
       friend: '',
       age: '',
-      email: ''
+      email: '',
+      singleFriendFriend: '',
+      singleFriendAge: '',
+      singleFriendEmail: ''
     };
   }
   componentDidMount() {
     this.props.fetchData();
+  }
+  componentWillReceiveProps(newProps) {
+    if (this.props.singleFriend !== newProps.singleFriend) {
+      this.setState({
+        singleFriendFriend: newProps.singleFriend.name,
+        singleFriendAge: newProps.singleFriend.age,
+        singleFriendEmail: newProps.singleFriend.email
+      });
+    } else {
+      return this.props.singleFriend;
+    }
   }
 
   handleNewFriend = event => {
@@ -35,6 +54,32 @@ class Friends extends Component {
     } else {
       alert('cant have a empty field');
     }
+    this.setState({
+      ...this.state,
+      friend: '',
+      age: '',
+      email: ''
+    });
+  };
+
+  singleFriendUpdate = event => {
+    event.preventDefault();
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+  updateSingleFriend = (event, id) => {
+    const updatedFriend = {
+      name: this.state.singleFriendFriend,
+      age: this.state.singleFriendAge,
+      email: this.state.singleFriendEmail
+    };
+    this.setState({
+      singleFriendFriend: '',
+      singleFriendAge: '',
+      singleFriendEmail: ''
+    });
+    this.props.databaseUpdateFriend(updatedFriend, id);
   };
 
   render() {
@@ -45,6 +90,8 @@ class Friends extends Component {
           friends={this.props.friends}
           singleFriend={this.props.singleFriend}
           updateFriend={this.props.updateFriend}
+          singleFriendUpdate={this.singleFriendUpdate}
+          updateSingleFriend={this.updateSingleFriend}
         />
         <AddFriend
           handleNewFriend={this.handleNewFriend}
@@ -68,7 +115,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchData: () => dispatch(fetchData()),
     updateFriend: friend => dispatch(updateFriend(friend)),
-    addFriend: friend => dispatch(addFriend(friend))
+    addFriend: friend => dispatch(addFriend(friend)),
+    databaseUpdateFriend: (friend, id) =>
+      dispatch(databaseUpdateFriend(friend, id))
   };
 };
 
