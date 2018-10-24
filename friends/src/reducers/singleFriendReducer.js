@@ -16,7 +16,8 @@ export default (state = initialState, action) => {
     case DATABASEADD_FRIEND:
       console.log(action.payload);
       return {
-        ...state
+        ...state,
+        friend: action.payload
       };
     default:
       return state;

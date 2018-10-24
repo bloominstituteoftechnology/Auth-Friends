@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchData, updateFriend, addFriend } from '../actions';
 import AddFriend from './AddFriend';
+import FriendsList from './FriendsList';
 
 class Friends extends Component {
   constructor() {
     super();
     this.state = {
       friend: '',
-      age: ''
+      age: '',
+      email: ''
     };
   }
   componentDidMount() {
@@ -19,8 +21,20 @@ class Friends extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
   updateDatabase = e => {
-    console.log('im reached');
     e.preventDefault();
+    if (
+      this.state.friend.length > 0 &&
+      this.state.age.length > 0 &&
+      this.state.email.length > 0
+    ) {
+      this.props.addFriend({
+        name: this.state.friend,
+        age: this.state.age,
+        email: this.state.email
+      });
+    } else {
+      alert('cant have a empty field');
+    }
   };
 
   render() {
@@ -32,23 +46,6 @@ class Friends extends Component {
           singleFriend={this.props.singleFriend}
           updateFriend={this.props.updateFriend}
         />
-        {this.props.friends.map((item, index) => {
-          return (
-            <div key={index}>
-              {/* {console.log(index + 1, this.props.singleFriend.id)} */}
-              {this.props.singleFriend.id === index + 1 ? (
-                // <form>
-                //   <input type="text" />
-                // </form>
-                <h1>Sike</h1>
-              ) : (
-                <h1 onClick={() => this.props.updateFriend(item)}>
-                  {item.name}
-                </h1>
-              )}
-            </div>
-          );
-        })}
         <AddFriend
           handleNewFriend={this.handleNewFriend}
           updateDatabase={this.updateDatabase}

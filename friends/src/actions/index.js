@@ -22,6 +22,6 @@ export const updateFriend = friend => {
 export const addFriend = friend => dispatch => {
   axios
     .post('http://localhost:5000/api/friends', friend)
-    .then(res => console.log(res))
+    .then(res => dispatch({ type: DATABASEADD_FRIEND, payload: res.data }))
     .catch(err => console.log(err));
 };
