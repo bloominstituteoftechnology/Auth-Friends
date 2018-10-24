@@ -6714,6 +6714,10 @@ react-error-overlay@^5.0.5:
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.0.5.tgz#716ff1a92fda76bb89a39adf9ce046a5d740e71a"
 
+react-loading@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-loading/-/react-loading-2.0.3.tgz#e8138fb0c3e4674e481b320802ac7048ae14ffb9"
+
 react-redux@^5.0.7:
   version "5.0.7"
   resolved "http://registry.npmjs.org/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
