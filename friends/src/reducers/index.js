@@ -10,7 +10,7 @@ import {
     error: null
   };
   
-  export const rootReducer = (state = initialState, action) => {
+  const rootReducer = (state = initialState, action) => {
     switch (action.type) {
       case FETCHING_FRIENDS:
         return { ...state, isFetching: true };
@@ -30,3 +30,5 @@ import {
         return state;
     }
   };
+
+  export default rootReducer

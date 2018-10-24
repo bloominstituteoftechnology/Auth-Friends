@@ -1,4 +1,5 @@
 import React from "react";
+import xCircle from "../assets/x-circle.svg"
 
 const Friend = ({ friend }) => (
   <div className="friend-card" key={friend.id}>

@@ -1,6 +1,6 @@
 import React from "react";
 import save from "../assets/save.svg"
-import xCircleWhite from "../assets/x-circle white"
+import xCircleWhite from "../assets/x-circle white.svg"
 
 const Form = props => (
   <div
