@@ -7,13 +7,14 @@ export const FETCHING_FRIENDS_FAILURE = 'FETCHING_FRIENDS_FAILURE';
 export const fetchFriends = () => dispatch => {
   dispatch({ type: FETCHING_FRIENDS  });
   axios
-    .get("http://localhost:5000/api/friends/")
+    .get(`http://localhost:5000/api/friends/`)
     .then(response => {
-      console.log(response);
+      console.log('response= ', response);
       dispatch({ type: FETCHING_FRIENDS_SUCCESS, payload: response.data 
       });
     })
     .catch(error => {
+      console.log('error= ', error);
       dispatch({ type: FETCHING_FRIENDS_FAILURE, payload: error });
     });
 };

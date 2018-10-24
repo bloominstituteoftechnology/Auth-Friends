@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import FriendsList from './components/friendslist';
 import { fetchFriends } from './actions';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
  
 class App extends Component {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   componentDidMount() {
     this.props.fetchFriends();
@@ -19,20 +19,22 @@ class App extends Component {
       return (
         <h2>Please wait, fetching friends...</h2>
       );
-    }
-    return (
-      <div className="App">
-        <FriendsList friends = {this.props.friends} />
-      </div>
-    );
+    }else{    
+      return (
+        <div className="App">
+          <FriendsList friends = {this.props.friends} />
+        </div>
+    );}
+
   }
 }
 
 
 const mapStateToProps = state => {
+  console.log('mapping=', state)
   return {
     friends: state.friendsReducer.friends,
-    isFetching: state.combineReducers.isFetching 
+    isFetching: state.friendsReducer.isFetching 
   };
 };
 // our mapStateToProps needs to have two properties inherited from state
