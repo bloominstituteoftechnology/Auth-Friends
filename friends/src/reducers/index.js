@@ -2,8 +2,7 @@
 
 import {    FETCHING_FRIENDS, 
             FETCHING_FRIENDS_SUCCESS, 
-            FETCHING_FRIENDS_FAILURE, 
-            friendActions } from '../actions';
+            FETCHING_FRIENDS_FAILURE,  } from '../actions';
 
 const initialState = {
     friends: [],
@@ -12,6 +11,7 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action) => {
+    console.log('in reducer');
     switch (action.type) {
         case FETCHING_FRIENDS:
             return {
@@ -21,7 +21,7 @@ export const reducer = (state = initialState, action) => {
         case FETCHING_FRIENDS_SUCCESS:
             return {
                 ...state, 
-                friends: [...friends, ...action.payload],
+                friends: [...state.friends, ...action.payload],
                 isFetching: false
             };
         case FETCHING_FRIENDS_FAILURE:
