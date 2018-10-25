@@ -10,6 +10,12 @@ class FriendForm extends React.Component {
         };
     }
 
+    typeHandler = ev => {
+        this.setState({
+            [ev.target.name]: ev.target.value
+        })
+    }
+
     render() {
         return (
             <form>
@@ -17,18 +23,21 @@ class FriendForm extends React.Component {
                     name="nameText"
                     type="text"
                     placeholder="Name"
+                    value={this.state.nameText}
                     required
                 />
                 <input
                     name="ageText"
                     type="number"
                     placeholder="Age"
+                    value={this.state.age}
                     required
                 />
                 <input
                     name="emailText"
                     type="text"
                     placeholder="Email"
+                    value={this.state.email}
                     required
                 />
                 <button type="submit">Add Friend</button>

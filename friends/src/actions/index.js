@@ -7,7 +7,7 @@ export const FETCH_ERROR = "FETCH_ERROR";
 export const fetchFriendsList = () => dispatch => {
     dispatch({ type: FETCHING });
     axios
-        .get("http://localhost:5000")
+        .get("http://localhost:5000/api/friends")
         .then(response => {
             dispatch({ type: FETCH_SUCCESS, payload: response.data });
         })
