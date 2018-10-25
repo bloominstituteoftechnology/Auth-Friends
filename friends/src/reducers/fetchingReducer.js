@@ -32,6 +32,8 @@ const initialState = {
         case FETCHING_SUCCESS:
         return { ...state, fetching: false, friends : [...action.payload] };
 
+        case FETCHING_FAILURE:
+        return { ...state, fetching: false, error : action.payload };
 
         default:
         return state;

@@ -1,36 +1,31 @@
 import React, { Component } from "react";
-import { timingSafeEqual } from "crypto";
-import axios from "axios";
+import { connect } from 'react-redux';
 
-class SmurfForm extends Component {
+import {addFriend} from '../actions'
+
+class AddFriend extends Component {
   constructor(props) {
     super(props);
-    this.serverURL = "http://localhost:3333/smurfs";
 
     this.state = {
       name: "",
-      age: "",
-      height: ""
+      age: null,
+      email: ""
     };
   }
 
-  addSmurf = event => {
+  addFriend = event => {
     event.preventDefault();
     // add code to create the smurf using the api
-    const { name, age, height } = this.state;
+    const { name, age, email } = this.state;
 
-    axios
-      .post(this.serverURL, { name, age, height })
-      .then(response => this.props.addSmurfs(response.data))
-      .catch(error => console.log(error));
+  this.props.addFriend({ name, age, email });
 
     this.setState({
       name: "",
-      age: "",
-      height: ""
+      age: null,
+      email: ""
     });
-
-    this.props.history.push("/");
   };
 
   handleInputChange = e => {
@@ -39,8 +34,8 @@ class SmurfForm extends Component {
 
   render() {
     return (
-      <div className="SmurfForm">
-        <form onSubmit={this.addSmurf}>
+      <div className="friendAddForm">
+        <form onSubmit={this.addFriend}>
           <input
             onChange={this.handleInputChange}
             placeholder="name"
@@ -55,15 +50,26 @@ class SmurfForm extends Component {
           />
           <input
             onChange={this.handleInputChange}
-            placeholder="height"
-            value={this.state.height}
-            name="height"
+            placeholder="email"
+            value={this.state.email}
+            name="email"
           />
-          <button type="submit">Add to the village</button>
+          <button type="submit">Add Friend</button>
         </form>
       </div>
     );
   }
 }
 
-export default SmurfForm;
+
+const mapStateToProps = (state) => {
+  console.log("FriendList mapState", state);
+  return { 
+  }; 
+};
+
+
+export default connect(
+  mapStateToProps, 
+  { addFriend }
+  )(AddFriend);
