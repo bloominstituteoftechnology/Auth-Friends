@@ -1,0 +1,79 @@
+body, html, #root, h4, p{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  width: 80%;
+  align-items: center;
+}
+
+.App .friends-wrapper {
+  display: flex;
+  width: 500px;
+  flex-direction: column;
+  border: 1px solid red;
+  margin: 0 auto;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.App .friends-wrapper h1{
+  margin-left: 10px;
+  margin-bottom: 4px;
+}
+
+.App .friends-wrapper .friend-container {
+  margin: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.App .form-wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  margin: 20px auto;
+  border-radius: 10px;
+  width: 500px;
+  height: 200px;
+  padding: 10px;
+}
+
+.App .form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.App .form-wrapper form input {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid slategray;
+}
+
+.App .form-wrapper form button {
+  padding: 10px;
+  background: white;
+  color: black;
+  font-size: 16px;
+  border: 1px solid black;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.App .form-wrapper form button:hover {
+  background-color: black;
+  color: white;
+}
