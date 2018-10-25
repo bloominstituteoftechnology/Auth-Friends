@@ -6,7 +6,9 @@ import React from "react";
 export default function ({friend}) {
     return (
         <div className="friend">
-            Name: {friend.name}
+            <span>Name: {friend.name}</span>
+            <span>Age: {friend.age}</span>
+            <span>Email: {friend.email}</span>
         </div>
     )
 }

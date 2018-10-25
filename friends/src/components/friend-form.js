@@ -16,7 +16,7 @@ export default class extends React.Component {
 //-- Rendering -----------------------------------
     render() {
         return (
-            <form onSubmit={this.handlerSubmit}>
+            <form onSubmit={this.handleSubmit}>
                 <input
                     type="text"
                     onChange={this.handleInputChange}
@@ -28,7 +28,7 @@ export default class extends React.Component {
                     type="number"
                     onChange={this.handleInputChange}
                     placeholder="age"
-                    value={this.state.age}
+                    value={this.state.age || ''}
                     name="age"
                 />
                 <input
