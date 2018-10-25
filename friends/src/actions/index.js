@@ -8,6 +8,10 @@ export const ADDING_FRIEND = 'ADDING_FRIEND'
 export const ADD_FRIEND_SUCCESS = 'ADD_FRIEND_SUCCESS'
 export const ADD_FRIEND_ERROR = 'ADD_FRIEND_ERROR'
 
+export const DELETE_FRIEND = 'DELETE_FRIEND'
+export const DELETE_FRIEND_SUCCESS = 'DELETE_FRIEND_SUCCESS'
+export const DELETE_FRIEND_ERROR = 'DELETE_FRIEND_ERROR'
+
 export const fetchFriends = () => {
     return dispatch => {
         dispatch({ type: FETCHING_FRIENDS })
@@ -38,6 +42,24 @@ export const createFriend = friend => {
             .catch(err => {
                 console.log(err)
                 dispatch({ type: ADD_FRIEND_ERROR })
+            })
+    }
+}
+
+export const deleteFriend = id => {
+    return dispatch => {
+        dispatch({ type: DELETE_FRIEND })
+        axios
+            .delete(`http://localhost:5000/api/friends/${id}`)
+            .then(res =>
+                dispatch({
+                    type: DELETE_FRIEND_SUCCESS,
+                    payload: res.data,
+                })
+            )
+            .catch(err => {
+                console.log(err)
+                dispatch({ type: DELETE_FRIEND_ERROR })
             })
     }
 }

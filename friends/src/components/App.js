@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import '../styles/App.css'
 import { fetchFriends } from '../actions/index'
+import { deleteFriend } from '../actions/index'
 
 class App extends Component {
     componentDidMount = () => {
@@ -17,10 +18,20 @@ class App extends Component {
                     <ul>
                         {this.props.friends.map(friend => {
                             return (
-                                <div className="list">
-                                    <li key={friend.name}> {friend.name} </li>{' '}
-                                    <li key={friend.age}> {friend.age} </li>{' '}
+                                <div className="list" id={friend.id}>
+                                    <li key={friend.name}> {friend.name} </li>
+                                    <li key={friend.age}> {friend.age} </li>
                                     <li key={friend.email}> {friend.email} </li>
+                                    <li key={friend.id}>
+                                        <button
+                                            onClick={() => {
+                                                this.props.deleteFriend(friend.id)
+                                                window.location.reload()
+                                            }}
+                                        >
+                                            Delete
+                                        </button>
+                                    </li>
                                 </div>
                             )
                         })}
@@ -44,5 +55,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { fetchFriends }
+    { fetchFriends, deleteFriend }
 )(App)

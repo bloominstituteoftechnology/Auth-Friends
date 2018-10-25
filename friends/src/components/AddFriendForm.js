@@ -8,6 +8,7 @@ class CreateFriendForm extends React.Component {
         name: null,
         age: null,
         email: null,
+        
     }
     handleChange = e => {
         const target = e.target
@@ -23,6 +24,8 @@ class CreateFriendForm extends React.Component {
         this.props.createFriend(this.state)
         window.location.reload()
     }
+
+
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
@@ -31,7 +34,6 @@ class CreateFriendForm extends React.Component {
                         <label htmlFor="POST-name">Name: </label>
                         <input
                             className="inputs"
-                            ß
                             id="POST-name"
                             type="text"
                             name="name"
@@ -39,7 +41,9 @@ class CreateFriendForm extends React.Component {
                         />
                     </div>
                     <div>
-                        <label className="age" htmlFor="POST-age">Age: </label>
+                        <label className="age" htmlFor="POST-age">
+                            Age:
+                        </label>
                         <input
                             className="inputs"
                             id="POST-age"
@@ -75,10 +79,13 @@ const mapStateToProps = state => {
         savingFriends: state.addFriendReducer.savingFriends,
         fetchingFriends: state.addFriendReducer.fetchingFriends,
         friendsFetched: state.addFriendReducer.friendsFetched,
+        deletingFriends: state.deleteFriendReducer.deletingFriends,
+        friendDeleted: state.deleteFriendReducer.friendDeleted,
+        
     }
 }
 
 export default connect(
     mapStateToProps,
-    { createFriend }
+    { createFriend }, 
 )(CreateFriendForm)
