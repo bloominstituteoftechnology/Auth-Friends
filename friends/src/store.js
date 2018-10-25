@@ -11,22 +11,22 @@ const logger = store => next => action => {
     return result;
 };
 
-// const thunk = store => next => action => {
-//     if (typeof action === "function") {
-//         if (!store.getState().chars.fetching) {
-//         action(store.dispatch);
-//         } else {
-//             console.log("WHAT ARE YOU TRYING TO DO IM ALREADY FETCHING???");
-//         }
-//     } else {
-//         return next(action);
-//     }
-// };
+const thunk = store => next => action => {
+    if (typeof action === "function") {
+        if (!store.getState().fetchingFriends) {
+        action(store.dispatch);
+        } else {
+            console.log("Alert Thing");
+        }
+    } else {
+        return next(action);
+    }
+};
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
     friendsReducer,
-    composeEnhancers(applyMiddleware(logger))
+    composeEnhancers(applyMiddleware(logger,thunk))
 );
 
 export default store;

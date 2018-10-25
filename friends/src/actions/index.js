@@ -11,11 +11,15 @@ export const FRIEND_DELETED = 'FRIEND_DELETED'
 
 export const getFriends = () => dispatch => {
     dispatch({type : FETCHING_FRIENDS});
-
     axios.get('http://localhost:5000/api/friends')
         .then(response => {
-            dispatch({type : FRIENDS_FETCHED,payload : response.data})
+            console.log("RESPONSE ::::::::" , response)
+            dispatch({
+                type : FRIENDS_FETCHED,
+                payload : response.data
+            })
         })
+        
         .catch(error => {
             alert(error);
         })

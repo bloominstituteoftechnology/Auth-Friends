@@ -1,17 +1,15 @@
-import React from 'react';
+import React from "react";
 
-class FriendList extends React.Component{
-    constructor(){
-        super();
-    }
-    render(){
-        return(
-            <div className="friend-list">
-                <h1>Friends</h1>
-                <li></li>
-            </div>
-        )
-    }
-}
+import Friend from "./Friend";
+
+const FriendList = props => {
+    return (
+        <div>
+        <ul>
+            <li>{props.friends.map(friend => {return (<p>{friend.name}</p>)})}</li>
+        </ul>
+        </div>
+    );
+};
 
 export default FriendList;
