@@ -28,10 +28,10 @@ export const fetchFriends = () => dispatch => {
 
 
 }
-export const addFriend = () => dispatch => {
+export const addFriend = (friend) => dispatch => {
 
     dispatch({type: ADDING_FRIEND});
-    axios.post('/api/friends')
+    axios.post('http://localhost:5000/api/friends', friend)
          .then(res => 
             dispatch({type: ADD_FRIEND_SUCCESS, payload: res.data}))
          .catch(err => dispatch({type: ERROR, payload: err}));
@@ -50,7 +50,7 @@ export const updateFriend = (id) => dispatch => {
 
 export const deleteFriend = (id) => dispatch => {
     dispatch({type: UPDATING_FRIEND});
-    axios.delete(`/api/friends/${id}`)
+    axios.delete(`http://localhost:5000/api/friends/${id}`)
          .then(res => 
             dispatch({type: UPDATE_FRIEND_SUCCESS, payload: res.data}))
          .catch(err => dispatch({type: ERROR, payload: err}));

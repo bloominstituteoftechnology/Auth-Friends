@@ -8,12 +8,13 @@ export default class Friends extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className="friendContainer">
             {
                this.props.friends.map(friend =>
                 {
                     return (
-                        <div>{friend.name}</div>
+                        <div className={`friendCard ${this.props.delete ? 'delete' : ''}`}
+                             onClick={this.props.delete ? ()=> this.props.deleteFriend(friend.id) : null}>{friend.name}</div>
                     )
                 }
                 ) 

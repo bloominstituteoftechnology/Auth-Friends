@@ -12,3 +12,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.App{
+
+  display: flex;
+  justify-content: center;
+  margin: 300px auto;
+}
+
+.friendsContainer {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+  justify-content: center;
+}
+
+.friendCard {
+  width: 80px;
+  border-radius: 25px;
+  border: 3px inset black;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.delete {
+  border: 3px inset red;
+}
+
+form {
+  margin: 10px 5px;
+  display: flex;
+  flex-direction: column;
+
+}
+.btn {
+  cursor: pointer;
+}
