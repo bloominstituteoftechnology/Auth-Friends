@@ -5,11 +5,21 @@ import { FriendsList } from '../components';
 import { fetchFriends } from '../actions';
 
 class FriendsListView extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchFriends();
+  }
+
   render() {
     if (this.props.isFetching) {
       console.log('fetching');
       return <div className='loader'>Loading...</div>;
     }
+    console.log(this.props);
+
     return (
       <div className='FriendsList_wrapper'>
         <FriendsList friends={this.props.friends} />

@@ -8,8 +8,9 @@ export const fetchFriends = () => dispatch => {
   console.log('inside fetchFriends');
   dispatch({ type: FETCHING_FRIENDS });
   axios
-    .get('http://localhost:5000')
+    .get('http://localhost:5000/api/friends')
     .then(response => {
+      console.log(response);
       dispatch({ type: FETCHING_FRIENDS_SUCCESS, payload: response.data });
     })
     .catch(error => {
