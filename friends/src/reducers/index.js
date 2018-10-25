@@ -35,6 +35,7 @@ const initialState = {
             return { ...state, fetchingFriends: false, error: action.payload };
         
         case ADD_FRIEND:
+        console.log(action)
             return {
                 ...state,
                 friends: [ ...state.friends, { id: action.id, name: action.name, age: action.age, email: action.email }]

@@ -1,35 +1,42 @@
-import React from 'react';
-import { connect } from 'react-redux'
-import { fetchFriends } from "../actions";
-import CreateFriendForm from './CreateFriendForm';
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchFriends, editFriend } from "../actions";
+import CreateFriendForm from "./CreateFriendForm";
 
 class Friends extends React.Component {
-    constructor() {
-        super();
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    componentDidMount() {
-        // call our action
-        this.props.fetchFriends();
-      }
+  componentDidMount() {
+    // call our action
+    this.props.fetchFriends();
+  }
 
-    render() {
-        return (
-            <div>
-                <CreateFriendForm />
-                {this.props.friends.map(friend =>
-                    <h1>{friend.name}</h1>
-                )}
-          </div>
-        );
-    }
-    }
+  render() {
+    return (
+      <div>
+        <CreateFriendForm />
+            {this.props.friends.map(friend => (
+            <div key={friend.id}>
+                <Link to={friend.id}>
+                <h1>{friend.name}</h1>
+                </Link>
+            </div>
+            ))}
+      </div>
+    );
+  }
+}
 
-const mapStateToProps = (state) => {
-    return {
-        friends: state.friends,
-        fetchingFriends: state.fetchingFriends
-    };
+const mapStateToProps = state => {
+  return {
+    friends: state.friends,
   };
+};
 
-export default connect(mapStateToProps, { fetchFriends })(Friends);
+export default connect(
+  mapStateToProps,
+  { fetchFriends, editFriend }
+)(Friends);
