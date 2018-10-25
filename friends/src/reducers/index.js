@@ -1,19 +1,22 @@
 import {
     FETCHING_FRIENDS,
     FETCHING_SUCCESS,
-    FETCHING_FAILED
+    FETCHING_FAILED,
+    ADD_FRIEND,
+    ADD_SUCCESS,
+    ADD_FAILED 
 } from '../actions'
 
 const initialState = {
     friends: [],
     fetchingFriends: false,
     friendsFetched: false,
-    friendsSaved: false,
     savingFriends: false,
+    friendsSaved: false,
     error: null
 }
 
-export default (state = initialState, action) => {
+export const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCHING_FRIENDS:
             return {...state, fetchingFriends: true}
@@ -29,6 +32,18 @@ export default (state = initialState, action) => {
                 fetchingFriends: false,
                 error: action.payload
             }
+        case ADD_FRIEND:
+            return {
+                savingFriends: true,
+                ...state
+            }
+        case ADD_SUCCESS:
+            return {
+                ...state,
+                friends: action.payload,
+                savingFriends: false,
+            }
+        
         default:
             return state;
     }

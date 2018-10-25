@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import  friendsReducer  from './reducers';
+import  { friendsReducer } from './reducers';
 
 
 const composeEnhancers =

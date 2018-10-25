@@ -3,6 +3,7 @@
     background: lightpink;
     flex-wrap: wrap;
     margin-top: 25px;
+    justify-content: space-around;
 }
 
 .flex-children {

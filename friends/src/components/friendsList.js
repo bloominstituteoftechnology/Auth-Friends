@@ -1,19 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchFriends } from '../actions';
+import { fetchFriends, addFriends } from '../actions';
 import Friend from './friend';
 import './friend.css'
 
 class  FriendList extends React.Component {
     constructor() {
         super()
+        this.state = {
+            name: '',
+            age: null,
+            email: ''
+        }
     }
 
     componentDidMount() {
         this.props.fetchFriends();
     }
 
-
+    changeHandler = e => {
+        this.setState({ 
+            [e.target.name]: e.target.value
+         })
+    }
+    
+    addFriendHandler = () => {
+        const { name, age, email} = this.state;
+        if(name === '') {
+            return;
+        }
+        this.props.addFriends({ name, age, email})
+        this.setState({ name:'', age: '', email: ''})
+    }
 
 
     render() {
@@ -21,10 +39,10 @@ class  FriendList extends React.Component {
         return (
             <div>
                 <div className="input-container">
-                    <input placeholder="Name"></input>
-                    <input placeholder="Age"></input>
-                    <input placeholder="Email"></input>
-                    <button>Submit</button>
+                    <input onChange={this.changeHandler} name="name" value={this.state.name} placeholder="Name"></input>
+                    <input onChange={this.changeHandler} name="age" value={this.state.age} placeholder="Age"></input>
+                    <input onChange={this.changeHandler} name="email" value={this.state.email} placeholder="Email"></input>
+                    <button onClick={()=> this.addFriendHandler()}>Submit</button>
                 </div>
                 <div className="flex-container">
                     {this.props.friends.map(friend => {
@@ -37,6 +55,7 @@ class  FriendList extends React.Component {
 }
 
 const mapStateToProps = state => {
+    console.log("inside map", state)
     return {
         friends: state.friends
     }
@@ -45,7 +64,8 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     {
-        fetchFriends
+        fetchFriends,
+        addFriends
     }
 )(FriendList)
 
