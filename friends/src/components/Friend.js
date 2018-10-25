@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { update } from '../actions';
+import { update, deleteFriend } from '../actions';
 
 class Friend extends Component {
     constructor() {
@@ -50,6 +50,15 @@ class Friend extends Component {
         }
     }
 
+    deleteFriend = event => {    
+        let id = Number(event.target.id);
+        this.props.friends.map(friend => {
+            if (friend.id === id) {
+                this.props.deleteFriend(id)
+            }
+        })
+    }
+
     render() {
         const { name, age, email, id } = this.props.friend
         return (
@@ -59,7 +68,7 @@ class Friend extends Component {
                 <div>Email: {email}</div>
                 <div className='friend-btns'>
                     <div className='btn' onClick={() => this.editFriend(id, name, age, email)}>edit</div>
-                    {/* <div className='btn' id={id} onClick={this.deleteFriend}>delete</div> */}
+                    <div className='btn' id={id} onClick={this.deleteFriend}>delete</div>
                 </div>
                 <div className={this.state.editingId === id ? 'edit-form' : 'hidden'}>Update Friend
                     <form className='form' id={id} onSubmit={this.editSubmit}>
@@ -72,7 +81,6 @@ class Friend extends Component {
             </div>
         )
     }
-    
 }
 
 const mapStateToProps = state => {
@@ -81,4 +89,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { update })(Friend);
+export default connect(mapStateToProps, { update, deleteFriend })(Friend);

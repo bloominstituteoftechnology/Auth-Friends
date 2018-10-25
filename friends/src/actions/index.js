@@ -45,3 +45,15 @@ export const update = (editedFriend) => dispatch => {
             dispatch({ type: ERROR, payload: error });
         });
 };
+
+export const deleteFriend = (id) => dispatch => {
+    dispatch({ type: DELETING });
+    axios
+        .delete(`http://localhost:5000/api/friends/${id}`)
+        .then(response => {
+            dispatch({ type: DELETED, payload: response.data });
+        })
+        .catch(error => {
+            dispatch({ type: ERROR, payload: error });
+        });
+};
