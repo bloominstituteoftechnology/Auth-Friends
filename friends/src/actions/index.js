@@ -7,6 +7,7 @@ export const CREATING_FRIENDS="CREATING_FRIENDS";
 export const CREATED_FRIENDS="CREATED_FRIENDS"; 
 export const SINGLE_FRIEND="SINGLE_FRIEND"; 
 export const TOGGLE_FRIEND="TOGGLE_FRIEND"; 
+export const ERROR ="ERROR"; 
 
 export const fetchfriends = () => dispatch => {
   dispatch({ type: FETCHING_FRIENDS });

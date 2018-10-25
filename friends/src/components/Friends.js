@@ -1,9 +1,9 @@
 import React, {Component} from 'react'; 
-import './App.css'; 
+import '../App.css'; 
 import SelectedFriend from './SelectedFriend'; 
 import {connect} from 'react-redux'; 
-import {updateSingleFriend, toggleShowUpdate} from '../Action '; 
-import UpdateFriendsForm from './UpdateFriendForm'; 
+import {updateSingleFriend, toggleShowUpdate} from '../actions'; 
+import UpdateFriendsForm from './UpdatedFriendsForm'; 
 
 class Friends extends Component {
     handleShowFriend = friend =>{

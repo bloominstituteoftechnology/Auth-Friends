@@ -4,8 +4,6 @@ import {
     FETCHING_FRIENDS_FAILURE,
     CREATING_FRIENDS,
     CREATED_FRIENDS,
-    SINGLE_FRIEND,
-    TOGGLE_FRIEND
   } from "../actions";
   
   const initialState = {
@@ -17,7 +15,7 @@ import {
     friendSelected: {}, 
     showUpdate: false
   };
-  export const charsReducer = (state = initialState, action) => {
+  export const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
       case FETCHING_FRIENDS:
         return { ...state, isFetching: true} ;
@@ -37,14 +35,3 @@ import {
         return state;
     }
   };
-
-  export const singleFriendReducer = (state = intialState, action) =>{
-    switch(action.type) {
-        case SINGLE_FRIEND: 
-        return { ...state, friendSelected: action.payload, showUpdate: false};
-        case TOGGLE_FRIEND: 
-        return {...state, showUpdate: !state.showUpdate};
-        default: 
-        return state; 
-    }
-}; 
