@@ -40,6 +40,7 @@ const Form = props => (
         />
         <img
           className="cancel-button"
+          alt="cancel"
           src={xCircleWhite}
           onClick={props.handleCancel}
         />

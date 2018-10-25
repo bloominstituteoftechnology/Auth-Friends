@@ -7,6 +7,8 @@ import "./App.css";
 import FriendList from "./components/FriendList";
 import Form from "./components/Form";
 
+const Spinner = require("react-spinkit");
+
 const blankFormValues = {
   name: "",
   age: "",
@@ -95,7 +97,11 @@ class App extends Component {
   render() {
     return this.props.isFetching ? (
       <div className="App">
-        <h1>Loading...</h1>
+        <Spinner
+          name="ball-pulse-sync"
+          fadeIn="none"
+          style={{ width: "96px", height: "96px" }}
+        />
       </div>
     ) : (
       <div className="App">
@@ -113,7 +119,9 @@ class App extends Component {
           isUpdating={this.state.updating}
           handleCancel={this.handleCancel}
           formOpen={this.state.formOpen}
-          title={this.state.showUpdateForm ? "Update a Friend" : "Submit New Friend"}
+          title={
+            this.state.showUpdateForm ? "Update a Friend" : "Submit New Friend"
+          }
           formSubmit={
             this.state.showUpdateForm
               ? this.handleSubmitUpdate
