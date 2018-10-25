@@ -36,6 +36,11 @@ class ActionsContainer extends React.Component{
                 email:this.state.Email
             }
         );
+        this.setState({
+                Name:'',
+                Age:'',
+                Email:''
+            })
     }
     render(){
         return(
