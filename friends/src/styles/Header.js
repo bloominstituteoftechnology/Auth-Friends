@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 `;
 
 export const BrandName = styled.h1`
-  font-size: 4rem;
+  font-size: 3.5rem;
   color: #fff;
   font-weight: bold;
 `;
