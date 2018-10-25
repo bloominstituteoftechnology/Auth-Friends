@@ -8,6 +8,13 @@ import {
   POST_FRIEND,
   POST_FRIEND_SUCCESS,
   POST_FRIEND_FAILURE,
+  FETCH_FRIEND_ID,
+  FETCH_FRIEND_ID_SUCCESS,
+  FETCH_FRIEND_ID_FAILURE,
+  PUT_FRIEND_ID,
+  PUT_FRIEND_SUCCESS,
+  PUT_FRIEND,
+  PUT_FRIEND_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -20,7 +27,8 @@ const initialState = {
   deletingFriend: false,
   friendDeleted: false,
   friends: [],
-  error: null
+  error: null,
+  friend: null,
 }
 
 export const friendsReducer = (state = initialState, action) => {
@@ -35,7 +43,7 @@ export const friendsReducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingFriends: false,
-        friends: [...state.friends, ...action.payload]
+        friends: [...action.payload]
       };
 
     case FETCH_FRIENDS_FAILURE:
@@ -82,7 +90,46 @@ export const friendsReducer = (state = initialState, action) => {
       return {
         ...state,
         savingFriends: false,
-        error: action.payload, 
+        error: action.payload,
+      }
+
+    case PUT_FRIEND:
+      return {
+        ...state,
+        savingFriends: true
+      };
+
+    case PUT_FRIEND_SUCCESS:
+      return {
+        ...state,
+        savingFriends: false,
+        friends: [...action.payload]
+      };
+
+    case PUT_FRIEND_FAILURE:
+      return {
+        ...state,
+        savingFriends: false,
+        error: action.payload,
+      }
+
+    case FETCH_FRIEND_ID:
+      return {
+        fetchingFriends: true,
+      }
+
+    case FETCH_FRIEND_ID_SUCCESS:
+      return {
+        ...state,
+        friend: action.payload,
+        fetchingFriends: false,
+      }
+
+    case FETCH_FRIEND_ID_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        fetchingFriends: false,
       }
 
     default:

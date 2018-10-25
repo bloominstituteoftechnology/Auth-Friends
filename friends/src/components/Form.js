@@ -3,10 +3,21 @@ import React from 'react';
 class Form extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      name: '',
-      age: '',
-      email: '',
+    console.log('in form', this.props);
+    if (this.props.friend) {
+        this.state = {
+          id: this.props.friend.id,
+          name: this.props.friend.name,
+          age: this.props.friend.age,
+          email: this.props.friend.email,
+        }
+    } else {
+      this.state = {
+        id: null,
+        name: '',
+        age: '',
+        email: '',
+      }
     }
   }
 
@@ -18,18 +29,38 @@ class Form extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const friend = {
-      name: this.state.name,
-      age: this.state.age,
-      email: this.state.email,
+    if (this.state.id) {
+      const friend = {
+        id: this.state.id,
+        name: this.state.name,
+        age: this.state.age,
+        email: this.state.emal,
+      }
+      this.props.submit(friend);
+      this.setState({
+        id: null,
+        name: '',
+        age: '',
+        email: '',
+      });
+      this.props.history.push('/');
+      window.location.reload(); 
     }
-    this.props.add(friend); 
+      const friend = {
+        name: this.state.name,
+        age: this.state.age,
+        email: this.state.email,
+      }
+    this.props.submit(friend);
     this.setState({
+      id: null,
       name: '',
       age: '',
       email: '',
-    })
+    });
+    this.props.history.push('/');
   }
+
   render(){
     return (
       <form onSubmit={this.handleSubmit}>
@@ -37,18 +68,21 @@ class Form extends React.Component {
         name='name'
         type='text'
         value={this.state.name}
+        placeholder='name'
         onChange={this.handleInput}
       />
       <input
         name='age'
         type='number'
         value={this.state.age}
+        placeholder='age'
         onChange={this.handleInput}
       />
       <input
         name='email'
         type='text'
         value={this.state.email}
+        placeholder='email'
         onChange={this.handleInput}
       />
       <button className='form button'>Done!</button>
