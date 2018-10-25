@@ -19,7 +19,7 @@ class FriendForm extends Component {
     }; 
     render() {
         return(
-            <form className="layout">
+            <form className="layout" onSubmit={() => this.handleAddFriend()}>
             <label>
                 Name:
                 <input 
@@ -55,7 +55,7 @@ class FriendForm extends Component {
                 />
             </label>
             
-            <button onClick={() => this.handleAddFriend()} type="button">
+            <button type="submit">
                 Add New Friend
             </button>
             </form>
