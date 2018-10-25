@@ -26,34 +26,42 @@ class CreateFriendForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label htmlFor="POST-name">Name:</label>
-                <input
-                    className="inputs"
-                    ß
-                    id="POST-name"
-                    type="text"
-                    name="name"
-                    onChange={this.handleChange}
-                />
-                <label htmlFor="POST-age">Age:</label>
-                <input
-                    className="inputs"
-                    id="POST-age"
-                    type="number"
-                    min="0"
-                    max="110"
-                    name="age"
-                    onChange={this.handleChange}
-                />
-                <label htmlFor="POST-email">Email:</label>
-                <input
-                    className="inputs"
-                    id="POST-email"
-                    type="text"
-                    name="email"
-                    onChange={this.handleChange}
-                />
-                <input type="submit" value="submit" />
+                <div className="form-break">
+                    <div>
+                        <label htmlFor="POST-name">Name: </label>
+                        <input
+                            className="inputs"
+                            ß
+                            id="POST-name"
+                            type="text"
+                            name="name"
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label className="age" htmlFor="POST-age">Age: </label>
+                        <input
+                            className="inputs"
+                            id="POST-age"
+                            type="number"
+                            min="0"
+                            max="110"
+                            name="age"
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="POST-email">Email:</label>
+                        <input
+                            className="inputs"
+                            id="POST-email"
+                            type="text"
+                            name="email"
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <input className="submit" type="submit" value="submit" />
+                </div>
             </form>
         )
     }
