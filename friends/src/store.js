@@ -1,4 +1,4 @@
-
+import friendsReducer from './reducers'
 import { applyMiddleware, createStore, compose } from "redux";
 
 const logger = store => next => action => {
@@ -25,7 +25,7 @@ const logger = store => next => action => {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-    
+    friendsReducer,
     composeEnhancers(applyMiddleware(logger))
 );
 
