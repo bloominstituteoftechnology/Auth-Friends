@@ -78,12 +78,14 @@ export const FriendCard = styled.div`
   width: 49%;
   margin: 10px 0px;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 `;
 
 export const DeleteButton = styled.button`
   border: 1px solid #ccd0d5;
   border-radius: 3px;
-  margin-top: 20px;
   width: 24%;
   padding: 4px 0;
   font-size: 1.4rem;
