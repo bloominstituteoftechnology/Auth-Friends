@@ -4,14 +4,22 @@ import {
   FETCHING_FAILURE,
   ADDING,
   ADDING_SUCCESS,
-  ADDING_FAILURE
+  ADDING_FAILURE,
+  DELETING,
+  DELETING_SUCCESS,
+  DELETING_FAILURE,
+  UPDATING,
+  UPDATING_SUCCESS,
+  UPDATING_FAILURE
 } from "../actions";
 
 const initialState = {
   friends: [],
   error: null,
   fetchingFriends: false,
-  addingFriend: false
+  addingFriend: false,
+  deletingFriend: false,
+  updatingFriend: false
 };
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -38,6 +46,26 @@ export const friendsReducer = (state = initialState, action) => {
       };
     case ADDING_FAILURE:
       return { ...state, addingFriend: false, error: action.payload };
+    case DELETING:
+      return { ...state, deletingFriend: true };
+    case DELETING_SUCCESS:
+      return {
+        ...state,
+        friends: [...action.payload],
+        deletingFriend: false
+      };
+    case DELETING_FAILURE:
+      return { ...state, deletingFriend: false, error: action.payload };
+    case UPDATING:
+      return { ...state, updatingFriend: true };
+    case UPDATING_SUCCESS:
+      return {
+        ...state,
+        friends: [...action.payload],
+        updaingFriend: false
+      };
+    case UPDATING_FAILURE:
+      return { ...state, updaingFriend: false, error: action.payload };
     default:
       return state;
   }
