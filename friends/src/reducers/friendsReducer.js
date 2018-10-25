@@ -1,7 +1,7 @@
 
 const initalState = {
-
-
+  fetchingFriends: false,
+  friendsFetched: false,
   friends: [
     {
       id: 1,
@@ -21,11 +21,15 @@ const initalState = {
       age: 15,
       email: 'ryan@lambdaschool.com',
     }
-  ]
+  ],
+  error: null
 }
 
 export const friendsReducer = (state = initalState, action) => {
   console.log('reducer', action)
 
+  switch (action.type) {
+
+  }
   return state;
 }

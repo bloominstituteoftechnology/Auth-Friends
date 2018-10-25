@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 
+import { getFriends } from '../actions'
+
 import { Friends } from '../components'
+
 
 class FriendsWrapperView extends Component {
   constructor(props) {
     super(props);
     this.state = {  }
+  }
+  componentDidMount() {
+    this.props.getFriends()
   }
   render() { 
     return (
@@ -27,6 +33,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-
+    getFriends
   }
 )(FriendsWrapperView);
