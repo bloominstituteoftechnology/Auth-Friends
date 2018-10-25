@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Container, Close } from '../styles/Card'
 import Item from './Item'
 import close from '../icons/close.png'
 
 class Card extends Component {
   handleClose = id => {
-    axios
-      .delete(`/api/friends/${id}`)
-      .then(res => this.props.updateFriends(res.data))
-      .catch(err => console.log(err))
+    this.props.deleteFriend(id)
   }
 
   render() {

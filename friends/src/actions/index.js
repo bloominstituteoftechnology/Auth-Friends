@@ -39,11 +39,11 @@ export const saveFriend = ({ name, age, email }) => dispatch => {
     .catch(err => dispatch(recordError()))
 }
 
-export const updateFriend = (id, field, value) => dispatch => {
+export const updateFriend = ({ id, field, value }) => dispatch => {
   dispatch({ type: UPDATING })
 
   axios
-    .put(`/api/friends/${id}`, { [field]: this.state.value })
+    .put(`/api/friends/${id}`, { [field]: value })
     .then(res => dispatch({ type: UPDATED, friends: res.data }))
     .catch(err => dispatch(recordError()))
 }

@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import axios from 'axios'
 import { Line } from '../styles/Card'
 import { Input } from '../styles/Item'
 
@@ -62,16 +61,14 @@ class Item extends Component {
   // update field in db on enter (submit)
   handleSubmit = event => {
     event.preventDefault()
-    const { id, field, updateFriends } = this.props
+    const { id, field } = this.props
+    const { value } = this
 
-    axios
-      .put(`/api/friends/${id}`, { [field]: this.state.value })
-      .then(res => {
-        updateFriends(res.data)
-        // close input and remove focus
-        this.resetElement()
-      })
-      .catch(err => console.log(err))
+    this.props.updateFriend({ id, field, value })
+
+    // this should call AFTER the api returns
+    // close input and remove focus
+    this.resetElement()
   }
 
   resetElement = () => {
