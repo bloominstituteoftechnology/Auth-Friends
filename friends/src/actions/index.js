@@ -18,10 +18,23 @@ export const fetchFriends = () => dispatch => {
         })
 }
 
-export const addFriends = (friend) => dispatch => {
+export const addFriend = (friend) => dispatch => {
     dispatch({type: SAVING_FRIENDS});
     axios
-        .post("http://localhost:5000/api/friends", friend)
+        .post(`http://localhost:5000/api/friends/`, friend)
+        .then(res => {
+            dispatch({type: SAVING_FRIENDS_SUCCESS, payload: res.data});
+        })
+        .catch(error => {
+            dispatch({ type: FETCHING_FRIENDS_FAILURE, payload: error});
+        })
+}
+
+export const deleteFriend = (id) => dispatch => {
+    dispatch({type: SAVING_FRIENDS});
+    console.log(id);
+    axios
+        .delete(`http://localhost:5000/api/friends/${id}`)
         .then(res => {
             dispatch({type: SAVING_FRIENDS_SUCCESS, payload: res.data});
         })

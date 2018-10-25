@@ -12,9 +12,10 @@ class CreateFriendForm extends React.Component {
 
     changeHandler = e => this.setState({[e.target.name]: e.target.value});
 
-    addFriendHandler = () => {
+    addFriendHandler = e => {
+        e.preventDefault();
         let { name, age, email } = this.state;
-        this.props.addFriends({ name, age, email })
+        this.props.addFriend({ name, age, email })
         this.setState({ name: "", age: "", email: "" })
     }
 
