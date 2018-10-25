@@ -1,5 +1,5 @@
 import React from "react";
-import {fetchFriends, addNewFriend} from "../actions";
+import {fetchFriends, addNewFriend, deleteFriend} from "../actions";
 import {connect} from "react-redux";
 
 import FriendsList from "../components/FriendsList";
@@ -8,28 +8,60 @@ class FriendsListView extends React.Component {
   constructor() {
     super();
     this.state = {
-      newFriend: ""
+      name: "",
+      age: "",
+      email: ""
     };
   }
+
+  componentDidMount = () => {
+    this.props.fetchFriends();
+  };
 
   changeHandler = e => {
     console.log(e.target.value);
     this.setState({[e.target.name]: e.target.value});
   };
 
-  componentDidMount = () => {
-    this.props.fetchFriends();
+  handleSubmit = (e, newFriend) => {
+    e.preventDefault();
+    console.log(newFriend);
+    this.props.addNewFriend(newFriend);
+    this.setState({name: "", age: "", email: ""});
+  };
+
+  deleteFriend = (e, id) => {
+    e.preventDefault();
+    console.log(id);
+    this.props.deleteFriend(id);
   };
 
   render() {
     return (
       <div>
-        <form action="">
+        <form onSubmit={e => this.handleSubmit(e, this.state)}>
           <input
+            required
             type="text"
-            name="newFriend"
-            placeholder="Add New Friend"
-            value={this.state.newFriend}
+            name="name"
+            placeholder="Name"
+            value={this.state.name}
+            onChange={this.changeHandler}
+          />
+          <input
+            required
+            type="number"
+            name="age"
+            placeholder="Age"
+            value={this.state.age}
+            onChange={this.changeHandler}
+          />
+          <input
+            required
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={this.state.email}
             onChange={this.changeHandler}
           />
           <button>Add</button>
@@ -38,7 +70,10 @@ class FriendsListView extends React.Component {
           {this.props.isFetching ? (
             <h2>Fetching Friends</h2>
           ) : (
-            <FriendsList friends={this.props.friends} />
+            <FriendsList
+              friends={this.props.friends}
+              deleteFriend={this.deleteFriend}
+            />
           )}
         </div>
       </div>
@@ -47,13 +82,19 @@ class FriendsListView extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    friends: state.friends,
-    isFetching: state.isFetching
+    friends: state.friendsReducer.friends,
+    isFetching: state.friendsReducer.isFetching
+    // deleteFriend: state.friendsReducer
   };
 };
 
 export default connect(
   mapStateToProps,
-  {fetchFriends, addNewFriend}
+  {
+    fetchFriends,
+    addNewFriend,
+    deleteFriend
+  }
 )(FriendsListView);

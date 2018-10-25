@@ -1,29 +1,8 @@
-import {FETCHING, SUCCESS, FAILURE, ADD_NEW_FRIEND} from "../actions";
+import {friendsReducer} from "./reducers";
+import {combineReducers} from "redux";
 
-const initialState = {
-  friends: [],
-  isFetching: false,
-  error: null
-};
+const rootReducer = combineReducers({
+  friendsReducer
+});
 
-export const friendsReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case FETCHING:
-      return {...state, isFetching: true};
-    case SUCCESS:
-      return {...state, friends: [...action.payload], isFetching: false};
-    case FAILURE:
-      return {...state, error: action.payload, isFetching: false};
-    default:
-      return state;
-  }
-};
-
-export const addFriendReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_NEW_FRIEND:
-      return {...state, friends: [...action.payload]};
-    default:
-      return state;
-  }
-};
+export default rootReducer;

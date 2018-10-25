@@ -6,7 +6,13 @@ const FriendsList = props => {
   return (
     <div>
       {props.friends.map(friend => {
-        return <Friend key={friend.id} friend={friend} />;
+        return (
+          <Friend
+            key={friend.id}
+            friend={friend}
+            deleteFriend={props.deleteFriend}
+          />
+        );
       })}
     </div>
   );
