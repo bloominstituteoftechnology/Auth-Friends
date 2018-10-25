@@ -2,7 +2,7 @@ import React from "react";
 import Friend from "./Friend";
 
 const FriendsList = props => (
-  <div>
+  <div className="friends">
     {props.friends.map((friend, i) => (
       <Friend
         friend={friend}

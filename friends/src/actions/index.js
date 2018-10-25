@@ -3,12 +3,15 @@ import axios from "axios";
 export const FETCHING = "FETCHING";
 export const FETCHING_SUCCESS = "FETCHING_SUCCESS";
 export const FETCHING_FAILURE = "FETCHING_FAILURE";
+
 export const ADDING = "ADDING";
 export const ADDING_SUCCESS = "ADDING_SUCCESS";
 export const ADDING_FAILURE = "ADDING_FAILURE";
+
 export const DELETING = "DELETING";
 export const DELETING_SUCCESS = "DELETING_SUCCESS";
 export const DELETING_FAILURE = "DELETING_FAILURE";
+
 export const UPDATING = "UPDATING";
 export const UPDATING_SUCCESS = "UPDATING_SUCCESS";
 export const UPDATING_FAILURE = "UPDATING_FAILURE";

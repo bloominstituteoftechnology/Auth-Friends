@@ -38,7 +38,7 @@ class App extends Component {
   };
   toggleOnEditing = (name, age, email, id) => {
     this.setState({
-      isEditing: true,
+      isEditing: !this.state.isEditing,
       uname: name,
       uage: age,
       uemail: email,
@@ -78,22 +78,24 @@ class App extends Component {
               toggleOnEditing={this.toggleOnEditing}
             />
           )}
-          {this.state.isEditing && (
-            <UpdateFriendForm
-              name={this.state.uname}
-              age={this.state.uage}
-              email={this.state.uemail}
+          <div>
+            {this.state.isEditing && (
+              <UpdateFriendForm
+                name={this.state.uname}
+                age={this.state.uage}
+                email={this.state.uemail}
+                handleInput={this.handleInput}
+                updateToFriends={this.updateToFriends}
+              />
+            )}
+            <CreateFriendForm
+              name={this.state.name}
+              age={this.state.age}
+              email={this.state.email}
               handleInput={this.handleInput}
-              updateToFriends={this.updateToFriends}
+              addToFriends={this.addToFriends}
             />
-          )}
-          <CreateFriendForm
-            name={this.state.name}
-            age={this.state.age}
-            email={this.state.email}
-            handleInput={this.handleInput}
-            addToFriends={this.addToFriends}
-          />
+          </div>
         </div>
       </div>
     );
