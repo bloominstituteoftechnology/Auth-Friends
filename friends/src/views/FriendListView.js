@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchFriends } from "../actions";
+import { fetchFriends, addFriends } from "../actions";
 import { Friends, CreateFriendForm, UpdateFriendForm } from "../components";
 
 class FriendListView extends React.Component {
@@ -15,8 +15,8 @@ class FriendListView extends React.Component {
         return (
             <div>
                 <Friends friends={this.props.friends} />
-                {/* <CreateFriendForm />
-                <UpdateFriendForm /> */}
+                <CreateFriendForm addFriends={this.props.addFriends} />
+                {/* <UpdateFriendForm /> */}
             </div>
         );
     }
@@ -26,10 +26,11 @@ const mapStateToProps = state => {
     return {
         friends: state.friends.friends,
         fetchingFriends: state.friends.fetchingFriends,
+        savingFriends: state.friends.savingFriends,
     }
 }
 
 export default connect(
     mapStateToProps,
-    { fetchFriends }
+    { fetchFriends, addFriends }
 )(FriendListView);
