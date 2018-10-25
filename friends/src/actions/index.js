@@ -19,10 +19,11 @@ export const fetchFriends = () => dispatch => {
         })
 }
 
-export const addFriends = () => dispatch => {
+export const addFriends = (friend) => dispatch => {
+    console.log("friend", friend)
     dispatch({ type: ADD_FRIEND });
     axios
-        .post("http://localhost:5000/api/friends/")
+        .post("http://localhost:5000/api/friends/", friend )
         .then(friends => {
             console.log("inside add friends", friends.data)
             dispatch({ type: ADD_SUCCESS, payload: [...friends.data]})

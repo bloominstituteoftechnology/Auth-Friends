@@ -33,6 +33,7 @@ export const friendsReducer = (state = initialState, action) => {
                 error: action.payload
             }
         case ADD_FRIEND:
+            console.log("inside friends reducer", state)
             return {
                 savingFriends: true,
                 ...state
