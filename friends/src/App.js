@@ -4,35 +4,20 @@ import axios from 'axios'
 import Form from './components/Form'
 import Card from './components/Card'
 import { FormWrapper, CardsWrapper } from './styles/Global'
-import {
-  fetchFriends,
-  saveFriend,
-  updateFriend,
-  deleteFriend
-} from './actions'
+import { fetchFriends, saveFriend, updateFriend, deleteFriend } from './actions'
 
 const mapStateToProps = ({
   fetchingFriends,
-  friendsFetched,
-  friendsSaved,
   savingFriends,
   updatingFriend,
-  friendUpdated,
   deletingFriend,
-  friendDeleted,
-  friends,
-  error
+  friends
 }) => ({
   fetchingFriends,
-  friendsFetched,
-  friendsSaved,
   savingFriends,
   updatingFriend,
-  friendUpdated,
   deletingFriend,
-  friendDeleted,
-  friends,
-  error
+  friends
 })
 
 class App extends Component {
@@ -45,6 +30,8 @@ class App extends Component {
       .get('/api/friends')
       .then(res => this.setState({ friends: res.data }))
       .catch(err => console.log(err))
+
+    this.props.fetchFriends()
   }
 
   updateFriends = friends => {
@@ -54,11 +41,12 @@ class App extends Component {
   render() {
     const { friends } = this.state
     const { updateFriends } = this
+    const { saveFriend } = this.props
 
     return (
       <Fragment>
         <FormWrapper>
-          <Form updateFriends={updateFriends} />
+          <Form saveFriend={saveFriend} updateFriends={updateFriends} /* */ />
         </FormWrapper>
         <CardsWrapper>
           {friends.length &&

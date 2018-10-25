@@ -30,22 +30,28 @@ class Form extends Component {
       Number.isInteger(parseInt(age)) &&
       email.trim().length
     ) {
-      axios
-        .post('/api/friends', {
-          name,
-          age,
-          email,
-          id: uuid()
-        })
-        .then(res => {
-          this.props.updateFriends(res.data)
-          this.setState({
-            name: '',
-            age: '',
-            email: ''
-          })
-        })
-        .catch(err => console.log(err))
+
+      console.log('attemptin')
+      console.log(this.props)
+      this.props.saveFriend({ name, age, email })
+
+      // axios
+      //   .post('/api/friends', {
+      //     name,
+      //     age,
+      //     email,
+      //     id: uuid()
+      //   })
+      //   .then(res => {
+      //     this.props.updateFriends(res.data)
+      //     this.setState({
+      //       name: '',
+      //       age: '',
+      //       email: ''
+      //     })
+      //   })
+      //   .catch(err => console.log(err))
+
     } else {
       console.log('try harder')
     }
