@@ -10,14 +10,24 @@ const Friend = props => {
         <h2>{name}</h2>
         <h4>{age}</h4>
         <h4>{email}</h4>
-        <button onClick={()=> {props.editFriend(id)}}>Edit</button>
+        <button
+          onClick={() => {
+            props.editFriend(id);
+          }}
+        >
+          Edit
+        </button>
       </section>
     );
+  } else {
+    return <h2>Loading Data...</h2>;
   }
 };
+
 const mapStateToProps = (state, ownProps) => {
+  console.log(state, ownProps);
   const { id } = ownProps.match.params;
-  return { friends: state.friends.find(friend => id === friend.id) || null };
+  return { friends: state.friends.find(friend => id == friend.id) || null };
 };
 
 export default connect(

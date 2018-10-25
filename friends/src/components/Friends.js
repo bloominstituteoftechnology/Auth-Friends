@@ -10,7 +10,6 @@ class Friends extends React.Component {
   }
 
   componentDidMount() {
-    // call our action
     this.props.fetchFriends();
   }
 
@@ -18,13 +17,13 @@ class Friends extends React.Component {
     return (
       <div>
         <CreateFriendForm />
-            {this.props.friends.map(friend => (
-            <div key={friend.id}>
-                <Link to={friend.id}>
-                <h1>{friend.name}</h1>
-                </Link>
-            </div>
-            ))}
+        {this.props.friends.map(friend => (
+          <div key={friend.id}>
+            <Link to={`/${friend.id}`}>
+              <h1>{friend.name}</h1>
+            </Link>
+          </div>
+        ))}
       </div>
     );
   }
@@ -32,7 +31,7 @@ class Friends extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    friends: state.friends,
+    friends: state.friends
   };
 };
 
