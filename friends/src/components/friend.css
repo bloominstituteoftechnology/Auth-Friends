@@ -1,0 +1,51 @@
+.flex-container {
+    display: flex;
+    background: lightpink;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.flex-children {
+    width: 300px;
+    background: lightcoral;
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 5px 10px #888888;
+    
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+input {
+    border-radius: 5px;
+    margin: 10px;
+    height: 35px;
+    text-align: center;
+    background: pink;
+    font-weight: bold;
+    font-size: 20px;
+    color: #757575;
+}
+
+h4 {
+    margin: 5px;
+    border-bottom: 1px solid red;
+}
+
+button {
+    margin-top: 10px;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #757575;
+}
+
