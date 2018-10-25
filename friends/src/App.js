@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 
 class App extends Component {
+
+  componentDidMount() {
+    //get data from api
+  }
+
   render() {
     return (
       <div className="App">
@@ -23,4 +29,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null)(App);
