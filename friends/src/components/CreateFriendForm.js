@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addFriend } from '../actions'
 
+import {
+  FormWrapper,
+  FormHeader,
+  FormGroup,
+  FormLabel,
+  FormInput,
+  FormButton
+} from '../styles/Content';
+
 class CreateFriendForm extends Component {
   state = {
     name: '',
@@ -23,12 +32,12 @@ class CreateFriendForm extends Component {
   render() {
     const { name, age, email } = this.state;
     return (
-      <div>
-        <h2>Add New Friend</h2>
+      <FormWrapper>
+        <FormHeader>Add New Friend</FormHeader>
 
-        <form onSubmit={this.addFriend}>
-          <label>Name: </label>
-          <input
+        <FormGroup onSubmit={this.addFriend}>
+          <FormLabel>NAME </FormLabel>
+          <FormInput
             type="text"
             placeholder="Enter Name"
             name="name"
@@ -37,8 +46,8 @@ class CreateFriendForm extends Component {
           />
           <br />
 
-          <label>Age: </label>
-          <input
+          <FormLabel>AGE </FormLabel>
+          <FormInput
             type="text"
             placeholder="Enter Age"
             name="age"
@@ -47,8 +56,8 @@ class CreateFriendForm extends Component {
           />
           <br />
 
-          <label>Email: </label>
-          <input
+          <FormLabel>EMAIL </FormLabel>
+          <FormInput
             type="text"
             placeholder="Enter Email"
             name="email"
@@ -57,11 +66,12 @@ class CreateFriendForm extends Component {
           />
           <br />
 
-          <button type="submit">Add New Friend</button>
-        </form>
-      </div>
+          <FormButton type="submit">Add New Friend</FormButton>
+        </FormGroup>
+      </FormWrapper>
     );
   }
 }
 
+// exported to FriendsListContainer
 export default connect(null, { addFriend })(CreateFriendForm);

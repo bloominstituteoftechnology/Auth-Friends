@@ -47,3 +47,8 @@ export const addFriend = friend => dispatch => {
       }
     ))
 };
+
+// Delete friend
+export const DELETING_FRIEND = 'DELETING_FRIEND';
+export const DELETING_FRIEND_SUCCESS = 'DELETING_FRIEND_SUCCESS';
+export const DELETING_FRIEND_FAILURE = 'DELETING_FRIEND_FAILURE';

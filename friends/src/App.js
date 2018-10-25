@@ -1,13 +1,18 @@
 import React from 'react';
 
 import { FriendsListContainer } from './containers';
-import './App.css';
+import { Heading, Wrapper, BrandName } from './styles/Header';
 
 const App = () => {
   return (
-    <div className="App">
+    <>
+      <Heading>
+        <Wrapper>
+          <BrandName>Facebuko</BrandName>
+        </Wrapper>
+      </Heading>
       <FriendsListContainer />
-    </div>
+    </>
   );
 }
 

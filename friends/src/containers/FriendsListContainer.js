@@ -5,6 +5,8 @@ import { getFriends } from '../actions';
 import { FriendsList } from '../components';
 import CreateFriendForm from '../components/CreateFriendForm';
 
+import { Container } from '../styles/Content';
+
 class FriendsListContainer extends Component {
   componentDidMount() {
     this.props.getFriends();
@@ -19,10 +21,10 @@ class FriendsListContainer extends Component {
       return <h3>404 Not Found</h3>
     } else {
       return (
-        <div className="container">
+        <Container>
           <CreateFriendForm />
           <FriendsList friends={friends} />
-        </div>
+        </Container>
       );
     }
   }

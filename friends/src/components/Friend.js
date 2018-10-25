@@ -1,14 +1,15 @@
 import React from 'react';
 
+import { FriendCard, DeleteButton } from '../styles/Content';
+
 const Friend = props => {
-  const { name, age, email } = props.friend;
+  const { name, email } = props.friend;
   return (
-    <div>
-      <p>Name: {name}</p>
-      <p>Age: {age}</p>
-      <p>Email: {email}</p>
-      <hr />
-    </div>
+    <FriendCard>
+      <p style={{ marginBottom: '5px', color: `#365899`, fontWeight: 'bold' }}>{name}</p>
+      <p>{email}</p>
+      <DeleteButton>Delete</DeleteButton>
+    </FriendCard>
   );
 }
 
