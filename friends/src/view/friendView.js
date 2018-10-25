@@ -32,3 +32,7 @@ const mapStateToProps = (state = {
   friends: props.friendReducer.friends,
   error: props.friendReducer.error
 });
+export default connect(
+  mapStateToProps,
+  { fetchFriend }
+)(FriendView);
