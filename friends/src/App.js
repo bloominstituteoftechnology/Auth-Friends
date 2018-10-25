@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import FriendsList from './components/friendslist';
-import { fetchFriends, addFriend } from './actions';
+import { fetchFriends, addFriend, deleteFriend } from './actions';
 import { connect } from 'react-redux';
  
 class App extends Component {
@@ -23,11 +23,16 @@ class App extends Component {
   });
   clickHandler = event => {
     event.preventDefault();
-    console.log('click handler',this.state)
+    console.log('click handler', this.state)
     const { name, age, email } = this.state;
     this.props.addFriend({ name, age, email });
-    this.setState({ name: '', age: '', email: '' });
+    this.props({ name: '', age: null, email: '' });
   };
+  handleDelete=(event, id)=> {
+    event.preventDefault();
+    console.log('my id is ', id)
+    // this.props.deleteFriend(id);
+  }
 
   render() {
     return(
@@ -35,8 +40,7 @@ class App extends Component {
       {this.props.isFetching ?(
         <h1>Please wait, loading friends...</h1>
       ):(
-        <div className ='contact-container'>
-          <FriendsList friends = {this.props.friends} />
+        <div className ='contact-container'>          
           <form className='form'>
             <h3>Add a contact</h3>
             <input 
@@ -56,6 +60,9 @@ class App extends Component {
               placeholder='Email'
               onChange={this.handleInputChange}></input>
             <button onClick={this.clickHandler}>Submit</button>
+            <FriendsList 
+              deleteFriend={this.handleDelete} 
+              friends = {this.props.friends} />
           </form> 
         </div>
       )}
@@ -65,7 +72,6 @@ class App extends Component {
 
 
 const mapStateToProps = state => {
-  console.log('mapping=', state)
   return {
     friends: state.friendsReducer.friends,
     isFetching: state.friendsReducer.isFetching 
@@ -73,4 +79,4 @@ const mapStateToProps = state => {
 };
 // our mapStateToProps needs to have two properties inherited from state
 // the characters and the fetching boolean
-export default connect(mapStateToProps,{ fetchFriends, addFriend })(App);
+export default connect(mapStateToProps,{ fetchFriends, addFriend, deleteFriend })(App);

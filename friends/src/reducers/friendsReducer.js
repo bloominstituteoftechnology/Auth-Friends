@@ -1,10 +1,11 @@
-import { FETCHING_FRIENDS, FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_FAILURE, HANDLE_CLICK, ADD_FRIEND, ADD_FRIEND_ERROR } from '../actions';
+import { FETCHING_FRIENDS, FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_FAILURE, HANDLE_CLICK, ADD_FRIEND, ADD_FRIEND_ERROR, DELETING_FRIEND, DELETE_FRIEND, DELETE_FRIEND_ERROR } from '../actions';
 
 const initialState = {
   friends: [],
   isFetching: false,
   error: null,
   adding: false,
+  deleting: false
 };
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -27,8 +28,18 @@ export const friendsReducer = (state = initialState, action) => {
       return { 
         ...state, 
         adding: false, 
+        error: action.payload 
+      }
+    case DELETING_FRIEND:
+      return {...state, deleting: true};
+    case DELETE_FRIEND:
+      return {...state, friends: action.payload};
+    case DELETE_FRIEND_ERROR:
+      return {
+        ...state, 
+        deleting: false, 
         error: action.payload
-      }  
+      };        
     default:
       return state; 
   }
