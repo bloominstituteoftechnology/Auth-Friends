@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { FriendsList } from '../components';
 
-class FriendsListView extends Component {
+class FriendsListContainer extends Component {
   render() {
     return (
       <FriendsList />
@@ -10,4 +10,4 @@ class FriendsListView extends Component {
   }
 }
 
-export default FriendsListView;
+export default FriendsListContainer;
