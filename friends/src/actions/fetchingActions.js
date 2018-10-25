@@ -3,6 +3,7 @@ import axios from 'axios';
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
 export const FETCHING_FRIENDS_SUCCESS = 'FETCHING_FRIENDS_SUCCESS';
 export const FETCHING_FRIENDS_FAILURE = 'FETCHING_FRIENDS_FAILURE';
+export const ADD_FRIEND = 'ADD_FRIEND';
 
 export const fetchFriends = () => dispatch => {
     dispatch({ type: FETCHING_FRIENDS });
@@ -21,4 +22,11 @@ export const fetchFriends = () => dispatch => {
                 payload: err
             });
         });
+};
+
+export const addFriend = newFriend => {
+    return {
+        type: ADD_FRIEND,
+        payload: newFriend
+    };
 };

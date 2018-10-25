@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { addFriend } from '../actions/fetchingActions';
 
 class NewFriendForm extends React.Component {
     constructor(props) {
@@ -52,4 +55,17 @@ class NewFriendForm extends React.Component {
     };
 }
 
-export default NewFriendForm;
+const mapStateToProps = state => {
+    //console.log('app state: ', state);
+    return {
+        friends: state.friends,
+        error: state.error
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    { addFriend }
+)(NewFriendForm);
+
+// export default NewFriendForm;
