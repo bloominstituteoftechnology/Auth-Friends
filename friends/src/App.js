@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import FriendList from './components/FriendList'
+import FriendForm from './components/FriendForm'
+import styled from 'styled-components'
 
-class App extends Component {
-  render() {
+const AppContainer = styled.div `
+  width:85%;
+  margin: 0 auto;
+  h1{
+    text-align:center;
+    text-shadow: 2px 2px 10px gold, -2px -2px 10px gold;
+  }
+`
+
+
+const App = () => {
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <AppContainer>
+        <h1>Thank you for being a friend</h1>
+        <FriendForm/>
+          <FriendList/>
+      </AppContainer>
     );
   }
-}
+
 
 export default App;

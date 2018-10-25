@@ -6,6 +6,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url(https://imgix.bustle.com/rehost/2016/9/13/e0ad6545-2e8b-42bd-b732-e48160d88ae6.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 code {
