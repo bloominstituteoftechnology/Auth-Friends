@@ -10,12 +10,20 @@ class Form extends Component {
     }
   };
   handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      friend: { ...this.state.friend, [e.target.name]: e.target.value }
+    });
   };
+
+  formSubmit = e => {
+    e.preventDefault();
+    this.props.handleFormSubmit(this.state.friend);
+  };
+
   render() {
     const { friend } = this.state;
     return (
-      <StyledForm>
+      <StyledForm onSubmit={this.formSubmit}>
         <h2>{this.props.title}</h2>
         <div className="form-group">
           <label className="label" htmlFor="name">

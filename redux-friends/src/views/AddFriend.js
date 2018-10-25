@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addNewFriend } from '../actions';
 import Form from '../components/Form';
 
 class AddFriend extends Component {
+  handleFormSubmit = friend => {
+    this.props.addNewFriend(friend);
+  };
+
   render() {
     return (
       <div>
-        <Form title="Add friend" btnValue="Add Friend" />
+        <Form
+          title="Add friend"
+          btnValue="Add Friend"
+          handleFormSubmit={this.handleFormSubmit}
+        />
       </div>
     );
   }
 }
 
-export default AddFriend;
+export default connect(
+  null,
+  { addNewFriend }
+)(AddFriend);
