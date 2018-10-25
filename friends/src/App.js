@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { getFriends } from './actions';
+import { AddFriendForm, FriendsList } from './components';
+import { connect } from 'react-redux';
 
 class App extends Component {
+  componentDidMount() {
+    console.log('in cdm');
+    this.props.getFriends();
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+          <AddFriendForm />
+          <FriendsList friends={this.props.friends}/>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    friends: state.friends
+  }
+}
+export default connect(mapStateToProps, { getFriends })(App);
