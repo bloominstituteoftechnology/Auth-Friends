@@ -5,9 +5,7 @@ import Friend from "./Friend";
 const FriendList = props => {
     return (
         <div>
-        <ul>
-            <li>{props.friends.map(friend => {return (<Friend friend={friend}>{friend.name}</Friend>)})}</li>
-        </ul>
+            {props.friends.map(friend => {return (<Friend friend={friend}>{friend.name}</Friend>)})}
         </div>
     );
 };
