@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchFriends, addFriend } from '../store/actions';
+import ReactLoading from 'react-loading';
 
 import Friend from '../Views/Friend';
 import FriendsForm from '../Views/FriendsForm';
@@ -34,6 +35,13 @@ class FriendsList extends Component {
   };
 
   render() {
+    if (this.props.fetching) {
+      return (
+        <div className="animation">
+          <ReactLoading type={'cylon'} color={'red'} />
+        </div>
+      );
+    }
     return (
       <div>
         <div className="friend-list">
@@ -53,7 +61,8 @@ class FriendsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    friends: state.friends
+    friends: state.friends,
+    fetching: state.friends.fetching
   };
 };
 
