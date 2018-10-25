@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 
 import { FriendsList } from '../components';
 import { fetchFriends } from '../actions';
+import CreateFriendForm from '../components/CreateFriendForm';
 
 class FriendsListView extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   componentDidMount() {
     this.props.fetchFriends();
@@ -22,6 +20,7 @@ class FriendsListView extends React.Component {
 
     return (
       <div className='FriendsList_wrapper'>
+        <CreateFriendForm />
         <FriendsList friends={this.props.friends} />
       </div>
     )

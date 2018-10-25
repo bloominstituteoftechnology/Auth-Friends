@@ -1,7 +1,10 @@
-import { FETCHING_FRIENDS, FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_FAILURE } from '../actions';
+import { 
+  FETCHING_FRIENDS, FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_FAILURE,
+  POSTING_FRIEND, POSTING_FRIEND_SUCCESS, POSTING_FRIEND_FAILURE
+} from '../actions';
 const initialState = {
   // supplied by Readme.md
-  isFetching: false,
+  gettingFriends: false,
   friendsFetched: false,
   friendsSaved: false,
   savingFriends: false,
@@ -16,20 +19,38 @@ const initialState = {
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_FRIENDS:
-      return { ...state, isFetching: true };
+      return { ...state, gettingFriends: true };
     case FETCHING_FRIENDS_SUCCESS:
       return {
         ...state,
-        isFetching: false,
+        gettingFriends: false,
         friends: [...state.friends, ...action.payload]
       };
     case FETCHING_FRIENDS_FAILURE:
       return {
         ...state,
-        isFetching: false,
+        gettingFriends: false,
         error: action.payload
       };
+    case POSTING_FRIEND:
+      return {
+        ...state,
+        savingFriends: true        
+      };
+    case POSTING_FRIEND_SUCCESS:
+      return {
+        ...state,
+        savingFriends: false,
+        friends: [...state.friends, ...action.payload]
+      };
+    case POSTING_FRIEND_FAILURE:
+      return {
+        ...state,
+        savingFriends: false,
+        error: action.payload
+      }
     default:
       return state;
   }
 };
+
