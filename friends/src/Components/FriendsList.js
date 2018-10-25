@@ -38,7 +38,7 @@ class FriendsList extends Component {
     if (this.props.fetching) {
       return (
         <div className="animation">
-          <ReactLoading type={'cylon'} color={'red'} />
+          <ReactLoading type={'Cylon'} color={'red'} />
         </div>
       );
     }
