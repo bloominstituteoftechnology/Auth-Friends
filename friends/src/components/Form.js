@@ -8,7 +8,7 @@ const Form = props => (
     style={props.formOpen ? { display: "flex" } : { display: "none" }}
   >
     <form>
-      <h2>{props.isUpdating ? "Update a Friend" : "Submit New Friend"}</h2>
+      <h2>{props.title}</h2>
       <input
         type="text"
         value={props.newFriend.name}
@@ -35,7 +35,7 @@ const Form = props => (
           src={save}
           alt="save"
           onClick={
-            props.isUpdating ? props.handleSubmitUpdate : props.handleSubmit
+            props.formSubmit
           }
         />
         <img

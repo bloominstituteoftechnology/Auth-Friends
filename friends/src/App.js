@@ -110,11 +110,15 @@ class App extends Component {
         <Form
           newFriend={this.state.newFriend}
           handleChange={this.handleChange}
-          handleSubmit={this.handleAddFriend}
-          handleSubmitUpdate={this.handleSubmitUpdate}
           isUpdating={this.state.updating}
           handleCancel={this.handleCancel}
           formOpen={this.state.formOpen}
+          title={this.state.showUpdateForm ? "Update a Friend" : "Submit New Friend"}
+          formSubmit={
+            this.state.showUpdateForm
+              ? this.handleSubmitUpdate
+              : this.handleAddFriend
+          }
         />
       </div>
     );

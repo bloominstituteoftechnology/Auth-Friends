@@ -106,8 +106,8 @@ form input {
 .open-form {
     z-index: 111;
     position: fixed;
-    top: 25%;
-    right: 70%;
+    top: 27.5%;
+    right: 67.5%;
 }
 
 button {
