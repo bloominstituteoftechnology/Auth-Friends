@@ -118,12 +118,12 @@
  
  .container {
   display : flex;
-  width : 800px;
+  width : 1000px;
   padding: 30px 10px;
 }
 
 .friendAddForm{
-  width : 30%;
+  width : 20%;
 }
 
 .friendAddForm input{
@@ -131,5 +131,14 @@
 }
 
 .friendListContainer{
-  width : 70%;
+  width : 80%;
+  display : flex;
+  flex-wrap: wrap;
+}
+
+.friendDisplay{
+  width : 30%;
+  border : 1px solid black;
+  margin : 10px;
+  padding : 5px;
 }

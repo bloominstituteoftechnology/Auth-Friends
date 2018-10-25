@@ -1,9 +1,9 @@
-import {fetchingReducer as fetching} from './fetchingReducer';
-import {addFriendReducer as addFriend} from './addFriendReducer';
 
+import {friendReducer as friend} from './FriendReducer';
 import {combineReducers} from 'redux';
 
-export default combineReducers({fetching, addFriend});
+
+export default combineReducers({ friend});
 
 
 

@@ -1,8 +1,8 @@
 import React from "react";
 // import { Route, Link, NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
-import { fetchFriends } from '../actions'
-
+import { fetchFriends } from '../actions';
+import Friend from './Friend';
 
   class FriendList extends React.Component {
 
@@ -13,7 +13,7 @@ import { fetchFriends } from '../actions'
     render(){
 
       let displayItem = (this.props.fetching)? <h3>Data is Loading...</h3> 
-      : this.props.friends.map( (friend) =>  <h3 key={friend.id}> {friend.name} </h3> );
+      : this.props.friends.map( (friend) =>  <Friend key={friend.id} friend = {friend} /> );
 
   return (
     <section className="friendListContainer">
@@ -25,13 +25,11 @@ import { fetchFriends } from '../actions'
 
 
 
-
-
 const mapStateToProps = (state) => {
   console.log("FriendList mapState", state);
   return { 
-    friends: state.fetching.friends,
-    fetching : state.fetching.fetching 
+    friends: state.friend.friends,
+    fetching : state.friend.fetching 
   }; 
 };
 
