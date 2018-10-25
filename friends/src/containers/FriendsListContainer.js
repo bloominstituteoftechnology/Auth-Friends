@@ -3,6 +3,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchFriends, deleteFriend} from '../actions'
 import FriendsList from '../components/FriendsList'
+import ReactLoading from 'react-loading'
 
 class FriendsListContainer extends React.Component {
 
@@ -25,7 +26,7 @@ render() {
 
     return (
     <div>
-        {this.props.isFetching ? <h1>Loading...</h1> : <FriendsList friends={this.props.friends} deleteFriend={this.deleteFriend}/>}
+        {this.props.isFetching ? <ReactLoading type="cylon" color="#000" height="200px" width="200px"/> : <FriendsList friends={this.props.friends} deleteFriend={this.deleteFriend}/>}
     </div>
     )
 }
