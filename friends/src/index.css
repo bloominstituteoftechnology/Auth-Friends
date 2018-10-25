@@ -14,13 +14,23 @@ body {
     box-sizing: border-box;
 }
 
-/*----------------------------------------------*/
+/*-- Friends Container -------------------------*/
 .friends {
     width: 40rem;
     margin: 0 auto;
     padding: 1rem;
     border: solid black 1px;
 }
+
+/*-- Error Display -----------------------------*/
+.error {
+    background: #fee;
+    border: 1px solid red;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+/*-- Friend Adding Form ------------------------*/
 .friends form {
     display: flex;
     flex-direction: column;
@@ -31,6 +41,8 @@ body {
 .friends form > * {
     width: 100%;
 }
+
+/*-- Friend List -------------------------------*/
 .friend-list {
     display: flex;
     flex-direction: column;
@@ -42,10 +54,4 @@ body {
     padding: 0.5rem;
     background: #eee;
     border-radius: 0.5rem;
-}
-.error {
-    background: #fee;
-    border: 1px solid red;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
 }
