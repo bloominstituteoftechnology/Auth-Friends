@@ -6,12 +6,12 @@ export const getFriends = () => dispatch => {
 
   dispatch({ type: GET_FRIENDS })
   axios
-    .get('')
+    .get('/api/friends')
     .then(response => {
 
     })
     .catch(error => {
-      
+
     })
 
 }

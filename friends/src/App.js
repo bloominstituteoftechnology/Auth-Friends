@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import  Friends  from '../components/Friends';
+import  Friends  from './components/Friends';
 
-import { getFriends } from '../actions';
+import { getFriends } from './actions';
 
 import './App.css';
 
@@ -26,7 +26,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-
+    friends: state.friendReducer.friends
   }
 }
 
