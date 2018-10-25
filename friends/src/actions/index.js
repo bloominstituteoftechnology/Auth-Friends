@@ -2,7 +2,7 @@ import axios from 'axios';
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
 export const FRIENDS_SUCCESS = 'FRIENDS_SUCCESS';
 export const FRIENDS_FAILURE = 'FRIENDS_FAILURE';
-export const MAKING_FRIEND = 'MAKING_FRIEND';
+export const ADDING_FRIEND = 'ADDING_FRIEND';
 export const NEWFRIEND_SUCCESS = 'NEWFRIEND_SUCCESS';
 export const NEWFRIEND_FAILURE = 'NEWFRIEND_FAILURE';
 
@@ -27,7 +27,7 @@ export const getFriends = () => {
 export const addFriend = friend => {
     const newFriend = axios.post('http://localhost:5000/api/friends/create', friend);
     return dispatch => {
-        dispatch({ type: MAKING_FRIEND });
+        dispatch({ type: ADDING_FRIEND });
         newFriend.then(({data}) => {
             dispatch({type: NEWFRIEND_SUCCESS, payload: data });
         })
