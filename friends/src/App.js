@@ -3,6 +3,7 @@ import './App.css';
 
 import { fetchFriends } from './actions'
 import { connect } from "react-redux";
+import Friends from './Components/Friends';
 
 
 class App extends Component {
@@ -17,6 +18,11 @@ class App extends Component {
     return (
       <div className="App">
           <h1>Friends...</h1>
+
+          <Friends 
+              friends = {this.props.friends} 
+             
+          />
       </div>
     );
   }
