@@ -16,10 +16,10 @@ changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value })
 }
 
-addFriend = event => {
-    event.preventDefault();
-    this.setState({ friends: this.state })
-}
+// addFriend = event => {
+//     event.preventDefault();
+//     this.setState({ friends: this.state })
+// }
 
 addFriendsHandler = event => {
     event.preventDefault();
@@ -65,6 +65,12 @@ render() {
         </div>
     )
 }
+}
+
+const mapStateToProps = state => {
+    return {
+        createFriend: state.createFriend
+    }
 }
 
 export default FriendsForm;
