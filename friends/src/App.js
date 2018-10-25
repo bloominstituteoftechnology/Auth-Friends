@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchFriends } from './actions/fetchingActions';
+import { addFriend } from './actions/addFriendAction';
 import FriendList from './components/FriendList';
 import NewFriendForm from './components/NewFriendForm';
 
@@ -13,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="app-wrapper">
-        <NewFriendForm />
+        <NewFriendForm addFriend={this.props.addFriend} />
         <FriendList friends={this.props.friends} />
       </div>
     );
@@ -31,5 +32,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchFriends }
+  { fetchFriends, addFriend }
 )(App);

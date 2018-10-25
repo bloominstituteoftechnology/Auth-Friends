@@ -25,7 +25,13 @@ class NewFriendForm extends React.Component {
     submitHandler = event => {
         event.preventDefault();
         if (this.state.name && this.state.age && this.state.email) {
-            console.log(this.state.name, this.state.age, this.state.email);
+            //console.log(this.state.name, this.state.age, this.state.email);
+            this.props.addFriend({
+                name: this.state.name,
+                age: Number(this.state.age),
+                email: this.state.email,
+                id: event.timeStamp
+            })
             this.setState({
                 name: '',
                 age: '',
