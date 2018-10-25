@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { fetchFriends } from './actions'
+import { fetchFriends, addFriend } from './actions'
 import { connect } from "react-redux";
 import Friends from './Components/Friends';
 import CreateFriendForm from './Components/CreateFriendForm'
@@ -14,8 +14,22 @@ class App extends Component {
     this.props.fetchFriends();
   }
 
+  onChange = (event) => {
+    this.setState({ [event.target.name] : event.target.value})
+  }
+
+  onFormSubmit = event => {
+    event.preventDefault();
+      const { name, age, email } = this.state
+      if(name !== '' && age !== '' && email !== '') {
+          this.props.addFriend(event, { name, age, email })
+      } else {
+            alert ('Need correct data')
+    }
+  }
+
   render() {
-    console.log("#########  :  " ,this.props.friends);
+    console.log("#########  :  " ,this.props.friends,);
     return (
       <div className="App">
           <h1>Friends...</h1>
@@ -25,7 +39,8 @@ class App extends Component {
           />
 
           <CreateFriendForm 
-             // addNewFriend = {}
+              onChange = {this.onChange}
+              onFormSubmit = {this.onFormSubmit}
           />
       </div>
     );
@@ -41,4 +56,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchFriends }) (App);
+export default connect(mapStateToProps, { fetchFriends, addFriend }) (App);
