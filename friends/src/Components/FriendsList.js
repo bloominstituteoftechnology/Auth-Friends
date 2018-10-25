@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFriends } from '../store/actions';
+import { fetchFriends, addFriend } from '../store/actions';
 
 import Friend from '../Views/Friend';
 import FriendsForm from '../Views/FriendsForm';
@@ -25,6 +25,12 @@ class FriendsList extends Component {
     }
   };
 
+  handleClick = event => {
+    event.preventDefault();
+    this.props.addFriend(this.state);
+    this.setState({ name: '', age: '', email: '' });
+  };
+
   render() {
     return (
       <div>
@@ -47,5 +53,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchFriends }
+  { fetchFriends, addFriend }
 )(FriendsList);
