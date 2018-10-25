@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchFriends } from '../store/actions';
 
 import Friend from '../Views/Friend';
 import FriendsForm from '../Views/FriendsForm';
@@ -37,5 +38,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { friendFetch }
+  { fetchFriends }
 )(FriendsList);
