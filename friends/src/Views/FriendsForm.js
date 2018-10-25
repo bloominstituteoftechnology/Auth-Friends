@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './FriendsFormStyle.css';
+
 function FriendsForm(props) {
   return (
     <form className="">

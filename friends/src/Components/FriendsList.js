@@ -39,7 +39,11 @@ class FriendsList extends Component {
             <Friend key={friend.id} friend={friend} />
           ))}
         </div>
-        <FriendsForm input={this.state} />
+        <FriendsForm
+          input={this.state}
+          handleChange={this.handleChange}
+          handleClick={this.handleClick}
+        />
       </div>
     );
   }
