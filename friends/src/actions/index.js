@@ -18,7 +18,7 @@ export const fetch = () => dispatch => {
         });
 };
 
-export const update = (newFriend) => dispatch => {
+export const add = (newFriend) => dispatch => {
     dispatch({ type: ADDING });
     axios
         .post('http://localhost:5000/api/friends', newFriend)

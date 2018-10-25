@@ -4,7 +4,7 @@ import FriendForm from './FriendForm';
 const Friend = ({ friend }) => {
     const { id, name, age, email } = friend;
     return (
-        <div className="friend-card" key={id}>
+        <div className="friend-card">
             <div>Name: {name}</div>
             <div>Age: {age}</div>
             <div>Email: {email}</div>

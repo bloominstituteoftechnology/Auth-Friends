@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { add } from '../actions';
 
 class FriendForm extends Component {
     constructor(props) {
@@ -21,15 +22,7 @@ class FriendForm extends Component {
         event.preventDefault();
         const { name, age, email } = this.state;
         let newFriend = {name, age, email}
-        // dispatch post request
-        // axios
-        // .post(this.url, newFriend) 
-        // .then(response => {
-        //     this.setState({ friends: response.data })
-        //     })
-        //     .catch(error => {
-        //     alert('Error: we\'re sorry, your friend could not added', error);
-        // });  
+        this.props.add(newFriend)
         this.setState(() => ({
             name: '',
             age: '',
@@ -91,4 +84,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(FriendForm);
+export default connect(mapStateToProps, { add })(FriendForm);

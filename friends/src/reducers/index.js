@@ -3,7 +3,6 @@ import { FETCHING, FETCHED, ADDING, ADDED, ERROR } from '../actions';
 const initialState = {
     fetchingFriends: false,
     friendsFetched: false,
-    friendAdded: false,
     addingFriend: false,
     friends: [],
     error: null
@@ -25,7 +24,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 addingFriend: false,
-                friends: [...state.friends, ...action.payload]
+                friends: [ ...action.payload]
             };
         case ERROR:
             return { ...state, fetchingFriends: false, addingFriend: false, error: action.payload };
