@@ -31,7 +31,7 @@ export const friendReducer = (state = initialState, action) => {
         friendsFetched:true,
         friends: [...state.friends, ...action.payload]
       };
-    case FETCHING_STARWAR_FAILURE:
+    case FETCHING_FRIENDS_FAILURE:
       return { ...state,fetchingFriends: false, error: action.payload };
     default:
       return state;
