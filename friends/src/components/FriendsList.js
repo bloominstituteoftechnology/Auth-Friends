@@ -5,8 +5,8 @@ import Friend from './Friend';
 const FriendsList = ({ friends }) => {
   return (
     <div>
-      {friends.map(friend => (
-        <Friend key={friend.id} friend={friend} />
+      {friends.map((friend, i) => (
+        <Friend key={i} friend={friend} />
       ))}
     </div>
   );
