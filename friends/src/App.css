@@ -19,6 +19,10 @@
   margin: 0 auto;
 }
 
+.loading {
+  font-size: 1.6rem;
+}
+
 .friend-list {
   font-size: 2rem;
   padding: 20px;

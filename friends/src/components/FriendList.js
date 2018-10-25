@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetch } from '../actions';
 import Friend from './Friend';
 
-class FriendList extends React.Component {
+class FriendList extends Component {
     constructor() {
         super();
     }

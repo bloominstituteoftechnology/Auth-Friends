@@ -30,41 +30,6 @@ class FriendForm extends Component {
         }))
     }
 
-    // editFriend = (id, name, age, email) => {    
-    //     this.setState(() => ({
-    //         id: id,
-    //         age: age,
-    //         name: name,
-    //         email: email
-    //     }))
-    // }
-
-    // editSubmit = event => {
-    //     event.preventDefault();
-    //     let id = Number(event.target.id)
-    //     const { id, name, age, email } = this.state;
-    //     let editedFriend = {id, name, age, email}
-
-        // if(editedFriend) {
-        //     friends.map(friend => {
-        //         if (friend.id === id) {
-        //             axios
-        //             .put(`${this.url}/${id}`, editedFriend)
-        //             .then(response => {
-        //                 this.setState({ friends: response.data})
-        //             })
-        //             .catch(error => {
-        //                 alert('Error: we\'re sorry, your friend could not updated', error);
-        //             })
-        //         }
-        //     })
-        //     this.setState(() => ({
-        //         name: '',
-        //         age: '',
-        //         email: '',
-        //     }))
-        // }
-
     render() {
         return (
             <div className='friend-form'>
