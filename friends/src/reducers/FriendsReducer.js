@@ -12,8 +12,6 @@ import {
     updatingFriends: false,
     creatingFriends: false,  
     error: null,
-    friendSelected: {}, 
-    showUpdate: false
   };
   export const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -23,7 +21,7 @@ import {
         return {
           ...state,
           isFetching: false,
-          characters: [...state.characters, ...action.payload]
+          friends: action.payload
         };
       case FETCHING_FRIENDS_FAILURE:
         return { ...state, isFetching: false, error: action.payload };
