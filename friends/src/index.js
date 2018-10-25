@@ -4,6 +4,11 @@ import App from './App';
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+
+// REACT ROUTER IMPORTS
+import { BrowserRouter as Router } from 'react-router-dom';
+
+// REDUX IMPORTS
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -22,7 +27,9 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

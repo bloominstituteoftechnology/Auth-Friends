@@ -1,32 +1,147 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Load Screen */
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .App {
-  text-align: center;
+  max-width: 1000px;
+  width: 100%;
+  /* border: 1px solid red; */
+  margin: 0 auto;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.friendsListViewContainer {
+  /* border: 2px solid green; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Friends List */
+.friendsList {
+  /* border: 1px solid orange; */
+  display: flex;
+  /* max-width: 600px; */
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Friend Card */
+.friendCard {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 300px;
+  text-align: center;
+  padding: 20px 0;
+  margin: 20px 0;
+}
+
+.friendCard h2 {
+  font-size: 3rem;
+}
+
+.friendCard p {
+  font-size: 1.6rem;
+}
+
+.deleteButton {
+  border: 1px solid black;
+  border-radius: 5px;
+  background: #fff;
+  padding: 5px 10px;
+  margin-top: 5px;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  color: #fff;
+  background: #d51111;
+}
+
+/* Friends Form */
+.friendsFormContainer {
+  /* border: 1px solid blue; */
+  width: 100%;
+  margin-top: 30px;
+  padding: 20px 0;
+}
+
+.friendsFormContainer h2 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.friendsForm {
+  /* border: 1px solid red; */
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.friendsForm input {
+  margin-bottom: 10px;
+  padding-top: 25px;
+  padding-bottom: 5px;
+  border: none;
+  border-bottom: 2px solid gray;
+  font-size: 2.5rem;
+  transition: border-bottom 0.3s linear;
+}
+
+.friendsForm input::placeholder {
+  font-size: 2.5rem;
+}
+
+.friendsForm input:focus {
+  outline: none;
+  border-bottom: 2px solid black;
+}
+
+.friendsForm input:hover {
+  border-bottom: 2px solid black;
+}
+
+.friendsForm button {
+  border: 1px solid black;
+  max-width: 150px;
+  margin: 0 auto;
+  padding: 5px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 1.6rem;
+  transition: all 0.2s linear;
+}
+
+.friendsForm button:focus {
+  outline: none;
+}
+
+.friendsForm button:hover {
+  background: #1788ca;
+  color: #fff;
+}
+
+.friendsForm button:active,
+.deleteButton:active {
+  transform: scale(0.98);
 }
