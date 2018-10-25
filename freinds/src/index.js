@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import './index.css';
 import App from './App';
+import combineReducers from './reducers'
 import * as serviceWorker from './serviceWorker';
 
 const composeEnhancers =
