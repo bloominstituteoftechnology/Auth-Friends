@@ -38,7 +38,7 @@ export default class extends React.Component {
                     value={this.state.email}
                     name="email"
                 />
-                <button type="submit">Button</button>
+                <button type="submit">Submit</button>
             </form>
         );
     }
