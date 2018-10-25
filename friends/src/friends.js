@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import * as actions from './redux/actions.js';
 import Friend from './components/friend.js';
 import FriendForm from './components/friend-form.js';
+import Error from './components/error.js';
 
 
 //== Friends Component =========================================================
@@ -18,16 +19,25 @@ let Friends = class extends React.Component {
 
   //-- Rendering -----------------------------------
   render() {
+    let friendsContent;
+    // Show loading if not loaded yet
+    if(!this.props.friends.length){
+      friendsContent = <span>(Loading)</span>
+    // Display Friends List
+    } else{
+      friendsContent = this.props.friends.map(friend => (
+        <Friend
+          key={friend.id}
+          friend={friend}
+        />
+      ));
+    }
     return (
       <div className="friends">
+        <Error error={this.props.error} />
         <FriendForm onSubmit={this.addFriend} />
         <div className="friend-list">
-          {this.props.friends.map(friend => (
-            <Friend
-              key={friend.id}
-              friend={friend}
-            />
-          ))}
+          {friendsContent}
         </div>
       </div>
     );
@@ -35,6 +45,9 @@ let Friends = class extends React.Component {
 
   //-- Interaction ---------------------------------
   addFriend = friendData => {
+    /*if(!this.props.ready){
+      this.props.error();
+    }*/
     this.props.addFriend(friendData);
   }
 }
@@ -46,11 +59,14 @@ let Friends = class extends React.Component {
 function mapStateToProps(state) {
   return {
     friends: state.friends,
+    error: state.error,
+    //ready: !state.fetching,
   };
 }
 Friends = connect(mapStateToProps, {
   getFriends: actions.getFriends,
   addFriend: actions.addFriend,
+  //error: actions.notReady,
 })(Friends);
 
 //-- Exporting -----------------------------------

@@ -26,12 +26,12 @@ body {
     flex-direction: column;
     margin: 0;
     padding: 0;
+    margin: 1rem 0;
 }
 .friends form > * {
     width: 100%;
 }
 .friend-list {
-    margin-top: 1rem;
     display: flex;
     flex-direction: column;
 }
@@ -42,4 +42,10 @@ body {
     padding: 0.5rem;
     background: #eee;
     border-radius: 0.5rem;
+}
+.error {
+    background: #fee;
+    border: 1px solid red;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
 }
