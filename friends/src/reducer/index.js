@@ -1,10 +1,6 @@
-let initialState = {
-    count: 0
-}
+import { combineReducers } from 'redux';
+import { friendsReducer } from './friendsReducer';
 
-
-function counter (state = initialState, action) {
-    return state
-}
-
-export default counter;
+export default combineReducers({
+  friendsReducer
+});
