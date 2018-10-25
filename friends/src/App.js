@@ -14,8 +14,7 @@ class App extends Component {
       <div className="App">
       {this.props.friends.map(friends => {
         return(
-          <div>{friends.name}</div>
-        )
+          <div key={friends.id}>{friends.name}, {friends.age}, email: {friends.email}</div>)
       })}
       </div>
     );
@@ -26,8 +25,6 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     friends: state.friendsReducer.friends,
-    isFetching: state.friendsReducer.isFetching,
-    error: state.friendsReducer.error
   }
 }
 
