@@ -24,7 +24,8 @@ class App extends Component {
         email: ""
       },
       friendToUpdate: null,
-      showUpdateForm: false
+      showUpdateForm: false,
+      formOpen: false
     };
   }
 
@@ -42,11 +43,19 @@ class App extends Component {
     });
   };
 
+  openForm = event => {
+    event.preventDefault();
+    this.setState({
+      formOpen: true
+    });
+  };
+
   handleAddFriend = event => {
     event.preventDefault();
     this.props.addFriend(this.state.newFriend);
     this.setState({
-      newFriend: blankFormValues
+      newFriend: blankFormValues,
+      formOpen: false
     });
   };
 
@@ -55,7 +64,8 @@ class App extends Component {
     this.setState({
       friendToUpdate,
       newFriend: friendToUpdate,
-      showUpdateForm: true
+      showUpdateForm: true,
+      formOpen: true
     });
   };
 
@@ -64,7 +74,8 @@ class App extends Component {
     this.props.updateFriend(this.state.newFriend);
     this.setState({
       newFriend: blankFormValues,
-      showUpdateForm: false
+      showUpdateForm: false,
+      formOpen: false
     });
   };
 
@@ -72,6 +83,7 @@ class App extends Component {
     event.preventDefault();
     this.setState({
       showUpdateForm: false,
+      formOpen: false,
       newFriend: blankFormValues
     });
   };
@@ -83,6 +95,9 @@ class App extends Component {
       </div>
     ) : (
       <div className="App">
+        <div className="open-form">
+          <button onClick={this.openForm}>+</button>
+        </div>
         <FriendList
           friends={this.props.friends}
           handleUpdate={this.handleUpdate}
@@ -94,6 +109,7 @@ class App extends Component {
           handleSubmitUpdate={this.handleSubmitUpdate}
           isUpdating={this.state.updating}
           handleCancel={this.handleCancel}
+          formOpen={this.state.formOpen}
         />
       </div>
     );
