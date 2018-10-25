@@ -8,8 +8,8 @@ export const fetchFriends = () => dispatch => {
     dispatch({ type: FETCHING_FRIENDS });
     axios
         .get('http://localhost:5000/api/friends')
-        .then(({ response }) => {
-            console.log('response: ', response);
+        .then((response) => {
+            //console.log('response: ', response);
             dispatch({
                 type: FETCHING_FRIENDS_SUCCESS,
                 payload: response.data

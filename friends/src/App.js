@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { fetchFriends } from './actions/fetchingActions';
 import FriendList from './components/FriendList';
+import NewFriendForm from './components/NewFriendForm';
 
 class App extends Component {
   componentDidMount() {
@@ -11,7 +12,10 @@ class App extends Component {
 
   render() {
     return (
-      <FriendList friends={this.props.friends} />
+      <div className="app-wrapper">
+        <NewFriendForm />
+        <FriendList friends={this.props.friends} />
+      </div>
     );
   }
 }

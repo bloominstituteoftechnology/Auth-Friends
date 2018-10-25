@@ -20,5 +20,5 @@ export const fetchReducer = ( state = initialState, action ) => {
             return { ...state, isFetching: false, error: action.payload };
         default:
             return state;
-    };
+    }
 };
