@@ -8,32 +8,34 @@ import { connect } from 'react-redux';
 import { fetchFriends, addFriend } from './Action';
 import { Route } from 'react-router-dom';
 
-// const blankFriend = {
-// 	name: '',
-// 	age: null,
-// 	email: ''
-// };
-
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			friend: {
-				name: '',
-				age: '',
-				email: ''
-			},
 			editingId: null,
-			activeFriend: null,
-			isEditing: false
+			id: null,
+			name: '',
+			age: '',
+			email: ''
 		};
 	}
+
+	editFriend = (id, name, age, email) => {
+		this.setState(() => ({
+			editingId: id,
+			id: id,
+			name: name,
+			age: age,
+			email: email
+		}));
+	};
 
 	componentDidMount() {
 		this.props.fetchFriends();
 	}
 
 	formHandler = (e) => {
+		e.preventDefault();
 		this.setState({
 			friend: {
 				...this.state.friend,

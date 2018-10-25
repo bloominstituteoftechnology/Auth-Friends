@@ -1,22 +1,19 @@
-import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR, ADD_FRIEND } from '../Action';
+import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR, ADD_FRIEND, UPDATING, UPDATED } from '../Action';
 import { combineReducers } from 'redux';
 
 const initialState = {
+	friends: [],
+	error: null,
 	fetchingFriends: false,
 	friendsFetched: false,
-	addFriend: {
-		name: '',
-		age: '',
-		email: ''
-	},
-	// friendsSaved: false,
-	// savingFriends: false,
-	// updatingFriend: false,
-	// friendUpdated: false,
-	// deletingFriend: false,
-	// friendDeleted: false,
-	friends: [],
-	error: null
+	addFriend: false,
+	addingFriend: false,
+	updatingFriend: false,
+	friendsSaved: false,
+	savingFriends: false,
+	friendUpdated: false,
+	deletingFriend: false,
+	friendDeleted: false
 };
 
 const friendsReducer = (state = initialState, action) => {
@@ -41,8 +38,19 @@ const friendsReducer = (state = initialState, action) => {
 		case ADD_FRIEND:
 			return {
 				...state,
-				fetchingFriends: false,
-				friends: [ ...state.friends, ...action.payload ]
+				addingFriend: false,
+				friends: [ ...action.payload ]
+			};
+		case UPDATING:
+			return {
+				...state,
+				updatingFriend: true
+			};
+		case UPDATED:
+			return {
+				...state,
+				updatingFriend: false,
+				friends: [ ...action.payload ]
 			};
 		default:
 			return state;
