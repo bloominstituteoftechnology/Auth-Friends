@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { FriendsListView } from './views';
+import { FriendsListContainer } from './containers';
 import './App.css';
 
 const App = () => {
   return (
     <div className="App">
-      <FriendsListView />
+      <FriendsListContainer />
     </div>
   );
 }
