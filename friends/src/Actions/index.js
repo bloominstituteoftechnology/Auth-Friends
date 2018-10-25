@@ -3,6 +3,10 @@ export const FETCHING = "FETCHING";
 export const FETCHED = "FETCHED";
 export const ERROR = "ERROR";
 
+export const DELETE_FRIEND = "DELETE_FRIEND";
+export const DELETE_FRIEND_SUCCESS = "DELETE_FRIEND_SUCCESS";
+export const DELETE_FRIEND_FAILURE = "DELETE_FRIEND_FAILURE";
+
 const URL = "http://localhost:5000/api/Friends";
 
 export const fetchFriends = () => {
@@ -17,4 +21,16 @@ export const fetchFriends = () => {
         dispatch({ type: ERROR, payload: ERROR });
       });
   };
+};
+
+export const deleteFriend = id => dispatch => {
+  dispatch({ type: DELETE_FRIEND });
+  axios
+    .delete(`${URL}/${id}`)
+    .then(response => {
+      dispatch({ type: DELETE_FRIEND_SUCCESS, payload: response.data });
+    })
+    .catch(error => {
+      dispatch({ type: DELETE_FRIEND_FAILURE, payload: error });
+    });
 };
