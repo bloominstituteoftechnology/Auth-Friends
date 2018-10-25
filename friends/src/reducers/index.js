@@ -1,7 +1,8 @@
 import { GET_FRIENDS } from '../actions';
 
 const initialState = {
-
+  friends: [],
+  error: null
 }
 
 export const friendReducer = (state = initialState, action) => {
