@@ -28,10 +28,10 @@ export const addFriend = friend => {
     const newFriend = axios.post('http://localhost:5000/api/friends/create', friend);
     return dispatch => {
         dispatch({ type: MAKING_FRIEND });
-        friends.then(response => {
+        newFriend.then(({data}) => {
             dispatch({type: NEWFRIEND_SUCCESS, payload: data });
         })
         .catch(error => {
             dispatch({type: NEWFRIEND_FAILURE, payload: error });
         })
-}
+}}
