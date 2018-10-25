@@ -10,7 +10,7 @@ const initialState = {
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_FRIENDS:
-      return { ...state, fetching: true };
+      return { ...state, fetchingFriends: true };
     // case ADD_FRIEND: {
     //   return { ...state, friends: action.payload };
     default:
