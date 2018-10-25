@@ -4,9 +4,9 @@ export const FETCH_FRIENDS = 'FETCH_FRIENDS';
 export const FETCH_FRIENDS_SUCCESS = 'FETCH_FRIENDS_SUCCESS';
 export const FETCH_FRIENDS_FAILURE = 'FETCH_FRIENDS_FAILURE';
 
-// export const POST_FRIEND = 'POST_FRIEND';
-// export const POST_FRIEND_SUCCESS = 'POST_FRIEND_SUCCESS';
-// export const POST_FRIEND_FAILURE = 'POST_FRIEND_FAILURE';
+export const POST_FRIEND = 'POST_FRIEND';
+export const POST_FRIEND_SUCCESS = 'POST_FRIEND_SUCCESS';
+export const POST_FRIEND_FAILURE = 'POST_FRIEND_FAILURE';
 //
 // export const PUT_FRIEND = 'PUT_FRIEND';
 // export const PUT_FRIEND_SUCCESS = 'PUT_FRIEND_SUCCESS';
@@ -30,11 +30,17 @@ export const fetchFriends = () => dispatch => {
     })
 }
 
-// export const addFriend = () => dispatch => {
-//   dispatch({ type: POST_FRIEND });
-//   axios
-//     .post()
-// }
+export const addFriend = friend => dispatch => {
+  dispatch({ type: POST_FRIEND });
+  axios
+    .post(url, friend)
+    .then(response => {
+      dispatch({ type: POST_FRIEND_SUCCESS, payload: response.data});
+    })
+    .catch(error => {
+      dispatch({ type: POST_FRIEND_FAILURE, payload: error });
+    })
+}
 //
 // export const editFriend= () => dispatch => {
 //   dispatch({ type: PUT_FRIEND });
