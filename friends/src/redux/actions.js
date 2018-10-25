@@ -36,3 +36,17 @@ export function friendsResponse(friendsData) {
         friends: friendsData,
     };
 };
+
+//-- ADD FRIEND - Agent submits a new friend
+export function addFriend(friendData) {
+    return function (dispatch) {
+        //dispatch({type: })
+        axios.post(remote('api/friends'), friendData)
+        .then(response => {
+            dispatch(friendsResponse(response.data));
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+}
