@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { fetchFriends } from './actions'
+import { fetchFriends, addFriend } from './actions'
 import './App.css';
 
 class App extends Component {
@@ -9,6 +9,11 @@ class App extends Component {
     this.props.fetchFriends();
   }
 
+  handleInput = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -16,6 +21,29 @@ class App extends Component {
         return(
           <div key={friends.id}>{friends.name}, {friends.age}, email: {friends.email}</div>)
       })}
+
+      <div className='form'>
+        <input 
+        type='text'
+        onChange={this.handleInput}
+        placeholder='name'
+        name='name'
+        />
+        <input 
+        type='number'
+        onChange={this.handleInput}
+        placeholder='age'
+        name='age'
+        />
+        <input 
+        type='text'
+        onChange={this.handleInput}
+        placeholder='email'
+        name='email'
+        />
+        <button onClick={this.props.addFriend(this.props.friends.id)}>Save</button>
+        <p>Note all fields are needed!</p>
+    </div>
       </div>
     );
   }
@@ -30,7 +58,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps, {
-    fetchFriends
+    fetchFriends, addFriend
   }
 )(App)
 
