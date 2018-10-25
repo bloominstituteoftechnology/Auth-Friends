@@ -62,7 +62,7 @@ class Item extends Component {
   handleSubmit = event => {
     event.preventDefault()
     const { id, field } = this.props
-    const { value } = this
+    const { value } = this.state
 
     this.props.updateFriend({ id, field, value })
 

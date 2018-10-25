@@ -41,6 +41,9 @@ export const saveFriend = ({ name, age, email }) => dispatch => {
 
 export const updateFriend = ({ id, field, value }) => dispatch => {
   dispatch({ type: UPDATING })
+  console.log(id)
+  console.log(field)
+  console.log(value)
 
   axios
     .put(`/api/friends/${id}`, { [field]: value })
