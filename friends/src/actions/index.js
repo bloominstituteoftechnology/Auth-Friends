@@ -4,7 +4,7 @@ export const FETCH_FRIENDS = 'FETCH_FRIENDS'
 export const FETCH_FRIENDS_SUCCESS = 'FETCH_FRIENDS_SUCCESS'
 export const FETCH_FRIENDS_FAILURE = 'FETCH_FRIENDS_FAILURE'
 
-export const fetchFriends = () => dipatch => {
+export const fetchFriends = () => dispatch => {
     dispatch ({ type: FETCH_FRIENDS });
 
     axios 
