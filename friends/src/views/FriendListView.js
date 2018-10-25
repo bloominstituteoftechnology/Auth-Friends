@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
-import { FriendList, Form }from '../components';
+import { Link } from 'react-router-dom';
+import { FriendList }from '../components';
 import { fetchFriends, addFriend, deleteFriend } from '../actions';
 
 class FriendListView extends React.Component {
@@ -16,10 +16,11 @@ class FriendListView extends React.Component {
     }
     return (
       <div className='friends-view-container'>
+      <h1>Look, ma! Friends!</h1>
       <Link to='/add'>
         <button className='add-button'>Add Friend</button>
         </Link>
-        
+
         <FriendList friends={this.props.friends} deleteFriend={this.props.deleteFriend}/>
       </div>
     )

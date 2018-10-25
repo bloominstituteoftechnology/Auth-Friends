@@ -1,15 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { deleteFriend, fetchFriendById, editFriend  } from '../actions';
-import Friend from '../components/Friend';
-import Form from '../components/Form';
+import { Friend, Form } from '../components';
 
 class FriendView extends React.Component {
-  constructor(props){
-    super(props);
 
-  }
 
   componentDidMount() {
     const friendid = this.props.match.params.id;
@@ -24,7 +20,7 @@ class FriendView extends React.Component {
 
   render() {
     if (!this.props.friend) {
-      return <h1>FriendView Getting friend...</h1>
+      return <h1>Getting friend...</h1>
     } else {
       return (
         <div className='friend-view'>
@@ -44,9 +40,8 @@ class FriendView extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { id } = ownProps.match.params;
   return {
-    friend: state.friendsReducer.friend
+    friend: state.friendReducer.friend
   };
 
 }

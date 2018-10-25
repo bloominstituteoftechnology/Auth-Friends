@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../components/Form';
+import { Form } from '../components';
 import { addFriend } from '../actions';
 import { connect } from 'react-redux';
 

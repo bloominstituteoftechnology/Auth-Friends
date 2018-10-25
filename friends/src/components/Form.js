@@ -34,7 +34,7 @@ class Form extends React.Component {
         id: this.state.id,
         name: this.state.name,
         age: this.state.age,
-        email: this.state.emal,
+        email: this.state.email,
       }
       this.props.submit(friend);
       this.setState({

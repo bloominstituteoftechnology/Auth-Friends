@@ -12,11 +12,13 @@ a {
 
 .friends-view-container{
   width: 90%;
+  margin: 0 auto;
 }
 
 .friend-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .friend-list .friend-container{
@@ -38,5 +40,45 @@ a {
 }
 
 .button {
+  font-size: 20px;
   cursor: pointer;
+}
+
+/* .friend-view {
+  width: 90%;
+  margin: 0 auto;
+} */
+
+.friend-view .friend-container {
+  width: 60%;
+  margin: 30px auto;
+}
+
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  margin: 30px auto;
+}
+.friend-view form {
+
+  margin: 0 auto;
+}
+
+form input {
+  margin: 10px;
+  border-radius: 3px;
+  border: 1px solid lightgray;
+  text-align: center;
+}
+
+form button {
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 50%;
+  align-self: center;
+  margin-top: 10px;
 }
