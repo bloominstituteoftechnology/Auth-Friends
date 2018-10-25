@@ -7,11 +7,11 @@ const Friend = props => {
         props.delete(props.friend.id)
     } 
     return (
-        <div>
+        <div className = 'friends'>
             <h3>{props.friend.name}</h3>
-            <p>{props.friend.age}</p>
-            <p>{props.friend.email}</p>
-            <button onClick = {deleteFriends}> Delete {props.friend.name} </button>
+            <p>Age: {props.friend.age}</p>
+            <p>Email: {props.friend.email}</p>
+            <button className = 'buttondelete' onClick = {deleteFriends}> Delete {props.friend.name} </button>
         </div>
     )
 }

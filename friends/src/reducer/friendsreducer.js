@@ -5,6 +5,9 @@ import {
     DELETE_FRIENDS,
     DELETE_FRIENDS_SUCCESS,
     DELETE_FRIENDS_FAILURE,
+    ADD_FRIENDS,
+    ADD_FRIENDS_SUCCESS,
+    ADD_FRIENDS_FAILURE,
     
 } from '../actions'
 
@@ -55,6 +58,25 @@ export const friendsReducer = (state = initialState, action) => {
                 deletingFriend: false,
                 error: action.payload
             }        
+
+        case ADD_FRIENDS:
+            return {
+                ...state, savingFriends: true
+            }
+        
+        case ADD_FRIENDS_SUCCESS:
+            return {
+                ...state,
+                savingFriends: false,
+                friends: [...action.payload]
+            }
+           
+        case ADD_FRIENDS_FAILURE:
+            return {
+                ...state,
+                savingFriends: false,
+                error: action.payload
+            }
 
         default:
             return state;
