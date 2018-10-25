@@ -16,7 +16,13 @@ class App extends Component {
                 ) : (
                     <ul>
                         {this.props.friends.map(friend => {
-                            return <li key={friend.name}> {friend.name} </li>
+                            return (
+                                <div className="list">
+                                    <li key={friend.name}> {friend.name} </li>{' '}
+                                    <li key={friend.age}> {friend.age} </li>{' '}
+                                    <li key={friend.email}> {friend.email} </li>
+                                </div>
+                            )
                         })}
                     </ul>
                 )}

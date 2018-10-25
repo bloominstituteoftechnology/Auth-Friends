@@ -1,16 +1,43 @@
 ul {
     list-style-type: none;
-    display: flex;
-    flex-flow: column wrap;
-    height: 20vh;
-    justify-content: space-between;
 }
 
-li {
-    width: 150px;
-    height: 100px;
+.list {
     border: 1px solid red;
-    font-family: Monaco;
+    padding: 20px;
+    width: 50%;
+    margin: 0 auto;
+    font-family: monaco;
     text-align: center;
-    padding: 10px 0 0 0;
+}
+
+.inputs {
+    width: 200px;
+    height: 40px;
+    border: 2px solid black;
+    font-family: monaco;
+    margin: 40px 30px;
+}
+
+label {
+    font-family: monaco;
+    font-size: 15px;
+}
+
+input[type='submit'] {
+    display: inline-block;
+    position: absolute;
+    border: 2px solid black;
+    width: 100px;
+    height: 30px;
+    top: 40%;
+    left: 42%;
+}
+
+form {
+    width: 100%;
+    margin-left: 40px;
+    position: relative;
+    height: 40vh;
+    margin-top: 40px;
 }
