@@ -1,3 +1,7 @@
+import { 
+  FETCHINGFRIENDS,
+  FRIENDSFETCHED
+} from '../actions'
 
 const initalState = {
   fetchingFriends: false,
@@ -29,7 +33,11 @@ export const friendsReducer = (state = initalState, action) => {
   console.log('reducer', action)
 
   switch (action.type) {
+    case FETCHINGFRIENDS:
 
+    case FRIENDSFETCHED:
+
+    default:
+      return state;
   }
-  return state;
 }
