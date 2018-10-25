@@ -16,6 +16,15 @@ class FriendsList extends Component {
     this.props.fetchFriends();
   }
 
+  handleChange = event => {
+    if (event.target.name === 'age') {
+      const number = parseInt(event.target.value);
+      this.setState({ [event.target.name]: number });
+    } else {
+      this.setState({ [event.target.name]: event.target.value });
+    }
+  };
+
   render() {
     return (
       <div>
