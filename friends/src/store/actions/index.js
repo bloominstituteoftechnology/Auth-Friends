@@ -23,3 +23,14 @@ export const fetchFriends = () => {
       });
   };
 };
+
+export const addFriend = friend => {
+  console.log(friend);
+  return dispatch => {
+    dispatch({ type: FRIENDS_SAVED });
+    const promise = axios.post('http://localhost:5000/api/friends/', friend);
+    promise.then(response =>
+      dispatch({ type: SAVING_FRIENDS, payload: response.data })
+    );
+  };
+};
