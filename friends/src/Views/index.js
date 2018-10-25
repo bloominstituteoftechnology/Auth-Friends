@@ -1,1 +1,1 @@
-export { default as FriendListView } from "./FriendListView";
+export { default as FriendListView } from "./friendListView";

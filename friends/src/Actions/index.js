@@ -42,7 +42,7 @@ export const deleteFriend = id => dispatch => {
 export const addFriend = friend => dispatch => {
   dispatch({ type: POST_FRIEND });
   axios
-    .post(url, friend)
+    .post(URL, friend)
     .then(response => {
       dispatch({ type: POST_FRIEND_SUCCESS, payload: response.data });
     })

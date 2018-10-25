@@ -8,7 +8,7 @@ import {
   POST_FRIEND,
   POST_FRIEND_SUCCESS,
   POST_FRIEND_FAILURE
-} from "../actions";
+} from "../Actions";
 const initialState = {
   fetchingFriends: false,
   friendsFetched: false,
