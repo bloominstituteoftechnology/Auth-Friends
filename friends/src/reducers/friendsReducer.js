@@ -1,4 +1,4 @@
-import { FETCHING_FRIENDS, FRIENDS_FETCH_SUCCESS, FRIENDS_FETCH_FAILURE } from "../actions";
+import { FETCHING_FRIENDS, FRIENDS_FETCH_SUCCESS, FRIENDS_FETCH_FAILURE, FRIEND_ADDED } from "../actions";
 
 // need my action types imported from '../actions';
 
@@ -38,6 +38,12 @@ export const friendsReducer = (state = initialState, action) => {
 
     case FRIENDS_FETCH_FAILURE:
         return{...state, fetchingFriends: false, error: action.payload};
+
+
+    case FRIEND_ADDED:
+    console.log(action);
+    console.log('state:', state.friends);
+        return {...state, friends: [...action.payload] }
 
     default:
         return state;

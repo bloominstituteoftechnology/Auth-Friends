@@ -10,6 +10,7 @@ class Friends extends React.Component {
     componentDidMount() {
         // call our action
         this.props.fetchFriends();
+        
       }
 
     render() {
@@ -23,6 +24,7 @@ class Friends extends React.Component {
             </div>
             )}
           </div>
+          
         );
     }
     }

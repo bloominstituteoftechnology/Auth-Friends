@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
  import { connect } from 'react-redux';
  import { addNewFriend } from '../actions';
  class CreateFriendForm extends React.Component {
@@ -12,18 +12,27 @@ import React, { Component } from 'react';
             [event.target.name]: event.target.value,
         });
     }
-     handleAddNewFriend = () => {
+     handleAddNewFriend = (event) => {
+         event.preventDefault();
+         
         const friend = this.state;
+        console.log('addnewfriend', friend);
         this.props.addNewFriend(friend);
         this.setState({ name: '', age: '', email: '' });
      }
+
+    // handleAddNewFriend = (newFriend) => {
+    //     this.setState({friends: newFriend});
+    // }
      render() {
         return (
         <div>
-            <input name="name" value={this.state.name} type="text" onChange={this.handleInputChange} placeholder="Name" />
-            <input name="age" value={this.state.age} type="number" onChange={this.handleInputChange} placeholder="Age" />
-            <input name="email" value={this.state.email} type="email" onChange={this.handleInputChange} placeholder="Email" />
-                 <button onClick={this.handleAddNewFriend}>Add Friend</button>
+            <form onSubmit={this.handleAddNewFriend}>
+                <input name="name" value={this.state.name} type="text" onChange={this.handleInputChange} placeholder="Name" />
+                <input name="age" value={this.state.age} type="number" onChange={this.handleInputChange} placeholder="Age" />
+                <input name="email" value={this.state.email} type="email" onChange={this.handleInputChange} placeholder="Email" />
+                    <button type='submit'>Add Friend</button>
+            </form>
         </div>
         );
     }

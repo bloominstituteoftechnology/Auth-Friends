@@ -19,13 +19,14 @@ export const fetchFriends = () => dispatch => {
             dispatch({ type: FRIENDS_FETCH_FAILURE, payload: error });
         });
     };
-    export const addNewFriend = friend => dispatch => {
+    export const addNewFriend = (friend) => dispatch => {
+        
         dispatch({ type: ADDING_FRIEND });
       
         axios
             .post("http://localhost:5000/api/friends", friend)
           .then(response => {
-              dispatch({ type: FRIEND_ADDED, payload: this.props.handleAddNewFriend(response.data) });
+              dispatch({ type: FRIEND_ADDED, payload: response.data });
           })
           .catch(err => {
             dispatch({ type: ADD_FRIEND_ERROR, payload: err });
