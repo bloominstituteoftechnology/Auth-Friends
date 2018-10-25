@@ -10,12 +10,8 @@ const initialState = {
 //-- Route Actions -------------------------------
 export default function (state = initialState, action){
     switch (action.type) {
-        case actions.FRIENDS_RESPONSE: {
-            return handleFriendsList(state, action);
-        }
-        default: {
-            return state
-        }
+        case actions.FRIENDS_RESPONSE: return handleFriendsList(state, action);
+        default                      : return                   state         ;
     }
 };
 
