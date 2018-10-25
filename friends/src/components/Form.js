@@ -43,8 +43,8 @@ class Form extends React.Component {
         age: '',
         email: '',
       });
-      this.props.history.push('/');
-      window.location.reload(); 
+      this.props.history.push(`/${this.props.match.params.id}`);
+      window.location.reload();
     }
       const friend = {
         name: this.state.name,

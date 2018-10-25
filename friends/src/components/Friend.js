@@ -1,9 +1,8 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Form from './Form';
 
 const Friend = props => {
-  console.log('in friend', props.friend)
   const deleteFriend= (event) => {
     props.delete(props.friend.id);
     props.history.push('/');
@@ -13,14 +12,16 @@ const Friend = props => {
   return (
     <div className='friend-container'>
     <div className='friend-card'>
-      <div className='delete-button' onClick={deleteFriend}>
-        x
+    <div className='buttons'>
+      <div className='delete-button button' onClick={deleteFriend}>
+        <i className="fas fa-trash"/>
       </div>
       <Link to={`/${props.friend.id}/edit`}>
       <div className='edit-button button'>
-        Edit
+        <i className="fas fa-user-edit"/>
       </div>
       </Link>
+      </div>
       <h3>{props.friend.name}</h3>
       <p>{props.friend.age}</p>
       <p>{props.friend.email}</p>

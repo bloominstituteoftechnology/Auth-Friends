@@ -30,7 +30,7 @@ class FriendView extends React.Component {
         <div className='friend-view'>
 
           <div className='home-button button' onClick={this.goHome}>
-          home
+          <i className="fas fa-home"/>
           </div>
 
           <Friend friend={this.props.friend} delete={this.props.deleteFriend} history={this.props.history} />
