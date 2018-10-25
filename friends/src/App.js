@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchFriends, addFriend, updateFriend } from "./actions";
+import { fetchFriends, addFriend, updateFriend, deleteFriend } from "./actions";
 
 import "./App.css";
 
@@ -69,6 +69,10 @@ class App extends Component {
     });
   };
 
+  handleDelete = id => {
+    this.props.deleteFriend(id);
+  };
+
   handleSubmitUpdate = event => {
     event.preventDefault();
     this.props.updateFriend(this.state.newFriend);
@@ -101,6 +105,7 @@ class App extends Component {
         <FriendList
           friends={this.props.friends}
           handleUpdate={this.handleUpdate}
+          handleDelete={this.handleDelete}
         />
         <Form
           newFriend={this.state.newFriend}
@@ -122,11 +127,12 @@ const mapStateToProps = state => {
     isFetching: state.isFetching,
     error: state.error,
     addingFriend: state.addingFriend,
-    updatingFriend: state.updatingFriend
+    updatingFriend: state.updatingFriend,
+    deletingFriend: state.deleteFriend
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchFriends, addFriend, updateFriend }
+  { fetchFriends, addFriend, updateFriend, deleteFriend }
 )(App);

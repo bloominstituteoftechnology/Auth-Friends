@@ -60,3 +60,18 @@ export const updateFriend = friend => dispatch => {
       dispatch({ type: UPDATE_FRIEND_FAILURE, payload: error });
     });
 };
+
+export const deleteFriend = id => dispatch => {
+  dispatch({ type: DELETE_FRIEND });
+  axios
+    .delete(`http://localhost:5000/api/friends/${id}`)
+    .then(response => {
+      dispatch({
+        type: DELETE_FRIEND_SUCCESS,
+        payload: response.data
+      });
+    })
+    .catch(error => {
+      dispatch({ type: DELETE_FRIEND_FAILURE, payload: error });
+    });
+};
