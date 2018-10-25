@@ -3,20 +3,41 @@ import logo from './logo.svg';
 import './App.css';
 import Friends from './components/Friends';
 import FriendForm from './components/FriendForm';
-import { fetchFriends } from './actions';
+import { fetchFriends, postFriend } from './actions';
 import { connect } from 'react-redux';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: '',
+      email: ''
+    }
+
+  }
 
   componentDidMount() {
     this.props.fetchFriends();
   }
 
+  addFriend = (ev) => {
+    ev.preventDefault();
+    this.props.postFriend(this.state.name, this.state.age, this.state.email);
+  }
+
+  changeHandler = (ev) => {
+    this.setState({[ev.target.name]: ev.target.value});
+  }
+
   render() {
     return (
       <div className="App">
-        <Friends></Friends>
-        <FriendForm></FriendForm>
+        <Friends friends={this.props.friends}></Friends>
+        <FriendForm 
+        addFriend={this.addFriend} 
+        changeHandler={this.changeHandler}
+        ></FriendForm>
       </div>
     );
   }
@@ -41,5 +62,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchFriends }
+  { fetchFriends, postFriend }
 )(App);
