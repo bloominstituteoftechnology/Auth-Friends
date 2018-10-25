@@ -1,10 +1,10 @@
 .App {
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   text-align: center;
   display: flex;
-
+  justify-content: space-between;
 }
 
 form {
