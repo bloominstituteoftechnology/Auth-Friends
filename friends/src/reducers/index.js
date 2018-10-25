@@ -1,4 +1,4 @@
-import {FETCHING, SUCCESS, FAILURE} from "../actions";
+import {FETCHING, SUCCESS, FAILURE, ADD_NEW_FRIEND} from "../actions";
 
 const initialState = {
   friends: [],
@@ -14,6 +14,15 @@ export const friendsReducer = (state = initialState, action) => {
       return {...state, friends: [...action.payload], isFetching: false};
     case FAILURE:
       return {...state, error: action.payload, isFetching: false};
+    default:
+      return state;
+  }
+};
+
+export const addFriendReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_NEW_FRIEND:
+      return {...state, friends: [...action.payload]};
     default:
       return state;
   }
