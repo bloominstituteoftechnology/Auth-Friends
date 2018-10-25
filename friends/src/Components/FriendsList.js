@@ -9,8 +9,33 @@ class FriendsList extends Component {
     name: '',
     age: '',
     email: ''
+  };
 
+  componentDidMount() {
+    this.props.fetchFriends();
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          {this.props.friends.map(friend => (
+            <Friend key={friend.id} friend={friend} />
+          ))}
+        </div>
+        <FriendsForm input={this.state} />
+      </div>
+    );
   }
 }
 
-export default FriendsList
+const mapStateToProps = state => {
+  return {
+    friends: state.friends
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { friendFetch }
+)(FriendsList);
