@@ -1,6 +1,8 @@
 import React from "react";
 import {fetchFriends, addNewFriend, deleteFriend} from "../actions";
 import {connect} from "react-redux";
+import ReactLoading from "react-loading";
+import "../App.css";
 
 import FriendsList from "../components/FriendsList";
 
@@ -68,7 +70,17 @@ class FriendsListView extends React.Component {
         </form>
         <div>
           {this.props.isFetching ? (
-            <h2>Fetching Friends</h2>
+            <div>
+              <h2>Fetching Friends</h2>
+              <ReactLoading
+                type="spokes"
+                color="#000"
+                className="loading"
+                height="100px"
+                width="100px"
+                delay="0"
+              />
+            </div>
           ) : (
             <FriendsList
               friends={this.props.friends}
