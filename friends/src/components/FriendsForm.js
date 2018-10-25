@@ -1,6 +1,7 @@
 import React, {Component} from 'react'; 
 import { connect } from 'react-redux'; 
 import { createFriends} from '../actions';
+import '../App.css';
 class FriendForm extends Component {
     state={
         name: '', 
@@ -19,7 +20,7 @@ class FriendForm extends Component {
     render() {
         return(
             <form className="layout" onSubmit={() => this.handleAddFriend()}>
-            <label>
+            <label className="forms">
                 Name:
                 <input 
                 className="input"
@@ -31,7 +32,7 @@ class FriendForm extends Component {
                 />
             </label>
             
-            <label>
+            <label className="forms">
                 Age:
                 <input 
                 className="input"
@@ -42,7 +43,7 @@ class FriendForm extends Component {
                 onChange={this.handleInputChange}
                 />
             </label>
-            <label>
+            <label className="forms">
                 Email:
                 <input 
                 className="input"

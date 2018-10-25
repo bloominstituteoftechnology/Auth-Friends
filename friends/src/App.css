@@ -7,7 +7,7 @@
   height: 40vmin;
 }
 
-.App-header {
+/*.App-header {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
-}
+}*/
 
 .App-link {
   color: #61dafb;
@@ -28,4 +28,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.layout {
+    margin: 20px auto;
+    border: 0.5px solid black;
+    border-radius: 15px;
+    height: 350px;
+    width: 350px;
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-weight: bold;
+}
+
+.selected-friend {
+  background-color: lightgray;
+    color: rgba(0,0,0,0.7);
+    box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+    height: 200px;
+    width: 300px;
+    margin: 30px auto;
+    border-radius: 15px;
+    border: 0.5px solid darkgrey;
+    font-family: sans-serif;
 }
