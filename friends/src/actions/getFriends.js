@@ -8,7 +8,7 @@ export const getFriends = friend => dispatch => {
     .get('http://localhost:5000/api/friends')
     .then( ({data}) => {
       console.log('data', data)
-      dispatch({ type: FRIENDSFETCHED })
+      dispatch({ type: FRIENDSFETCHED, data })
     })
     .catch(err => {
       console.log('err', err)

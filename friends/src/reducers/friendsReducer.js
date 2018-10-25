@@ -7,24 +7,6 @@ const initalState = {
   fetchingFriends: false,
   friendsFetched: false,
   friends: [
-    {
-      id: 1,
-      name: 'Joe',
-      age: 24,
-      email: 'joe@lambdaschool.com',
-    },
-    {
-      id: 2,
-      name: 'Austen',
-      age: 45,
-      email: 'austen@lambdaschool.com',
-    },
-    {
-      id: 3,
-      name: 'Ryan',
-      age: 15,
-      email: 'ryan@lambdaschool.com',
-    }
   ],
   error: null
 }
@@ -35,8 +17,16 @@ export const friendsReducer = (state = initalState, action) => {
   switch (action.type) {
     case FETCHINGFRIENDS:
 
+      return {
+        ...state,
+        fetchingFriends: true 
+      }
     case FRIENDSFETCHED:
-
+        return {
+          ...state,
+          friends: action.data,
+          friendsFetched: true 
+        }
     default:
       return state;
   }
