@@ -24,7 +24,8 @@ export const friendReducer = (state = initialState, action) => {
 
 
       case FETCHING_SUCCESS:
-      return { ...state, fetching: false, friends : action.payload };
+      console.log("fetching success", action.payload);
+      return { ...state, fetching: false, friends : [...action.payload] };
 
       case FETCHING_FAILURE:
       return { ...state, fetching: false, error : action.payload };

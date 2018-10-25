@@ -13,7 +13,7 @@ return(
         <h3> {props.friend.name}</h3>
         <p> age : {props.friend.age}</p>
         <p> email : {props.friend.email}</p>
-        <button onClick={props.deleteFriend(props.friend.id)}>Delete</button>
+        <button onClick={() => {props.deleteFriend(props.friend.id)}}>Delete</button>
         
     </div>
 

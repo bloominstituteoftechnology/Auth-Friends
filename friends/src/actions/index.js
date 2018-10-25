@@ -19,6 +19,7 @@ export const fetchFriends = () => dispatch => {
     axios
       .get('http://localhost:5000/api/friends')
       .then(response => {
+          console.log("in action", response);
           dispatch({ type: FETCHING_SUCCESS, payload: response.data});
       })
       .catch(error => {
