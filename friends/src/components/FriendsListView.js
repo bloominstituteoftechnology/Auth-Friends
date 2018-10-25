@@ -1,22 +1,37 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {getFriends, newFriend} from '../actions'
+import FriendList from './FriendList'
+import NewFriendForm from './NewFriendForm'
 
-class FriendsListView extends React.Components {
+class FriendsListView extends React.Component {
+  constructor() {
+    super()
+  }
+
+  componentDidMount() {
+    // console.log('CDM', this.props)
+    this.props.getFriends();
+  }
+
 
   render() {
-    return <div>Character list</div>
+    return (
+      <div>
+        <NewFriendForm />
+        <FriendList friends={this.props.friends} />
+      </div>
+     )
   }
 
 }
-// const mapStateToProps = state => {
-//   return {
-//     friends: state.friendsReducer.friends,
-//     error: state.friendsReducer.error,
-//     fetching: state.friendsReducer.fetching,
-//   }
-// }
-export default FriendsListView;
-// export default connect(
-//     mapStateToProps,
-//     {getFriends}
-//     )(FriendsListView);
+const mapStateToProps = state => {
+  return {
+    friends: state.friends
+  }
+}
+// export default FriendsListView;
+export default connect(
+    mapStateToProps,
+    {getFriends, newFriend}
+    )(FriendsListView);
