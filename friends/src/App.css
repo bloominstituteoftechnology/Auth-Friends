@@ -33,7 +33,12 @@
 
 .friend-container {
   border: 1px solid lightgray;
-  max-width: 500px;
+  width: 30%;
   margin: auto;
   margin-bottom: 10px;
+  padding: 15px;
+}
+.friends-container {
+  display: flex;
+  flex-wrap: wrap;
 }

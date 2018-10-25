@@ -6,9 +6,11 @@ const FriendsList = props => {
   return (
     <div>
       <h1>My Friends</h1>
-      {props.friendsList.map(friend => {
-        return <Friend friend={friend} />;
-      })}
+      <div className="friends-container">
+        {props.friendsList.map(friend => {
+          return <Friend friend={friend} />;
+        })}
+      </div>
     </div>
   );
 };
