@@ -65,3 +65,33 @@ export const deleteFriend = (id) => dispatch => {
         dispatch({type: DELETING_FRIEND_FAILURE, payload: error})
     })
 }
+
+export const FRIEND_UPDATE = 'FRIEND_UPDATE';
+
+export const friendUpdate = (id) => {
+    return {
+      type: FRIEND_UPDATE,
+      payload: id
+    }
+  };
+
+
+export const UPDATING_FRIEND = 'UPDATING_FRIEND';
+export const UPDATING_FRIEND_SUCCESS = 'UPDATING_FRIEND_SUCCESS';
+export const UPDATING_FRIEND_FAILURE = 'UPDATING_FRIEND_FAILURE';
+
+export const updateFriend = (id, name, age, email) => dispatch => {
+    dispatch({type: UPDATING_FRIEND});
+    axios
+    .put(`http://localhost:5000/api/friends/${id}`, {
+        name: name,
+        age: age,
+        email: email
+    })
+    .then(response => {
+        dispatch({type: UPDATING_FRIEND_SUCCESS, payload: response.data})
+    }) 
+    .catch(error => {
+        dispatch({type: UPDATING_FRIEND_FAILURE, payload: error})
+    })
+}

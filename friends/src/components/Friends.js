@@ -8,6 +8,7 @@ const Friends = props => {
                 <div>
                 <p>{friend.name}</p>
                 <button name={friend.id} onClick={props.removeFriend}>X</button>
+                <button name={friend.id} onClick={props.updateFriend}>+</button>
                 </div>
             );
         }
