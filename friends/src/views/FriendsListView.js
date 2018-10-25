@@ -2,6 +2,8 @@ import React from "react";
 import fetchFriends from "../actions";
 import {connect} from "react-redux";
 
+import FriendsList from "../components/FriendsList";
+
 class FriendsListView extends React.Component {
   constructor() {
     super();
@@ -17,7 +19,7 @@ class FriendsListView extends React.Component {
         {this.props.isFetching ? (
           <h2>Fetching Friends</h2>
         ) : (
-          <h2>Friends List</h2>
+          <FriendsList friends={this.props.friends} />
         )}
       </div>
     );
