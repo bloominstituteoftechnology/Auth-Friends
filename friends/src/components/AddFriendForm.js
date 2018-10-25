@@ -3,20 +3,32 @@ import { createFriend } from '../actions/index'
 import { connect } from 'react-redux'
 
 class CreateFriendForm extends React.Component {
+    state = {
+        name: null,
+    }
+    handleChange = e => {
+        const name = e.target.name
+        const value = e.target.value
+        this.setState({
+            [name]: value,
+        })
+    }
+    handleSubmit = e => {
+        e.preventDefault()
+        this.props.createFriend(this.state)
+    }
     render() {
         return (
-            <div>
-                {this.props.fetchingFriends ? (
-                    <h4>Getting Friends...</h4>
-                ) : (
-                    <form action="" method="post">
-                        <label htmlFor="POST-name">Name:</label>
-                        <input id="POST-name" type="text" name="name" />
-                        <input type="submit" value="submit" />
-                    </form>
-                )}
-                {this.props.error !== '' ? <h4>{this.props.error}</h4> : null}
-            </div>
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor="POST-name">Name:</label>
+                <input
+                    id="POST-name"
+                    type="text"
+                    name="name"
+                    onChange={this.handleChange}
+                />
+                <input type="submit" value="submit" />
+            </form>
         )
     }
 }
