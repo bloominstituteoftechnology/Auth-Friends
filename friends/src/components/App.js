@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import '../styles/App.css'
 import { fetchFriends } from '../actions/index'
 import { deleteFriend } from '../actions/index'
+import { updateFriend } from '../actions/index'
 
 class App extends Component {
     componentDidMount = () => {
@@ -25,11 +26,24 @@ class App extends Component {
                                     <li key={friend.id}>
                                         <button
                                             onClick={() => {
-                                                this.props.deleteFriend(friend.id)
+                                                this.props.deleteFriend(
+                                                    friend.id
+                                                )
                                                 window.location.reload()
                                             }}
                                         >
                                             Delete
+                                        </button>
+
+                                        <button
+                                            onClick={() => {
+                                                this.props.updateFriend(
+                                                    friend.id, friend
+                                                )
+                                                window.location.reload()
+                                            }}
+                                        >
+                                            Update
                                         </button>
                                     </li>
                                 </div>
@@ -55,5 +69,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { fetchFriends, deleteFriend }
+    { fetchFriends, deleteFriend, updateFriend}
 )(App)
