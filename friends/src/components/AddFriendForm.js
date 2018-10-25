@@ -41,6 +41,7 @@ addFriend = event => {
     render () {
 return (
     <div>
+        <h1>Muh Friends</h1>
     <form className="add-friend-form"
     onSubmit={this.addFriend}
     >

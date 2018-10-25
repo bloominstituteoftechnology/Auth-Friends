@@ -2,31 +2,62 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+h1{
+  background:#405997;
+  color:white;
+  width:25%;
+  margin:20px auto;
+  border-radius:5px;
+  padding:10px 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+.add-friend-form {
+  display:flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+width:25%;
+margin:30px auto;
+}
+
+.add-friend-form input, button {
+  padding:5px;
+  margin: 5px auto;
+}
+
+.add-friend-form button {
+  width:50%;
+  background: #405997;
   color: white;
+  border: none;
+  border-radius:3px;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+.friend-list-wrapper {
+  display:flex;
+  flex-wrap: wrap;
+  width:60%;
+  justify-content: space-between;
+  margin:50px auto 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.friend-card {
+  background: #405997;
+  color:white;
+  width:100%;
+  display:flex;
+  justify-content: flex-start;
+  margin-bottom:40px;
+  border-radius:5px;
+}
+
+.friend-card .delete {
+  width:5%;
+  font-weight: bold;
+  padding:5px;
+  cursor: pointer;
+}
+
+.friend-card h3 {
+margin: 20px 0;
+width:20%;
 }

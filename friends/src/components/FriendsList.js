@@ -14,12 +14,13 @@ class FriendsList extends React.Component {
             return <h1>Loading friends, please wait...</h1>
         }
         return (
+            <div>
             <div className='friend-list-wrapper'>
-            <h1>Friends</h1>
             {this.props.friends.map(friend => {
                 return (
                 <Friend key={friend.id} friend={friend}/>
             )})}
+            </div>
             </div>
         )
     }

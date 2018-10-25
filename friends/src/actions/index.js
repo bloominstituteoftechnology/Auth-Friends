@@ -8,6 +8,11 @@ export const SAVING_FRIEND ='SAVING_FRIEND';
 export const SAVING_FRIEND_SUCCESS = 'SAVING_FRIEND_SUCCESS';
 export const SAVING_FRIEND_FAILURE = 'SAVING_FRIEND_FAILURE';
 
+export const DELETING_FRIEND ='DELETING_FRIEND';
+export const DELETING_FRIEND_SUCCESS = 'DELETING_FRIEND_SUCCESS';
+export const DELETING_FRIEND_FAILURE = 'DELETING_FRIEND_FAILURE';
+
+
 export const fetchFriends = () => dispatch => {
     dispatch ({type: FETCHING});
     axios.get('http://localhost:5000/api/friends')
@@ -28,4 +33,11 @@ export const saveFriend = newFriend => dispatch => {
     .catch(error =>{
         dispatch({type: SAVING_FRIEND_FAILURE, payload:error})
     })
+}
+
+export const deleteFriend =  id => dispatch => {
+    dispatch ({type:DELETING_FRIEND});
+    axios.delete(`http://localhost:5000/api/friends/${id}`)
+    .then(response=>{dispatch({type:DELETING_FRIEND_SUCCESS, payload:response.data})})
+    .catch(error=>{dispatch({type:DELETING_FRIEND_FAILURE, payload:error})})
 }

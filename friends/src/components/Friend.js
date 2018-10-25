@@ -1,18 +1,33 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {deleteFriend} from "../actions";
 
 class Friend extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    
+fireDelete =event =>{
+    event.preventDefault();
+this.props.deleteFriend(this.props.friend.id);
+}
+
     render(){
         return (
-            <div className="friend-info-card">
-            <h2>{this.props.friend.name}</h2>
-            <h4>{this.props.friend.age}</h4>
-            <h4>{this.props.friend.email}</h4>
+            <div className="friend-card">
+            <div className="delete" onClick={this.fireDelete}>X</div>
+            <h3>{this.props.friend.name}</h3>
+            <h3>Age: {this.props.friend.age}</h3>
+            <h3>{this.props.friend.email}</h3>
             </div>
         )
     }
 }
 
-export default Friend;
+const mapStateToProps = state => {
+    return {
+        deleting: state.friendsReducer.deleting
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {deleteFriend}
+)(Friend);
