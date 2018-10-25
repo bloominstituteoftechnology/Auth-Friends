@@ -49,3 +49,19 @@ axios
     dispatch({type: POSTING_FRIEND_FAILURE, payload: error})
 })
 }
+
+export const DELETING_FRIEND = 'DELETE_FRIEND';
+export const DELETING_FRIEND_SUCCESS = 'DELETE_FRIEND_SUCCESS';
+export const DELETING_FRIEND_FAILURE = 'DELETE_FRIEND_FAILURE';
+
+export const deleteFriend = (id) => dispatch => {
+    dispatch({type: DELETING_FRIEND});
+    axios
+    .delete(`http://localhost:5000/api/friends/${id}`)
+    .then(response => {
+        dispatch({type: DELETING_FRIEND_SUCCESS, payload: response.data})
+    }) 
+    .catch(error => {
+        dispatch({type: DELETING_FRIEND_FAILURE, payload: error})
+    })
+}

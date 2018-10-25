@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Friends from './components/Friends';
 import FriendForm from './components/FriendForm';
-import { fetchFriends, postFriend } from './actions';
+import { fetchFriends, postFriend, deleteFriend } from './actions';
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -30,10 +30,20 @@ class App extends Component {
     this.setState({[ev.target.name]: ev.target.value});
   }
 
+  removeFriend = (ev) => {
+    console.log(ev.target.name)
+    ev.preventDefault();
+    this.props.deleteFriend(ev.target.name);
+  }
+
   render() {
     return (
       <div className="App">
-        <Friends friends={this.props.friends}></Friends>
+        <Friends 
+        friends={this.props.friends}
+        removeFriend={this.removeFriend}
+        
+        ></Friends>
         <FriendForm 
         addFriend={this.addFriend} 
         changeHandler={this.changeHandler}
@@ -62,5 +72,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchFriends, postFriend }
+  { fetchFriends, postFriend, deleteFriend }
 )(App);

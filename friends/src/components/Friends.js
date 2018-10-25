@@ -5,7 +5,10 @@ const Friends = props => {
     <div>
         {props.friends.map(friend => {
             return (
+                <div>
                 <p>{friend.name}</p>
+                <button name={friend.id} onClick={props.removeFriend}>X</button>
+                </div>
             );
         }
 
