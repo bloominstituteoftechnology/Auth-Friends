@@ -1,8 +1,15 @@
 import React from 'react';
- import Friend from './Friend';
- const FriendsList = () => {
+
+import Friend from './Friend';
+
+const FriendsList = ({ friends }) => {
   return (
-    <Friend />
+    <div>
+      {friends.map(friend => (
+        <Friend key={friend.id} friend={friend} />
+      ))}
+    </div>
   );
 };
- export default FriendsList;
+
+export default FriendsList;
