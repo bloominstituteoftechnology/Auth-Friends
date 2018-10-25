@@ -4,7 +4,7 @@ import {
     FRIEND_FETCH_ERROR,
 } from '../actions/index'
 
-const initialState = {
+export const initialState = {
     fetchingFriends: false,
     friendsFetched: false,
     friendsSaved: false,

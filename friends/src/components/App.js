@@ -20,6 +20,7 @@ class App extends Component {
                         })}
                     </ul>
                 )}
+
                 {this.props.error !== '' ? <h4>{this.props.error}</h4> : null}
             </div>
         )
@@ -31,6 +32,7 @@ const mapStateToProps = state => {
         friends: state.friendsReducer.friends,
         error: state.friendsReducer.error,
         fetchingFriends: state.friendsReducer.fetchingFriends,
+        createFriend: state.addFriendReducer.createFriend,
     }
 }
 
