@@ -45,9 +45,10 @@ let Friends = class extends React.Component {
 
   //-- Interaction ---------------------------------
   addFriend = friendData => {
-    /*if(!this.props.ready){
-      this.props.error();
-    }*/
+    if(!this.props.ready){
+      this.props.notReady('You cannot add a friend right now');
+      return;
+    }
     this.props.addFriend(friendData);
   }
 }
@@ -60,13 +61,13 @@ function mapStateToProps(state) {
   return {
     friends: state.friends,
     error: state.error,
-    //ready: !state.fetching,
+    ready: !state.fetching,
   };
 }
 Friends = connect(mapStateToProps, {
   getFriends: actions.getFriends,
   addFriend: actions.addFriend,
-  //error: actions.notReady,
+  notReady: actions.notReady,
 })(Friends);
 
 //-- Exporting -----------------------------------

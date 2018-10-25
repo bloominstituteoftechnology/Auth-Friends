@@ -66,9 +66,10 @@ export function fetchError(error) {
     };
 }
 
-//
-export function notReady() {
+//-- NOT_READY - User attempted an action while agent wasn't ready
+export function notReady(error) {
     return {
-        type: NOT_READY
+        type: NOT_READY,
+        error: error,
     };
 }
