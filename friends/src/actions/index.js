@@ -22,7 +22,7 @@ export const fetchfriends = () => dispatch => {
 
 
 export const createFriends = friend =>{
-    const newFriend = axios.post(`${URL}`, friend); 
+    const newFriend = axios.post(`http://localhost:5000/api/friends`, friend); 
     return dispatch => {
         dispatch({ type: CREATING_FRIENDS}); 
         newFriend
