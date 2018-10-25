@@ -1,7 +1,8 @@
 import React from "react";
-import xCircle from "../assets/x-circle.svg"
+import xCircle from "../assets/x-circle.svg";
+import edit from "../assets/edit.svg";
 
-const Friend = ({ friend }) => (
+const Friend = ({ friend, handleUpdate, handleDelete }) => (
   <div className="friend-card" key={friend.id}>
     <h2>{friend.name}</h2>
     <p>Age: {friend.age}</p>
@@ -9,17 +10,18 @@ const Friend = ({ friend }) => (
       Email: <a href={`mailto:${friend.email}`}>{friend.email}</a>
     </p>
     <div className="update-delete">
-      <span
+      <img
         className="update-link"
-        onClick={() => this.handleUpdate(friend.id)}
-      >
-        Update
-      </span>
+        src={edit}
+        alt="update"
+        onClick={() => handleUpdate(friend.id)}
+      />
+
       <img
         className="cancel-button"
         src={xCircle}
         alt="delete"
-        onClick={() => this.handleDelete(friend.id)}
+        onClick={() => handleDelete(friend.id)}
       />
     </div>
   </div>

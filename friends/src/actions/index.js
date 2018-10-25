@@ -9,7 +9,12 @@ export const ADD_FRIEND_COMPLETE = "ADD_FRIEND_COMPLETE";
 export const ADD_FRIEND_FAILURE = "ADD_FRIEND_FAILURE";
 
 export const UPDATE_FRIEND = "UPDATE_FRIEND";
+export const UPDATE_FRIEND_SUCCESS = "UPDATE_FRIEND_SUCCESS";
+export const UPDATE_FRIEND_FAILURE = "UPDATE_FRIEND_FAILURE";
+
 export const DELETE_FRIEND = "DELETE_FRIEND";
+export const DELETE_FRIEND_SUCCESS = "DELETE_FRIEND_SUCCESS";
+export const DELETE_FRIEND_FAILURE = "DELETE_FRIEND_FAILURE";
 
 export const fetchFriends = () => dispatch => {
   dispatch({ type: FETCHING_FRIENDS });
@@ -38,5 +43,20 @@ export const addFriend = friend => dispatch => {
     })
     .catch(error => {
       dispatch({ type: ADD_FRIEND_FAILURE, payload: error });
+    });
+};
+
+export const updateFriend = friend => dispatch => {
+  dispatch({ type: UPDATE_FRIEND });
+  axios
+    .put(`http://localhost:5000/api/friends/${friend.id}`, friend)
+    .then(response => {
+      dispatch({
+        type: UPDATE_FRIEND_SUCCESS,
+        payload: response.data
+      });
+    })
+    .catch(error => {
+      dispatch({ type: UPDATE_FRIEND_FAILURE, payload: error });
     });
 };

@@ -1,5 +1,57 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 1024px;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto
+}
+
+.friends-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+}
+
+.friend-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 200px;
+  width: 45%;
+  border: 1px solid #444444;
+  margin: 20px auto;
+  border-radius: 5px;
+  padding: 10px 0;
+}
+
+.update-delete {
+position: relative;
+top: -90%;
+right: -30%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.update-delete a, img {
+margin: 0 5px;
+cursor: pointer;
+}
+
+.update-link {
+text-decoration: none;
+color:#555;
+font-size: 14px;
+}
+
+.update-link:hover {
+text-decoration: underline;
+cursor: pointer;
 }
 
 form {

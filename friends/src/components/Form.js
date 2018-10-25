@@ -38,11 +38,11 @@ const Form = props => (
             props.isUpdating ? props.handleSubmitUpdate : props.handleSubmit
           }
         />
-        {/* <img
+        <img
           className="cancel-button"
           src={xCircleWhite}
           onClick={props.handleCancel}
-        /> */}
+        />
       </div>
     </form>
   </div>
