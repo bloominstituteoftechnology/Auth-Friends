@@ -5,7 +5,7 @@ import xCircleWhite from "../assets/x-circle white.svg"
 const Form = props => (
   <div
     className="form-container"
-    style={props.formOpen ? { display: "flex" } : { display: "none" }}
+    // style={props.formOpen ? { display: "flex" } : { display: "none" }}
   >
     <form>
       <h2>{props.isUpdating ? "Update a Friend" : "Submit New Friend"}</h2>
@@ -38,11 +38,11 @@ const Form = props => (
             props.isUpdating ? props.handleSubmitUpdate : props.handleSubmit
           }
         />
-        <img
+        {/* <img
           className="cancel-button"
           src={xCircleWhite}
           onClick={props.handleCancel}
-        />
+        /> */}
       </div>
     </form>
   </div>
