@@ -1,32 +1,87 @@
 .App {
   text-align: center;
+  background-color: #ccd9ec;
+  font-family: 'Oxygen', sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.friend-form {
+  font-size: 2rem;
+  margin: auto;
+  width: 30%;
+  padding: 50px 20px 0;
+  height: 350px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 0 auto;
+}
+
+.friend-list {
+  font-size: 2rem;
+  padding: 20px;
+}
+
+.submit {
+  width: 100px;
+  margin: 20px auto 0;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 15px;
+}
+
+.submit:hover {
+  background-color: black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+input {
+  font-size: 1.6rem;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input:first-child {
+  margin-top: 30px;
+}
+
+.friend-card {
+  padding: 20px;
+  margin: 30px auto;
+  text-align: start;
+  border: 4px double black;
+  background-color: white;
+  width: 300px;
+  font-size: 1.8rem;
+}
+
+.friend-btns {
+  display: flex;
+  margin: 10px auto 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px;
+  margin: 5px 20px 0;
+  width: 50px;
+  text-align: center;
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.hidden {
+  display: none;
+}
+
+.edit-form {
+  margin: 10px auto;
+  padding: 20px;
 }
