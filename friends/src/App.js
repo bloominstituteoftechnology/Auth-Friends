@@ -1,8 +1,39 @@
 import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
 import axios from 'axios'
 import Form from './components/Form'
 import Card from './components/Card'
 import { FormWrapper, CardsWrapper } from './styles/Global'
+import {
+  fetchFriends,
+  saveFriend,
+  updateFriend,
+  deleteFriend
+} from './actions'
+
+const mapStateToProps = ({
+  fetchingFriends,
+  friendsFetched,
+  friendsSaved,
+  savingFriends,
+  updatingFriend,
+  friendUpdated,
+  deletingFriend,
+  friendDeleted,
+  friends,
+  error
+}) => ({
+  fetchingFriends,
+  friendsFetched,
+  friendsSaved,
+  savingFriends,
+  updatingFriend,
+  friendUpdated,
+  deletingFriend,
+  friendDeleted,
+  friends,
+  error
+})
 
 class App extends Component {
   state = {
@@ -40,4 +71,12 @@ class App extends Component {
   }
 }
 
-export default App
+export default connect(
+  mapStateToProps,
+  {
+    fetchFriends,
+    saveFriend,
+    updateFriend,
+    deleteFriend
+  }
+)(App)
