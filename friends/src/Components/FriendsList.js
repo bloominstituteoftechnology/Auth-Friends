@@ -5,6 +5,8 @@ import { fetchFriends, addFriend } from '../store/actions';
 import Friend from '../Views/Friend';
 import FriendsForm from '../Views/FriendsForm';
 
+import './ComponentsStyle.css';
+
 class FriendsList extends Component {
   state = {
     name: '',
@@ -34,7 +36,7 @@ class FriendsList extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="friend-list">
           {this.props.friends.map(friend => (
             <Friend key={friend.id} friend={friend} />
           ))}

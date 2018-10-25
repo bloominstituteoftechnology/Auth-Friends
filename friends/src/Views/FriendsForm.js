@@ -4,7 +4,7 @@ import './FriendsFormStyle.css';
 
 function FriendsForm(props) {
   return (
-    <form className="">
+    <form className="friend-form">
       <input
         className="friend-input"
         name="name"
