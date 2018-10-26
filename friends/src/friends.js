@@ -3,8 +3,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import * as actions from './redux/actions.js';
-import Friend from './components/friend.js';
 import FriendForm from './components/friend-form.js';
+import {FriendList} from './components/friend-list.js';
 import Error from './components/error.js';
 
 
@@ -19,26 +19,15 @@ let Friends = class extends React.Component {
 
   //-- Rendering -----------------------------------
   render() {
-    let friendsContent;
     // Show loading if not loaded yet
-    if(!this.props.friends.length){
-      friendsContent = <span>(Loading)</span>
-    // Display Friends List
-    } else{
-      friendsContent = this.props.friends.map(friend => (
-        <Friend
-          key={friend.id}
-          friend={friend}
-        />
-      ));
-    }
     return (
       <div className="friends">
         <Error error={this.props.error} />
         <FriendForm onSubmit={this.addFriend} />
-        <div className="friend-list">
-          {friendsContent}
-        </div>
+        <FriendList
+          loading={!this.props.ready}
+          friends={this.props.friends}
+        />
       </div>
     );
   }

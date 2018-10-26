@@ -1,4 +1,7 @@
 
+
+//== FriendForm Component ======================================================
+
 //-- Dependencies --------------------------------
 import React from "react";
 

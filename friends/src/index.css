@@ -46,6 +46,7 @@ body {
 .friend-list {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .friend {
     display: flex;
@@ -54,4 +55,17 @@ body {
     padding: 0.5rem;
     background: #eee;
     border-radius: 0.5rem;
+}
+.friend-list_loading .friend {
+    visibility: hidden;
+}
+.load-notifier {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
