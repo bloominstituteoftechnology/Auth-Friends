@@ -1,6 +1,6 @@
 import React from 'react';
-import createFriend from '../actions/index';
-import { connect } from 'net';
+import {createFriend} from '../actions';
+import { connect } from 'react-redux';
 
 class FriendsForm extends React.Component {
     state = {
@@ -15,9 +15,9 @@ changeHandler = event => {
 
 newFriendHandler = event => {
     event.preventDefault();
-    let { name, age, email } = this.state;
-    this.props.createFriend({ name, age, email });
-    this.setState({ name: '', age: '', email: '' });
+    const {name, age, email} = this.state;
+    this.props.createFriend({name, age, email});
+    this.setState({ name: '', age: '', email: '' })
 };
 
 render() {
@@ -53,10 +53,10 @@ render() {
 const mapStateToProps = state => {
     return {
         error: state.error,
-        creatingFriend: state.creatingFriend
+        creatingFriend: state.friendsReducer.creatingFriend
     };
 };
 
 export default 
-// connect(mapStateToProps, { createFriend })
+connect(mapStateToProps, { createFriend })
 (FriendsForm);
