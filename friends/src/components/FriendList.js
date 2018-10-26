@@ -27,7 +27,7 @@ class FriendList extends Component {
   }
   render() {
     if (this.props.fetchingFriends) {
-      return <WaitContainer>WAIT FOR FRIENDS</WaitContainer>;
+      return <FriendListContainer><WaitContainer>WAIT FOR FRIENDS</WaitContainer></FriendListContainer>;
     }
     return (
       <FriendListContainer>
