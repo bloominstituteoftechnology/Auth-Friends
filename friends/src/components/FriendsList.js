@@ -1,9 +1,13 @@
 import React from 'react';
 import Friend from './Friend';
 
-const FriendsList = () => {
+const FriendsList = ({ friends }) => {
     return (
-        <Friend />
+        <div>
+            {friends.map(friend => (
+                <Friend key={friend.id} friend={friend} />
+            ))}
+        </div>
     );
 };
 
