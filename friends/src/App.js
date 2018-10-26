@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import { FriendsListView } from './views';
+import { FriendsListContainer } from './containers';
 
 const App = () => {
   return (
     <div className="App">
-      <FriendsListView />
+      <FriendsListContainer />
     </div>
   )
 }
