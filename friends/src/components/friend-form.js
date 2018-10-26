@@ -18,8 +18,15 @@ export default class extends React.Component {
 
 //-- Rendering -----------------------------------
     render() {
+        let header;
+        if(!this.props.update){
+            header = <h2>Add Friend:</h2>
+        } else{
+            header = <h2>Update Friend:</h2>
+        }
         return (
             <form onSubmit={this.handleSubmit}>
+                {header}
                 <input
                     type="text"
                     onChange={this.handleInputChange}

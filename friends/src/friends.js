@@ -13,6 +13,12 @@ import Error from './components/error.js';
 let Friends = class extends React.Component {
 
   //-- Lifecycle -----------------------------------
+  constructor() {
+    super(...arguments);
+    this.state = {
+      focus: null
+    }
+  }
   componentDidMount() {
     this.props.getFriends();
   }
@@ -22,11 +28,17 @@ let Friends = class extends React.Component {
     // Show loading if not loaded yet
     return (
       <div className="friends">
+        <h1>Totally Normal Friends List</h1>
+        <FriendForm
+          onSubmit={this.addFriend}
+          update={this.state.focus? true : false}
+        />
         <Error error={this.props.error} />
-        <FriendForm onSubmit={this.addFriend} />
         <FriendList
           loading={!this.props.ready}
           friends={this.props.friends}
+          focus={this.state.focus}
+          onFocus={this.focusFriend}
         />
       </div>
     );
@@ -39,6 +51,13 @@ let Friends = class extends React.Component {
       return;
     }
     this.props.addFriend(friendData);
+  }
+  focusFriend = eventClick => {
+    let friendId = Number(eventClick.currentTarget.dataset.id);
+    console.log(friendId)
+    this.setState({
+      focus: friendId
+    });
   }
 }
 

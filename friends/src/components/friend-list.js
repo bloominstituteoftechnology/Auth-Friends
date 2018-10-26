@@ -19,7 +19,9 @@ export function FriendList(props) {
             {props.friends.map(friend => (
                 <Friend
                     key={friend.id}
+                    focus={props.focus === friend.id}
                     friend={friend}
+                    onClick={props.onFocus}
                 />
             ))}
         </div>
@@ -27,12 +29,16 @@ export function FriendList(props) {
 }
 
 //-- Friend - Implementation & Export ------------
-export function Friend({friend}) {
+export function Friend(props) {
+    let classText = 'friend';
+    if(props.focus){
+        classText += ' friend_focus';
+    }
     return (
-        <div className="friend">
-            <span>Name: {friend.name}</span>
-            <span>Age: {friend.age}</span>
-            <span>Email: {friend.email}</span>
+        <div className={classText} onClick={props.onClick} data-id={props.friend.id}>
+            <span>Name: {props.friend.name}</span>
+            <span>Age: {props.friend.age}</span>
+            <span>Email: {props.friend.email}</span>
         </div>
     );
 }

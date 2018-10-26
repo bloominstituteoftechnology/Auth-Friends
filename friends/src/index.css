@@ -16,10 +16,15 @@ body {
 
 /*-- Friends Container -------------------------*/
 .friends {
-    width: 40rem;
+    width: 45rem;
     margin: 0 auto;
     padding: 1rem;
     border: solid black 1px;
+}
+.friends h1 {
+    font-family: monospace;
+    text-align: center;
+    font-size: 2.2rem;
 }
 
 /*-- Error Display -----------------------------*/
@@ -41,6 +46,12 @@ body {
 .friends form > * {
     width: 100%;
 }
+.friends form h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+    font-family: monospace;
+} 
 
 /*-- Friend List -------------------------------*/
 .friend-list {
@@ -55,6 +66,16 @@ body {
     padding: 0.5rem;
     background: #eee;
     border-radius: 0.5rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    /* Above necessary to prevent resize on hover */
+}
+.friend:hover {
+    border: 1px solid black;
+}
+.friend.friend_focus {
+    background: white;
+    border: 1px dotted grey;
 }
 .friend-list_loading .friend {
     visibility: hidden;
