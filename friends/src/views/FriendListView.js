@@ -1,10 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ReactLoading from 'react-loading';
 import { FriendList }from '../components';
+
 import { fetchFriends, addFriend, deleteFriend } from '../actions';
 
+// const Loader = ({ type, color }) => {
+//
+// }
+
 class FriendListView extends React.Component {
+
 
   componentDidMount(){
     this.props.fetchFriends();
@@ -12,7 +19,12 @@ class FriendListView extends React.Component {
 
   render() {
     if (this.props.fetchingFriends) {
-      return (<h1>Collecting your imaginary friends...</h1>)
+      return (
+        <div className='loading'>
+        <h1>Collecting your imaginary friends...</h1>
+        <ReactLoading type='spokes' color='black' height='30%' width='30%' />
+        </div>
+      )
     }
     return (
       <div className='friends-view-container'>
