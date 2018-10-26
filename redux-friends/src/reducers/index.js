@@ -2,10 +2,25 @@ import {
   FETCHING_FRIENDS,
   FETCHING_FRIENDS_SUCCESS,
   FETCHING_FRIENDS_FAILURE,
-  ADD_NEW_FRIEND
+  FETCH_FRIEND,
+  FETCH_FRIEND_SUCCESS,
+  FETCH_FRIEND_FAILURE,
+  ADD_NEW_FRIEND,
+  ADD_NEW_FRIEND_SUCCESS,
+  ADD_NEW_FRIEND_FAILURE,
+  UPDATE_FRIEND,
+  UPDATE_FRIEND_SUCCESS,
+  UPDATE_FRIEND_FAILURE
 } from '../actions';
 
-const initalState = { friends: [], isFetching: false, error: null };
+const initalState = {
+  friends: [],
+  isFetching: false,
+  isFetchingFriend: false,
+  isAddingNewFriend: false,
+  isUpdatingFriend: false,
+  error: null
+};
 
 export const friendReducer = (state = initalState, action) => {
   switch (action.type) {
@@ -26,10 +41,55 @@ export const friendReducer = (state = initalState, action) => {
         error: action.payload,
         isFetching: false
       };
+    case FETCH_FRIEND:
+      return {
+        ...state,
+        isFetchingFriend: true
+      };
+    case FETCH_FRIEND_SUCCESS:
+      return {
+        ...state,
+        isFetchingFriend: false
+      };
+    case FETCH_FRIEND_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isFetchingFriend: false
+      };
     case ADD_NEW_FRIEND:
       return {
         ...state,
-        friends: [...action.payload]
+        isAddingNewFriend: true
+      };
+    case ADD_NEW_FRIEND_SUCCESS:
+      return {
+        ...state,
+        friends: [...action.payload],
+        isAddingNewFriend: false
+      };
+    case ADD_NEW_FRIEND_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isAddingNewFriend: false
+      };
+    case UPDATE_FRIEND:
+      return {
+        ...state,
+        isUpdatingFriend: true
+      };
+    case UPDATE_FRIEND_SUCCESS:
+      return {
+        ...state,
+        friends: [...action.payload],
+        isUpdatingFriend: false
+      };
+    case UPDATE_FRIEND_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isUpdatingFriend: false
       };
     default:
       return state;

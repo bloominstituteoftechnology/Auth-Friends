@@ -6,6 +6,7 @@ import Form from '../components/Form';
 class AddFriend extends Component {
   handleFormSubmit = friend => {
     this.props.addNewFriend(friend);
+    this.props.history.push('/');
   };
 
   render() {

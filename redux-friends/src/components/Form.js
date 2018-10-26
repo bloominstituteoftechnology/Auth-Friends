@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import StyledForm from '../styles/StyledForm';
 
 class Form extends Component {
-  state = {
-    friend: {
-      name: '',
-      age: '',
-      email: ''
-    }
-  };
+  constructor() {
+    super();
+    this.state = {
+      friend: {
+        name: '',
+        age: '',
+        email: ''
+      }
+    };
+  }
+
   handleInputChange = e => {
     this.setState({
       friend: { ...this.state.friend, [e.target.name]: e.target.value }
