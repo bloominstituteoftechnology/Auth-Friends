@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchFriends, addFriends } from '../actions';
+import { fetchFriends, addFriends, deleteFriend  } from '../actions';
 import Friend from './friend';
 import './friend.css'
 
@@ -33,6 +33,10 @@ class  FriendList extends React.Component {
         this.setState({ name:'', age: '', email: ''})
     }
 
+    deleteHandler = (id) => {
+        this.props.deleteFriend(id)
+    }
+
 
     render() {
     
@@ -46,7 +50,7 @@ class  FriendList extends React.Component {
                 </div>
                 <div className="flex-container">
                     {this.props.friends.map(friend => {
-                        return <Friend name={friend.name} email={friend.email} age={friend.age}/>
+                        return <Friend key={friend.id} name={friend.name} deleteFriend={this.props.deleteFriend} email={friend.email} age={friend.age}/>
                     })}
                 </div>
             </div>
@@ -65,7 +69,8 @@ export default connect(
     mapStateToProps,
     {
         fetchFriends,
-        addFriends
+        addFriends,
+        deleteFriend 
     }
 )(FriendList)
 

@@ -7,6 +7,7 @@ const Friends = (props) => {
             <h4>Name: {props.name}</h4>
             <h4>Age: {props.age}</h4>
             <h4>Email: {props.email}</h4>
+            <button onClick={()=> props.deleteFriend(console.log("inside delete func"))}>Delete</button>
         </div>
     )
 }

@@ -6,6 +6,8 @@ export const FETCHING_FAILED = "FETCHING_FAILED";
 export const ADD_FRIEND = "ADD_FRIEND";
 export const ADD_SUCCESS = "ADD_SUCCESS";
 export const ADD_FAILED = "ADD_FAILED";
+export const DELETE_FRIEND = "DELETE_FRIEND";
+export const DELETE_SUCCESS = "DELETE_SUCCESS";
 
 export const fetchFriends = () => dispatch => {
     dispatch({ type: FETCHING_FRIENDS });
@@ -32,4 +34,14 @@ export const addFriends = (friend) => dispatch => {
             dispatch({ type: ADD_FAILED, payload: "Failed adding friend", error})
         })
 
+}
+
+export const deleteFriend = (id) => dispatch => {
+    console.log("inside delete", id)
+    dispatch({ type: DELETE_FRIEND })
+    axios
+        .delete(`http://localhost:5000/api/friends/`)
+        .then(id => {
+            dispatch({ type: DELETE_SUCCESS, payload: id})
+        })
 }
