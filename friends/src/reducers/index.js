@@ -11,7 +11,6 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action) => {
-    console.log('in reducer');
     switch (action.type) {
         case FETCHING_FRIENDS:
             return {

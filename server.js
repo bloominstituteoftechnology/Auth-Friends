@@ -45,7 +45,7 @@ app.use(cors());
 
 app.get('/api/friends', (req, res) => {
   setTimeout(() => {
-    res.send(friends);
+    res.status(200).json(friends);
   }, 1000);
 });
 
