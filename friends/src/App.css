@@ -42,3 +42,16 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.friends-form form input {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+#submit {
+  background: green;
+  color: white;
+}

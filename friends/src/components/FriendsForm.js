@@ -26,7 +26,7 @@ class FriendsForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="friends-form">
         <form onSubmit={this.addFriend}>
           <input
             type="text"
@@ -49,7 +49,7 @@ class FriendsForm extends React.Component {
             value={this.state.newFriend.email}
             name="email"
           />
-          <input type="submit" value="Add New Friend" />
+          <input type="submit" value="Add New Friend" id="submit" />
         </form>
       </div>
     );
