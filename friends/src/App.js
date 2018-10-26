@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
+import { FriendsForm } from './components';
 import { FriendsListView } from './views';
 
-const App = () => <FriendsListView />;
+const App = () => (
+  <Fragment>
+    <FriendsForm />
+    <FriendsListView />
+  </Fragment>
+);
 
 export default App;
