@@ -24,11 +24,14 @@ export const fetchFreinds = () => dispatch => {
 
 export const addFriend = friend => dispatch => {
   dispatch({ type: ADD });
-  axios.post("http://localhost:5000/api/friends", friend).then(res => {
-    dispatch({ type: ADD_SUCCESS, payload: res.data }).catch(err => {
+  axios
+    .post("http://localhost:5000/api/friends", friend)
+    .then(res => {
+      dispatch({ type: ADD_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
       dispatch({ type: ADD_FAILURE, payload: err });
     });
-  });
 };
 
 export const updateFriend = friend => dispatch => {
