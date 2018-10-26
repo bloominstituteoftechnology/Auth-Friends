@@ -1,13 +1,18 @@
 import React from 'react';
-import './App.css';
 import { FriendsListContainer } from './containers';
+import { Heading, Wrapper, BrandName } from './styles/Header';
 
 const App = () => {
   return (
-    <div className="App">
+    <>
+      <Heading>
+        <Wrapper>
+          <BrandName>Friend List</BrandName>
+        </Wrapper>
+      </Heading>
       <FriendsListContainer />
-    </div>
-  )
+    </>
+  );
 }
 
 export default App;
