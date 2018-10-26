@@ -39,7 +39,7 @@ const friendsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				addingFriend: false,
-				friends: [ ...action.payload ]
+				friends: action.payload
 			};
 		case UPDATING:
 			return {
