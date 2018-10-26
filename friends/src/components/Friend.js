@@ -51,7 +51,7 @@ class Friend extends Component {
       age: this.state.age,
       id: this.props.friend.id
     };
-
+    this.props.updateFriend(friendObj)
     this.toggleForm();
   };
 
