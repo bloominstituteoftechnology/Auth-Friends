@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+import Friends from './components/Friends';
 import './App.css';
+
+import { getData } from './actions';
 
 class App extends Component {
 
   componentDidMount() {
     //get data from api
+    this.props.getData()
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>Here are your Friends</h1>
+        <Friends friends={this.props.friends} />
       </div>
     );
   }
 }
 
-export default connect(null)(App);
+const mapStateToProps = (state) => {
+  // console.log(state)
+  return {
+    friends: state.friendsReducer.friends
+  }
+}
+
+export default connect(mapStateToProps, { getData })(App);

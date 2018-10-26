@@ -1,3 +1,5 @@
+import { FETCHING_FRIENDS, FRIENDS_FETCHED } from '../actions';
+
 
 const initialState = {
     friends: [],
@@ -21,6 +23,10 @@ const initialState = {
 
 export const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case FRIENDS_FETCHED:
+            return {
+                friends: action.payload
+            }
         default:
             return state
     }
