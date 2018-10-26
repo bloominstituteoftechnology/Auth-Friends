@@ -12,3 +12,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.card h2 {
+  font-size: 1.8rem;
+}
+
+.card h3 {
+  font-size: 1rem;
+}
+.card {
+  width: 80%;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* border-radius: 1rem !important; */
+}
+
+.delete-button {
+  width: 80%;
+  margin: 0.5rem auto;
+}
+.friends-list {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
