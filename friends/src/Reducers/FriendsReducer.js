@@ -1,6 +1,7 @@
 import { FETCHING_FRIENDS, FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_FAILURE } from '../Actions/'
 import { ADDING_FRIEND,ADDING_FRIEND_SUCCESS,ADDING_FRIEND_FAILURE } from '../Actions/'
 import { DELETE_FRIEND,DELETE_FRIEND_SUCCESS,DELETE_FRIEND_FAILURE } from '../Actions/'
+import { EDIT_FRIEND,EDIT_FRIEND_SUCCESS,EDIT_FRIEND_FAILURE } from '../Actions/'
 
 const InitialState = {
     fetchingFriends: false,
@@ -60,7 +61,18 @@ const InitialState = {
             ...state
         }
 
-
+        case EDIT_FRIEND:
+        return {
+            ...state
+        }
+        case EDIT_FRIEND_SUCCESS:
+        return {
+            ...state,friends:action.payload
+        }
+        case EDIT_FRIEND_FAILURE:
+        return {
+            ...state
+        }
         default:
         return state
         

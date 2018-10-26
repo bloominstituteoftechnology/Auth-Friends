@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 
 const WrapperDiv = styled.div`
     display:flex;
@@ -18,7 +20,6 @@ const FriendText = styled.p`
 `
 
 const Friend = (props) =>{
-    console.log(props)
     return(
 
         <WrapperDiv>
@@ -29,6 +30,8 @@ const Friend = (props) =>{
             <br/>
             <br/>
             <button onClick={(event)=>{props.handleDeleteFriend(event,props.data.id)}}>Delete</button>
+            <Link to={`/friends/edit/${props.data.id}`}>Edit</Link>
+
         </WrapperDiv>
 
     )

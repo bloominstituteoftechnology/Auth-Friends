@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import ListContainer from './Components/ListContainer'
-import ActionsContainer from './Components/ActionsContainer'
-import styled from 'styled-components';
-
-const WrapperDiv = styled.div`
-  display:flex;
-`
+import {Route} from 'react-router-dom';
+import Home from './Components/Home'
+import Edit from './Components/Edit'
 
 class App extends Component {
   render() {
+
+
     return (
-      <WrapperDiv>
-        <ActionsContainer></ActionsContainer>        
-        <ListContainer></ListContainer>
-      </WrapperDiv>
+      <div>
+          <Route exact path='/' component={Home}></Route>
+          <Route exact path='/friends/edit/:id' component={Edit}></Route>
+      </div>
     );
   }
 }
