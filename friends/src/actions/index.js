@@ -69,10 +69,10 @@ export const deleteFriend = id => dispatch => {
     });
 };
 
-export const updateFriend = () => dispatch => {
+export const updateFriend = friend => dispatch => {
   dispatch({ type: UPDATE_FRIEND });
   axios
-    .put(server)
+    .put(`${server}/${friend.id}`)
     .then(response => {
       dispatch({
         type: UPDATE_FRIEND_SUCCESS,
