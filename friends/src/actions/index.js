@@ -15,26 +15,26 @@ export const fetchFreinds = () => dispatch => {
   axios
     .get("http://localhost:5000/api/friends")
     .then(res => {
-      dispatch({ type: FETCH_SUCCESS, payload: res.data.results });
+      dispatch({ type: FETCH_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: FETCH_FAILURE, payload: err });
     });
 };
 
-export const addFriend = () => dispatch => {
+export const addFriend = friend => dispatch => {
   dispatch({ type: ADD });
-  axios.post("http://localhost:5000/api/friends").then(res => {
+  axios.post("http://localhost:5000/api/friends", friend).then(res => {
     dispatch({ type: ADD_SUCCESS, payload: res.data }).catch(err => {
       dispatch({ type: ADD_FAILURE, payload: err });
     });
   });
 };
 
-export const updateFriend = () => dispatch => {
+export const updateFriend = friend => dispatch => {
   dispatch({ type: UPDATE });
   axios
-    .put("http://localhost:5000/api/friends")
+    .put("http://localhost:5000/api/friends", friend)
     .then(res => console.log(res.data))
     .then(res => {
       dispatch({ type: UPDATE_SUCCESS, payload: res.data });

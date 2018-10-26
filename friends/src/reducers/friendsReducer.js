@@ -13,14 +13,14 @@ import {
 const initialState = {
   fetchingFriends: false,
   friendsFetched: false,
-  friendsSaved: false,
-  savingFriends: false,
   updatingFriend: false,
-  friendUpdated: false,
-  deletingFriend: false,
-  friendDeleted: false,
   friends: [],
   error: null
+  // friendsSaved: false,
+  // savingFriends: false,
+  // friendUpdated: false,
+  // deletingFriend: false,
+  // friendDeleted: false,
 };
 
 export const friendsReducer = (state = initialState, action) => {
@@ -28,6 +28,7 @@ export const friendsReducer = (state = initialState, action) => {
     case FETCH:
       return { ...state, fetchingFriends: true };
     case FETCH_SUCCESS:
+      console.log(state, action);
       return {
         ...state,
         fetchingFriends: false,
@@ -37,7 +38,7 @@ export const friendsReducer = (state = initialState, action) => {
     case FETCH_FAILURE:
       return { ...state, fetchingFriends: false, error: action.payload };
     case ADD:
-      return { ...state, updatingFriends: true };
+      return { ...state, updatingFriend: true };
     case ADD_SUCCESS:
       return {
         ...state,
@@ -58,7 +59,7 @@ export const friendsReducer = (state = initialState, action) => {
         friends: [...state.friends, ...action.payload]
       };
     case UPDATE_FAILURE:
-      return { ...state, fetchingFriends: false, error: action.payload };
+      return { ...state, updatingFriend: false, error: action.payload };
 
     default:
       return state;
