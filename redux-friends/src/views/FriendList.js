@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFriends, updateFriend } from '../actions';
+import { fetchFriends, updateFriend, deleteFriend } from '../actions';
 import Friend from '../components/Friend';
 
 import styled from 'styled-components';
@@ -21,6 +21,10 @@ class FriendList extends Component {
     this.props.updateFriend(friend);
   };
 
+  handleDeleteFriend = id => {
+    this.props.deleteFriend(id);
+  };
+
   render() {
     return (
       <StyledFriendsList>
@@ -32,6 +36,7 @@ class FriendList extends Component {
               friend={friend}
               key={friend.id}
               handleUpdatingFriend={this.handleUpdatingFriend}
+              handleDeleteFriend={this.handleDeleteFriend}
             />
           ))
         )}
@@ -49,5 +54,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchFriends, updateFriend }
+  { fetchFriends, updateFriend, deleteFriend }
 )(FriendList);

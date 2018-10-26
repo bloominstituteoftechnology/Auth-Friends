@@ -19,6 +19,11 @@ export const UPDATE_FRIEND = 'UPDATE_FRIEND';
 export const UPDATE_FRIEND_SUCCESS = 'UPDATE_FRIEND_SUCCESS';
 export const UPDATE_FRIEND_FAILURE = 'UPDATE_FRIEND_FAILURE';
 
+// DELETE FRIEND ACTIONS
+export const DELETE_FRIEND = 'DELETE_FRIEND';
+export const DELETE_FRIEND_SUCCESS = 'DELETE_FRIEND_SUCCESS';
+export const DELETE_FRIEND_FAILURE = 'DELETE_FRIEND_FAILURE';
+
 // GET request
 export const fetchFriends = () => dispatch => {
   dispatch({ type: FETCHING_FRIENDS });
@@ -62,11 +67,24 @@ export const fetchFriend = id => dispatch => {
 export const updateFriend = friend => dispatch => {
   dispatch({ type: UPDATE_FRIEND });
   axios
-    .post(`http://localhost:5000/api/friends/${friend.id}`, friend)
+    .put(`http://localhost:5000/api/friends/${friend.id}`, friend)
     .then(res => {
       dispatch({ type: UPDATE_FRIEND_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: UPDATE_FRIEND_FAILURE, payload: err });
+    });
+};
+
+// DELETE request
+export const deleteFriend = id => dispatch => {
+  dispatch({ type: DELETE_FRIEND });
+  axios
+    .delete(`http://localhost:5000/api/friends/${id}`)
+    .then(res => {
+      dispatch({ type: DELETE_FRIEND_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_FRIEND_FAILURE, payload: err });
     });
 };

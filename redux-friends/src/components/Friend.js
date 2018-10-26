@@ -31,6 +31,10 @@ class Friend extends Component {
     this.setState({ edit: false });
   };
 
+  deleteFriend = () => {
+    this.props.handleDeleteFriend(this.state.friend.id);
+  };
+
   render() {
     const { name, age, email, id } = this.state.friend;
     const { edit } = this.state;
@@ -58,7 +62,7 @@ class Friend extends Component {
               onChange={this.handleInputChange}
             />
 
-            <div onClick={console.log('handleDeleteClick')} className="delete">
+            <div onClick={this.deleteFriend} className="delete">
               X
             </div>
             <button onClick={this.handleFriendUpdates} className="btn">
@@ -70,7 +74,7 @@ class Friend extends Component {
             <h3>{name}</h3>
             <p>Age: {age}</p>
             <p>email: {email}</p>
-            <div onClick={console.log('handleDeleteClick')} className="delete">
+            <div onClick={this.deleteFriend} className="delete">
               X
             </div>
             <button onClick={this.handleEdit} className="btn">
