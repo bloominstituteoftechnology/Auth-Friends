@@ -1,5 +1,6 @@
 import { FETCHING_FRIENDS, FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_FAILURE } from '../Actions/'
 import { ADDING_FRIEND,ADDING_FRIEND_SUCCESS,ADDING_FRIEND_FAILURE } from '../Actions/'
+import { DELETE_FRIEND,DELETE_FRIEND_SUCCESS,DELETE_FRIEND_FAILURE } from '../Actions/'
 
 const InitialState = {
     fetchingFriends: false,
@@ -13,7 +14,6 @@ const InitialState = {
     friends: [],
     error: null,
     isFetching:false,
-
   }
 
 
@@ -38,6 +38,7 @@ const InitialState = {
             ...state
         }
         case ADDING_FRIEND_SUCCESS:
+        console.log('action.payload',action.payload)
         return {
             ...state,friends:action.payload
         }
@@ -45,6 +46,21 @@ const InitialState = {
         return {
             ...state
         }
+
+        case DELETE_FRIEND:
+        return {
+            ...state
+        }
+        case DELETE_FRIEND_SUCCESS:
+        return {
+            ...state,friends:action.payload
+        }
+        case DELETE_FRIEND_FAILURE:
+        return {
+            ...state
+        }
+
+
         default:
         return state
         

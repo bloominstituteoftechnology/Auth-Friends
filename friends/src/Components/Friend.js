@@ -28,6 +28,7 @@ const Friend = (props) =>{
             <FriendWrapper><Header>Email:</Header><FriendText>{props.data.email}</FriendText></FriendWrapper>
             <br/>
             <br/>
+            <button onClick={(event)=>{props.handleDeleteFriend(event,props.data.id)}}>Delete</button>
         </WrapperDiv>
 
     )

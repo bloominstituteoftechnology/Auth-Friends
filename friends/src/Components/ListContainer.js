@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchFriends } from '../Actions/index'
+import { fetchFriends,deleteFriend } from '../Actions/index'
 import { connect } from "react-redux";
 import styled from 'styled-components';
 import Friend from '../Components/Friend'
@@ -14,23 +14,26 @@ class ListContainer extends React.Component {
         //fetch data
         this.props.fetchFriends();
     }
-
+    handleDeleteFriend = (event,id) =>{
+        event.preventDefault();
+        this.props.deleteFriend(id);
+    }
     render(){
-            {
-                if(this.props.isFetching){
-                    return <Loading>FETCHING!!!</Loading>
-                } else {
-                    return (
-                        <div>
-                            {
-                                this.props.friendsList.map(el=>{
-                                    return <Friend key={el.id} data={el}/>
-                                })
-                            }
-                        </div>
-                    )
-                }
-            }
+
+        if(this.props.isFetching){
+            return <Loading>FETCHING!!!</Loading>
+        } else {
+            return (
+                <div>
+                    {
+                        this.props.friendsList.map(el=>{
+                            return <Friend key={el.id} handleDeleteFriend={this.handleDeleteFriend} data={el}/>
+                        })
+                    }
+                </div>
+            )
+        }
+
     }
 }
 
@@ -43,5 +46,5 @@ const mapStateToProps = state => {
     };
   };
 
-  export default connect(mapStateToProps,{ fetchFriends })(ListContainer);
+  export default connect(mapStateToProps,{ fetchFriends,deleteFriend })(ListContainer);
   
