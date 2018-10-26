@@ -3,7 +3,7 @@ import { FETCHING_FRIENDS, FRIENDS_FETCHED } from '../actions';
 
 const initialState = {
     friends: [],
-    fetchingFriends: false,
+    fetchingFriends: true,
     friendsFetched: false,
     //friendsSaved: false,
     //savingFriends: false,
