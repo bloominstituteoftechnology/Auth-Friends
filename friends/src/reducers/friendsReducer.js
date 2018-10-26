@@ -1,7 +1,8 @@
 import { 
   FETCHING_FRIENDS, FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_FAILURE,
-  POSTING_FRIEND, POSTING_FRIEND_SUCCESS, POSTING_FRIEND_FAILURE
+  POSTING_FRIEND, POSTING_FRIEND_FAILURE
 } from '../actions';
+
 const initialState = {
   // supplied by Readme.md
   gettingFriends: false,
@@ -36,12 +37,6 @@ export const friendsReducer = (state = initialState, action) => {
       return {
         ...state,
         savingFriends: true        
-      };
-    case POSTING_FRIEND_SUCCESS:
-      return {
-        ...state,
-        savingFriends: false,
-        friends: [...state.friends, ...action.payload]
       };
     case POSTING_FRIEND_FAILURE:
       return {

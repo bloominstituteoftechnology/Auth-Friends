@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { postFriend } from '../actions';
+
 class CreateFriendForm extends React.Component {
   constructor() {
     super();
@@ -27,6 +29,8 @@ class CreateFriendForm extends React.Component {
     // HOW DO I POST TO REDUX FROM HERE?
     // redux.post(newFriend)
 
+    postFriend(newFriend);
+
     this.setState({
       name: '',
       age: '',
@@ -37,7 +41,7 @@ class CreateFriendForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit>
+        <form onSubmit={this.addFriend}>
           <input
             type='text'
             placeholder='Name'
