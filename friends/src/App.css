@@ -1,10 +1,93 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
+  font-family: 'Montserrat', sans-serif;
+  font-color: #c4c4c4;
+}
+
+body {
+  background: #2D2E2E;
+  color: #C4C4C4;
+  /* font-family: 'Montserrat', sans-serif; */
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  margin: 10px;
+}
+
+button {
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 5px;
+  padding: 7px;
+  border: 1px solid #C4C4C4;
+  background: #15566D;
+  margin-top: 20px;
+  cursor: pointer;
+  color: #C4C4C4;
+}
+
+button:hover {
+  background: #c4c4c4;
+  color: #15566d;
+}
+
 .loading {
   width: 90%;
-  height: 50vh; 
+  height: 50vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -17,11 +100,10 @@
 
 a {
   text-decoration: none;
-  color: black;
 }
 
 .friends-view-container{
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -29,14 +111,21 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-top: 30px;
 }
 
 .friend-list .friend-container{
-  border: 1px solid black;
+  border: 1px solid #2D2E2E;
   min-width: 300px;
-  width: 30%;
-  margin: 5px;
+  width: 100%;
   padding: 10px;
+  color: #2D2E2E;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.friend-list a {
+    margin: 15px;
 }
 
 .friend-list .friend-container .buttons {
@@ -47,6 +136,8 @@ a {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
+  color: #2D2E2E;
 }
 
 .button {
@@ -62,16 +153,31 @@ a {
 .friend-view .friend-container {
   width: 60%;
   margin: 30px auto;
+  font-size: 20px;
+  padding: 0 20px 20px;
+  line-height: 1.7;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #2D2E2E; 
 }
 
+.friend-container a {
+  color: #2D2E2E;
+}
 
+.add-container {
+  margin: 10% auto;
+}
 
 form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   width: 50%;
-  margin: 30px auto;
+  margin: 5% auto;
 }
 
 .friend-view form {
@@ -83,6 +189,14 @@ form input {
   border-radius: 3px;
   border: 1px solid lightgray;
   text-align: center;
+  width: 70%;
+  background: #c4c4c4;
+  color: #2D2E2E;
+  padding: 3px;
+}
+
+input::placeholder{
+  color: #2D2E2E;
 }
 
 form button {
@@ -91,4 +205,16 @@ form button {
   width: 50%;
   align-self: center;
   margin-top: 10px;
+}
+
+.one {
+  background: #4ddbc4;
+}
+
+.two {
+  background: #ee4d4d;
+}
+
+.three {
+  background: #8bc94d;
 }

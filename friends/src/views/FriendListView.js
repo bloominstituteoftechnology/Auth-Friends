@@ -6,9 +6,7 @@ import { FriendList }from '../components';
 
 import { fetchFriends, addFriend, deleteFriend } from '../actions';
 
-// const Loader = ({ type, color }) => {
-//
-// }
+
 
 class FriendListView extends React.Component {
 
@@ -22,7 +20,7 @@ class FriendListView extends React.Component {
       return (
         <div className='loading'>
         <h1>Collecting your imaginary friends...</h1>
-        <ReactLoading type='spokes' color='black' height='30%' width='30%' />
+        <ReactLoading type='spokes' color='#c4c4c4' height='30%' width='30%' />
         </div>
       )
     }

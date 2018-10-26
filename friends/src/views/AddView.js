@@ -5,7 +5,10 @@ import { connect } from 'react-redux';
 
 const AddView = props => {
   return (
+    <div className='add-container'>
+    <h1>Add a friend</h1>
     <Form submit={props.addFriend} history={props.history}/>
+    </div>
   )
 }
 

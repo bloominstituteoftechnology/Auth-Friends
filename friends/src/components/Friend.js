@@ -1,7 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
+
+
 
 const Friend = props => {
+
+  let classList = 'friend-container ';
+   if (props.friend.id % 3 === 0){
+      classList += 'three'
+    } else {
+      if (props.friend.id % 2 === 0){
+        classList += 'two'
+      } else {
+      if (props.friend.id % 1 === 0){
+        classList += 'one'
+      }
+    }
+  }
+
   const deleteFriend= (event) => {
     props.delete(props.friend.id);
     props.history.push('/');
@@ -9,7 +26,7 @@ const Friend = props => {
   }
 
   return (
-    <div className='friend-container'>
+    <div className={classList}>
     <div className='friend-card'>
     <div className='buttons'>
       <div className='delete-button button' onClick={deleteFriend}>
