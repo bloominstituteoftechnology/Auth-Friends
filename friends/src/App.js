@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FriendsListView from "./views/FriendsListView";
+import { FriendsListView } from "./views";
 
 import "./App.css";
 

@@ -10,10 +10,6 @@ import {
 } from "../actions";
 
 class FriendsListView extends React.Component {
-  constructor() {
-    super();
-  }
-
   componentDidMount() {
     this.props.fetchingFriends();
   }
@@ -24,13 +20,13 @@ class FriendsListView extends React.Component {
 
   render() {
     console.log("inListView", this.props.friends);
-    if (this.props.fetchingFriends) {
-      return (
-        <div className="fetching">
-          <h1>Hold On.. We're Summoning Your Crew.. </h1>
-        </div>
-      );
-    }
+    // if (this.props.fetchingFriends) {
+    //   return (
+    //     <div className="fetching">
+    //       <h1>Hold On.. We're Summoning Your Crew.. </h1>
+    //     </div>
+    //   );
+    // }
     return (
       <div className="friends-list">
         <Friends
@@ -38,7 +34,7 @@ class FriendsListView extends React.Component {
           deleteFriend={this.props.deleteFriend}
           updateFriend={this.props.updateFriend}
         />
-        ;
+
         <FriendForm
           friends={this.props.friends}
           addFriend={this.props.addFriend}
@@ -49,13 +45,14 @@ class FriendsListView extends React.Component {
 }
 
 const mapStateToProps = state => {
+  const { friendsReducer } = state;
   return {
-    friends: state.friendsReducer.friends,
-    error: state.friendsReducer.error,
-    fetchingFriends: state.friendsReducer.fetchingFriends,
-    addFriend: state.friendsReducer.addFriend,
-    deleteFriend: state.friendsReducer.deleteFriend,
-    updateFriend: state.friendsReducer.updateFriend
+    friends: friendsReducer.friends,
+    error: friendsReducer.error,
+    fetchingFriends: friendsReducer.fetchingFriends,
+    addFriend: friendsReducer.addFriend,
+    deleteFriend: friendsReducer.deleteFriend,
+    updateFriend: friendsReducer.updateFriend
   };
 };
 

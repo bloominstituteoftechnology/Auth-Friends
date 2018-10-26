@@ -9,8 +9,8 @@ const Friend = props => {
   return (
     <div className="card card-body">
       <h2>{props.friend.name}</h2>
-      <h3>age: {props.character.age}</h3>
-      <h3>email: {props.character.email}</h3>
+      <h3>age: {props.friend.age}</h3>
+      <h3>email: {props.friend.email}</h3>
 
       <div className="delete-button" onClick={deleteFriend}>
         Delete

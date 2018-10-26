@@ -33,10 +33,10 @@ export const fetchingFriends = () => dispatch => {
     });
 };
 
-export const addFriend = () => dispatch => {
+export const addFriend = friend => dispatch => {
   dispatch({ type: ADD_FRIEND });
   axios
-    .post(server)
+    .post(server, friend)
     .then(response => {
       dispatch({
         type: ADD_FRIEND_SUCCESS,
