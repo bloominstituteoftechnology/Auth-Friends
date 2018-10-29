@@ -1,12 +1,22 @@
-import { FETCHING, FETCHED, ERROR, ADDING, ADDED } from "../actions/actions";
+import {
+  FETCHING,
+  FETCHED,
+  ERROR,
+  ADDING,
+  DELETE,
+  EDITING,
+  EDITED
+} from "../actions/actions";
 
 const initialState = {
   friends: [],
   error: null,
   fetchingFriends: false,
   friendsFetched: false,
-  addingFriend: false
-  //   addedFriend: false
+  addingFriend: false,
+  deletedFriend: false,
+  editingFriend: false,
+  id: ""
 };
 
 export const friendsReducer = (state = initialState, action) => {
@@ -15,6 +25,7 @@ export const friendsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         fetchingFriends: true,
         friendsFetched: false,
+
         error: null
       });
     case FETCHED:
@@ -22,17 +33,26 @@ export const friendsReducer = (state = initialState, action) => {
         fetchingFriends: false,
         friendsFetched: true,
         friends: action.payload,
+        editingFriend: false,
         error: null
       });
     case ADDING:
       return Object.assign({}, state, {
         addingFriend: true
       });
-    // case ADDED:
-    //   return Object.assign({}, state, {
-    //     addingFriend: false,
-    //     friends: action.payload
-    //   });
+    case DELETE:
+      return Object.assign({}, state, {
+        deletedFriend: true
+      });
+    case EDITING:
+      return Object.assign({}, state, {
+        editingFriend: true,
+        id: action.payload
+      });
+    case EDITED:
+      return Object.assign({}, state, {
+        editingFriend: false
+      });
     case ERROR:
       return Object.assign({}, state, {
         fetchingFriends: false,
