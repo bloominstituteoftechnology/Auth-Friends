@@ -6,7 +6,7 @@ const initialState = {
   error: null
 };
 
-export const friendsReducer = (state = initialState, action) => {
+export const myFriendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_FRIENDS:
       return { ...state, fetching: true };
