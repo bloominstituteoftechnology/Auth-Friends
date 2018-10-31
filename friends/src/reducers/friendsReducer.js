@@ -5,6 +5,7 @@ const initialState = {
   friends: [],
   error: null
 };
+
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_FRIENDS:
@@ -12,7 +13,7 @@ export const friendsReducer = (state = initialState, action) => {
     case FETCHING_FRIENDS_FAILURE:
       return { ...state, fetching: false, error: action.payload };
     case FETCHING_FRIENDS_SUCCESS:
-      // console.log(action.payload);
+      console.log('FETCHING_FRIENDS_SUCCESS action.payload', action.payload);
       return {
         ...state,
         friends: [...state.friends, ...action.payload],
