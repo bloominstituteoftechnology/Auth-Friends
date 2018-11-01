@@ -3,9 +3,10 @@ import axios from "axios";
 export const FETCHING_FRIENDS = "FETCHING_FRIENDS";
 export const FETCHING_FRIENDS_SUCCESS = "FETCHING_FRIENDS_SUCCESS";
 export const FETCHING_FRIENDS_FAILURE = "FETCHING_FRIENDS_FAILURE";
-// export const ADDING_FRIENDS = "ADDING_FRIENDS";
 export const ADDING_FRIENDS_SUCCESS = "ADDING_FRIENDS_SUCCESS";
 export const ADDING_FRIENDS_FAILURE = "ADDING_FRIENDS_FAILURE";
+export const DELETING_FRIENDS_SUCCESS = "DELETING_FRIENDS_SUCCESS";
+export const DELETING_FRIENDS_FAILURE = "DELETING_FRIENDS_FAILURE";
 
 let url = 'http://localhost:5000/api/friends';
 
@@ -28,7 +29,7 @@ export const getFriends = () => dispatch => {
 }
 
 export const addFriend = friend => dispatch => {
-  // dispatch({ type: ADDING_FRIENDS });
+
 axios
  .post(url, friend)
  .then(response => {
@@ -37,6 +38,21 @@ axios
  .catch(err => {
   dispatch({
     type: ADDING_FRIENDS_FAILURE,
+    payload: err
+  });
+});
+}
+
+export const deleteFriend = id => dispatch => {
+axios
+ .delete(`${url}/${id}`)
+ .then(response => {
+   dispatch({ type: DELETING_FRIENDS_SUCCESS, payload: id })
+
+ })
+ .catch(err => {
+  dispatch({
+    type: DELETING_FRIENDS_FAILURE,
     payload: err
   });
 });

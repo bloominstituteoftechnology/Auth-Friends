@@ -1,5 +1,4 @@
 import React from "react";
-// import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { FriendList } from "../components";
 import { getFriends } from "../actions";
@@ -30,11 +29,6 @@ const mapStateToProps = state => {
     fetching: state.myFriendsReducer.fetching
   };
 };
-
-// export default withRouter(connect(
-//   mapStateToProps,
-//   { getFriends }
-// )(FriendListView));
 
 export default (connect(
   mapStateToProps,

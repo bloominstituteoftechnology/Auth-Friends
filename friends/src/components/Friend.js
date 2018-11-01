@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { deleteFriend } from '../actions';
 
 const Friend = props => {
   return (
     <div>
-      <li>{props.friend.name}</li>
+      <li onClick={() => props.deleteFriend(props.friend.id) }>{props.friend.name}</li>
     </div>
   )
 }
 
-export default Friend;
+export default connect(null, {deleteFriend})(Friend)
