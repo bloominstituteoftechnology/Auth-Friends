@@ -1,9 +1,10 @@
-import { FETCHING_FRIENDS, FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_FAILURE, ADDING_FRIENDS_SUCCESS, ADDING_FRIENDS_FAILURE, DELETING_FRIENDS_SUCCESS, DELETING_FRIENDS_FAILURE } from '../actions';
+import { FETCHING_FRIENDS, FETCHING_FRIENDS_SUCCESS, FETCHING_FRIENDS_FAILURE, ADDING_FRIENDS_SUCCESS, ADDING_FRIENDS_FAILURE, DELETING_FRIENDS_SUCCESS, DELETING_FRIENDS_FAILURE, TOGGLE_FRIENDS_SUCCESS } from '../actions';
 
 const initialState = {
   fetching: false,
   friends: [],
-  error: null
+  error: null,
+  visible: true
 };
 
 export const myFriendsReducer = (state = initialState, action) => {
@@ -35,6 +36,16 @@ export const myFriendsReducer = (state = initialState, action) => {
         ...state,
         friends: state.friends.filter(friend => friend.id !== action.payload),
       };
+    // case actionTypes.UPDATING_FRIEND:
+    //   return { ...state, updatingFriend: true };
+    // case actionTypes.UPDATE_FRIEND:
+    //   return { ...state, friends: action.payload, updatingFriend: false };
+    case TOGGLE_FRIENDS_SUCCESS:
+      return state.map(friend => {
+        return friend.id === action.payload
+        ? { ...friend, visible: !friend.visible }
+        : friend;
+      })
     default:
       return state;
   }

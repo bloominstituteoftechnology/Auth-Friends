@@ -7,6 +7,9 @@ export const ADDING_FRIENDS_SUCCESS = "ADDING_FRIENDS_SUCCESS";
 export const ADDING_FRIENDS_FAILURE = "ADDING_FRIENDS_FAILURE";
 export const DELETING_FRIENDS_SUCCESS = "DELETING_FRIENDS_SUCCESS";
 export const DELETING_FRIENDS_FAILURE = "DELETING_FRIENDS_FAILURE";
+export const UPDATING_FRIENDS_SUCCESS = "UPDATING_FRIENDS_SUCCESS";
+export const UPDATING_FRIENDS_FAILURE = "UPDATING_FRIENDS_FAILURE";
+export const TOGGLE_FRIENDS_SUCCESS = "TOGGLE_FRIENDS_SUCCESS";
 
 let url = 'http://localhost:5000/api/friends';
 
@@ -48,7 +51,6 @@ axios
  .delete(`${url}/${id}`)
  .then(response => {
    dispatch({ type: DELETING_FRIENDS_SUCCESS, payload: id })
-
  })
  .catch(err => {
   dispatch({
@@ -56,4 +58,18 @@ axios
     payload: err
   });
 });
+}
+
+// export const updateFriend = friend => {
+//   return {
+//     type: UPDATING_FRIENDS_SUCCESS,
+//     payload: friend
+//   }
+// }
+
+export const toggleFriend = id => {
+  return {
+    type: TOGGLE_FRIENDS_SUCCESS,
+    payload: id
+  }
 }
