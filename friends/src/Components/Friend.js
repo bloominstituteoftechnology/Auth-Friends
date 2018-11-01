@@ -52,14 +52,13 @@ class Friend extends Component {
   }
 
   deleteFriend = event => {
-    let id = Number(event.target.id;
+    let id = Number(event.target.id);
       this.props.friends.map(friend => {
         if (friend.id === id) {
           this.props.deleteFriend(id)
         }
       })
     }
-  }
 
   render() {
     const { id, name, age, email } = this.props.friend
@@ -71,8 +70,8 @@ class Friend extends Component {
         <div>Email: {email}</div>
 
         <div className='friend-btns'>
-          <div className='btn' onClick={() => this.editFriend(id, name, age, email)}>edit</div>
-          <div className='btn' id={id} onClick={this.deleteFriend}>delete</div>
+          <button className='btn' onClick={() => this.editFriend(id, name, age, email)}>edit</button>
+          <button className='btn' id={id} onClick={this.deleteFriend}>delete</button>
         </div>
 
         <div className={this.state.editingId === id ? 'edit-form' : 'hidden'}>Update Friend
