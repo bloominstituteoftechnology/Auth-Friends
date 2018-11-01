@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
-export const GET_FRIENDS = 'GET_FRIENDS';
-export const ERROR = 'ERROR';
+export const SUCCESS_GET_FRIENDS = 'SUCCESS_GET_FRIENDS';
+export const FAILURE = 'FAILURE';
 
 export const getFriends = () => dispatch => {
   console.log(dispatch);
@@ -12,13 +12,13 @@ export const getFriends = () => dispatch => {
       .then(response => {
         console.log(response);
         dispatch({ 
-          type: GET_FRIENDS, 
+          type: SUCCESS_GET_FRIENDS, 
           payload: response.data })
       })
       .catch(error => {
         console.log(error);
         dispatch({ 
-          type: ERROR, 
+          type: FAILURE, 
           payload: error 
         })
       })
