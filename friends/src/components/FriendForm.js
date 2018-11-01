@@ -8,7 +8,9 @@ class FriendForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      name: '',
+      age: '',
+      email: ''
     }
   }
 
@@ -17,16 +19,20 @@ class FriendForm extends React.Component {
   }
 
   addFriendHandler = e => {
-    const { name } = this.state;
+    const { name, age, email } = this.state;
     const addNewFriend = {
       name,
       id: nextFriendId++,
-      age: null,
-      email: null,
+      // age: null,
+      // email: null,
+      age,
+      email
     }
     this.props.addFriend(addNewFriend);
     this.setState({
-      name: ''
+      name: '',
+      age: '',
+      email: ''
     })
   }
 
@@ -39,6 +45,20 @@ class FriendForm extends React.Component {
           name='name'
           placeholder="what's your name again?"
           value={this.state.name}
+          />
+          <input
+          onChange={this.handleFriendInput}
+          type='text'
+          name='age'
+          placeholder="years of life experiences?"
+          value={this.state.age}
+          />
+          <input
+          onChange={this.handleFriendInput}
+          type='text'
+          name='email'
+          placeholder="how to best spam you?"
+          value={this.state.email}
           />
           <button type='button' onClick={this.addFriendHandler}>
             Friend Me!
