@@ -6,7 +6,7 @@ export const ERROR = "ERROR"
 export const getFriends = () => {
   return (dispatch) => {
     dispatch({type: LOADING})
-    axios.get('http://localhost:5000/friends')
+    axios.get('http://localhost:5000/api/friends')
       .then( response => {
         dispatch({type: GET_FRIENDS, friends: response.data})
       })
@@ -20,7 +20,7 @@ export const getFriends = () => {
 export const createFriend = (newFriends) => {
   return (dispatch) => {
     dispatch({type: LOADING})
-    axios.post('http://localhost:5000/friend', newFriend)
+    axios.post('http://localhost:5000/api/friends', newFriends)
       .then( response => {
         dispatch({type: GET_FRIENDS, friends: response.data})
       })
@@ -34,7 +34,7 @@ export const createFriend = (newFriends) => {
 export const deleteFriend = (id) => {
   return (dispatch) => {
     dispatch({type: LOADING})
-    axios.delete(`http://localhost:5000/friends/${id}`)
+    axios.delete(`http://localhost:5000/api/friends/${id}`)
       .then( response => {
         dispatch({ type: GET_FRIENDS, friends: response.data })
       })
@@ -49,7 +49,7 @@ export const deleteFriend = (id) => {
 export const updateFriend = (updatedFriend) => {
   return (dispatch) => {
     dispatch({type: LOADING})
-    axios.put(`http://localhost:5000/friends/${updatedFriend.id}`, updatedFriend)
+    axios.put(`http://localhost:5000/api/friends/${updatedFriend.id}`, updatedFriend)
       .then( response => {
         dispatch({ type: GET_FRIENDS, friends: response.data})
       })

@@ -1,6 +1,6 @@
 //DEFAULT IMPORTS
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import './App.css';
 //ADDED IMPORTS
 import { Route, NavLink } from 'react-router-dom'
@@ -9,6 +9,7 @@ import CreateFriend from './CreateFriend'
 import UpdateFriend from './UpdateFriend'
 
 //DEFAULT CODE
+/*
 class App extends Component {
   render() {
     return (
@@ -31,6 +32,7 @@ class App extends Component {
     );
   }
 }
+*/
 
 //ADDED CODE
 
