@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
 
 
 
-class UpdateFriend extends Component {
-    constructor(props) {
-        super(props)
-    }
+// class UpdateFriend extends Component {
+//     constructor(props) {
+//         super(props)
+//     }
 
-    render() {
-        return
-    }
-}
-
-
+//     render() {
+//         return
+//     }
+// }
 
 
-export default UpdateFriend
+
+
+// export default UpdateFriend
