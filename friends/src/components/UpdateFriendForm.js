@@ -1,7 +1,49 @@
-import React from "react";
+import React, {Component} from "react";
+import { connect } from 'react-redux';
 
-const UpdateFriendForm = props => {
-  return <div></div>;
+import { updateFriend } from '../actions';
+
+class UpdateFriendForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      age: '',
+      email: '',
+    }
+  }
+
+  componentDidMount() {
+    const { friends, match } = this.props;
+    const friend = friends.find(item => item.id === Number(match.params.id))
+    this.setState({ friend })
+  }
+
+  inputHandler = (event) => {
+    this.setState({ [event.target.name ]: event.target.value })
+  }
+
+  submitHandler = (event) => {
+    event.preventDefault();
+    this.props.updateFriend(this.state);
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.submitHandler}>
+        <input type="text" name="name" value={this.state.name} onChange={this.inputHandler} placeholder=" Name" />
+        <input type="text" name="age" value={this.state.age} onChange={this.inputHandler} placeholder=" Age" />
+        <input type="text" name="email" value={this.state.email} onChange={this.inputHandler} placeholder=" Email" />
+        <button type="submit">Update</button>
+      </form>
+    );
+  }
 };
 
-export default UpdateFriendForm;
+const mapStateToProps = state => {
+  return {
+    friends: state.friends
+  }
+}
+
+export default connect(mapStateToProps, { updateFriend })(UpdateFriendForm);
