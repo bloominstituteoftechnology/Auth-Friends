@@ -1,7 +1,7 @@
 import { LOADING } from '../Actions/actions';
 
 const initialState = {
-    friends: [],
+    friends: [ {id: 0, name: "Julie", age: 25, email: "juliejonak@gmail.com"} ],
     loading: false,
     error: ''
 }
