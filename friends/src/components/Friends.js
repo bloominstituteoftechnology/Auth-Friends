@@ -1,0 +1,37 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+// Will need to import action
+import { getFriends } from '../actions/';
+
+class Friends extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.getFriends();
+  }
+
+  render(){
+    return(
+      <div>
+        { this.props.loading ? <h1>LOADING</h1> : null }
+        { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
+        Friend Component
+      </div>
+    );
+  }
+};
+
+// Need mapStateToProps to pull in info to pass on to each friend:
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+    error: state.error,
+    loading: state.loading
+  };
+};
+
+// Finish the connection by passing to connect:
+export default connect(mapStateToProps, { getFriends })(Friends);
