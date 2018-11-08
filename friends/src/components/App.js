@@ -1,7 +1,14 @@
+//DEFAULT IMPORTS
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+//ADDED IMPORTS
+import { Route, NavLink } from 'react-router-dom'
+import FriendsList from './FriendsList'
+import CreateFriend from './CreateFriend'
+import UpdateFriend from './UpdateFriend'
 
+//DEFAULT CODE
 class App extends Component {
   render() {
     return (
@@ -23,6 +30,22 @@ class App extends Component {
       </div>
     );
   }
+}
+
+//ADDED CODE
+
+const App = props => {
+  return (
+    <div className="App">
+      <NavLink to="/create">Create</NavLink>
+
+      <Route path="/create" component={CreateFriend} />
+      <Route path="/update/:id" component={UpdateFriend} />
+
+      <h1>Friends ASSEMBLE!</h1>
+      <FriendsList />
+    </div>
+  );
 }
 
 export default App;

@@ -2,16 +2,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-//MY IMPORTS
+//ADDED IMPORTS
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { BrowserRouter as Router } from 'react-router-dom'
 import App from './components/App';
-import AvengersReducer from './reducers/avengersReducer'
+import FriendsReducer from './reducers/friendsReducer'
 
+//DEFAULT CODE
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
@@ -19,9 +20,9 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-
+//ADDED CODE
 const middleware = applyMiddleware(thunk)
-const store = createStore(AvengersReducer, middleware)
+const store = createStore(FriendsReducer, middleware)
 
 ReactDOM.render(
   <Provider store={store}>
