@@ -13,7 +13,11 @@ class Friends extends React.Component {
   render() {
     return (
       <div>
-        {this.props.friends.map( friend => <Friend friend={friend} key={friend.id} />)}
+        { this.props.loading ? <h1>Seeing if there's any friends here...</h1> : null }
+
+        { this.props.error !== '' ? <h2>{this.props.error}</h2> : null }
+
+        { this.props.friends.map( friend => <Friend friend={friend} key={friend.id} />) }
       </div>
     )
   }
@@ -22,6 +26,8 @@ class Friends extends React.Component {
 const mapStateToProps = state => {
   return {
     friends: state.friends,
+    error: state.error,
+    loading: state.fetchingFriends
   }
 }
 
