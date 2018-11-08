@@ -16,7 +16,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch(action.type) {
     case LOADING:
-      return Object.assign({}, state, {fetchingsFriends: true})
+      return Object.assign({}, state, {fetchingFriends: true})
     case SUCCESS:
       return Object.assign({}, state, {friends: action.friends, fetchingFriends: false, friendsFetched: true})
     case ERROR:

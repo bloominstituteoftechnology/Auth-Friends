@@ -22,8 +22,8 @@ class CreateFriendForm extends React.Component {
     this.props.addFriend(this.state)
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <form onSubmit={this.submitHandler}>
         <input type="text" name="name" value={this.state.name} onChange={this.inputHandler} placeholder="Name" />
         <input type="text" name="age" value={this.state.age} onChange={this.inputHandler} placeholder="Age" />
@@ -38,4 +38,4 @@ const mapStateToProps = state => {
   return {}
 }
 
-export default connect(mapStateToProps, { addFriend: addFriend })(CreateFriendForm)
+export default connect(mapStateToProps, { addFriend })(CreateFriendForm)

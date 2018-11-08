@@ -29,3 +29,16 @@ export const addFriend = (newFriend) => {
       })
   }
 }
+
+export const updateFriend = (updatedFriend) => {
+  return (dispatch) => {
+    dispatch({type: LOADING})
+    axios.put(`http://localhost:5000/api/friends/${updatedFriend.id}`, updatedFriend)
+      .then(response => {
+        dispatch({ type: SUCCESS, friends: response.data})
+      })
+      .catch(err => {
+        dispatch({type: ERROR, error: "Failed to update their info, sowwy"})
+      })
+  }
+}

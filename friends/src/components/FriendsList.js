@@ -13,7 +13,7 @@ class Friends extends React.Component {
   render() {
     return (
       <div>
-        { this.props.loading ? <h1>Seeing if there's any friends here...</h1> : null }
+        { this.props.loading ? <h1>I'm updating your friends list... give me a sec</h1> : null }
 
         { this.props.error !== '' ? <h2>{this.props.error}</h2> : null }
 
