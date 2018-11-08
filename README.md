@@ -10,6 +10,7 @@ Topics:
 * optional: `redux-logger` package
 
 ## Project Description
+## ProJohn Spraul
 
 * Last week we built an app that interfaced with a `RESTful` API. That same project is now to be built using React & Redux.
 * Take your examples from the mini project and use them to build a more sophisticated Application. Have fun!
