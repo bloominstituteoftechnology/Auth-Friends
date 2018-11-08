@@ -1,4 +1,4 @@
-import { FETCHING, SUCCESS, FAILURE } from '../actions';
+import { LOADING, GET_FRIENDS, ERROR } from '../actions';
 //TODO: Add additional actions for SAVING, UPDATING, DELETING and possibly rename actionsy
 
 const initialState = {
@@ -16,7 +16,13 @@ const initialState = {
 
   export const friendReducer = (state = initialState, action) => {
       switch(action.type) {
+        case LOADING:
+            return
+        case GET_FRIENDS:
+            return
+        case ERROR:
+            return
           default:
-          return state;
+            return state;
       }
   }
