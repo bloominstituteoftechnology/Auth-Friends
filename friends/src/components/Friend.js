@@ -12,12 +12,18 @@ const Friend = props => {
 
   return (
     <div key={friend.id} className="friend-card">
-      <p className="close-button" onClick={clickHandler}>X</p>
-      <h2>{friend.name}</h2>
-      <h4>{friend.nickname}</h4>
-      <p>{friend.description}</p>
-      <img src={friend.img} />
-      <Link to={`/update/${friend.id}`}>Update</Link>
+        <img className="friend-img" src={friend.img} />
+        <div className="friend-info-container"> 
+          <div className="top-bar">
+            <Link className="update-friend" to={`/update/${friend.id}`}><i class="fas fa-edit"></i></Link>
+            <p className="close-button" onClick={clickHandler}>X</p>
+          </div>
+          <div className="friend-info">
+            <h2 className="friend-name">{friend.name}</h2>
+            <h4>Age: {friend.age}</h4>
+            <h4>Email: {friend.email}</h4>
+          </div>
+        </div>
     </div>
   )
 }

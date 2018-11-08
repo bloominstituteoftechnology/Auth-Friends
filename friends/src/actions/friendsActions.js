@@ -16,6 +16,20 @@ export const getFriends = () => {
   }
 }
 
+//GET SPECIFIC FRIEND
+export const getSpecificFriend = (id) => {
+  return (dispatch) => {
+    dispatch({type: LOADING})
+    axios.get(`http://localhost:5000/api/friends/${id}`)
+      .then( response => {
+        dispatch({type: GET_FRIENDS, friends: response.data})
+      })
+      .catch( err => {
+        dispatch({type: ERROR, errorMessage: "Trouble Retreiving Friends, please try again!"})
+      })
+  }
+}
+
 // POST
 export const createFriend = (newFriends) => {
   return (dispatch) => {

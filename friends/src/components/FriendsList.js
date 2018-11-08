@@ -15,12 +15,14 @@ class FriendsList extends Component {
 
   render(){
     return (
-      <div>
+      <div className="container">
         { this.props.loading ? <h1>LOADING</h1> : null }
 
         { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
 
+        <div className="friend-list-grid">
         { this.props.friends.map( friend => <Friend friend={friend} key={friend.id}/> ) } 
+        </div>
       </div>
     )
   }

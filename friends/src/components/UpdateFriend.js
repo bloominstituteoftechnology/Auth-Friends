@@ -8,9 +8,8 @@ class UpdateFriend extends Component {
     super(props)
     this.state = {
       name: '',
-      nickname: '',
-      description: '',
-      img:'',
+      age: '',
+      email: '',
     }
   }
 
@@ -32,8 +31,8 @@ class UpdateFriend extends Component {
     return (
       <form onSubmit={this.submitHandler}>
         <input type="text" name="name" value={this.state.name} onChange={this.inputHandler} placeholder="Name"/>
-        <input type="text" name="nickname" value={this.state.nickname} onChange={this.inputHandler} placeholder="Nickname"/>
-        <input type="text" name="description" value={this.state.description} onChange={this.inputHandler} placeholder="Description"/>
+        <input type="text" name="age" value={this.state.age} onChange={this.inputHandler} placeholder="Age"/>
+        <input type="text" name="email" value={this.state.email} onChange={this.inputHandler} placeholder="Email"/>
         <input type="text" name="img" value={this.state.img} onChange={this.inputHandler} placeholder="Image URL"/>
         <button type="submit">Update</button>
       </form>

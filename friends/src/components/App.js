@@ -39,12 +39,16 @@ class App extends Component {
 const App = props => {
   return (
     <div className="App">
-      <NavLink to="/create">Create</NavLink>
 
+      <h1 class="friend-list-title">Friends List</h1>
+
+      {/*Create Friends Button*/}
+      <NavLink to="/create">Add Friend</NavLink>
+
+      {/*Update and create friends forms*/}
       <Route path="/create" component={CreateFriend} />
       <Route path="/update/:id" component={UpdateFriend} />
 
-      <h1>Friends ASSEMBLE!</h1>
       <FriendsList />
     </div>
   );
