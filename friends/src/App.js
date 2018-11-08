@@ -12,7 +12,6 @@ const App = (props)=>{
       <AddFriend/>
       <FriendsList/>
       {
-        // *Create Delete Component
         // *Create Update Friend Component
       }
     </div>
