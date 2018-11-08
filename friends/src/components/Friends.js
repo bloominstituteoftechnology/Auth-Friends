@@ -19,8 +19,8 @@ class Friends extends Component {
     // Verified data is being loaded via react dev tools.
     return(
       <div>
-        { this.props.loading ? <h1>LOADING</h1> : null }
-        { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
+        { this.props.loading ? <h1 className='fullAlert'>LOADING...</h1> : null }
+        { this.props.error !== '' ? <h1 className='fullAlert'>{this.props.error}</h1> : null }
         { this.props.friends.map( (friend) =>
           <Friend friend={friend} key={friend.id} />  
         )}

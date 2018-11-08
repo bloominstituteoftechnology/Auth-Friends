@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 
 import './App.css';
 import Friends from './components/Friends';
+import AddFriend from './components/AddFriend';
 
 const App = (props) => {
   return (
     <div className="App">
-      App Component
+      <h2>Friends:</h2>
       <Friends />
+      <h2>Add New Friend:</h2>
+      <AddFriend />
     </div>
   );
 }
