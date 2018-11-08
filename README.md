@@ -2,7 +2,7 @@
 
 Topics:
 
-* `axios` package
+* `axios` package .
 * AJAX
 * Promises
 * Middleware
