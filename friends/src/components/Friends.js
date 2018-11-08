@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Friend from './Friend';
+
 // Will need to import action
 import { getFriends } from '../actions/';
 
@@ -14,11 +16,14 @@ class Friends extends Component {
   }
 
   render(){
+    // Verified data is being loaded via react dev tools.
     return(
       <div>
         { this.props.loading ? <h1>LOADING</h1> : null }
         { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
-        Friend Component
+        { this.props.friends.map( (friend) =>
+          <Friend />  
+        )}
       </div>
     );
   }
