@@ -52,18 +52,17 @@
   width: 200px;
 }
 
-/*.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-} */
+input {
+  margin: 2px 0;
+  width: 350px;
+}
 
+button {
+  width: 200px;
+}
