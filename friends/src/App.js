@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Route } from 'react-router-dom';
+import { getFriends } from './Actions/actions';
 
 import './App.css';
 import Friend from './Components/Friend';
 
 class App extends Component {
-  constructor(props){
-    super(props);
+
+  componentDidMount(){
+    this.props.getFriends();
   }
 
   render() {
@@ -25,8 +27,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  friends: state.friends
-});
+const mapStateToProps = (state) => {
+  return {
+  friends: state.friends,
+  error: state.error,
+  loading: state.loading
+  }
+};
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { getFriends } )(App);
