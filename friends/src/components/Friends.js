@@ -22,7 +22,7 @@ class Friends extends Component {
         { this.props.loading ? <h1>LOADING</h1> : null }
         { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
         { this.props.friends.map( (friend) =>
-          <Friend />  
+          <Friend friend={friend} key={friend.id} />  
         )}
       </div>
     );
