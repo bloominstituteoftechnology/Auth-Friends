@@ -65,11 +65,39 @@ table {
 /*MY CODE BELOW*/
 
 /*APP.JS*/
+
+.title-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .friend-list-title{
   font-family: Helvetica, sans-serif;
   font-weight: bold;
   font-size: 2.0rem;
+  margin: 25px 0px 25px 0px;
+}
+
+.add-friend-button{
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1.0rem;
   margin-top: 25px;
+  color: black;
+  text-decoration: none;
+  margin-left: 8px;
+}
+
+/*TEXT INPUT AND SUBMIT*/
+
+.submit-button{
+  background-color: white;
+  border: 1px solid black;
+  font-family: Helvetica, sans-serif;
+  font-size: 0.8rem;
+  color: black;
+  padding: 2px 5px 2px 5px;
 }
 
 /*FRIENDLIST.JS*/

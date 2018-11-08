@@ -9,34 +9,53 @@ let nextId = 6;
 let friends = [
   {
     id: 1,
-    name: 'Ben',
-    age: 30,
-    email: 'ben@lambdaschool.com',
+    name: 'Yosuke Hanamura',
+    age: 16,
+    email: '夜助@yasogami.jp',
+    img: 'https://i.gyazo.com/f59d3606b41d35860db1da76ad7bdbc0.png',
   },
   {
     id: 2,
-    name: 'Austen',
-    age: 45,
-    email: 'austen@lambdaschool.com',
+    name: 'Chie Satonaka',
+    age: 16,
+    email: '知恵@yasogami.jp',
+    img: 'https://i.gyazo.com/0cb1c76c5ed05ac0032106c605d16013.png',
   },
   {
     id: 3,
-    name: 'Ryan',
-    age: 15,
-    email: 'ryan@lambdaschool.com',
+    name: 'Yukiko Amagi',
+    age: 16,
+    email: '雪子@yasogami.jp',
+    img: 'https://i.gyazo.com/137139745f59ebc3e48ab60f136d1193.png',
   },
   {
     id: 4,
-    name: 'Sean',
-    age: 35,
-    email: 'sean@lambdaschool.com',
+    name: 'Kanji Tatsumi',
+    age: 15,
+    email: '漢字@yasogami.jp',
+    img: 'https://i.gyazo.com/2747903445db8288258d721d67e1add5.png',
   },
   {
     id: 5,
-    name: 'Michelle',
-    age: 67,
-    email: 'michelle@gmail.com',
+    name: 'Teddie',
+    age: '???',
+    email: 'クマ@yasogami.jp',
+    img: 'https://i.gyazo.com/4ca400d1ad65394f2f5b1bcb38d247be.png',
   },
+  {
+    id: 6,
+    name: 'Rise Kujikawa',
+    age: 15,
+    email: 'リセット@risette.jp',
+    img: 'https://i.gyazo.com/4e178ed726647030b3f692bbc2bc8c9a.png',
+  },
+  {
+    id: 7,
+    name: 'Naoto Shirogane',
+    age: 15,
+    email: '直人@yasogami.jp',
+    img: 'https://i.gyazo.com/d44f4a7867588b04fb069366dd104e82.png',
+  }
 ];
 
 app.use(bodyParser.json());

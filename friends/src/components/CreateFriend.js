@@ -30,7 +30,7 @@ class CreateFriend extends Component {
         <input type="text" name="age" value={this.state.age} onChange={this.inputHandler} placeholder="Age"/>
         <input type="text" name="email" value={this.state.email} onChange={this.inputHandler} placeholder="Email"/>
         <input type="text" name="img" value={this.state.img} onChange={this.inputHandler} placeholder="Image URL"/>
-        <button type="submit">Add Friend</button>
+        <button className="submit-button" type="submit">Add Friend</button>
       </form>
     )
   }
