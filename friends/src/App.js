@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {fetchFriends} from './actions/actions';
+import { connect } from "react-redux";
 
 import './App.css';
 import FriendsList from './components/FriendsList';
-import {fetchFriends} from './actions/actions';
-import { connect } from "react-redux";
+import AddFriend from './components/AddFriend';
+
 
 class App extends Component {
   componentDidMount(){
@@ -13,9 +15,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Friends List</h1>
+        <AddFriend/>
         <FriendsList/>
         {
-          // Create Add Friend Component
           // *Create Delete Component
           // *Create Update Friend Component
         }

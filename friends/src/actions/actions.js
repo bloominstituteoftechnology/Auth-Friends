@@ -22,3 +22,22 @@ export const fetchFriends = ()=>{
         })
     }
 }
+
+export const addFriend = (friend)=>{
+    return (dispatch)=>{
+        dispatch({type: FETCHING});
+        axios.post('http://localhost:5000/api/friends', friend)
+        .then((response)=>{
+            dispatch({
+                type: SUCCESS,
+                friends: response.data
+            })
+        })
+        .catch((error)=>{
+            dispatch({
+                type: ERROR,
+                errorNessage: error
+            })
+        })
+    }
+}
