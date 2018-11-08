@@ -21,6 +21,11 @@ class AddForm extends Component {
     submitHandler = (e) => {
         e.preventDefault();
         this.props.addFriend(this.state)
+        this.setState({
+            name: '',
+            age: '',
+            email: '',
+        })
     }
 
     render(){
