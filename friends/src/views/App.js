@@ -1,32 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import { Route, NavLink } from 'react-router-dom';
 
 import { Friends, CreateFriendForm, UpdateFriendForm } from '../components';
 
-class App extends Component {
-  constructor() {
-    super();
-  }
-
-  componentDidMount() {
-    return null;
-  }
-
-  render() {
+const App = props => {
     return (
       <div>
+        <NavLink to='/create' style={{ textDecoration: 'none' }}>Create New Friend</NavLink>
+        
+        <Route path='/create' component={CreateFriendForm} />
+        <Route path='/update/:id' component={UpdateFriendForm} />
+
+        <h1>Friends!</h1>
         <Friends />
-        <CreateFriendForm />
-        <UpdateFriendForm />
       </div>
     );
   }
-}
 
-const mapStateToProps = (state) => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, {})(App);
+  export default App;
