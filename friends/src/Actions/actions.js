@@ -16,3 +16,16 @@ export const getFriends = () => {
             })
     }
 }
+
+export const addFriend = (newFriend) => {
+    return (dispatch) => {
+        dispatch({type: LOADING})
+        axios.post('http://localhost:5000/api/friends', newFriend)
+            .then( response => {
+                dispatch({type: GET_FRIENDS, friends: response.data })
+            })
+            .catch( err=> {
+                dispatch({type: ERROR_MESSAGE, errorMessage: `Unable to add friend. This person just doesn't really like you` })
+            })
+    }
+}

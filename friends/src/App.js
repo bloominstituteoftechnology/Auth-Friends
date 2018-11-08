@@ -5,6 +5,7 @@ import { getFriends } from './Actions/actions';
 
 import './App.css';
 import Friend from './Components/Friend';
+import AddForm from './Components/AddFriend';
 
 class App extends Component {
 
@@ -18,6 +19,7 @@ class App extends Component {
         <header>We have friends!</header>
         <NavLink to="/add">Add a new friend</NavLink>
 
+        <AddForm />
         {this.props.friends.map( friend =>
           < Friend friend={friend} key={friend.id} />
         )}

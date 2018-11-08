@@ -10,7 +10,7 @@ export const FriendLayout = styled.div`
     display: flex;
     flex-direction: row;
     width: 50%;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin: 0 auto;
 `;
