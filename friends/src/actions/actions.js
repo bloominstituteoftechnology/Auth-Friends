@@ -60,3 +60,21 @@ export const deleteFriend = (friend)=>{
         })
     }
 }
+export const updateFriend = (friend)=>{
+    return (dispatch)=>{
+        dispatch({type: FETCHING});
+        axios.put(`http://localhost:5000/api/friends/${friend.id}`, friend)
+        .then((response)=>{
+            dispatch({
+                type: SUCCESS,
+                friends: response.data
+            })
+        })
+        .catch((error)=>{
+            dispatch({
+                type: ERROR,
+                errorMessage: error
+            })
+        })
+    }
+}

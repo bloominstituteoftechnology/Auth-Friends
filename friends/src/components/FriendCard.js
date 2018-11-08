@@ -1,23 +1,52 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import DisplayFriend from './DisplayFriend'
+import UpdateFriend from './UpdateFriend';
 import {deleteFriend} from '../actions/actions';
 
-const FriendCard = (props)=>{
-
-    const handleClick = (event)=>{
-        event.preventDefault();
-        props.deleteFriend(props.friend);
+class FriendCard extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            update: false
+        }
     }
 
-    return(
-        <li>
-            <h2>Name: {props.friend.name}</h2>
-            <h3>Age: {props.friend.age}</h3>
-            <p>Email: {props.friend.email}</p>
-            <div onClick={handleClick}>X</div>
-        </li>
-    )
+    componentDidMount(){
+        this.setState({
+            update: false
+        })
+    }
+
+    handleUpdate = (event)=>{
+        event.preventDefault();
+        this.setState({
+            update: true
+        })
+    }
+
+    handleDelete = (event)=>{
+        event.preventDefault();
+        this.props.deleteFriend(this.props.friend);
+    }
+
+    render(){
+        return(
+            <li>
+                <DisplayFriend friend={this.props.friend}/>
+                {
+                    this.state.update ? 
+                    <UpdateFriend friend={this.props.friend}/> :
+                    <div>
+                        <div onClick={this.handleUpdate}>Update</div>
+                        <div onClick={this.handleDelete}>Delete</div>
+                    </div>
+                }
+            </li>
+        )
+    }
+
 }
 
 const mapStateToProps = (state)=>{

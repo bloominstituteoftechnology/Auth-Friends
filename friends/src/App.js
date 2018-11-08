@@ -11,9 +11,6 @@ const App = (props)=>{
       <h1>Friends List</h1>
       <AddFriend/>
       <FriendsList/>
-      {
-        // *Create Update Friend Component
-      }
     </div>
   );
 }
