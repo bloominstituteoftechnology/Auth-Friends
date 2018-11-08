@@ -7,10 +7,10 @@ import logger from 'redux-logger';
 
 import './index.css';
 import App from './App';
-import reducer from './reducers';
+import rootReducer from './reducers';
 
 const middleware = applyMiddleware(thunk, logger);
-const store = createStore(reducer, middleware);
+const store = createStore(rootReducer, middleware);
 const root = document.getElementById('root');
 
 ReactDOM.render(
