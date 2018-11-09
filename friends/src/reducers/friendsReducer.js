@@ -11,7 +11,8 @@ export default (state = initialState, action) => {
     switch(action.type) {
         case LOADING:
             return {...state, loading: true};
-
+        case GET_FRIENDS:
+            return {...state, friends: action.friends, loading: false};
         case ERROR:
             return {...state, error: action.errorMessage, loading: false};    
         default:
