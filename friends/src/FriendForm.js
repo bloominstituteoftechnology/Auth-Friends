@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { addfriend} from './Actions';
+import { addFriend} from './Actions';
 import { Button} from 'reactstrap/lib';
 
 import './index.css'
@@ -21,7 +21,7 @@ class FriendForm extends Component {
       age: this.state.age,
       email: this.state.email
     }
-    this.props.addfriend(friend);
+    this.props.addFriend(friend);
     this.setState({
       name: '',
       age: '',
@@ -69,7 +69,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    addfriend
+    addFriend
   }
 )(FriendForm);
 

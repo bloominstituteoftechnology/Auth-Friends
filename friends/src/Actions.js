@@ -7,7 +7,7 @@ export const ADDFRIEND = "ADDFRIEND";
 export const DELETEFRIEND = "DELETEFRIEND";
 export const UPDATEFRIEND = "UPDATEFRIEND"
 
-export const getinfo = () => {
+export const getInfo = () => {
 
     return dispatch => {
         dispatch({ type: LOADING });
@@ -24,7 +24,7 @@ export const getinfo = () => {
             });
     };
 };
-export const addfriend = (newfriend) => {
+export const addFriend = (newfriend) => {
 
     return dispatch => {
         dispatch({ type: LOADING });
@@ -42,7 +42,7 @@ export const addfriend = (newfriend) => {
     };
 };
 
-export const deletefriend = (id) => {
+export const deleteFriend = (id) => {
     return (dispatch) => {
         dispatch({ type: LOADING })
         axios.delete(`http://localhost:5000/api/friends/${id}`)
@@ -56,7 +56,7 @@ export const deletefriend = (id) => {
     }
 }
 
-export const updatefriend = (id, friend) => {
+export const updateFriend = (id, friend) => {
     return (dispatch) => {
         dispatch({ type: LOADING })
         axios.put(`http://localhost:5000/api/friends/${id}`, friend)

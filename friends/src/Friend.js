@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import { deletefriend, updatefriend } from './Actions';
+import { deleteFriend, updateFriend } from './Actions';
 import { connect } from "react-redux";
 import { Button} from 'reactstrap/lib';
 class Friend extends React.Component {
@@ -25,7 +25,7 @@ class Friend extends React.Component {
       email: this.state.email
     }
     const id = this.props.id;
-    this.props.updatefriend(id, friend);
+    this.props.updateFriend(id, friend);
     event.target.reset();
 
   }
@@ -38,7 +38,7 @@ class Friend extends React.Component {
           <h3>{this.props.name}</h3>
           <p>{this.props.age} years old</p>
           <p>{this.props.email}</p>
-          <Button color="danger"onClick={() => this.props.deletefriend(this.props.id)}>Delete Friend</Button>
+          <Button color="danger"onClick={() => this.props.deleteFriend(this.props.id)}>Delete Friend</Button>
         </div>
         <div className='update'>
           <form onSubmit={this.handleUpdateSubmit}>
@@ -73,7 +73,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    deletefriend, updatefriend
+    deleteFriend, updateFriend
   }
 )(Friend);
 

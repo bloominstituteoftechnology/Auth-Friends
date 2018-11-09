@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './index.css'
 import Friend from './Friend';
-import { getinfo } from './Actions'
+import { getInfo } from './Actions'
 
 class Friends extends Component {
   
   componentDidMount() {
     // call our action
-    this.props.getinfo()
+    this.props.getInfo()
   }
   render() {
     if (this.props.loading) {
@@ -27,9 +27,7 @@ class Friends extends Component {
               id={friend.id}
               age={friend.age}
               email={friend.email}
-              key={friend.id}
-              delete={this.props.delete}
-            />
+              key={friend.id} />
           );
         })}
             </div >
@@ -49,7 +47,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    getinfo
+    getInfo
     /* action creators go here */
   }
 )(Friends);
