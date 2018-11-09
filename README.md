@@ -90,7 +90,7 @@ index.js
 
 * Inside of `App.js` I suggest doing the friend fetching for your _friends_ data from within `componentDidMount()`. You'll need to call an action creator that you build in order to fetch your friends.
 * A crude example of what this could potentially look like would be:
-  ![Bad example](https://image.ibb.co/hpg7gw/Screen_Shot_2018_01_24_at_1_07_21_PM.png)
+  ![Bad example](https://image.ibb.co/hpg7gw/ Screen_Shot_2018_01_24_at_1_07_21_PM.png)
 * You **Definitely** want to style your application to look much better than mine!
 
 ## Stretch Problem
