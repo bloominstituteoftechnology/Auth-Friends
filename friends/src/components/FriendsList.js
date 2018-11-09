@@ -1,32 +1,35 @@
 import React, { Component } from "react";
-// import Friend from "./Friend"
+import Friend from "./Friend"
 import {fetchFriends} from '../actions/friendsActions'
 import {connect} from  'react-redux'
 class FriendsList extends Component {
+
   constructor(props) {
-    super(props);
+    super(props)
+
   }
-  
+
   componentDidMount() {
     this.props.fetchFriends()
   }
-  
+
 
   render() {
       return (
-        <div>No Friends
-        
-        {/* <ul>{this.props.friends.map(friend => {
-          return <Friend key={friend.id} friend={friend} />})}</ul>
-         */}
-        </div>
 
+        <div>
+          {/* {this.props.loading ? <h1>LOADING</h1> : null}
+
+          {this.props.error !== '' ? <h1>{this.props.error}</h1> : null} */}
+
+          {this.props.friends.map(friend => <Friend friend={friend} key={friend.id} />)}
+        </div>
     )
   }
 }
 const mapStateToProps = state => {
   return {
-    friends: state.freinds,
+    friends: state.friends,
     error: state.error,
     loading: state.loading
   }

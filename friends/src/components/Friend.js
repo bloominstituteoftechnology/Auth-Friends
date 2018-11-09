@@ -2,7 +2,13 @@ import React from 'react'
 
 
 const Friend = props => {
-    return <li>{props.friend.name}</li>
+    const {friend} = props
+
+    return (
+        <div>
+           <h2>{friend.name}</h2>
+        </div>
+    )
 }
 
 
