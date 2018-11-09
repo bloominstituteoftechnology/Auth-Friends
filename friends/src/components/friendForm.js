@@ -32,7 +32,7 @@ class FriendForm extends Component {
   render() {
     return (
       <div>
-        <h1>Friend Form Here</h1>
+        <h1>Add a Friend</h1>
         <form onSubmit={this.submitHandler}>
           <input name="name" value={this.state.name} onChange={this.handleChange} placeholder="name"></input>
           <input name="age" value={this.state.age} onChange={this.handleChange} placeholder="age"></input>
