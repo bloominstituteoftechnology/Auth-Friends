@@ -10,6 +10,7 @@ class Friend extends Component {
 
   }
   render() {
+    {if (this.props.loading) return <h1>Loading</h1>}
     return (
       <div>
         <h2>Friends</h2>
@@ -27,7 +28,9 @@ class Friend extends Component {
 
 const mapStateToProps = state => {
   return {
-    friends: state.friends
+    friends: state.friends,
+    loading: state.loading,
+    error: state.error,
   }
 }
 
