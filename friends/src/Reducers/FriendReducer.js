@@ -18,7 +18,7 @@ const friendReducer = (state = initialState, action) => {
         case FETCHING_FRIENDS:
             return Object.assign({}, state, { fetchingFriends: true })
         case SUCCESS:
-            return Object.assign({}, state, { friendsFetched: true })
+            return Object.assign({}, state, { fetchingFriends: false, friends: action.payload})
         case ERROR:
             return Object.assign({}, state, { error: action.payload })
         default:
