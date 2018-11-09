@@ -1,5 +1,5 @@
 import React from 'react';
-import {fetch} from "../actions/action";
+import {fetch} from "../actions/index";
 import {connect} from 'react-redux';
 
 class MyFriendsList extends React.Component {

@@ -5,7 +5,7 @@ export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
 
 export const fetch = () => {
-  const reduxFriends = axios.get('https://localhost:5000/api/friends');
+  const reduxFriends = axios.get('http://localhost:5000/api/friends');
 
   return dispatch => {
     dispatch({type: FETCHING});
@@ -29,7 +29,7 @@ export const fetch = () => {
 };
 
 export const addFriend = () => {
-  const reduxFriends = axios.post('https://localhost:5000/api/friends');
+  const reduxFriends = axios.post('http://localhost:5000/api/friends');
 
   return dispatch => {
     dispatch({type: FETCHING});
