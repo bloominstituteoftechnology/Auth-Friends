@@ -1,19 +1,65 @@
-// PR = 
+// PR = https://github.com/LambdaSchool/Redux-Friends/pull/396
+
+## Project
+
+* For this project you'll need to create a few React components that will interact with your Redux state.
+* This app can all be built in terms of a single view made up of multiple components. Some components will be connected to your Redux Store and others will get their data passed down as props from the connected components.
+
 ## Initialize Project
 
-* [] Run `yarn` or `npm i` inside the root directory of this project to install dependencies.
-* [] Run `yarn start` or `npm start` to start the API server.
-* [] Run `create-react-app friends` in a separate terminal window in the root directory of the project to create your starter application.
-* [] `cd` into the _friends_ folder and type `yarn add redux react-redux redux-thunk redux-logger axios` or `npm i redux react-redux redux-thunk redux-logger axios`, which will install the needed dependencies.
-* [] You will create a list of your friends using React and Redux.
-* [] A possible flow of steps will be to create your Components, action creators, reducers, root reducer and your Redux store. Then use the Provider component from `react-redux` to pass the store to your root component and `connect` the React components that need access to the store.
-* [] Don't forget to hook up the store using the `Provider` tag inside of `src/index.js`, passing it your root reducer.
-* [] You will need to use `redux-thunk` as a middleware inside of `src/index.js`. You'll want to be sure to pass it to `applyMiddleware()` then feed it into your createStore function.
-* [] If you so choose, include `redux-logger` to your middleware. You're going to have plenty of action creators that will consume our API so you'll get plenty of actions triggered.
+* [x] Run `yarn` or `npm i` inside the root directory of this project to install dependencies.
+* [x] Run `yarn start` or `npm start` to start the API server.
+* [x] Run `create-react-app friends` in a separate terminal window in the root directory of the project to create your starter application.
+* [x] `cd` into the _friends_ folder and type `yarn add redux react-redux redux-thunk redux-logger axios` or `npm i redux react-redux redux-thunk redux-logger axios`, which will install the needed dependencies.
+* You will create a list of your friends using React and Redux.
+
+* It's really is up to you how you build this project. I suggest 
+
+* [] write down the flow you want to follow
+      1. Create components
+      2. Create action creators
+      3. Create reducers
+      4. Create root reducer
+      5. Create Redux store
+* [] write down each individual piece you need for each step in the flow:
+  * (ie step 3, build containers - import connect, write mapStateToProps function, import action creators and pass them to connect, etc. etc.) so that this process doesn't feel as overwhelming.
+
+* WORKFLOW 
+      1. [] Create components and related folders
+            components
+              - App.js
+              - FriendsList.js
+              - FriendForm.js
+              - CreateFriendForm.js
+              - UpdateFriendForm.js
+              - SelectedFriend.js
+
+      2. [] Create action creators
+            actions
+              index.js
+
+      3. [] Create reducers
+            reducers
+              - friendsReducer.js
+              - index.js
+              - singleFriendReducer.js
+         [] Create root reducer (see tip below)
+         
+      4. [] Create Redux store
+    
+      5. [] Use the Provider component from `react-redux` to pass the store to your root component.
+
+      6. []  `connect` the React components that need access to the store.
+
+      7. [] hook up the store using the `Provider` tag inside of `src/index.js`, passing it your root reducer.
+
+      8. [] Use `redux-thunk` as a middleware inside of `src/index.js`. Be sure to pass it to `applyMiddleware()` then feed it into your createStore function.
+
+      9. [] (Optional) include `redux-logger` to your middleware. You're going to have plenty of action creators that will consume our API so you'll get plenty of actions triggered.
 
 ## Root Reducer and our State Tree
 
-* [] Your initial state **could** (but doesn't have to) look something like this:
+* 3b. [] Your initial state **could** (but doesn't have to) look something like this:
 
 ```js
 {
@@ -32,6 +78,7 @@
 
 * This is a pretty large state tree, but each field is extremely simple.
 * All of your items in your state tree represent a make up of actions that you're going to make asynchronously. Think about your application and the state you need. This root reducer object will represent that state.
+
 * [] Each `friend` item that is in the `friends` array should have the following format:
 
 ```js
@@ -42,11 +89,6 @@
   email: 'joe@lambdaschool.com',
 }
 ```
-
-## Project
-
-* For this project you'll need to create a few React components that will interact with your Redux state.
-* This app can all be built in terms of a single view made up of multiple components. Some components will be connected to your Redux Store and others will get their data passed down as props from the connected components.
 
 ## No need for a router here. We can fit all we need into one page with some proper styling and layout decisions.
 
@@ -65,11 +107,6 @@ index.js
 * [] component who's sole purpose is for creating users
 * [] component who's sole purpose is to delete a user.
 
-* It really is up to you how you build this project. I suggest 
-
-* [] write down the flow you want to follow
-* [] write down each individual piece you need for each step in the flow:
-  * (ie step 3, build containers - import connect, write mapStateToProps function, import action creators and pass them to connect, etc. etc.) so that this process doesn't feel as overwhelming.
 
 #### App.js
 
