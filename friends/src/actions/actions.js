@@ -4,6 +4,8 @@ export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
 export const FETCHED_FRIENDS = 'FETCHED_FRIENDS';
 export const SAVING_FRIENDS = 'SAVING_FRIENDS';
 export const FRIENDS_SAVED = 'FRIENDS_SAVED';
+export const DELETING_FRIEND = 'DELETING_FRIEND';
+export const FRIEND_DELETED = 'FRIEND_DELETED';
 export const ERROR = 'ERROR';
 
 export const fetchFriends = friend => {
@@ -40,3 +42,21 @@ export const saveFriend = friend => {
             })
     }
 }
+
+export const deleteFriend = (id) => {
+    return dispatch => {
+        dispatch({ type: DELETING_FRIEND });
+        axios
+            .delete(`http://localhost:5000/api/friends/${id}`)
+            .then(response => {
+                console.log(response.data)
+                dispatch({
+                    type: FRIEND_DELETED,
+                    payload: response.data
+                })
+            })
+            .catch(err => {
+                dispatch({ type: ERROR, payload: 'Error deleting friend' })
+            })
+    }
+};
