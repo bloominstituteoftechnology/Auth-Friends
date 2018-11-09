@@ -8,11 +8,23 @@ import Friends from './components/Friends'
 import CreateFriendForm from './components/CreateFriendForm'
 import UpdateFriendForm from './components/UpdateFriendForm'
 
+
+const blankFormValues = {
+  name: '',
+  age: '',
+  email: '',
+}
+
 class App extends Component {
   constructor(){
     super();
     this.state = {
         friends: [],
+        friend: {
+          name: '',
+          age: '',
+          email: ''
+        }
     }
   }
 
@@ -27,6 +39,19 @@ class App extends Component {
     })
   }
 
+  handleAddNewFriend = event => {
+    event.preventDefault();
+    axios 
+    .post(`http://localhost:5000/api/friends`, this.state.friend)
+    .then(response => {
+      this.setState({ friends: response.data, friend: blankFormValues })
+    })
+    .catch(err => {
+      console.log("Fail to ADD Friend", err);
+    })
+  }
+
+
 
   render() {
     return (
@@ -36,8 +61,11 @@ class App extends Component {
           <p>
             Friends in React-Redux.
           </p>
-          <CreateFriendForm />
-          <Friends friends={this.state.friends} /> 
+          <CreateFriendForm 
+            handleAddNewFriend={this.handleAddNewFriend} 
+            friend={this.state.friend}/>
+          <Friends 
+            friends={this.state.friends} /> 
           <UpdateFriendForm />
 
         </header>
