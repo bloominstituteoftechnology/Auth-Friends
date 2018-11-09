@@ -1,27 +1,32 @@
 import { LOADING, GET_FRIENDS, ERROR } from '../actions';
-//TODO: Add additional actions for SAVING, UPDATING, DELETING and possibly rename actionsy
+
+// const initialState = {
+//     fetchingFriends: false,
+//     friendsFetched: false,
+//     friendsSaved: false,
+//     savingFriends: false,
+//     updatingFriend: false,
+//     friendUpdated: false,
+//     deletingFriend: false,
+//     friendDeleted: false,
+//     friends: [],
+//     error: null
+//   }
 
 const initialState = {
-    fetchingFriends: false,
-    friendsFetched: false,
-    friendsSaved: false,
-    savingFriends: false,
-    updatingFriend: false,
-    friendUpdated: false,
-    deletingFriend: false,
-    friendDeleted: false,
+    loading: false,
     friends: [],
-    error: null
+    error: ''
   }
 
   export const friendReducer = (state = initialState, action) => {
       switch(action.type) {
         case LOADING:
-            return
+            return Object.assign({}, state, { loading: true })
         case GET_FRIENDS:
-            return
+            return Object.assign({}, state, { friends: action.friends, loading: false, error: ''})
         case ERROR:
-            return
+            return Object.assign({}, state, { error: action.errorMessage, loading: false})
           default:
             return state;
       }

@@ -3,6 +3,16 @@ import { connect } from 'react-redux';
 
 import { updateFriend } from '../actions';
 
+import styled from 'styled-components';
+
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 500px;
+`;
+
 class UpdateFriendForm extends Component {
   constructor(props) {
     super(props);
@@ -15,8 +25,8 @@ class UpdateFriendForm extends Component {
 
   componentDidMount() {
     const { friends, match } = this.props;
-    const friend = friends.find(item => item.id === Number(match.params.id))
-    this.setState({ friend })
+    const friend = friends.find(item => item.id === match.params.id)
+    this.setState(friend)
   }
 
   inputHandler = (event) => {
@@ -30,12 +40,12 @@ class UpdateFriendForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.submitHandler}>
+      <FormContainer onSubmit={this.submitHandler}>
         <input type="text" name="name" value={this.state.name} onChange={this.inputHandler} placeholder=" Name" />
         <input type="text" name="age" value={this.state.age} onChange={this.inputHandler} placeholder=" Age" />
         <input type="text" name="email" value={this.state.email} onChange={this.inputHandler} placeholder=" Email" />
         <button type="submit">Update</button>
-      </form>
+      </FormContainer>
     );
   }
 };
