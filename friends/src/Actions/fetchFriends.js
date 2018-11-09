@@ -5,7 +5,7 @@ import axios from 'axios'
 const fetchFriends = () =>{
     return (dispatch) =>{
         dispatch({type: LOADING})
-        axios.get('http://localhost:5000/api/friends')
+        axios.get('http://localhost:5000/api/frieds')
             .then((response) => {
                 dispatch({type: SUCCESS, payload: response.data})
             })
