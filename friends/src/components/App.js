@@ -40,12 +40,38 @@ class App extends Component {
       <div>
         <h1>Redux Friends</h1>
 
+        <input
+          type = 'text'
+          placeholder = 'name'
+          name = 'name'
+          value = {this.state.name}
+
+        />
+
+        <input
+          type = 'text'
+          placeholder = 'age'
+          name = 'age'
+          value = {this.state.age}
+
+        />
+
+        <input
+          type = 'text'
+          placeholder = 'email'
+          name = 'age'
+          value = {this.state.email}
+
+        />
+
+        <button> Add Friend</button>
+
+
         <ul>
           {this.props.friends.map( friend => {
             return (
               <div key = {friend.id}>
-                {friend.name}
-
+                <li>{friend.name}</li>
 
 
 
