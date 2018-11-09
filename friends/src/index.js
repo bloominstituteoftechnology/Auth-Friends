@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 import {friendsReducer} from './reducers/friendsReducer';
 
 ReactDOM.render(
-    <Provider store={createStore(applyMiddleware(friendsReducer, logger, thunk))}>
+    <Provider store={createStore(friendsReducer, applyMiddleware(logger, thunk))}>
         <App />
     </Provider>, 
     document.getElementById('root')
