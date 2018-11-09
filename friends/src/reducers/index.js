@@ -1,4 +1,4 @@
-import { LOADING, FETCHED_FRIENDS, ERROR } from '../actions';
+import { GET_FRIENDS, POST_FRIEND, SUCCESS, ERROR } from '../actions';
 
 const initialState = {
   friends: [],
@@ -8,9 +8,10 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOADING:
+    case GET_FRIENDS:
+    case POST_FRIEND:
       return Object.assign({}, state, { loading: true });
-    case FETCHED_FRIENDS:
+    case SUCCESS:
       return Object.assign({}, state, {
         friends: action.friends,
         loading: false,
