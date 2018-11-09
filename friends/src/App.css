@@ -7,6 +7,15 @@
   height: 40vmin;
 }
 
+.friend-format {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid blue;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
