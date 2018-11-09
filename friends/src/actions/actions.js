@@ -27,3 +27,22 @@ export const fetchFriends = () => {
 };
 
 // 'http://localhost:5000
+
+//POST
+
+export const addFriend = newFriend => {
+  return dispatch => {
+    dispatch({ type: FETCHING });
+    axios
+      .post('http://localhost:5000/api/friends', newFriend)
+      .then(response => {
+        dispatch({
+          type: SUCCESS,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        dispatch({ type: FAILURE, payload: 'Failed to add new friend' });
+      });
+  };
+};
