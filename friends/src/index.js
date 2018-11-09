@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
 
-import './index.css';
 import App from './App';
 import friendsReducer from './actions/friendsReducer';
 
