@@ -1,7 +1,7 @@
-import {LOADING, GET_FRIENDS, ERROR} from '../actions/friendsActions'
+import {LOADING, GET_FRIENDS, ERROR} from '../actions/FriendsActions'
 
  const intialState = {
-     friends: [],
+    friends: [],
     loading: false,
     error: ''
 }
