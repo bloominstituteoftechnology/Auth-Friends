@@ -19,7 +19,7 @@ export const friendsReducer = ( state= intialState, action) => {
     case ERROR:
     return { ...state, error: action.payload, loading: false}
     case GET_FRIENDS:
-    return {...state, friends: [...state.friends, ...action.payload]}
+    return {...state, friends: [...state.friends, ...action.payload], loading: false}
     default:
     return state
 

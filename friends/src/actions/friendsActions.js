@@ -9,7 +9,7 @@ export const fetchFriends = () => dispatch => {
     .get("http://localhost:5000/api/friends")
       .then(response => {
         console.log(response.data)
-    //   dispatch({type: GET_FRIENDS, payload: response.data})
+      dispatch({type: GET_FRIENDS, payload: response.data})
     })
     .catch(err => {
       dispatch({ type: ERROR, errorMessage: "Error loading friends" });

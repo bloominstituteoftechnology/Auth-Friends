@@ -5,8 +5,11 @@ const Friend = props => {
     const {friend} = props
 
     return (
-        <div>
-           <h2>{friend.name}</h2>
+        <div key={friend.id} className="avenger-card">
+            {/* <p className="close-button" onClick={clickHandler}>X</p> */}
+            <h2>{friend.name}</h2>
+            <p>{friend.age}</p>
+            <p>{friend.email}</p>
         </div>
     )
 }
