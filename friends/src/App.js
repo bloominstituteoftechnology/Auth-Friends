@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Friends from './components/Friends'
+import CreateFriendForm from './components/CreateFriendForm'
+import UpdateFriendForm from './components/UpdateFriendForm'
+
 class App extends Component {
   render() {
     return (
@@ -11,7 +15,10 @@ class App extends Component {
           <p>
             Friends in React-Redux.
           </p>
-         
+          <CreateFriendForm />
+          <Friends /> 
+          <UpdateFriendForm />
+
         </header>
       </div>
     );
