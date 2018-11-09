@@ -17,7 +17,6 @@ class App extends Component {
     } else {
       return (
         <div>
-          test
           <FriendsList friends={this.props.friends} />
         </div>
       );

@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 
 class FriendsList extends Component {
   render() {
-    return console.log('props ', this.props);
+    console.log('props ', this.props);
+    return (
+      <div>
+        {this.props.friends.map(friend => {
+          return <p>{friend.name}</p>;
+        })}
+      </div>
+    );
   }
 }
 
