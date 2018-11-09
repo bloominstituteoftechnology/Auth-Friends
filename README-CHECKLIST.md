@@ -25,7 +25,7 @@
       7. Make connections
 
 * WORKFLOW 
-      1. [] Create components and related folders
+      1. [x] Create components and related folders
           src/
             - App.js
             components/
