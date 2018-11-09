@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addFriend } from '../actions';
+import { updateFriend } from '../actions';
 
-class AddFriend extends Component {
+class UpdateFriend extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,13 +13,19 @@ class AddFriend extends Component {
     };
   }
 
+  componentDidMount() {
+    const { friends, match } = this.props;
+    const friend = friends.find(friend => `${friend.id}` === match.params.id);
+    this.setState(friend);
+  }
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addFriend(this.state);
+    this.props.updateFriend(this.state);
   };
 
   render() {
@@ -50,13 +56,15 @@ class AddFriend extends Component {
           onChange={this.handleChange}
           required
         />
-        <button type="submit">Add Friend</button>
+        <button type="submit">Update Friend</button>
       </form>
     );
   }
 }
 
+const mapStateToProps = state => ({ friends: state.friends });
+
 export default connect(
-  null,
-  { addFriend }
-)(AddFriend);
+  mapStateToProps,
+  { updateFriend }
+)(UpdateFriend);
