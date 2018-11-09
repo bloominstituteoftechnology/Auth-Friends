@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { getFriends } from '../actions/actions.js'
+import Friend from './Friend.js' 
 
 class FriendsList extends Component {
     constructor(props) {

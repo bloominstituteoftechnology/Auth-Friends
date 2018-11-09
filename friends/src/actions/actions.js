@@ -14,7 +14,6 @@ export const getFriends = () => {
             })
             .catch(err => {
                 dispatch({type: Error, errorMessage: "We had some trouble finding your friends."})
-            })
-        }
+            });
     }
 }
