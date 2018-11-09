@@ -33,14 +33,15 @@ class App extends Component {
 
     }
 
-
+*/
     return (
-      <div className = 'MyFriendsList-container'>
-        <MyFriendsList friends = {this.props.friends}/>
+      <div>
+        <h1>Redux Friends</h1>
+
       </div>
 
     )
-*/
+
   }
 
 }
