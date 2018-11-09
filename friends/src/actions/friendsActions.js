@@ -43,3 +43,21 @@ export const deleteFriend = (id) => {
 
 
 }
+
+export const updateFriend =(updatedFriend) => {
+  return dispatch => {
+      dispatch({type:LOADING})
+      axios
+        .put(`http://localhost:5000/api/friends/${updatedFriend.id}`, updatedFriend)
+        .then(response => {
+          console.log(response.data);
+            dispatch({ type: GET_FRIENDS, payload: response.data });
+        })
+        .catch(err => {
+          dispatch({
+            type: ERROR,
+            errorMessage: "Async error updateing friend"
+          });
+        });
+  }
+}

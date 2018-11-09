@@ -33,6 +33,7 @@
     align-items: center;
     position: relative;
     padding: 30px 20px;
+    text-decoration: none;
 }
 
 .friend-card h2 {
@@ -45,6 +46,12 @@
     right: 20px;
     font-size: 25px;
     cursor: pointer
+}
+
+.freind-card a {
+    font-size: 18px;
+    padding: 15px;
+    text-decoration: none;
 }
 
 @keyframes App-logo-spin {

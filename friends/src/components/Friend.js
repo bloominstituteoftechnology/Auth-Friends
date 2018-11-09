@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {deleteFriend} from '../actions/friendsActions'
+import { Link   } from 'react-router-dom'
 
 const Friend = props => {
     const {friend, deleteFriend} = props
@@ -15,6 +16,7 @@ const Friend = props => {
             <h2>{friend.name}</h2>
             <p>{friend.age}</p>
             <p>{friend.email}</p>
+           <Link to={`/update/${friend.id}`} style={{textDecoration:'none', color: 'orangered', cursor:'pointer'}}>Update</Link>
         </div>
     )
 }
