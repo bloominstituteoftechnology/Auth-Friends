@@ -14,7 +14,7 @@ const FriendCard = props => {
         <table>
             <tbody>
                 <tr>
-                    <td><button onClick={callDelete}></button></td>
+                    <td><button onClick={callDelete}>Delete Friend</button></td>
                 </tr>
                 <tr>
                     <td>{props.friend.id}</td>
@@ -25,7 +25,7 @@ const FriendCard = props => {
                 </tr>
                 <tr>
                     <td>
-                        <EditFriend type='Edit Friend'/>
+                        <EditFriend id={props.friend.id} type='Edit Friend'/>
                     </td>
                 </tr>
             </tbody>

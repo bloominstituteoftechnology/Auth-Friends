@@ -20,15 +20,41 @@ export const fetchFriends = () => {
     }
 }
 
-export const deleteFriend = (id) => {
+export const addFriend = friendObj => {
+    return dispatch => {
+        dispatch({type: ADDING_FRIEND});
+        axios.post('http://localhost:5000/api/friends', friendObj)
+        .then(response => {
+            dispatch({type: SUCCESS, payload: response.data});
+        })
+        .catch(()=> {
+            dispatch({type: FAILURE, payload: 'Error adding friend.'});
+        })
+    }
+}
+
+export const updateFriend = (id, friendObj) => {
+    return dispatch => {
+        dispatch({type: UPDATING_FRIEND});
+        axios.put(`http://localhost:5000/api/friends/${id}`, friendObj)
+        .then(response => {
+            dispatch({type: SUCCESS, payload: response.data});
+        })
+        .catch(() => {
+            dispatch({type: FAILURE, payload: 'Error updating friend.'});
+        })
+    }
+}
+
+export const deleteFriend = id => {
     return dispatch => {
         dispatch({type: DELETING_FRIEND});
         axios.delete(`http://localhost:5000/api/friends/${id}`)
         .then(response => {
-            dispatch({type: SUCCESS, payload: response.data})
+            dispatch({type: SUCCESS, payload: response.data});
         })
         .catch(response => {
-            dispatch({type: FAILURE, payload: 'Error deleting friend'})
+            dispatch({type: FAILURE, payload: 'Error deleting friend.'});
         })
     }
 }
