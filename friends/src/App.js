@@ -13,8 +13,8 @@ const AppContainer = styled.div`
   margin: 0 auto;
 
   h1{
-    font-size: 3.2rem;
-    margin-bottom: 20px;
+    font-size: 3.8rem;
+    margin: 20px 0;
   }
 `;
 
