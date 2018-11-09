@@ -1,11 +1,20 @@
-import React from 'react';
-import {fetch} from "../actions/index";
+import React, {Component} from 'react';
+import {fetch, addFriend} from "../actions";
 import {connect} from 'react-redux';
 
-class MyFriendsList extends React.Component {
+
+class App extends Component {
+  /*
   constructor() {           // may generate useless constructor warning !!!
     super()
   }
+*/
+  state = {
+    name: '',
+    age: '',
+    email: ''
+  };
+
 
   componentDidMount() {
     this.props.fetch();
@@ -13,7 +22,7 @@ class MyFriendsList extends React.Component {
 
 
   render() {
-
+/*
     if(this.props.error !== null) {
       return <h2> {this.props.error}</h2>
     }
@@ -31,7 +40,7 @@ class MyFriendsList extends React.Component {
       </div>
 
     )
-
+*/
   }
 
 }
@@ -54,6 +63,7 @@ const mapStateToProps = (state) => {
 export default connect (
   mapStateToProps,
   {
-    fetch
+    fetch,
+    addFriend
   }
-)(MyFriendsList)
+)(App)
