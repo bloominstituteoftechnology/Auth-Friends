@@ -11,6 +11,7 @@ class FriendList extends Component {
     render() {
         return (
             <div>
+                <h1>My Friends</h1>
                 { this.props.loading ? <h1>Loading</h1> : null },
                 { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
                 { this.props.friends.map( friend => <Friend friend={friend} key={friend.id}/> ) }
