@@ -5,6 +5,7 @@ export const LOADING = "LOADING"
 export const SUCCESS = "SUCCESS"
 export const FAIL = "FAIL"
 
+//GET
 export const getFriends = () => {
    return dispatch => {
       dispatch({type: LOADING})
@@ -18,8 +19,30 @@ export const getFriends = () => {
          .catch(err => {
             dispatch({
                type: FAIL,
-               error: err
+               error: "Error Loading Friends"
             })
          })
    }
 }
+
+//POST
+export const createFriend = (newFriend) => {
+   return dispatch => {
+      dispatch({type: LOADING})
+      axios.post(`http://localhost:5000/api/friends/`, newFriend)
+         .then(response => {
+            console.log(response)
+            dispatch({
+               type: SUCCESS,
+               payload: response.data
+            })
+         })
+         .catch(err => {
+            dispatch({
+               type: FAIL,
+               error: "Error Creating New Friend"
+            })
+         })
+   }
+}
+//DELETE
