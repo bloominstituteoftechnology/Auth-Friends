@@ -11,25 +11,20 @@ const FriendCard = props => {
     }
 
     return (
-        <table>
-            <tbody>
-                <tr>
-                    <td><button onClick={callDelete}>Delete Friend</button></td>
-                </tr>
-                <tr>
-                    <td>{props.friend.id}</td>
-                    <td>{props.friend.name}</td>
-                </tr>
-                <tr>
-                    <td>{props.friend.email}</td>
-                </tr>
-                <tr>
-                    <td>
-                        <EditFriend id={props.friend.id} type='Edit Friend'/>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <div>
+                <button onClick={callDelete}>Delete Friend</button>
+            </div>
+            <p>
+                <div>{props.friend.id}</div>
+                <div>{props.friend.name}</div>
+            </p>
+            <p>
+                <div>{props.friend.email}</div>
+            </p>
+
+            <EditFriend id={props.friend.id} type='Edit Friend'/>
+        </div>
     )
 }
 
