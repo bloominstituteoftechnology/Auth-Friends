@@ -12,3 +12,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.friend{
+  display: flex;
+  border: 1px solid black;
+  padding-bottom: 10px;
+  margin-bottom:20px;
+}
+.friends{
+  width:950px;
+  margin:0 auto;
+  }
+  .update{
+  margin: auto 0;
+  }
