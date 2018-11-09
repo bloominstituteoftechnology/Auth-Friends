@@ -8,7 +8,13 @@ class CreateFriendForm extends React.Component {
     render(){
         return (
             <div>
-                CreateFriendForm here.
+                <h3>Create Friend Form</h3>
+                <form>
+                    <input placeholder="input name" />
+                    <input placeholder="input age" />
+                    <input placeholder="input email" />
+                </form>
+                <button>Submit</button>
             </div>
         )
     }

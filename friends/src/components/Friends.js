@@ -3,25 +3,6 @@ import React from 'react';
 import './Friends.css';
 
 class Friends extends React.Component {
-    // constructor(){
-    //     super();
-    //     this.state ={
-    //         friends: [],
-    //     }
-    // }
-
-    // componentDidMount(){
-    //     axios
-    //     .get(`http://localhost:5000/api/friends`)
-    //     .then(response => {
-    //         this.setState({ friends: response.data })
-    //     })
-    //     .catch(err => {
-    //         console.log("Fail to GET Friends from data", err)
-    //     })
-    // }
-
-    
 
     render(){
         return (
