@@ -6,12 +6,13 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import { applyMiddleware, createStore } from '../../../Library/Caches/typescript/3.1/node_modules/redux';
+import FriendsReducer from './reducers/FriendsReducer'
 
 const middleware = applyMiddleware(thunk);
-const store = createStore(asYetUnnamedReducer, middleware)
+const store = createStore(FriendsReducer, middleware)
 
 ReactDOM.render(
-    <Provider>
+    <Provider store={store}>
         <App />
     </Provider>
     , document.getElementById('root'));
