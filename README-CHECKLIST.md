@@ -15,15 +15,12 @@
 
 * It's really is up to you how you build this project. I suggest 
 
-* [] write down the flow you want to follow
+* [x] write down the flow you want to follow
       1. Create components
       2. Create action creators
       3. Create reducers
       4. Create root reducer
       5. Create Redux store
-* [] write down each individual piece you need for each step in the flow:
-  * (ie step 3, build containers - import connect, write mapStateToProps function, import action creators and pass them to connect, etc. etc.) so that this process doesn't feel as overwhelming.
-
 * WORKFLOW 
       1. [] Create components and related folders
             components
@@ -44,7 +41,7 @@
               - index.js
               - singleFriendReducer.js
          [] Create root reducer (see tip below)
-         
+
       4. [] Create Redux store
     
       5. [] Use the Provider component from `react-redux` to pass the store to your root component.
@@ -56,6 +53,9 @@
       8. [] Use `redux-thunk` as a middleware inside of `src/index.js`. Be sure to pass it to `applyMiddleware()` then feed it into your createStore function.
 
       9. [] (Optional) include `redux-logger` to your middleware. You're going to have plenty of action creators that will consume our API so you'll get plenty of actions triggered.
+
+* [] write down each individual piece you need for each step in the flow:
+  * (ie step 3, build containers - import connect, write mapStateToProps function, import action creators and pass them to connect, etc. etc.) so that this process doesn't feel as overwhelming.
 
 ## Root Reducer and our State Tree
 
