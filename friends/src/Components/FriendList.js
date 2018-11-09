@@ -4,7 +4,7 @@ import Friend from './Friend';
 const FriendList = props => {
     return (
         <>
-            <Friend />
+            {<Friend />
         </>
     )
 }

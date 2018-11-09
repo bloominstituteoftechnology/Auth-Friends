@@ -1,4 +1,4 @@
-import /*action types go here*/ from './Actions';
+import { FETCHING_FRIENDS, SUCCESS, ERROR } from '../Actions/index';
 
 const initialState = {
     fetchingFriends: false,
@@ -13,9 +13,17 @@ const initialState = {
     error: null
 }
 
-export const friendReducer = (state = initialState, action) {
+const friendReducer = (state = initialState, action) => {
     switch (action.type) {
+        case FETCHING_FRIENDS:
+            return Object.assign({}, state, { fetchingFriends: true })
+        case SUCCESS:
+            return Object.assign({}, state, { friendsFetched: true })
+        case ERROR:
+            return Object.assign({}, state, { error: action.payload })
         default:
             return state
     }
 }
+
+export default friendReducer;
