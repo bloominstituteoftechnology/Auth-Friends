@@ -1,0 +1,19 @@
+
+.friend-container {
+    border: 1px solid lime;
+    max-width: 800px;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+
+.friend-card {
+    border: 1px solid gray;
+}
