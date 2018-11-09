@@ -5,10 +5,14 @@ import axios from 'axios'
 const fetchFriends = () =>{
     return (dispatch) =>{
         dispatch({type: LOADING})
-        axios.get('/api/friends')
-            .then(console.log(response))
+        axios.get('http://localhost:5000/api/friends')
+            .then((response) => {
+                dispatch({type: SUCCESS, payload: response.data})
+            })
             .catch(err =>{
                 dispatch({type: ERROR, payload: "Unable to retrieve Friends data"})
             })
     }
 }
+
+export default fetchFriends
