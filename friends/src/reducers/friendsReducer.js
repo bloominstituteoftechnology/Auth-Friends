@@ -13,13 +13,13 @@ export const friendsReducer = (previousState = initialState, action) => {
         case SUCCESS:
             return Object.assign({}, previousState, {friends: action.payload, fetching: false,  error: ''});
         case FAILURE:
-            return previousState;
+            return Object.assign({}, previousState, {error: action.payload})
         case ADDING_FRIEND:
             return previousState;
         case UPDATING_FRIEND:
             return previousState;
         case DELETING_FRIEND:
-            return previousState;
+            return Object.assign({}, previousState, {fetching: true, error: ''})
 
         default: return previousState;
     }

@@ -15,8 +15,21 @@ export const fetchFriends = () => {
             dispatch({type: SUCCESS, payload: response.data})
         })
         .catch(response => {
-            dispatch({type: FAILURE, payload: response});
+            dispatch({type: FAILURE, payload: 'Error getting friend'});
         })
     }
-
 }
+
+export const deleteFriend = (id) => {
+    return dispatch => {
+        dispatch({type: DELETING_FRIEND});
+        axios.delete(`http://localhost:5000/api/friends/${id}`)
+        .then(response => {
+            dispatch({type: SUCCESS, payload: response.data})
+        })
+        .catch(response => {
+            dispatch({type: FAILURE, payload: 'Error deleting friend'})
+        })
+    }
+}
+
