@@ -1,12 +1,17 @@
 import React from 'react'
-
+import {connect} from 'react-redux'
+import {deleteFriend} from '../actions/friendsActions'
 
 const Friend = props => {
-    const {friend} = props
+    const {friend, deleteFriend} = props
 
+    const clickHandler=()=>{
+        deleteFriend(friend.id)
+    }
+   
     return (
         <div key={friend.id} className="friend-card">
-            {/* <p className="close-button" onClick={clickHandler}>X</p> */}
+            <p className="close-button" onClick={clickHandler}>x</p>
             <h2>{friend.name}</h2>
             <p>{friend.age}</p>
             <p>{friend.email}</p>
@@ -14,5 +19,6 @@ const Friend = props => {
     )
 }
 
+const mapStateToProps =()=>({})
 
-export default Friend
+export default connect(mapStateToProps, {deleteFriend})(Friend)
