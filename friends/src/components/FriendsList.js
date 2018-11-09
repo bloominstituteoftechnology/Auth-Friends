@@ -1,14 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import Friend from './Friend';
 
 class FriendsList extends React.Component{
 
     render(){
         return(
             <div>
-                I'm the friends list
+               {this.props.friends.map(friend => {
+                   return (
+                       <Friend 
+                        name={friend.name}
+                        age={friend.age}
+                        email={friend.email}/>
+                   )
+               })}
             </div>
         )
     }
 };
 
-export default FriendsList;
+const mapStateToProps = state => {
+    return {
+        friends: state.friends
+    }
+}
+
+export default connect(mapStateToProps)(FriendsList);
