@@ -15,16 +15,16 @@ class Friends extends React.Component{
         this.props.fetchFriends()
     }
     render(){
-        console.log('Props',this.props)
         return(
-            <div className = 'friends-container'>
-              <h1>Elegant Soiree Guest List:</h1> 
-              {this.props.friends.map(friend =>{
+            <div className = 'friends-list-container'>
+              <h1 className = 'friends-header'>Elegant Soiree Guest List :</h1> 
+              <div className = 'friends-list'>
+                {this.props.friends.map(friend =>{
                    return(
                        <Friend key={friend.id} friend = {friend}/>
                    )
                })}
-              
+                </div> 
             </div>
         )
     }

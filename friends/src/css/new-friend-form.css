@@ -25,4 +25,6 @@ button{
     height:40px;
     cursor:pointer;
     margin:10px auto;
+    font-family: 'Charmonman', cursive;
+    font-size:20px;
 }

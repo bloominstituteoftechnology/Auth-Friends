@@ -1,8 +1,22 @@
-.friends-container{
+.friends-list-container{
     width:80%;
     margin:20px auto;
     margin-top:60px;
     border: 10px ridge #ADB0A7;
-    background-color: rgba(173, 176, 167, 0.527);
+    background-color: rgba(173, 176, 167, 0.664);
+    padding:20px ;
+    color: rgb(223, 232, 236);
+    font-family: 'Charmonman', cursive;
+   
+
+}
+.friends-header{
+    text-align:center;
+    font-size:36px;
+}
+.friends-list{
     
+    padding-left:110px;
+    font-size:22px;
+
 }
