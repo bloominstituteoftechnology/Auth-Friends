@@ -13,6 +13,13 @@ class FriendList extends Component {
     }
 
     render() {
+
+        if (this.props.fetchingFriends) {
+            return (
+                <h2>Let's see how many friends you have</h2>
+            )
+        }
+
         return (
             <>
                 {this.props.friends.map(friend => {
