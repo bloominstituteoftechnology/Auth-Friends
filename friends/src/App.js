@@ -3,11 +3,14 @@ import './App.css';
 import {connect} from 'react-redux'; 
 import { NavLink, Route } from 'react-router-dom';
 import Friend from './Components/Friend'; 
+import { getFriends } from './Actions/actions';
 
 class App extends Component {
-  constructor(props){
-    super(props); 
+  
+  componentDidMount(){
+    this.props.getFriends();
   }
+
   render() {
     return (
       <div className="App">
@@ -21,7 +24,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  friends: state.friends
-});
- export default connect(mapStateToProps)(App);
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+    error: state.error,
+    loading: state.loading
+ }
+};
+
+ export default connect(mapStateToProps, {getFriends})(App);
