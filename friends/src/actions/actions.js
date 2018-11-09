@@ -13,7 +13,21 @@ export const getFriends = () => {
                 dispatch({type: GET_FRIENDS, friends: response.data})
             })
             .catch(err => {
-                dispatch({type: Error, errorMessage: "We had some trouble finding your friends."})
+                dispatch({type: ERROR, errorMessage: "We had some trouble finding your friends."})
             });
+    }
+}
+
+export const addFriend = (newFriend) => {
+    return (dispatch) => {
+        dispatch({type: LOADING})
+        axios
+            .post(`http://localhost:5000/api/friends`, newFriend)
+        .then(response => {
+            dispatch({type: GET_FRIENDS, friends: response.data})
+        })
+        .catch(err => {
+            dispatch({type: ERROR, errorMessage: "We had some trouble adding your friend."})
+        });
     }
 }
