@@ -22,3 +22,21 @@ export const fetchFriends = friend => {
             })
     }
 };
+
+export const saveFriend = friend => {
+    return dispatch => {
+        dispatch({ type: SAVING_FRIENDS });
+        axios
+            .post('http://localhost:5000/api/friends', {...friend})
+            .then(response => {
+                console.log(response.data)
+                dispatch({
+                    type: FRIENDS_SAVED,
+                    payload: response.data
+                })
+            })
+            .catch(err => {
+                dispatch({ type: ERROR, payload: 'error adding new friend' })
+            })
+    }
+}

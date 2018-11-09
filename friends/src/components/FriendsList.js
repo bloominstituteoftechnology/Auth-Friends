@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Friend from './Friend';
+import './components.css';
 
 class FriendsList extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="friendContainer">
                {this.props.friends.map(friend => {
                    return (
                        <Friend 

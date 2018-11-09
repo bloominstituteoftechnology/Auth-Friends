@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {saveFriend} from '../actions/actions';
 
-class CreateFriendForm extends React.Component{
+class CreateFriendForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
@@ -15,10 +17,15 @@ class CreateFriendForm extends React.Component{
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    submitHandler = (e) => {
+        e.preventDefault();
+        this.props.saveFriend(this.state);
+    }
+
     render(){
         return(
             <div>
-                <form>
+                <form onSubmit={this.submitHandler}>
                     <input name="name" placeholder="name" value={this.state.name} onChange={this.inputHandler} />
                     <input name="age" placeholder="age" value={this.state.age} onChange={this.inputHandler}/>
                     <input name="email" placeholder="email" value={this.state.email} onChange={this.inputHandler}/>
@@ -29,4 +36,4 @@ class CreateFriendForm extends React.Component{
     }
 };
 
-export default CreateFriendForm;
+export default connect(() => ({}), { saveFriend })(CreateFriendForm);

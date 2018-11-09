@@ -1,0 +1,11 @@
+.friend {
+    border: 1px solid black;
+    width: 300px;
+    margin: 10px 0;
+}
+
+.friendContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+}

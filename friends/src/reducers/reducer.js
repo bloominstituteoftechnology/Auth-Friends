@@ -12,14 +12,18 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
    switch(action.type) {
     case FETCHING_FRIENDS:
-        return Object.assign({}, state, {fetchingFriends: true, error: ''});
+        return Object.assign({}, state, {fetchingFriends: true, fetchedFriends: false, error: ''});
     case FETCHED_FRIENDS:
         return Object.assign({}, state, {
             fetchingFriends: false,
             fetchedFriends: true,
             error: '',
             friends: action.payload
-        })
+        });
+    case SAVING_FRIENDS:
+        return Object.assign({}, state, { savingFriends: true, friendSaved: false, error: '' });
+    case FRIENDS_SAVED:
+        return Object.assign({}, state, { savingFriends: false, friendSaved: true, error: '', friends: action.payload })
     case ERROR:
         return Object.assign({}, state, { error: action.payload })
     default:

@@ -22,7 +22,7 @@ class UpdateFriendForm extends React.Component{
                     <input name="name" placeholder="name" value={this.state.name} onChange={this.inputHandler} />
                     <input name="age" placeholder="age" value={this.state.age} onChange={this.inputHandler}/>
                     <input name="email" placeholder="email" value={this.state.email} onChange={this.inputHandler}/>
-                    <input type="submit" value="Create"/>
+                    <input type="submit" value="Update"/>
                 </form>
             </div>
         )
