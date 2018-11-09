@@ -51,7 +51,7 @@ class AddFriend extends Component {
                     onChange={this.inputHandler}
                     placeholder='Email'
                 />
-                <button type='submit'>Add Friend</button>
+                <button type='submit'>Add friend</button>
             </form>
         )
     }

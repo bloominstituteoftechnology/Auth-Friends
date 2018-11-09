@@ -20,14 +20,29 @@ export const getFriends = () => {
 
 export const addFriend = (newFriend) => {
     return (dispatch) => {
-        dispatch({type: LOADING})
+        dispatch({type: LOADING});
         axios
             .post(`http://localhost:5000/api/friends`, newFriend)
-        .then(response => {
-            dispatch({type: GET_FRIENDS, friends: response.data})
-        })
-        .catch(err => {
-            dispatch({type: ERROR, errorMessage: "We had some trouble adding your friend."})
-        });
+            .then(response => {
+                dispatch({type: GET_FRIENDS, friends: response.data})
+            })
+            .catch(err => {
+                dispatch({type: ERROR, errorMessage: "We had some trouble adding your friend."})
+            });
+    }
+}
+
+export const deleteFriend = (id) => {
+    return (dispatch) => {
+        dispatch({type: LOADING});
+        axios
+            .delete(`http://localhost:5000/api/friends/${id}`)
+            .then(response => {
+                dispatch({type: GET_FRIENDS, friends: response.data})
+            })
+            .catch(err => {
+                dispatch({type: ERROR, errorMessage: "We had some trouble removing your friend."})
+            });
+        
     }
 }
