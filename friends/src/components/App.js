@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {fetch, addFriend} from "../actions";
+// import {fetch, addFriend} from "../actions";
 import {connect} from 'react-redux';
+import {fetch, addFriend} from "../actions";
 
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
   }
 
 
+
   render() {
 /*
     if(this.props.error !== null) {
@@ -32,11 +34,34 @@ class App extends Component {
       return <h3> Looking for my some friends...</h3>
 
     }
-
 */
+
     return (
       <div>
         <h1>Redux Friends</h1>
+
+        <ul>
+          {this.props.friends.map( friend => {
+            return (
+              <div key = {friend.id}>
+                {friend.name}
+
+
+
+
+              </div>
+            )
+
+
+          })}
+
+
+
+        </ul>
+
+
+
+
 
       </div>
 
@@ -50,10 +75,10 @@ const mapStateToProps = (state) => {
 
 
   return{
-    friends: state.reduxFriends.friends,
-    fetching: state.reduxFriends.fetching,
-    fetched: state.reduxFriends.fetched,
-    error: state.reduxFriends.error
+    friends: state.friends,
+    fetching: state.fetching,
+    fetched: state.fetched,
+    error: state.error
 
   }
 

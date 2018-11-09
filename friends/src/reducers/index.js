@@ -5,7 +5,7 @@ import {
 } from '../actions';
 
 const initialState = {
-  reduxFriends: [],
+  friends: [],
   error: null,
   fetching: false,
   fetched: false
@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
       return {...state, fetching: true};
 
     case SUCCESS:
-      return {...state, fetching: false, fetched: true, reduxFriends: [...action.payload]};
+      return {...state, fetching: false, fetched: true, friends: [...action.payload]};
 
     case FAILURE:
       return {...state, fetching: false, error: action.payload};

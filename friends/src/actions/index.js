@@ -5,15 +5,15 @@ export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
 
 export const fetch = () => {
-  const reduxFriends = axios.get('http://localhost:5000/api/friends');
+  const friends = axios.get('http://localhost:5000/api/friends');
 
   return dispatch => {
     dispatch({type: FETCHING});
 
-    reduxFriends
+    friends
       .then(response => {
-        console.log(response);
-        dispatch({ type: SUCCESS, payload: response.data.results});
+       console.log(response);
+        dispatch({ type: SUCCESS, payload: response.data});
       })
       .catch(err => {
 
@@ -29,14 +29,14 @@ export const fetch = () => {
 };
 
 export const addFriend = () => {
-  const reduxFriends = axios.post('http://localhost:5000/api/friends');
+  const friends = axios.post('http://localhost:5000/api/friends');
 
   return dispatch => {
     dispatch({type: FETCHING});
 
-    reduxFriends
+    friends
       .then(response => {
-        dispatch({type: SUCCESS, payload: response.data.results});
+        dispatch({type: SUCCESS, payload: response.data});
       })
       .catch(err => {
 
