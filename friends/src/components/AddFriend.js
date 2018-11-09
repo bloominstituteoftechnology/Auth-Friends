@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import { addFriend } from "../actions/actions";
 
-
 export class AddFriend extends React.Component {
   constructor(props) {
     super(props);
@@ -24,40 +23,39 @@ export class AddFriend extends React.Component {
   };
 
   render() {
-    return (
-      <form onSubmit={this.submitFriend}>
-        <input
-          type="text"
-          name="name"
-          value={this.state.name}
-          onChange={this.inputHandler}
-          placeholder="Name"
-        />
-        <input
-          type="number"
-          name="age"
-          value={this.state.age}
-          onChange={this.inputHandler}
-          placeholder="Age"
-        />
-        <input
-          type="email"
-          name="email"
-          value={this.state.email}
-          onChange={this.inputHandler}
-          placeholder="Email"
-        />
-        <button type="submit">Add New Friend</button>
-      </form>
-    );
+      return (
+        <form onSubmit={this.submitFriend}>
+          <input
+            type="text"
+            name="name"
+            value={this.state.name}
+            onChange={this.inputHandler}
+            placeholder="Name"
+          />
+          <input
+            type="number"
+            name="age"
+            value={this.state.age}
+            onChange={this.inputHandler}
+            placeholder="Age"
+          />
+          <input
+            type="email"
+            name="email"
+            value={this.state.email}
+            onChange={this.inputHandler}
+            placeholder="Email"
+          />
+          <button type="submit">Add New Friend</button>
+        </form>
+      );
+    }
   }
-}
 
-const MapStateToProps = state => {
-  return {};
-};
+
+const mapStateToProps = () => ({});
 
 export default connect(
-  MapStateToProps,
+  mapStateToProps,
   { addFriend }
 )(AddFriend);

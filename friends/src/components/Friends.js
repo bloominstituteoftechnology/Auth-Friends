@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { AddFriend } from "./AddFriend";
-import { Friend } from "./Friend";
+import AddFriend from "./AddFriend";
+import Friend from "./Friend";
 import { getFriends } from "../actions/actions";
 
 export class Friends extends React.Component {
@@ -27,7 +27,7 @@ export class Friends extends React.Component {
   }
 }
 
-const MapStateToProps = state => {
+const mapStateToProps = state => {
   return {
     loading: state.loading,
     error: state.error,
@@ -36,6 +36,6 @@ const MapStateToProps = state => {
 };
 
 export default connect(
-  MapStateToProps,
+  mapStateToProps,
   { getFriends }
 )(Friends);

@@ -45,3 +45,16 @@ export const updateFriend = (updatedFriend) => {
             })
     }
 }
+
+export const deleteFriend = id => {
+    return(dispatch) => {
+        dispatch({type: LOADING})
+        axios.delete(`http://localhost:5000/api/friends/${id}`)
+            .then(response => {
+                dispatch({type: DELETE_FRIEND, friends: response.data})
+            })
+            .catch(error => {
+                dispatch({type: ERROR, error: 'Trouble deleting friend'})
+            })
+    }
+}
