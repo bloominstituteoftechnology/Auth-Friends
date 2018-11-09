@@ -40,5 +40,5 @@ const mapStateToProps = state => {
     return {}
 }
 
-export default connect(mapStateToProps, {addFriend}) (AddFriend);
+export default connect(mapStateToProps, {addFriend: addFriend}) (AddFriend);
 
