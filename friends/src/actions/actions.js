@@ -46,3 +46,17 @@ export const deleteFriend = (id) => {
         
     }
 }
+
+export const updateFriend = (id, updatedFriend) => {
+    return (dispatch) => {
+        dispatch({type: LOADING});
+        axios
+            .put(`http://localhost:5000/api/friends/${id}`, updatedFriend)
+            .then(response => {
+                dispatch({type: GET_FRIENDS, friends: response.data})
+            })
+            .catch(err => {
+                dispatch({type: ERROR, errorMessage: "We had some trouble updating your friend's info."})
+            });
+    }
+}
