@@ -31,7 +31,6 @@ export const createFriend = (newFriend) => {
       dispatch({type: LOADING})
       axios.post(`http://localhost:5000/api/friends/`, newFriend)
          .then(response => {
-            console.log(response)
             dispatch({
                type: SUCCESS,
                payload: response.data
@@ -45,4 +44,22 @@ export const createFriend = (newFriend) => {
          })
    }
 }
+
+//PUT
+export const updateFriend = (friend) => {
+   return dispatch => {
+      dispatch({type: LOADING})
+      axios.put(`http://localhost:5000/api/friends/${friend.id}`, friend)
+         .then(response => {
+            console.log(response)
+         })
+         .catch(err => {
+            dispatch({
+               type: FAIL,
+               error: "Error Updating Friend Info"
+            })
+         })
+   }
+}
+
 //DELETE

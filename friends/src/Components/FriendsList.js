@@ -8,7 +8,7 @@ import {getFriends} from "../Actions/actions"
 class FriendsList extends React.Component {
    componentDidMount() {
       this.props.getFriends()
-   }
+	}
    render() {
 		if(this.props.loading === true) {
 			return <h2>Loading Friends...</h2>
@@ -16,7 +16,12 @@ class FriendsList extends React.Component {
       return (
          <div>
 				{this.props.friends.map(friend => {
-						return (<Friend key={friend.id} friend={friend}/>)
+						return (
+							<Friend 
+								key={friend.id} 
+								friend={friend}
+							/>
+						)
 				})}
 				<CreateFriend />
 				<UpdateFriend />

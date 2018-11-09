@@ -9,7 +9,6 @@ export default class UpdateForm extends React.Component {
          email: "",
       }
    }
-
    inputHandler = (e) =>{
       e.preventDefault()
       this.setState({[e.target.name]: e.target.value})
@@ -34,6 +33,7 @@ export default class UpdateForm extends React.Component {
                name="email"
                placeholder="Enter Email"
                onChange={this.inputHandler}></input>
+            <button type="submit">Update</button>
          </form>
       )
    }
