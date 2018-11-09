@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { addfriend} from './Actions'
+import { addfriend} from './Actions';
+import { Button} from 'reactstrap/lib';
+
 import './index.css'
 class FriendForm extends Component {
   constructor(props) {
@@ -35,6 +37,7 @@ class FriendForm extends Component {
     return (
       <div className="Form">
         <form onSubmit={this.addFriendHandler}>
+        
           <input
             onChange={this.handleInputChange}
             placeholder="name"
@@ -53,14 +56,13 @@ class FriendForm extends Component {
             value={this.state.email}
             name="email"
           />
-          <button type="submit">Add Friend</button>
+          <Button color="success" type="submit">Add Friend</Button>
         </form>
       </div>
     );
   }
 }
 const mapStateToProps = state => {
-  console.log(state)
   return {};
 };
 

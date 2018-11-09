@@ -39,7 +39,6 @@ class Friends extends Component {
 
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     loading: state.fetchingFriends,
     friends: state.friends

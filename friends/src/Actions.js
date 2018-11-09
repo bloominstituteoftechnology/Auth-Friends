@@ -3,8 +3,8 @@ import axios from 'axios';
 export const FETCHED_INFO = "FETCHED_INFO";
 export const ERROR = "ERROR";
 export const LOADING = "LOADING";
-export const ADDFRIEND="ADDFRIEND";
-export const DELETEFRIEND="DELETEFRIEND";
+export const ADDFRIEND = "ADDFRIEND";
+export const DELETEFRIEND = "DELETEFRIEND";
 export const UPDATEFRIEND = "UPDATEFRIEND"
 
 export const getinfo = () => {
@@ -14,7 +14,6 @@ export const getinfo = () => {
         axios
             .get('http://localhost:5000/api/friends')
             .then(response => {
-                console.log(response)
                 dispatch({
                     type: FETCHED_INFO,
                     payload: response.data
@@ -32,7 +31,6 @@ export const addfriend = (newfriend) => {
         axios
             .post('http://localhost:5000/api/friends', newfriend)
             .then(response => {
-                console.log(response)
                 dispatch({
                     type: ADDFRIEND,
                     payload: response.data
@@ -58,10 +56,10 @@ export const deletefriend = (id) => {
     }
 }
 
-export const updatefriend = (id,friend) => {
+export const updatefriend = (id, friend) => {
     return (dispatch) => {
         dispatch({ type: LOADING })
-        axios.put(`http://localhost:5000/api/friends/${id}`,friend)
+        axios.put(`http://localhost:5000/api/friends/${id}`, friend)
             .then(response => {
                 dispatch({ type: UPDATEFRIEND, payload: response.data })
             })

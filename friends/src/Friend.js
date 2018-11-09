@@ -1,7 +1,8 @@
 import React from 'react';
 import './index.css';
-import { deletefriend, updatefriend } from './Actions'
+import { deletefriend, updatefriend } from './Actions';
 import { connect } from "react-redux";
+import { Button} from 'reactstrap/lib';
 class Friend extends React.Component {
   constructor(props) {
     super(props);
@@ -33,11 +34,11 @@ class Friend extends React.Component {
     return (
 
       <div className="friend">
-        <div>
+        <div className="friendbox">
           <h3>{this.props.name}</h3>
-          <p>{this.props.age}years old</p>
+          <p>{this.props.age} years old</p>
           <p>{this.props.email}</p>
-          <button onClick={() => this.props.deletefriend(this.props.id)}>Delete Friend</button>
+          <Button color="danger"onClick={() => this.props.deletefriend(this.props.id)}>Delete Friend</Button>
         </div>
         <div className='update'>
           <form onSubmit={this.handleUpdateSubmit}>
@@ -56,7 +57,7 @@ class Friend extends React.Component {
               name="email"
               placeholder="email"
             />
-            <button type="submit">Update Friend</button>
+            <Button outline color="primary" type="submit">Update Friend</Button>
           </form>
         </div>
       </div>
