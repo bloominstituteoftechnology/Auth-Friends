@@ -1,3 +1,7 @@
+import {LOADING, SUCCESS, ERROR} from '../Actions/actionTypes'
+import { Object } from 'core-js';
+
+
 const initialState = {
     // fetchingFriends: false,
     // friendsFetched: false,
@@ -9,19 +13,21 @@ const initialState = {
     // friendDeleted: false,
     // friends: [],
     // error: null
-    loading: false,
-    friendsFetched: false, //friends data loaded success
-    friendCreated: false, //friend created success
-    friendUpdated: false, //friend updated success
-    friendDeleted: false, //friend deleted success
     friends: [],
+    loading: false,
     error: null
 
 }
 
 const friendsReducer = (state = initialState, action) =>{
     switch(action.type)
-    {
+    {       
+        case LOADING:
+            return Object.assign({}, state, {loading: true})
+        case SUCCESS:
+            return Object.assign({}, state, {loading: false, friends: action.payload, error: null})
+        case ERROR:
+            return Object.assign({}, state, {error: true, loading: false})
         default:
             return state
     }
