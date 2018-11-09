@@ -7,7 +7,7 @@ import logger from 'redux-logger';
 
 
 import App from './App';
-import friendsReducer from './actions/friendsReducer';
+import friendsReducer from './reducers/friendsReducer'
 
 const middleware = applyMiddleware(thunk, logger);
 

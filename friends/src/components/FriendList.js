@@ -9,11 +9,13 @@ class FriendList extends Component {
         this.props.getFriends()
     }
     render() {
-        <div>
-            { this.props.loading ? <h1>Loading</h1> : null },
-            { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
-            { this.props.friends.map( friend => <Friend friend={friend} key={friend.id}/> ) } 
-        </div>
+        return (
+            <div>
+                { this.props.loading ? <h1>Loading</h1> : null },
+                { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
+                { this.props.friends.map( friend => <Friend friend={friend} key={friend.id}/> ) } 
+            </div>
+        )
     }
 }
 
