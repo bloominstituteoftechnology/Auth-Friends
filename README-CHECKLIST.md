@@ -21,10 +21,14 @@
       3. Create reducers
       4. Create root reducer
       5. Create Redux store
+      6. Make import statements
+      7. Make connections
+
 * WORKFLOW 
       1. [] Create components and related folders
-            components
-              - App.js
+          src/
+            - App.js
+            components/
               - FriendsList.js
               - FriendForm.js
               - CreateFriendForm.js
@@ -32,17 +36,17 @@
               - SelectedFriend.js
 
       2. [] Create action creators
-            actions
+            actions/
               index.js
 
       3. [] Create reducers
-            reducers
+            reducers/
               - friendsReducer.js
               - index.js
               - singleFriendReducer.js
-         [] Create root reducer (see tip below)
+         [] Create root reducer (see tip below) in index.js
 
-      4. [] Create Redux store
+      4. [] Create Redux store in App.js
     
       5. [] Use the Provider component from `react-redux` to pass the store to your root component.
 
