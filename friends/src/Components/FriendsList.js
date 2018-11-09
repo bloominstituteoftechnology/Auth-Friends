@@ -1,31 +1,31 @@
 import React from "react";
-import axios from "axios"
 import Friend from "./Friend"
-import UpdateForm from "./UpdateFriendForm"
+import {connect} from "react-redux";
+import {getFriends} from "../Actions/actions"
 
-export default class FriendsList extends React.Component {
-   constructor() {
-      super()
-      this.state = {
-         friends: []
-      }
-   }
+class FriendsList extends React.Component {
    componentDidMount() {
-      axios.get(`http://localhost:5000/api/friends`)
-         .then(response => {
-            this.setState({friends: response.data})
-         })
-         .catch(err => {
-            console.log(err)
-         })
+      this.props.getFriends()
    }
    render() {
+		if(this.props.loading === true) {
+			return <h2>Loading Friends...</h2>
+		}
       return (
          <div>
-				{this.state.friends.map(friend => {
+				{this.props.friends.map(friend => {
 						return (<Friend key={friend.id} friend={friend}/>)
 				})}
          </div>
       )
    }
 }
+
+const mapState = state => {
+	return {
+		loading: state.loading,
+		friends: state.friends,
+	}
+}
+
+export default connect(mapState, {getFriends})(FriendsList)
