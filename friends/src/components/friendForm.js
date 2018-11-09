@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {GET_FRIENDS} from '../actions/index';
+import { connect } from 'react-redux';
 
 class FriendForm extends Component {
   constructor(props) {
@@ -22,10 +24,10 @@ class FriendForm extends Component {
     return (
       <div>
         <h1>Friend Form Here</h1>
-        <form>
-          <input placeHolder="name"></input>
-          <input placeHolder="age"></input>
-          <input placeHolder="email"></input>
+        <form onSubmit = {this.submitHandler}>
+          <input onChange={this.handleChange} placeholder="name"></input>
+          <input onChange={this.handleChange} placeholder="age"></input>
+          <input onChange={this.handleChange} placeholder="email"></input>
           <button>Submit</button>
 
 
@@ -35,5 +37,8 @@ class FriendForm extends Component {
     )
   }
 }
+const mapStateToProps = () =>{
+{}
+}
 
-export default FriendForm;
+export default connect(mapStateToProps, {GET_FRIENDS})(FriendForm);

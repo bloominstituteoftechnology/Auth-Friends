@@ -1,17 +1,21 @@
-import React from 'react'
 import FriendForm from './friendForm';
+import React, { Component } from 'react'
 
-const Friend = props => {
+class Friend extends Component {
+  
+  componentDidMount(){
 
-
-return (
-<div>
-<h1>Friends List Here</h1>
-<FriendForm/>
-
-
-</div>
-)
+  }
+  render() {
+    return (
+      <div>
+      
+      <FriendForm/>
+        
+      </div>
+    )
+  }
 }
+
 
 export default Friend
