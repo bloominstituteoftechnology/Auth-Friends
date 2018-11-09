@@ -20,7 +20,7 @@ class MyFriendsList extends React.Component {
 
     if(this.props.fetching) {
       console.log('locating friends...');
-      return <h3> Looking for my redux friends...</h3>
+      return <h3> Looking for my some friends...</h3>
 
     }
 
@@ -47,8 +47,13 @@ const mapStateToProps = (state) => {
 
   }
 
-
-
-
-
 };
+
+
+
+export default connect (
+  mapStateToProps,
+  {
+    fetch
+  }
+)(MyFriendsList)
