@@ -10,4 +10,4 @@ import React, { Component } from 'react'
     }
 }
 
- export default UpdateFriend 
+ export default UpdateFriend;
