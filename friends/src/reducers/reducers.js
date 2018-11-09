@@ -1,3 +1,5 @@
+import {LOADING, GET_FRIENDS, ERROR} from '../actions/actions.js';
+
 const initialState = {
     fetchingFriends: false,
     friendsFetched: false,
@@ -12,7 +14,16 @@ const initialState = {
 }
 
 const rootReducer = (state = initialState, action) => {
-    return state;
+    switch(action.type){
+        case LOADING:
+            return Object.assign({}, state, {fetchingFriends: true})
+        case GET_FRIENDS:
+            return Object.assign({}, state, {fetchingFriends: false, error: '', friends: action.friends})
+        case ERROR:
+            return Object.assign({}, state, {fetchingFriends: false, error: action.errorMessage})
+        default:
+            return state
+    }
 }
 
 export default rootReducer;
