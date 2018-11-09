@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 
 import {createFriend} from '../actions/index';
 
+import styles from '../css/new-friend-form.css';
+
 class NewFriendForm extends React.Component{
     constructor(){
         super()
@@ -15,11 +17,11 @@ class NewFriendForm extends React.Component{
     }
 
     inputHandler = e =>{
-        this.setState({[e.target.value] : e.target.name})
+        this.setState({[e.target.name] : e.target.value})
     }
     submitHandler = e =>{
         e.preventDefault()
-        this.props.createFriend({...this.state}) ///Is this the correct way?
+        this.props.createFriend(this.state) 
         this.setState({
             name : '',
             age : '',
@@ -31,7 +33,7 @@ class NewFriendForm extends React.Component{
             <div className = 'new-friend-form-container'>
                 <form >
                     <input 
-                        placeholder = '    add name ...'
+                        placeholder = '    add guest name ...'
                         type = 'text'
                         name = 'name'
                         value = {this.state.name}
@@ -39,7 +41,7 @@ class NewFriendForm extends React.Component{
 
                     />
                      <input 
-                        placeholder = '    add age ...'
+                        placeholder = '    add guest age ...'
                         type = 'text'
                         name = 'age'
                         value = {this.state.age}
@@ -47,14 +49,14 @@ class NewFriendForm extends React.Component{
 
                     />
                      <input 
-                        placeholder = '    add email ...'
+                        placeholder = '    add guest email ...'
                         type = 'text'
                         name = 'email'
                         value = {this.state.email}
                         onChange = {this.inputHandler}
 
                     />
-                    <button onClick = {this.submitHandler} type = 'submit' >Add new friend</button>
+                    <button onClick = {this.submitHandler} type = 'submit' >Add Guest</button>
                     
                 </form>
             </div>

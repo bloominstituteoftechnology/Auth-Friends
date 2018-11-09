@@ -1,0 +1,28 @@
+.new-friend-form-container{
+    width:80%;
+    margin:20px auto;
+    border: 10px ridge #ADB0A7;
+    background-color: rgba(173, 176, 167, 0.527);
+    
+}
+form{
+    width:50%;
+    margin:10px auto;
+    display:flex;
+    flex-direction:column;
+}
+input{
+    margin:5px;
+    height:25px;
+    border: 4px ridge #ADB0A7;
+    background-color: rgb(223, 232, 236);
+}
+button{
+    border: 4px ridge #ADB0A7;
+    background-color:rgb(101, 126, 138);
+    color:  rgb(223, 232, 236);
+    width:50%;
+    height:40px;
+    cursor:pointer;
+    margin:10px auto;
+}

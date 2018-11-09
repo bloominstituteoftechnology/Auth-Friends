@@ -21,7 +21,7 @@ const initialState = {
                 ...prevState, 
                 fetchingFriends : true
             })
-        case FETCHING_FRIENDS_SUCCESS:
+        case FETCHING_FRIENDS_SUCCESS:   
             return Object.assign({}, prevState, {
                 ...prevState,
                 fetchingFriends:false,
