@@ -1,13 +1,13 @@
-// import React, { Component } from "react";
+import React, { Component } from "react";
 
-// class AddFriend extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
+class AddFriend extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-//   render() {
-//     return;
-//   }
-// }
+  render() {
+    return;
+  }
+}
 
-// export default AddFriend;
+export default AddFriend;
