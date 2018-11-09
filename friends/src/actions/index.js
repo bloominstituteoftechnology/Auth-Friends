@@ -4,6 +4,7 @@ export const ERROR = 'ERROR';
 export const LOADING = 'LOADING'
 
 
+
 export const getFriends = () => {
   return (dispatch) => {
     dispatch({ type: LOADING })
