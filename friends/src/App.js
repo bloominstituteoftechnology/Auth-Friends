@@ -20,11 +20,11 @@ class App extends Component {
     super();
     this.state = {
         friends: [],
-        friend: {
-          name: '',
-          age: '',
-          email: ''
-        }
+        // friend: {
+        //   name: '',
+        //   age: '',
+        //   email: ''
+        // }
     }
   }
 
@@ -39,12 +39,12 @@ class App extends Component {
     })
   }
 
-  handleAddNewFriend = event => {
-    event.preventDefault();
+  handleAddNewFriend = friend => {
+    //event.preventDefault();
     axios 
-    .post(`http://localhost:5000/api/friends`, this.state.friend)
+    .post(`http://localhost:5000/api/friends`, friend)
     .then(response => {
-      this.setState({ friends: response.data, friend: blankFormValues })
+      this.setState({ friends: response.data })
     })
     .catch(err => {
       console.log("Fail to ADD Friend", err);
