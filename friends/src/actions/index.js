@@ -16,14 +16,14 @@ export const fetchFriends = () => {
   return dispatch => {
     // Here we dispatch an initial loading state action.
     dispatch({type: LOADING});
-    axios.get(`http://localhost:5000/friends`).then(response => {
+    axios.get(`http://localhost:5000/api/friends`).then(response => {
       console.log("success!",response.data.results)
       // If the API call is successful, we will pass a success action type and the correct payload
       dispatch({type: FETCHED_FRIENDS, friends: response.data.results});
     }).catch(err => {
         console.log(err)
       // If the API call is not successful, we will pass an action with the Error type.
-      dispatch({type: ERROR, payload: "Danger, Will Robinson"});
+      dispatch({type: ERROR, payload: "You have no friends..."});
     });
   };
 };
