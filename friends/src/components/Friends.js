@@ -3,6 +3,12 @@ import React from 'react';
 import './Friends.css';
 
 class Friends extends React.Component {
+    // constructor(){
+    //     super();
+    //     this.state = {
+    //         id: ''
+    //     }
+    // }
 
     render(){
         return (
@@ -15,6 +21,7 @@ class Friends extends React.Component {
                             <p>Age: {friend.age} </p>
                             <p>Email: {friend.email} </p>
                             <p>ID: {friend.id} </p>
+                            <div> X </div>
                         </div>
                     )
                 })}

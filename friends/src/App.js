@@ -51,6 +51,14 @@ class App extends Component {
     })
   }
 
+  handleDeleteFriend = id => {
+    axios
+    .delete(`http://localhost:5000/api/friends/${id}`)
+    .then(response => {
+      this.setState({ friends: response.data })
+    })
+  }
+
 
 
   render() {
