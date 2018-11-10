@@ -1,9 +1,15 @@
 import React from 'react'
 
 class UpdateFriendForm extends React.Component {
-    // constructor(){
-    //     super();
-    // }
+    constructor(){
+        super();
+        this.state = {
+            name: '',
+            age: '',
+            email: '',
+            id: ''
+        }
+    }
 
     render(){
         return (
