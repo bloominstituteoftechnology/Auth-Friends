@@ -1,16 +1,30 @@
 import React from "react";
 import { Button, Col, Form, FormGroup, Label, Input } from "reactstrap";
 import { connect } from "react-redux";
-import { createFriend } from "../action/action";
+import {
+  createFriend,
+  changeUpdateStatus,
+  updateFriend
+} from "../action/action";
 
 class CreateFriendForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-          name: "",
-        age: "",
-        email: ""
+      name: "",
+      age: "",
+      email: ""
     };
+  }
+
+  componentDidMount() {
+    if (this.props.updating) {
+      this.setState({
+        name: this.props.friend.name,
+        age: this.props.friend.age,
+        email: this.props.friend.email
+      });
+    }
   }
 
   changeHandler = e => {
@@ -19,14 +33,26 @@ class CreateFriendForm extends React.Component {
 
   submitHandler = e => {
     e.preventDefault();
-    if (this.state.name && this.state.age && this.state.email) {
+    if (
+      this.state.name &&
+      this.state.age &&
+      this.state.email &&
+      !this.props.updating
+    ) {
       this.props.createFriend(this.state);
       this.setState({
-          name: "",
-          age: "",
-          email: ""
-        
+        name: "",
+        age: "",
+        email: ""
       });
+    } else {
+      this.props.updateFriend(this.props.friend.id, this.state);
+      this.setState({
+        name: "",
+        age: "",
+        email: ""
+      });
+      this.props.changeUpdateStatus();
     }
   };
 
@@ -81,7 +107,11 @@ class CreateFriendForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return { updating: state.updatingFriend };
+};
+
 export default connect(
-  () => ({}),
-  { createFriend }
+  mapStateToProps,
+  { createFriend, changeUpdateStatus, updateFriend }
 )(CreateFriendForm);

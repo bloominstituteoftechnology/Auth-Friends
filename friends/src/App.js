@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>What's App?</h1>
+        <h1>People I Can Have Coffee With</h1>
         <CreateFriendForm />
         <FriendsList />
       </div>

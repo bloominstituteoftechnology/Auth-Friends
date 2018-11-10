@@ -8,9 +8,15 @@ import {
   Badge
 } from "reactstrap";
 
-import { deleteFriend } from '../action/action'
+import { deleteFriend, changeUpdateStatus } from '../action/action'
+import CreateFriendForm from "./CreateFriendForm";
 
 class Friend extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {updateStatus: false};
+  }
+
   render() {
     return (
       <div>
@@ -36,10 +42,11 @@ class Friend extends React.Component {
               >
                 Delete
               </Button>
-              <Button onClick={this.deleteFriend} color="success">
+              <Button onClick={this.props.changeUpdateStatus} color="success">
                 Update
               </Button>
             </CardBody>
+            {this.props.updating ? <CreateFriendForm friend={this.props.friend} /> : null}
           </Card>
         </UncontrolledCollapse>
       </div>
@@ -47,7 +54,11 @@ class Friend extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {updating: state.updatingFriend}
+}
+
 export default connect(
-  () => ({}),
-  { deleteFriend }
+  mapStateToProps,
+  { deleteFriend, changeUpdateStatus }
 )(Friend);
