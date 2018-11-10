@@ -1,12 +1,16 @@
 import React from 'react'
 
+import { connect } from 'react-redux'
+import { deleteFriend } from '../actions/friendAction'
+
 const FriendPage = props => {
     const id = props.friend.id;
     //const friend = props.friends.find(friend => `${friend.id}` === id);
 
     const handleDelete = (event) => {
         event.preventDefault();
-        props.handleDeleteFriend(id)
+        //props.handleDeleteFriend(id)
+        props.deleteFriend(id)
     }
 
     return (
@@ -16,8 +20,14 @@ const FriendPage = props => {
                 <p>Email: {props.friend.email} </p>
                 <p>ID: {props.friend.id} </p>
                 <div style={{cursor: "pointer"}} onClick={handleDelete}> X </div>
+                
         </div>
     )
 }
 
-export default FriendPage
+const mapStateToProps = () => {
+    return {}
+}
+
+export default connect(mapStateToProps, { deleteFriend })(FriendPage)
+//export default FriendPage

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import axios from 'axios';
+//import axios from 'axios';
 
 import Friends from './components/Friends'
 import CreateFriendForm from './components/CreateFriendForm'
@@ -47,14 +47,16 @@ class App extends Component {
   //   })
   // }
 
-  handleDeleteFriend = id => {
-    // console.log(id)
-    axios
-    .delete(`http://localhost:5000/api/friends/${id}`)
-    .then(response => {
-      this.setState({ friends: response.data })
-    })
-  }
+  // handleDeleteFriend = id => {
+  //   // console.log(id)
+  //   axios
+  //   .delete(`http://localhost:5000/api/friends/${id}`)
+  //   .then(response => {
+  //     this.setState({ friends: response.data })
+  //   })
+  // }
+
+  
 
 
 
