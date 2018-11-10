@@ -1,4 +1,4 @@
-import { ADD_FRIEND, FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR, ADDING_FRIEND } from '../actions/friendsActions';
+import { FETCHING_FRIENDS, FRIENDS_FETCHED, ERROR, ADDING_FRIEND } from '../actions/friendsActions';
 
 const initialState = {
     fetchingFriends: false,
@@ -39,16 +39,7 @@ export default (state = initialState, action) => {
                 savingFriends: true,
                 friendsFetched: false,
             })
-        // case ADD_FRIEND:
-        //     return Object.assign({}, state, {
-        //         friends: state.friends.concat([
-        //             {
-        //                 id: 
-        //             }
-        //         ]),
-        //         savingFriends: false,
-        //         friendsSaved: true,
-        //     })
+        
         default:
             return state;
     }

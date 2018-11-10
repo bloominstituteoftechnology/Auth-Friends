@@ -28,7 +28,7 @@ class App extends React.Component {
     const addFriendInputs = document.querySelectorAll('.add-friend-inputs');
     // console.log(addFriendInputs[2].value);
     if(addFriendInputs[0].value && addFriendInputs[1].value && addFriendInputs[2].value !== ''){
-      this.props.addingFriendAction(this.props.friends.friends.length + 1, this.state.Name, this.state.Age, this.state.Email);
+      this.props.addingFriendAction(this.state.Name, parseInt(this.state.Age, 10), this.state.Email);
       this.setState({
         Name: '',
         Age: '',
@@ -64,6 +64,7 @@ class App extends React.Component {
                   <input placeholder='Age'></input>
                   <input placeholder='Email'></input>
                   <button>Update Friend:</button>
+                  <button>Delete Friend:</button>
                 </form>
               </div>
             )
