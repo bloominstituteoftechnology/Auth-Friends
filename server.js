@@ -61,9 +61,9 @@ app.get('/api/friends/:id', (req, res) => {
 
 app.post('/api/friends', (req, res) => {
   const friend = { id: getNextId(), ...req.body };
-
+  
   friends = [...friends, friend];
-
+  
   res.send(friends);
 });
 

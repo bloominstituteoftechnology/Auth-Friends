@@ -12,7 +12,9 @@ class FriendsList extends React.Component {
     render() {
         return (
             <div className="friend-list">
-                {this.props.friends.map( friend => {
+                { this.props.loading ? <h1>Loading</h1> : null }
+                { this.props.error !== '' ? <h1>{this.props.error}</h1> : null }
+                { this.props.friends.map( friend => {
                     return <Friend friend={friend} key={friend.id} />
                 })}
             </div>

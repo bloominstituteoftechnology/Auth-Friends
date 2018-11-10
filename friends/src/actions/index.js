@@ -16,3 +16,16 @@ export const getFriends = () => {
         })
     }
 }
+
+export const createFriend = (friend) => {
+    return (dispatch) => {
+        dispatch({type: LOADING})
+        axios.post('http://localhost:5000/api/friends', friend)
+        .then( response => {
+            dispatch({type: SUCCESS, friends: response.data})
+        })
+        .catch( err => {
+            dispatch({type: ERROR, message: "Unable to create friend"})
+        })
+    }
+}
