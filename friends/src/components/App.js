@@ -24,17 +24,17 @@ class App extends Component {
 
 
   render() {
-/*
+
     if(this.props.error !== null) {
       return <h2> {this.props.error}</h2>
     }
 
     if(this.props.fetching) {
       console.log('locating friends...');
-      return <h3> Looking for my some friends...</h3>
+      return <h3> Looking for my friends...</h3>
 
     }
-*/
+
 
     return (
       <div>

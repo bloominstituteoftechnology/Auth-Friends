@@ -19,7 +19,7 @@ export const fetch = () => {
 
         dispatch({
           type: FAILURE,
-          payload: 'reduxFriends failed to resolve'
+          payload: 'too bad, you have no friends'
         });
     });
 
