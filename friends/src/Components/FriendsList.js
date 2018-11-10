@@ -12,7 +12,7 @@ class FriendsList extends Component {
         return(
         <div>
             {this.props.friends.map( friend =>
-                < Friend friend={friend} id={friend.id} name={friend.name} key={friend.id} />
+                < Friend friend={friend} key={friend.id} />
             )}
         </div>
         )
