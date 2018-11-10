@@ -31,7 +31,16 @@
   }
 }
 
-
+.friend-form {
+  border: 1px solid;
+}
+.friend-form input {
+  height: 25px;
+  width: 25%;
+}
+.friend-form button {
+  height: 30px;
+}
 .friends-list {
   border: 1px solid;
 }

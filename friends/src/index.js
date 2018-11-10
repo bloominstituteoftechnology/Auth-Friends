@@ -10,13 +10,13 @@ import friendsReducer from './reducers/friendsReducer';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
-// const allReducers = combineReducers({
-//     friends: friendsReducer,
-// })
+const allReducers = combineReducers({
+    friends: friendsReducer,
+})
 const middleware = applyMiddleware(logger, thunk);
 
 ReactDOM.render(
-<Provider store={createStore(friendsReducer, middleware)} >
+<Provider store={createStore(allReducers, middleware)} >
     <App />
 </Provider>, document.getElementById('root'));
 
