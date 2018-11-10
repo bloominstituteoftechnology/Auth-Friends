@@ -9,11 +9,7 @@ import CreateFriendForm from './components/CreateFriendForm'
 import UpdateFriendForm from './components/UpdateFriendForm'
 
 
-const blankFormValues = {
-  name: '',
-  age: '',
-  email: '',
-}
+
 
 class App extends Component {
   constructor(){
@@ -52,6 +48,7 @@ class App extends Component {
   }
 
   handleDeleteFriend = id => {
+    // console.log(id)
     axios
     .delete(`http://localhost:5000/api/friends/${id}`)
     .then(response => {
@@ -71,9 +68,11 @@ class App extends Component {
           </p>
           <CreateFriendForm 
             handleAddNewFriend={this.handleAddNewFriend} 
-            friend={this.state.friend}/>
+            />
           <Friends 
-            friends={this.state.friends} /> 
+            friends={this.state.friends} 
+            handleDeleteFriend={this.handleDeleteFriend} 
+          />
           <UpdateFriendForm />
 
         </header>
