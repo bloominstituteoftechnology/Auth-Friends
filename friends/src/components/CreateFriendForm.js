@@ -1,17 +1,15 @@
 import React from "react";
 import { Button, Col, Form, FormGroup, Label, Input } from "reactstrap";
 import { connect } from "react-redux";
-import {createFriend} from '../action/action';
+import { createFriend } from "../action/action";
 
 class CreateFriendForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      friend: {
-        name: "",
+          name: "",
         age: "",
         email: ""
-      }
     };
   }
 
@@ -21,14 +19,15 @@ class CreateFriendForm extends React.Component {
 
   submitHandler = e => {
     e.preventDefault();
-    this.props.createFriend(this.state);
-    this.setState({
-      friend: {
-        name: "",
-        age: "",
-        email: ""
-      }
-    });
+    if (this.state.name && this.state.age && this.state.email) {
+      this.props.createFriend(this.state);
+      this.setState({
+          name: "",
+          age: "",
+          email: ""
+        
+      });
+    }
   };
 
   render() {
@@ -43,7 +42,7 @@ class CreateFriendForm extends React.Component {
               type="text"
               name="name"
               id="friendName"
-              value={this.state.friend.name}
+              value={this.state.name}
               onChange={this.changeHandler}
             />
           </Col>
@@ -57,7 +56,7 @@ class CreateFriendForm extends React.Component {
               type="number"
               name="age"
               id="friendAge"
-              value={this.state.friend.age}
+              value={this.state.age}
               onChange={this.changeHandler}
             />
           </Col>
@@ -71,7 +70,7 @@ class CreateFriendForm extends React.Component {
               type="text"
               name="email"
               id="friendEmail"
-              value={this.state.friend.email}
+              value={this.state.email}
               onChange={this.changeHandler}
             />
           </Col>

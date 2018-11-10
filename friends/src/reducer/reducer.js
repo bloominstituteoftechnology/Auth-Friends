@@ -10,7 +10,7 @@ const initialState = {
   deletingFriend: false,
   friendDeleted: false,
   friends: [],
-  error: null
+  error: ''
 };
 
 export const reducer = (state = initialState, action) => {

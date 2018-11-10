@@ -11,7 +11,7 @@ export const fetchingFriends = () => {
     axios
       .get(`http://localhost:5000/api/friends`)
       .then(response => {
-        dispatch({ type: FETCHED_FRIENDS, payload: response });
+        dispatch({ type: FETCHED_FRIENDS, payload: response.data });
       })
       .catch(err => {
         dispatch({
@@ -26,9 +26,9 @@ export const createFriend = postData => {
   return dispatch => {
     dispatch({ type: LOADING_FRIENDS });
     axios
-      .post(`http://localhost:5000/api/friends`, postData.friend)
+      .post(`http://localhost:5000/api/friends`, postData)
       .then(response => {
-        dispatch({ type: FETCHED_FRIENDS, payload: response });
+        dispatch({ type: FETCHED_FRIENDS, payload: response.data });
       })
       .catch(err => {
         dispatch({
@@ -38,3 +38,21 @@ export const createFriend = postData => {
       });
   };
 };
+
+export const deleteFriend = id => {
+  return dispatch => {
+    dispatch({ type: LOADING_FRIENDS });
+    axios
+      .delete(`http://localhost:5000/api/friends/:${id}`)
+      .then(response => {
+        dispatch({ type: FETCHED_FRIENDS, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({
+          type: ERROR,
+          payload: `That friend wants to hang around ${err}`
+        });
+      });
+  };
+};
+
