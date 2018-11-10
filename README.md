@@ -29,7 +29,7 @@ Topics:
 - [x] Run `yarn start` or `npm start` to start the API server.
 - [x] Run `create-react-app friends` in a separate terminal window in the root directory of the project to create your starter application.
 - [x] `cd` into the _friends_ folder and type `yarn add redux react-redux redux-thunk redux-logger axios` or `npm i redux react-redux redux-thunk redux-logger axios`, which will install the needed dependencies.
-* You will create a list of your friends using React and Redux.
+- [x] You will create a list of your friends using React and Redux.
 * A possible flow of steps will be to create your Components, action creators, reducers, root reducer and your Redux store. Then use the Provider component from `react-redux` to pass the store to your root component and `connect` the React components that need access to the store.
 * Don't forget to hook up the store using the `Provider` tag inside of `src/index.js`, passing it your root reducer.
 * You will need to use `redux-thunk` as a middleware inside of `src/index.js`. You'll want to be sure to pass it to `applyMiddleware()` then feed it into your createStore function.
