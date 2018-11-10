@@ -23,13 +23,12 @@ export const fetch = () => {
         });
     });
 
-
   };
 
 };
 
-export const addFriend = () => {
-  const friends = axios.post('http://localhost:5000/api/friends');
+export const addFriend = (data) => {
+  const friends = axios.post('http://localhost:5000/api/friends', data);
 
   return dispatch => {
     dispatch({type: FETCHING});
@@ -46,10 +45,11 @@ export const addFriend = () => {
         })
       })
 
-
   }
 
-
-
-
 };
+
+
+
+
+

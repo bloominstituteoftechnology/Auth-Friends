@@ -21,20 +21,24 @@ class App extends Component {
     this.props.fetch();
   }
 
+  handleChange = e => {
+    this.setState ({[e.target.name]: e.target.value});
+  };
 
+  handleSubmit = () => {
+    this.props.addFriend({
+      name: this.state.name,
+      age: this.state.age,
+      email: this.state.email
+
+
+    });
+
+    this.setState({name: ''});
+
+  };
 
   render() {
-
-    if(this.props.error !== null) {
-      return <h2> {this.props.error}</h2>
-    }
-
-    if(this.props.fetching) {
-      console.log('locating friends...');
-      return <h3> Looking for my friends...</h3>
-
-    }
-
 
     return (
       <div>
@@ -45,7 +49,7 @@ class App extends Component {
           placeholder = 'name'
           name = 'name'
           value = {this.state.name}
-
+          onChange = {this.handleChange}
         />
 
         <input
@@ -53,18 +57,18 @@ class App extends Component {
           placeholder = 'age'
           name = 'age'
           value = {this.state.age}
-
+          onChange = {this.handleChange}
         />
 
         <input
           type = 'text'
           placeholder = 'email'
-          name = 'age'
+          name = 'email'
           value = {this.state.email}
-
+          onChange = {this.handleChange}
         />
 
-        <button> Add Friend</button>
+        <button onClick={this.handleSubmit}> Add Friend</button>
 
 
         <ul>
@@ -73,21 +77,12 @@ class App extends Component {
               <div key = {friend.id}>
                 <li>{friend.name}</li>
 
-
-
               </div>
             )
 
-
           })}
 
-
-
         </ul>
-
-
-
-
 
       </div>
 
