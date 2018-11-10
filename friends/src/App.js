@@ -24,16 +24,16 @@ class App extends Component {
     }
   }
 
-  componentDidMount(){
-    axios
-    .get(`http://localhost:5000/api/friends`)
-    .then(response => {
-        this.setState({ friends: response.data })
-    })
-    .catch(err => {
-        console.log("Fail to GET Friends from data", err)
-    })
-  }
+  // componentDidMount(){
+  //   axios
+  //   .get(`http://localhost:5000/api/friends`)
+  //   .then(response => {
+  //       this.setState({ friends: response.data })
+  //   })
+  //   .catch(err => {
+  //       console.log("Fail to GET Friends from data", err)
+  //   })
+  // }
 
   handleAddNewFriend = friend => {
     //event.preventDefault();
