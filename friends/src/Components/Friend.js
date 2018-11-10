@@ -4,15 +4,16 @@ import panda from '../img/panda.png';
 import { FriendImage, FriendLayout } from './StyledComponents.js';
 
 const Friend = (props) => {
+    console.log(props)
     return(
-        <Link to = {`/friend/${props.friend.id}`}>
-            <FriendLayout>
-                <FriendImage src={panda} alt='panda'/>
-                <h1>{props.friend.name}</h1>
-                <p>{props.friend.age}</p>
-                <p>{props.friend.email}</p>
-            </FriendLayout>
-        </Link>
+        <div>
+        <FriendLayout>
+            <FriendImage src={panda} alt='panda'/>
+            <Link to = {`/${props.id}`}>
+            <h1>{props.name}</h1>
+            </Link>
+        </FriendLayout>
+        </div>
     )
 }
 

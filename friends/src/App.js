@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { NavLink, Route } from 'react-router-dom';
-import { getFriends } from './Actions/actions';
 
 import './App.css';
-import Friend from './Components/Friend';
 import AddForm from './Components/AddFriend';
+import FriendsList from './Components/FriendsList';
+import FriendProfile from './Components/FriendProfile';
 
-class App extends Component {
-
-  componentDidMount(){
-    this.props.getFriends();
-  }
-
+export default class App extends Component {
   render() {
     return (
       <div className="App">
@@ -20,21 +14,11 @@ class App extends Component {
         <NavLink to="/add">Add a new friend</NavLink>
 
         <AddForm />
-        {this.props.friends.map( friend =>
-          < Friend friend={friend} key={friend.id} />
-        )}
+
+        <Route exact path="/" component={FriendsList} />
+        <Route path="/:id" render={ props => <FriendProfile {...props} /> } />
 
       </div>
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-  friends: state.friends,
-  error: state.error,
-  loading: state.loading
-  }
-};
-
-export default connect(mapStateToProps, { getFriends } )(App);
