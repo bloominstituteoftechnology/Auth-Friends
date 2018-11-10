@@ -12,10 +12,10 @@ export default (state = initialState, action) =>{
             return Object.assign({}, state, { loading: true });
         
         case SUCCESS:
-            return Object.assign({}, state, {friends: action.payload, loading: false});
+            return Object.assign({}, state, {friends: action.payload, loading: false, error: ''});
 
         case FAILURE:
-            return Object.assign({}, state, {error: action.payload, laoding: false})
+            return Object.assign({}, state, {error: action.payload, loading: false})
         default:
             return state;
     }

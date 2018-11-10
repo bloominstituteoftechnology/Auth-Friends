@@ -2,12 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Friend from './friend';
 
-const FriendsList = () =>{
+const FriendsList = (props) =>{
     return(
         <div>
-        {props.friends.map(item=>{
-            <Friend key={item.id} friend={item} />
-        })}
+            {props.friends.map(friend => 
+            <Friend key={friend.id} friend={friend} />)}
         </div>
     )
 }
@@ -16,4 +15,4 @@ const mapStateToProps= state =>{
         friends: state.friends
     }
 }
-export default connect(mapStateToProps)( FriendsList)
+export default connect(mapStateToProps)( FriendsList );
