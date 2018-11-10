@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>Friends</header>
+        <h1>Friends</h1>
         <NavLink to="/add">Add a new friend</NavLink>
         <AddForm />
           {this.props.friends.map( friend =>

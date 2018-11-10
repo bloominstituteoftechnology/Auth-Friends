@@ -1,0 +1,8 @@
+.friend{
+    margin: 10px auto 10px auto; 
+    background-color: violet; 
+    width: 300px; 
+    padding: 10px;
+    border-radius: 5px; 
+    border: 2px solid teal; 
+}
