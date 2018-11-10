@@ -30,11 +30,10 @@ class FriendsList extends Component{
     //Used to create new friend
     clickHandler = (event) =>{
         event.preventDefault();
-        const newFriend = {
-            name: this.state.name,
-            age: this.state.age,
-            email: this.state.email
-        }
+
+        //create new friend object
+        const {buttonDisabled, ...newFriend} = this.state;
+        
         this.props.createFriend(newFriend)
         this.setState({
             name: '',
