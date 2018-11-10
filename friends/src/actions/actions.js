@@ -17,3 +17,23 @@ export const fetchFriends = () =>{
             })
     }
 }
+
+export const addFriend = (newFriend) =>{
+    return dispatch=>{
+        dispatch({ type: LOADING });
+        axios
+            .post('http://localhost:5000/api/friends', newFriend )
+            .then(response =>{
+                dispatch({ type: SUCCESS, payload: response.data})
+            })
+            .catch(err =>{
+                dispatch({ type: FAILURE, payload: `Error adding that friend`})
+            })
+    }
+}
+
+export const updateFriend = (id) =>{
+    return dispatch=>{
+
+    }
+}

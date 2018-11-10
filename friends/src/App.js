@@ -9,23 +9,17 @@ import { Route } from 'react-router-dom';
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.fetchFriends();
-    console.log(this.props.friends)
-  }
+
   render() {
     return (
       <div className="App">
-      <Route exact path='/' component={FriendsList} />
-      <Route path='/:id' render={props=> <FriendProfile {...props}/>} />
+        <Route exact path='/' component={FriendsList} />
+        <Route path='/:id' render={props => <FriendProfile {...props}/>} />
       </div>
     );
   }
 }
-const mapStateToProps = state =>{
-  return {
-    friends: state.friends
-  }
-} 
 
-export default connect(mapStateToProps, {fetchFriends})(App);
+
+
+export default App;
