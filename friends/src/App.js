@@ -25,19 +25,22 @@ class App extends React.Component {
     // console.log(this.state.Name, this.state.Age, this.state.Email);
   };
   addFriendHandler = (e) => {
-    this.props.addingFriendAction(this.props.friends.friends.length + 1, this.state.Name, this.state.Age, this.state.Email);
-    this.setState({
-      Name: '',
-      Age: '',
-      Email: '',
-    })
     const addFriendInputs = document.querySelectorAll('.add-friend-inputs');
+    // console.log(addFriendInputs[2].value);
+    if(addFriendInputs[0].value && addFriendInputs[1].value && addFriendInputs[2].value !== ''){
+      this.props.addingFriendAction(this.props.friends.friends.length + 1, this.state.Name, this.state.Age, this.state.Email);
+      this.setState({
+        Name: '',
+        Age: '',
+        Email: '',
+      })
+      Array.from(addFriendInputs).map(x => {
+        return x.value = ''
+      })
+    }
     // console.log(Array.from(addFriendInputs).map(x => {
     //   return x.value
     // }));
-    Array.from(addFriendInputs).map(x => {
-      return x.value = ''
-    })
   }
   render() {
     return (
