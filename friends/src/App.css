@@ -30,3 +30,12 @@
     transform: rotate(360deg);
   }
 }
+
+
+.friends-list {
+  border: 1px solid;
+}
+.friends-list .each-friend {
+  border: 1px solid;
+  margin: 1%;
+}

@@ -15,17 +15,26 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case ADD_FRIEND:
-            return Object.assign({}, state, {
-                friends: action.payload,
-            })
         case FETCHING_FRIENDS:
-            return Object.assign({}, state, )
+            return Object.assign({}, state, {
+                fetchingFriends: true,
+            })
         case FRIENDS_FETCHED:
             return Object.assign({}, state, {
                 friends: action.payload,
                 loading: false,
                 error: '',
+                fetchingFriends: false,
+                friendsFetched: true,
+            })
+        case ERROR:
+            return Object.assign({}, state, {
+                error: action.payload,
+                loading: false,
+            }) 
+        case ADD_FRIEND:
+            return Object.assign({}, state, {
+                friends: action.payload,
             })
         default:
             return state;

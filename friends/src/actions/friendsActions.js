@@ -9,16 +9,16 @@ export const ERROR = 'ERROR';
 export const addFriendAction = (value, id) => {
     return { type: ADD_FRIEND, payload: value, index: id, }
 };
-export const fetchingFriendsAction = (value, id) => {
+export const fetchingFriendsAction = () => {
     return dispatch => {
         dispatch({ type: FETCHING_FRIENDS });
         axios
-            .get('http://localhost:5000')
+            .get('http://localhost:5000/api/friends')
             .then(response => {
-                console.log(response);
-                // dispatch({
-                //     type: FRIENDS_FETCHED
-                // });
+                // console.log(response);
+                dispatch({
+                    type: FRIENDS_FETCHED, payload: response.data
+                });
             })
             .catch(error => {
                 dispatch({ type: ERROR, payload: 'Unable to load friends, Please try again.'});
