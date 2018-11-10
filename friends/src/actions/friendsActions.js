@@ -1,5 +1,5 @@
 import axios from 'axios'
-export const GET_FRIENDS = "GET_AVENGERS"
+export const GET_FRIENDS = "GET_FRIENDS"
 export const LOADING = "LOADING"
 export const ERROR = "ERROR"
 
