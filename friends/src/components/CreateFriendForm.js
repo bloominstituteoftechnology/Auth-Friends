@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { connect } from 'react-redux';
+import { createFriend } from '../actions/friendAction';
+
 class CreateFriendForm extends React.Component {
     constructor(props){
         super(props);
@@ -22,7 +25,8 @@ class CreateFriendForm extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.handleAddNewFriend(this.state)
+        //this.props.handleAddNewFriend(this.state)
+        this.props.createFriend(this.state)
     }
 
     render(){
@@ -58,4 +62,9 @@ class CreateFriendForm extends React.Component {
     }
 }
 
-export default CreateFriendForm
+const mapStateToProps = state => {
+    return {}
+}
+
+export default connect(mapStateToProps, { createFriend: createFriend })(CreateFriendForm)
+//export default CreateFriendForm

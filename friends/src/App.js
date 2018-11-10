@@ -35,17 +35,17 @@ class App extends Component {
   //   })
   // }
 
-  handleAddNewFriend = friend => {
-    //event.preventDefault();
-    axios 
-    .post(`http://localhost:5000/api/friends`, friend)
-    .then(response => {
-      this.setState({ friends: response.data })
-    })
-    .catch(err => {
-      console.log("Fail to ADD Friend", err);
-    })
-  }
+  // handleAddNewFriend = friend => {
+  //   //event.preventDefault();
+  //   axios 
+  //   .post(`http://localhost:5000/api/friends`, friend)
+  //   .then(response => {
+  //     this.setState({ friends: response.data })
+  //   })
+  //   .catch(err => {
+  //     console.log("Fail to ADD Friend", err);
+  //   })
+  // }
 
   handleDeleteFriend = id => {
     // console.log(id)
