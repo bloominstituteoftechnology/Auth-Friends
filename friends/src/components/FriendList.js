@@ -4,9 +4,6 @@ import Friend from './Friend';
 import { connect } from 'react-redux';
 
 class FriendList extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     componentDidMount() {
         this.props.fetchingFriends();

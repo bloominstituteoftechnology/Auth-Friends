@@ -11,7 +11,7 @@ const App = props => {
     <div className="App">
       <NavLink to='/CreateFriendForm'>Create your new Friend</NavLink>
       <Route path='/CreateFriendForm' component={ AddFriend } />
-      <Route path='/UpdateFriendForm' component={ UpdateFriend } />
+      <Route path='/update/:id' component={ UpdateFriend } />
 
       <h1>Look at all of your Friends</h1>
       <FriendList />
