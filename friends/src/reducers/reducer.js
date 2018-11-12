@@ -1,4 +1,4 @@
-import { LOADING, ERROR, SUCCESS } from '../actions/action';
+import { LOADING, ERROR, SUCCESS, ADD_FRIEND } from '../actions/action';
 
 const initialState = {
     fetchingFriends: false,
@@ -19,12 +19,17 @@ const initialState = {
              return Object.assign({}, previousState, {fetchingFriends:true} );
         
            case SUCCESS:
-             return Object.assign( {},
+              return Object.assign( {},
                     previousState, 
                     {friends: action.payload, 
                      friendsFetched: true,
                      fetchingFriends:false});
-           
+           case ADD_FRIEND:
+              return Object.assign( {},
+                    previousState, 
+                    {friends: action.payload, 
+                     friendsSaved: true});
+
            case ERROR:
               return Object.assign( {}, previousState, {error: action.payload});
            default:

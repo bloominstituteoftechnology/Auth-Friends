@@ -56,3 +56,22 @@
   div.friend span {
       color: red;
   }
+
+  .form {
+    width: 80%;
+    display:flex;
+    justify-content:center;
+   
+    align-items: center;
+    margin: 10px auto;
+ }
+ input {
+     /* width: 30%; */
+     padding: 10px 10px;
+     margin-bottom: 10px;
+     border-radius: 5px;
+ }
+ input[type="submit"] {
+   width: 30%;
+ }
+ 
