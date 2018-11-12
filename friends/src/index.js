@@ -11,9 +11,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const reduce = combineReducers({reducer})
+// const reduce = combineReducers({friends:reducer})
 const middleware = applyMiddleware(logger, thunk);
-const store = createStore(reduce, middleware);
+const store = createStore(reducer, middleware);
 
 ReactDOM.render(
    <Provider store={store}>

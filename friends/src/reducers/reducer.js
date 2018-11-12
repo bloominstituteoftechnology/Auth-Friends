@@ -1,4 +1,4 @@
-
+import { LOADING, ERROR, SUCCESS } from '../actions/action';
 
 const initialState = {
     fetchingFriends: false,
@@ -15,8 +15,19 @@ const initialState = {
 
   export const reducer = (previousState=initialState, action) => {
       switch(action.type) {
-       
-        default:
+           case LOADING:
+             return Object.assign({}, previousState, {fetchingFriends:true} );
+        
+           case SUCCESS:
+             return Object.assign( {},
+                    previousState, 
+                    {friends: action.payload, 
+                     friendsFetched: true,
+                     fetchingFriends:false});
+           
+           case ERROR:
+              return Object.assign( {}, previousState, {error: action.payload});
+           default:
           return previousState;
       }
   }
