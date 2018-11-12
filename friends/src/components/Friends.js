@@ -26,7 +26,7 @@ class Friends extends Component {
 
 const mapStateToProps = state => {
     return {
-        friends: state.friends
+        friends: state.Frd.friends
     }
 }
 

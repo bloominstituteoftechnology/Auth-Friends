@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {addFriends} from '../actions/action';
+import { addFriends } from '../actions/action';
 import {connect} from 'react-redux';
 
 class Form extends Component {
@@ -21,6 +21,7 @@ class Form extends Component {
     submitHandler = event => {
         event.preventDefault();
         this.props.addFriends(this.state);
+        console.log(this.state);
         this.setState({
             name:'',
             email:'',
@@ -54,6 +55,8 @@ class Form extends Component {
 // export default Form;
 
 const mapStateToProps = state => {
-    return { }
+    return { 
+        
+    }
 }
 export default connect(mapStateToProps, {addFriends})(Form);
