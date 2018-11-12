@@ -9,11 +9,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavLink to = '/Add'>Add Friend</NavLink>
-          <Route path = '/Add' component = {AddFriend} />
-          <Route path="/update/:id" component={UpdateFriend} />
-          <h1>My Friends</h1>
-          <FriendsList />
+        <NavLink to='/Add'>Add Friend</NavLink>
+
+        <h1>My New Friends</h1>
+        <Route path="/update/:id" component={UpdateFriend} />
+        <FriendsList  />
+        <Route path="/Add" component={AddFriend} />
       </div>
     );
   }
