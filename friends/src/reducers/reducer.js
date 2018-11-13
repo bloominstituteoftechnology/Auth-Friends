@@ -1,4 +1,10 @@
-import { LOADING, ERROR, SUCCESS, ADDED_FRIEND, ADDING_FRIEND } from '../actions/action';
+import { LOADING, 
+         ERROR,
+         SUCCESS,
+         ADDED_FRIEND, 
+         ADDING_FRIEND,
+         DELETED_FRIEND,
+         DELETING_FRIEND } from '../actions/action';
 
 const initialState = {
     fetchingFriends: false,
@@ -25,6 +31,14 @@ const initialState = {
                      {friends: action.payload,
                       savingFriends: false,
                       fetchingFriends:false});
+            case DELETING_FRIEND:
+                return Object.assign( {}, previousState, {deletingFriend:true, fetchingFriends:false });
+                
+            case DELETED_FRIEND:
+                 return Object.assign({}, previousState, 
+                        { friends:action.payload,
+                          deletingFriend:false,
+                          savingFriends:false });
 
            case ERROR:
               return Object.assign( {}, previousState, {error: action.payload});

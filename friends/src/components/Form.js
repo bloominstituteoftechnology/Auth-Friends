@@ -20,7 +20,9 @@ class Form extends Component {
     }
     submitHandler = event => {
         event.preventDefault();
+        if(this.state.name && this.state.email && this.state.age) {
         this.props.addFriends(this.state);
+        }
         console.log(this.state);
         this.setState({
             name:'',
