@@ -6,13 +6,13 @@ export const FAILURE = 'FAILURE'
 
 
 export const fetching = () => {
- return {type: FETCHING}
+ return {type: FETCHING, payload: null}
 }
 
 export const success = () => {
- return {type: SUCCESS}
+ return {type: SUCCESS, payload: null}
 }
 
 export const failure = () => {
- return {type: FAILURE}
+ return {type: FAILURE, payload: null}
 }

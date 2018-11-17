@@ -1,9 +1,16 @@
 import React from 'react'
 
-const FriendForm = () => {
+const FriendForm = (props) => {
  return (
   <div>
+  <form>
+   <input
+    type='text'
+   />
+   <button>
 
+   </button>
+  </form>
   </div>
  )
 }
