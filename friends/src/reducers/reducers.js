@@ -8,8 +8,13 @@ const initState = {
 
 const reducer = dispatch => {
  dispatch({type: FETCHING})
- switch(action.type){
- default:
-  return state 
- }
+
+ axios
+ .get('')
+ .then(response => {
+  dispatch({type:})
+ })
+ .catch(err => {
+  console.log(err)
+ })
 }

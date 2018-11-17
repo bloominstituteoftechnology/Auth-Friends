@@ -1,8 +1,10 @@
 import React from 'react'
-
+import FriendForm from './FriendForm'
 const Friend = () => {
  return(
-  <div></div>
+  <div>
+   <FriendForm />
+  </div>
  )
 }
 
