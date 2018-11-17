@@ -1,20 +1,34 @@
-import axios from 'axios'
 import { FETCHING, SUCCESS, FAILIURE } from '../actions'
 
 
 const initState = {
- friends : []
+ friends : [],
+ fetchingFriends: false,
+ recievedFriends: false,
+ addingFriend: false,
+ friendAdded: false,
+ error: null,
+
 }
 
-const reducer = dispatch => {
- dispatch({type: FETCHING})
-
- axios
- .get('')
- .then(response => {
-  dispatch({type:})
- })
- .catch(err => {
-  console.log(err)
- })
+export const handleFriends = (state = initState, action) => {
+ switch(action.type) {
+  case FETCHING:
+   return {...state, fetchingFriends: true}
+  case SUCCESS:
+  return Object.assign([], state {
+   friends: action.payload,
+   fetchingFriends: false,
+   recievedFriends: true 
+  })
+  case FAILIURE:
+  return {
+   ...state, 
+   error: action.payload, 
+   fetchingFriends: false,
+   recievedFriends: false 
+  }
+   default:
+   return state
+ }
 }

@@ -1,14 +1,25 @@
 import React from 'react'
 
 const FriendForm = (props) => {
+
+// Note to self, add state here for input field strings.
  return (
   <div>
   <form>
    <input
     type='text'
+    name='name'
+   />
+    <input
+    type='text'
+    name='age'
+   />
+    <input
+    type='text'
+    name='email'
    />
    <button>
-
+    Add Friend.
    </button>
   </form>
   </div>
