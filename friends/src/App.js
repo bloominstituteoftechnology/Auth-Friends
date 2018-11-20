@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
-import { FriendsListView } from "./views";
+import { FriendListView } from "./views";
 import "./styles/App.css";
 
 class App extends Component {
 
   render() {
-    return <FriendsListView />;
+    return <FriendListView store={this.props.store}/>;
   }
 }
 

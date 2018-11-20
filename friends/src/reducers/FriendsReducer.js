@@ -14,45 +14,44 @@ const initialState = {
   // Array characters, Boolean fetching, null error.
 };
 
-export const friendsReducer = (state = initialState, action) => {
+export const FriendsReducer = (state = initialState, action) => {
     switch (action.type) {
       case FETCHING:
         return {...state, fetchingFriends:true,friendsFetched:false}
       case FETCHED:
-      let newState=state.todos.slice();
-      return Object.assign({}, state, {fetchingFriends:false, friendsFetched:true, error:null});
+      return Object.assign({}, state, action.payload, {fetchingFriends:false, friendsFetched:true, error:null});
       case ERROR:
         return {...state, fetchingFriends:false, error:action.errorMessage }
-      case SAVING:
-        return {...state, savingFriends:true}
-      case SAVED:
-        return {...state, friendsSaved:true, savingFriends:false, error:null}
-      case UPDATING:
-        return {...state, updatingFriend:true}
-      case UPDATED:
-      let newFriends=state.friends.slice();
+    //   case SAVING:
+    //     return {...state, savingFriends:true}
+    //   case SAVED:
+    //     return {...state, friendsSaved:true, savingFriends:false, error:null}
+    //   case UPDATING:
+    //     return {...state, updatingFriend:true}
+    //   case UPDATED:
+    //   let newFriends=state.friends.slice();
 
-      newFriends.map((friend)=>{
-          if(friend.id===action.payload.id){
-              friend=action.payload;
-              return(friend);
-          }
-          return(friend);
-      })
-        return {...state, friends:newFriends, friendUpdated:true, updatingFriend:false}
+    //   newFriends.map((friend)=>{
+    //       if(friend.id===action.payload.id){
+    //           friend=action.payload;
+    //           return(friend);
+    //       }
+    //       return(friend);
+    //   })
+    //     return {...state, friends:newFriends, friendUpdated:true, updatingFriend:false}
       
-      case DELETING:
-        return {...state, deletingFriend:true}
-      case DELETED:
-      let newFriendsAD=state.friends.slice;
+    //   case DELETING:
+    //     return {...state, deletingFriend:true}
+    //   case DELETED:
+    //   let newFriendsAD=state.friends.slice;
 
-      newFriendsAD=newFriendsAD.filter(function(item){
+    //   newFriendsAD=newFriendsAD.filter(function(item){
 
-        return item.id != action.payload.id;
+    //     return item.id != action.payload.id;
     
-    });
+    // });
 
-        return {...state, friends:newFriendsAD, friendDeleted:true, deletingFriend:false}
+    //     return {...state, friends:newFriendsAD, friendDeleted:true, deletingFriend:false}
   
 
       default:
