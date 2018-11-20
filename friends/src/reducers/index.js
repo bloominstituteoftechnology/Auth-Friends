@@ -1,39 +1,44 @@
-import   {
-    FETCHING,
-    FETCHED,
-    SAVING,
-    SAVED,
-    UPDATING,
-    UPDATED,
-    DELETING,
-    DELETED,
-    FAILED
+import {
+  FETCHING,
+  FETCHED,
+  SAVING,
+  SAVED,
+  UPDATING,
+  UPDATED,
+  DELETING,
+  DELETED,
+  ERROR
 } from "../actions";
 
 const initialState = {
-    fetchingFriends: false,
-    friendsFetched: false,
-    savingFriends: false,
-    friendsSaved: false,
-    updatingFriend: false,
-    friendUpdated: false,
-    deletingFriend: false,
-    friendDeleted: false,
-    friends: [
-        {
-            id: 1,
-            name: '',
-            age: 24,
-            email: '',
-          }
-    ],
-    error: null
-  }
-
-  export default (state = {initialState}, action) => {
-    switch(action.type) {
-      case FETCHING: 
-      default:
-       return state;
+  fetchingFriends: false,
+  friendsFetched: false,
+  savingFriends: false,
+  friendsSaved: false,
+  updatingFriend: false,
+  friendUpdated: false,
+  deletingFriend: false,
+  friendDeleted: false,
+  friends: [
+    {
+      id: 1,
+      name: "",
+      age: 24,
+      email: ""
     }
+  ],
+  error: null
+};
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case FETCHING:
+      return { ...state, fetching: true };
+    case FETCHED:
+      return { ...state, friends: action.friends, fetching: false, error: null };
+    case ERROR:
+      return { ...state, error: action.errorMessage };
+    default:
+      return state;
   }
+};
