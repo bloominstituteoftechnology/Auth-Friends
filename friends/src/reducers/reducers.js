@@ -1,10 +1,10 @@
-import { FETCHING, SUCCESS, FAILIURE } from '../actions'
+import { FETCHING, SUCCESS, FAILURE } from '../actions/actions'
 
 
 const initState = {
  friends : [],
  fetchingFriends: false,
- recievedFriends: false,
+ receivedFriends: false,
  addingFriend: false,
  friendAdded: false,
  error: null,
@@ -16,17 +16,17 @@ export const handleFriends = (state = initState, action) => {
   case FETCHING:
    return {...state, fetchingFriends: true}
   case SUCCESS:
-  return Object.assign([], state {
+  return Object.assign([], state, {
    friends: action.payload,
    fetchingFriends: false,
-   recievedFriends: true 
+   receivedFriends: true 
   })
-  case FAILIURE:
+  case FAILURE:
   return {
    ...state, 
    error: action.payload, 
    fetchingFriends: false,
-   recievedFriends: false 
+   receivedFriends: false 
   }
    default:
    return state

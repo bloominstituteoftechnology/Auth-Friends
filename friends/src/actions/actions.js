@@ -14,11 +14,22 @@ export const reducer = () => dispatch => {
  .get('http://localhost:5000/api/friends')
  .then(response => {
   console.log(response)
-  dispatch({type: SUCCESS})
+  dispatch({type: SUCCESS, 
+   payload: response.data,
+   fetchingFriends: false,
+   receivedFriends: true, 
+   error: false 
+  })
  })
+ .post()
  .catch(err => {
   console.log(err)
   console.log('Server Error', err)
-  dispatch({type: FAILURE})
+  dispatch({type: FAILURE, 
+   payload: 'Sadly, friends were not found.',
+   fetchingFriends: false,
+   receivedFriends: false, 
+   error: true 
+  })
  })
 }

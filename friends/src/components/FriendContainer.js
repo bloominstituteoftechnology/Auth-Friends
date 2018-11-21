@@ -1,5 +1,6 @@
 import React from 'react'
 import Friend from './Friend'
+import { connect } from 'react-redux'
 
 class FriendContainer extends React.Component {
  
@@ -12,4 +13,7 @@ class FriendContainer extends React.Component {
  }
 }
 
-export default FriendContainer
+const mapStateToProps = (state) => {
+ return {}
+}
+export default connect('', mapStateToProps)(FriendContainer)
