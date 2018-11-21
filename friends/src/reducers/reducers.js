@@ -11,7 +11,7 @@ const initState = {
 
 }
 
-export const handleFriends = (state = initState, action) => {
+export const reducer = (state = initState, action) => {
  switch(action.type) {
   case FETCHING:
    return {...state, fetchingFriends: true}

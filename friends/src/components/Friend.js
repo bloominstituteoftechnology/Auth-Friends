@@ -1,6 +1,8 @@
 import React from 'react'
 import FriendForm from './FriendForm'
-const Friend = () => {
+
+class Friend extends React.Component {
+render(){
  return(
   <div>
    <FriendForm />
@@ -8,4 +10,15 @@ const Friend = () => {
  )
 }
 
-export default Friend 
+}
+
+// const mapStateToProps = state => {
+//  const { friends } = state.friends
+//  return {
+//   friends: friends
+//  }
+// }
+
+// export default connect(mapStateToProps, handleFriends)(Friend) 
+
+export default Friend

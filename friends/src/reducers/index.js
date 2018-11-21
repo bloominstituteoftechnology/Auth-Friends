@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import { handleFriends } from './reducers'
+import { reducer } from '../reducers/reducers'
 
 export default combineReducers({
- handleFriends
+ reducer
 })

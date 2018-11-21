@@ -1,52 +1,27 @@
 import React from 'react'
-import { reducer } from '../actions/actions'
-class FriendForm extends React.Component {
- constructor(){
-  super()
-  this.state = {
-   name: '',
-   age: '',
-   email: '',
-   friends: []
-  }
- }
+const FriendForm = props => {
  
-componentDidMount(){
- reducer()
-}
- inputHandler = event => {
-  this.setState({
-   [event.target.name]: event.target.value 
-  })
- }
-
- submitHandler = event => {
-  event.preventDefault()
- 
-
- }
 // Note to self, add state here for input field strings.
-render(){
  return (
   <div>
-  <form onSubmit={this.submitHandler}>
+  <form onSubmit={props.submitHandler}>
    <input
     type='text'
     name='name'
-    value={this.state.name}
-    onChange={this.inputHandler}
+    value={props.name}
+    onChange={props.inputHandler}
    />
     <input
     type='text'
     name='age'
-    value={this.state.age}
-    onChange={this.inputHandler}
+    value={props.age}
+    onChange={props.inputHandler}
    />
     <input
     type='text'
     name='email'
-    value={this.state.email}
-    onChange={this.inputHandler}
+    value={props.email}
+    onChange={props.inputHandler}
    />
    <button>
     Add Friend.
@@ -56,6 +31,6 @@ render(){
  )
 }
  
-}
+
 
 export default FriendForm

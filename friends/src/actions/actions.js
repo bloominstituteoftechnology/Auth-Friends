@@ -8,7 +8,7 @@ export const FAILURE = 'FAILURE'
 
 export const ADDING = 'ADDING'
 
-export const reducer = () => dispatch => {
+export const handleFriends = () => dispatch => {
  dispatch({type: FETCHING})
  axios
  .get('http://localhost:5000/api/friends')
@@ -21,7 +21,6 @@ export const reducer = () => dispatch => {
    error: false 
   })
  })
- .post()
  .catch(err => {
   console.log(err)
   console.log('Server Error', err)
