@@ -37,9 +37,20 @@ export const updateFriend = (updatedFriend) => dispatch => {
   dispatch({type: UPDATING })
   axios.put(`http://localhost:5000/api/friends/${updatedFriend.id}`, updatedFriend)
     .then(res => {
-      dispatch({type: UPDATED, friends: res.data.results})
+      dispatch({type: UPDATED, friends: res.data})
     })
     .catch(err => {
       dispatch({type: ERROR, errorMessage: 'Love them for who they are'})
+    })
+}
+
+export const deleteFriend = (id) => dispatch => {
+  dispatch({type: DELETING})
+  axios.delete(`http://localhost:5000/api/friends/${id}`)
+    .then(res => {
+      dispatch({type: DELETED, friends: res.data})
+    })
+    .catch(err => {
+      dispatch({type: ERROR, errorMessage: 'You have to let them down softly'})
     })
 }
