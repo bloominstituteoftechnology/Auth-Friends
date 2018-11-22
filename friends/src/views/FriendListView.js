@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import FriendList from '../components/FriendList';
 import {getFriends} from '../actions/index.js';
+import AddFriendFormView from './AddFriendFormView.js';
 
 
 class FriendListView extends React.Component{
@@ -20,7 +21,11 @@ class FriendListView extends React.Component{
             return(
                 <h1>Calling your Buds</h1>
             )
-        }return(<div><FriendList friends={this.props.friends}/></div>)
+        }return(
+        <div>
+            <div><FriendList friends={this.props.friends}/></div>
+            <div><AddFriendFormView/></div>
+            </div>)
     }
 
 }

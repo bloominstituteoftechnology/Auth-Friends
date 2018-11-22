@@ -19,13 +19,14 @@ export const FriendsReducer = (state = initialState, action) => {
       case FETCHING:
         return {...state, fetchingFriends:true,friendsFetched:false}
       case FETCHED:
-      return Object.assign({}, state, action.payload, {fetchingFriends:false, friendsFetched:true, error:null});
+      return Object.assign({}, state, {friends:action.payload,fetchingFriends:false, friendsFetched:true, error:null});
       case ERROR:
         return {...state, fetchingFriends:false, error:action.errorMessage }
-    //   case SAVING:
-    //     return {...state, savingFriends:true}
-    //   case SAVED:
-    //     return {...state, friendsSaved:true, savingFriends:false, error:null}
+      case SAVING:
+        return {...state, savingFriends:true}
+      case SAVED:
+        console.log(action.payload);
+        return {...state, friends:action.payload, friendsSaved:true, savingFriends:false, error:null}
     //   case UPDATING:
     //     return {...state, updatingFriend:true}
     //   case UPDATED:
