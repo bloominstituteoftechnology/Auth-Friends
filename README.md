@@ -24,19 +24,19 @@ Topics:
 
 ## Initialize Project
 
-* Run `yarn` or `npm i` inside the root directory of this project to install dependencies.
-* Run `yarn start` or `npm start` to start the API server.
-* Run `create-react-app friends` in a separate terminal window in the root directory of the project to create your starter application.
-* `cd` into the _friends_ folder and type `yarn add redux react-redux redux-thunk redux-logger axios` or `npm i redux react-redux redux-thunk redux-logger axios`, which will install the needed dependencies.
+[x] Run `yarn` or `npm i` inside the root directory of this project to install dependencies.
+[x] Run `yarn start` or `npm start` to start the API server.
+[x] Run `create-react-app friends` in a separate terminal window in the root directory of the project to create your starter application.
+[x] `cd` into the _friends_ folder and type `yarn add redux react-redux redux-thunk redux-logger axios` or `npm i redux react-redux redux-thunk redux-logger axios`, which will install the needed dependencies.
 * You will create a list of your friends using React and Redux.
-* A possible flow of steps will be to create your Components, action creators, reducers, root reducer and your Redux store. Then use the Provider component from `react-redux` to pass the store to your root component and `connect` the React components that need access to the store.
-* Don't forget to hook up the store using the `Provider` tag inside of `src/index.js`, passing it your root reducer.
-* You will need to use `redux-thunk` as a middleware inside of `src/index.js`. You'll want to be sure to pass it to `applyMiddleware()` then feed it into your createStore function.
+[x] A possible flow of steps will be to create your Components, action creators, reducers, root reducer and your Redux store. Then use the Provider component from `react-redux` to pass the store to your root component and `connect` the React components that need access to the store.
+[x] Don't forget to hook up the store using the `Provider` tag inside of `src/index.js`, passing it your root reducer.
+[x] You will need to use `redux-thunk` as a middleware inside of `src/index.js`. You'll want to be sure to pass it to `applyMiddleware()` then feed it into your createStore function.
 * If you so choose, include `redux-logger` to your middleware. You're going to have plenty of action creators that will consume our API so you'll get plenty of actions triggered.
 
 ## Root Reducer and our State Tree
 
-* Your initial state **could** (but doesn't have to) look something like this:
+[x] Your initial state **could** (but doesn't have to) look something like this:
 
 ```js
 {
@@ -55,11 +55,11 @@ Topics:
 
 * This is a pretty large state tree, but each field is extremely simple.
 * All of your items in your state tree represent a make up of actions that you're going to make asynchronously. Think about your application and the state you need. This root reducer object will represent that state.
-* Each `friend` item that is in the `friends` array should have the following format:
+[x] Each `friend` item that is in the `friends` array should have the following format:
 
 ```js
 {
-  id: 1
+  id: 1,
   name: 'Joe',
   age: 24,
   email: 'joe@lambdaschool.com',
@@ -88,7 +88,7 @@ index.js
 
 #### App.js
 
-* Inside of `App.js` I suggest doing the friend fetching for your _friends_ data from within `componentDidMount()`. You'll need to call an action creator that you build in order to fetch your friends.
+[x] Inside of `App.js` I suggest doing the friend fetching for your _friends_ data from within `componentDidMount()`. You'll need to call an action creator that you build in order to fetch your friends.
 * A crude example of what this could potentially look like would be:
   ![Bad example](https://image.ibb.co/hpg7gw/Screen_Shot_2018_01_24_at_1_07_21_PM.png)
 * You **Definitely** want to style your application to look much better than mine!

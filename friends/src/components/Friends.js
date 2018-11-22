@@ -1,22 +1,29 @@
-import React from "react";
+import React, {Component} from "react";
 import { connect } from "react-redux";
 import {fetchFriends} from "../actions";
 
-const Friends = props => {
+class Friends extends Component {
+  componentDidMount() {
+    this.props.fetchFriends();
+  }
+  render() {
   return (
     <div>
-      {props.fetchingFriends ? (
-        <div>...fetching your friends. do you have friends?</div>
+      {this.props.fetchingFriends ? (
+        <div> ...fetching your friends. do you have friends? </div>
       ) : (
         <ul>
-          {props.friends.map(friend => {
-            return <li key={friend.name}>{friend.name}</li>;
+          {this.props.friends.map(friend => {
+            return  <li key={friend.name}>{friend.name}</li>
           })}
         </ul>
-      )}
+  )}
     </div>
   );
 };
+}
+
+
 
 const mapStateToProps = state => {
     return {

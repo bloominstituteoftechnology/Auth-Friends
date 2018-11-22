@@ -20,12 +20,12 @@ const initialState = {
   deletingFriend: false,
   friendDeleted: false,
   friends: [
-    {
-      id: 1,
-      name: "",
-      age: 24,
-      email: ""
-    }
+    // {
+    //   id: 1,
+    //   name: "",
+    //   age: "",
+    //   email: ""
+    // }
   ],
   error: null
 };
