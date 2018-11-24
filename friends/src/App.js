@@ -1,22 +1,42 @@
 import React, { Component } from "react";
-import Friends from './components/Friends';
-import { connect } from 'react-redux';
-import { fetchFriends } from "../src/actions";
+import Friends from "./components/Friends";
+import { connect } from "react-redux";
+import { fetchFriends, saveFriend } from "../src/actions";
+import CreateFriendForm from "./components/CreateFriendForm";
 
 class App extends Component {
-  state= {
-    name: '',
-    age: '',
-    email: ''
+  state = {
+    name: "",
+    age: "",
+    email: ""
+  };
+
+  componentDidMount() {
+    this.props.fetchFriends();
   }
- 
+
+  inputHandler = e => {
+    e.preventDefault();
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  addNewFriend = e => {
+    e.preventDefault();
+    this.props.saveFriend(this.state);
+  };
+
   render() {
     return (
-      <Friends />
+      <div>
+        <Friends />
+        <CreateFriendForm
+          addNewFriend={this.addNewFriend}
+          inputHandler={this.inputHandler}
+        />
+      </div>
     );
   }
 }
-
 
 const mapStateToProps = state => {
   return {
@@ -27,8 +47,8 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-mapStateToProps,
-{fetchFriends}
+  mapStateToProps,
+  { fetchFriends, saveFriend }
 )(App);
 
 // export default App;
