@@ -12,10 +12,9 @@ export const DELETING_FRIEND = 'DELETING_FRIEND';
 export const SINGLE_FRIEND = 'SINGLE_FRIEND';
 export const TOGGLE_UPDATE_FRIEND = 'TOGGLE_UPDATE_FRIEND';
 
-const URL = 'http://localhost:5000/api/friends';
 
 export const loadFriends = () => {
-    const friends = axios.get(`${URL}/get`);
+    const friends = axios.get("http://localhost:5000/api/friends");
     return dispatch => {
       dispatch({ type: LOADING_FRIENDS });
       friends
@@ -29,7 +28,7 @@ export const loadFriends = () => {
   };
 
 export const createFriend = friend => {
-    const newFriend = axios.post(`${URL}/create`, friend);
+    const newFriend = axios.post("http://localhost:5000/api/friends", friend);
     return dispatch => {
       dispatch({ type: CREATING_FRIEND });
       newFriend
@@ -43,7 +42,7 @@ export const createFriend = friend => {
   };
 
   export const deleteFriend = id => {
-    const deletedFriend = axios.delete(`${URL}/delete`, {
+    const deletedFriend = axios.delete(`http://localhost:5000/api/friends/${id}`, {
       data: { id }
     });
     return dispatch => {
@@ -71,3 +70,21 @@ export const createFriend = friend => {
           payload: friend
       };
   };
+
+  export const updateFriend =(updatedFriend) => {
+    return dispatch => {
+        dispatch({type: LOADING_FRIENDS })
+        axios
+          .put(`http://localhost:5000/api/friends/${updatedFriend.id}`, updatedFriend)
+          .then(response => {
+            console.log(response.data);
+              dispatch({ type: LOAD_FRIENDS, payload: response.data });
+          })
+          .catch(err => {
+            dispatch({
+              type: ERROR,
+              errorMessage: "Async error updateing friend"
+            });
+          });
+    }
+  }
