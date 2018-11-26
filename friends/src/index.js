@@ -5,14 +5,12 @@ import logger from 'redux-logger'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware} from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { reducer } from './reducers/reducers'
 import './index.css';
-import rootReducer from './reducers/index'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-// const midWare = applyMiddleware(thunk, logger)
-
-const store = createStore(rootReducer,
+const store = createStore(reducer,
   composeWithDevTools(applyMiddleware(thunk, logger)),
   )
 

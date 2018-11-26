@@ -16,18 +16,17 @@ export const reducer = (state = initState, action) => {
   case FETCHING:
    return {...state, fetchingFriends: true}
   case SUCCESS:
-  return Object.assign([], state, {
-   friends: action.payload,
+  return Object.assign({}, state, {
+   friends: [...action.payload],
    fetchingFriends: false,
    receivedFriends: true 
   })
   case FAILURE:
-  return {
-   ...state, 
-   error: action.payload, 
+  return Object.assign({}, state, {
    fetchingFriends: false,
-   receivedFriends: false 
-  }
+   receivedFriends: false,
+   error: action.payload
+  })
    default:
    return state
  }

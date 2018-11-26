@@ -1,9 +1,10 @@
 import React from 'react'
-import Friend from './Friend'
-
+import Friends from './Friends'
+import { connect } from 'react-redux'
+import { addFriend } from '../actions/actions'
 class FriendContainer extends React.Component {
- constructor(){
-  super()
+ constructor(props){
+  super(props)
   this.state = {
    name: '',
    age: '',
@@ -18,22 +19,50 @@ class FriendContainer extends React.Component {
  }
 
  submitHandler = event => {
+  
   event.preventDefault()
+  this.props.addFriend({name: this.state.name, age: this.state.age, email: this.state.email})
  }
  
  render(){
   return(
    <div>
-   <Friend
-    name={this.state.name}
-    age={this.state.age}
-    email={this.state.email}
-    inputHandler={this.inputHandler}
-    submitHandler={this.submitHandler}
-   />
+    <form onSubmit={this.submitHandler}>
+     <input
+      type='text'
+      name='name'
+      value={this.state.name}
+      onChange={this.inputHandler}
+     />
+      <input
+      type='text'
+      name='age'
+      value={this.state.age}
+      onChange={this.inputHandler}
+     />
+      <input
+      type='text'
+      name='email'
+      value={this.state.email}
+      onChange={this.inputHandler}
+     />
+     <button>
+      Add Friend.
+     </button>
+    </form>
+    <Friends friends={this.props.friends} />
    </div>
   )
  }
 }
 
-export default FriendContainer
+const mapStateToProps = state => {
+ const { friends } = state
+ return {
+  friends: friends
+ }
+}
+
+
+
+export default connect(mapStateToProps, { addFriend })(FriendContainer)
