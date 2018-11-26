@@ -10,6 +10,8 @@ render(){
    name={friend.name}
    age={friend.age}
    email={friend.email}
+   id={friend.id}
+   deleteHandler={this.props.deleteHandler}
    /> )}
   </div>
  )

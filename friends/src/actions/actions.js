@@ -38,3 +38,14 @@ export const addFriend = friendData => dispatch => {
   dispatch({type: FAILURE, payload: 'Friend not added.'})
  })
 }
+
+export const deleteFriend = (id) => dispatch => {
+ axios
+ .delete(`http://localhost:5000/api/friends/${id}`)
+ .then(response => {
+  dispatch({type: SUCCESS, payload: response.data})
+ })
+  .catch(() => {
+   dispatch({type: FAILURE, payload: "Friend not deleted."})
+  })
+ }

@@ -12,6 +12,7 @@ const Friend = props => {
    <h3>
     {props.email}
    </h3>
+   <button onClick={() => props.deleteHandler(props.id)} >Delete</button>
   </div>
  )
 }
