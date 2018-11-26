@@ -13,6 +13,7 @@ render(){
    id={friend.id}
    deleteHandler={this.props.deleteHandler}
    /> )}
+    
   </div>
  )
 }

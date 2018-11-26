@@ -49,3 +49,18 @@ export const deleteFriend = (id) => dispatch => {
    dispatch({type: FAILURE, payload: "Friend not deleted."})
   })
  }
+
+ export const updateFriend = (id, friendObj) => dispatch => {
+  axios
+  .put(`http://localhost:5000/api/friends/${id}`, friendObj)
+  .then(response => {
+   dispatch({type: SUCCESS, payload: response.data})
+   console.log(response.data)
+  })
+  .catch((error) => {
+   console.log(error.response.data)
+   console.log(error.response.status)
+   console.log(error.response.headers)
+   dispatch({type: FAILURE, payload: 'Friend not updated.'})
+  })
+ }
