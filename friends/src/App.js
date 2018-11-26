@@ -5,7 +5,6 @@ import { handleFriends } from './actions/actions'
 import FriendContainer from './components/FriendContainer';
 
 class App extends Component {
-
 componentDidMount(){
  this.props.handleFriends()
 }

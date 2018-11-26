@@ -21,7 +21,7 @@ class Friend extends React.Component {
   })
  }
 
- friendUpdate = (event, id, updatedFriend) => {
+ friendUpdate = (id, updatedFriend) => {
    this.props.updateFriend(id, updatedFriend)
   console.log(updatedFriend)
  }
@@ -39,7 +39,8 @@ class Friend extends React.Component {
     <h3>
     {this.props.email}
     </h3>
-    <form onSubmit={() => this.friendUpdate(this.props.id, {name: this.state.newname, 
+    <form onSubmit={() => this.friendUpdate(this.props.id, 
+    {name: this.state.newname, 
    age: this.state.newage, 
    email: this.state.newemail}
    )}>
