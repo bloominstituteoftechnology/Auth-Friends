@@ -5,10 +5,6 @@ import { getFriends } from '../actions/actions.js'
 import Friend from './Friend.js' 
 
 class FriendsList extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount(){
         this.props.getFriends()
     }
