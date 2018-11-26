@@ -21,8 +21,8 @@ class Friend extends React.Component {
   })
  }
 
- friendUpdate = (id, updatedFriend) => {
-  this.props.updateFriend(id, updatedFriend)
+ friendUpdate = (event, id, updatedFriend) => {
+   this.props.updateFriend(id, updatedFriend)
   console.log(updatedFriend)
  }
 
