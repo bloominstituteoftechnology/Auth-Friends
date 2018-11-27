@@ -66,18 +66,15 @@ export const FriendsReducer = (state = initialState, action) => {
 				updatingFriend: false
 			};
 
-		//   case DELETING:
-		//     return {...state, deletingFriend:true}
-		//   case DELETED:
-		//   let newFriendsAD=state.friends.slice;
-
-		//   newFriendsAD=newFriendsAD.filter(function(item){
-
-		//     return item.id != action.payload.id;
-
-		// });
-
-		//     return {...state, friends:newFriendsAD, friendDeleted:true, deletingFriend:false}
+		case DELETING:
+			return { ...state, deletingFriend: true };
+		case DELETED:
+			return {
+				...state,
+				friends: action.payload,
+				friendDeleted: true,
+				deletingFriend: false
+			};
 
 		default:
 			return state;
