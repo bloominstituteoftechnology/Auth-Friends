@@ -7,7 +7,12 @@ import {
 
 // Create initial state
 const initialState = {
-	friends: [],
+	friends: [{
+		id: 1,
+     	name: "",
+      	age: 24,
+      	email: ""
+	}],
 	error: null,
 	loading: false
 };

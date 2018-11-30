@@ -5,17 +5,15 @@ import { FriendsList } from "../components";
 import { getFriends } from "../actions";
 
 class FriendsListView extends React.Component {
-	constructor() {
-		super();
-	}
 
 	componentDidMount() {
 		// call the action
 		this.props.getFriends();
+
 	}
 
 	render() {
-		if(this.props.loading === true) {
+		if(this.props.loading) {
 			// return something to indicate that friends are loading
 			return <h2>Loading Amigos....</h2>
 		}
@@ -32,9 +30,9 @@ class FriendsListView extends React.Component {
 // the characters and the fetching boolean
 const mapStateToProps = state => {
 	return {
-		friends: state.friends,
-		error: state.error,
-		loading: state.loading
+		friends: state.friendReducer.friends,
+		error: state.friendReducer.error,
+		loading: state.friendReducer.loading
 	};
 };
 

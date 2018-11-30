@@ -6,8 +6,10 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <h1>Mi Amigos!</h1> 
-      
+    	<div>
+      		<h1>Mi Amigos!</h1> 
+      		<FriendsListView />
+      	</div>
     );
   }
 }
