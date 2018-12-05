@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { fetchFriends } from "./actions";
+
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -11,4 +15,14 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    friends: state.reducers.friends,
+    isFetching: state.reducers.isFetching
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchFriends }
+)(App);
