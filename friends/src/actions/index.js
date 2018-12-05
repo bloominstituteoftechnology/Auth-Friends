@@ -9,7 +9,7 @@ export const requestFriends = () => (dispatch) => {
 		.get('http://localhost:5000/api/friends')
 		.then((response) => {
 			console.log(response);
-			dispatch({ type: REQUEST_SUCCESS, payload: response });
+			dispatch({ type: REQUEST_SUCCESS, payload: response.data });
 		})
 		.catch((err) => {
 			dispatch({ type: REQUEST_ERROR, err });

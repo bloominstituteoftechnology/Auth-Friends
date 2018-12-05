@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {requestFriends} from './actions'
 import FriendsList from './components/FriendsList'
-import { GlobalStyle, H1 } from './styles';
+import { GlobalStyle, H1, AppContainer } from './styles';
 
 
 class App extends Component {
@@ -17,7 +17,10 @@ class App extends Component {
     return(
       <React.Fragment>
         <GlobalStyle />
-        <FriendsList />
+        <AppContainer>
+        <H1>Current Friends</H1>
+        <FriendsList friends={this.props.friends} />
+        </AppContainer>
       </React.Fragment>
     );
   }
