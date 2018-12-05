@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const ERROR = "ERROR";
 export const FETCHING = "FETCHING";
-export const SUCCESS = "SUCCESS";
+export const FETCHED = "SUCCESS";
 export const SAVING = "SAVING";
 export const SAVED = "SAVED";
 export const UPDATING = "UPDATING";
@@ -17,7 +17,7 @@ export const fetchFriends = () => {
     friends
       .then(res => {
         console.log(res.data);
-        dispatch({ type: SUCCESS, payload: res.data });
+        dispatch({ type: FETCHED, payload: res.data });
       })
       .catch(err => dispatch({ type: ERROR, payload: err }));
   };

@@ -5,20 +5,14 @@ import { fetchFriends } from "../actions";
 import { connect } from "react-redux";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      friends: []
-    };
-  }
-
   componentDidMount() {
     this.props.fetchFriends();
   }
   render() {
-    console.log(this.props.friends);
+    console.log(this.props);
+    console.log(this.props.fetchFriends);
     const { friends } = this.props;
-    console.log(friends);
+    // console.log(friends);
     return (
       <div className="App">
         <h2>Sup</h2>
@@ -35,10 +29,10 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    friends: state.friends.friends,
-    fetching: state.friends.fetchFriends,
-    fetched: state.friends.friendsFetched
+    friends: state.info.friends,
+    fetching: state.info.fetchingFriends
   };
 };
 

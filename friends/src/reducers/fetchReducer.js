@@ -1,7 +1,7 @@
 import {
   ERROR,
   FETCHING,
-  SUCCESS,
+  FETCHED,
   SAVING,
   SAVED,
   UPDATING,
@@ -12,13 +12,13 @@ import {
 
 const initialState = {
   fetchingFriends: false,
-  friendsFetched: false,
-  friendsSaved: false,
-  savingFriends: false,
+  // friendsFetched: false,
+  // friendsSaved: false,
+  savingFriend: false,
   updatingFriend: false,
-  friendUpdated: false,
+  // friendUpdated: false,
   deletingFriend: false,
-  friendDeleted: false,
+  // friendDeleted: false,
   friends: [],
   error: null
 };
@@ -26,25 +26,50 @@ const initialState = {
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING:
-      return {
-        ...state,
-        fetchingFriends: true
-      };
-    case SUCCESS:
-      return {
-        ...state,
-        fetchingFriends: false,
-        friendsFetched: true,
-        friends: [...state.friends, ...action.payload]
-      };
+      return { ...state, fetchingFriends: true };
+    case FETCHED:
+      return { ...state, fetchingFriends: false, friends: action.payload };
+    case SAVING:
+      return { ...state, savingFriend: true };
+    case SAVED:
+      return { ...state, friends: action.payload, savingFriend: false };
+    case UPDATING:
+      return { ...state, updatingFriend: true };
+    case UPDATED:
+      return { ...state, updatingFriend: false, friends: action.payload };
+    case DELETING:
+      return { ...state, deletingFriend: true };
+    case DELETED:
+      return { ...state, deletingFriend: false, friends: action.payload };
     case ERROR:
       return {
         ...state,
         fetchingFriends: false,
-        friendsFetched: false,
+        savingFriend: false,
+        updatingFriend: false,
+        deletingFriend: false,
         error: action.payload
       };
     default:
       return state;
   }
 };
+
+// export const addReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case SAVING:
+//       return {
+//         ...state,
+//         savingFriends: true
+//       };
+//     case SAVED:
+//       return {
+//         ...state,
+//         savingFriends: false,
+//         friendsSaved: true,
+//         friends: [...state.friends, action.payload]
+//       };
+//     default:
+//       return state;
+//   }
+// };
