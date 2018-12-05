@@ -12,13 +12,9 @@ import {
 
 const initialState = {
   fetchingFriends: false,
-  // friendsFetched: false,
-  // friendsSaved: false,
   savingFriend: false,
   updatingFriend: false,
-  // friendUpdated: false,
   deletingFriend: false,
-  // friendDeleted: false,
   friends: [],
   error: null
 };
@@ -54,22 +50,3 @@ export const friendsReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-// export const addReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case SAVING:
-//       return {
-//         ...state,
-//         savingFriends: true
-//       };
-//     case SAVED:
-//       return {
-//         ...state,
-//         savingFriends: false,
-//         friendsSaved: true,
-//         friends: [...state.friends, action.payload]
-//       };
-//     default:
-//       return state;
-//   }
-// };
