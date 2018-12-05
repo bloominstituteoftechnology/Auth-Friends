@@ -31,8 +31,8 @@ class App extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    friends: state.info.friends,
-    fetching: state.info.fetchingFriends
+    friends: state.friendsReducer.friends,
+    fetching: state.friendsReducer.fetchingFriends
   };
 };
 
