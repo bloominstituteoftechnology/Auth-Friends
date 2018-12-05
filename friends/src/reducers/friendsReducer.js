@@ -1,14 +1,4 @@
-import {
-  ERROR,
-  FETCHING,
-  FETCHED,
-  SAVING,
-  SAVED,
-  UPDATING,
-  UPDATED,
-  DELETING,
-  DELETED
-} from "../actions";
+import * as act from "../actions";
 
 const initialState = {
   fetchingFriends: false,
@@ -21,23 +11,23 @@ const initialState = {
 
 export const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCHING:
+    case act.FETCHING:
       return { ...state, fetchingFriends: true };
-    case FETCHED:
+    case act.FETCHED:
       return { ...state, fetchingFriends: false, friends: action.payload };
-    case SAVING:
+    case act.SAVING:
       return { ...state, savingFriend: true };
-    case SAVED:
+    case act.SAVED:
       return { ...state, friends: action.payload, savingFriend: false };
-    case UPDATING:
+    case act.UPDATING:
       return { ...state, updatingFriend: true };
-    case UPDATED:
+    case act.UPDATED:
       return { ...state, updatingFriend: false, friends: action.payload };
-    case DELETING:
+    case act.DELETING:
       return { ...state, deletingFriend: true };
-    case DELETED:
+    case act.DELETED:
       return { ...state, deletingFriend: false, friends: action.payload };
-    case ERROR:
+    case act.ERROR:
       return {
         ...state,
         fetchingFriends: false,
