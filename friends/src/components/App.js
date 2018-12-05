@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Friends from "./Friends";
 import "./App.css";
 
 import { fetchFriends } from "../actions";
@@ -12,27 +13,27 @@ class App extends Component {
     console.log(this.props);
     console.log(this.props.fetchFriends);
     const { friends } = this.props;
-    // console.log(friends);
     return (
       <div className="App">
         <h2>Sup</h2>
-        {friends.map(friend => (
-          <div key={friend.id}>
-            <p>{friend.name}</p>
-            <p>{friend.age}</p>
-            <p>{friend.email}</p>
-          </div>
-        ))}
+        {this.props.error && <h2>Error loading friends...</h2>}
+
+        {this.props.fetching ? (
+          <h3>Loading friends..</h3>
+        ) : (
+          <Friends friends={friends} />
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  const { friendsReducer } = state;
   return {
-    friends: state.friendsReducer.friends,
-    fetching: state.friendsReducer.fetchingFriends
+    friends: friendsReducer.friends,
+    fetching: friendsReducer.fetchingFriends,
+    error: friendsReducer.error
   };
 };
 
