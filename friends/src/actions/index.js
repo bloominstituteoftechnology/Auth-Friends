@@ -11,9 +11,13 @@ export const DELETING = "DELETING";
 export const DELETED = "DELETED;";
 export const SINGLE_FETCHING = "SINGLE_FETCHING";
 export const SINGLE_FETCHED = "SINGLE_FETCHED";
+export const CAN_UPDATE = "CAN_UPDATE";
+export const SHOW_FRIEND = "SHOW_FRIEND";
+
+const host = "http://localhost:5000/api/friends";
 
 export const fetchFriends = () => {
-  const friends = axios.get("http://localhost:5000/api/friends");
+  const friends = axios.get(`${host}`);
   return dispatch => {
     dispatch({ type: FETCHING });
     friends
@@ -26,7 +30,7 @@ export const fetchFriends = () => {
 };
 
 export const fetchSingleFriend = id => dispatch => {
-  const singleFriend = axios.get(`http://localhost:5000/api/friends/${id}`);
+  const singleFriend = axios.get(`${host}/${id}`);
   dispatch({ type: SINGLE_FETCHING });
   singleFriend
     .then(res => dispatch({ type: SINGLE_FETCHED, payload: res.data }))
@@ -34,7 +38,7 @@ export const fetchSingleFriend = id => dispatch => {
 };
 
 export const addFriend = friend => dispatch => {
-  const newFriend = axios.put("http://localhost:5000/api/friends", friend);
+  const newFriend = axios.put(`${host}`, friend);
   dispatch({ type: SAVING });
   newFriend
     .then(res => {
@@ -45,10 +49,7 @@ export const addFriend = friend => dispatch => {
 };
 
 export const updateFriend = (info, id) => dispatch => {
-  const updatedFriend = axios.put(
-    `http://localhost:5000/api/friends/${id}`,
-    info
-  );
+  const updatedFriend = axios.put(`${host}/${id}`, info);
   dispatch({ type: UPDATING });
   updatedFriend
     .then(res => {
@@ -59,9 +60,22 @@ export const updateFriend = (info, id) => dispatch => {
 };
 
 export const deleteFriend = id => dispatch => {
-  const deleted = axios.delete(`http://localhost:5000/api/friends/${id}`);
+  const deleted = axios.delete(`${host}/${id}`);
   dispatch({ type: DELETING });
   deleted
     .then(res => dispatch({ type: DELETED, payload: res.data }))
     .catch(err => dispatch({ type: ERROR, payload: err }));
+};
+
+export const pickOneFriend = friend => {
+  return {
+    type: SHOW_FRIEND,
+    payload: friend
+  };
+};
+
+export const toggleUpdate = () => {
+  return {
+    type: CAN_UPDATE
+  };
 };

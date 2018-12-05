@@ -1,21 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deleteFriend } from "../actions";
+import { deleteFriend, toggleUpdate, pickOneFriend } from "../actions";
 
 class Friends extends React.Component {
   render() {
-    const { friends, deleteFriend } = this.props;
+    const {
+      friends,
+      deleteFriend,
+      canUpdate,
+      toggleUupdate,
+      pickOneFriend
+    } = this.props;
     return (
       <div className="friend-card">
         {friends.map(friend => (
-          <div key={friend.id}>
-            <h3>{friend.name}</h3>
-            <p>{friend.age}</p>
-            <p>{friend.email}</p>
-            <button onClick={() => deleteFriend(friend.id)}>
-              Remove Friend
-            </button>
-          </div>
+          <ul key={friend.id}>{friend.name}</ul>
         ))}
       </div>
     );
@@ -23,14 +22,31 @@ class Friends extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { friendsReducer } = state;
   return {
-    deleteFriend: friendsReducer.deleteFriend,
-    error: friendsReducer.error
+    deleting: state.friendsReducer.deletingFriend,
+    error: state.friendsReducer.error,
+    canUpdate: state.soloReducer.canUpdate,
+    thisFriend: state.soloReducer.thisFriend
   };
 };
 
 export default connect(
   mapStateToProps,
-  { deleteFriend }
+  { deleteFriend, toggleUpdate, pickOneFriend }
 )(Friends);
+
+{
+  /* <h2>Sup</h2>
+{this.props.error && <h2>Error loading friends...</h2>}
+
+{this.props.fetching ? (
+  <h3>Loading friends..</h3>
+) : (
+  friends.map(friend => (
+    <div key={friend.id} onClick={() => pickOneFriend(friend)}>
+      {friend.name}
+    </div>
+  ))
+)}
+{this.props.canUpdate ? <div>neat</div> : null} */
+}

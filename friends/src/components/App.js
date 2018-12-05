@@ -10,18 +10,13 @@ class App extends Component {
     this.props.fetchFriends();
   }
   render() {
-    console.log(this.props);
-    console.log(this.props.fetchFriends);
-    const { friends } = this.props;
     return (
       <div className="App">
-        <h2>Sup</h2>
-        {this.props.error && <h2>Error loading friends...</h2>}
-
+        <h2>Happy Friends Redux App</h2>
         {this.props.fetching ? (
-          <h3>Loading friends..</h3>
+          <h3>Loading friends...</h3>
         ) : (
-          <Friends friends={friends} />
+          <Friends friends={this.props.friends} />
         )}
       </div>
     );
