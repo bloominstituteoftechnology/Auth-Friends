@@ -25,7 +25,7 @@ export const fetchFriends = () => {
   };
 };
 
-export const fetchSingleFriend = id => ({ dispatch }) => {
+export const fetchSingleFriend = id => dispatch => {
   const singleFriend = axios.get(`http://localhost:5000/api/friends/${id}`);
   dispatch({ type: SINGLE_FETCHING });
   singleFriend
@@ -33,7 +33,7 @@ export const fetchSingleFriend = id => ({ dispatch }) => {
     .catch(err => dispatch({ type: ERROR, payload: err }));
 };
 
-export const addFriend = friend => ({ dispatch }) => {
+export const addFriend = friend => dispatch => {
   const newFriend = axios.put("http://localhost:5000/api/friends", friend);
   dispatch({ type: SAVING });
   newFriend
@@ -44,7 +44,7 @@ export const addFriend = friend => ({ dispatch }) => {
     .catch(err => dispatch({ type: ERROR, payload: err }));
 };
 
-export const updateFriend = (info, id) => ({ dispatch }) => {
+export const updateFriend = (info, id) => dispatch => {
   const updatedFriend = axios.put(
     `http://localhost:5000/api/friends/${id}`,
     info
@@ -58,7 +58,7 @@ export const updateFriend = (info, id) => ({ dispatch }) => {
     .catch(err => dispatch({ type: ERROR, payload: err }));
 };
 
-export const deleteFriend = id => ({ dispatch }) => {
+export const deleteFriend = id => dispatch => {
   const deleted = axios.delete(`http://localhost:5000/api/friends/${id}`);
   dispatch({ type: DELETING });
   deleted
