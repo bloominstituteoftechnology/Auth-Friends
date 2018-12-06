@@ -14,24 +14,25 @@ const initialState = {
 }
 
 export const friendsList = (state = initialState, action) => {
+    
     switch (action.type) {
 
       case FETCH:
         return {
           ...state,
-          fetching:true
+          fetchingFriends:true
         }
       case SUCCESS:
         return {
           ...state,
           error: null,
-          fetching:false,
-          characters: action.payload
+          fetchingFriends:false,
+          friends: action.payload
         }
       case FAILURE:
         return {
           ...state,
-          fetching:false,
+          fetchingFriends:false,
           error: action.payload
         }
       default:

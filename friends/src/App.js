@@ -8,13 +8,14 @@ import { fetchFriends } from './actions'
 class App extends Component {
 
   componentDidMount(){
-
+    this.props.fetchFriends();
   }
 
   render() {
+    console.log(this.props.friends)
     return (
       <div className="App">
-       
+       {/* <Friends friends={this.props.friends} /> */}
       </div>
     );
   }

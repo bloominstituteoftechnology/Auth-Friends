@@ -5,8 +5,9 @@ export const FAILURE = 'FAILURE';
 
 export const fetchFriends = () => dispatch => {
     dispatch({ type: FETCH});
+    console.log('fetched');
     axios
-        .get('/api/friends')
+        .get('http://localhost:5000/api/friends')
         .then(response => {
             dispatch({ type: SUCCESS, payload: response.data});
         })
