@@ -1,7 +1,21 @@
-import { REQUEST_SENT, REQUEST_SUCCESS, REQUEST_ERROR } from '../actions';
+import {
+	REQUEST_SENT,
+	REQUEST_SUCCESS,
+	REQUEST_ERROR,
+	TOGGLE_SELECTED,
+	DELETE_FRIEND
+} from '../actions';
 
 const initialState = {
-	friends: [],
+	friends: [
+		{ 
+			id: 6, 
+			name: 'Mel',
+			age: 30,
+			email: 'abc123@email.com',
+			selected: false 
+		}
+	],
 	error: null,
 	requesting: false
 };
@@ -26,6 +40,28 @@ export const reducer = (state = initialState, action) => {
 				requesting: false,
 				friends: action.payload
 			};
+		// case SET_SELECTED:
+		// return  Object.assign({}, state, {
+		// 	friends: [...state.friends, {selected: false}]
+		// })
+		case TOGGLE_SELECTED:
+			return {
+				...state,
+				friends: state.friends.map((friend, index) => {
+					if (index === action.payload) {
+						return { ...friend, selected: !friend.selected };
+					} else {
+						return friend;
+					}
+				})
+			};
+		case DELETE_FRIEND:
+		return {
+			...state,
+			error: null,
+			requesting: false,
+			friends: [...state.friends]
+		};
 		default:
 			return state;
 	}

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import reset from 'styled-reset';
 
 export const GlobalStyle = createGlobalStyle`
@@ -41,6 +41,7 @@ background: #FFFAE8;
 width: 275px;
 margin: 2.5%;
 border-radius: 5px;
+opacity: ${props => props.selected ? '.5' : '1'};
 `
 
 export const H1 = styled.h1`
@@ -63,4 +64,34 @@ font-size: 1.4rem;
 color: black;
 font-family: 'Montserrat', sans-serif;
 margin: 1% 0 2.5%;
+`
+export const wiggle = keyframes`
+0% { transform: rotate(2.5deg)
+}
+
+20% { transform: rotate(-2.5deg)
+}
+40% {
+  transform: rotate(0deg)
+}
+60% { transform: rotate(2.5deg)
+}
+
+80% { transform: rotate(-2.5deg)
+}
+100% {
+  transform: rotate(0deg)
+}
+`
+export const Button = styled.button`
+background: #BB342F;
+color: white;
+border: 2px solid black;
+width: 40%;
+padding: 2.5% 0;
+border-radius: 5px;
+margin: 5% 0;
+:hover {
+  animation: ${wiggle} .5s infinite;
+}
 `
