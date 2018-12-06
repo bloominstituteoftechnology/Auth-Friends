@@ -15,6 +15,8 @@ export const soloReducer = (state = initialState, action) => {
       return { ...state, singleFetching: true };
     case act.SINGLE_FETCHED:
       return { ...state, singleFetching: false, thisFriend: action.payload };
+    case act.SHOW_FRIEND:
+      return { ...state, canUpdate: false, thisFriend: action.payload };
     case act.ERROR:
       return {
         ...state,

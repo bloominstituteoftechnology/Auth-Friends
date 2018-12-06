@@ -10,12 +10,13 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchFriends();
   }
+
   render() {
     return (
       <div className="App">
         <h2>Happy FriendKeeper App</h2>
-
         <CreateFriend />
+
         {this.props.fetching ? (
           <h3>Loading friends...</h3>
         ) : (

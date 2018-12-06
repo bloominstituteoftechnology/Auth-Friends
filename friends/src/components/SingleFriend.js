@@ -10,7 +10,6 @@ class Friend extends React.Component {
   render() {
     const { friends, erase, toggle, pick, thisFriend } = this.props;
     let friend = friends.filter(friend => friend.id === thisFriend.id)[0];
-
     return (
       <div key={friend.id}>
         <span onClick={() => pick({})}>X</span>

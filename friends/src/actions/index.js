@@ -69,3 +69,10 @@ export const toggleUpdate = () => {
     type: CAN_UPDATE
   };
 };
+
+export const pickOneFriend = friend => {
+  return {
+    type: SHOW_FRIEND,
+    payload: friend
+  };
+};
