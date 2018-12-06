@@ -23,7 +23,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state, "state");
   return {
     friends: state.reducers.friends,
     isFetching: state.reducers.isFetching
