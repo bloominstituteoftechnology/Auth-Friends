@@ -1,8 +1,9 @@
-import { FETCHING, UPDATING, DELETING, SUCCESS, FAILURE, ADDING } from '../actions';
+import { FETCHING, UPDATING, DELETING, SUCCESS, FAILURE, ADDING, UPDATE_FORM } from '../actions';
 
 const initialState = {
 
   friends: [],
+  friendToUpdate: null,
   fetching: false,
   updating: false,
   deleting: false,
@@ -34,11 +35,16 @@ export default function reduce(state = initialState, action) {
         updating: false,
         deleting: false,
         adding: false,
-        failed: false
+        failed: false,
+        friendToUpdate: null
       }
 
     case FAILURE:
       return {...state, error: action.payload}
+
+    case UPDATE_FORM:
+      console.log('yerr');
+      return {...state, friendToUpdate: action.payload}
 
     default:
       return state;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addFriend } from '../actions';
+import { addFriend, updateFriend } from '../actions';
 
 class FriendForm extends React.Component {
 
@@ -14,6 +14,18 @@ class FriendForm extends React.Component {
       name: '',
       age: 0,
       email: ''
+
+    }
+
+  }
+
+  componentDidUpdate(prevProps) {
+
+    console.log(this.props);
+
+    if (this.props.friendToUpdate && this.props.friendToUpdate !== prevProps.friendToUpdate) {
+
+      this.setState(this.props.friendToUpdate);
 
     }
 
@@ -33,7 +45,11 @@ class FriendForm extends React.Component {
 
     e.preventDefault();
 
-    this.props.addFriend(this.state);
+    if (this.props.friendToUpdate)
+      this.props.updateFriend(this.state);
+
+    else
+      this.props.addFriend(this.state);
 
     this.setState({
 
@@ -51,10 +67,10 @@ class FriendForm extends React.Component {
 
       <form onSubmit={this.handleSubmit}>
 
-        <input type='text' name='name' value={this.state.name} onChange={this.handleChange} />
-        <input type='number' name='age' value={this.state.age} onChange={this.handleChange} />
-        <input type='email' name='email' value={this.state.email} onChange={this.handleChange} />
-        <button>Add friend!</button>
+        <input type='text' name='name' value={this.state.name} placeholder='name' onChange={this.handleChange} />
+        <input type='number' name='age' value={this.state.age} placeholder='age' onChange={this.handleChange} />
+        <input type='email' name='email' value={this.state.email} placeholder='email' onChange={this.handleChange} />
+        <button>{this.props.friendToUpdate ? 'Update Friend!' : 'Add friend!'}</button>
 
       </form>
 
@@ -64,4 +80,14 @@ class FriendForm extends React.Component {
 
 }
 
-export default connect(null, { addFriend })(FriendForm);
+function mapStateToProps(state) {
+
+  return {
+
+    friendToUpdate: state.friendToUpdate
+
+  }
+
+}
+
+export default connect(mapStateToProps, { addFriend, updateFriend })(FriendForm);

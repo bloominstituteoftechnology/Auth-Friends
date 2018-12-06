@@ -6,6 +6,7 @@ export const DELETING = 'DELETING';
 export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
 export const ADDING = 'ADDING';
+export const UPDATE_FORM = 'UPDATE_FORM';
 
 export const fetchFriends = () => dispatch => {
 
@@ -68,5 +69,14 @@ export const addFriend = friend => dispatch => {
       type: FAILURE,
       payload: err
     }));
+
+}
+
+export const setFormToUpdate = friend => {
+
+  return {
+    type: UPDATE_FORM,
+    payload: friend
+  }
 
 }

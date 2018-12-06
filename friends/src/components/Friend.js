@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { deleteFriend } from '../actions';
+import { deleteFriend, setFormToUpdate } from '../actions';
 
-function Friend({friend, deleteFriend}) {
+function Friend({friend, deleteFriend, setFormToUpdate}) {
 
   return (
 
@@ -14,7 +14,11 @@ function Friend({friend, deleteFriend}) {
       <a href={`mailto:${friend.email}`}>{friend.email}</a>
       <span
         className='delete-btn'
-        onClick={() => deleteFriend(friend)}>X</span>
+        onClick={() => deleteFriend(friend)}
+      >
+      X
+      </span>
+      <button onClick={() => setFormToUpdate(friend)}>Update</button>
 
     </div>
 
@@ -22,4 +26,4 @@ function Friend({friend, deleteFriend}) {
 
 }
 
-export default connect(null, { deleteFriend })(Friend);
+export default connect(null, { deleteFriend, setFormToUpdate })(Friend);
