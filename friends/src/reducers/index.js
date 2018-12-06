@@ -6,6 +6,10 @@ import {
   ADD_FRIEND_SUCCESS,
   ADD_FRIEND_FAILURE,
   FRIEND_SELECTED,
+  EDITING_FRIEND,
+  EDIT_FRIEND_SUCCESS,
+  EDIT_FRIEND_FAILURE,
+  CLEAR_SELECTED,
 } from '../actions';
 const initialState = {
   friends: [],
@@ -14,6 +18,7 @@ const initialState = {
   addingFriend: false,
   friendAdded: false,
   selectedFriend: null,
+  editMode: false,
 };
 
 // click to select friend. form will populate with friend's info.
@@ -60,6 +65,30 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         selectedFriend: state.friends.find(f => f.id === action.payload),
+        editMode: true,
+      };
+    case EDITING_FRIEND:
+      return {
+        ...state,
+        editMode: true,
+      };
+    case EDIT_FRIEND_SUCCESS:
+      return {
+        ...state,
+        friends: action.payload,
+        editMode: false,
+      };
+    case EDIT_FRIEND_FAILURE:
+      return {
+        ...state,
+        editMode: false,
+        err: action.payload,
+      };
+    case CLEAR_SELECTED:
+      return {
+        ...state,
+        editMode: false,
+        selectedFriend: null,
       };
     default:
       return state;

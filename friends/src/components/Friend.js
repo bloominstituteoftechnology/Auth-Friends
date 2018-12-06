@@ -7,7 +7,7 @@ const DivFriend = styled.div`
   padding: 30px;
   margin: 5px;
   height: 85px;
-  max-width: 33%;
+  width: 33%;
   background-color: #2b3b79;
   border: 1px solid blue;
   border-radius: 5px;

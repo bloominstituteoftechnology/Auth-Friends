@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
-import {addFriend} from '../actions';
+import {addFriend, editFriend, clearSelected} from '../actions';
 
 const StyledForm = styled.form`
   max-width: 40%;
@@ -35,8 +35,12 @@ class FriendForm extends React.Component {
   componentDidUpdate(prevProps) {
     console.log('cdm,', this.props);
     if (this.props.selected !== prevProps.selected) {
-      const f = this.props.selected;
-      this.setState({name: f.name, age: f.age, email: f.email});
+      if (this.props.selected) {
+        const f = this.props.selected;
+        this.setState({name: f.name, age: f.age, email: f.email});
+      } else {
+        this.setState({name: '', age: '', email: ''});
+      }
     }
   }
 
@@ -46,13 +50,23 @@ class FriendForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log('submit');
-    this.props.addFriend(this.state);
+    const func = this.props.editMode
+      ? this.props.editFriend
+      : this.props.addFriend;
+    const arg = this.props.editMode
+      ? {...this.state, id: this.props.selected.id}
+      : this.state;
+    func(arg);
     this.setState({
       name: '',
       age: '',
       email: '',
     });
+  };
+
+  clearSelected = () => {
+    this.props.clearSelected();
+    this.setState({name: '', age: '', email: ''});
   };
 
   render() {
@@ -74,6 +88,9 @@ class FriendForm extends React.Component {
         {createInput('age', 'number')}
         {createInput('email', 'email')}
         <input type="submit" />
+        {this.props.editMode && (
+          <button onClick={this.clearSelected}>Clear Selected</button>
+        )}
       </StyledForm>
     );
   }
@@ -87,5 +104,5 @@ class FriendForm extends React.Component {
 
 export default connect(
   null,
-  {addFriend},
+  {addFriend, editFriend, clearSelected},
 )(FriendForm);

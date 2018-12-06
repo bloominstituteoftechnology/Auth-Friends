@@ -7,6 +7,11 @@ export const ADDING_FRIEND = 'ADDING_FRIEND';
 export const ADD_FRIEND_SUCCESS = 'ADD_FRIEND_SUCCESS';
 export const ADD_FRIEND_FAILURE = 'ADD_FRIEND_FAILURE';
 export const FRIEND_SELECTED = 'SELECTING_FRIEND';
+export const EDITING_FRIEND = 'EDITING_FRIEND';
+export const EDIT_FRIEND_SUCCESS = 'EDIT_FRIEND_SUCCESS';
+export const EDIT_FRIEND_FAILURE = 'EDIT_FRIEND_FAILURE';
+export const CLEAR_SELECTED = 'CLEAR_SELECTED';
+
 const url = 'http://localhost:5000';
 
 export const fetchFriends = () => dispatch => {
@@ -30,13 +35,30 @@ export const addFriend = friend => dispatch => {
     .then(res => {
       console.log('in then', res.data);
       dispatch({type: ADD_FRIEND_SUCCESS, payload: res.data});
-    }) // if successfull, fetch friends
+    })
     .catch(err => {
       console.log();
       dispatch({type: ADD_FRIEND_FAILURE, payload: err});
     });
 };
 
+export const editFriend = friend => dispatch => {
+  dispatch({type: EDITING_FRIEND, payload: friend});
+  axios
+    .put(`${url}/api/friends/${friend.id}`, friend)
+    .then(res => {
+      console.log('in then', res.data);
+      dispatch({type: EDIT_FRIEND_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+      dispatch({type: EDIT_FRIEND_FAILURE, payload: err});
+    });
+};
+
 export const selectFriend = id => dispatch => {
   dispatch({type: FRIEND_SELECTED, payload: id});
+};
+
+export const clearSelected = () => dispatch => {
+  dispatch({type: CLEAR_SELECTED});
 };

@@ -74,7 +74,10 @@ class FriendsList extends React.Component {
     return (
       <Wrapper>
         <h1>Friends List</h1>
-        <FriendForm selected={this.props.selected} />
+        <FriendForm
+          selected={this.props.selected}
+          editMode={this.props.editMode}
+        />
         <DivFriendsList>
           {this.props.friends.map(f => (
             <Friend key={f.id} friend={f} id={f.id} />
@@ -91,6 +94,7 @@ const mapStateToProps = state => {
     friends: state.friends,
     fetching: state.fetching,
     selected: state.selectedFriend,
+    editMode: state.editMode,
   };
 };
 
