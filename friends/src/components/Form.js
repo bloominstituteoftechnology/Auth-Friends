@@ -53,11 +53,7 @@ class Form extends Component {
   handleSubmit = e => {
     let data = this.state;
     e.preventDefault();
-    if (
-      this.state.name !== "" &&
-      this.state.age !== 0 &&
-      this.state.email !== ""
-    ) {
+    if (this.state.name && this.state.age && this.state.email) {
       this.props.addFriend(data);
       this.setState({
         name: "",
