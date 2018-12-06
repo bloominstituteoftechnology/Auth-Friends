@@ -20,14 +20,13 @@ class CreateFriend extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <form onSubmit={this.makeFriend}>
         <input
           name="name"
           value={this.state.name}
           onChange={this.handleChange}
-          placeholder="name"
+          placeholder="name..."
           required
         />
         <input
@@ -35,14 +34,16 @@ class CreateFriend extends React.Component {
           type="number"
           value={this.state.age}
           onChange={this.handleChange}
-          placeholder="age"
+          placeholder="age..."
+          required
         />
         <input
           name="email"
           type="email"
           value={this.state.email}
           onChange={this.handleChange}
-          placeholder="email"
+          placeholder="email..."
+          required
         />
         <button type="submit">Add New Pal!</button>
       </form>
@@ -51,7 +52,6 @@ class CreateFriend extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     error: state.error,
     savingFriend: state.savingFriend

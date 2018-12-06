@@ -8,6 +8,7 @@ class Friends extends React.Component {
   toggleUpdate = () => {
     this.props.toggleUpdate();
   };
+
   delete = () => {
     const { id } = this.props.thisFriend;
     this.props.deleteFriend(id);
@@ -39,6 +40,7 @@ class Friends extends React.Component {
             pick={this.pickFriend}
           />
         ) : null}
+
         {canUpdate ? (
           <UpdateFriend friend={thisFriend} pick={this.pickFriend} />
         ) : null}
