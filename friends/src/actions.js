@@ -8,12 +8,12 @@ export const ADD_FRIEND_START = 'ADD_ITEM_START';
 export const ADD_FRIEND_SUCCESS = 'ADD_ITEM_SUCCESS';
 export const ADD_FRIEND_FAILURE = 'ADD_ITEM_FAILURE';
 
-export const addItem = friend => dispatch => {
+export const addFriend = friend => dispatch => {
   dispatch({ type: ADD_FRIEND_START });
   axios
     .post('http://localhost:5000/api/friends', friend)
     .then(response => {
-      console.log(response);
+      console.log('Adding friend', response);
       dispatch({
         type: ADD_FRIEND_SUCCESS,
         payload: response.data

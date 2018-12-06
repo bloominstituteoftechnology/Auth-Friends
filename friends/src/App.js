@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Friends from './components/Friends';
 import { connect } from 'react-redux';
-import { fetchFriends } from './actions';
+import { fetchFriends, addFriend } from './actions';
+
 
 // for testing in console
 window.axios = axios;
@@ -13,10 +14,15 @@ class App extends React.Component {
     this.props.fetchFriends();
   }
 
+  addFriendHandler = (event, friend) => {
+    event.preventDefault();
+    this.props.addFriend(friend);
+  };
+
   render() {
     return (
       <div className="App">
-        <Friends friends={this.props.friends}/>
+        <Friends friends={this.props.friends} addFriendHandler={this.addFriendHandler}/>
       </div>
     );
   }
@@ -35,7 +41,7 @@ function mapStateToProps(state) {
 export default connect(
   
   mapStateToProps,
-  { fetchFriends } 
+  { fetchFriends, addFriend} 
 )(App);
 
 
