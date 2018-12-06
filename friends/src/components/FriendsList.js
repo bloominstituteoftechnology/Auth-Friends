@@ -28,7 +28,7 @@ const DivFriendsList = styled.div`
   color: #23c723;
   padding: 10px;
   margin: 10px auto;
-  width: 40%;
+  max-width: 40%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,12 +73,12 @@ class FriendsList extends React.Component {
     return (
       <Wrapper>
         <h1>Friends List</h1>
+        <FriendForm />
         <DivFriendsList>
           {this.props.friends.map(f => (
             <Friend key={f.id} friend={f} />
           ))}
         </DivFriendsList>
-        <FriendForm />
       </Wrapper>
     );
   }

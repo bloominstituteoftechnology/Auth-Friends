@@ -4,12 +4,22 @@ import {connect} from 'react-redux';
 import {addFriend} from '../actions';
 
 const StyledForm = styled.form`
-  background-color: blue;
+  max-width: 40%;
+  margin: 0 auto;
+  background-color: #0e0e13;
   border: 1px solid black;
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 5px;
+
+  input {
+    width: 50%;
+    padding: 5px;
+    margin: 3px;
+    font-size: 16px;
+  }
 `;
 
 class FriendForm extends React.Component {

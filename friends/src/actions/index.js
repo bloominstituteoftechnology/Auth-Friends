@@ -3,7 +3,9 @@ import axios from 'axios';
 export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
 export const FRIEND_FETCH_SUCCESS = 'FRIEND_FETCH_SUCCESS';
 export const FRIEND_FETCH_FAILURE = 'FRIEND_FETCH_FAILURE';
-export const ADD_FRIEND = 'ADD_FRIEND';
+export const ADDING_FRIEND = 'ADDING_FRIEND';
+export const ADD_FRIEND_SUCCESS = 'ADD_FRIEND_SUCCESS';
+export const ADD_FRIEND_FAILURE = 'ADD_FRIEND_FAILURE';
 const url = 'http://localhost:5000';
 
 export const fetchFriends = () => dispatch => {
@@ -21,11 +23,15 @@ export const fetchFriends = () => dispatch => {
 };
 
 export const addFriend = friend => dispatch => {
+  dispatch({type: ADDING_FRIEND});
   axios
     .post(`${url}/api/friends`, friend)
     .then(res => {
       console.log('in then', res.data);
-      dispatch({type: FRIEND_FETCH_SUCCESS, payload: res.data});
+      dispatch({type: ADD_FRIEND_SUCCESS, payload: res.data});
     }) // if successfull, fetch friends
-    .catch(err => console.log());
+    .catch(err => {
+      console.log();
+      dispatch({type: ADD_FRIEND_FAILURE, payload: err});
+    });
 };
