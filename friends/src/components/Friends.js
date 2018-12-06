@@ -8,6 +8,7 @@ const TodoList = props => {
                 <Friend
                     key={friend.id}
                     friend={friend}
+                    deleteFriend={props.deleteFriend}
                 />
             ))}
         </div>
