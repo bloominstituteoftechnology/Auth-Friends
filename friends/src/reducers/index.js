@@ -10,19 +10,19 @@ import {
   EDIT_FRIEND_SUCCESS,
   EDIT_FRIEND_FAILURE,
   CLEAR_SELECTED,
+  DELETING_FRIEND,
+  DELETE_SUCCESSFUL,
+  DELETE_FAILURE,
 } from '../actions';
+
 const initialState = {
   friends: [],
   fetching: false,
   error: null,
   addingFriend: false,
-  friendAdded: false,
   selectedFriend: null,
   editMode: false,
 };
-
-// click to select friend. form will populate with friend's info.
-// you can edit there. or click anywhere to clear selected.
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -53,7 +53,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         friends: action.payload,
         addingFriend: false,
-        friendAdded: true, // do I really need this? don't think so
       };
     case ADD_FRIEND_FAILURE:
       return {
@@ -89,6 +88,22 @@ export const reducer = (state = initialState, action) => {
         ...state,
         editMode: false,
         selectedFriend: null,
+      };
+    case DELETING_FRIEND:
+      return {
+        ...state,
+        editmode: false,
+        selectedFriend: null,
+      };
+    case DELETE_SUCCESSFUL:
+      return {
+        ...state,
+        friends: action.payload,
+      };
+    case DELETE_FAILURE:
+      return {
+        ...state,
+        err: action.payload,
       };
     default:
       return state;

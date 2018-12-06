@@ -11,6 +11,9 @@ export const EDITING_FRIEND = 'EDITING_FRIEND';
 export const EDIT_FRIEND_SUCCESS = 'EDIT_FRIEND_SUCCESS';
 export const EDIT_FRIEND_FAILURE = 'EDIT_FRIEND_FAILURE';
 export const CLEAR_SELECTED = 'CLEAR_SELECTED';
+export const DELETING_FRIEND = 'DELETING_FRIEND';
+export const DELETE_SUCCESSFUL = 'DELETE_SUCCESSFUL';
+export const DELETE_FAILURE = 'DELETE_FAILURE';
 
 const url = 'http://localhost:5000';
 
@@ -61,4 +64,17 @@ export const selectFriend = id => dispatch => {
 
 export const clearSelected = () => dispatch => {
   dispatch({type: CLEAR_SELECTED});
+};
+
+export const deleteSelected = id => dispatch => {
+  dispatch({type: DELETING_FRIEND});
+  axios
+    .delete(`${url}/api/friends/${id}`)
+    .then(res => {
+      console.log(res);
+      dispatch({type: DELETE_SUCCESSFUL, payload: res.data});
+    })
+    .catch(err => {
+      dispatch({type: DELETE_FAILURE, payload: err});
+    });
 };

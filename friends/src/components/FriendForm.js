@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
-import {addFriend, editFriend, clearSelected} from '../actions';
+import {addFriend, editFriend, clearSelected, deleteSelected} from '../actions';
 
 const StyledForm = styled.form`
   max-width: 40%;
@@ -68,7 +68,13 @@ class FriendForm extends React.Component {
     }
   };
 
-  clearSelected = () => {
+  deleteFriend = e => {
+    e.preventDefault();
+    this.props.deleteSelected(this.props.selected.id);
+  };
+
+  clearSelected = e => {
+    e.preventDefault();
     this.props.clearSelected();
     this.setState({name: '', age: '', email: ''});
   };
@@ -93,7 +99,10 @@ class FriendForm extends React.Component {
         {createInput('email', 'email')}
         <input type="submit" />
         {this.props.editMode && (
-          <button onClick={this.clearSelected}>Clear Selected</button>
+          <div>
+            <button onClick={this.clearSelected}>Clear Selected</button>
+            <button onClick={this.deleteFriend}>DELETE FRIEND</button>
+          </div>
         )}
       </StyledForm>
     );
@@ -108,5 +117,5 @@ class FriendForm extends React.Component {
 
 export default connect(
   null,
-  {addFriend, editFriend, clearSelected},
+  {addFriend, editFriend, clearSelected, deleteSelected},
 )(FriendForm);
