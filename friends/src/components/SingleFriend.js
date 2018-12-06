@@ -1,8 +1,16 @@
 import React from "react";
+import { fetchSingleFriend } from "../actions";
+import { connect } from "react-redux";
 
 class Friend extends React.Component {
+  componentWillMount() {
+    this.props.fetchSingleFriend(this.props.thisFriend.id);
+  }
+
   render() {
-    const { friend, erase, toggle, pick } = this.props;
+    const { friends, erase, toggle, pick, thisFriend } = this.props;
+    let friend = friends.filter(friend => friend.id === thisFriend.id)[0];
+
     return (
       <div key={friend.id}>
         <span onClick={() => pick({})}>X</span>
@@ -16,4 +24,15 @@ class Friend extends React.Component {
   }
 }
 
-export default Friend;
+const mapStateToProps = state => {
+  const { soloReducer } = state;
+  return {
+    thisFriend: soloReducer.thisFriend,
+    error: soloReducer.error
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchSingleFriend }
+)(Friend);

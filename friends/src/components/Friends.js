@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import SingleFriend from "./SingleFriend";
 import UpdateFriend from "./UpdateFriend";
-import { deleteFriend, toggleUpdate, pickOneFriend } from "../actions";
+import { deleteFriend, toggleUpdate, fetchSingleFriend } from "../actions";
 
 class Friends extends React.Component {
   toggleUpdate = () => {
@@ -15,18 +15,17 @@ class Friends extends React.Component {
     this.pickFriend({});
   };
 
-  pickFriend = friend => {
-    this.props.pickOneFriend(friend);
+  pickFriend = id => {
+    this.props.fetchSingleFriend(id);
   };
 
   render() {
-    const { friends, canUpdate, thisFriend, pickOneFriend } = this.props;
-
+    const { friends, canUpdate, thisFriend, fetchSingleFriend } = this.props;
     return (
       <div className="friend-card">
         <ul>
           {friends.map(friend => (
-            <li key={friend.id} onClick={() => pickOneFriend(friend)}>
+            <li key={friend.id} onClick={() => fetchSingleFriend(friend.id)}>
               {friend.name}
             </li>
           ))}
@@ -34,15 +33,18 @@ class Friends extends React.Component {
 
         {Object.keys(thisFriend).length > 0 ? (
           <SingleFriend
-            friend={thisFriend}
+            friends={friends}
             erase={this.delete}
             toggle={this.toggleUpdate}
-            pick={this.pickFriend}
+            pick={this.props.fetchSingleFriend}
           />
         ) : null}
 
         {canUpdate ? (
-          <UpdateFriend friend={thisFriend} pick={this.pickFriend} />
+          <UpdateFriend
+            friend={thisFriend}
+            pick={this.props.fetchSingleFriend}
+          />
         ) : null}
       </div>
     );
@@ -60,5 +62,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { deleteFriend, toggleUpdate, pickOneFriend }
+  { deleteFriend, toggleUpdate, fetchSingleFriend }
 )(Friends);

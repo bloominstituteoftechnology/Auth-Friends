@@ -22,7 +22,7 @@ class UpdateFriend extends React.Component {
       email: email ? email : undefined
     };
     this.props.updateFriend(info, this.props.friend.id);
-    this.props.pick({});
+    // this.props.pick({});
   };
 
   render() {

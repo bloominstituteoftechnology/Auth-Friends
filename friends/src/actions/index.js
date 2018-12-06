@@ -64,13 +64,6 @@ export const deleteFriend = id => dispatch => {
     .catch(err => dispatch({ type: ERROR, payload: err }));
 };
 
-export const pickOneFriend = friend => {
-  return {
-    type: SHOW_FRIEND,
-    payload: friend
-  };
-};
-
 export const toggleUpdate = () => {
   return {
     type: CAN_UPDATE
