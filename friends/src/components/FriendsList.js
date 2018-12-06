@@ -14,7 +14,9 @@ class FriendsList extends React.Component {
 
   render() {
 
-    const { friends, fetching } = this.props;
+    const { friends, fetching, error } = this.props;
+
+    console.log(error);
 
     if (fetching)
       return <h1>Fetching friends...</h1>;
@@ -38,7 +40,8 @@ function mapStateToProps(state) {
   return {
 
     friends: state.friends,
-    fetching: state.fetching
+    fetching: state.fetching,
+    error: state.error
 
   }
 
