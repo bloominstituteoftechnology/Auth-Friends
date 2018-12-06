@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Friends List:</h1>
+        <h1>Redux Friends List:</h1>
         <FriendForm />
         <Friends />
       </div>

@@ -33,4 +33,19 @@
 
 .friendsList {
     list-style: none;
+    border-bottom: 1px solid white;
+    width: 600px;
+    padding-bottom: 20px;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 7px;
+}
+
+input {
+    margin-right: 20px;
+    height: 25px;
+}
+
+button {
+    height: 30px;
 }
