@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import './App.css';
 import Friends from './components/Friends';
 import CreateFriendForm from './components/CreateFriendForm';
-import { fetchFriends } from './actions'
+import { fetchFriends, addFriend } from './actions'
 
 
 class App extends Component {
@@ -35,6 +35,7 @@ function mapStateToProps({ friendsList }){
 export default connect(
   mapStateToProps,
   {
-    fetchFriends
+    fetchFriends,
+    addFriend
   }
 )(App);

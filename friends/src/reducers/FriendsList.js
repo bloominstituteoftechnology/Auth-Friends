@@ -1,4 +1,5 @@
 import { FETCH, SUCCESS, FAILURE } from "../actions";
+import { ADD_FETCH, ADD_SUCCESS, ADD_FAILURE } from "../actions";
 
 const initialState = {
     fetchingFriends: false,
@@ -30,6 +31,26 @@ export const friendsList = (state = initialState, action) => {
           friends: action.payload
         }
       case FAILURE:
+        return {
+          ...state,
+          fetchingFriends:false,
+          error: action.payload
+        }
+        
+        //add conditions
+      case ADD_FETCH:
+        return {
+          ...state,
+          fetchingFriends:true
+        }
+      case ADD_SUCCESS:
+        return {
+          ...state,
+          error: null,
+          fetchingFriends:false,
+          friends: action.payload
+        }
+      case ADD_FAILURE:
         return {
           ...state,
           fetchingFriends:false,

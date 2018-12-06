@@ -21,8 +21,14 @@ class CreateFriendForm extends Component {
       };
 
       submitHandler = ev => {
+          const newFriend = {...this.state, age: parseInt(this.state.age)}
           ev.preventDefault();
-          this.props.addItem(this.state);
+          this.props.addFriend(newFriend);
+          this.setState({
+            name: '',
+            age: 0,
+            email: ''
+          })
       }
   
     render() {
