@@ -10,7 +10,7 @@ export const fetch_friends = () => dispatch => {
     axios
         .get('http://localhost:5000/api/friends')
         .then(response => {
-            console.log('from fetch friends...', response)
+            // console.log('from fetch friends...', response)
             dispatch({ type: FETCH_SUCCESS, payload: response.data})
             })
         .catch(err => {

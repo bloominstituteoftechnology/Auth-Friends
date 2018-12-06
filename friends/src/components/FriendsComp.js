@@ -21,7 +21,7 @@ class FriendsComp extends React.Component {
         return (
             <div>
                 {this.props.friends.map(friend => {
-                    return <Friend friend={friend}
+                    return <Friend friend={friend} key={friend.email}
                     />
                 })}
                 <form>
