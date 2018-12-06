@@ -5,6 +5,7 @@ import {
   ADDING_FRIEND,
   ADD_FRIEND_SUCCESS,
   ADD_FRIEND_FAILURE,
+  FRIEND_SELECTED,
 } from '../actions';
 const initialState = {
   friends: [],
@@ -12,7 +13,11 @@ const initialState = {
   error: null,
   addingFriend: false,
   friendAdded: false,
+  selectedFriend: null,
 };
+
+// click to select friend. form will populate with friend's info.
+// you can edit there. or click anywhere to clear selected.
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -50,6 +55,11 @@ export const reducer = (state = initialState, action) => {
         ...state,
         addingFriend: false,
         error: action.payload,
+      };
+    case FRIEND_SELECTED:
+      return {
+        ...state,
+        selectedFriend: state.friends.find(f => f.id === action.payload),
       };
     default:
       return state;

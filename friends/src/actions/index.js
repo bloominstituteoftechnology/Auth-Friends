@@ -6,6 +6,7 @@ export const FRIEND_FETCH_FAILURE = 'FRIEND_FETCH_FAILURE';
 export const ADDING_FRIEND = 'ADDING_FRIEND';
 export const ADD_FRIEND_SUCCESS = 'ADD_FRIEND_SUCCESS';
 export const ADD_FRIEND_FAILURE = 'ADD_FRIEND_FAILURE';
+export const FRIEND_SELECTED = 'SELECTING_FRIEND';
 const url = 'http://localhost:5000';
 
 export const fetchFriends = () => dispatch => {
@@ -34,4 +35,8 @@ export const addFriend = friend => dispatch => {
       console.log();
       dispatch({type: ADD_FRIEND_FAILURE, payload: err});
     });
+};
+
+export const selectFriend = id => dispatch => {
+  dispatch({type: FRIEND_SELECTED, payload: id});
 };

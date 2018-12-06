@@ -32,6 +32,14 @@ class FriendForm extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    console.log('cdm,', this.props);
+    if (this.props.selected !== prevProps.selected) {
+      const f = this.props.selected;
+      this.setState({name: f.name, age: f.age, email: f.email});
+    }
+  }
+
   handleChange = e => {
     this.setState({[e.target.name]: e.target.value});
   };
@@ -48,6 +56,7 @@ class FriendForm extends React.Component {
   };
 
   render() {
+    console.log('form render', this.props);
     const createInput = (name, type = 'text') => {
       return (
         <input
@@ -69,6 +78,12 @@ class FriendForm extends React.Component {
     );
   }
 }
+
+//const mapStateToProps = state => {
+//return {
+//selected: state.selected,
+//};
+//};
 
 export default connect(
   null,

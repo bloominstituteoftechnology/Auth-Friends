@@ -28,7 +28,7 @@ const DivFriendsList = styled.div`
   color: #23c723;
   padding: 10px;
   margin: 10px auto;
-  max-width: 40%;
+  max-width: 45%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,6 +63,7 @@ class FriendsList extends React.Component {
   }
 
   render() {
+    console.log('list props', this.props);
     if (this.props.fetching)
       return (
         <DivSpinner>
@@ -73,10 +74,10 @@ class FriendsList extends React.Component {
     return (
       <Wrapper>
         <h1>Friends List</h1>
-        <FriendForm />
+        <FriendForm selected={this.props.selected} />
         <DivFriendsList>
           {this.props.friends.map(f => (
-            <Friend key={f.id} friend={f} />
+            <Friend key={f.id} friend={f} id={f.id} />
           ))}
         </DivFriendsList>
       </Wrapper>
@@ -85,9 +86,11 @@ class FriendsList extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log('mstp', state);
   return {
     friends: state.friends,
     fetching: state.fetching,
+    selected: state.selectedFriend,
   };
 };
 
