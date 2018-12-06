@@ -16,10 +16,12 @@ export const DELETE_FRIEND_START = 'DELETE_FRIEND_START';
 export const DELETE_FRIEND_SUCCESS = 'DELETE_FRIEND_SUCCESS';
 export const DELETE_FRIEND_FAILURE = 'DELETE_FRIEND_FAILURE';
 
+export const STAGE_UPDATE = 'STAGE_UPDATE';
+
 export const getFriends = () => dispatch => {
     dispatch({ type: FETCH_FRIENDS_START });
     axios
-        .get('http://localhost:5000/friends')
+        .get('http://localhost:5000/api/friends')
         .then(res => {
             console.log(res);
             dispatch({
@@ -35,7 +37,7 @@ export const getFriends = () => dispatch => {
 export const addFriend = friend => dispatch => {
     dispatch({ type: ADD_FRIEND_START });
     axios
-        .post('http://localhost:5000/friends', friend)
+        .post('http://localhost:5000/api/friends', friend)
         .then(res => {
             console.log(res);
             dispatch({
@@ -52,7 +54,7 @@ export const addFriend = friend => dispatch => {
 export const updateFriend = (friend) => dispatch => {
     dispatch({ type: UPDATE_FRIEND_START });
     axios
-        .put(`http://localhost:5000/friends/${friend.id}`, friend)
+        .put(`http://localhost:5000/api/friends/${friend.id}`, friend)
         .then(res => {
             console.log(res);
             dispatch({
@@ -69,7 +71,7 @@ export const updateFriend = (friend) => dispatch => {
 export const deleteFriend = friend => dispatch => {
     dispatch({ type: DELETE_FRIEND_START })
     axios
-        .delete(`http://localhost:5000/friends/${friend.id}`)
+        .delete(`http://localhost:5000/api/friends/${friend.id}`)
         .then(res => {
             console.log(res);
             dispatch({
@@ -78,7 +80,11 @@ export const deleteFriend = friend => dispatch => {
             })
         })
         .catch(err => dispatch({
-            type: DELETE_FRIEND_ERROR,
+            type: DELETE_FRIEND_FAILURE,
             payload: err
         }))
+}
+
+export const stageUpdate = friend => {
+    return {type: STAGE_UPDATE, payload: friend}
 }

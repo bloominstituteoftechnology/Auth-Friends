@@ -10,19 +10,19 @@ import {
     UPDATE_FRIEND_FAILURE,
     DELETE_FRIEND_START,
     DELETE_FRIEND_SUCCESS,
-    DELETE_FRIEND_FAILURE
+    DELETE_FRIEND_FAILURE,
+    STAGE_UPDATE
 } from '../actions';
-
 
 const initState = {
     fetchingFriends: false,
-    friendsFetched: false,
     savingFriends: false,
     updatingFriend: false,
-    friendUpdated: false,
     deletingFriend: false,
     friendDeleted: false,
     friends: [],
+    updateStaged: false,
+    friendToUpdate: {},
     error: null
   };
 
@@ -65,7 +65,8 @@ const friendsReducer = (state=initState,action) => {
         case UPDATE_FRIEND_START:
             return {
                 ...state,
-                updatingFriend: true
+                updatingFriend: true,
+                updateStaged: false
             }
         case UPDATE_FRIEND_SUCCESS:
             return {
@@ -96,7 +97,15 @@ const friendsReducer = (state=initState,action) => {
                 deletingFriend: false,
                 error: action.payload
             }
+        case STAGE_UPDATE:
+            return {
+                ...state,
+                friendToUpdate: action.payload,
+                updateStaged: true
+            }
         default:
         return state;
     }
 }
+
+export default friendsReducer;
