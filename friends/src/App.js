@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import FriendList from './components/FriendList';
+import FriendListView from './views/FriendListView';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      friends: []
+    }
+  }
+
+  componentDidMount() {
+    this.props.getFriends();
+  }
+
   render() {
+    console.log(this.props)
     return (
       <div className="App">
-        <FriendList />
+        <FriendListView friends={this.state.friends}/>
       </div>
     );
   }
