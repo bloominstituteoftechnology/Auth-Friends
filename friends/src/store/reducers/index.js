@@ -32,6 +32,7 @@ const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 fetchingFriends: false,
+                friendsFetched: true,
                 friends: action.payload,
                 error: null
             }
@@ -40,6 +41,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 fetchingFriends: false,
+                friendsFetched: false,
                 error: action.payload
             }
 

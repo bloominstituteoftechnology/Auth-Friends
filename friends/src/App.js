@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import FriendsListView from './views/FriendsListView';
 import SubmitNewFriendView from './views/SubmitNewFriendView';
 
+import { getFriends } from './store/actions';
+
 class App extends Component {
   
   componentDidMount() {
-
+    this.props.getFriends();
   }
 
   render() {
@@ -19,4 +22,6 @@ class App extends Component {
   }
 }
 
-export default App;
+// export default App;
+
+export default connect(null, { getFriends })(App);
