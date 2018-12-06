@@ -50,18 +50,22 @@ class FriendForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const func = this.props.editMode
-      ? this.props.editFriend
-      : this.props.addFriend;
-    const arg = this.props.editMode
-      ? {...this.state, id: this.props.selected.id}
-      : this.state;
-    func(arg);
-    this.setState({
-      name: '',
-      age: '',
-      email: '',
-    });
+    if (!this.state.name || !this.state.age || !this.state.email) {
+      alert('all fields must be filled before submitting');
+    } else {
+      const func = this.props.editMode
+        ? this.props.editFriend
+        : this.props.addFriend;
+      const arg = this.props.editMode
+        ? {...this.state, id: this.props.selected.id}
+        : this.state;
+      func(arg);
+      this.setState({
+        name: '',
+        age: '',
+        email: '',
+      });
+    }
   };
 
   clearSelected = () => {
