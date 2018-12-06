@@ -5,7 +5,10 @@ import {
     FETCH_FRIENDS_FAILURE,
     ADD_FRIEND_START,
     ADD_FRIEND_SUCCESS,
-    ADD_FRIEND_FAILURE, 
+    ADD_FRIEND_FAILURE,
+    EDIT_FRIEND_START,
+    EDIT_FRIEND_SUCCESS,
+    EDIT_FRIEND_FAILURE, 
     } from '../actions';
 
 const initialState = {
@@ -47,6 +50,24 @@ const friends = (state = initialState, action) => {
                 friends: action.payload,
             }
         case ADD_FRIEND_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                fetching: false,
+            }
+        case EDIT_FRIEND_START:
+            return {
+                ...state,
+                fetching: true,
+            }
+        case EDIT_FRIEND_SUCCESS:
+            return {
+                ...state,
+                error: null,
+                fetching: false,
+                friends: action.payload,
+            }
+        case EDIT_FRIEND_FAILURE:
             return {
                 ...state,
                 error: action.payload,
