@@ -11,7 +11,6 @@ const Friends = props => {
       onClick={() => props.deleteFriend(friend.id) }> 
       Delete Friend!
       </button>
-      <button className="btn">Update Friend</button>
     </div>
   ));
 };
