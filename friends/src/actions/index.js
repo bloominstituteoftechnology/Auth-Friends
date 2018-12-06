@@ -7,10 +7,11 @@ export const FAILURE = "FAILURE";
 export const fetchFriends = () => dispatch => {
   dispatch({ type: FETCHING });
   axios
-    .get("/api/friends")
+    .get("http://localhost:5000/api/friends")
     .then(res => {
       console.log(res);
-      dispatch({ type: SUCCESS, paylod: res.friends });
+      console.log(Object.keys(res.data));
+      dispatch({ type: SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: FAILURE, payload: err });
