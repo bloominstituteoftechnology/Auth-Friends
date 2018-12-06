@@ -1,7 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import { addNewFriend } from '../store/actions';
 
 class SubmitNewFriend extends React.Component {
     constructor(props) {
@@ -36,4 +33,4 @@ class SubmitNewFriend extends React.Component {
     }
 }
 
-export default connect(null, { addNewFriend })(SubmitNewFriend);
+export default SubmitNewFriend;

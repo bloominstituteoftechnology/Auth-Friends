@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import FriendsList from '../components/FriendsList';
-import SubmitNewFriend from '../components/SubmitNewFriend';
 
 import { getFriends } from '../store/actions';
 
@@ -16,7 +15,6 @@ class FriendsListView extends React.Component {
             <div>
                 {this.props.error ? <h2>Oh no! Something went wrong...</h2> : null}
                 {this.props.fetchingFriends ? <h2>Loading friends...</h2>: null}
-                <SubmitNewFriend />
                 <FriendsList friends={this.props.friends} />
             </div>
         );
