@@ -24,10 +24,15 @@ const Input = styled.input`
   padding: 10px;
   outline: none;
   border: none;
+  transition: border-bottom 0.3s ease-in-out;
   border-bottom: 3px solid gray;
   &::placeholder {
     text-transform: uppercase;
     color: darkred;
+  }
+
+  &:focus {
+    border-bottom: 3px solid green;
   }
 `;
 
@@ -35,12 +40,29 @@ const Button = styled.button`
   color: darkred;
   font-weight: bold;
   text-transform: uppercase;
+  border: 3px solid gray;
+  position: relative;
+  box-shadow: 0 4px gray;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 25px;
+  letter-spacing: 2px;
+
+  &:hover {
+    top: 2px;
+    box-shadow: 0 2px gray;
+  }
+
+  &:active {
+    top: 4px;
+    box-shadow: none;
+  }
 `;
 
 class Form extends Component {
   state = {
     name: "",
-    age: 0,
+    age: "",
     email: ""
   };
 
@@ -57,7 +79,7 @@ class Form extends Component {
       this.props.addFriend(data);
       this.setState({
         name: "",
-        age: 0,
+        age: "",
         email: ""
       });
     }
@@ -69,6 +91,7 @@ class Form extends Component {
       <StyledForm onSubmit={this.handleSubmit}>
         <H1>Add A Friend</H1>
         <Input
+          autoComplete="off"
           type="text"
           name="name"
           placeholder="Friends Name..."
@@ -76,14 +99,17 @@ class Form extends Component {
           onChange={this.onInputChange}
         />
         <Input
+          autoComplete="off"
           type="number"
           name="age"
+          min="1"
           placeholder="Friends Age..."
           value={this.state.age}
           onChange={this.onInputChange}
         />
         <Input
           type="email"
+          autoComplete="off"
           name="email"
           placeholder="Friends Email..."
           value={this.state.email}

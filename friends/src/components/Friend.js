@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { deleteFriend } from "../store/actions/index";
 
 const Card = styled.div`
   background: lightgray;
@@ -39,12 +40,27 @@ const Button = styled.button`
   }
 `;
 
-function Friend(props) {
+const H2 = styled.h2`
+  position: relative;
+`;
+
+const Span = styled.span`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: red;
+  cursor: pointer;
+`;
+
+function Friend({ name, email, age, deleteFriend, id }) {
   return (
     <Card>
-      <h2>Name: {props.name}</h2>
-      <p>Age: {props.age}</p>
-      <p>Email: {props.email}</p>
+      <H2>
+        Name: {name}
+        <Span onClick={() => deleteFriend(id)}>X</Span>
+      </H2>
+      <p>Age: {age}</p>
+      <p>Email: {email}</p>
       <Button>Edit&nbsp;Friend</Button>
     </Card>
   );
