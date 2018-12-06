@@ -4,7 +4,10 @@ import {
 	FETCH_FRIENDS_FAILURE,
 	ADD_FRIEND_START,
 	ADD_FRIEND_SUCCESS,
-	ADD_FRIEND_FAILURE
+    ADD_FRIEND_FAILURE,
+    DELETE_FRIEND_START,
+	DELETE_FRIEND_SUCCESS,
+    DELETE_FRIEND_FAILURE
 } from "../actions";
 
 const initialState = {
@@ -14,7 +17,7 @@ const initialState = {
 	savingFriends: false,
 	//updatingFriend: false,
 	// friendUpdated: false,
-	// deletingFriend: false,
+	deletingFriend: false,
 	// friendDeleted: false,
 	friends: [],
 	error: null
@@ -27,11 +30,11 @@ const friendsReducer = (state = initialState, action) => {
 				...state,
 				fetchingFriends: true
 			};
-        case FETCH_FRIENDS_SUCCESS:
+		case FETCH_FRIENDS_SUCCESS:
 			return {
 				...state,
 				error: null,
-                fetchingFriends: false,
+				fetchingFriends: false,
 				friends: action.payload
 			};
 		case FETCH_FRIENDS_FAILURE:
@@ -56,6 +59,24 @@ const friendsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				savingFriend: false,
+				error: action.payload
+			};
+
+		case DELETE_FRIEND_START:
+			return {
+				...state,
+				deletingFriend: true
+			};
+		case DELETE_FRIEND_SUCCESS:
+			return {
+				...state,
+				deletingFriend: false,
+				friends: action.payload
+			};
+		case DELETE_FRIEND_FAILURE:
+			return {
+				...state,
+				deletingFriend: false,
 				error: action.payload
 			};
 
