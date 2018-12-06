@@ -2,16 +2,24 @@ import React from 'react';
 import {fetchFriends} from '../actions';
 import {connect} from 'react-redux';
 import Friend from './Friend';
+import FriendForm from './FriendForm';
+
 import styled from 'styled-components';
 import {ReactSpinner} from 'react-spinning-wheel';
 import 'react-spinning-wheel/dist/style.css';
 
 const DivFriendsList = styled.div`
   border: 1px solid black;
-  background-color: #70708e;
-  color: white;
+  background-color: #0e0e13;
+  color: #77bd77;
+  padding: 10px;
   margin: 10px auto;
-  width: 60%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
 
   h2 {
     font-size: 20px;
@@ -49,12 +57,15 @@ class FriendsList extends React.Component {
         </DivSpinner>
       );
     return (
-      <DivFriendsList>
+      <div>
         <h2>Friends List</h2>
-        {this.props.friends.map(f => (
-          <Friend key={f.id} friend={f} />
-        ))}
-      </DivFriendsList>
+        <DivFriendsList>
+          {this.props.friends.map(f => (
+            <Friend key={f.id} friend={f} />
+          ))}
+        </DivFriendsList>
+        <FriendForm />
+      </div>
     );
   }
 }
