@@ -9,7 +9,7 @@ export const fetchFriends = () => {
     dispatch({ type: FETCHING_FRIENDS });
     getFriends
       .then(friendData => {
-        console.log("Friend Data:", friendData);
+        console.log("friend Data:", friendData);
         dispatch({
           type: FRIENDS_FETCHED,
           payload: friendData.data

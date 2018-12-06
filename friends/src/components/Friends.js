@@ -4,7 +4,7 @@ import { fetchFriends } from "../actions";
 
 class Friends extends Component {
   componentDidMount() {
-    this.props.fetchFriends(); // <-this gets the friends from off the server in the actions index
+    this.props.fetchFriends(); // friends from the actions index
   }
 
   render() {
@@ -26,7 +26,7 @@ class Friends extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("MapStateToProps State:", state);
+  console.log("mapStateToProps State:", state);
   return {
     friends: state.friends,
     fetchingFriends: state.fetchingFriends
