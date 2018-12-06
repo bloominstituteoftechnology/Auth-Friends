@@ -6,7 +6,7 @@ import Friends from './components/Friends'
 import FriendForm from './components/FriendForm'
 import { connect } from 'react-redux';
 
-import { fetchFriends } from "./store/actions";
+import { fetchFriends, addFriend } from "./store/actions";
 import './App.css';
 
 class App extends Component {
@@ -66,7 +66,7 @@ class App extends Component {
             <Friends {...this.props}/>
           </div>  
           <div className="form-wrapper">
-            <FriendForm addNewFriend={this.addNewFriend}/>
+            <FriendForm {...this.props}/>
           </div>
         </div>
       </div>
@@ -84,5 +84,6 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchFriends }
+  { fetchFriends,
+    addFriend }
 )(App);

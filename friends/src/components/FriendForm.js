@@ -19,7 +19,7 @@ class FriendForm extends React.Component {
 
     submitHandler = event => {
         event.preventDefault();
-        this.props.addNewFriend(this.state);
+        this.props.addFriend(this.state);
         this.setState({
             name: "",
             age: 0, 
