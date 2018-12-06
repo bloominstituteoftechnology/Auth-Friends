@@ -11,5 +11,14 @@ export const addFriend = friend => dispatch => {
     .post("http://localhost:5000/friends", friend)
     .then(response => {
         console.log(response)
+        dispatch({
+            type: FETCHING_FRIEND_SUCCESS,
+            payload: response.data
+        })
     })
-}
+    .catch(error => 
+        dispatch({
+            type: FETCHING_FRIEND_FAILURE, 
+            payload: error
+        }))
+} 
