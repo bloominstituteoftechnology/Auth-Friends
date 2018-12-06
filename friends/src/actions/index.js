@@ -5,8 +5,11 @@ export const UPDATING = 'UPDATING';
 export const DELETING = 'DELETING';
 export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
+export const ADDING = 'ADDING';
 
 export const fetchFriends = () => dispatch => {
+
+  dispatch({type: FETCHING});
 
   axios.get('http://localhost:5000')
     .then(res => dispatch({
@@ -22,6 +25,8 @@ export const fetchFriends = () => dispatch => {
 
 export const updateFriend = friend => dispatch => {
 
+  dispatch({type: UPDATING});
+
   axios.put(`http://localhost:5000/${newFriend.id}`, newFriend)
     .then(res => dispatch({
       type: SUCCESS,
@@ -36,6 +41,8 @@ export const updateFriend = friend => dispatch => {
 
 export const deleteFriend = friend => dispatch => {
 
+  dispatch({type: DELETING});
+
   axios.delete(`http://localhost:5000/${friend.id}`)
     .then(res => dispatch({
       type: SUCCESS,
@@ -49,6 +56,8 @@ export const deleteFriend = friend => dispatch => {
 }
 
 export const addFriend = friend => dispatch => {
+
+  dispatch({type: ADDING});
 
   axios.post(`http://localhost:5000/`, friend)
     .then(res => dispatch({
