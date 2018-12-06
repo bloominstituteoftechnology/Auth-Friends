@@ -10,8 +10,19 @@ class CreateFriendForm extends Component {
         }
     }
 
-    componentDidMount(){
-      
+    componentDidUpdate(prevprops, prevstate){
+        let editFriend= this.props.editFriend;
+        console.log(editFriend);
+        if(!(prevprops.editFriend === editFriend)){
+        if(editFriend.name){
+            this.setState({
+            name: editFriend.name,
+            age: editFriend.age,
+            email: editFriend.email
+            })
+            return;
+        }
+    }
     }
 
     changeHandler = event => {
@@ -21,9 +32,15 @@ class CreateFriendForm extends Component {
       };
 
       submitHandler = ev => {
-          const newFriend = {...this.state, age: parseInt(this.state.age)}
+          let newFriend = {...this.state, age: parseInt(this.state.age)}
           ev.preventDefault();
-          this.props.addFriend(newFriend);
+          if(!this.props.editFriend.name){
+            this.props.addFriend(newFriend);
+          }else{
+              newFriend = {...newFriend, id: this.props.editFriend.id}
+              this.props.updateToList(newFriend);
+          }
+          
           this.setState({
             name: '',
             age: '',
@@ -32,7 +49,7 @@ class CreateFriendForm extends Component {
       }
   
     render() {
-      console.log(this.props.friends)
+      
       return (
         
          <form onSubmit={this.submitHandler}>
@@ -57,7 +74,7 @@ class CreateFriendForm extends Component {
             value={this.state.email}
             placeholder="email"
           />
-          <button>Add Friend</button>
+          <button>{this.props.editFriend.name ? 'Edit Friend' : 'Add Friend'}</button>
              
          </form>
         

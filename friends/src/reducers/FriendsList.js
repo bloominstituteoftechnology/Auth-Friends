@@ -2,6 +2,7 @@ import {
   FETCH, SUCCESS, FAILURE,
   ADD_FETCH, ADD_SUCCESS, ADD_FAILURE,
   DELETE_FETCH, DELETE_SUCCESS, DELETE_FAILURE,
+  UPDATE_FETCH, UPDATE_SUCCESS, UPDATE_FAILURE,
  } from "../actions";
 
 
@@ -75,6 +76,26 @@ export const friendsList = (state = initialState, action) => {
           friends: action.payload
         }
       case DELETE_FAILURE:
+        return {
+          ...state,
+          fetchingFriends:false,
+          error: action.payload
+        }
+
+        //update conditions
+      case UPDATE_FETCH:
+        return {
+          ...state,
+          fetchingFriends:true
+        }
+      case UPDATE_SUCCESS:
+        return {
+          ...state,
+          error: null,
+          fetchingFriends:false,
+          friends: action.payload
+        }
+      case UPDATE_FAILURE:
         return {
           ...state,
           fetchingFriends:false,

@@ -9,6 +9,7 @@ const TodoList = props => {
                     key={friend.id}
                     friend={friend}
                     deleteFriend={props.deleteFriend}
+                    startUpdate={props.startUpdate}
                 />
             ))}
         </div>

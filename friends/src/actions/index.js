@@ -8,6 +8,9 @@ export const ADD_FAILURE = 'ADD_FAILURE';
 export const DELETE_FETCH = 'DELETE_FETCH';
 export const DELETE_SUCCESS = 'DELETE_SUCCESS';
 export const DELETE_FAILURE = 'DELETE_FAILURE';
+export const UPDATE_FETCH = 'UPDATE_FETCH';
+export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
+export const UPDATE_FAILURE = 'UPDATE_FAILURE';
 
 export const fetchFriends = () => dispatch => {
     dispatch({ type: FETCH});
@@ -43,5 +46,17 @@ export const deleteFriend = (id) => dispatch => {
         })
         .catch(err => {
             dispatch({ type: DELETE_FAILURE, payload: err });
+        })
+}
+
+export const updateFriend = (newFriend) => dispatch => {
+    dispatch({ type: UPDATE_FETCH});
+    axios
+        .put(`http://localhost:5000/api/friends/${newFriend.id}`, newFriend)
+        .then(response => {
+            dispatch({ type: UPDATE_SUCCESS, payload: response.data});
+        })
+        .catch(err => {
+            dispatch({ type: UPDATE_FAILURE, payload: err });
         })
 }
