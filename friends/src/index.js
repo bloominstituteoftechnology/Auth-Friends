@@ -5,18 +5,18 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-// App component
-const App = () => (<h1>Redux-Friends</h1>)
+import FriendList from './components/FriendList'
+import reducers from './reducers';
 
 // Redux Store
 const store = createStore(
-  () => {},
+  reducers,
   applyMiddleware(thunk, logger)
 );
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <FriendList />
   </Provider>,
   document.getElementById("root")
 );
