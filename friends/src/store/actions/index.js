@@ -18,10 +18,10 @@ export const getFriends = () => dispatch => {
     .catch(err => dispatch({ type: FETCH_FRIENDS_FAILURE, payload: err }));
 };
 
-export const addFriend = () => dispatch => {
+export const addFriend = friend => dispatch => {
   dispatch({ type: ADD_FRIEND_START });
   axios
-    .post("http://localhost:5000/api/friends")
+    .post("http://localhost:5000/api/friends", friend)
     .then(response => {
       console.log(response);
       dispatch({ type: ADD_FRIEND_SUCCESS, payload: response.data });
