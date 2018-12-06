@@ -15,12 +15,12 @@ class UpdateFriend extends React.Component {
 
   updateFriendInfo = e => {
     e.preventDefault();
+    const { name, age, email } = this.state;
     const info = {
-      name: this.state.name ? this.state.name : undefined,
-      age: this.state.age ? this.state.age : undefined,
-      email: this.state.email ? this.state.email : undefined
+      name: name ? name : undefined,
+      age: age ? age : undefined,
+      email: email ? email : undefined
     };
-    console.log(info);
     this.props.updateFriend(info, this.props.friend.id);
     this.setState({ name: "", age: "", email: "" });
     this.props.pick({});
