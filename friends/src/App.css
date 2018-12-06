@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  width: 600px;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -29,4 +31,40 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App form{
+  display: flex;
+  flex-direction: column;
+}
+.App form input{
+   width: 60%;
+   margin: 10px auto;
+   border-radius: 5px;
+   box-shadow: 2px 2px 5px 2px;
+   text-align: center;
+   padding: 10px;
+   font-size: 18px;
+}
+.App form button{
+  width: 30%;
+  margin: 5px auto;
+  font-weight: bold;
+  border: 2px solid black;
+  padding: 5px;
+  
+}
+.App form button:hover{
+  background: black;
+  color: white;
+}
+
+.friendList {
+  display: flex;
+  flex-direction: column;
+
+}
+.friendList .card{
+  border: 1px solid black;
+  margin-bottom: 40px;
 }
