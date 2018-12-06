@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-import FriendList from './components/FriendList'
+import App from './App'
 import reducers from './reducers';
 
 // Redux Store
@@ -16,7 +16,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <FriendList />
+    <App />
   </Provider>,
   document.getElementById("root")
 );

@@ -2,7 +2,7 @@ import * as actions from '../actions'
 
 const initialState = {
   friends: [],
-  friend: {},
+  friend: null,
   fetchingFriends: false,
   fetchingFriend: false,
   updatingFriend: false,
