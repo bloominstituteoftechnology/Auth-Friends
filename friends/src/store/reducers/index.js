@@ -23,13 +23,14 @@ const friendsReducer = (state = initialState, action) => {
                 ...state,
                 isFetchingFriends: false,
                 friends: action.payload,
+                error: null,
             };
-        case FETCHING_FRIEND_FAILURE: 
-            return {
-                ...state,
-                isFetchingFriends: false,
-                error: action.payload,
-            };
+        // case FETCHING_FRIEND_FAILURE: 
+        //     return {
+        //         ...state,
+        //         isFetchingFriends: false,
+        //         error: action.payload,
+        //     };
         default:
             return state;
     }

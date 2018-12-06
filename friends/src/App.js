@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 // import { Route, NavLink } from 'react-router-dom';
-import axios from "axios";
+
 
 import Friends from './components/Friends'
 import FriendForm from './components/FriendForm'
 import { connect } from 'react-redux';
 
-import { addFriend } from "./store/actions";
+import { fetchFriends } from "./store/actions";
 import './App.css';
 
 class App extends Component {
@@ -52,7 +52,7 @@ class App extends Component {
   // }
 
    componentDidMount() {
-    this.props.addFriend();
+    this.props.fetchFriends();
    }
 
   render() {
@@ -77,10 +77,12 @@ class App extends Component {
 
 
 const mapStateToProps = state => ({
-  friends: state.friends
+  friends: state.friends,
+  isFetching: state.isFetchingFriends,
+  error: state.error
 })
 
 export default connect(
   mapStateToProps,
-  { addFriend }
+  { fetchFriends }
 )(App);

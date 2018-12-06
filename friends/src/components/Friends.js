@@ -2,7 +2,7 @@ import React from "react";
 
 const Friends = props => {
 
-  if (!props.friends.length) {
+  if (!props.friends || !props.friends.length) {
     return <h3>Loading our friends!</h3>
   }
 
