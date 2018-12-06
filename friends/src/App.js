@@ -1,5 +1,8 @@
-import React, { Component } from "react";
-import { createGlobalStyle } from "styled-components";
+import React, { Component, Fragment } from "react";
+import styled, { createGlobalStyle } from "styled-components";
+import FriendsList from "./components/FriendsList";
+import { connect } from "react-redux";
+import { getFriends } from "./store/actions";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -17,16 +20,33 @@ const GlobalStyles = createGlobalStyle`
 
 const StyledApp = styled.div`
   text-align: center;
+  font-size: 1.6rem;
 `;
 
 class App extends Component {
+  componentDidMount = () => {
+    this.props.getFriends();
+  };
+
   render() {
     return (
-      <>
+      <Fragment>
         <GlobalStyles />
-        <StyledApp>test</StyledApp>;)
-      </>
+        <StyledApp>
+          <FriendsList {...this.props} />
+        </StyledApp>
+      </Fragment>
+    );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  friends: state.friends,
+  fetchingFriends: state.isFetchingFriends,
+  error: state.error
+});
+
+export default connect(
+  mapStateToProps,
+  { getFriends }
+)(App);
