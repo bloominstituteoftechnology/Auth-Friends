@@ -2,12 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import SingleFriend from "./SingleFriend";
 import UpdateFriend from "./UpdateFriend";
-import {
-  deleteFriend,
-  toggleUpdate,
-  pickOneFriend,
-  updateFriend
-} from "../actions";
+import { deleteFriend, toggleUpdate, pickOneFriend } from "../actions";
 
 class Friends extends React.Component {
   toggleUpdate = () => {
@@ -22,10 +17,6 @@ class Friends extends React.Component {
   pickFriend = friend => {
     this.props.pickOneFriend(friend);
   };
-
-  // updateFriend = (info, id) => {
-  //   this.props.updateFriend(info, id);
-  // };
 
   render() {
     const { friends, canUpdate, thisFriend, pickOneFriend } = this.props;

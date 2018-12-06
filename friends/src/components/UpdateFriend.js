@@ -65,7 +65,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {
-    updateFriend
-  }
+  { updateFriend }
 )(UpdateFriend);

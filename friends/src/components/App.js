@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Friends from "./Friends";
+import CreateFriend from "./CreateFriend";
 import "./App.css";
 
 import { fetchFriends } from "../actions";
@@ -12,7 +13,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h2>Happy Friends Redux App</h2>
+        <h2>Happy FriendKeeper App</h2>
+
+        <CreateFriend />
         {this.props.fetching ? (
           <h3>Loading friends...</h3>
         ) : (
