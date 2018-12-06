@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 // Redux Dependencies
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from "react-router-dom";
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
@@ -22,7 +23,9 @@ const rootElement = document.getElementById('root')
 
 ReactDOM.render(
     <Provider store={ store }>
-        <App/>    
+        <Router>
+            <App/>
+        </Router>   
     </Provider>, 
     rootElement
 );
