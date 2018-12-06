@@ -5,6 +5,12 @@ import { connect } from "react-redux";
 import { getFriends } from "./store/actions";
 
 const GlobalStyles = createGlobalStyle`
+  html, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+  }
+
+
   body {
     margin: 0;
     padding: 0;
@@ -15,12 +21,14 @@ const GlobalStyles = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: white;
   }
 `;
 
 const StyledApp = styled.div`
   text-align: center;
   font-size: 1.6rem;
+  background: darkred;
 `;
 
 class App extends Component {

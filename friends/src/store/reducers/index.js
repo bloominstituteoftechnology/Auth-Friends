@@ -4,6 +4,7 @@ import {
   FETCHING_FRIENDS_FAILURE,
   ADD_FRIEND,
   ADD_FRIEND_FAILURE,
+  ADD_FRIEND_SUCCESS,
   GET_FRIEND,
   EDIT_FRIEND,
   DELETE_FRIEND
@@ -11,13 +12,6 @@ import {
 
 const initialState = {
   fetchingFriends: false,
-  friendsFetched: false,
-  friendsSaved: false,
-  savingFriends: false,
-  updatingFriend: false,
-  friendUpdated: false,
-  deletingFriend: false,
-  friendDeleted: false,
   friends: [],
   error: null
 };
@@ -29,7 +23,9 @@ const reducer = (state = initialState, action) => {
     case FETCHING_FRIENDS_SUCCESS:
       return {
         ...state,
-        friends: action.payload
+        friends: action.payload,
+        fetchingFriends: false,
+        error: null
       };
     case FETCHING_FRIENDS_FAILURE:
       return {
@@ -40,17 +36,24 @@ const reducer = (state = initialState, action) => {
     case GET_FRIEND:
       return {
         ...state,
-        updatingFriend: true
+        fetchingFriends: true
       };
     case ADD_FRIEND:
       return {
         ...state,
-        friends: [...state.friends, ...action.payload]
+        fetchingFriends: true
+      };
+    case ADD_FRIEND_SUCCESS:
+      return {
+        ...state,
+        friends: action.payload,
+        fetchingFriends: false,
+        error: null
       };
     case ADD_FRIEND_FAILURE:
       return {
         ...state,
-        addFriend: false,
+        fetchingFriends: false,
         error: action.payload
       };
     case EDIT_FRIEND:
