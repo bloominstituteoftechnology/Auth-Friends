@@ -22,7 +22,6 @@ class UpdateFriend extends React.Component {
       email: email ? email : undefined
     };
     this.props.updateFriend(info, this.props.friend.id);
-    this.setState({ name: "", age: "", email: "" });
     this.props.pick({});
   };
 
