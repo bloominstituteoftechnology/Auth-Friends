@@ -11,9 +11,9 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
 //import the reducer!
-import friendReducer from './Store/Reducer';
+import friendsReducer from './Store/Reducer';
 
-const store = createStore( friendReducer, applyMiddleware(thunk, logger));
+const store = createStore( friendsReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
 
