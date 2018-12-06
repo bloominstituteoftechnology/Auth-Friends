@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 
-import reducers from "./reducers";
+import reducers from "./store/reducers";
 
 import "./index.css";
 import App from "./App";

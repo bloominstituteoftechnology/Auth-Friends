@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchFriends } from "./actions";
-import Friends from "./components/Friends";
+import { fetchFriends } from "./store/actions";
+import HomeView from "./views/HomeView";
+import { Route, NavLink } from "react-router-dom";
+
 import "./App.css";
 
 class App extends Component {
@@ -16,7 +18,11 @@ class App extends Component {
       <div className="App">
         <h1>Friends List</h1>
 
-        <Friends friends={this.props.friends} />
+        <Route
+          exact
+          path="/"
+          render={props => <HomeView {...props} friends={this.props.friends} />}
+        />
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Friends = props => {
+const FriendsList = props => {
   return props.friends.map(friend => (
     <div key={friend.id}>
       <h2>{friend.name}</h2>
@@ -10,4 +10,4 @@ const Friends = props => {
   ));
 };
 
-export default Friends;
+export default FriendsList;
