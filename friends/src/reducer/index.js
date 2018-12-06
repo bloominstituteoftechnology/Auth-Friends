@@ -3,19 +3,22 @@ import {
 	REQUEST_SUCCESS,
 	REQUEST_ERROR,
 	TOGGLE_SELECTED,
-	DELETE_FRIEND
+	DELETE_FRIEND,
+	ADD_FRIEND,
+	UPDATE_FRIEND
 } from '../actions';
 
 const initialState = {
 	friends: [
-		{ 
-			id: 6, 
+		{
+			id: 6,
 			name: 'Mel',
 			age: 30,
 			email: 'abc123@email.com',
-			selected: false 
+			selected: false
 		}
 	],
+	
 	error: null,
 	requesting: false
 };
@@ -38,12 +41,8 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				error: null,
 				requesting: false,
-				friends: action.payload
+				friends: [...action.payload]
 			};
-		// case SET_SELECTED:
-		// return  Object.assign({}, state, {
-		// 	friends: [...state.friends, {selected: false}]
-		// })
 		case TOGGLE_SELECTED:
 			return {
 				...state,
@@ -55,13 +54,27 @@ export const reducer = (state = initialState, action) => {
 					}
 				})
 			};
+		case ADD_FRIEND:
+			return {
+				...state,
+				error: null,
+				requesting: false,
+				friends: [...state.friends]
+			};
 		case DELETE_FRIEND:
-		return {
-			...state,
-			error: null,
-			requesting: false,
-			friends: [...state.friends]
-		};
+			return {
+				...state,
+				error: null,
+				requesting: false,
+				friends: [...state.friends]
+			};
+		case UPDATE_FRIEND:
+			return {
+				...state,
+				error: null,
+				requesting: false,
+				friends: [...state.friends]
+			};
 		default:
 			return state;
 	}
