@@ -1,3 +1,49 @@
 .App {
-  text-align: center;
+  margin: 0 auto;
+  border: 1px solid #ededed;
+  width: 90%;
+  padding: 60px 40px;
+  margin-top: 40px;
+}
+
+.nav-links {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.card {
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+.content-wrapper {
+  width: 50%;
+}
+
+.form-wrapper {   
+  width: 45%;
+  border: 1px solid gray;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column; 
+}
+input {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+button {
+  padding: 10px;
+}
+
+.btn {
+  width: 150px;
+  margin-right: 30px;
 }
