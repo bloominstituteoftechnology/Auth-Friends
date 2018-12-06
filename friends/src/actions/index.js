@@ -37,7 +37,7 @@ export const fetchSingleFriend = id => dispatch => {
 };
 
 export const addFriend = friend => dispatch => {
-  const newFriend = axios.put(`${host}`, friend);
+  const newFriend = axios.post(`${host}`, friend);
   dispatch({ type: SAVING });
   newFriend
     .then(res => {
