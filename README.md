@@ -25,8 +25,8 @@ Topics:
 ## Initialize Project
 
 - [x] Run `yarn` or `npm i` inside the root directory of this project to install dependencies.
-* Run `yarn start` or `npm start` to start the API server.
-* Run `create-react-app friends` in a separate terminal window in the root directory of the project to create your starter application.
+- [x] Run `yarn start` or `npm start` to start the API server.
+- [x] `create-react-app friends` in a separate terminal window in the root directory of the project to create your starter application.
 * `cd` into the _friends_ folder and type `yarn add redux react-redux redux-thunk redux-logger axios` or `npm i redux react-redux redux-thunk redux-logger axios`, which will install the needed dependencies.
 * You will create a list of your friends using React and Redux.
 * A possible flow of steps will be to create your Components, action creators, reducers, root reducer and your Redux store. Then use the Provider component from `react-redux` to pass the store to your root component and `connect` the React components that need access to the store.
