@@ -8,10 +8,24 @@ import styled from 'styled-components';
 import {ReactSpinner} from 'react-spinning-wheel';
 import 'react-spinning-wheel/dist/style.css';
 
+const Wrapper = styled.div`
+  margin: 0 auto;
+  text-align: center;
+
+  h1 {
+    font-size: 34px;
+    font-weight: bold;
+    font-family: 'Charmonman', cursive;
+    margin-top: 20px;
+    color: green;
+  }
+`;
+
 const DivFriendsList = styled.div`
   border: 1px solid black;
   background-color: #0e0e13;
-  color: #77bd77;
+  border-radius: 5px;
+  color: #23c723;
   padding: 10px;
   margin: 10px auto;
   width: 40%;
@@ -36,7 +50,7 @@ const DivSpinner = styled.div`
   align-items: center;
 
   h1 {
-    color: green;
+    color: #23c723;
     font-size: 20px;
     font-weight: bold;
   }
@@ -53,19 +67,19 @@ class FriendsList extends React.Component {
       return (
         <DivSpinner>
           <h1>loading friends</h1>
-          <ReactSpinner />
+          <ReactSpinner style={{color: 'black'}} />
         </DivSpinner>
       );
     return (
-      <div>
-        <h2>Friends List</h2>
+      <Wrapper>
+        <h1>Friends List</h1>
         <DivFriendsList>
           {this.props.friends.map(f => (
             <Friend key={f.id} friend={f} />
           ))}
         </DivFriendsList>
         <FriendForm />
-      </div>
+      </Wrapper>
     );
   }
 }

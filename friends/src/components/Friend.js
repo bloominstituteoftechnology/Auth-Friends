@@ -3,10 +3,12 @@ import styled from 'styled-components';
 
 const DivFriend = styled.div`
   padding: 30px;
+  margin: 5px;
   height: 85px;
   width: 33%;
   background-color: #2b3b79;
   border: 1px solid blue;
+  border-radius: 5px;
   text-align: center;
   display: flex;
   flex-direction: column;
