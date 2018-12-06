@@ -20,15 +20,12 @@ export const fetchFriends = () => dispatch => {
     });
 };
 
-export const addFriend = friend => {
-  // dispatch({type: ADD_FRIEND})
-  // //do I need a dispatch here?
-  // or do I just add the friend via axios and then fetch friends?
+export const addFriend = friend => dispatch => {
   axios
-    .post(`${url}/api/friends`)
+    .post(`${url}/api/friends`, friend)
     .then(res => {
-      console.log('in then');
-      fetchFriends();
+      console.log('in then', res.data);
+      dispatch({type: FRIEND_FETCH_SUCCESS, payload: res.data});
     }) // if successfull, fetch friends
     .catch(err => console.log());
 };
