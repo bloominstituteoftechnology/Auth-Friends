@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { reducer } from './reducers';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
@@ -16,9 +17,14 @@ const store = createStore(
 );
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
+    <Provider store={store}>
+        <Router>
+            <Route 
+                path="/:filter?"
+                component={App}
+            />
+        </Router>
+    </Provider>,
 	document.getElementById('root')
 );
 
