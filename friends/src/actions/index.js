@@ -11,7 +11,7 @@ export const fetchFriends = () => dispatch => {
 
   dispatch({type: FETCHING});
 
-  axios.get('http://localhost:5000')
+  axios.get('http://localhost:5000/api/friends/')
     .then(res => dispatch({
       type: SUCCESS,
       payload: res.data
@@ -27,7 +27,7 @@ export const updateFriend = friend => dispatch => {
 
   dispatch({type: UPDATING});
 
-  axios.put(`http://localhost:5000/${newFriend.id}`, newFriend)
+  axios.put(`http://localhost:5000/api/friends/${friend.id}`, friend)
     .then(res => dispatch({
       type: SUCCESS,
       payload: res.data
@@ -43,7 +43,7 @@ export const deleteFriend = friend => dispatch => {
 
   dispatch({type: DELETING});
 
-  axios.delete(`http://localhost:5000/${friend.id}`)
+  axios.delete(`http://localhost:5000/api/friends/${friend.id}`)
     .then(res => dispatch({
       type: SUCCESS,
       payload: res.data
@@ -59,7 +59,7 @@ export const addFriend = friend => dispatch => {
 
   dispatch({type: ADDING});
 
-  axios.post(`http://localhost:5000/`, friend)
+  axios.post(`http://localhost:5000/api/friends/`, friend)
     .then(res => dispatch({
       type: SUCCESS,
       payload: res.data

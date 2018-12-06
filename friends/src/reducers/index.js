@@ -7,7 +7,7 @@ const initialState = {
   updating: false,
   deleting: false,
   adding: false,
-  failed: false
+  error: null
 
 }
 
@@ -30,15 +30,15 @@ export default function reduce(state = initialState, action) {
     case SUCCESS:
       return {
         friends: action.payload,
-        fetching: true,
-        updating: true,
-        deleting: true,
-        adding: true,
+        fetching: false,
+        updating: false,
+        deleting: false,
+        adding: false,
         failed: false
       }
 
     case FAILURE:
-      return {...state, failed: true}
+      return {...state, error: action.payload}
 
     default:
       return state;
