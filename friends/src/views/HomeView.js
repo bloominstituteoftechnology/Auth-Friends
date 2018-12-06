@@ -1,16 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
 import FriendsList from "../components/FriendsList";
 
 const HomeView = props => {
   return (
     <>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="#">Add Friend</NavLink>
-      </nav>
-      <FriendsList {...props} />
+      <h1>Friends List</h1>
+      <FriendsList friends={props.friends} />
     </>
   );
 };

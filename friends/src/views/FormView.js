@@ -1,2 +1,8 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import Form from "../components/Form";
+
+const FormView = props => {
+  return <Form {...props} />;
+};
+
+export default FormView;
