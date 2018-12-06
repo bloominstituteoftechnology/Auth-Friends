@@ -8,7 +8,7 @@ export const SAVED = "SAVED";
 export const UPDATING = "UPDATING";
 export const UPDATED = "UPDATED";
 export const DELETING = "DELETING";
-export const DELETED = "DELETED;";
+export const DELETED = "DELETED";
 export const SINGLE_FETCHING = "SINGLE_FETCHING";
 export const SINGLE_FETCHED = "SINGLE_FETCHED";
 export const CAN_UPDATE = "CAN_UPDATE";
@@ -22,7 +22,6 @@ export const fetchFriends = () => {
     dispatch({ type: FETCHING });
     friends
       .then(res => {
-        console.log(res.data);
         dispatch({ type: FETCHED, payload: res.data });
       })
       .catch(err => dispatch({ type: ERROR, payload: err }));
@@ -42,7 +41,6 @@ export const addFriend = friend => dispatch => {
   dispatch({ type: SAVING });
   newFriend
     .then(res => {
-      console.log(res.data);
       dispatch({ type: SAVED, payload: res.data });
     })
     .catch(err => dispatch({ type: ERROR, payload: err }));
@@ -53,16 +51,15 @@ export const updateFriend = (info, id) => dispatch => {
   dispatch({ type: UPDATING });
   updatedFriend
     .then(res => {
-      console.log(res.data);
       dispatch({ type: UPDATED, payload: res.data });
     })
     .catch(err => dispatch({ type: ERROR, payload: err }));
 };
 
 export const deleteFriend = id => dispatch => {
-  const deleted = axios.delete(`${host}/${id}`);
+  const erase = axios.delete(`${host}/${id}`);
   dispatch({ type: DELETING });
-  deleted
+  erase
     .then(res => dispatch({ type: DELETED, payload: res.data }))
     .catch(err => dispatch({ type: ERROR, payload: err }));
 };
