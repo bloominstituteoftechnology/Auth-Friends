@@ -1,4 +1,9 @@
-// ActionType Exports
+// ActionType Imports
+import { 
+   START_FETCH,
+   FETCH_SUCCESS,
+   FETCH_FAIL
+} from "../actions";
 
 
 // Initial State 
