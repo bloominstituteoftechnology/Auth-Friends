@@ -4,9 +4,37 @@ import { addFriend } from "../store/actions";
 import { connect } from "react-redux";
 
 const StyledForm = styled.form`
-  padding: 20px;
+  padding: 40px 20px 20px;
   max-width: 500px;
-  margin: 20px auto;
+  margin: 0 auto 20px;
+`;
+
+const H1 = styled.h1`
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+`;
+
+const Input = styled.input`
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  background: lightgray;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-bottom: 3px solid gray;
+  &::placeholder {
+    text-transform: uppercase;
+    color: darkred;
+  }
+`;
+
+const Button = styled.button`
+  color: darkred;
+  font-weight: bold;
+  text-transform: uppercase;
 `;
 
 class Form extends Component {
@@ -25,39 +53,47 @@ class Form extends Component {
   handleSubmit = e => {
     let data = this.state;
     e.preventDefault();
-    this.props.addFriend(data);
-    this.setState({
-      name: "",
-      age: 0,
-      email: ""
-    });
+    if (
+      this.state.name !== "" &&
+      this.state.age !== 0 &&
+      this.state.email !== ""
+    ) {
+      this.props.addFriend(data);
+      this.setState({
+        name: "",
+        age: 0,
+        email: ""
+      });
+    }
+    return null;
   };
 
   render() {
     return (
       <StyledForm onSubmit={this.handleSubmit}>
-        <input
+        <H1>Add A Friend</H1>
+        <Input
           type="text"
           name="name"
           placeholder="Friends Name..."
-          value={this.props.name}
+          value={this.state.name}
           onChange={this.onInputChange}
         />
-        <input
+        <Input
           type="number"
           name="age"
           placeholder="Friends Age..."
-          value={this.props.age}
+          value={this.state.age}
           onChange={this.onInputChange}
         />
-        <input
+        <Input
           type="email"
           name="email"
           placeholder="Friends Email..."
-          value={this.props.email}
+          value={this.state.email}
           onChange={this.onInputChange}
         />
-        <button>Add Friend</button>
+        <Button>Add Friend</Button>
       </StyledForm>
     );
   }

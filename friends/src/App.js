@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { getFriends } from "./store/actions";
 
 const GlobalStyles = createGlobalStyle`
-  html, h1, h2, h3, h4, h5, h6 {
+  html, h1, h2, h3, h4, h5, h6, div {
     padding: 0;
     margin: 0;
   }
@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    height: 100%;
     font-size: 62.5%;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -26,7 +27,6 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const StyledApp = styled.div`
-  text-align: center;
   font-size: 1.6rem;
   background: darkred;
 `;
