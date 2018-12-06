@@ -1,4 +1,8 @@
-// import XXX from XXX
+import {
+    FETCH_START,
+    FETCH_SUCCESS,
+    FETCH_FAILURE
+} from '../actions';
 
 const initialState = {
     friends: [],
