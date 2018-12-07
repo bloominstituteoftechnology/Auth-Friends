@@ -1,5 +1,8 @@
 .friend {
     width: 500px;
-    border: 2px solid white;
+    border: 1px solid black;
+    box-shadow: 5px 10px #888888;
+
     color: green;
+    background: white;
 }

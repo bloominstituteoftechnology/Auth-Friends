@@ -38,6 +38,24 @@ const friendsReducer = (state = initialState, action) => {
         error: action.payload
       };
       // without this default state, the app crashes! that's a little dumb!
+      case ADD_FRIENDS_REQUEST:
+      return {
+        ...state,
+        isFetching: true
+      };
+      case ADD_FRIENDS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        friends: action.payload
+      };
+    case ADD_FRIENDS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload
+      };
+
     default:
       return state;
   }
