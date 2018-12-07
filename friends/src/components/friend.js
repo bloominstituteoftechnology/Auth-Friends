@@ -7,13 +7,15 @@ class Friend extends React.Component {
         friendEmail: ''
     }
     componentDidUpdate(prevProps) {
-        if(this.props.updateStaged && !prevProps.updateStaged){
+        if((this.props.updateStaged && !prevProps.updateStaged) || 
+        (this.props.updateStaged && this.props.friendToUpdate !== prevProps.friendToUpdate)){
             this.setState({
                 friendName: this.props.friendToUpdate.name,
                 friendAge: this.props.friendToUpdate.age,
                 friendEmail: this.props.friendToUpdate.email
             })
         }
+        
     }
 
     handleChange = ev => {
