@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchFriends } from "./store/actions";
+import {
+  fetchFriends,
+  addFriend,
+  updateFriend,
+  deleteFriend
+} from "./store/actions";
 import { Route, NavLink, withRouter } from "react-router-dom";
 
 import HomeView from "./views/HomeView";
@@ -40,17 +45,23 @@ class App extends Component {
         <Route
           exact
           path="/form/add"
-          render={props => <FormView {...props} friends={this.props.friends} />}
+          render={props => (
+            <FormView
+              {...props}
+              addFriend={this.props.addFriend}
+              friends={this.props.friends}
+            />
+          )}
         />
 
         <Route
           exact
-          path="/form/update"
+          path="/form/update/:id"
           render={props => (
             <FormView
               {...props}
               friends={this.props.friends}
-              // addFriend={this.props.addFriend}
+              addFriend={this.props.addFriend}
               update
             />
           )}
@@ -70,6 +81,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchFriends }
+    { fetchFriends, addFriend, updateFriend, deleteFriend }
   )(App)
 );

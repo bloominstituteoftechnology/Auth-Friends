@@ -7,22 +7,24 @@ class Form extends React.Component {
       name: "",
       age: null,
       email: "",
-      currentFriend: {}
+      friend: {}
     };
   }
 
   componentDidMount() {
-    let currentFriend = this.props.friends.find(
-      currentFriend =>
-        currentFriend.id.toString() === this.props.match.params.id
-    );
-
-    this.setState({
-      name: this.props.update ? currentFriend.name : "",
-      age: this.props.update ? currentFriend.age : "",
-      email: this.props.update ? currentFriend.email : "",
-      currentFriend: currentFriend
-    });
+    if (this.props.friends.length > 0) {
+      console.log(this.props.friends);
+      let friend = this.props.friends.find(
+        friend => friend.id.toString() === this.props.match.params.id
+      );
+      console.log(friend);
+      this.setState({
+        name: this.props.update ? friend.name : "",
+        age: this.props.update ? friend.age : "",
+        email: this.props.update ? friend.email : "",
+        friend: friend
+      });
+    }
   }
 
   handleChange = ev => {
@@ -53,9 +55,7 @@ class Form extends React.Component {
       <React.Fragment>
         <h2>
           {this.props.update
-            ? `Update: ${
-                this.state.currentFriend ? this.state.currentFriend.name : ""
-              }`
+            ? `Update: ${this.state.friend ? this.state.friend.name : ""}`
             : "Add New Smurf"}
         </h2>
         <form onSubmit={this.submitHandler}>

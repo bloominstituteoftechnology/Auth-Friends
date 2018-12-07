@@ -14,7 +14,7 @@ const FriendCard = props => {
         <h3>{friend.email}</h3>
       </div>
       <div>
-        <Link to="/form/update">
+        <Link to={`/form/update/${friend.id}`}>
           <button>Update</button>
         </Link>
         <button>Delete</button>

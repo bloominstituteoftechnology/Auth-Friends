@@ -8,7 +8,10 @@ import {
   ADD_FRIEND_FAILURE,
   UPDATE_FRIEND_START,
   UPDATE_FRIEND_SUCCESS,
-  UPDATE_FRIEND_FAILURE
+  UPDATE_FRIEND_FAILURE,
+  DELETE_FRIEND_START,
+  DELETE_FRIEND_SUCCESS,
+  DELETE_FRIEND_FAILURE
 } from "../actions";
 
 const initialState = {
@@ -57,6 +60,52 @@ const reducers = (state = initialState, action) => {
       };
 
     case ADD_FRIEND_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload
+      };
+
+    // Update Friend //
+
+    case UPDATE_FRIEND_START:
+      return {
+        ...state,
+        isFetching: true
+      };
+
+    case UPDATE_FRIEND_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        isFetching: false,
+        friends: action.payload
+      };
+
+    case UPDATE_FRIEND_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload
+      };
+
+    // Delete Friend //
+
+    case DELETE_FRIEND_START:
+      return {
+        ...state,
+        isFetching: true
+      };
+
+    case DELETE_FRIEND_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        isFetching: false,
+        friends: action.payload
+      };
+
+    case DELETE_FRIEND_FAILURE:
       return {
         ...state,
         isFetching: false,
