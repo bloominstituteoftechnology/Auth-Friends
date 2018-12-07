@@ -27,13 +27,17 @@ export default (state = initState, action) => {
       return { ...state, fetchingFriends: !state.fetchingFriends };
     case FRIENDSFETCHED:
       console.log("*********", action);
-      return { ...state, friends: action.payload };
+      return {
+        ...state,
+        friends: action.payload,
+        friendsFetched: !state.friendsFetched
+      };
     case FRIENDSSAVED:
       console.log("frd saved");
-      break;
+      return { ...state, friends: action.payload };
     case SAVINGFRIENDS:
       console.log("frd saving");
-      break;
+      return { ...state, savingFriends: !state.savingFriends };
     case UPDATINGFRIEND:
       console.log("updating frd");
       break;

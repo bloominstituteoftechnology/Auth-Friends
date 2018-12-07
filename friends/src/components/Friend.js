@@ -7,7 +7,7 @@ const Friend = props => {
       <p>{props.friend.name}</p>
       <p>{props.friend.age}</p>
       <p>{props.friend.email}</p>
-      <span>x</span>
+      <span onClick={() => props.clickHandle(props.friend.id)}>x</span>
     </div>
   );
 };

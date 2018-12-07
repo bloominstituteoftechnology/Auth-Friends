@@ -19,19 +19,23 @@ export const fetchData = () => dispatch => {
       console.log(response);
       dispatch({ type: FRIENDSFETCHED, payload: response.data });
     })
-    .catch(err => ({
-      err
-    }));
+    .catch(err => err);
 };
 
-export const addFriend = friend => dispatch => {
+export const addFriend = newFriend => dispatch => {
   console.log("action call, POST");
   dispatch({ type: SAVINGFRIENDS });
   axios
-    .post(URL, friend)
+    .post(URL, newFriend)
     .then(response => {
-      console.log(response);
+      console.log("ADD FRD", response);
       dispatch({ type: FRIENDSSAVED, payload: response.data });
     })
     .catch(err => ({ err }));
+};
+
+export const deleteFriend = id => dispatch => {
+  console.log("action call, DELETE");
+  dispatch({ type: DELETINGFRIEND });
+  axios.delete();
 };
