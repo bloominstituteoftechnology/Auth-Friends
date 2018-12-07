@@ -4,28 +4,47 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nameInput: "",
-      ageInput: 0,
-      emailInput: "",
+      name: "",
+      age: null,
+      email: "",
       currentFriend: {}
     };
   }
 
   componentDidMount() {
-    let friend = this.props.friends.find(
-      friend => friend.id.toString() === this.props.match.params.id
+    let currentFriend = this.props.friends.find(
+      currentFriend =>
+        currentFriend.id.toString() === this.props.match.params.id
     );
 
     this.setState({
-      currentFriend: friend,
-      nameInput: this.props.update ? friend.name : "",
-      ageInput: this.props.update ? friend.age : "",
-      emailInput: this.props.update ? friend.height : ""
+      name: this.props.update ? currentFriend.name : "",
+      age: this.props.update ? currentFriend.age : "",
+      email: this.props.update ? currentFriend.email : "",
+      currentFriend: currentFriend
     });
   }
 
   handleChange = ev => {
     this.setState({ [ev.target.name]: ev.target.value });
+  };
+
+  submitHandler = ev => {
+    ev.preventDefault();
+
+    if (this.props.update) {
+      this.props.updateFriend(this.state, this.props.match.params.id);
+    } else {
+      this.props.addFriend(this.state);
+    }
+
+    this.setState({
+      name: "",
+      age: null,
+      email: ""
+    });
+
+    this.props.history.push("/");
   };
 
   render() {
@@ -39,14 +58,14 @@ class Form extends React.Component {
               }`
             : "Add New Smurf"}
         </h2>
-        <form>
+        <form onSubmit={this.submitHandler}>
           <div>
             <h3>Name</h3>
             <input
               required
               type="text"
               name="name"
-              value={this.state.nameInput}
+              value={this.state.name}
               onChange={this.handleChange}
             />
           </div>
@@ -57,7 +76,7 @@ class Form extends React.Component {
               required
               type="number"
               name="age"
-              value={this.state.ageInput}
+              value={this.state.age}
               onChange={this.handleChange}
             />
           </div>
@@ -68,12 +87,12 @@ class Form extends React.Component {
               required
               type="email"
               name="email"
-              value={this.state.emailInput}
+              value={this.state.email}
               onChange={this.handleChange}
             />
           </div>
 
-          <button type="submit">
+          <button>
             {this.props.update ? "Update Friend" : "Add New Friend"}
           </button>
         </form>

@@ -1,5 +1,15 @@
 import { combineReducers } from "redux";
-import { FETCHING, SUCCESS, FAILURE } from "../actions";
+import {
+  FETCHING,
+  FETCH_SUCCESS,
+  FETCH_FAILURE,
+  ADD_FRIEND_START,
+  ADD_FRIEND_SUCCESS,
+  ADD_FRIEND_FAILURE,
+  UPDATE_FRIEND_START,
+  UPDATE_FRIEND_SUCCESS,
+  UPDATE_FRIEND_FAILURE
+} from "../actions";
 
 const initialState = {
   friends: [],
@@ -15,7 +25,7 @@ const reducers = (state = initialState, action) => {
         isFetching: true
       };
 
-    case SUCCESS:
+    case FETCH_SUCCESS:
       return {
         ...state,
         error: null,
@@ -23,12 +33,36 @@ const reducers = (state = initialState, action) => {
         friends: action.payload
       };
 
-    case FAILURE:
+    case FETCH_FAILURE:
       return {
         ...state,
         isFetching: false,
         error: action.payload
       };
+
+    // Add New Friend //
+
+    case ADD_FRIEND_START:
+      return {
+        ...state,
+        isFetching: true
+      };
+
+    case ADD_FRIEND_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        isFetching: false,
+        friends: action.payload
+      };
+
+    case ADD_FRIEND_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload
+      };
+
     default:
       return state;
   }

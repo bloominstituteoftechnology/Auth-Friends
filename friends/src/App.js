@@ -4,7 +4,7 @@ import { fetchFriends } from "./store/actions";
 import { Route, NavLink, withRouter } from "react-router-dom";
 
 import HomeView from "./views/HomeView";
-import FriendCard from "./components/FriendCard";
+import FriendView from "./views/FriendView";
 import FormView from "./views/FormView";
 
 import "./App.css";
@@ -33,7 +33,7 @@ class App extends Component {
           exact
           path="/friend/:id"
           render={props => (
-            <FriendCard {...props} friends={this.props.friends} />
+            <FriendView {...props} friends={this.props.friends} />
           )}
         />
 
@@ -47,7 +47,12 @@ class App extends Component {
           exact
           path="/form/update"
           render={props => (
-            <FormView {...props} friends={this.props.friends} update />
+            <FormView
+              {...props}
+              friends={this.props.friends}
+              // addFriend={this.props.addFriend}
+              update
+            />
           )}
         />
       </div>
