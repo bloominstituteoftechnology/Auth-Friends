@@ -35,7 +35,7 @@ export const addFriend = friend => dispatch => {
     .catch(err => dispatch({ type: ADD_FRIEND_FAILURE, payload: err }));
 };
 
-export const editFriend = (friend, id) => dispatch => {
+export const editFriend = (id, friend) => dispatch => {
   dispatch({ type: EDIT_FRIEND_START });
   axios
     .put(`http://localhost:5000/api/friends/${id}`, friend)

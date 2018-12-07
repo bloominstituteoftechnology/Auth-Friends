@@ -8,7 +8,8 @@ class EditFriendForm extends React.Component {
     this.state = {
       name: "",
       age: "",
-      email: ""
+      email: "",
+      id: ''
     };
   }
 
@@ -20,11 +21,12 @@ class EditFriendForm extends React.Component {
 
   submitHandler = event => {
     event.preventDefault();
-    this.props.editFriend(this.props.match.params.id,this.props.state);
+    this.props.editFriend(this.state.id, this.state);
     this.setState({
       name: "",
       age: "",
-      email: ""
+      email: "",
+      id: '',
     });
   };
 
@@ -56,6 +58,12 @@ class EditFriendForm extends React.Component {
             value={this.state.email}
             placeholder="email"
           />
+          <input 
+            onChange={this.handleChange}
+            type='number'
+            name='id'
+            value={this.state.id}
+            placeholder='id' />
           <button>Edit Friend</button>
         </form>
       </>
