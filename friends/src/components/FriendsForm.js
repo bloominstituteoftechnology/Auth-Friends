@@ -27,37 +27,41 @@ class FriendsForm extends React.Component {
     }
 
     render(){
-        return (
-            <div>
-                <form onSubmit={this.addFriend}>
-                    <input 
-                        type='text'
-                        name='name' 
-                        value={this.state.name}
-                        placeholder={`Friend's name`}
-                        onChange={this.handlesChange}
-                        required
-                    />
-                    <input 
-                        type='number'
-                        name='age' 
-                        value={this.state.age}
-                        placeholder={`Age`}
-                        onChange={this.handlesChange}
-                        required
-                    />
-                    <input 
-                        type='email'
-                        name='email' 
-                        value={this.state.email}
-                        placeholder={`E-mail`}
-                        onChange={this.handlesChange}
-                        required
-                    />
-                    <button>Add Friend</button>
-                </form>
-            </div>
-        );
+        if(this.props.showAddForm){
+            return (
+                <div className='add-form-container'>
+                    <form className='add-form' onSubmit={this.addFriend}>
+                        <input 
+                            type='text'
+                            name='name' 
+                            value={this.state.name}
+                            placeholder={`Friend's name`}
+                            onChange={this.handlesChange}
+                            required
+                        />
+                        <input 
+                            type='number'
+                            name='age' 
+                            value={this.state.age}
+                            placeholder={`Age`}
+                            onChange={this.handlesChange}
+                            required
+                        />
+                        <input 
+                            type='email'
+                            name='email' 
+                            value={this.state.email}
+                            placeholder={`E-mail`}
+                            onChange={this.handlesChange}
+                            required
+                        />
+                        <button>Add Friend</button>
+                    </form>
+                </div>
+            );
+        } else {
+            return <React.Fragment></React.Fragment>
+        }
     }
 }
 

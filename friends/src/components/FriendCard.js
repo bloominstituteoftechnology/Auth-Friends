@@ -17,9 +17,8 @@ class FriendCard extends React.Component {
 
     render(){
         return (
-            <div key={this.props.friend.id}>
-                <p>{this.props.friend.name}</p>
-                <p>{this.props.friend.age}</p>
+            <div key={this.props.friend.id} className='individual-friend'>
+                <p className='friend-name'>{this.props.friend.name}, <span className='friend-age'>{this.props.friend.age}</span></p>
                 <p>{this.props.friend.email}</p>
                 <button onClick={this.openEditForm}>
                     {this.state.willEdit ? 'Close' : 'Edit'}
