@@ -1,10 +1,10 @@
-import { FETCHING, SUCCESS, FAILURE } from "../actions";
+import { FETCHING, SUCCESS, FAILURE, ADD_NEW_FRIEND } from "../actions";
 
 const initialState = {
 	fetchingFriends: false,
 	friendsFetched: false,
 	friendsSaved: false,
-	savingFriends: false,
+	addingFriends: false,
 	updatingFriend: false,
 	friendUpdated: false,
 	deletingFriend: false,
@@ -35,6 +35,14 @@ export const rootReducer = (state = initialState, action) => {
 				error: action.payload,
 				fetchingFriends: false,
 				friendsFetched: false,
+			};
+		case ADD_NEW_FRIEND:
+			return {
+				...state,
+                friends: [
+                    action.payload,
+                ],
+				addingFriends: true,
 			};
 
 		default:

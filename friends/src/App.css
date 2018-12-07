@@ -30,3 +30,40 @@
     transform: rotate(360deg);
   }
 }
+
+.friend-card {
+  margin: 30px auto;
+  width: 400px;
+  padding: 20px;
+  border: 1px dashed #222222;
+}
+
+li {
+  list-style-type: none;
+}
+
+form {
+  width: 40%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px;
+  /* border-radius: 5px; */
+}
+
+form button {
+  width: 200px;
+  background: #222222;
+  color: #ffffff;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+form button:hover {
+  background: #282c34;
+}
