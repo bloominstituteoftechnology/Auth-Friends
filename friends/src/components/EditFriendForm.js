@@ -1,8 +1,8 @@
 import React from "react";
-import { addFriend } from "../store/actions";
+import { editFriend } from "../store/actions";
 import { connect } from "react-redux";
 
-class FriendForm extends React.Component {
+class EditFriendForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ class FriendForm extends React.Component {
 
   submitHandler = event => {
     event.preventDefault();
-    this.props.addFriend(this.state);
+    this.props.editFriend(this.props.match.params.id,this.props.state);
     this.setState({
       name: "",
       age: "",
@@ -56,7 +56,7 @@ class FriendForm extends React.Component {
             value={this.state.email}
             placeholder="email"
           />
-          <button>Add Friend</button>
+          <button>Edit Friend</button>
         </form>
       </>
     );
@@ -65,5 +65,5 @@ class FriendForm extends React.Component {
 
 export default connect(
   null,
-  { addFriend }
-)(FriendForm);
+  { editFriend }
+)(EditFriendForm);

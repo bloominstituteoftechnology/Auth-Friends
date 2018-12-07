@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { deleteFriend } from '../store/actions';
+import Friend from './Friend';
 
 function List(props) {
   //console.log('rendering')
@@ -6,13 +9,14 @@ function List(props) {
   return (
     <>
       {props.friends.map(friend => (
-        <div key={friend.id}>
-          {friend.name}
-          {friend.age}
-        </div>
+       <Friend
+       friend={friend}
+       key={friend.id}
+       deleteFriend={props.deleteFriend.bind(null, friend.id)}
+     />
       ))}
     </>
   );
 }
 
-export default List;
+export default connect(null, { deleteFriend })(List);

@@ -9,6 +9,8 @@ class App extends Component {
     return (
       <div className="App">
         <ListView />
+        <br/>
+        <br/>
         <FormView />
       </div>
     );
