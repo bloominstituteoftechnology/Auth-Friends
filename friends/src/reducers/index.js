@@ -46,10 +46,10 @@ export default (state = initState, action) => {
       break;
     case DELETINGFRIEND:
       console.log("deleting frd");
-      break;
+      return { ...state, deletingFriend: !state.deletingFriend };
     case FRIENDDELETED:
       console.log("deleted frd");
-      break;
+      return { ...state, friends: action.payload };
     default:
       return state;
   }

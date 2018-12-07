@@ -37,5 +37,13 @@ export const addFriend = newFriend => dispatch => {
 export const deleteFriend = id => dispatch => {
   console.log("action call, DELETE");
   dispatch({ type: DELETINGFRIEND });
-  axios.delete();
+  axios
+    .delete(`${URL}/${id}`)
+    .then(response => {
+      console.log("DELETED FRIEND");
+      dispatch({ type: FRIENDDELETED, payload: response.data });
+    })
+    .catch(err => {
+      dispatch({ err });
+    });
 };
