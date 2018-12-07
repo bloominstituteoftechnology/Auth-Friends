@@ -58,6 +58,10 @@ class FriendsListView extends React.Component {
           />
           <button type="submit">Add a friend</button>
         </form>
+
+        {this.props.fetchingFriends ? (
+          <h2>loading your friends, hold on my dude!</h2>
+        ) : null}
         {this.props.friends.map(friend => (
           <Friend
             key={friend.id}
@@ -72,7 +76,15 @@ class FriendsListView extends React.Component {
 const mapStateToProps = state => (
   console.log("STP", state),
   {
-    friends: state.friends
+    friends: state.friends,
+    fetchingFriends: state.fetchingFriends,
+    friendsFetched: state.friendsFetched,
+    friendsSaved: state.friendsSaved,
+    savingFriends: state.savingFriends,
+    updatingFriend: state.updatingFriend,
+    friendUpdated: state.friendUpdated,
+    deletingFriend: state.deletingFriend,
+    friendDeleted: state.friendDeleted
   }
 );
 
