@@ -5,7 +5,7 @@ const FriendCard = props => {
   let friend = props.friends.find(
     friend => friend.id.toString() === props.match.params.id
   );
-
+  console.log(friend);
   return (
     <div>
       <div>
@@ -17,7 +17,14 @@ const FriendCard = props => {
         <Link to={`/form/update/${friend.id}`}>
           <button>Update</button>
         </Link>
-        <button>Delete</button>
+        <button
+          onClick={() => {
+            props.deleteFriend(friend.id);
+            props.history.push("/");
+          }}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );

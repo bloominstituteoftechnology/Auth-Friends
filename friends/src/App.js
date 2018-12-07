@@ -12,7 +12,7 @@ import HomeView from "./views/HomeView";
 import FriendView from "./views/FriendView";
 import FormView from "./views/FormView";
 
-import "./App.css";
+import { AppWrapper } from "./styled/wrapper";
 
 class App extends Component {
   componentDidMount() {
@@ -22,10 +22,14 @@ class App extends Component {
   render() {
     if (this.props.isFetching) return <h2>Loading...</h2>;
     return (
-      <div className="App">
+      <AppWrapper>
         <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/form/add">Add Friend</NavLink>
+          <NavLink to="/">
+            <h4>Home</h4>
+          </NavLink>
+          <NavLink to="/form/add">
+            <h4>Add Friend</h4>
+          </NavLink>
         </nav>
 
         <Route
@@ -38,7 +42,11 @@ class App extends Component {
           exact
           path="/friend/:id"
           render={props => (
-            <FriendView {...props} friends={this.props.friends} />
+            <FriendView
+              {...props}
+              deleteFriend={this.props.deleteFriend}
+              friends={this.props.friends}
+            />
           )}
         />
 
@@ -49,6 +57,7 @@ class App extends Component {
             <FormView
               {...props}
               addFriend={this.props.addFriend}
+              updateFriend={this.props.updateFriend}
               friends={this.props.friends}
             />
           )}
@@ -62,11 +71,12 @@ class App extends Component {
               {...props}
               friends={this.props.friends}
               addFriend={this.props.addFriend}
+              updateFriend={this.props.updateFriend}
               update
             />
           )}
         />
-      </div>
+      </AppWrapper>
     );
   }
 }

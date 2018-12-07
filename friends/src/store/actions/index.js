@@ -33,7 +33,6 @@ export const addFriend = friend => dispatch => {
   axios
     .post("http://localhost:5000/api/friends", friend)
     .then(res => {
-      console.log(res.data);
       dispatch({ type: ADD_FRIEND_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -44,9 +43,8 @@ export const addFriend = friend => dispatch => {
 export const updateFriend = (data, id) => dispatch => {
   dispatch({ type: UPDATE_FRIEND_START });
   axios
-    .put(`http://localhost:5000/api/${id}`, data)
+    .put(`http://localhost:5000/api/friends/${id}`, data)
     .then(res => {
-      console.log(res.data);
       dispatch({ type: UPDATE_FRIEND_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -57,9 +55,8 @@ export const updateFriend = (data, id) => dispatch => {
 export const deleteFriend = id => dispatch => {
   dispatch({ type: DELETE_FRIEND_START });
   axios
-    .delete(`http://localhost:5000/api/${id}`)
+    .delete(`http://localhost:5000/api/friends/${id}`)
     .then(res => {
-      console.log(res.data);
       dispatch({ type: DELETE_FRIEND_SUCCESS, payload: res.data });
     })
     .catch(err => {
