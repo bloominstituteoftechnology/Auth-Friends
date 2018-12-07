@@ -62,6 +62,7 @@ class FriendForm extends Component {
             placeholder="Email"
           />
           <button onClick={this.addFriend}>Add Friend</button>
+          <button onClick={this.deleteFriend}>Delete</button>
         </form>
       </div>
     );
