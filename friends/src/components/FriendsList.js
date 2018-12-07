@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Friend from './Friend';
 import { fetchFriends } from '../actions';
 
+import './FriendsList.scss';
+
 class FriendsList extends React.Component {
 
   componentDidMount() {

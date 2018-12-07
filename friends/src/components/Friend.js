@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import './Friend.scss';
+
 import { deleteFriend, setFormToUpdate } from '../actions';
 
 function Friend({friend, deleteFriend, setFormToUpdate}) {
