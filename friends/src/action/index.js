@@ -11,7 +11,7 @@ export const FRIENDDELETED = "FRIENDDELETED";
 const URL = "http://localhost:5000/api/friends";
 
 export const fetchData = () => dispatch => {
-  console.log("action call");
+  console.log("action call, GET");
   dispatch({ type: FETCHINGFRIENDS });
   axios
     .get(URL)
@@ -22,4 +22,16 @@ export const fetchData = () => dispatch => {
     .catch(err => ({
       err
     }));
+};
+
+export const addFriend = friend => dispatch => {
+  console.log("action call, POST");
+  dispatch({ type: SAVINGFRIENDS });
+  axios
+    .post(URL, friend)
+    .then(response => {
+      console.log(response);
+      dispatch({ type: FRIENDSSAVED, payload: response.data });
+    })
+    .catch(err => ({ err }));
 };

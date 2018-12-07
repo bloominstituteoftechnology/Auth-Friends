@@ -12,6 +12,10 @@ class FriendsListView extends React.Component {
     console.log("rendering", this.props);
     return (
       <>
+        <input type="text" placeholder="name" />
+        <input type="text" placeholder="age" />
+        <input type="text" placeholder="email" />
+        <button>Add a friend</button>
         {this.props.friends.map(friend => (
           <Friend key={friend.id} friend={friend} />
         ))}

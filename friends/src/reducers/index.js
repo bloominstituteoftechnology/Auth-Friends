@@ -26,6 +26,7 @@ export default (state = initState, action) => {
     case FETCHINGFRIENDS:
       return { ...state, fetchingFriends: !state.fetchingFriends };
     case FRIENDSFETCHED:
+      console.log("*********", action);
       return { ...state, friends: action.payload };
     case FRIENDSSAVED:
       console.log("frd saved");
