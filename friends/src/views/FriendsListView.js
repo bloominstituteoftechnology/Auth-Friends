@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class FriendsListView extends Component {
     render(){
@@ -6,4 +7,16 @@ class FriendsListView extends Component {
     }
 }
 
-export default FriendsListView;
+const mapStateToProps = state => {
+    return {
+        friends: state.friends,
+        fetching: state.fetchingFriends,
+        error: state.error
+    }
+}
+
+
+
+export default connect(
+    mapStateToProps
+)(FriendsListView)
