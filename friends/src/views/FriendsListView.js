@@ -12,9 +12,12 @@ class FriendsListView extends React.Component {
     return <FriendList />;
   }
 }
-const mapStateToProps = state => ({
-  friends: "none"
-});
+const mapStateToProps = state => (
+  console.log("mts", state),
+  {
+    friends1: "fasfnone"
+  }
+);
 
 export default connect(
   mapStateToProps,
