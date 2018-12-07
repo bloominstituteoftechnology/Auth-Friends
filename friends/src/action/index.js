@@ -11,6 +11,7 @@ export const FRIENDDELETED = "FRIENDDELETED";
 const URL = "http://localhost:5000/api/friends";
 
 export const fetchData = () => dispatch => {
+  console.log("action call");
   dispatch({ type: FETCHINGFRIENDS });
   axios
     .get(URL)

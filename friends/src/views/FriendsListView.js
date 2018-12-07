@@ -1,21 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchData } from "../action";
-import FriendList from "../components/FriendList";
+import Friend from "../components/Friend";
 
 class FriendsListView extends React.Component {
-  constructor() {
-    super();
+  componentDidMount() {
+    console.log("cdm call");
+    this.props.fetchData();
   }
-  componentDidMount() {}
   render() {
-    return <FriendList />;
+    console.log("rendering", this.props);
+    return (
+      <>
+        {this.props.friends.map(friend => (
+          <Friend key={friend.id} friend={friend} />
+        ))}
+      </>
+    );
   }
 }
 const mapStateToProps = state => (
-  console.log("mts", state),
+  console.log("STP", state),
   {
-    friends1: "fasfnone"
+    friends: state.friends
   }
 );
 
