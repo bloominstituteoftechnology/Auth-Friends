@@ -1,0 +1,8 @@
+.friends {
+  display: flex;
+  min-height: 150px;
+}
+
+.friend-list {
+  width: 200px;
+}

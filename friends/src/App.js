@@ -1,16 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import './styles/App.css';
 import {
   fetchFriends,
   fetchFriend,
   addFriend,
   updateFriend,
   deleteFriend
-} from './actions';
+} from './store/actions';
 
 import FriendList from './components/FriendList';
 import FriendDetail from './components/FriendDetail';
+import AddFriendForm from './components/AddFriendForm';
+
 
 class App extends React.Component {
 
@@ -22,15 +25,21 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Friends List</h1>
-        <FriendList
-          friends={this.props.friends}
-          fetchFriend={this.props.fetchFriend}
-          deleteFriend={this.props.deleteFriend}
-          isFetchingFriends={this.props.fetchingFriends}
-        />
-        <FriendDetail
-          friend={this.props.friend}
-          isFetchingFriend={this.props.fetchingFriend}
+        <div className="friends">
+          <FriendList
+            friends={this.props.friends}
+            fetchFriend={this.props.fetchFriend}
+            deleteFriend={this.props.deleteFriend}
+            isFetchingFriends={this.props.fetchingFriends}
+          />
+          <FriendDetail
+            friend={this.props.friend}
+            isFetchingFriend={this.props.fetchingFriend}
+          />
+        </div>
+        <AddFriendForm
+          addFriend={this.props.addFriend}
+          isAddingFriend={this.props.addingFriend}
         />
       </div>
     )}

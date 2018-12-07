@@ -2,9 +2,9 @@ import React from 'react';
 
 const FriendDetail = ({friend, isFetchingFriend}) => {
   if (isFetchingFriend) {
-    return <div>Loading ... </div>
+    return <h4>Loading ... </h4>
   } else if (!friend) {
-    return <div>Click A Friend For Detail</div>
+    return <h4>Click A Friend For Detail</h4>
   } else {
     return (
       <div className="friend-detail">
