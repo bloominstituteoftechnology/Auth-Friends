@@ -33,7 +33,6 @@ class FriendForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log('cdm,', this.props);
     if (this.props.selected !== prevProps.selected) {
       if (this.props.selected) {
         const f = this.props.selected;

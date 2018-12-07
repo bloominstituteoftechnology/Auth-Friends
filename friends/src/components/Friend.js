@@ -33,7 +33,7 @@ const Friend = props => {
       <h3>{props.friend.name}</h3>
       <div>
         <h4>{props.friend.email}</h4>
-        <h4>{props.friend.age}</h4>
+        <h4>Age: {props.friend.age}</h4>
       </div>
     </DivFriend>
   );
