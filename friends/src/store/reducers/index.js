@@ -1,4 +1,11 @@
-import { FETCH, SUCCESS, ERROR } from '../actions';
+import {
+  FETCH,
+  SUCCESS,
+  ERROR,
+  ADD_FRIEND,
+  ADD_SUCCESS,
+  ADD_ERROR
+} from '../actions';
 
 const initialState = {
   friends: [],
@@ -8,6 +15,22 @@ const initialState = {
 
 const friendsReducer = (state = initialState, action) => {
   switch(action.type) {
+    case ADD_FRIEND:
+      return {
+        ...state,
+        friends: action.payload
+      };
+    case ADD_SUCCESS:
+      return{
+        ...state,
+        error: null,
+        friends: action.payload,
+      };
+    case ADD_ERROR:
+      return{
+        ...state,
+        error: action.payload,
+      };
     case FETCH:
       return {
         ...state,
