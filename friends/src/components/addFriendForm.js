@@ -5,16 +5,14 @@ import styled from 'styled-components';
 /***************************************************************************************************
  ********************************************** Styles *********************************************
  **************************************************************************************************/
-const DivWrapper = styled.div`
-  margin: 50px 0;
-  padding: 25px;
-  background-color: #f2f2f2;
-`;
-
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 50px 25px;
+  padding: 25px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
 `;
 
 const Label = styled.label``;
@@ -59,11 +57,9 @@ class AddFriendForm extends Component {
 
   clearInputs = () => {
     this.setState({
-      newNote: {
-        name: '',
-        age: '',
-        email: ''
-      }
+      name: '',
+      age: '',
+      email: ''
     });
   };
 
@@ -83,7 +79,7 @@ class AddFriendForm extends Component {
 
   render() {
     return (
-      <DivWrapper>
+      <>
         <Form>
           <Label>Name</Label>
           <Input
@@ -121,7 +117,7 @@ class AddFriendForm extends Component {
             onClick={e => this.submitHandler(e)}
           />
         </Form>
-      </DivWrapper>
+      </>
     );
   }
 }

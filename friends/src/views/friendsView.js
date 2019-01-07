@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFriends } from '../store/actions';
+import { getFriends, addFriend } from '../store/actions';
 import AddFriendForm from '../components/addFriendForm';
 import Friends from '../components/friends';
 
@@ -9,18 +9,23 @@ class FriendsView extends Component {
     this.props.getFriends();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.friends !== this.props.friends) {
+      this.props.getFriends();
+    }
+  }
+
   render() {
     return (
       <>
         <AddFriendForm {...this.props} />
-        <Friends {...this.props} />
+        <Friends friends={this.props.friends} />
       </>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     friends: state.friends,
     isFetchingFriends: state.fetchingFriends,
@@ -30,5 +35,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getFriends }
+  { getFriends, addFriend }
 )(FriendsView);

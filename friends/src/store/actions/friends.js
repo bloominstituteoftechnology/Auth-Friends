@@ -20,18 +20,12 @@ export const REMOVE_FRIEND_LOADING = 'REMOVE_FRIEND_LOADING';
 export const REMOVE_FRIEND_SUCCESS = 'REMOVE_FRIEND_SUCCESS';
 export const REMOVE_FRIEND_FAILURE = 'REMOVE_FRIEND_FAILURE';
 
-const urlLinks = {
-  server: 'http://localhost:5000',
-  home: '/'
-};
-
 export const getFriends = () => dispatch => {
   dispatch({ type: GET_FRIENDS_LOADING });
   axios
-    .get(`${urlLinks.server}${urlLinks.home}`)
+    .get(`http://localhost:5000/api/friends/`)
     .then(res => {
-      console.log(res);
-      dispatch({ type: GET_FRIENDS_SUCCESS, payload: res });
+      dispatch({ type: GET_FRIENDS_SUCCESS, payload: res.data });
     })
     .catch(err => dispatch({ type: GET_FRIENDS_FAILURE, payload: err }));
 };
@@ -39,9 +33,8 @@ export const getFriends = () => dispatch => {
 export const getFriend = id => dispatch => {
   dispatch({ type: GET_FRIEND_LOADING });
   axios
-    .get(`${urlLinks.server}${urlLinks.home}/${id}`)
+    .get(`http://localhost:5000/api/friends/${id}`)
     .then(res => {
-      console.log(res);
       dispatch({ type: GET_FRIEND_SUCCESS, payload: res });
     })
     .catch(err => dispatch({ type: GET_FRIEND_FAILURE, payload: err }));
@@ -50,9 +43,8 @@ export const getFriend = id => dispatch => {
 export const addFriend = friend => dispatch => {
   dispatch({ type: ADD_FRIEND_LOADING });
   axios
-    .post(`${urlLinks.server}${urlLinks.home}`, friend)
+    .post(`http://localhost:5000/api/friends/`, friend)
     .then(res => {
-      console.log(res);
       dispatch({ type: ADD_FRIEND_SUCCESS, payload: res });
     })
     .catch(err => dispatch({ type: ADD_FRIEND_FAILURE, payload: err }));
@@ -61,9 +53,8 @@ export const addFriend = friend => dispatch => {
 export const editFriend = (id, friend) => dispatch => {
   dispatch({ type: EDIT_FRIEND_LOADING });
   axios
-    .put(`${urlLinks.server}${urlLinks.home}/${id}`, friend)
+    .put(`http://localhost:5000/api/friends/${id}`, friend)
     .then(res => {
-      console.log(res);
       dispatch({ type: EDIT_FRIEND_SUCCESS, payload: res });
     })
     .catch(err => dispatch({ type: EDIT_FRIEND_FAILURE, payload: err }));
@@ -72,9 +63,8 @@ export const editFriend = (id, friend) => dispatch => {
 export const removeFriend = id => dispatch => {
   dispatch({ type: REMOVE_FRIEND_LOADING });
   axios
-    .delete(`${urlLinks.server}${urlLinks.home}/${id}`)
+    .delete(`http://localhost:5000/api/friends/${id}`)
     .then(res => {
-      console.log(res);
       dispatch({ type: REMOVE_FRIEND_SUCCESS, payload: res });
     })
     .catch(err => dispatch({ type: REMOVE_FRIEND_FAILURE, payload: err }));

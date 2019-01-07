@@ -6,8 +6,11 @@ import styled, { createGlobalStyle } from 'styled-components';
  ********************************************** Styles *********************************************
  **************************************************************************************************/
 const DivWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   width: 800px;
+  background-color: rgb(75, 75, 75);
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -19,10 +22,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
-    background-color: ${props =>
-      props.isModelRaised === 'true'
-        ? `rgba(0, 0, 0, 0.3)`
-        : `rgb(243, 243, 243)`};
     height: 100vh;
   }
 `;
@@ -34,6 +33,7 @@ class App extends Component {
   render() {
     return (
       <DivWrapper>
+        <GlobalStyle />
         <FriendsView {...this.props} />
       </DivWrapper>
     );
