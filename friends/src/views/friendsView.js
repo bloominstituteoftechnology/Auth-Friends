@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFriends } from '../store/actions';
-import Friends from '../components/Shop';
+import AddFriendForm from '../components/addFriendForm';
+import Friends from '../components/friends';
 
 class FriendsView extends Component {
   componentDidMount() {
@@ -11,6 +12,7 @@ class FriendsView extends Component {
   render() {
     return (
       <>
+        <AddFriendForm {...this.props} />
         <Friends {...this.props} />
       </>
     );
