@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FriendsList, FriendsInput } from './components';
 import { updateFriends, addFriend, deleteFriend } from './actions';
 import { connect } from 'react-redux';
-import './App.css';
 
 class App extends Component {
   componentDidMount(){

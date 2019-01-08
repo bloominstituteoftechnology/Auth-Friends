@@ -1,4 +1,38 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const FriendInput = styled.form`
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    input {
+        border: 1px solid #222;
+        background: transparent;
+        padding-left: 5px;
+        font-size: 1.2rem;
+    }
+
+    button {
+        background: #eee;
+        border: 2px solid #222;
+        color: #222;
+        font-size: 1.5rem;
+        cursor: pointer;
+
+        &:hover {
+            background: #222;
+            color: #eee;
+        }
+
+        &:active {
+            color: gray;
+            transform: translateY(1px);
+        }
+    }
+`;
 
 export default class FriendsInput extends React.Component {
     constructor(props){
@@ -23,7 +57,7 @@ export default class FriendsInput extends React.Component {
     }
     render(){
         return (
-            <form onSubmit={this.handleAddFriend}>
+            <FriendInput onSubmit={this.handleAddFriend}>
                 <input 
                     type="text" 
                     placeholder="Name" 
@@ -46,7 +80,7 @@ export default class FriendsInput extends React.Component {
                     value={this.state.email}
                 />
                 <button type="submit">Add Friend</button>
-            </form>
+            </FriendInput>
         );
     }
 }
