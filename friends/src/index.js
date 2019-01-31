@@ -8,9 +8,7 @@ import { Provider } from "react-redux";
 
 import "./index.css";
 import App from "./App";
-
-const rootReducer = () => {};
-
+import { rootReducer } from "./reducer";
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 const rootDiv = document.getElementById("root");
 
