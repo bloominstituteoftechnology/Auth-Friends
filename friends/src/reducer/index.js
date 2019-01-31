@@ -1,9 +1,13 @@
 import React from "react";
 
-export const ADD_FRIEND = "ADD_FRIEND";
-export const UPDATE_FRIEND = "UPDATE_FRIEND";
-export const DELETE_FRIEND = "DELETE_FRIEND";
-export const FETCH_FRIEND = "FETCH_FRIEND";
+import {
+  FETCH_FAIL,
+  FETCH_FRIEND,
+  FETCH_SUCCESS,
+  ADD_FRIEND,
+  DELETE_FRIEND,
+  UPDATE_FRIEND
+} from "../actions";
 
 const initialState = {
   friends: [],
@@ -18,7 +22,17 @@ export const rootReducer = (state = initialState, action) => {
     case FETCH_FRIEND:
       return {
         ...state,
+        fetching: true
+      };
+    case FETCH_SUCCESS:
+      return {
+        ...state,
         friends: action.payload
+      };
+    case FETCH_FAIL:
+      return {
+        ...state,
+        error: action.payload
       };
     case ADD_FRIEND:
       return {
