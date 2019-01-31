@@ -17,8 +17,9 @@ class FriendView extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
-        friends: state.friends
+        friends: state.friends.data,
     }
 }
 export default connect(mapStateToProps, { getFriends })(FriendView);
