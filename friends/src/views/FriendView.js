@@ -11,7 +11,9 @@ class FriendView extends Component {
 
     render() {
         return(
-            <FriendsList friends={this.props.friends} />
+            <div>
+                {this.props.friends && (<FriendsList friends={this.props.friends} />)}
+            </div>
         )
     }
 }
