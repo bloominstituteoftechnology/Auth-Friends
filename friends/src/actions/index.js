@@ -11,7 +11,7 @@ export const DELETE_FRIEND = "DELETE_FRIEND";
 export const getData = _ => dispatch => {
   dispatch({ type: FETCH_FRIEND });
   axios
-    .get("http://localhost:5000")
+    .get("http://localhost:5000/api/friends")
     .then(res => dispatch({ type: FETCH_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: FETCH_FAIL, payload: err }));
 };

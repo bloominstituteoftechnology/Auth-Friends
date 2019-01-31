@@ -27,25 +27,29 @@ export const rootReducer = (state = initialState, action) => {
     case FETCH_SUCCESS:
       return {
         ...state,
-        friends: action.payload
+        friends: action.payload,
+        fetching: false
       };
     case FETCH_FAIL:
       return {
         ...state,
-        error: action.payload
+        error: action.payload,
+        fetching: false
       };
     case ADD_FRIEND:
       return {
         ...state,
-        friends: [...friends, ...action.payload]
+        friends: [...state.friends, ...action.payload],
+        fetching: false
       };
     case DELETE_FRIEND:
       return {
         ...state,
-        friends: state.friends.filter(friend => friend.id !== action.payload)
+        friends: state.friends.filter(friend => friend.id !== action.payload),
+        fetching: false
       };
     case UPDATE_FRIEND:
-      return {};
+      return;
     default:
       return state;
   }
