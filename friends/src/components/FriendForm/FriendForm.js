@@ -1,9 +1,10 @@
 import React from "react";
 
 const FriendForm = props => {
+    console.log(props)
   return (
     <div>
-      <form>
+      <form onSubmit={e => props.handleSubmit(e)}>
         <input
           type="text"
           placeholder="Name"
