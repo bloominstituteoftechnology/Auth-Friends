@@ -1,7 +1,5 @@
 import React from "react";
 import Friend from "./Friend";
-import { connect } from "react-redux";
-import { getData } from "../actions";
 
 class FriendsList extends React.Component {
   constructor() {
@@ -13,15 +11,14 @@ class FriendsList extends React.Component {
   }
 
   render() {
-    return this.props.friends.map(friend => <Friend name={friend.name} />);
+    return this.props.friends.map(friend => (
+      <Friend
+        name={friend.name}
+        id={friend.id}
+        deleteFriend={this.props.deleteFriend}
+      />
+    ));
   }
 }
 
-const mapStateToProps = state => ({
-  friends: state.friends
-});
-
-export default connect(
-  mapStateToProps,
-  { getData }
-)(FriendsList);
+export default FriendsList;

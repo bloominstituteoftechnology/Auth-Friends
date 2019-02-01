@@ -39,13 +39,13 @@ export const rootReducer = (state = initialState, action) => {
     case ADD_FRIEND:
       return {
         ...state,
-        friends: [...state.friends, ...action.payload],
+        friends: action.payload,
         fetching: false
       };
     case DELETE_FRIEND:
       return {
         ...state,
-        friends: state.friends.filter(friend => friend.id !== action.payload),
+        friends: action.payload,
         fetching: false
       };
     case UPDATE_FRIEND:
