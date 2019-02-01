@@ -4,9 +4,9 @@ import
    FRIENDS_SUCCESS,
    FRIENDS_FAILURE,
 
-//    ADD_NEW_FRIEND_START,
-//    ADD_NEW_FRIEND_SUCCESS,
-//    ADD_NEW_FRIEND_FAILURE
+   ADD_NEW_FRIEND_START,
+   ADD_NEW_FRIEND_SUCCESS,
+   ADD_NEW_FRIEND_FAILURE
 
 } from '../actions';
 
@@ -39,27 +39,27 @@ const friendsReducer = (state = initialState, action) => {
             fetchingFriends:false
         }
 
-        // case 'ADD_NEW_FRIEND_START':
-        // return {
-        //     ...state,
-        //     error: action.payload,
-        //     fetchingFriends:true
-        // }
+        case 'ADD_NEW_FRIEND_START':
+        return {
+            ...state,
+            error: action.payload,
+            fetchingFriends:true
+        }
 
-        // case 'ADD_NEW_FRIEND_SUCCESS':
-        // return {
-        //     ...state,
-        //     fetchingFriends:false,
-        //     error: null,
-        //     friends: action.payload
-        // }
+        case 'ADD_NEW_FRIEND_SUCCESS':
+        return {
+            ...state,
+            fetchingFriends:false,
+            error: null,
+            friends: action.payload
+        }
 
-        // case 'ADD_NEW_FRIEND_FAILURE':
-        // return {
-        //     ...state,
-        //     error: action.payload,
-        //     fetchingFriends:false
-        // }
+        case 'ADD_NEW_FRIEND_FAILURE':
+        return {
+            ...state,
+            error: action.payload,
+            fetchingFriends:false
+        }
 
 
     default:

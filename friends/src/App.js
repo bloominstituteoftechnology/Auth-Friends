@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import FriendList from './components/FriendList';
-// import FriendForm from './components/FriendForm';
+import FriendForm from './components/FriendForm';
 import { fetchFriends } from './actions'
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div className="App">
       <h1>Friends</h1>
-      {/* <FriendForm /> */}
+      <FriendForm />
       <FriendList friends={this.props.friends} />
         
       </div>
