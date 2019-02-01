@@ -2,7 +2,11 @@ export {
   FETCH_FRIENDS_START,
   FETCH_FRIENDS_SUCCESS,
   FETCH_FRIENDS_FAILURE,
-  getFriends
+  getFriends,
+  DELETE_FRIEND_START,
+  DELETE_FRIEND_SUCCESS,
+  DELETE_FRIEND_FAILURE,
+  deleteFriend
 } from "./friendsActions";
 
 export {

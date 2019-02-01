@@ -30,7 +30,6 @@ class FormView extends Component {
         } else {
             alert('Please fill in all of the requirements')
         }
-        
     }
     render() {
         return(

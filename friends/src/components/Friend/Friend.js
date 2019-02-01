@@ -10,7 +10,7 @@ const Friend = props => {
                   <h2>{friend.name}</h2>
                   <p>{friend.age}</p>
                   <p>{friend.email}</p>
-                  <button>Delete Me</button>
+                  <button onClick={e => props.deleteFriend(e, friend.id)}>Delete Me</button>
                   <button>Update Me</button>
                 </>  
         )
