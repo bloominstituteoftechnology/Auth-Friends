@@ -16,7 +16,12 @@ class FriendsListView extends React.Component {
     render() {
         return(
             <div className="friendslist-wrapper">
-                <FriendsList friends={this.props.friends} />
+
+                { this.props.friends.length === 0 ?
+                    <div>Nothing here...add some </div>
+                    :
+                    <FriendsList friends={this.props.friends} />
+                }
             </div>
         )
     }
