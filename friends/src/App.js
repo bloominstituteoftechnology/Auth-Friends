@@ -12,7 +12,7 @@ class App extends Component {
           <Route path="/" component={Home} />
         </header>
         <div className="bodyCont">
-          <Route exact path="/friends" render={props => <FriendsList />} />
+          <Route exact path="/friends" component={FriendsList} />
         </div>
       </div>
     );

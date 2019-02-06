@@ -13,11 +13,18 @@ class FriendsList extends React.Component {
   }
 
   render() {
-    return (
+    return this.props.fetching ? (
+      <div>Loading...</div>
+    ) : (
       <div className="listCont">
         {this.props.friends.map(friend => {
           return (
-            <Friend name={friend.name} age={friend.age} email={friend.email} />
+            <Friend
+              key={friend.id}
+              name={friend.name}
+              age={friend.age}
+              email={friend.email}
+            />
           );
         })}
       </div>
@@ -28,6 +35,7 @@ class FriendsList extends React.Component {
 const mstp = state => {
   return {
     friends: state.friends,
+    fetching: state.fetchingFriends,
   };
 };
 

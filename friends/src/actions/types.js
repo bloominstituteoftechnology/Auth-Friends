@@ -1,3 +1,4 @@
 export const FETCHINGFRIENDS = 'FETCHINGFRIENDS';
 export const FETCHEDFRIENDS = 'FETCHEDFRIENDS';
 export const ERROR = 'ERROR';
+export const ADDINGFRIEND = 'ADDINGFRIEND';

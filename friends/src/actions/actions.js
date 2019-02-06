@@ -1,13 +1,13 @@
 import axios from 'axios';
-import {FETCHINGFRIENDS, FETCHEDFRIENDS, ERROR} from './types.js';
+import {FETCHINGFRIENDS, FETCHEDFRIENDS, ERROR, ADDINGFRIEND} from './types.js';
 
 export const fetchingFriends = () => {
   return dispatch => {
     dispatch({type: FETCHINGFRIENDS});
     axios
-      .get('http://localhost:5000/api/friends')
+      .get('http://www.localhost:5000/api/friends')
       .then(res => {
-        dispatch({type: FETCHEDFRIENDS, payload: res});
+        dispatch({type: FETCHEDFRIENDS, payload: res.data});
       })
       .catch(err => {
         dispatch({
@@ -16,5 +16,11 @@ export const fetchingFriends = () => {
             'There was a problem retrieving your friends. Please try again',
         });
       });
+  };
+};
+
+export const addfriend = friend => {
+  return dispatch => {
+    dispatch({type: ADDINGFRIEND});
   };
 };

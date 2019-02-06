@@ -3,8 +3,8 @@ import {FETCHINGFRIENDS, FETCHEDFRIENDS, ERROR} from '../actions/types.js';
 const intialState = {
   fetchingFriends: false,
   fetchedFriends: false,
-  savingFriends: false,
-  savedFriends: false,
+  addingFriends: false,
+  addedFriends: false,
   updatingFriends: false,
   deletingFriend: false,
   deletedFriend: false,
@@ -27,7 +27,7 @@ export const friendsReducer = (state = intialState, action) => {
         ...state,
         fetchingFriends: false,
         fetchedFriends: true,
-        fetchedFriends: action.payload,
+        friends: action.payload,
       };
     }
     default:

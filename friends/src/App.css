@@ -1,15 +1,31 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .App-header {
+  position: fixed;
+  margin-right: 20%;
   background-color: #282c34;
   width: 20%;
+  max-width: 100px;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.bodyCont {
+  width: 77%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding-left: 20%;
 }
