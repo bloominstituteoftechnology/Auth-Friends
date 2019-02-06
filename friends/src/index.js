@@ -7,11 +7,11 @@ import mainReducer from './reducers';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import * as serviceWorker from './serviceWorker';
 const friendStore = createStore(
     mainReducer,
     applyMiddleware(thunk, logger)
-)
-import * as serviceWorker from './serviceWorker';
+);
 
 ReactDOM.render(
     <Provider store={friendStore}>
