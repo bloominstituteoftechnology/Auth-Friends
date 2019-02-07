@@ -12,8 +12,16 @@ class FriendForm extends React.Component {
             }
         }
     }
-    submitHandler = e => {
+    changeHandler = e => {
         e.preventDefault();
+        this.setState({
+            friend: {
+                ...this.state.friend,
+                [e.target.name]: e.target.value,
+                [e.target.age]: e.target.value,
+                [e.target.email]: e.target.value
+            }
+        })
     }
     render() {
         return(
@@ -24,7 +32,7 @@ class FriendForm extends React.Component {
                         name="name"
                         value={this.state.name}
                         placeholder="name"
-                    
+                        onChange={this.changeHandler}
                     />
                     <br></br>
                     <input
@@ -32,7 +40,7 @@ class FriendForm extends React.Component {
                         name="age"
                         value={this.state.age}
                         placeholder="age"
-                    
+                        onChange={this.changeHandler}
                     />
                     <br></br>
                     <input
@@ -40,7 +48,7 @@ class FriendForm extends React.Component {
                         name="email"
                         value={this.state.email}
                         placeholder="email"
-                    
+                        onChange={this.changeHandler}
                     />
                     <br></br>
                     <button type="submit">Add</button>

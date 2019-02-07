@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { FriendsList, FriendForm} from '../components';
-import { fetchFriends } from '../actions';
+import { fetchFriends, fetchAFriend } from '../actions';
 
 class FriendsListView extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
         this.props.fetchFriends();
     }
+    
+    // fetchAFriend() {
+    //     this.props.fetchAFriend(this.props.id);
+    // }
 
     render() {
         return(
