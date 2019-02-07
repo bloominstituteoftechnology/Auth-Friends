@@ -12,12 +12,38 @@ class FriendForm extends React.Component {
             }
         }
     }
+    submitHandler = e => {
+        e.preventDefault();
+    }
     render() {
         return(
             <div>
-                <form onSubmit={this.addFriendHalder}>
-                    <input />
-                    <button>Add</button>
+                <form onSubmit={this.submitHandler}>
+                    <input
+                        type="text"
+                        name="name"
+                        value={this.state.name}
+                        placeholder="name"
+                    
+                    />
+                    <br></br>
+                    <input
+                        type="text"
+                        name="age"
+                        value={this.state.age}
+                        placeholder="age"
+                    
+                    />
+                    <br></br>
+                    <input
+                        type="email"
+                        name="email"
+                        value={this.state.email}
+                        placeholder="email"
+                    
+                    />
+                    <br></br>
+                    <button type="submit">Add</button>
                 </form>
             </div>
         )

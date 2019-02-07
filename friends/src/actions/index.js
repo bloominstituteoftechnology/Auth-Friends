@@ -24,4 +24,21 @@ export function fetchFriends() {
     }
 }
 
-// export function
+export function fetchAFriend(id) {
+    return dispatch => {
+        dispatch({ type: LOADING })
+        axios
+            .get(`http://localhost:5000/api/friends/${id}`)
+            .then(response => {
+                dispatch({
+                    payload: response.data
+                });
+            })
+            .catch(err => {
+                dispatch({
+                    type: FAILURE,
+                    payload: err
+                })
+            })
+    }
+}
