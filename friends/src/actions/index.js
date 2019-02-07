@@ -24,11 +24,17 @@ export function fetchFriends() {
     }
 }
 
-export function fetchAFriend(id) {
+export function addFriend(friend) {
+
+    const newFriend = {
+        name: friend.name,
+        age: friend.age,
+        email: friend.email
+    }
     return dispatch => {
         dispatch({ type: LOADING })
         axios
-            .get(`http://localhost:5000/api/friends/${id}`)
+            .post(`http://localhost:5000/api/friends`, newFriend)
             .then(response => {
                 dispatch({
                     payload: response.data
