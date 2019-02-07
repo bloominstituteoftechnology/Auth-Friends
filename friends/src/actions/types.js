@@ -5,3 +5,4 @@ export const ADDINGFRIEND = 'ADDINGFRIEND';
 export const ADDEDFRIEND = 'ADDEDFRIEND';
 export const DELETINGFRIEND = 'DELETINGFRIEND';
 export const DELETEDFRIEND = 'DELETEFRIEND';
+export const RESET = 'RESET';

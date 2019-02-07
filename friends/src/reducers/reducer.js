@@ -6,6 +6,7 @@ import {
   ADDEDFRIEND,
   DELETINGFRIEND,
   DELETEDFRIEND,
+  RESET,
 } from '../actions/types.js';
 
 const intialState = {
@@ -73,6 +74,7 @@ export const friendsReducer = (state = intialState, action) => {
         deletingFriend: false,
         deletedFriend: false,
         friends: action.payload,
+        error: null,
       };
     }
     case DELETINGFRIEND: {
@@ -100,9 +102,28 @@ export const friendsReducer = (state = intialState, action) => {
         friends: action.payload,
       };
     }
+    case RESET: {
+      return {
+        ...state,
+        fetchingFriends: false,
+        fetchedFriends: false,
+        addingFriends: false,
+        addedFriends: false,
+        updatingFriends: false,
+        deletingFriend: false,
+        deletedFriend: false,
+      };
+    }
     case ERROR: {
       return {
         ...state,
+        fetchingFriends: false,
+        fetchedFriends: false,
+        addingFriends: false,
+        addedFriends: false,
+        updatingFriends: false,
+        deletingFriend: false,
+        deletedFriend: false,
         error: action.payload,
       };
     }

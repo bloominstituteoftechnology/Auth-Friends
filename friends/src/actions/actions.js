@@ -7,6 +7,7 @@ import {
   ADDEDFRIEND,
   DELETINGFRIEND,
   DELETEDFRIEND,
+  RESET,
 } from './types.js';
 
 export const fetchingFriends = () => {
@@ -28,7 +29,11 @@ export const fetchingFriends = () => {
 };
 
 export const addfriend = (friend, friendsEmails) => {
-  if (!friendsEmails.includes(friend.email)) {
+  if (
+    !friendsEmails.includes(friend.email) &&
+    friend.name != '' &&
+    friend.age != ''
+  ) {
     return dispatch => {
       dispatch({type: ADDINGFRIEND});
       axios
@@ -69,4 +74,8 @@ export const deletedFriend = id => {
         });
       });
   };
+};
+
+export const resetMsg = () => {
+  return {type: RESET};
 };

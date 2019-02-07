@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addfriend} from '../actions/actions.js';
+import {addfriend, resetMsg} from '../actions/actions.js';
 import {Link} from 'react-router-dom';
 
 class Form extends React.Component {
@@ -29,9 +29,15 @@ class Form extends React.Component {
     return (
       <div className="formCont">
         <form className="form" onSubmit={this.submitNewFriend}>
-          <div className="close">
+          <div className="cont">
+            {this.props.addedFriend && (
+              <div className="mess">Friend Successfully added</div>
+            )}
+            {this.props.erroMsg && (
+              <div className="errorMsg">{this.props.erroMsg}</div>
+            )}
             <Link to="/friends">
-              <i class="far fa-window-close" />
+              <i class="far fa-window-close" onClick={this.props.resetMsg} />
             </Link>
           </div>
           <h2 className="formHead">Add Friend</h2>
@@ -79,10 +85,12 @@ const mstp = state => {
     friendsEmails: state.friends.map(fr => {
       return fr.email;
     }),
+    addedFriend: state.addedFriends,
+    erroMsg: state.error,
   };
 };
 
 export default connect(
   mstp,
-  {addfriend},
+  {addfriend, resetMsg},
 )(Form);
