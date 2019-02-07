@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {addfriend} from '../actions/actions.js';
 
 class Form extends React.Component {
   constructor(props) {
@@ -18,12 +20,13 @@ class Form extends React.Component {
     e.preventDefault();
     let newFriend = {...this.state};
     newFriend.id = this.props.id;
+    this.props.addfriend(newFriend, this.props.friendsEmails);
   };
 
   render() {
     return (
       <div className="formCont">
-        <form className="form">
+        <form className="form" onSubmit={this.submitNewFriend}>
           <h2 className="formHead">Add Friend</h2>
           <div className="nameCont">
             <label htmlFor="name">Name: </label>
@@ -44,4 +47,16 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+const mstp = state => {
+  return {
+    id: state.friends.length + 1,
+    friendsEmails: state.friends.map(fr => {
+      return fr.email;
+    }),
+  };
+};
+
+export default connect(
+  mstp,
+  {addfriend},
+)(Form);

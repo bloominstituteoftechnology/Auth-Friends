@@ -4,6 +4,8 @@ import {
   ERROR,
   ADDINGFRIEND,
   ADDEDFRIEND,
+  DELETINGFRIEND,
+  DELETEDFRIEND,
 } from '../actions/types.js';
 
 const intialState = {
@@ -25,33 +27,70 @@ export const friendsReducer = (state = intialState, action) => {
     case FETCHINGFRIENDS: {
       return {
         ...state,
-        fetchingFriends: false,
+        fetchingFriends: true,
         fetchedFriends: false,
         addingFriends: false,
         addedFriends: false,
         updatingFriends: false,
         deletingFriend: false,
         deletedFriend: false,
-        fetchingFriends: true,
       };
     }
     case FETCHEDFRIENDS: {
       return {
         ...state,
         fetchingFriends: false,
-        fetchedFriends: false,
+        fetchedFriends: true,
         addingFriends: false,
         addedFriends: false,
         updatingFriends: false,
         deletingFriend: false,
         deletedFriend: false,
-        fetchedFriends: true,
         friends: action.payload,
       };
     }
     case ADDINGFRIEND: {
       return {
         ...state,
+        fetchingFriends: false,
+        fetchedFriends: false,
+        addingFriends: true,
+        addedFriends: false,
+        updatingFriends: false,
+        deletingFriend: false,
+        deletedFriend: false,
+        friends: [...state.friends],
+      };
+    }
+    case ADDEDFRIEND: {
+      return {
+        ...state,
+        fetchingFriends: false,
+        fetchedFriends: false,
+        addingFriends: false,
+        addedFriends: true,
+        updatingFriends: false,
+        deletingFriend: false,
+        deletedFriend: false,
+        friends: [...state.friends, action.payload],
+      };
+    }
+    case DELETINGFRIEND: {
+      return {
+        ...state,
+        fetchingFriends: false,
+        fetchedFriends: false,
+        addingFriends: false,
+        addedFriends: false,
+        updatingFriends: false,
+        deletingFriend: true,
+        deletedFriend: false,
+      };
+    }
+    case ERROR: {
+      return {
+        ...state,
+        error: action.payload,
       };
     }
     default:
