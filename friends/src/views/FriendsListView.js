@@ -18,7 +18,8 @@ class FriendsListView extends React.Component {
             <div className="friendslist-wrapper">
                 <FriendForm />
                 { this.props.friends.length === 0 ?
-                    <div>Nothing here...add some </div>
+                    <div>Loading... </div>
+                    
                     :
                     <FriendsList friends={this.props.friends} />
                 }
@@ -30,7 +31,7 @@ class FriendsListView extends React.Component {
 const mapStateToProps = ({ friendsReducer: state }) => {
     return {
       friends: state.friends,
-      loading: state.isFetching,
+      loading: state.loading,
       error: state.error
     };
   };
