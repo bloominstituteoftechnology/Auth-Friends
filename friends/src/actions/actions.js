@@ -1,5 +1,11 @@
 import axios from 'axios';
-import {FETCHINGFRIENDS, FETCHEDFRIENDS, ERROR, ADDINGFRIEND} from './types.js';
+import {
+  FETCHINGFRIENDS,
+  FETCHEDFRIENDS,
+  ERROR,
+  ADDINGFRIEND,
+  ADDEDFRIEND,
+} from './types.js';
 
 export const fetchingFriends = () => {
   return dispatch => {
@@ -22,5 +28,16 @@ export const fetchingFriends = () => {
 export const addfriend = friend => {
   return dispatch => {
     dispatch({type: ADDINGFRIEND});
+    axios
+      .post('http://www.localhost:5000/api/friends', friend)
+      .then(res => {
+        dispatch({ADDEDFRIEND, payload: res});
+      })
+      .catch(err => {
+        dispatch({
+          type: ERROR,
+          payload: 'There was a problem adding your friend. Pleas try again',
+        });
+      });
   };
 };

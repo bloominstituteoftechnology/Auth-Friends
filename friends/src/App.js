@@ -3,6 +3,7 @@ import './App.css';
 import {Route} from 'react-router-dom';
 import {Home} from './comps/presComp/home.js';
 import FriendsList from './comps/presComp/friendsList.js';
+import Form from './comps/form.js';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         </header>
         <div className="bodyCont">
           <Route exact path="/friends" component={FriendsList} />
+          <Route exact path="/addfriend" component={Form} />
         </div>
       </div>
     );

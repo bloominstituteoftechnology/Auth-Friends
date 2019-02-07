@@ -1,4 +1,10 @@
-import {FETCHINGFRIENDS, FETCHEDFRIENDS, ERROR} from '../actions/types.js';
+import {
+  FETCHINGFRIENDS,
+  FETCHEDFRIENDS,
+  ERROR,
+  ADDINGFRIEND,
+  ADDEDFRIEND,
+} from '../actions/types.js';
 
 const intialState = {
   fetchingFriends: false,
@@ -19,6 +25,13 @@ export const friendsReducer = (state = intialState, action) => {
     case FETCHINGFRIENDS: {
       return {
         ...state,
+        fetchingFriends: false,
+        fetchedFriends: false,
+        addingFriends: false,
+        addedFriends: false,
+        updatingFriends: false,
+        deletingFriend: false,
+        deletedFriend: false,
         fetchingFriends: true,
       };
     }
@@ -26,8 +39,19 @@ export const friendsReducer = (state = intialState, action) => {
       return {
         ...state,
         fetchingFriends: false,
+        fetchedFriends: false,
+        addingFriends: false,
+        addedFriends: false,
+        updatingFriends: false,
+        deletingFriend: false,
+        deletedFriend: false,
         fetchedFriends: true,
         friends: action.payload,
+      };
+    }
+    case ADDINGFRIEND: {
+      return {
+        ...state,
       };
     }
     default:
