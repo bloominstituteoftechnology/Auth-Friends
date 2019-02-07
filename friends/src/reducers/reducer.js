@@ -72,7 +72,7 @@ export const friendsReducer = (state = intialState, action) => {
         updatingFriends: false,
         deletingFriend: false,
         deletedFriend: false,
-        friends: [...state.friends, action.payload],
+        friends: action.payload,
       };
     }
     case DELETINGFRIEND: {

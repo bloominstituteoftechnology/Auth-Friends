@@ -1,0 +1,158 @@
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.App-header {
+  position: fixed;
+  margin-right: 20%;
+  background-color: #282c34;
+  width: 20%;
+  max-width: 150px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+      font-weight: bold;
+    }
+
+    .navButton {
+      margin-left: 3px;
+      margin-right: 3px;
+      padding: 10px;
+
+      &:hover {
+        border: 3px solid white;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.bodyCont {
+  width: 77%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding-left: 20%;
+}
+
+.formCont {
+  position: fixed;
+  top: 42vh;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  z-index: 55;
+  width: 380px;
+
+  .form {
+    background-color: rgb(125, 19, 0);
+    border-radius: 5px;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    margin-left: 11%;
+
+    .close {
+      text-align: right;
+
+      a {
+        color: white;
+
+        .fa-window-close:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .formHead {
+      margin-top: 3px;
+    }
+
+    .nameCont {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 5px;
+
+      label {
+        width: 20%;
+      }
+    }
+
+    .age {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 5px;
+
+      label {
+        width: 20%;
+      }
+    }
+
+    .email {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 5px;
+
+      label {
+        width: 20%;
+      }
+    }
+    button {
+      margin-top: 10px;
+      background-color: black;
+      border: 1px solid white;
+      border-radius: 5px;
+      width: 100%;
+      color: white;
+
+      &:hover {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.listCont {
+  margin-left: 10%;
+
+  .friendCont {
+    margin-top: 15px;
+    border: 3px solid black;
+    padding-bottom: 15px;
+    border-radius: 5px;
+
+    button {
+      margin-top: 5px;
+      background-color: white;
+      border: 2px solid darkred;
+      border-radius: 5px;
+      width: 90%;
+
+      &:hover {
+        background-color: darkred;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+}

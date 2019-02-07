@@ -34,7 +34,7 @@ export const addfriend = (friend, friendsEmails) => {
       axios
         .post('http://www.localhost:5000/api/friends', friend)
         .then(res => {
-          dispatch({type: ADDEDFRIEND, payload: res});
+          dispatch({type: ADDEDFRIEND, payload: res.data});
         })
         .catch(err => {
           dispatch({

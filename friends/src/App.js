@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import './App.scss';
 import {Route} from 'react-router-dom';
 import {Home} from './comps/presComp/home.js';
 import FriendsList from './comps/presComp/friendsList.js';
@@ -13,8 +13,8 @@ class App extends Component {
           <Route path="/" component={Home} />
         </header>
         <div className="bodyCont">
-          <Route exact path="/friends" component={FriendsList} />
-          <Route exact path="/addfriend" component={Form} />
+          <Route path="/friends" component={FriendsList} />
+          <Route path="/friends/addfriend" component={Form} />
         </div>
       </div>
     );

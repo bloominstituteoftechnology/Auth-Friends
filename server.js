@@ -37,6 +37,66 @@ let friends = [
     age: 67,
     email: 'michelle@gmail.com',
   },
+  {
+    id: 6,
+    name: 'Ben',
+    age: 30,
+    email: 'bentwo@lambdaschool.com',
+  },
+  {
+    id: 7,
+    name: 'Austen',
+    age: 45,
+    email: 'austentwo@lambdaschool.com',
+  },
+  {
+    id: 8,
+    name: 'Ryan',
+    age: 15,
+    email: 'ryantwo@lambdaschool.com',
+  },
+  {
+    id: 9,
+    name: 'Sean',
+    age: 35,
+    email: 'seantwo@lambdaschool.com',
+  },
+  {
+    id: 10,
+    name: 'Michelle',
+    age: 67,
+    email: 'michelletwo@gmail.com',
+  },
+  {
+    id: 11,
+    name: 'Ben',
+    age: 30,
+    email: 'benthree@lambdaschool.com',
+  },
+  {
+    id: 12,
+    name: 'Austen',
+    age: 45,
+    email: 'austenthree@lambdaschool.com',
+  },
+  {
+    id: 13,
+    name: 'Ryan',
+    age: 15,
+    email: 'ryanthree@lambdaschool.com',
+  },
+  {
+    id: 14,
+    name: 'Sean',
+    age: 35,
+    email: 'seanthree@lambdaschool.com',
+  },
+  {
+    id: 15,
+    name: 'Michelle',
+    age: 67,
+    email: 'michellethree@gmail.com',
+  },
 ];
 
 app.use(bodyParser.json());
