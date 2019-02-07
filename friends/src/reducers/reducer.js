@@ -87,6 +87,19 @@ export const friendsReducer = (state = intialState, action) => {
         deletedFriend: false,
       };
     }
+    case DELETEDFRIEND: {
+      return {
+        ...state,
+        fetchingFriends: false,
+        fetchedFriends: false,
+        addingFriends: false,
+        addedFriends: false,
+        updatingFriends: false,
+        deletingFriend: false,
+        deletedFriend: true,
+        friends: action.payload,
+      };
+    }
     case ERROR: {
       return {
         ...state,

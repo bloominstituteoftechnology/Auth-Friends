@@ -48,8 +48,12 @@ class Form extends React.Component {
 }
 
 const mstp = state => {
+  const ids = state.friends.map(fr => {
+    return fr.id;
+  });
+  const largestId = Math.max(...ids);
   return {
-    id: state.friends.length + 1,
+    id: largestId + 1,
     friendsEmails: state.friends.map(fr => {
       return fr.email;
     }),

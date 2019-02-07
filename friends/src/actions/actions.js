@@ -53,8 +53,20 @@ export const addfriend = (friend, friendsEmails) => {
   }
 };
 
-export const deletedFriend = friend => {
+export const deletedFriend = id => {
   return dispatch => {
     dispatch({type: DELETINGFRIEND});
+    axios
+      .delete(`http://www.localhost:5000/api/friends/${id}`)
+      .then(res => {
+        console.log(res.data);
+        dispatch({type: DELETEDFRIEND, payload: res.data});
+      })
+      .catch(err => {
+        dispatch({
+          type: ERROR,
+          payload: `There was a problem deleting the friend `,
+        });
+      });
   };
 };
