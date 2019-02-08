@@ -14,7 +14,7 @@ class Friends extends React.Component {
             <div>
                 {this.props.fetchingFriends ? <h3>...loading forever</h3> : null}
                 {this.props.error ? <h3>{this.props.error}</h3> : null}
-                {this.props.friends.map(friend => <Friend friend={friend} key={friend.id}/>)}
+                {this.props.friends.map(friend => <Friend friend={friend} key={friend.id} id={friend.id}  />)}
             </div>
         )      
     }
@@ -28,4 +28,4 @@ function mstp(state) {
     }
 }
 
-export default connect(mstp, {getFriends})(Friends)
+export default connect(mstp, { getFriends })(Friends)

@@ -1,4 +1,4 @@
-import { FETCHING_FRIENDS, FETCHING_SUCCESS, FETCHING_FAILURE } from '../actions'
+import { FETCHING_FRIENDS, FETCHING_SUCCESS, FETCHING_FAILURE, ADDING_FRIENDS, ADDING_SUCCESS, DELETING_FRIENDS, DELETING_SUCCESS } from '../actions'
 
 const initialState = {
     fetchingFriends: false,
@@ -36,6 +36,33 @@ function reducer (state = initialState, action) {
             fetchingFriends: false,
             error: action.payload
         }
+        case ADDING_FRIENDS:
+            return {
+                ...state,
+                savingFriends: true,
+                friendsSaved: false
+            }
+        case ADDING_SUCCESS:
+            return {
+                ...state,
+                savingFriends: false,
+                friendsSaved: true
+            }
+        case DELETING_FRIENDS:
+            return {
+                ...state,
+                deletingFriend: true,
+                friendDeleted: false,
+                error: ""
+            }
+        case DELETING_SUCCESS:
+            return {
+                ...state,
+                deletingFriend: false,
+                friendDeleted: true,
+                error: "",
+                friends: action.payload
+            }
     default:
         return state
     }
