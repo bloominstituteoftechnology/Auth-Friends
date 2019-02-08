@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FriendsList, FriendsInput } from './components';
-import { updateFriends, addFriend, deleteFriend } from './actions';
+import { updateFriends, addFriend, deleteFriend, updateFriend } from './actions';
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -16,6 +16,7 @@ class App extends Component {
         <FriendsList
           friends={this.props.friends}
           deleteFriend={this.props.deleteFriend}
+          updateFriend={this.props.updateFriend}
         />
       </div>
     );
@@ -36,5 +37,6 @@ export default connect(
     updateFriends,
     addFriend,
     deleteFriend,
+    updateFriend,
   }
 )(App);
