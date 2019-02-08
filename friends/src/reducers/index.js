@@ -24,14 +24,14 @@ function reducer (state = initialState, action) {
                 "uh oh....error again"
         }
         case FETCHING_SUCCESS:
-        return {
+            return {
             ...state,
             friends: action.payload,
             fetchingFriends: false,
             error: ""
         }
         case FETCHING_FAILURE:
-        return {
+            return {
             ...state,
             fetchingFriends: false,
             error: action.payload
