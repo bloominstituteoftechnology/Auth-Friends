@@ -1,53 +1,52 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-// import { addTodo } from './actions';
+import { addFriend } from './Actions';
 // import { clearCompleted } from './actions';
 
 class CreateFriendsForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputText: ""
+      id: undefined,
+      name: "",
+      age: undefined,
+      email: ""
     }
   }
 
   changeHandler = event => {
     event.preventDefault();
+    let name = event.target.name;
+    let value = event.target.value
     this.setState({
-      inputText: event.target.value
+      [name]: value
     })
-  }
-
-  submitHandler = event => {
-    event.preventDefault();
-
-    this.props.addTodo(this.state.inputText)
-    this.setState({ inputText: "" })
   }
 
   render() {
     return (
       <form onSubmit={(e) => {
         e.preventDefault();
-        this.props.addTodo(this.state.inputText)
-        this.setState({ inputText: "" })
-        }}>
-        <input type="text" placeholder="Add Task" value={this.state.inputText} onChange={this.changeHandler}></input>
+        console.log(this.state)
+        this.props.addFriend(this.state)
+        this.setState({ name: "", age: "", email: "" })
+      }}>
+        <label>Add a Friend:</label>
+        <input type="text" placeholder="Name" name="name" value={this.state.name} onChange={this.changeHandler}></input>
+        <input type="text" placeholder="Age" name="age" value={this.state.age} onChange={this.changeHandler}></input>
+        <input type="text" placeholder="Email" name="email" value={this.state.email} onChange={this.changeHandler}></input>
         <button type="submit" >Add Task</button>
-        <button type = "button" onClick={() => {this.props.clearCompleted()}}>Clear Completed</button>
+        {/* <button type = "button" onClick={() => {this.props.clearCompleted()}}>Clear Completed</button> */}
       </form>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    todos: {
-      value: state.value,
-      completed: state.completed
-    }
+    friends: state.friends
   }
 }
 
 
-export default connect(mapStateToProps, { addTodo: addTodo, clearCompleted: clearCompleted })(CreateFriendsForm);
+export default connect(mapStateToProps, { addFriend: addFriend })(CreateFriendsForm);

@@ -1,0 +1,19 @@
+.card{
+  border: 1px solid #d3d3d3;
+  box-shadow: 1px 1px 4px rgba(211, 211, 211, 0.76);
+  border-radius: .25rem;
+  width: 300px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.editBtn, .removeBtn{
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: .25rem;
+  box-shadow: 1px 1px 4px rgba(211, 211, 211, 0.76);
+  padding: 3px 5px;
+  margin-bottom: 10px;
+  color: dimgray;
+  cursor: pointer;
+}
