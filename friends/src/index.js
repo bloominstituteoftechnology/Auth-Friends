@@ -13,7 +13,7 @@ import { loadState, saveState } from './localstorage';
 import {reducer} from './reducers/reducer';
 
 const persistedState = loadState();
-const store = createStore( reducer, applyMiddleware( thunk, logger ), persistedState);
+const store = createStore( reducer, persistedState, applyMiddleware( thunk, logger ));
 
 store.subscribe(() => {
     saveState(store.getState());

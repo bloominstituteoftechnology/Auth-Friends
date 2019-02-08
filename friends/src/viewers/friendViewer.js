@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Friends from '../components/friends';
 import FriendForm from '../components/form';
-import {fetchData} from '../actions/actions';
+import { fetchData } from '../actions/actions';
 
 class FriendViewer extends Component {
 

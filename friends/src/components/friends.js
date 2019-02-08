@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Friend from './friend';
 
+import { deleteFriend } from '../actions/actions'; 
 //passed as props: friends={this.props.friends}
 
 const Friends = props => {
@@ -20,7 +22,9 @@ const Friends = props => {
                             email={f.email}
                             />
                             <img src="https://img.icons8.com/wired/20/000000/pencil.png" />
-                            <img src="https://img.icons8.com/wired/20/000000/full-trash.png" />
+                            <img 
+                            onClick={() => {props.deleteFriend(f.id)} }
+                            src="https://img.icons8.com/wired/20/000000/full-trash.png" />
                     </ul>
                     )
                 })}
@@ -28,4 +32,4 @@ const Friends = props => {
     )
 }
 
-export default Friends;
+export default connect(null, { deleteFriend } )(Friends);
