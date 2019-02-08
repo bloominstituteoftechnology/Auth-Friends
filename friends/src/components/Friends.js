@@ -5,7 +5,7 @@ import Friend from './Friend'
 
 class Friends extends React.Component {
     
-    componentDidCatch() {
+    componentDidMount() {
         this.props.getFriends()
     }
 
