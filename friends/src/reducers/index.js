@@ -21,7 +21,7 @@ function reducer (state = initialState, action) {
             ...state,
             fetchingFriends: true,
             error:
-                "uh oh....error again"
+                "uh oh...still loading"
         }
         case FETCHING_SUCCESS:
             return {

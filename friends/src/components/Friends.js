@@ -12,8 +12,8 @@ class Friends extends React.Component {
     render() {
         return(
             <div>
-                {/* {this.props.fetchingFriends ? <h3>...loading forever</h3> : null}
-                {this.props.error ? <h3>{this.props.error}</h3> : null} */}
+                {this.props.fetchingFriends ? <h3>...loading forever</h3> : null}
+                {this.props.error ? <h3>{this.props.error}</h3> : null}
                 {this.props.friends.map(friend => <Friend friend={friend} key={friend.id}/>)}
             </div>
         )      
