@@ -1,4 +1,4 @@
-import { LOADING, SUCCESS, FALURE, ADDED } from '../Actions'
+import { LOADING, SUCCESS, FALURE, ADDED, UPDATE, REMOVE } from '../Actions'
 
 const initialState = {
   friends: [],
@@ -16,6 +16,10 @@ function reducer(state = initialState, action){
       return{ ...state, fetchingFriends: false, friends: [], error: "Oops, something seems to have gone wrong :("}
     case ADDED:
       return{ ...state, friends: action.addedFriend}
+    case UPDATE:
+      return{ ...state, fetchingFriends: false, friends: action.updatedFriend}
+    case REMOVE:
+      return{ ...state, friends: action.updated }
     default:
     return state;
   }

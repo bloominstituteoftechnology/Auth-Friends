@@ -1,0 +1,19 @@
+form input{
+  margin: 0 3px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  padding: 3px 5px;
+}
+button{
+  border: 1px solid lightgrey;
+  background-color: white;
+  border-radius: .25rem;
+  box-shadow: 1px 1px 4px rgba(211, 211, 211, 0.76);
+  padding: 3px 5px;
+  color: dimgray;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: #d3d3d344;
+}

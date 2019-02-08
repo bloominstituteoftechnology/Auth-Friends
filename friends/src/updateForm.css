@@ -1,0 +1,16 @@
+
+.updateForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: 5px 0; */
+  /* flex-wrap: wrap; */
+}
+
+.updateForm input{
+  margin: 2px 0;
+}
+
+.updateForm button{
+  margin: 2px 0 10px 0;
+}
