@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addFriend } from '../actions';
 
 class FriendForm extends React.Component {
     constructor(props) {
@@ -7,13 +9,28 @@ class FriendForm extends React.Component {
         this.state = {
             friend: {
                 name: '',
-                age: null,
+                age: '',
                 email: ''
             }
         }
     }
-    changeHandler = e => {
+    addFriendHandler = e => {
         e.preventDefault();
+        console.log(this.props);
+        this.props.addFriend(this.state.friend);
+        this.setState({
+            friend: {
+                name: '',
+                age: '',
+                email: ''
+            }
+        })
+        console.log(this.state)
+    }
+
+
+    changeHandler = e => {
+        // e.preventDefault();
         this.setState({
             friend: {
                 ...this.state.friend,
@@ -26,36 +43,44 @@ class FriendForm extends React.Component {
     render() {
         return(
             <div>
-                <form onSubmit={this.submitHandler}>
-                    <input
+
+                {/* {} */}
+                <form onSubmit={this.addFriendHandler}>
+                    <input  
+                        onChange={this.changeHandler}
                         type="text"
                         name="name"
-                        value={this.state.name}
+                        value={this.state.friend.name}
                         placeholder="name"
-                        onChange={this.changeHandler}
                     />
                     <br></br>
                     <input
+                        onChange={this.changeHandler}
                         type="text"
                         name="age"
-                        value={this.state.age}
+                        value={this.state.friend.age}
                         placeholder="age"
-                        onChange={this.changeHandler}
                     />
                     <br></br>
                     <input
+                        onChange={this.changeHandler}
                         type="email"
                         name="email"
-                        value={this.state.email}
+                        value={this.state.friend.email}
                         placeholder="email"
-                        onChange={this.changeHandler}
                     />
                     <br></br>
                     <button type="submit">Add</button>
+                    {/* { this.addFriendHandler ? 
+                        <div>{this.props.savingFriends}</div>
+                    } */}
                 </form>
             </div>
         )
     }
 }
 
-export default FriendForm;
+export default connect(null, 
+    {addFriend}
+    ,)
+    (FriendForm);

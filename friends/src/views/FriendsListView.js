@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { FriendsList, FriendForm} from '../components';
-import { fetchFriends, fetchAFriend } from '../actions';
+import { fetchFriends, addFriend, editFriend } from '../actions';
 
 class FriendsListView extends React.Component {
 
@@ -9,20 +9,28 @@ class FriendsListView extends React.Component {
         this.props.fetchFriends();
     }
     
-    // fetchAFriend() {
-    //     this.props.fetchAFriend(this.props.id);
+    // fetchAFriend(id) {
+    //     this.props.fetchAFriend(id);
     // }
 
     render() {
+        console.log(this.props);
         return(
             <div className="friendslist-wrapper">
-                <FriendForm />
-                { this.props.friends.length === 0 ?
-                    <div>Loading... </div>
+                
+                { this.props.adding && <p>Adding your friend</p>}
+                { this.props.deleting && <p>Deleting your friend</p>}
+                { this.props.loading && <p>Loading friends</p> }
+
+
+                { this.props.isEditForm ?
+
+                    <EditForm id={this.props.editId} />
+                    :    
+                    <FriendForm />
+                }            
                     
-                    :
                     <FriendsList friends={this.props.friends} />
-                }
             </div>
         )
     }
@@ -30,15 +38,19 @@ class FriendsListView extends React.Component {
 
 const mapStateToProps = ({ friendsReducer: state }) => {
     return {
-      friends: state.friends,
-      loading: state.loading,
-      error: state.error
+        friends: state.friends,
+        loading: state.loading,
+        error: state.error,
+        deleting: state.deleting,
+        isEditForm: state.isEditForm
     };
   };
 
 export default connect(
     mapStateToProps,
     {
-        fetchFriends
+        fetchFriends,
+        addFriend,
+        editFriend
     }
 )(FriendsListView);
