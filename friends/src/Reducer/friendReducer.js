@@ -1,11 +1,11 @@
 import {
     FETCH_FRIENDS,
     FETCH_SUCCESS,
-    ADD_FRIEND,
+    ADD_FRIENDS,
     ADD_SUCCESS,
     DELETE_FRIENDS,
     DELETE_SUCCESS,
-    UPDATE_FRIEND,
+    UPDATE_FRIENDS,
     UPDATE_SUCCESS,
     ERROR
 } from '../Actions';
@@ -31,7 +31,7 @@ export const friendReducer = (state = initialState, action) => {
                 loading: false,
                 error: null
             }
-        case ADD_FRIEND:
+        case ADD_FRIENDS:
             return {
                 ...state,
                 loading: true,
@@ -57,7 +57,7 @@ export const friendReducer = (state = initialState, action) => {
                 loading: false,
                 error: null
             }
-        case UPDATE_FRIEND:
+        case UPDATE_FRIENDS:
             return {
                 ...state,
                 loading: true,
