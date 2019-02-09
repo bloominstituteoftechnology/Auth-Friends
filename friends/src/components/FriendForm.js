@@ -45,7 +45,7 @@ class FriendForm extends React.Component {
             <div>
 
                 {/* {} */}
-                <form onSubmit={this.addFriendHandler}>
+                <form className="addForm" onSubmit={this.addFriendHandler}>
                     <input  
                         onChange={this.changeHandler}
                         type="text"

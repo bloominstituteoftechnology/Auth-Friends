@@ -9,28 +9,16 @@ const initialState = {
     editing: false,
     edited: false,
     deleting: false,
-    isisEditForm: false,
-    editId: null
+    editForm: false,
+    addForm: true,
+    editId: null,
+    friend: {}
 }
 
 export const friendsReducer = (state = initialState, action) => {
     switch (action.type){
 
         case EDITFORM: 
-        console.log( {
-            ...state,
-            friends: [],
-            loading: false,
-            error: '',
-            adding: false,
-            added: false,
-            editing: false,
-            edited: false,
-            deleting: false,
-            currentFriend: false,
-            isEditForm: true,
-            editId: action.payload
-        } )
             return {
                 ...state,
                 friends: [],
@@ -42,69 +30,11 @@ export const friendsReducer = (state = initialState, action) => {
                 edited: false,
                 deleting: false,
                 currentFriend: false,
-                isEditForm: true,
-                editId: action.payload
-            } 
-        case DELETING: 
-            return {
-                ...state,
-                friends: [],
-                loading: false,
-                error: '',
-                adding: false,
-                added: false,
-                editing: false,
-                edited: false,
-                deleting: true,
-                currentFriend: false
-                
+                editForm: true,
+                addForm: false,
+                friend: action.payload
             }
-
-        case DELETED: 
-            return {
-                ...state,
-                friends: action.payload,
-                loading: false,
-                error: '',
-                adding: false,
-                added: false,
-                editing: false,
-                edited: false,
-                deleting: false,
-                deleted: true,
-                currentFriend: false
-                
-            }
-
-        case ADDING: 
-            return {
-                ...state,
-                friends: [],
-                loading: false,
-                error: '',
-                adding: true,
-                added: false,
-                editing: false,
-                edited: false,
-                deleting: false,
-                currentFriend: false
-            }
-
-        case ADDED: 
             
-            return  {
-                ...state,
-                friends: action.payload,
-                loading: false,
-                error: '',
-                adding: false,
-                added: true,
-                editing: false,
-                edited: false,
-                deleting: false,
-                currentFriend: false
-            }
-
         case EDITING: 
 
             return {
@@ -117,7 +47,10 @@ export const friendsReducer = (state = initialState, action) => {
                 editing: true,
                 edited: false,
                 deleting: false,
-                currentFriend: false
+                currentFriend: false,
+                editForm: true,
+                addForm: false,
+                editId: null
             }
 
         case EDITED: 
@@ -132,7 +65,79 @@ export const friendsReducer = (state = initialState, action) => {
                 editing: false,
                 edited: true,
                 deleting: false,
-                currentFriend: false
+                currentFriend: false,
+                editForm: false,
+                addForm: true,
+                friend: action.payload
+            }
+        case DELETING: 
+            return {
+                ...state,
+                friends: [],
+                loading: false,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: true,
+                currentFriend: false,
+                editForm: false,
+                addForm: true,
+                editId: null
+            }
+
+        case DELETED: 
+            return {
+                ...state,
+                friends: action.payload,
+                loading: false,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                deleted: false,
+                currentFriend: false,
+                editForm: false,
+                addForm: true,
+                editId: null
+            }
+
+        case ADDING: 
+            return {
+                ...state,
+                friends: [],
+                loading: false,
+                error: '',
+                adding: true,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentFriend: false,
+                editForm: false,
+                addForm: true,
+                editId: null
+            }
+
+        case ADDED: 
+            
+            return  {
+                ...state,
+                friends: action.payload,
+                loading: false,
+                error: '',
+                adding: false,
+                added: true,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentFriend: false,
+                editForm: false,
+                addForm: true,
+                editId: null
             }
 
         case LOADING:
@@ -146,7 +151,10 @@ export const friendsReducer = (state = initialState, action) => {
                 editing: false,
                 edited: false,
                 deleting: false,
-                currentFriend: false
+                currentFriend: false,
+                editForm: false,
+                addForm: true,
+                editId: null
             }
         
         case SUCCESS:
@@ -160,7 +168,10 @@ export const friendsReducer = (state = initialState, action) => {
                 editing: false,
                 edited: false,
                 deleting: false,
-                currentFriend: false
+                currentFriend: false,
+                editForm: false,
+                addForm: true,
+                editId: null
             }
 
         case FAILURE: 
@@ -174,7 +185,10 @@ export const friendsReducer = (state = initialState, action) => {
                 editing: false,
                 edited: false,
                 deleting: false,
-                currentFriend: false
+                currentFriend: false,
+                editForm: false,
+                addForm: true,
+                editId: null
             }
 
         default: 

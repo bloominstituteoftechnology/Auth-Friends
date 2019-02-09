@@ -1,33 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addFriend } from '../actions';
+import { editForm, editFriend } from '../actions';
 
-class FriendForm extends React.Component {
+class EditForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            name: '',
-            age: '',
-            email: ''
+            friend: {
+                id: this.props.friend.id,
+                name: this.props.friend.name, 
+                age: this.props.friend.age, 
+                email: this.props.friend.email 
+            }
         }
     }
-    componentDidMount() {
-        this.setState({ name: props.name, age: props.age, email: props.email })
+    
+    editFriendHandler = e => {
+        e.preventDefault();
+        console.log(this.props);
+        this.props.editFriend(this.state.friend.id, this.state.friend);
+        this.setState({
+            friend: {
+                name: '',
+                age: '',
+                email: ''
+            }
+        })
+        console.log(this.state)
     }
-    // addFriendHandler = e => {
-    //     e.preventDefault();
-    //     console.log(this.props);
-    //     this.props.addFriend(this.state.friend);
-    //     this.setState({
-    //         friend: {
-    //             name: '',
-    //             age: '',
-    //             email: ''
-    //         }
-    //     })
-    //     console.log(this.state)
-    // }
 
 
     changeHandler = e => {
@@ -46,7 +47,7 @@ class FriendForm extends React.Component {
             <div>
 
                 {/* {} */}
-                <form onSubmit={this.addFriendHandler}>
+                <form className="editForm" onSubmit={this.editFriendHandler}>
                     <input  
                         onChange={this.changeHandler}
                         type="text"
@@ -71,7 +72,7 @@ class FriendForm extends React.Component {
                         placeholder="email"
                     />
                     <br></br>
-                    <button type="submit">Add</button>
+                    <button type="submit">Edit</button>
                     {/* { this.addFriendHandler ? 
                         <div>{this.props.savingFriends}</div>
                     } */}
@@ -81,13 +82,20 @@ class FriendForm extends React.Component {
     }
 }
 
-const mstp = state => {
+const mstp = ({ friendsReducer: state }) => {
     return  {
-        state
+        editId: state.editId,
+        friend: {
+            id: state.friend.id,
+            name: state.friend.name,
+            age: state.friend.age,
+            email: state.friend.email
+        }
     }
 }
 
 export default connect(mstp, 
-    {addFriend}
+    {editForm,
+    editFriend}
     ,)
-    (FriendForm);
+    (EditForm);

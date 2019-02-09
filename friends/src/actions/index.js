@@ -33,24 +33,6 @@ export function fetchFriends() {
     }
 }
 
-// export function updateFriend(id, friend) {
-//     return dispatch => {
-//         /*REPLACE WITH FETCHINGAFRIEND*/
-//         dispatch({ type: UPDATING })
-//         axios
-//             .put(`http://localhost:5000/api/friends/${id}`)
-//             .then(response => {
-//                 dispatch({
-//                     type: FRIENDFETCHED,
-//                     payload: response.data
-//                 })
-//             })
-//             .catch(err =>{
-//                 console.log(err);
-//             })
-//     }
-// }
-
 export function addFriend(friend) {
 
     const newFriend = {
@@ -97,29 +79,29 @@ export function deleteFriend(id) {
     }
 }
 
-export function editFriend(id) {
+export function editForm(friend) {
     return dispatch => {
-        console.log(id);
-        dispatch({ type: EDITFORM, payload: id })
+        // console.log(id);
+        dispatch({ type: EDITFORM, payload: friend })
     }
 }
-// export function editFriend(id, friend) {
-//     return dispatch => {
-//         dispatch({ type: EDITING})
-//         axios
-//             .put(`http://localhost:5000/api/friends/${id}`, friend)
-//             .then(response => {
-//                 dispatch({
-//                     type: EDITED,
-//                     payload: response.data
-//                 });
-//             })
-//             .catch(err => {
-//                 dispatch({
-//                     type: FAILURE,
-//                     payload: err
-//                 })
-//             })
-//     }
+export function editFriend(id, friend) {
+    return dispatch => {
+        dispatch({ type: EDITING})
+        axios
+            .put(`http://localhost:5000/api/friends/${id}`, friend)
+            .then(response => {
+                dispatch({
+                    type: EDITED,
+                    payload: response.data
+                });
+            })
+            .catch(err => {
+                dispatch({
+                    type: FAILURE,
+                    payload: err
+                })
+            })
+    }
     
-// }
+}
