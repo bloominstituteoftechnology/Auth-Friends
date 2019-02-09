@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addFriend } from '../actions';
+import { FaPlus} from 'react-icons/fa';
+import { Button, FormControl } from 'react-bootstrap';
 
 class FriendForm extends React.Component {
     constructor(props) {
@@ -16,7 +18,6 @@ class FriendForm extends React.Component {
     }
     addFriendHandler = e => {
         e.preventDefault();
-        console.log(this.props);
         this.props.addFriend(this.state.friend);
         this.setState({
             friend: {
@@ -25,12 +26,10 @@ class FriendForm extends React.Component {
                 email: ''
             }
         })
-        console.log(this.state)
     }
 
 
     changeHandler = e => {
-        // e.preventDefault();
         this.setState({
             friend: {
                 ...this.state.friend,
@@ -42,45 +41,36 @@ class FriendForm extends React.Component {
     }
     render() {
         return(
-            <div>
-
-                {/* {} */}
-                <form className="addForm" onSubmit={this.addFriendHandler}>
-                    <input  
-                        onChange={this.changeHandler}
-                        type="text"
-                        name="name"
-                        value={this.state.friend.name}
-                        placeholder="name"
-                    />
-                    <br></br>
-                    <input
-                        onChange={this.changeHandler}
-                        type="text"
-                        name="age"
-                        value={this.state.friend.age}
-                        placeholder="age"
-                    />
-                    <br></br>
-                    <input
-                        onChange={this.changeHandler}
-                        type="email"
-                        name="email"
-                        value={this.state.friend.email}
-                        placeholder="email"
-                    />
-                    <br></br>
-                    <button type="submit">Add</button>
-                    {/* { this.addFriendHandler ? 
-                        <div>{this.props.savingFriends}</div>
-                    } */}
-                </form>
-            </div>
+            <form className="addForm" onSubmit={this.addFriendHandler}>
+                <h1>Add a Friend</h1>
+                <FormControl  
+                    onChange={this.changeHandler}
+                    type="text"
+                    name="name"
+                    value={this.state.friend.name}
+                    placeholder="name"
+                />
+                <br></br>
+                <FormControl
+                    onChange={this.changeHandler}
+                    type="text"
+                    name="age"
+                    value={this.state.friend.age}
+                    placeholder="age"
+                />
+                <br></br>
+                <FormControl
+                    onChange={this.changeHandler}
+                    type="email"
+                    name="email"
+                    value={this.state.friend.email}
+                    placeholder="email"
+                />
+                <br></br>
+                <Button variant="success" type="submit">Add <FaPlus /></Button>
+            </form>
         )
     }
 }
 
-export default connect(null, 
-    {addFriend}
-    ,)
-    (FriendForm);
+export default connect(null, {addFriend})(FriendForm);

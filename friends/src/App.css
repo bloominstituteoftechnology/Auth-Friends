@@ -30,3 +30,27 @@
     transform: rotate(360deg);
   }
 }
+body {
+  padding-top: 50px;
+}
+h1 {
+  margin-bottom: 33px;
+}
+form {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 800) {
+.friendslist-wrapper {
+  max-width: 900px;
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+}
+.friend-list {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
