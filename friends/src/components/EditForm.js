@@ -15,7 +15,7 @@ class EditForm extends React.Component {
             }
         }
     }
-    
+
     editFriendHandler = e => {
         e.preventDefault();
         console.log(this.props);
