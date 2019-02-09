@@ -9,9 +9,17 @@ ul {
   text-decoration: none;
 }
 
-.viewer {
+
+
+.container {
+  width: 100%;
+}
+
+.friends { 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  margin: 50px auto;
+  width: 90%
 }
 
 .friendCard {
@@ -19,4 +27,24 @@ ul {
   padding: 10px;
   border: 1px solid black;
   width: 40%;
+  margin-left: 10px;
 }
+
+.item-b {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+input {
+  margin-bottom: 5px;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+button {
+  margin: 0 auto;
+  width: 75px;
+}
+

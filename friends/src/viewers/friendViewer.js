@@ -18,7 +18,7 @@ class FriendViewer extends Component {
         )
     }
     return (
-      <div className="viewer">
+      <div className="container">
         <Friends friends={this.props.friends}/>
         <FriendForm />
       </div>
@@ -27,7 +27,6 @@ class FriendViewer extends Component {
 }
 
 const mstp = state => {
-    console.log("viewer state:", state)
     return {
         friends: state.friends,
         loading: state.loading

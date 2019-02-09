@@ -25,16 +25,16 @@ class FriendForm extends React.Component {
         });
     }
 
+
     addFriend = () => {
         this.props.addFriend(this.state.friend)
     }
 
     render() {
-        console.log(this.state)
     return (
-    <div className="form">
+    <div className="item-b">
          
-            <h4>Add more friends to your list:</h4>
+            <h4 >Add more friends to your list:</h4>
             <input 
                 type="text"
                 placeholder="First Name" 
@@ -58,7 +58,7 @@ class FriendForm extends React.Component {
                 onChange={this.handleChange}
                 value={this.state.friend.email}
                 />
-            <button onClick={() => this.addFriend()}>Add</button>
+            <button className="submit" onClick={() => this.addFriend()}>Add</button>
         
     </div>
     )

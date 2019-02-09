@@ -26,3 +26,4 @@ export const deleteFriend = (id) => dispatch => {
         .then(res => dispatch({ type: SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: FAILED, payload: err}))
 }
+

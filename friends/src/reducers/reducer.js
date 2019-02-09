@@ -3,11 +3,13 @@ import { LOADING, SUCCESS, FAILED } from '../actions/actions';
 const initialState = {
     friends: [],
     loading: false,
-    err: ''
+    err: '',
+    tempUpdate: [],
+    updateID: "",
+    needsUpdate: false
 }
 
 export function reducer(state = initialState , action) {
-    console.log("state in reducer:", state)
 
     switch(action.type) {
         case LOADING:
@@ -15,20 +17,23 @@ export function reducer(state = initialState , action) {
                 ...state,
                 friends: [],
                 loading: true,
-                err: ''
+                err: '',
+                needsUpdate: false
             }
         case SUCCESS:
             return{
                 ...state,
                 friends: action.payload,
                 loading: false,
-                err: ""
+                err: "",
+                needsUpdate: false
             }
         case FAILED:
             return {
                 ...state,
                 loading: false,
-                err: action.payload
+                err: action.payload,
+                needsUpdate: false
             }
         default:
             return state;
