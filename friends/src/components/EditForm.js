@@ -20,7 +20,6 @@ class EditForm extends React.Component {
 
     editFriendHandler = e => {
         e.preventDefault();
-        console.log(this.props);
         this.props.editFriend(this.state.friend.id, this.state.friend);
         this.setState({
             friend: {
@@ -29,12 +28,10 @@ class EditForm extends React.Component {
                 email: ''
             }
         })
-        console.log(this.state)
     }
 
 
     changeHandler = e => {
-        // e.preventDefault();
         this.setState({
             friend: {
                 ...this.state.friend,
@@ -54,7 +51,7 @@ class EditForm extends React.Component {
                     type="text"
                     name="name"
                     value={this.state.friend.name}
-                    placeholder="name"
+                    placeholder="Name"
                 />
                 <br></br>
                 <FormControl
@@ -62,7 +59,7 @@ class EditForm extends React.Component {
                     type="text"
                     name="age"
                     value={this.state.friend.age}
-                    placeholder="age"
+                    placeholder="Age"
                 />
                 <br></br>
                 <FormControl
@@ -70,7 +67,7 @@ class EditForm extends React.Component {
                     type="email"
                     name="email"
                     value={this.state.friend.email}
-                    placeholder="email"
+                    placeholder="Email"
                 />
                 <br></br>
                 <Button variant="success" type="submit">Update <FaEdit/></Button>
