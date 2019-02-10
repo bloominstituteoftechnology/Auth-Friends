@@ -42,15 +42,17 @@ form {
   margin-right: auto;
 }
 @media (max-width: 800) {
-.friendslist-wrapper {
-  max-width: 900px;
-  width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
+  .friendslist-wrapper {
+    max-width: 900px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .friend-list {
-  margin-top: 40px;
-  display: flex;
-  justify-content: space-around;
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 900px;
+    justify-content: center;
 }

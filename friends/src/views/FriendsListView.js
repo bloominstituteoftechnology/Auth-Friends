@@ -14,24 +14,24 @@ class FriendsListView extends React.Component {
         return(
             <div className="friendslist-wrapper">
                 
-                { this.props.loading && <Alert variant="primary"><p>Loading friends</p></Alert> }
+                { this.props.loading && <Alert dismissible variant="primary"><p>Loading friends</p></Alert> }
                 { this.props.adding && <p>Adding your friend</p>}
                 { this.props.added && <Alert dismissible variant="success"><p>Friend added</p></Alert>}
-                { this.props.deleted && <p>Deleting your friend</p>}
-                { this.props.deleting && <Alert dismissible variant="success"><p>Freind Deleted</p></Alert>}
+                { this.props.deleting && <p>Deleting your friend</p>}
+                { this.props.deleted && <Alert dismissible variant="warning"><p>Friend Deleted</p></Alert>}
                 { this.props.editing && <p>Editing your friend</p>}
                 { this.props.edited && <Alert dismissible variant="success"><p>Friend edited</p></Alert>}
 
                 { this.props.addForm ?
                 
-                    <div>
+                    <div className="container">
                         {/* <Button variant="primary"></Button> */}
                         <FriendForm />
                         <FriendsList friends={this.props.friends} />
                     </div> 
                     
                     :
-                    <div>
+                    <div className="container">
                         <EditForm friend={this.props.friend} id={this.props.editId} />
                     </div>    
                 }

@@ -98,7 +98,7 @@ export const friendsReducer = (state = initialState, action) => {
                 editing: false,
                 edited: false,
                 deleting: false,
-                deleted: false,
+                deleted: true,
                 currentFriend: false,
                 editForm: false,
                 addForm: true,
