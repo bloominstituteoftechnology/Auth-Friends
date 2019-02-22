@@ -1,11 +1,17 @@
 
-import {FETCH, SUCCESS, FAIL} from '../actions/actions'
+
+
+
 const initialState = {
   friends: [],
-  fetch: false,
+  isFetching: false,
   fail:""
 
 };
+
+function reducer (state = initialState, action){
+  console.log('redu')
+}
 export const frinsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH:

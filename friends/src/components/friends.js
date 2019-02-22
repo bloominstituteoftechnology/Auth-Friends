@@ -1,7 +1,31 @@
-import React from "react";
+import React from 'react'
+import { connect } from 'react-redux'
+import { frinData } from '../actions'
+import Friend from './Friend'
 
-const Friends = props => {
-  return <li>{props.Friends.name}</li>;
-};
+class Friends extends React.Component {
 
-export default Friends;
+    componentDidMount() {
+        this.props.frinData()
+    }
+
+    render() {
+        return(
+            <div>
+                {this.props.fetchingFriends ? <h3>...loading forever</h3> : null}
+                {this.props.error ? <h3>{this.props.error}</h3> : null}
+                {this.props.friends.map(friend => <Friend friend={friend} key={friend.id} id={friend.id}  />)}
+            </div>
+        )      
+    }
+}
+
+function mstp(state) {
+    return{
+        fetchingFriends: state.fetchingFriends,
+        friends: state.friends,
+        error: state.error
+    }
+}
+
+export default connect(mstp, { frinData })(Friends) 

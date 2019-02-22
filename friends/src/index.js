@@ -7,10 +7,10 @@ import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import frinsReducer from "./reducers/friendsreducer";
-
+// import frinsReducer from "./reducers/friendsreducer";
+import reducer from "./reducers/friendsreducer";
 const store = createStore(
-  frinsReducer, 
+  rootReducer, 
   applyMiddleware (thunk, logger)
 );
 
