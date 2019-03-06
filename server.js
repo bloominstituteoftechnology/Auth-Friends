@@ -6,7 +6,7 @@ const app = express();
 const token =
   'eyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NjYwYmQifQ';
 
-let nextId = 6;
+let nextId = 7;
 
 let friends = [
   {
