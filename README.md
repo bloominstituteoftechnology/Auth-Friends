@@ -38,11 +38,11 @@ Topics:
 
 ## Build the App!
 * Add a route for a login page and build out a simple login form with username and password inputs and a submit button (design this however you would like).
-* The login action should dispatch a "logging in" action, return the promise created by `axios.get`, then save the returned token to localStorage. You can connect your Login component, and show a spinner on your form or in your button while the login request is happening.
-* When the request returns, use React Router's `<Redirect />` in your Login component to redirect to your FriendsList route (still to be built)
+* The login action creator should dispatch a "logging in" action, return the promise created by `axios.post`, then save the returned token to localStorage. You can connect your Login component, and show a spinner on your form or in your button while the login request is happening.
+* When the request returns, use the history object in your Login component to navigate your user to your FriendsList route
 * Create a `<PrivateRoute />` component to protect your other routes. It should check localStorage for a token, and redirect the user to your login route if there is not a token.
 * Create a protected route for your friends list. Remember, if the user isn't logged in, navigating to this protected route will redirect them to the login page.
-* In your FriendsList component, rendered with `<ProtectedRoute />`, you will create a list of your friends using React and Redux.
+* In your FriendsList component, rendered with `<ProtectedRoute />`, you will create a list of your friends that you get from the API using React and Redux.
 
 ## Root Reducer and our State Tree
 
