@@ -1,17 +1,19 @@
 import React from 'react';
-import { fetchFriends } from '../actions';
+import FriendCard from './FriendCard';
 
 class FriendsList extends React.Component {
     
     
-    componentDidMount(){
-        fetchFriends();
-    }
+    
     
     render() {
         console.log(this.props.friends)
         return (
-            <h3>Your Friends!</h3>
+            <div>
+                {this.props.friends.map(friend => {
+                    return <FriendCard friend={friend} />
+                })}
+            </div>
         )
     }
 }

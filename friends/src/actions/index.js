@@ -41,7 +41,7 @@ export const getData = () => {
 export const fetchFriends = () => dispatch => {
     dispatch({ type: FETCH_FRIENDS});
     return axios
-        .get("http://localhost:5000/api/friends")
+        .get("http://localhost:5000/api/friends", { headers: { Authorization: localStorage.getItem('token')}})
         .then(res => {
             console.log(res)
             dispatch({ type: FETCH_GOOD, payload: res.data})
