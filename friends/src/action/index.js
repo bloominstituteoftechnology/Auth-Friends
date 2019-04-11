@@ -11,39 +11,53 @@ export const FRIENDDELETED = "FRIENDDELETED";
 const URL = "http://localhost:5000/api/friends";
 
 export const fetchData = () => dispatch => {
-  console.log("action call, GET");
+  //   console.log("action call, GET");
   dispatch({ type: FETCHINGFRIENDS });
   axios
     .get(URL)
     .then(response => {
-      console.log(response);
+      //   console.log(response);
       dispatch({ type: FRIENDSFETCHED, payload: response.data });
     })
     .catch(err => err);
 };
 
 export const addFriend = newFriend => dispatch => {
-  console.log("action call, POST");
+  //   console.log("action call, POST");
   dispatch({ type: SAVINGFRIENDS });
   axios
     .post(URL, newFriend)
     .then(response => {
-      console.log("ADD FRD", response);
+      //   console.log("ADD FRD", response);
       dispatch({ type: FRIENDSSAVED, payload: response.data });
     })
     .catch(err => ({ err }));
 };
 
 export const deleteFriend = id => dispatch => {
-  console.log("action call, DELETE");
+  //   console.log("action call, DELETE");
   dispatch({ type: DELETINGFRIEND });
   axios
     .delete(`${URL}/${id}`)
     .then(response => {
-      console.log("DELETED FRIEND");
+      //   console.log("DELETED FRIEND");
       dispatch({ type: FRIENDDELETED, payload: response.data });
     })
     .catch(err => {
       dispatch({ err });
     });
+};
+
+export const editFriend = friend => dispatch => {
+  console.log("editing friend");
+  dispatch({ type: UPDATINGFRIEND });
+  axios
+    .put(`${URL}/${friend.id}`)
+    .then(response => {
+      //   console.log(response);
+      dispatch({ type: FRIENDUPDATED, payload: response.data });
+    })
+    .catch(err => ({
+      err
+    }));
 };

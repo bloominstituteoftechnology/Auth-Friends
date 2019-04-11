@@ -13,15 +13,16 @@ class FriendsListView extends React.Component {
     };
   }
   componentDidMount() {
-    console.log("cdm call");
+    // console.log("cdm call");
     this.props.fetchData();
   }
   clickHandle = id => {
-    console.log("clicked!");
+    // console.log("clicked!");
+
     this.props.deleteFriend(id);
   };
   changeHandle = e => {
-    console.log("input");
+    // console.log("input");
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -31,7 +32,7 @@ class FriendsListView extends React.Component {
     this.props.addFriend(this.state);
   };
   render() {
-    console.log("rendering", this.props);
+    // console.log("rendering", this.props);
     return (
       <>
         <form onSubmit={this.submitHandle}>
@@ -73,9 +74,9 @@ class FriendsListView extends React.Component {
     );
   }
 }
-const mapStateToProps = state => (
+const mapStateToProps = state =>
   console.log("STP", state),
-  {
+  ({
     friends: state.friends,
     fetchingFriends: state.fetchingFriends,
     friendsFetched: state.friendsFetched,
@@ -85,8 +86,7 @@ const mapStateToProps = state => (
     friendUpdated: state.friendUpdated,
     deletingFriend: state.deletingFriend,
     friendDeleted: state.friendDeleted
-  }
-);
+  });
 
 export default connect(
   mapStateToProps,
