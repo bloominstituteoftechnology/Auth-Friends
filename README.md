@@ -27,14 +27,14 @@ Topics:
 
 ## Initialize Project
 
-* Run `yarn` or `npm i` inside the root directory of this project to install dependencies.
-* Run `yarn start` or `npm start` to start the API server.
-* Run `create-react-app friends` in a separate terminal window in the root directory of the project to create your starter application.
-* `cd` into the _friends_ folder and type `yarn add redux react-redux redux-thunk redux-logger axios react-router-dom` which will install the needed dependencies.
-* To start out, create a reducer that will be passed as the rootReducer to `createStore`. Start with a pretty simple initialState object that has a `friends` property set as an empty array. Your state tree will grow pretty large as you build out more and more actions.
-* Don't forget to hook up the store using the `Provider` tag inside of `src/index.js`, passing it your newly created store.
-* You will need to use `redux-thunk` as a middleware inside of `src/index.js`. You'll want to be sure to pass it to `applyMiddleware()` then feed it into your createStore function.
-* If you so choose, include `redux-logger` to your middleware. You're going to have plenty of action creators that will consume our API so you'll get plenty of actions triggered.
+[x] Run `yarn` or `npm i` inside the root directory of this project to install dependencies.
+[x] Run `yarn start` or `npm start` to start the API server.
+[x] Run `create-react-app friends` in a separate terminal window in the root directory of the project to create your starter application.
+[x] `cd` into the _friends_ folder and type `yarn add redux react-redux redux-thunk redux-logger axios react-router-dom` which will install the needed dependencies.
+[x] To start out, create a reducer that will be passed as the rootReducer to `createStore`. Start with a pretty simple initialState object that has a `friends` property set as an empty array. Your state tree will grow pretty large as you build out more and more actions.
+[x] Don't forget to hook up the store using the `Provider` tag inside of `src/index.js`, passing it your newly created store.
+[x] You will need to use `redux-thunk` as a middleware inside of `src/index.js`. You'll want to be sure to pass it to `applyMiddleware()` then feed it into your createStore function.
+[x] If you so choose, include `redux-logger` to your middleware. You're going to have plenty of action creators that will consume our API so you'll get plenty of actions triggered.
 
 ## Build the App!
 * Add a route for a login page and build out a simple login form with username and password inputs and a submit button (design this however you would like).
