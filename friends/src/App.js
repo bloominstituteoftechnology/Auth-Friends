@@ -20,13 +20,15 @@ class App extends Component {
                         />
                     )}
                 />
-                <FriendsList />
+                {this.props.token && <FriendsList />}
             </Router>
         );
     }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+    token: state.loginReducer.token
+});
 
 export default connect(
     mapStateToProps,
