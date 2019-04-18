@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { handleLogin } from './actions/index';
+import { handleLogin, handleGetFriends } from './actions/index';
 import LoginForm from './components/LoginForm';
 import Navbar from './components/Navbar';
 
 class App extends Component {
+
+    componentDidMount = () => {
+        this.props.handleGetFriends(this.props.token)
+    }
+
     render() {
         return (
             <Router>
@@ -30,5 +35,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { handleLogin }
+    { handleLogin, handleGetFriends }
 )(App);
