@@ -3,6 +3,8 @@ export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
+export const LOGOUT = 'LOGOUT'
+
 export const FRIENDS_START = 'FRIENDS_START'
 export const FRIENDS_SUCCESS = 'FRIENDS_SUCCESS'
 export const FRIENDS_FAILURE = 'FRIENDS_FAILURE'
@@ -23,4 +25,8 @@ export const handleGetFriends = token => dispatch => {
         .get(`${baseUrl}/api/friends`,  { headers: { authorization: token }})
         .then( res =>  dispatch({ type: FRIENDS_SUCCESS, payload: res.data }))
         .catch( err => dispatch({ type: FRIENDS_FAILURE, payload: err }))
+}
+
+export const handleLogout = () => dispatch => {
+    dispatch({ type: LOGOUT })
 }
