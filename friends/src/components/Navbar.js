@@ -6,7 +6,7 @@ export default function Navbar() {
         <div>
             <Flex px={2} color="white" bg="black" alignItems="center">
                 <Text p={2} fontWeight="bold">
-                    Rebass
+                    Friends
                 </Text>
                 <Box mx="auto" />
                 <Link href="#!" p={2} color="white">

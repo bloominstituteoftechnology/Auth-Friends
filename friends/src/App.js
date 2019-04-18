@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { handleLogin } from './actions/index';
 import LoginForm from './components/LoginForm';
 import Navbar from './components/Navbar';
-import axios from 'axios'
 
 class App extends Component {
-    handleLogin = (state) => {
-      const baseUrl = 'http://localhost:5000'
-      axios
-        .post(`${baseUrl}/api/login`, state)
-        .then(res => console.log(res.data.payload))
-        .catch(err => console.log(err))
-    };
-
     render() {
         return (
             <Router>
-              <Navbar />
+                <Navbar />
                 <Route
                     path="/"
                     render={props => (
-                        <LoginForm {...props} handleLogin={this.handleLogin} />
+                        <LoginForm {...props} handleLogin={this.props.handleLogin} />
                     )}
                 />
             </Router>
@@ -28,4 +21,14 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => ({
+    friends: state.friends,
+    isLoading: state.isLoading,
+    token: state.token,
+    error: state.error
+});
+
+export default connect(
+    mapStateToProps,
+    { handleLogin }
+)(App);
