@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Card, Flex } from 'rebass';
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
     state = {
         username: '',
         password: ''
@@ -14,8 +15,12 @@ export default class LoginForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleLogin(this.state);
-        this.setState({ username: '', password: '' });
+        if (!this.props.token) {
+            this.props.handleLogin(this.state);
+            this.setState({ username: '', password: '' });
+        } else {
+            this.props.handleLogout();
+        }
     };
 
     render() {
@@ -37,10 +42,20 @@ export default class LoginForm extends Component {
                             onChange={this.handleChange}
                             placeholder="Enter Password"
                         />
-                        <button type="submit">Login</button>
+                        {this.props.token ? (
+                            <button type="submit">Log Out</button>
+                        ) : (
+                            <button type="submit">Login</button>
+                        )}
                     </form>
                 </Card>
             </Flex>
         );
     }
 }
+
+const mapStateToProps = state => ({
+    token: state.loginReducer.token
+});
+
+export default connect(mapStateToProps)(LoginForm);
