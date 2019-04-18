@@ -9,17 +9,15 @@ export const FRIENDS_FAILURE = 'FRIENDS_FAILURE'
 
 const baseUrl = 'http://localhost:5000'
 
-export const handleLogin = state => dispatch => {
-    console.log(state)
+export const handleLogin = user => dispatch => {
     dispatch({ type: LOGIN_START })
     axios
-        .post(`${baseUrl}/api/login`, state)
+        .post(`${baseUrl}/api/login`, user)
         .then( res => dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload })) 
         .catch(err => dispatch({ type: LOGIN_FAILURE, payload: err}))
 };
 
 export const handleGetFriends = token => dispatch => {
-    // console.log('clicked handleGetFriends')
     dispatch({ type: FRIENDS_START })
     axios
         .get(`${baseUrl}/api/friends`,  { headers: { authorization: token }})
