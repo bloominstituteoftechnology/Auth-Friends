@@ -1,4 +1,5 @@
-# Redux Friends
+# Redux Friends 
+change for initial commit 🚀
 
 Topics:
 
