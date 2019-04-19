@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Card, Flex } from "rebass";
+import { handleAddFriend } from "../actions/index";
 
-class LoginForm extends Component {
+class FriendForm extends Component {
   state = {
-    username: "",
-    password: ""
+    name: "",
+    age: "",
+    email: ""
   };
 
   handleChange = e => {
@@ -15,12 +17,8 @@ class LoginForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (!this.props.token) {
-      this.props.handleLogin(this.state);
-      this.setState({ username: "", password: "" });
-    } else {
-      this.props.handleLogout();
-    }
+    this.props.handleAddFriend(this.props.token, this.state);
+    this.setState({ name: "", age: "", email: "" });
   };
 
   render() {
@@ -30,23 +28,27 @@ class LoginForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <input
               type="text"
-              name="username"
+              name="name"
               value={this.state.username}
               onChange={this.handleChange}
-              placeholder="Enter Username"
+              placeholder="Enter Name"
             />
             <input
-              type="password"
-              name="password"
+              type="text"
+              name="age"
               value={this.state.password}
               onChange={this.handleChange}
-              placeholder="Enter Password"
+              placeholder="Enter Age"
             />
-            {this.props.token ? (
-              <button type="submit">Log Out</button>
-            ) : (
-              <button type="submit">Login</button>
-            )}
+            <input
+              type="text"
+              name="email"
+              value={this.state.password}
+              onChange={this.handleChange}
+              placeholder="Enter Email"
+            />
+
+            <button type="submit">add friend</button>
           </form>
         </Card>
       </Flex>
@@ -58,4 +60,7 @@ const mapStateToProps = state => ({
   token: state.loginReducer.token
 });
 
-export default connect(mapStateToProps)(LoginForm);
+export default connect(
+  mapStateToProps,
+  { handleAddFriend }
+)(FriendForm);
