@@ -6,7 +6,7 @@ const app = express();
 const token =
   'esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ';
 
-let nextId = 7;
+let nextId = 6;
 
 let friends = [
   {
@@ -123,10 +123,12 @@ app.delete('/api/friends/:id', authenticator, (req, res) => {
   friends = friends.filter(f => f.id !== Number(id));
 
   res.send(friends);
+
+  nextId -= 1;
 });
 
 function getNextId() {
-  return nextId + 1;
+  return nextId += 1;
 }
 
 app.listen(port, () => {
