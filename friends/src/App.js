@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Login from './components/Login';
-// import GasPrices from './components/GasPrices';
-// import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
+import Friends from './components/Friends';
 
 function App() {
   return (
@@ -14,11 +14,11 @@ function App() {
             <Link to="/login">Login</Link>
           </li>
           <li>
-            {/* <Link to="/protected">Protected Page</Link> */}
+            <Link to="/protected">Protected Page</Link>
           </li>
         </ul>
         <Route path="/login" component={Login} />
-        {/* <PrivateRoute exact path="/protected" component={GasPrices} /> */}
+        <PrivateRoute exact path="/protected" component={Friends} />
       </div>
     </Router>
   );
