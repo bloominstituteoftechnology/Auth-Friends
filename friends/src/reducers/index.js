@@ -1,4 +1,4 @@
-import { LOGIN_START, LOGIN_SUCCESS, FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE } from '../actions'
+import { LOGIN_START, LOGIN_SUCCESS, FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, ADD_NEW_FRIEND } from '../actions'
 
 const initialState = {
     friends: [],
@@ -39,6 +39,14 @@ const reducer = (state = initialState, action) => {
                 fetchingData: false,
                 error: action.payload
             };
+        case ADD_NEW_FRIEND:
+            return {
+                ...state,
+                friends: [
+                    ...state.friends,
+                    action.payload
+                ]
+            }
         default:
             return state;
     }
