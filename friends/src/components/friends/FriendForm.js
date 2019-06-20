@@ -53,7 +53,11 @@ class FriendForm extends React.Component {
     };
     this.props.addFriends(friend);
   };
-
+  componentDidUpdate = () => {
+    if (this.props.successPOST) {
+      this.props.history.push("/");
+    }
+  };
   render() {
     return (
       <Card>

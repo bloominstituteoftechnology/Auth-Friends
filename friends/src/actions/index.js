@@ -20,7 +20,12 @@ export const REMOVEFAILURE = "REMOVEFAILURE";
 export const makeFriends = () => dispatch => {
   dispatch({ type: FETCHINGFRIENDS });
   axios
-    .get("/friends")
+    .get("/friends", {
+      headers: {
+        authorization:
+          "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ"
+      }
+    })
     .then(res => {
       dispatch({ type: GETSUCCESS, payload: res.data });
     })
@@ -34,11 +39,20 @@ export const makeFriends = () => dispatch => {
 export const addFriends = FRIEND => dispatch => {
   dispatch({ type: ADDFRIENDS });
   axios
-    .post("/friends", {
-      name: FRIEND.name,
-      age: FRIEND.age,
-      email: FRIEND.email
-    })
+    .post(
+      "/friends",
+      {
+        name: FRIEND.name,
+        age: FRIEND.age,
+        email: FRIEND.email
+      },
+      {
+        headers: {
+          authorization:
+            "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ"
+        }
+      }
+    )
     .then(res => {
       dispatch({ type: ADDSUCCESS, payload: res.data });
     })
@@ -52,11 +66,20 @@ export const addFriends = FRIEND => dispatch => {
 export const editFriends = (FRIEND, id) => dispatch => {
   dispatch({ type: EDITFRIENDS });
   axios
-    .put(`/friends/${FRIEND.id}`, {
-      name: FRIEND.name,
-      age: FRIEND.age,
-      email: FRIEND.email
-    })
+    .put(
+      `/friends/${FRIEND.id}`,
+      {
+        name: FRIEND.name,
+        age: FRIEND.age,
+        email: FRIEND.email
+      },
+      {
+        headers: {
+          authorization:
+            "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ"
+        }
+      }
+    )
     .then(res => {
       dispatch({ type: EDITSUCCESS, payload: res.data });
     })
@@ -70,7 +93,12 @@ export const editFriends = (FRIEND, id) => dispatch => {
 export const removeFriends = id => dispatch => {
   dispatch({ type: REMOVEFETCH });
   axios
-    .delete(`/friends/${id}`)
+    .delete(`/friends/${id}`, {
+      headers: {
+        authorization:
+          "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ"
+      }
+    })
     .then(res => {
       dispatch({ type: REMOVESUCCESS, payload: res.data });
     })

@@ -8,7 +8,7 @@ const CardHeader = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  margin:auto;
+  margin: auto;
   height: 75px;
   width: 100%;
   background-color: black;
@@ -48,14 +48,28 @@ const Remove = styled.p`
 const RemoveHandler = props => {
   props.cb(props.id);
 };
+const getRandomInt = (min, max) => {
+  return Math.random() * (max - min) + min;
+};
 const FriendCardComponent = props => {
   return (
-    <Container>
-      <FriendCard>
-        <Remove onClick={e => RemoveHandler(props)}>x</Remove>
-        <HeaderContent>{props.friend}</HeaderContent>
-        <ParagraphContent>{props.age}</ParagraphContent>
-        <ParagraphContent>{props.email}</ParagraphContent>
+    <Container key={Date.now() + getRandomInt(1000, 25000)}>
+      <FriendCard key={Date.now() + getRandomInt(1000, 25000)}>
+        <Remove
+          key={Date.now() + getRandomInt(1000, 25000)}
+          onClick={e => RemoveHandler(props)}
+        >
+          x
+        </Remove>
+        <HeaderContent key={Date.now() + getRandomInt(1000, 25000)}>
+          {props.friend}
+        </HeaderContent>
+        <ParagraphContent key={Date.now() + getRandomInt(1000, 25000)}>
+          {props.age}
+        </ParagraphContent>
+        <ParagraphContent key={Date.now() + getRandomInt(1000, 25000)}>
+          {props.email}
+        </ParagraphContent>
       </FriendCard>
     </Container>
   );

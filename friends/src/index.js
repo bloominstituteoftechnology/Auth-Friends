@@ -16,8 +16,8 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
+  <Provider store={store} key={Date.now()}>
+    <App key={Date.now()} />
   </Provider>,
   document.getElementById("root")
 );

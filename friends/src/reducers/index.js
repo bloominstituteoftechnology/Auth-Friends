@@ -31,48 +31,48 @@ export default (state = initialState, action) => {
       return {
         ...state,
         friends: [],
-        isloading: true
+        isloadingGET: true
       };
     case GETSUCCESS:
       return {
         ...state,
-        friends: [],
-        isloading: true
+        friends: action.payload,
+        isloadingGET: false,
+        successGET: true
       };
     case GETFAILURE:
       return {
         ...state,
         friends: [],
-        isloading: true
+        isloadingGET: false,
+        successGET: false
       };
     //POST
     case ADDFRIENDS:
       return {
         ...state,
-        characters: [...state.characters, action.payload],
-        isloading: false,
-        success: true
+        isloadingPOST: false,
+        successPOST: true
       };
     case ADDSUCCESS:
       return {
         ...state,
-        characters: action.payload,
-        isloading: false,
-        success: false
+        friends: [...state.characters, action.payload],
+        isloadingPOST: false,
+        successPOST: true
       };
     case ADDFAILURE:
       return {
         ...state,
-        friends: [],
-        isloading: true
+        isloadingPOST: false,
+        successPOST: false
       };
     //PUT
     case EDITFRIENDS:
       return {
         ...state,
-        characters: action.payload,
-        isloading: false,
-        success: true
+        isloadingPUT: true,
+        successPUT: false
       };
 
     case EDITSUCCESS:
@@ -83,22 +83,21 @@ export default (state = initialState, action) => {
             return friend;
           }
         }),
-        isloading: false,
-        success: false
+        isloadingPUT: false,
+        successPUT: true
       };
     case EDITFAILURE:
       return {
         ...state,
-        friends: [],
-        isloading: true
+        isloadingPUT: false,
+        successPUT: false
       };
     //DELETE
     case REMOVEFETCH:
       return {
         ...state,
-        characters: action.payload,
-        isloading: false,
-        success: true
+        isloadingDELETE: true,
+        successDELETE: false
       };
     case REMOVESUCCESS:
       return {
@@ -107,14 +106,15 @@ export default (state = initialState, action) => {
           if (friend.id !== action.payload) {
             return friend;
           }
-        })
+        }),
+        isloadingDELETE: false,
+        successDELETE: true
       };
     case REMOVEFAILURE:
       return {
         ...state,
-        characters: action.payload,
-        isloading: false,
-        success: true
+        isloadingDELETE: false,
+        successDELETE: false
       };
 
     default:

@@ -10,9 +10,9 @@ function App() {
   return (
     <Router>
       <Nav />
-      <Route exact path="/" component={Friends} />
-      <Route exact path="/form" component={FriendForm} />
-      <Route exact path="/update" component={FriendUpdate} />
+      <Route exact path="/" component={Friends} key={Date.now()} />
+      <Route exact path="/form" component={FriendForm} key={Date.now()} />
+      <Route exact path="/update" component={FriendUpdate} key={Date.now()} />
     </Router>
   );
 }

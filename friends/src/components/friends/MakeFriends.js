@@ -18,29 +18,36 @@ class MakeFriends extends React.Component {
   componentDidMount = () => {
     this.props.makeFriends();
   };
+  getRandomInt = (min, max) => {
+    return Math.random() * (max - min) + min;
+  };
   friendsHandler = () => {
     if (this.props.friends) {
       return this.props.friends.map(friend => {
+        let date = Date.now();
         return (
-          <>
-            <Friend
-              key={friend.id}
-              id={friend.id}
-              friend={friend.name}
-              age={friend.age}
-              email={friend.email}
-              cb={this.cbRemoveFriend}
-            />
-          </>
+          <Friend
+            key={date + this.getRandomInt(1000, 25000)}
+            id={friend.id}
+            friend={friend.name}
+            age={friend.age}
+            email={friend.email}
+            cb={this.cbRemoveFriend}
+          />
         );
       });
     }
   };
   render() {
-    return <Container>{this.friendsHandler()}</Container>;
+    return (
+      <Container key={this.getRandomInt(1000, 25000)}>
+        {this.friendsHandler()}
+      </Container>
+    );
   }
 }
 const mapStateToProps = state => {
+  console.log(state);
   return {
     friends: state.friends,
     isloadingGET: state.isloadingGET,
