@@ -4,15 +4,28 @@ import "./App.css";
 import Friends from "./components/pages/Home";
 import FriendForm from "./components/pages/AddFriend";
 import FriendUpdate from "./components/pages/changeFriend";
+import PrivateRoute from "./components/withAuth/authRouter.js";
 import Nav from "./components/nav/nav";
+import Login from "./components/LoginComponent/Login";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
       <Nav />
-      <Route exact path="/" component={Friends} key={Date.now()} />
-      <Route exact path="/form" component={FriendForm} key={Date.now()} />
-      <Route exact path="/update" component={FriendUpdate} key={Date.now()} />
+      <Route path="/login" component={Login} />
+      <PrivateRoute exact path="/Home" component={Friends} key={Date.now()} />
+      <PrivateRoute
+        exact
+        path="/form"
+        component={FriendForm}
+        key={Date.now()}
+      />
+      <PrivateRoute
+        exact
+        path="/update"
+        component={FriendUpdate}
+        key={Date.now()}
+      />
     </Router>
   );
 }

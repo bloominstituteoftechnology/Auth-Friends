@@ -1,5 +1,5 @@
+import { setUser, getUser } from "../components/withAuth/services";
 const axios = require("axios");
-
 //GET
 export const FETCHINGFRIENDS = "FETCHINGFRIENDS";
 export const GETSUCCESS = "GETSUCCESS";
@@ -17,13 +17,17 @@ export const REMOVEFETCH = "REMOVEFETCH";
 export const REMOVESUCCESS = "REMOVESUCCESS";
 export const REMOVEFAILURE = "REMOVEFAILURE";
 
-export const makeFriends = () => dispatch => {
+//LOGIN
+export const LOGINFETCH = "LOGINFETCH";
+export const LOGINSUCCESS = "LOGINSUCCESS";
+export const LOGINFAILURE = "LOGINFAILURE";
+
+export const makeFriends = user => dispatch => {
   dispatch({ type: FETCHINGFRIENDS });
   axios
     .get("/friends", {
       headers: {
-        authorization:
-          "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ"
+        authorization: getUser()
       }
     })
     .then(res => {
@@ -48,8 +52,7 @@ export const addFriends = FRIEND => dispatch => {
       },
       {
         headers: {
-          authorization:
-            "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ"
+          authorization: getUser()
         }
       }
     )
@@ -75,8 +78,7 @@ export const editFriends = (FRIEND, id) => dispatch => {
       },
       {
         headers: {
-          authorization:
-            "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ"
+          authorization: getUser()
         }
       }
     )
@@ -90,13 +92,12 @@ export const editFriends = (FRIEND, id) => dispatch => {
       });
     });
 };
-export const removeFriends = id => dispatch => {
+export const removeFriends = (id, user) => dispatch => {
   dispatch({ type: REMOVEFETCH });
   axios
     .delete(`/friends/${id}`, {
       headers: {
-        authorization:
-          "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ"
+        authorization: getUser()
       }
     })
     .then(res => {
@@ -105,6 +106,25 @@ export const removeFriends = id => dispatch => {
     .catch(res => {
       dispatch({
         type: REMOVEFAILURE,
+        payload: res.data
+      });
+    });
+};
+export const login = (username, password) => dispatch => {
+  dispatch({ type: LOGINFETCH });
+  axios
+    .post(`/login`, {
+      username: username,
+      password: password
+    })
+    .then(res => {
+      setUser(res.data.payload);
+      dispatch({ type: LOGINSUCCESS, payload: res.data.payload });
+    })
+    .catch(res => {
+      setUser({});
+      dispatch({
+        type: LOGINFAILURE,
         payload: res.data
       });
     });

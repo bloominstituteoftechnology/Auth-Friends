@@ -25,7 +25,7 @@ class NavComponent extends React.Component {
   render() {
     return (
       <Nav>
-        <Page onClick={() => this.clickHandler("/")}>Home</Page>
+        <Page onClick={() => this.clickHandler("/home")}>Home</Page>
         <Page onClick={() => this.clickHandler("/form")}>Add Friends</Page>
         <Page onClick={() => this.clickHandler("/update")}>Edit Friends</Page>
       </Nav>

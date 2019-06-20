@@ -10,7 +10,10 @@ import {
   EDITFAILURE,
   REMOVEFETCH,
   REMOVESUCCESS,
-  REMOVEFAILURE
+  REMOVEFAILURE,
+  LOGINFETCH,
+  LOGINSUCCESS,
+  LOGINFAILURE
 } from "../actions";
 
 const initialState = {
@@ -22,7 +25,10 @@ const initialState = {
   isloadingPUT: false,
   successPUT: false,
   isloadingDELETE: false,
-  successDELTE: false
+  successDELTE: false,
+  isloadingLOGIN: false,
+  successLOGIN: false,
+  user: ""
 };
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -115,6 +121,27 @@ export default (state = initialState, action) => {
         ...state,
         isloadingDELETE: false,
         successDELETE: false
+      };
+    //LOGIN
+    case LOGINFETCH:
+      return {
+        ...state,
+        isloadingLOGIN: true,
+        successLOGIN: false
+      };
+    case LOGINSUCCESS:
+      return {
+        ...state,
+        isloadingLOGIN: false,
+        successLOGIN: true,
+        user: action.payload
+      };
+    case LOGINFAILURE:
+      return {
+        ...state,
+        isloadingLOGIN: false,
+        successLOGIN: false,
+        user: ""
       };
 
     default:

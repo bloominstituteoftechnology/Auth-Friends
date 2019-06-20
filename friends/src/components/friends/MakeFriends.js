@@ -39,6 +39,7 @@ class MakeFriends extends React.Component {
     }
   };
   render() {
+    console.log(this.props.user);
     return (
       <Container key={this.getRandomInt(1000, 25000)}>
         {this.friendsHandler()}
@@ -50,6 +51,7 @@ const mapStateToProps = state => {
   console.log(state);
   return {
     friends: state.friends,
+    user: state.user,
     isloadingGET: state.isloadingGET,
     successGET: state.successGET,
     isloadingPOST: state.isloadingPOST,
