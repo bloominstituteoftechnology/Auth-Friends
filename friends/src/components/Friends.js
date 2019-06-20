@@ -14,8 +14,11 @@ class Friends extends React.Component {
         //     <h2>Fetching friends list . . .</h2>
         //   }
         return (
+            console.log(this.props.friends),
             <div className='friends-list'>
+                <h2>Friends list</h2>
                 {this.props.friends.map(friend => {
+                    console.log(friend)
                 return (
                   <div className='friend-item' key={friend.id}>
                       <h1>{friend.name}</h1>
