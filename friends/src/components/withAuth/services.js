@@ -8,6 +8,14 @@ export const getUser = () =>
 export const setUser = user =>
   localStorage.setItem("User", JSON.stringify(user));
 
+export const isLoggedIn = () => {
+  const user = getUser();
+  if (user.token) {
+    return true;
+  }
+  return false;
+};
+
 export const logout = callback => {
   setUser({});
   callback();

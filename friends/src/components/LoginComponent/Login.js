@@ -1,12 +1,11 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
-import { handleLogin, isLoggedIn } from "../withAuth/services";
+import { isLoggedIn } from "../withAuth/services";
 import { withRouter } from "react-router-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { login } from "../../actions";
-import { getUser } from "../withAuth/services";
 const LoginForm = styled.div`
   margin: auto;
   display: flex;
@@ -40,7 +39,7 @@ class Login extends React.Component {
     email: "",
     password: ""
   };
-  Login = () => {
+  Login = async () => {
     await this.props.login(this.state.email, this.state.password);
     this.props.history.push("/home");
   };
@@ -51,7 +50,7 @@ class Login extends React.Component {
     });
   };
   componentDidMount = () => {
-    if (getUser() !== "" || getUser() !== null) {
+    if (isLoggedIn()) {
       return <Redirect to="/home" />;
     }
   };

@@ -6,12 +6,16 @@ import {
   Redirect
 } from "react-router-dom";
 import { connect } from "react-redux";
-import { getUser } from "./services";
+import { isLoggedIn } from "./services";
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      getUser() !== "" ? <Component {...props} /> : <Redirect to="./login" />
+      isLoggedIn() === true ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="./login" />
+      )
     }
   />
 );

@@ -1,4 +1,4 @@
-import { setUser, getUser } from "../components/withAuth/services";
+import { setUser, getUser, logout } from "../components/withAuth/services";
 const axios = require("axios");
 //GET
 export const FETCHINGFRIENDS = "FETCHINGFRIENDS";
@@ -27,7 +27,7 @@ export const makeFriends = user => dispatch => {
   axios
     .get("/friends", {
       headers: {
-        authorization: getUser()
+        authorization: getUser().token
       }
     })
     .then(res => {
@@ -52,7 +52,7 @@ export const addFriends = FRIEND => dispatch => {
       },
       {
         headers: {
-          authorization: getUser()
+          authorization: getUser().token
         }
       }
     )
@@ -78,7 +78,7 @@ export const editFriends = (FRIEND, id) => dispatch => {
       },
       {
         headers: {
-          authorization: getUser()
+          authorization: getUser().token
         }
       }
     )
@@ -97,7 +97,7 @@ export const removeFriends = (id, user) => dispatch => {
   axios
     .delete(`/friends/${id}`, {
       headers: {
-        authorization: getUser()
+        authorization: getUser().token
       }
     })
     .then(res => {
@@ -118,11 +118,11 @@ export const login = (username, password) => dispatch => {
       password: password
     })
     .then(res => {
-      setUser(res.data.payload);
+      setUser({ token: res.data.payload });
       dispatch({ type: LOGINSUCCESS, payload: res.data.payload });
     })
     .catch(res => {
-      setUser({});
+      logout();
       dispatch({
         type: LOGINFAILURE,
         payload: res.data
