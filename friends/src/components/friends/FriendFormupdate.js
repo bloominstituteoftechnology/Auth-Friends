@@ -4,6 +4,15 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { makeFriends, editFriends } from "../../actions";
+import Spinner from "./spinner.gif";
+const Container = styled.div`
+  margin: auto;
+  display: flex;
+  flex-flow: wrap;
+  width: 1250px;
+  justify-content: center;
+  align-items: center;
+`;
 const Input = styled.input`
   margin: 10px;
   border: none;
@@ -87,42 +96,52 @@ class FriendForm extends React.Component {
   };
 
   render() {
-    return (
-      <Card>
-        <h2>Update your friends</h2>
-        <div>
-          <select onChange={this.handleChange}>{this.optionsHandler()}</select>
-        </div>
-        <div>
-          <Input
-            type="text"
-            id="name"
-            placeholder="Name"
-            value={this.state.friend.name}
-            onChange={this.textHandler}
-          />
-        </div>
-        <div>
-          <Input
-            type="text"
-            id="age"
-            placeholder="Age"
-            value={this.state.friend.age}
-            onChange={this.textHandler}
-          />
-        </div>
-        <div>
-          <Input
-            type="text"
-            id="email"
-            placeholder="Email"
-            value={this.state.friend.email}
-            onChange={this.textHandler}
-          />
-        </div>
-        <Btn onClick={this.submitHandler}>Submit Friend</Btn>
-      </Card>
-    );
+    if (this.props.isloadingGET) {
+      return (
+        <Container>
+          <img src={Spinner} />
+        </Container>
+      );
+    } else {
+      return (
+        <Card>
+          <h2>Update your friends</h2>
+          <div>
+            <select onChange={this.handleChange}>
+              {this.optionsHandler()}
+            </select>
+          </div>
+          <div>
+            <Input
+              type="text"
+              id="name"
+              placeholder="Name"
+              value={this.state.friend.name}
+              onChange={this.textHandler}
+            />
+          </div>
+          <div>
+            <Input
+              type="text"
+              id="age"
+              placeholder="Age"
+              value={this.state.friend.age}
+              onChange={this.textHandler}
+            />
+          </div>
+          <div>
+            <Input
+              type="text"
+              id="email"
+              placeholder="Email"
+              value={this.state.friend.email}
+              onChange={this.textHandler}
+            />
+          </div>
+          <Btn onClick={this.submitHandler}>Submit Friend</Btn>
+        </Card>
+      );
+    }
   }
 }
 

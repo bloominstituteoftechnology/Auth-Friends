@@ -51,10 +51,13 @@ class Login extends React.Component {
   };
   componentDidMount = () => {
     if (isLoggedIn()) {
-      return <Redirect to="/home" />;
+      this.props.history.push("/home");
     }
   };
   render() {
+    if (isLoggedIn()) {
+      this.props.history.push("/home");
+    }
     return (
       <LoginForm>
         <h1>Login Here</h1>

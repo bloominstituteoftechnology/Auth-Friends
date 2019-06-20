@@ -4,16 +4,25 @@ import Friend from "./FriendCard";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { makeFriends, removeFriends } from "../../actions";
+import Spinner from "./spinner.gif";
 const Container = styled.div`
   margin: auto;
   display: flex;
   flex-flow: wrap;
   width: 1250px;
   justify-content: center;
+  align-items: center;
+`;
+const IMAGE = styled.img`
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin: auto;
 `;
 class MakeFriends extends React.Component {
   cbRemoveFriend = id => {
     this.props.removeFriends(id);
+    this.props.makeFriends();
   };
   componentDidMount = () => {
     this.props.makeFriends();
@@ -39,7 +48,13 @@ class MakeFriends extends React.Component {
     }
   };
   render() {
-    console.log(this.props.user);
+    if (this.props.isloadingGET) {
+      return (
+        <Container>
+          <img src={Spinner} />
+        </Container>
+      );
+    }
     return (
       <Container key={this.getRandomInt(1000, 25000)}>
         {this.friendsHandler()}

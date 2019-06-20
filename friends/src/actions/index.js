@@ -122,7 +122,9 @@ export const login = (username, password) => dispatch => {
       dispatch({ type: LOGINSUCCESS, payload: res.data.payload });
     })
     .catch(res => {
-      logout();
+      logout(callback => {
+        alert(res);
+      });
       dispatch({
         type: LOGINFAILURE,
         payload: res.data
