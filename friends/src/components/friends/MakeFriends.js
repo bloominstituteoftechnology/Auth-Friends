@@ -19,7 +19,7 @@ class MakeFriends extends React.Component {
     this.props.makeFriends();
   };
   friendsHandler = () => {
-    if (friends) {
+    if (this.props.friends) {
       return this.props.friends.map(friend => {
         return (
           <>

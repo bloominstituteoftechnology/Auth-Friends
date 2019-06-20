@@ -24,7 +24,7 @@ const initialState = {
   isloadingDELETE: false,
   successDELTE: false
 };
-export const charsReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     //GET
     case FETCHINGFRIENDS:

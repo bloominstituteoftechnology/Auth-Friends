@@ -49,10 +49,10 @@ export const addFriends = FRIEND => dispatch => {
       });
     });
 };
-export const editFriends = FRIEND => dispatch => {
+export const editFriends = (FRIEND, id) => dispatch => {
   dispatch({ type: EDITFRIENDS });
   axios
-    .put(`/friends/${id}`, {
+    .put(`/friends/${FRIEND.id}`, {
       name: FRIEND.name,
       age: FRIEND.age,
       email: FRIEND.email
@@ -67,7 +67,7 @@ export const editFriends = FRIEND => dispatch => {
       });
     });
 };
-export const removeFriends = id => {
+export const removeFriends = id => dispatch => {
   dispatch({ type: REMOVEFETCH });
   axios
     .delete(`/friends/${id}`)

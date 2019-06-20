@@ -138,7 +138,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter.connect(
-  mapStateToProps,
-  { makeFriends, editFriends }
-)(MakeFriends);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { makeFriends, editFriends }
+  )(FriendForm)
+);
