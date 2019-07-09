@@ -110,8 +110,11 @@ app.get('/api/friends', authenticator, (req, res) => {
 });
 
 app.get('/api/users', authenticator, (req, res) => {
+  let newUsers = Array.from(users).forEach(user => {
+    delete user.token;
+  })
   setTimeout(() => {
-    res.send(users);
+    res.send(newUsers);
   }, 1000);
 })
 
