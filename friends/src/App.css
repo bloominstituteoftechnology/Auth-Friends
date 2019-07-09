@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+
+.friends-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.friend {
+  padding: 10px 10px;
+  border: 1px solid black;
+  min-width: 400px;
+  margin: 10px 0;
+}
