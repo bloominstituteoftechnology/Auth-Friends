@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
 import friendsReducer from './reducers';
 
 import App from './App';
 import './index.css';
+
+const logger = store => next => action => {
+  console.log('Prev State', store.getState());
+  console.log('Action', action);
+
+  next(action);
+
+  console.log('New State', store.getState());
+};
 
 const store = createStore(
   friendsReducer,
