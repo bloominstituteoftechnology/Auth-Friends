@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Link, Redirect } from 'react-router-dom';
+import PrivateRoute from './components/Protected/PrivateRoute'
 import axios from 'axios';
 
 import './App.scss';
@@ -7,8 +8,14 @@ import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 
 function App() {
-  const token = localStorage.getItem('token');
-  console.log(token);
+  const [token, setToken] = useState(null)
+
+  useEffect(() => {
+    setToken(localStorage.getItem('token'))
+    console.log('testing for infinite loop')
+  }, [token]);
+
+  console.log('App CL token: ', token);
 
   return (
     <div className='app-container'>
@@ -23,15 +30,17 @@ function App() {
           </Link>
         ) : (
           <Link to='/login'>
-            <button className='btn' onClick={() => {localStorage.removeItem('token')}}>
+            <button className='btn' onClick={() => {
+              localStorage.removeItem('token')
+              setToken()}} >
               Logout
             </button>
           </Link>
         )}
       </header>
       <div className='app-body'>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/login' component={Login} />
+        <PrivateRoute exact path='/' component={Home} />
+        <Route exact path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
       </div>
     </div>
   );

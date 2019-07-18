@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axiosWithAuth from '../Protected/AxiosWithAuth';
 
 import './Home.scss';
+import CreateFriend from '../Friends/CreateFriend'
+import Friend from '../Friends/Friend'
+
 
 function Home() {
-  return <div>Home</div>;
+  const [friends, setFriends] = useState()
+  console.log('friends init: ', friends)
+
+  useEffect(() => {
+    console.log('we hit axios with auth')
+    axiosWithAuth()
+      .get('http://localhost:5000/api/friends/')
+      .then(response => {
+        setFriends(response.data);
+        console.log('we in da .then response.data: ', response.data)
+      })
+      .catch(event => {
+        console.log('we hit the catch');
+      });
+  }, []);
+
+  return (
+    <div className='home-container'>
+      <CreateFriend />
+      {friends === undefined ? (<div className='loader'>loading</div>) : (<Friend friends={friends} />)}
+    </div>
+    );
 }
 
 export default Home;

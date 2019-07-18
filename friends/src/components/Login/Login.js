@@ -35,7 +35,7 @@ function Login({ touched, errors }) {
         />
       </div>
       <p>{touched.password && errors.password}</p>
-      <button className="btn">Submit &rarr;</button>
+      <button className="btn">Submit &larr;</button>
     </Form>
   );
 }
@@ -52,15 +52,17 @@ export default withFormik({
       .required()
       .min(3),
     password: Yup.string()
-      .min(6)
       .required()
+      .min(6)
   }),
   handleSubmit(values, formikBag) {
     axios
       .post('http://localhost:5000/api/login', values)
       .then((response) => {
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.data.payload);
+        console.log('checking for token data:', response.data.payload)
         formikBag.props.history.push('/');
+        formikBag.props.setToken(response.data.payload)
       })
       .catch((e) => {
         console.log(e.response.data);
