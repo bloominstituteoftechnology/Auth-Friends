@@ -126,7 +126,11 @@ app.delete('/api/friends/:id', authenticator, (req, res) => {
 });
 
 function getNextId() {
+<<<<<<< HEAD
   return nextId ++;
+=======
+  return nextId++;
+>>>>>>> 53492ff5291df4034a41fc3e81972bf7177f2eba
 }
 
 app.listen(port, () => {
