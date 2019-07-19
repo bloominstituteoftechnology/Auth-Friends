@@ -25,8 +25,10 @@ function Home() {
 
   return (
     <div className='home-container'>
-      <CreateFriend />
-      {friends === undefined ? (<div className='loader'>loading</div>) : (<Friend friends={friends} />)}
+      <CreateFriend setFriends={setFriends} />
+      <div className='friends-list'>
+       {friends === undefined ? (<div className='loader'>loading</div>) : friends.map(friend => <Friend friend={friend} />)}
+      </div>
     </div>
     );
 }
