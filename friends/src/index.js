@@ -4,9 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import friendsReducer from './reducers';
+import friendsReducer from './reducers/friendsReducer';
 
-import App from './App';
+import App from './components/App';
 import './index.css';
 
 const logger = store => next => action => {
