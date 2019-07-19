@@ -8,6 +8,8 @@ export const GET_ACCOUNT_SUCCESS = 'GET_ACCOUNT_SUCCESS';
 export const GET_ACCOUNT_FAILED = 'GET_ACCOUNT_FAILED';
 export const ADDING_FRIEND = 'ADDING_FRIEND';
 export const ADD_FRIEND = 'ADD_FRIEND';
+export const DELETING_FRIEND = 'DELETING_FRIEND';
+export const DELETE_FRIEND = 'DELETE_FRIEND';
 
 export function login(username, password) {
   return dispatch => {
@@ -55,9 +57,25 @@ export function addFriend(friend) {
       'Content-Type': 'application/json'
     };
     axios
-      .post('http://localhost:5000/api/friends', { headers }, friend)
+      .post('http://localhost:5000/api/friends', friend, { headers })
       .then(res => {
         dispatch({ type: ADD_FRIEND, payload: res.data });
+      });
+  };
+}
+
+export function deleteFriend(id) {
+  return dispatch => {
+    dispatch({ type: DELETING_FRIEND });
+
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+      'Content-Type': 'application/json'
+    };
+    axios
+      .delete(`http://localhost:5000/api/friends/${id}`, headers)
+      .then(res => {
+        dispatch({ type: DELETE_FRIEND, payload: res.data });
       });
   };
 }
