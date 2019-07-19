@@ -20,8 +20,11 @@ const logger = store => next => action => {
 
 const store = createStore(
   friendsReducer,
+  // compose multiple middleware flows together into one flow
   compose(
+    // our custom middleware
     applyMiddleware(thunk, logger),
+    // redux dev tools middleware
     window.__REDUX_DEVTOOLS_EXTENSION__
       ? window.__REDUX_DEVTOOLS_EXTENSION__()
       : f => f

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { login } from '../actions/friendsActions';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -32,6 +35,47 @@ export default class Login extends Component {
   };
 
   render() {
-    return <div />;
+    const { username, password } = this.state;
+    const { loggingIn, error } = this.props;
+    return (
+      <form onSubmit={this.handleSubmit} className='login-form'>
+        {error && <p className='error'>{error}</p>}
+        <input
+          type='text'
+          name='username'
+          placeholder='Username'
+          value={username}
+          onChange={this.handleChange}
+        />
+        <input
+          type='password'
+          name='password'
+          placeholder='Placeholder'
+          value={password}
+          onChange={this.handleChange}
+        />
+        {loggingIn ? (
+          <p>Logging In...</p>
+        ) : (
+          <button type='submit'>Login</button>
+        )}
+      </form>
+    );
   }
 }
+
+const mapStateToProps = state => ({
+  loggingIn: state.loggingIn,
+  error: state.error
+});
+
+const mapDispatchToProps = {
+  login
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);
