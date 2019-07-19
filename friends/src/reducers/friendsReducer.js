@@ -4,7 +4,9 @@ import {
   LOGIN_FAILED,
   GET_ACCOUNT_START,
   GET_ACCOUNT_SUCCESS,
-  GET_ACCOUNT_FAILED
+  GET_ACCOUNT_FAILED,
+  ADDING_FRIEND,
+  ADD_FRIEND
 } from '../actions/friendsActions';
 
 const initialState = {
@@ -54,6 +56,17 @@ export default function(state = initialState, action) {
         ...state,
         fetchingFriends: false,
         error: action.payload.message
+      };
+    case ADDING_FRIEND:
+      return {
+        ...state,
+        savingFriends: true
+      };
+    case ADD_FRIEND:
+      return {
+        ...state,
+        friends: action.payload,
+        savingFriends: false
       };
     default:
       return state;

@@ -6,6 +6,8 @@ export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const GET_ACCOUNT_START = 'GET_ACCOUNT_START';
 export const GET_ACCOUNT_SUCCESS = 'GET_ACCOUNT_SUCCESS';
 export const GET_ACCOUNT_FAILED = 'GET_ACCOUNT_FAILED';
+export const ADDING_FRIEND = 'ADDING_FRIEND';
+export const ADD_FRIEND = 'ADD_FRIEND';
 
 export function login(username, password) {
   return dispatch => {
@@ -41,6 +43,21 @@ export function getAccount() {
       })
       .catch(err => {
         dispatch({ type: GET_ACCOUNT_FAILED, payload: err.response.data });
+      });
+  };
+}
+export function addFriend(friend) {
+  return dispatch => {
+    dispatch({ type: ADDING_FRIEND });
+
+    const headers = {
+      Authorization: localStorage.getItem('token'),
+      'Content-Type': 'application/json'
+    };
+    axios
+      .post('http://localhost:5000/api/friends', { headers }, friend)
+      .then(res => {
+        dispatch({ type: ADD_FRIEND, payload: res.data });
       });
   };
 }
