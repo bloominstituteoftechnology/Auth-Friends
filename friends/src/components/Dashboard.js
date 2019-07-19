@@ -18,6 +18,7 @@ class App extends Component {
   };
 
   render() {
+    console.log('PROPS:', this.props);
     return (
       <>
         {this.props.fetching ? (
@@ -36,9 +37,9 @@ class App extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    friends: state.friendsReducer.friends,
-    fetching: state.friendsReducer.fetching,
-    error: state.friendsReducer.error
+    friends: state.friends,
+    fetching: state.fetchingFriends,
+    error: state.error
   };
 };
 

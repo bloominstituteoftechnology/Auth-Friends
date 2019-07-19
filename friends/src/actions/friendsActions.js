@@ -14,8 +14,8 @@ export function login(username, password) {
     return axios
       .post('http://localhost:5000/api/login', { username, password })
       .then(res => {
-        console.log(res.data);
-        localStorage.setItem('token', res.data.token);
+        console.log('RES-DATA:', res.data);
+        localStorage.setItem('token', res.data.payload);
         dispatch({ type: LOGIN_SUCCESS });
       })
       .catch(err => {
@@ -30,7 +30,8 @@ export function getAccount() {
     dispatch({ type: GET_ACCOUNT_START });
 
     const headers = {
-      authorization: localStorage.getItem('token')
+      Authorization: localStorage.getItem('token'),
+      'Content-Type': 'application/json'
     };
 
     axios

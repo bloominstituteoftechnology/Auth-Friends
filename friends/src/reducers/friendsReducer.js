@@ -42,7 +42,7 @@ export default function(state = initialState, action) {
         fetchingFriends: true
       };
     case GET_ACCOUNT_SUCCESS:
-      const { friends } = state.friends;
+      const friends = action.payload;
       return {
         ...state,
         fetchingFriends: false,
