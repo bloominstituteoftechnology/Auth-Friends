@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getAccount } from '../actions/friendsActions';
 
+import FriendsList from '../views/FriendsList';
+
 class App extends Component {
   componentDidMount() {
     this.props.getAccount();
@@ -18,14 +20,27 @@ class App extends Component {
   render() {
     return (
       <>
+        {this.props.fetching ? (
+          <p>Loading Friends...</p>
+        ) : (
+          <FriendsList friends={this.props.friends} />
+        )}
         <button type='button' onClick={this.logout}>
           Logout
         </button>
-        <h1>Dashboard</h1>
       </>
     );
   }
 }
+
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    friends: state.friendsReducer.friends,
+    fetching: state.friendsReducer.fetching,
+    error: state.friendsReducer.error
+  };
+};
 
 const mapDispatchToProps = {
   getAccount
@@ -33,7 +48,7 @@ const mapDispatchToProps = {
 
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(App)
 );

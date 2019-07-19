@@ -55,7 +55,7 @@ class Login extends Component {
           onChange={this.handleChange}
         />
         {loggingIn ? (
-          <p>Logging In...</p>
+          <p>Logging in...</p>
         ) : (
           <button type='submit'>Login</button>
         )}

@@ -12,7 +12,7 @@ export function login(username, password) {
     dispatch({ type: LOGIN_START });
 
     return axios
-      .post('http://localhost:5000/login', { username, password })
+      .post('http://localhost:5000/api/login', { username, password })
       .then(res => {
         console.log(res.data);
         localStorage.setItem('token', res.data.token);
@@ -30,11 +30,11 @@ export function getAccount() {
     dispatch({ type: GET_ACCOUNT_START });
 
     const headers = {
-      Authorization: localStorage.getItem('token')
+      authorization: localStorage.getItem('token')
     };
 
     axios
-      .get('http://localhost:5000/', { headers })
+      .get('http://localhost:5000/api/friends', { headers })
       .then(res => {
         dispatch({ type: GET_ACCOUNT_SUCCESS, payload: res.data });
       })
