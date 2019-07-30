@@ -1,11 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const uuid = require('uuid');
 const cors = require('cors');
 const port = 5000;
 const app = express();
+<<<<<<< HEAD
 const uuid = require('uuid');
 // const token =
   // 'esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ';
+=======
+const token =
+  'esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ';
+let users = [];
+let userTemplate = {
+  id: "",
+  token: "",
+  username: "",
+}
+>>>>>>> f21a9ad8336001b9f08780a19fdd8a7ef8ab3408
 
 let userTokens = [];
 let nextId = 7;
@@ -55,6 +67,7 @@ app.use(cors());
 
 function authenticator(req, res, next) {
   const { authorization } = req.headers;
+<<<<<<< HEAD
   userTokens.forEach(token => {
     if (authorization === token) {
       next();
@@ -62,23 +75,53 @@ function authenticator(req, res, next) {
       res.status(403).json({ error: 'User be logged in to do that.' });
     }
   });
+=======
+  let count = 0;
+  users.forEach((user) => {
+    if (count !== 1) {
+      if (authorization === user.token) {
+        count = 1;
+      }
+    }
+  });
+  if (count === 1) {
+    next();
+  } else {
+    res.status(403).json({ error: 'User must be logged in to do that.' });
+  }
+>>>>>>> f21a9ad8336001b9f08780a19fdd8a7ef8ab3408
 }
 
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
+  let newUser = {...userTemplate};
   if (username === 'Lambda School' && password === 'i<3Lambd4') {
     req.loggedIn = true;
+<<<<<<< HEAD
     let token = uuid.v1();
     userTokens.push(token);
+=======
+    newUser.id = uuid.v1();
+    newUser.token = uuid.v1();
+    newUser.username = username;
+    users.push(newUser);
+>>>>>>> f21a9ad8336001b9f08780a19fdd8a7ef8ab3408
     res.status(200).json({
-      payload: token
+      payload: newUser.token
     });
   }else if (username === 'kinslj' && password === 'wx$mXBw3') {
     req.loggedIn = true;
+<<<<<<< HEAD
     let token = uuid.v1();
     userTokens.push(token);
+=======
+    newUser.id = uuid.v1();
+    newUser.token = uuid.v1();
+    newUser.username = username;
+    users.push(newUser);
+>>>>>>> f21a9ad8336001b9f08780a19fdd8a7ef8ab3408
     res.status(200).json({
-      payload: token
+      payload: newUser.token
     });
   } else {
     res
@@ -107,6 +150,15 @@ app.get('/api/friends', authenticator, (req, res) => {
     res.send(friends);
   }, 1000);
 });
+
+app.get('/api/users', authenticator, (req, res) => {
+  let newUsers = Array.from(users).forEach(user => {
+    delete user.token;
+  })
+  setTimeout(() => {
+    res.send(newUsers);
+  }, 1000);
+})
 
 app.get('/api/friends/:id', authenticator, (req, res) => {
   const friend = friends.find(f => f.id == req.params.id);
