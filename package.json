@@ -5,14 +5,20 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.1",
     "cors": "^2.8.3",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "uuid": "^3.3.2",
+    "watch": "^1.0.2"
   },
   "devDependencies": {
-    "nodemon": "^1.17.2"
+    "nodemon": "^1.19.1"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "concurrently --kill-others npm:auto:*",
+    "auto:react": "cd friends && yarn start",
+    "auto:server": "nodemon --exec 'yarn start:server' --watch server.js",
+    "start:server": "node server.js"
   },
   "author": "Lambda School",
   "license": "ISC"

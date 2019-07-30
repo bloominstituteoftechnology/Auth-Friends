@@ -1,7 +1,7 @@
 import React from 'react';
 import { fetchFriends } from '../actions';
 import { connect } from 'react-redux';
-import { FriendsList } from '../components';
+import { FriendsList, LoginInfo } from '../components';
 
 class FriendsListView extends React.Component {
     constructor(props) {
@@ -13,7 +13,10 @@ class FriendsListView extends React.Component {
     }
     render() {
         return (
+            <div>
+            <LoginInfo key="3" parent={this} />
             <div className="friends-list"><FriendsList friends={this.props.friends} /></div>
+            </div>
         )
     }
 }

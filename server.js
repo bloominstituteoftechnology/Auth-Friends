@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const port = 5000;
 const app = express();
-const token =
-  'esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ';
+const uuid = require('uuid');
+// const token =
+  // 'esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ';
 
+let userTokens = [];
 let nextId = 7;
 
 let friends = [
@@ -53,22 +55,28 @@ app.use(cors());
 
 function authenticator(req, res, next) {
   const { authorization } = req.headers;
-  if (authorization === token) {
-    next();
-  } else {
-    res.status(403).json({ error: 'User be logged in to do that.' });
-  }
+  userTokens.forEach(token => {
+    if (authorization === token) {
+      next();
+    } else {
+      res.status(403).json({ error: 'User be logged in to do that.' });
+    }
+  });
 }
 
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
   if (username === 'Lambda School' && password === 'i<3Lambd4') {
     req.loggedIn = true;
+    let token = uuid.v1();
+    userTokens.push(token);
     res.status(200).json({
       payload: token
     });
   }else if (username === 'kinslj' && password === 'wx$mXBw3') {
     req.loggedIn = true;
+    let token = uuid.v1();
+    userTokens.push(token);
     res.status(200).json({
       payload: token
     });
@@ -78,6 +86,21 @@ app.post('/api/login', (req, res) => {
       .json({ error: 'Username or Password incorrect. Please see Readme' });
   }
 });
+app.get('/api/logout', authenticator, (req, res) => {
+  const { authorization } = req.headers;
+  userTokens = userTokens.filter(token => {
+    if (authorization === token) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+  if (userTokens.includes(authorization)) {
+    res.status(404).send({error: "Unable to find authorization token in list on server."});
+  } else {
+    res.status(200).send({payload: "success"});
+  }
+})
 
 app.get('/api/friends', authenticator, (req, res) => {
   setTimeout(() => {

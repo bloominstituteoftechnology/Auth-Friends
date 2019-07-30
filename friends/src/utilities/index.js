@@ -1,6 +1,6 @@
 import axios from 'axios';
 export const axiosWithAuth = () => {
-    const token = localStorage.getItem('userToken');
+    const token = JSON.parse(localStorage.getItem('user')).token;
 
     return axios.create({
         headers: {
@@ -12,7 +12,7 @@ export const axiosWithAuth = () => {
 
 export const addTokenToLocalStorage = store => next => action => {
     if (action.type === 'LOGIN_SUCCESS') {
-        localStorage.setItem('userToken', action.payload.token)
+        localStorage.setItem('user', JSON.stringify(action.payload))
     }
     next(action);
 }

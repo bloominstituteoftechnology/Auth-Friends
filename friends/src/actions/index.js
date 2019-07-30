@@ -5,6 +5,10 @@ export const LOGIN = "LOGIN";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 
+export const LOGOUT = "LOGOUT";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAIL = "LOGOUT_FAIL";
+
 export const FETCHING = "FETCHING";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAIL = "FETCH_FAIL";
@@ -13,10 +17,21 @@ export const attemptLogin = (username, password) =>  dispatch => {
     dispatch({type: LOGIN});
     axios.post("/api/login", {username, password}).then(res => {
         //console.log('loginAttempt: ', res);
-        dispatch({type: LOGIN_SUCCESS, payload: { token: res.data.payload}});
+        dispatch({type: LOGIN_SUCCESS, payload: { token: res.data.payload, username: username}});
     }).catch(err => {
         //console.log(err);
         dispatch({type: LOGIN_FAIL, error: err});
+    })
+}
+
+export const logout = () => dispatch => {
+    dispatch({type: LOGOUT});
+    axiosWithAuth().get("/api/logout").then(res => {
+        console.log(res);
+        dispatch({type: LOGOUT_SUCCESS, payload: res.data});
+    }).catch(err => {
+        console.error(err);
+        dispatch({type: LOGOUT_FAIL, error: err});
     })
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import {Link, Route, Redirect} from 'react-router-dom';
-import {PrivateRoute} from './components';
+import {PrivateRoute, LoginInfo} from './components';
 import {PublicView, LoginView, ProtectedView} from './views';
 import './App.css';
 
@@ -9,14 +9,17 @@ import './App.css';
 function App() {
   return (
       <div className="App">
-        <ul>
-          <li>
-            <Link to="/public">Public</Link>
-          </li>
-          <li>
-            <Link to="/protected">Protected</Link>
-          </li>
-        </ul>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/public">Public</Link>
+            </li>
+            <li>
+              <Link to="/protected">Protected</Link>
+            </li>
+          </ul>
+          {/* <LoginInfo /> */}
+        </nav>
         <Route exact path="/" render={() => {
           return <Redirect to="/public" />;
         }} />

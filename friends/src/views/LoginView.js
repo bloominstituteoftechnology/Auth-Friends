@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {attemptLogin} from '../actions';
+import {LoginInfo} from '../components';
 
 class LoginView extends React.Component {
     constructor(props) {
@@ -21,16 +22,19 @@ class LoginView extends React.Component {
         this.setState({[event.target.name]: event.target.value})
     }
     render() {
-        if (this.props.auth) {
+        if (this.props.auth.isAuthed) {
             this.props.history.push('/protected');
             return null;
         } else {
             return (
+                <div>
+            <LoginInfo key="2" parent={this} />
                 <form>
                     <input placeholder="Username" value={this.state.username} onChange={this.onChange.bind(this)} name="username" type="text" /><br />
                     <input placeholder="Password" value={this.state.password} onChange={this.onChange.bind(this)} name="password" type="password" /><br />
                     <button onClick={this.attemptLogin.bind(this)}>Login</button>
                 </form>
+                </div>
             );
             }
     }
