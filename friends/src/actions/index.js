@@ -13,6 +13,10 @@ export const FETCHING = "FETCHING";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAIL = "FETCH_FAIL";
 
+export const ADDING_FRIEND = "ADDING_FRIEND";
+export const ADDING_FRIEND_SUCCESS = "ADDING_FRIEND_SUCCESS";
+export const ADDING_FRIEND_FAIL = "ADDING_FRIEND_FAIL";
+
 export const attemptLogin = (username, password) =>  dispatch => {
     dispatch({type: LOGIN});
     axios.post("/api/login", {username, password}).then(res => {
@@ -43,4 +47,16 @@ export const fetchFriends = () => dispatch => {
     }).catch(err => {
         dispatch({type: FETCH_FAIL, error: err});
     })
+}
+
+export const addFriend = (friend) => dispatch => {
+    dispatch({type: ADDING_FRIEND});
+    let newFriend = {...friend, age: parseInt(friend.age)};
+    axiosWithAuth().post("/api/friends", newFriend).then(res => {
+        console.log(res);
+        dispatch({type: ADDING_FRIEND_SUCCESS, payload: res.data})
+    }).catch(err => {
+        console.error(err);
+        dispatch({type: ADDING_FRIEND_FAIL, error: err});
+    });
 }

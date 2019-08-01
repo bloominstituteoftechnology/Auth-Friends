@@ -8,12 +8,9 @@
     "concurrently": "^4.1.1",
     "cors": "^2.8.3",
     "express": "^4.15.2",
-<<<<<<< HEAD
     "uuid": "^3.3.2",
-    "watch": "^1.0.2"
-=======
+    "watch": "^1.0.2",
     "uuid": "^3.3.2"
->>>>>>> f21a9ad8336001b9f08780a19fdd8a7ef8ab3408
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

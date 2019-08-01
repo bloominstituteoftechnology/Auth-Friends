@@ -1,4 +1,4 @@
-import {LOGIN, LOGIN_FAIL, FETCHING, FETCH_SUCCESS, FETCH_FAIL, LOGIN_SUCCESS, LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL} from '../actions'; 
+import {LOGIN, LOGIN_FAIL, FETCHING, FETCH_SUCCESS, FETCH_FAIL, LOGIN_SUCCESS, LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL, ADDING_FRIEND, ADDING_FRIEND_FAIL, ADDING_FRIEND_SUCCESS} from '../actions'; 
 const initialState = {
     friends: [],
     fetching: false,
@@ -36,6 +36,14 @@ const friendsReducer = (state = initialState, action) => {
             return newState
         case FETCH_FAIL:
             newState = {...state, error: action.error};
+            return newState;
+        case ADDING_FRIEND:
+            return state;
+        case ADDING_FRIEND_FAIL:
+            newState = {...state, error: action.error};
+            return newState;
+        case ADDING_FRIEND_SUCCESS:
+            newState = {...state, friends: action.payload};
             return newState;
         default:
             return state;
