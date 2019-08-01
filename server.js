@@ -4,6 +4,7 @@ const uuid = require('uuid');
 const cors = require('cors');
 const port = 5000;
 const app = express();
+const fs = require('fs');
 
 // const token =
   // 'esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ';
@@ -106,15 +107,6 @@ app.get('/api/friends', authenticator, (req, res) => {
   }, 1000);
 });
 
-app.get('/api/users', authenticator, (req, res) => {
-  let newUsers = Array.from(users).forEach(user => {
-    delete user.token;
-  })
-  setTimeout(() => {
-    res.send(newUsers);
-  }, 1000);
-})
-
 app.get('/api/friends/:id', authenticator, (req, res) => {
   const friend = friends.find(f => f.id == req.params.id);
 
@@ -129,7 +121,7 @@ app.post('/api/friends', authenticator, (req, res) => {
   const friend = { id: getNextId(), ...req.body };
 
   friends = [...friends, friend];
-
+  fs.writeFileSync('friendsList.json', JSON.stringify(friends));
   res.send(friends);
 });
 
@@ -146,6 +138,7 @@ app.put('/api/friends/:id', authenticator, (req, res) => {
       friend,
       ...friends.slice(friendIndex + 1)
     ];
+    fs.writeFileSync('friendsList.json', JSON.stringify(friends));
     res.send(friends);
   } else {
     res.status(404).send({ msg: 'Friend not found' });
@@ -156,6 +149,7 @@ app.delete('/api/friends/:id', authenticator, (req, res) => {
   const { id } = req.params;
 
   friends = friends.filter(f => f.id !== Number(id));
+  fs.writeFileSync('friendsList.json', JSON.stringify(friends));
 
   res.send(friends);
 });
@@ -164,6 +158,13 @@ function getNextId() {
   return nextId++;
 }
 
-app.listen(port, () => {
-  console.log(`server listening on port ${port}`);
+fs.readFile("./friendsList.json", (err, data) => {
+  if (!err) {
+    friends = JSON.parse(data); 
+  } else {
+    console.error(err);
+  }
+  app.listen(port, () => {
+    console.log(`server listening on port ${port}`);
+  });
 });
