@@ -4,7 +4,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import PrivateRoute from "./components/PrivateRoute";
-import DataPage from "./components/FriendList";
+import FriendList from "./components/FriendList";
 
 function App() {
   return (
@@ -14,11 +14,11 @@ function App() {
           <li>
             <Link to="/login">Login</Link>
           </li>
-          <Link to="/protected">Data page</Link>
+          <Link to="/protected">OMG Friends</Link>
         </ul>
 
         <Route path="/login" component={LoginForm} />
-        <PrivateRoute exact path="/protected" component={DataPage} />
+        <PrivateRoute exact path="/protected" component={FriendList} />
         <h1> form and friends authentication </h1>
       </div>
     </Router>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
 
-const NewFriend = () => {
+const NewFriend = props => {
   const [name, setName] = useState({ name: "", age: "", email: "" });
 
   const handleChange = e => {
@@ -14,6 +15,7 @@ const NewFriend = () => {
       .post("http://localhost:5000/api/friends", name)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
+        props.history.push("/protected");
       })
       .catch(err => console.error(err.response));
   };
