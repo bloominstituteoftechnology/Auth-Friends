@@ -21,6 +21,7 @@ function App() {
         <Route path="/public" component={Public} />
         <Route path="/login" component={Login} />
         <PrivateRoute exact path="/protected" component={Friends} />
+        <PrivateRoute exact path="/protected-add" component={AddFriend}/>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ const Login = () => {
     const login = e => {
         e.preventDefault();
         axiosWithAuth()
-            .get('login/endpoint', credentials)
+            .get('http://localhost:5000/api/friends', formValues)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
                 this.props.history.push('/')
