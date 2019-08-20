@@ -3,12 +3,14 @@ import { Form, Field, withFormik } from 'formik'
 import * as yup from 'yup'
 import { connect } from 'react-redux'
 
-import { addNewFriend } from '../actions'
+import { addNewFriend, editFriend } from '../actions'
 
-function JSXForm({ values, errors, touched }) {
+function JSXForm({values, errors, touched }) {
 
     return (
         <Form>
+            <Field type='text' name='id' disabled/>
+
             <Field type='text' name='name' placeholder='Name'/>
             {touched.name && errors.name && <p>{errors.name}</p>}
 
@@ -17,18 +19,24 @@ function JSXForm({ values, errors, touched }) {
 
             <Field type='text' name='email' placeholder='email'/>
             {touched.email && errors.email && <p>{errors.email}</p>}
-
-            <button type='submit'>Add</button>
+            
+            {values.id === '' ? <button type='submit'>Add</button> : <button type='submit'>Update</button>}
         </Form>
     )
 }
 
 const LoginForm = withFormik({
-    mapPropsToValues({ name, age, email }) {
+    mapPropsToValues({ id, name, age, email, updateFriend }) {
+        const idUpdate = updateFriend.id !== undefined ? updateFriend.id : ''
+        const nameUpdate = updateFriend.name !== undefined ? updateFriend.name : ''
+        const ageUpdate = updateFriend.age !== undefined ? updateFriend.age : ''
+        const emailUpdate = updateFriend.email !== undefined ? updateFriend.email : ''
+
         return {
-            name: name || '',
-            age: age || '',
-            email: email || ''
+            id: id || idUpdate,
+            name: name || nameUpdate,
+            age: age || ageUpdate,
+            email: email || emailUpdate
         }
     },
 
@@ -46,11 +54,18 @@ const LoginForm = withFormik({
     }),
 
     handleSubmit(values, { props, resetForm, setSubmitting }) {
-        props.addNewFriend(values)
+        if (props.updateFriend.id === undefined) props.addNewFriend(values)
+        else props.editFriend(values)
         resetForm()
         setSubmitting(false)
         props.history.push('/')
     }
 })(JSXForm)
 
-export default connect(null, { addNewFriend })(LoginForm)
+const mapPropsToState = state => {
+    return {
+        updateFriend: state.updateFriend
+    }
+}
+
+export default connect(mapPropsToState, { addNewFriend, editFriend })(LoginForm)
