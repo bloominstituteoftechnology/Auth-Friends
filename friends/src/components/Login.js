@@ -41,7 +41,9 @@ class Login extends React.Component {
             ...this.state,
             isLoading: false
         });
+        
     });
+    this.props.history.push("/protected")
   };
 
   render() {

@@ -13,21 +13,23 @@ class FriendsList extends React.Component {
   
     getData = () => {
       axiosWithAuth()
-        .get('http://localhost:5000/api/data')
+        .get('http://localhost:5000/api/friends')
         .then(res => {
-          console.log(res)
           this.setState({
             friends: res.data
           });
+          console.log(this.state)
         })
         .catch(err => console.log(err.response));
     };
-  
    
     render() {
       
       return (
-        <div className="gas-prices">
+        <div>
+       {this.state.friends.map(i => {
+            return <div key={i.id}>{i.name}, {i.age}, {i.email}</div>
+          })}
         </div>
       );
     }

@@ -18,6 +18,7 @@ function App() {
         </ul>
         <Route path="/login" component={Login} />
         <PrivateRoute exact path="/protected" component={FriendsList} />
+        <button onClick={() => {localStorage.removeItem('token')}}>Clear Local Storage</button>
       </div>
     </Router>
   );
