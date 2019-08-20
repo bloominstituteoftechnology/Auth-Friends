@@ -35,20 +35,19 @@ const LoginForm = withFormik({
             .required('*Password is required'),
     }),
 
-    handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
+    handleSubmit(values, { props, resetForm, setErrors, setSubmitting }) {
         if (values.username !== 'admin') setErrors({username: '*Incorrect username'})
         else if (values.password !== 'password') setErrors({password: '*Incorrect password'})
         else {
             axios
             .post('http://localhost:5000/api/login', values)
             .then(res => {
-                console.log(res)
                 localStorage.setItem('token', res.data.payload)
                 resetForm()
                 setSubmitting(false)
+                props.history.push('/')
             })
             .catch(err => {
-                console.log(err)
                 setSubmitting(false)
             })
         }
