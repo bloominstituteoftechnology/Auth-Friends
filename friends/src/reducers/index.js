@@ -9,6 +9,9 @@ import {
     PUT_FRIENDS_START,
     PUT_FRIENDS_SUCCESS,
     PUT_FRIENDS_FAIL,
+    DELETE_FRIENDS_START,
+    DELETE_FRIENDS_SUCCESS,
+    DELETE_FRIENDS_FAIL,
 }
 from '../actions'
 
@@ -17,7 +20,6 @@ const initialState = {
     updateFriend: {},
     callingAPI: false,
     error: ''
-
 }
 
 export const reducer = (state = initialState, action) => {
@@ -94,7 +96,29 @@ export const reducer = (state = initialState, action) => {
                 callingAPI: false,
                 error: `${action.payload.status} ${action.payload.statusText} - ${action.payload.data.Error}`
             }
-    
+
+            
+        // @@@@@@@@@@ DELETE REQUEST @@@@@@@@@@
+        case DELETE_FRIENDS_START :
+            return {
+                ...state,
+                updateSmurf: {},
+                callingAPI: true,
+                error: ''
+            }
+        case DELETE_FRIENDS_SUCCESS :
+            return {
+                ...state,
+                friendsList: action.payload,
+                callingAPI: false,
+                error: ''
+            }
+        case DELETE_FRIENDS_FAIL :
+            return {
+                ...state,
+                callingAPI: false,
+                error: `${action.payload.status} ${action.payload.statusText} - ${action.payload.data.Error}`
+            }
         default :
             return state
     }

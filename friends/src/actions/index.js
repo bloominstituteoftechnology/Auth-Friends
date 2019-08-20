@@ -10,6 +10,9 @@ export const POST_FRIENDS_FAIL = 'POST_FRIENDS_FAIL'
 export const PUT_FRIENDS_START = 'PUT_FRIENDS_START'
 export const PUT_FRIENDS_SUCCESS = 'PUT_FRIENDS_SUCCESS'
 export const PUT_FRIENDS_FAIL = 'PUT_FRIENDS_FAIL'
+export const DELETE_FRIENDS_START = 'DELETE_FRIENDS_START'
+export const DELETE_FRIENDS_SUCCESS = 'DELETE_FRIENDS_SUCCESS'
+export const DELETE_FRIENDS_FAIL = 'DELETE_FRIENDS_FAIL'
 
 export const updateFriendState = (friend) => {
     return dispatch => {
@@ -44,5 +47,15 @@ export const editFriend = (editAmigo) => {
             .put(`http://localhost:5000/api/friends/${editAmigo.id}`, editAmigo)
             .then(res => dispatch({ type: PUT_FRIENDS_SUCCESS, payload: res.data }))
             .catch(err => dispatch({ type: PUT_FRIENDS_FAIL, payload: err.response }))
+    }
+}
+
+export const removeFriend = (byeFriend) => {
+    return dispatch => {
+        dispatch({ type: DELETE_FRIENDS_START })
+        axiosWithAuth()
+            .delete(`http://localhost:5000/api/friends/${byeFriend.id}`)
+            .then(res => dispatch({ type: DELETE_FRIENDS_SUCCESS, payload: res.data }))
+            .catch(err => dispatch({ type: DELETE_FRIENDS_FAIL, payload: err.response }))
     }
 }

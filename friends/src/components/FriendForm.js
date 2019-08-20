@@ -54,8 +54,10 @@ const LoginForm = withFormik({
     }),
 
     handleSubmit(values, { props, resetForm, setSubmitting }) {
-        if (props.updateFriend.id === undefined) props.addNewFriend(values)
-        else props.editFriend(values)
+        if (props.updateFriend.id === undefined) {
+            delete values.id // delete id to have backend assign one
+            props.addNewFriend(values)
+        } else props.editFriend(values)
         resetForm()
         setSubmitting(false)
         props.history.push('/')
