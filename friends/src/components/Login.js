@@ -34,6 +34,7 @@ class Login extends React.Component {
             ...this.state,
             isLoading: false
         })
+        this.props.history.push("/protected")
       })
       .catch(err => {
           console.log(err.response)
@@ -43,7 +44,7 @@ class Login extends React.Component {
         });
         
     });
-    this.props.history.push("/protected")
+    
   };
 
   render() {

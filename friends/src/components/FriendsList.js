@@ -4,7 +4,8 @@ import { axiosWithAuth } from '../axiosWithAuth.js';
 
 class FriendsList extends React.Component {
     state = {
-      friends: []
+      friends: [],
+      isLoading: false
     };
   
     componentDidMount() {
@@ -12,14 +13,18 @@ class FriendsList extends React.Component {
     }
   
     getData = () => {
+      this.setState({
+        ...this.state,
+        isLoading: true
+      })
       axiosWithAuth()
         .get('http://localhost:5000/api/friends')
         .then(res => {
           this.setState({
-            friends: res.data
-          });
-          console.log(this.state)
-        })
+            friends: res.data,
+            isLoading: false
+          })
+          })
         .catch(err => console.log(err.response));
     };
    
@@ -27,6 +32,7 @@ class FriendsList extends React.Component {
       
       return (
         <div>
+       {this.state.isLoading ? "Loading" : ""}
        {this.state.friends.map(i => {
             return <div key={i.id}>{i.name}, {i.age}, {i.email}</div>
           })}
