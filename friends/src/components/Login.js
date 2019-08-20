@@ -6,7 +6,8 @@ class Login extends React.Component {
     credentials: {
       username: '',
       password: ''
-    }
+    },
+    isLoading: false
   };
 
   handleChange = e => {
@@ -16,16 +17,31 @@ class Login extends React.Component {
         [e.target.name]: e.target.value
       }
     });
+    
   };
 
   login = e => {
     e.preventDefault();
+    this.setState({
+        ...this.state,
+        isLoading: true
+    })
     axios
       .post('http://localhost:5000/api/login', this.state.credentials)
       .then(res => {
         localStorage.setItem('token', res.data.payload);
+        this.setState({
+            ...this.state,
+            isLoading: false
+        })
       })
-      .catch(err => console.log(err.response));
+      .catch(err => {
+          console.log(err.response)
+          this.setState({
+            ...this.state,
+            isLoading: false
+        });
+    });
   };
 
   render() {
@@ -44,7 +60,7 @@ class Login extends React.Component {
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
-          <button>Log in</button>
+          <button>{this.state.isLoading ? "Loading" : "Login"}</button>
         </form>
       </div>
     );
