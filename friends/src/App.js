@@ -1,21 +1,36 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import axios from 'axios';
-import PrivateRout from './components/Privateroute';
-import Login from './components/Login';
-import FriendsList from './components/friendlist';
-
-
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
+import login from './components/login'
+import Friendlist from './components/friendlist'
+import './App.css';
 
 function App() {
   return (
     <Router>
     <div className="App">
-      <div>
-        <Link to='/'>Login</Link>
+      <div className='linkholder'>
+        <Link to='/' className='links'>Login</Link>
+        <Link to='/friendlist' className='links'>FriendList</Link>
         </div>     
         <div>
-          <Route exact path='/' component={Login} />
+          <Route exact path='/'  render={props => {
+            const token = localStorage.getItem("token");
+
+            if (token) {
+              return <Redirect to="/friendlist" />;
+            }
+            return <login {...props} />;
+          }}
+          />
+          <Route exact path='/friendlist'
+              render={props => {
+                const token = localStorage.getItem("token");
+    
+                if (!token) {
+                  return <Redirect to="/" />;
+                }
+                return <Friendlist {...props} />;
+              }} />
         </div>
     </div>
     </Router>
