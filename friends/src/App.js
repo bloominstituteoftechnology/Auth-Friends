@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+ import './App.css';
+import Friends from './components/Friends';
+import Lofin from './components/Login'
+ import   FriendForm from './components/FriendForm';
+ import friendsReducer from './reducers/rootReducer';
+ import {getFriends} from './actions';
+ import Friends from '../src/server'
+ import {connect} from 'react-redux' ;
+import rootReducer from './reducers/rootReducer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  export default class App extends React.Component {
+   render(){
+   return (
+      <div className = 'App'>
+        <Route 
+        path ='/'
+        exact
+        render ={() => (
+          <HomePage/>
+        )}
+        />
+        <Route 
+        path ='/login'
+        render ={props => (
+
+
+             <Login {...props}/>
+          )}
+
+         />
+        <PrivateRoute
+        path="/protected"
+        exact
+        component={Friends}
+      />
+      </div>
+   )
 }
-
-export default App;
+ }
