@@ -7,7 +7,7 @@ const LoginForm = props => {
 
   const handleChange = e => {
     e.preventDefault();
-    setForm({ ...form, [e.target.form]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const login = e => {
@@ -16,6 +16,7 @@ const LoginForm = props => {
       .post("http://localhost:5000/api/login", form)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
+        setForm({ username: "", password: "" });
         props.history.push("/protected");
       })
       .catch(err => console.error(err.response));
