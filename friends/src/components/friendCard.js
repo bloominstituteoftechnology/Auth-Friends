@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardHeader, CardBody, CardImg, Container } from "shards-react";
+import { Footer } from "./footer";
 
 const FriendCard = props => {
   return (

@@ -22,7 +22,7 @@ function App() {
           <Link to="/friends">Protected Friends</Link>
         </Button>
       </Container>
-      <Footer />
+
       <Route exact path="/login" component={LoginForm} />
 
       <PrivateRoute exact path="/friends" component={FriendsList} />

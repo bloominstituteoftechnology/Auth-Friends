@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import FriendCard from "./friendCard";
 import { Container } from "shards-react";
 import axioswithAuth from "../utils/axiosWithAuth";
+import Footer from "./footer";
 const FriendsList = props => {
   const [friends, setFriends] = useState([]);
   useEffect(() => {
@@ -22,6 +23,7 @@ const FriendsList = props => {
       {friends.map(friend => (
         <FriendCard friend={friend} history={props.history} />
       ))}
+      <Footer />
     </Container>
   );
 };
