@@ -59,8 +59,10 @@ function EditForm(props) {
               placeholder="email" 
               value={values.email}
               onChange={handleChange}/>
-        <input type="submit" value="edit" />
-        <button>cancel</button>
+        <div>
+          <input className="form-btn"  type="submit" value="EDIT" />
+          <button className="form-btn" >CANCEL</button>
+        </div>
       </form>
     </div>
   )

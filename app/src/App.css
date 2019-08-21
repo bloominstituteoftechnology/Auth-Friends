@@ -51,4 +51,11 @@ button:hover {
   height: 8px;
 }
 
+.form-btn {
+  width: 90px; 
+  height: 25px;
+  background: lightgray;
+  color: black;
+  font-weight: 600
+}
 
