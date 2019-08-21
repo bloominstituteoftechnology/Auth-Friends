@@ -1,6 +1,7 @@
 import React from "react";
 
 const Friend = props => {
+  console.log("central perk:", props);
   return (
     <div className="friend-container">
       <h3>Name: {props.friend.name}</h3>

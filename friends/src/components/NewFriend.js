@@ -10,20 +10,14 @@ const NewFriend = props => {
     setName({ ...name, [e.target.name]: e.target.value });
   };
 
-  const addFriend = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    axiosWithAuth()
-      .post("http://localhost:5000/api/friends", name)
-      .then(res => {
-        localStorage.setItem("token", res.data.payload);
-        setName(res.data);
-      })
-      .catch(err => console.error(err.response));
+    props.addFriend(name);
   };
 
   return (
-    <div classname="new-friend">
-      <form onSubmit={addFriend}>
+    <div className="new-friend">
+      <form onSubmit={handleSubmit}>
         <input
           onChange={handleChange}
           type="text"
@@ -46,7 +40,7 @@ const NewFriend = props => {
           placeholder="email"
           value={name.email}
         />
-        <button onClick={addFriend}>Submit</button>
+        <button>Submit</button>
       </form>
     </div>
   );

@@ -16,7 +16,6 @@ const LoginForm = props => {
       .post("http://localhost:5000/api/login", form)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
-        setForm({ username: "", password: "" });
         props.history.push("/protected");
       })
       .catch(err => console.error(err.response));
@@ -34,7 +33,7 @@ const LoginForm = props => {
         />
         <input
           onChange={handleChange}
-          type="text"
+          type="password"
           name="password"
           placeholder="password"
           value={form.password}

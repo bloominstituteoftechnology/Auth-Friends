@@ -15,3 +15,10 @@ li {
   margin-right: 6px;
   color: #204963;
 }
+
+a {
+  text-decoration: none;
+  padding: 6px;
+  color: #204963;
+  font-family: cursive;
+}

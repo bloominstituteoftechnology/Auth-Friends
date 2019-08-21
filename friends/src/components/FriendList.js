@@ -21,13 +21,23 @@ const FriendList = props => {
       .catch(err => console.error("error here:", err));
   };
 
+  const addFriend = name => {
+    axiosWithAuth()
+      .post("http://localhost:5000/api/friends", name)
+      .then(res => {
+        setFriend(res.data);
+      })
+      .catch(err => console.error(err.response));
+  };
+
   return (
     <div className="friend-list">
       <h1>list</h1>
-      <NewFriend />
+      <NewFriend addFriend={addFriend} />
 
-      {friend.length > 0 &&
-        friend.map(friend => <Friend key={friend.name} friend={friend} />)}
+      {friend.map(friend => (
+        <Friend key={friend.name} friend={friend} />
+      ))}
     </div>
   );
 };
