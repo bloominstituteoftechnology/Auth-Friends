@@ -1,5 +1,5 @@
 import axios from "axios";
-import axioswithAuth from "../components/axiosWithAuth";
+import axioswithAuth from "../utils/axiosWithAuth";
 
 export const FETCH_DATA_START = "FETCH_DATA_START";
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
