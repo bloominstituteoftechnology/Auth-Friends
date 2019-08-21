@@ -1,19 +1,20 @@
 import React from 'react'
-import { Form, Field, withFormik } from 'formik'
+import { Field, withFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
 
-function JSXForm({ values, errors, touched }) {
+import { Form, Button } from 'semantic-ui-react'
+import { SemanticFormikField } from '../utils/SemanticFormikField'
+
+function JSXForm({ handleSubmit }) {
 
     return (
-        <Form>
-            <Field type='text' name='username' placeholder='Username'/>
-            {touched.username && errors.username && <p>{errors.username}</p>}
+        <Form onSubmit={handleSubmit}>
+            <Field type='text' name='username' placeholder='Username' label='Username:' component={SemanticFormikField}/>
 
-            <Field type='password' name='password' placeholder='Password'/>
-            {touched.password && errors.password && <p className='err'>{errors.password}</p>}
+            <Field type='password' name='password' placeholder='Password' label='Password:' component={SemanticFormikField}/>
 
-            <button type='submit'>Login</button>
+            <Button type='submit'>Log In</Button>
         </Form>
     )
 }
@@ -36,7 +37,7 @@ const LoginForm = withFormik({
     }),
 
     handleSubmit(values, { props, resetForm, setErrors, setSubmitting }) {
-        if (values.username !== 'admin') setErrors({username: '*Incorrect username'})
+        if (values.username !== 'admin') setErrors({username: '*User does not exist'})
         else if (values.password !== 'password') setErrors({password: '*Incorrect password'})
         else {
             axios

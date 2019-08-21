@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import FriendCard from './FriendCard'
 import { getFriendsList } from '../actions'
 
+import { Grid, Button } from 'semantic-ui-react'
+
 const HomePage = ({ getFriendsList }) => {
     const friendsList = useSelector(state => state.friendsList)
 
@@ -14,11 +16,11 @@ const HomePage = ({ getFriendsList }) => {
 
     return (
         <div>
-            <h1>My Friends:</h1>
-            <Link to='/friend-form'>Add New Friend</Link>
-            {friendsList.map(friend => (
-                <FriendCard key={friend.id} friend={friend} />
-            ))}
+            <Grid columns={3} container fluid='true'>
+                {friendsList.map(friend => (
+                    <FriendCard key={friend.id} friend={friend} />
+                ))}
+            </Grid>    
         </div>
     )
 }

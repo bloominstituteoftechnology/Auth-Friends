@@ -8,6 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 import { reducer } from './reducers'
 
+import 'semantic-ui-css/semantic.min.css'
 import './index.css'
 
 const store = createStore(reducer, applyMiddleware(thunk))
