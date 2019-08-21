@@ -1,11 +1,12 @@
 import React from "react";
-import { Card, CardHeader, CardBody } from "shards-react";
+import { Card, CardHeader, CardBody, CardImg, Container } from "shards-react";
 
 const FriendCard = props => {
   return (
-    <Card style={{ maxWidth: "300px" }}>
-      <CardHeader>{props.friend.name}</CardHeader>
-      <CardBody>
+    <Card style={{ maxWidth: "150px" }}>
+      <CardImg className="friend-img" src={`${props.friend.avatar}`} />
+      <CardBody className="friend-body">
+        <p>{props.friend.name}</p>
         <p>{props.friend.age}</p>
       </CardBody>
     </Card>

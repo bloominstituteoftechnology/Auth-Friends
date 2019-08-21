@@ -1,49 +1,69 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 const port = 5000;
 const app = express();
 const token =
-  'esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ';
+  "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ";
 
 let nextId = 7;
 
 let friends = [
   {
     id: 1,
-    name: 'Ben',
-    age: 30,
-    email: 'ben@lambdaschool.com'
+    name: "Ross Geller",
+    age: 26,
+    email: "ben@lambdaschool.com",
+    avatar:
+      "https://vignette.wikia.nocookie.net/friends/images/c/ce/Ross-Season-5.png/"
   },
   {
     id: 2,
-    name: 'Austen',
-    age: 45,
-    email: 'austen@lambdaschool.com'
+    name: "Chandler Bing",
+    age: 26,
+    email: "austen@lambdaschool.com",
+    avatar:
+      "https://vignette.wikia.nocookie.net/friends/images/4/48/Chandler_Bing_portrait.jpg"
   },
   {
     id: 3,
-    name: 'Ryan',
-    age: 15,
-    email: 'ryan@lambdaschool.com'
+    name: "Rachel Green",
+    age: 24,
+    email: "ryan@lambdaschool.com",
+    avatar:
+      "https://vignette.wikia.nocookie.net/friends/images/3/38/RachelGreen.jpg"
   },
   {
     id: 4,
-    name: 'Dustin',
-    age: 25,
-    email: 'D-munny@lambdaschool.com'
+    name: "Phoebe Buffay",
+    age: 27,
+    email: "D-munny@lambdaschool.com",
+    avatar:
+      "https://vignette.wikia.nocookie.net/friends/images/3/30/PhoebeBuffay.jpg/"
   },
   {
     id: 5,
-    name: 'Sean',
-    age: 35,
-    email: 'sean@lambdaschool.com'
+    name: "Monica Geller",
+    age: 25,
+    email: "sean@lambdaschool.com",
+    avatar:
+      "https://vignette.wikia.nocookie.net/friends/images/2/2f/Monica_Geller-Bing_Season_10.png"
   },
   {
     id: 6,
-    name: 'Michelle',
-    age: 67,
-    email: 'michelle@gmail.com'
+    name: "Joey Tribbiani",
+    age: 25,
+    email: "michelle@gmail.com",
+    avatar:
+      "https://vignette.wikia.nocookie.net/friends/images/f/f5/JoeyTribbiani.jpg  "
+  },
+  {
+    id: 7,
+    name: "Marcel",
+    age: 25,
+    email: "Marcel@gmail.com",
+    avatar:
+      "http://2.bp.blogspot.com/_wdX2dWnVFDU/SnmFu8nLM_I/AAAAAAAAArY/M9DfEh9CsuU/s400/marcel.jpg"
   }
 ];
 
@@ -56,13 +76,13 @@ function authenticator(req, res, next) {
   if (authorization === token) {
     next();
   } else {
-    res.status(403).json({ error: 'User be logged in to do that.' });
+    res.status(403).json({ error: "User be logged in to do that." });
   }
 }
 
-app.post('/api/login', (req, res) => {
+app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
-  if (username === 'Lambda School' && password === 'i<3Lambd4') {
+  if (username === "Lambda School" && password === "i<3Lambd4") {
     req.loggedIn = true;
     res.status(200).json({
       payload: token
@@ -70,27 +90,27 @@ app.post('/api/login', (req, res) => {
   } else {
     res
       .status(403)
-      .json({ error: 'Username or Password incorrect. Please see Readme' });
+      .json({ error: "Username or Password incorrect. Please see Readme" });
   }
 });
 
-app.get('/api/friends', authenticator, (req, res) => {
+app.get("/api/friends", authenticator, (req, res) => {
   setTimeout(() => {
     res.send(friends);
   }, 1000);
 });
 
-app.get('/api/friends/:id', authenticator, (req, res) => {
+app.get("/api/friends/:id", authenticator, (req, res) => {
   const friend = friends.find(f => f.id == req.params.id);
 
   if (friend) {
     res.status(200).json(friend);
   } else {
-    res.status(404).send({ msg: 'Friend not found' });
+    res.status(404).send({ msg: "Friend not found" });
   }
 });
 
-app.post('/api/friends', authenticator, (req, res) => {
+app.post("/api/friends", authenticator, (req, res) => {
   const friend = { id: getNextId(), ...req.body };
 
   friends = [...friends, friend];
@@ -98,7 +118,7 @@ app.post('/api/friends', authenticator, (req, res) => {
   res.send(friends);
 });
 
-app.put('/api/friends/:id', authenticator, (req, res) => {
+app.put("/api/friends/:id", authenticator, (req, res) => {
   const { id } = req.params;
 
   const friendIndex = friends.findIndex(f => f.id == id);
@@ -113,11 +133,11 @@ app.put('/api/friends/:id', authenticator, (req, res) => {
     ];
     res.send(friends);
   } else {
-    res.status(404).send({ msg: 'Friend not found' });
+    res.status(404).send({ msg: "Friend not found" });
   }
 });
 
-app.delete('/api/friends/:id', authenticator, (req, res) => {
+app.delete("/api/friends/:id", authenticator, (req, res) => {
   const { id } = req.params;
 
   friends = friends.filter(f => f.id !== Number(id));

@@ -18,12 +18,11 @@ const FriendsList = props => {
   }, []);
 
   return (
-    <div>
-      <h1>Friends</h1>
+    <Container className="friends-container">
       {friends.map(friend => (
         <FriendCard friend={friend} history={props.history} />
       ))}
-    </div>
+    </Container>
   );
 };
 

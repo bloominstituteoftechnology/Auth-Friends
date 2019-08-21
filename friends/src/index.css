@@ -5,9 +5,44 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://stmed.net/sites/default/files/friends-wallpapers-31567-7366043.jpg");
+  background-attachment: fixed;
+  font-family: "Permanent Marker", cursive;
 }
-
+@import url("https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap");
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.friends-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  font-family: "Permanent Marker", cursive;
+}
+.friend-img {
+  width: 100%;
+  height: auto;
+}
+.friend-body p {
+  font-size: 0.8rem;
+  max-height: 10px;
+}
+.friend-button-container {
+  display: flex;
+  justify-content: center;
+}
+.friend-button-container .btn {
+  font-family: "Permanent Marker", cursive;
+  margin: 20px;
+}
+.friend-button-container .btn a {
+  color: white;
+}
+.friend-footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }

@@ -5,7 +5,10 @@
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-h5-audio-player": "^1.2.1",
+    "react-jinke-music-player": "^4.3.5",
     "react-redux": "^7.1.0",
+    "react-responsive-music-player": "^0.4.3",
     "react-scripts": "3.1.1",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",

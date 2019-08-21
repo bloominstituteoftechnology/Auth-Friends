@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login } from "../actions";
-import { Form, FormInput, FormGroup, Button } from "shards-react";
+import { Form, FormInput, FormGroup, Button, Container } from "shards-react";
 
 class LoginForm extends React.Component {
   state = {
@@ -29,28 +29,30 @@ class LoginForm extends React.Component {
   };
   render() {
     return (
-      <Form>
-        <FormGroup>
-          <FormInput
-            text="text"
-            name="username"
-            value={this.state.credentails.username}
-            onChange={this.handleChange}
-            placeholder="Username"
-          />
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="#password">Password</label>
-          <FormInput
-            text="text"
-            name="password"
-            value={this.state.credentails.password}
-            onChange={this.handleChange}
-            placeholder="Password"
-          />
-        </FormGroup>
-        <Button onClick={this.login}>Login</Button>
-      </Form>
+      <Container>
+        <Form>
+          <FormGroup>
+            <FormInput
+              text="text"
+              name="username"
+              value={this.state.credentails.username}
+              onChange={this.handleChange}
+              placeholder="Username"
+            />
+          </FormGroup>
+          <FormGroup>
+            <label htmlFor="#password">Password</label>
+            <FormInput
+              text="text"
+              name="password"
+              value={this.state.credentails.password}
+              onChange={this.handleChange}
+              placeholder="Password"
+            />
+          </FormGroup>
+          <Button onClick={this.login}>Login</Button>
+        </Form>
+      </Container>
     );
   }
 }
