@@ -40,22 +40,18 @@ const LoginForm = withFormik({
     }),
 
     handleSubmit(values, { props, resetForm, setErrors, setSubmitting }) {
-        if (values.username !== 'admin') setErrors({username: '*User does not exist'})
-        else if (values.password !== 'password') setErrors({password: '*Incorrect password'})
-        else {
-            axios
-            .post('http://localhost:5000/api/login', values)
-            .then(res => {
-                localStorage.setItem('token', res.data.payload)
-                props.loggedStatus()
-                resetForm()
-                setSubmitting(false)
-                props.history.push('/')
-            })
-            .catch(err => {
-                setSubmitting(false)
-            })
-        }
+        axios
+        .post('http://localhost:5000/api/login', values)
+        .then(res => {
+            localStorage.setItem('token', res.data.payload)
+            props.loggedStatus()
+            resetForm()
+            setSubmitting(false)
+            props.history.push('/')
+        })
+        .catch(err => {
+            setSubmitting(false)
+        })
     }
 })(JSXForm)
 

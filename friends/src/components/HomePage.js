@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import { connect, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import FriendCard from './FriendCard'
 import { getFriendsList } from '../actions'
 
-import { Grid, Button } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 const HomePage = ({ getFriendsList }) => {
     const friendsList = useSelector(state => state.friendsList)
@@ -15,13 +14,11 @@ const HomePage = ({ getFriendsList }) => {
     },[])
 
     return (
-        <div>
-            <Grid columns={3} container fluid='true'>
-                {friendsList.map(friend => (
-                    <FriendCard key={friend.id} friend={friend} />
-                ))}
-            </Grid>    
-        </div>
+        <Grid columns={3} container fluid='true'>
+            {friendsList.map(friend => (
+                <FriendCard key={friend.id} friend={friend} />
+            ))}
+        </Grid>
     )
 }
 

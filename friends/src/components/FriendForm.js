@@ -46,6 +46,7 @@ const LoginForm = withFormik({
             .required('*Name is required'),
         age: yup
             .number('*Age must be in number format')
+            .positive('*Age must be positive')
             .required('*Age is required'),
         email: yup
             .string()
