@@ -13,7 +13,8 @@ const AppRouter = () => {
             <Switch>
                 <Route path ='/login' component={LoginForm} />
                 <PrivateRoute path ='/' exact component={HomePage} />
-                <Route path='/friend-form' component={FriendForm} />
+                <PrivateRoute path='/add-friend' component={FriendForm} />
+                <PrivateRoute path='/update-friend' component={FriendForm} />
             </Switch>
         </>
     )
