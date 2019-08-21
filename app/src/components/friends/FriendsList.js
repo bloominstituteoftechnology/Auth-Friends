@@ -21,7 +21,6 @@ const FriendsList = (props) => {
   };
 
   const deleteFriend = (id) => {
-    console.log('delete func')
     axiosWithAuth()
       .delete(`http://localhost:5000/api/friends/${id}`)
       .then(res => {
@@ -31,7 +30,6 @@ const FriendsList = (props) => {
   }
 
   const editFriend = (id, values) => {
-    console.log('EDIT FUNC')
     axiosWithAuth()
       .put(`http://localhost:5000/api/friends/${id}`, values)
       .then(res => {

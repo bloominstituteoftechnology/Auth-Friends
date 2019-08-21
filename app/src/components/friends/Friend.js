@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Friend = ({ friend, deleteFriend, editFriend }) => {
   const [edit, setEdit] = useState(false);
- console.log('Friend component renders')
+
   const editForm = () => {
     setEdit(true)
   }
