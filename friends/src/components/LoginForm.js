@@ -2,6 +2,9 @@ import React from 'react'
 import { Field, withFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
+import { connect } from 'react-redux'
+
+import { loggedStatus } from '../actions'
 
 import { Form, Button } from 'semantic-ui-react'
 import { SemanticFormikField } from '../utils/SemanticFormikField'
@@ -44,6 +47,7 @@ const LoginForm = withFormik({
             .post('http://localhost:5000/api/login', values)
             .then(res => {
                 localStorage.setItem('token', res.data.payload)
+                props.loggedStatus()
                 resetForm()
                 setSubmitting(false)
                 props.history.push('/')
@@ -55,4 +59,4 @@ const LoginForm = withFormik({
     }
 })(JSXForm)
 
-export default LoginForm
+export default connect(null, { loggedStatus })(LoginForm)

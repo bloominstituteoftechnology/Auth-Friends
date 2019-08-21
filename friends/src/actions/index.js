@@ -1,5 +1,6 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
+export const UPDATE_LOGIN_STATUS = 'UPDATE_LOGIN_STATUS'
 export const UPDATE_FRIEND_STATE = 'UPDATE_FRIEND_STATE'
 export const GET_FRIENDS_START = 'GET_FRIENDS_START'
 export const GET_FRIENDS_SUCCESS = 'GET_FRIENDS_SUCCESS'
@@ -13,6 +14,12 @@ export const PUT_FRIENDS_FAIL = 'PUT_FRIENDS_FAIL'
 export const DELETE_FRIENDS_START = 'DELETE_FRIENDS_START'
 export const DELETE_FRIENDS_SUCCESS = 'DELETE_FRIENDS_SUCCESS'
 export const DELETE_FRIENDS_FAIL = 'DELETE_FRIENDS_FAIL'
+
+export const loggedStatus = () => {
+    return dispatch => {
+        dispatch({ type: UPDATE_LOGIN_STATUS })
+    }
+}
 
 export const updateFriendState = (friend) => {
     return dispatch => {

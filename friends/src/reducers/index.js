@@ -1,4 +1,5 @@
 import {
+    UPDATE_LOGIN_STATUS,
     UPDATE_FRIEND_STATE,
     GET_FRIENDS_START,
     GET_FRIENDS_SUCCESS,
@@ -16,6 +17,7 @@ import {
 from '../actions'
 
 const initialState = {
+    isLoggedIn: false,
     friendsList: [],
     updateFriend: {},
     callingAPI: false,
@@ -24,6 +26,13 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
+        // @@@@@@@@@@ UPDATE LOGIN STATUS @@@@@@@@@@
+        case UPDATE_LOGIN_STATUS :
+            return {
+                ...state,
+                isLoggedIn: !state.isLoggedIn
+            }
+
         // @@@@@@@@@@ UPDATE FRIEND STATE @@@@@@@@@@
         case UPDATE_FRIEND_STATE :
             return {
@@ -97,12 +106,11 @@ export const reducer = (state = initialState, action) => {
                 error: `${action.payload.status} ${action.payload.statusText} - ${action.payload.data.Error}`
             }
 
-            
         // @@@@@@@@@@ DELETE REQUEST @@@@@@@@@@
         case DELETE_FRIENDS_START :
             return {
                 ...state,
-                updateSmurf: {},
+                updateFriend: {},
                 callingAPI: true,
                 error: ''
             }
