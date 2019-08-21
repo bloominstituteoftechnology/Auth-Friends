@@ -9,7 +9,7 @@ function JSXForm({values, errors, touched }) {
 
     return (
         <Form>
-            <Field type='text' name='id' disabled/>
+            <Field type='hidden' name='id' disabled/>
 
             <Field type='text' name='name' placeholder='Name'/>
             {touched.name && errors.name && <p>{errors.name}</p>}
