@@ -10,7 +10,7 @@ const [friend, setFriend] = useState({
 
 const handleChange = (e) => {
     e.preventDefault();
-    setFormValues({
+    setFriend({
         ...friend,
         [e.target.name]: e.target.value
     })
@@ -36,12 +36,12 @@ const postFriend = () => {
     return(
         <>
             <form onSubmit={postFriend}>
-                <label>Friend's Name:</label>
-                <input type='text' name="name" value={friend.name} onChange={handleChange}/>
-                <label>Friend's Age:</label>
-                <input type='number' name="age" value={friend.age} onChange={handleChange}/>
-                <label>Friend's email:</label>
-                <input type="email" name="email" value={friend.email} onChange={handleChange}/>
+                <label>Friend's Name:</label> <br/>
+                <input type='text' name="name" value={friend.name} onChange={handleChange}/><br/>
+                <label>Friend's Age:</label><br/>
+                <input type='number' name="age" value={friend.age} onChange={handleChange}/><br/>
+                <label>Friend's email:</label><br/>
+                <input type="email" name="email" value={friend.email} onChange={handleChange}/><br/>
                 <button type='submit'>Submit Friend</button>
             </form>
         </>

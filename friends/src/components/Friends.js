@@ -1,28 +1,32 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { axiosWithAuth } from '../utils';
-import Friend from './Friend'
+import {Link} from 'react-router-dom';
+import Friend from './Friend';
 
 const Friends = () => {
+
     const [friends, setFriends] = useState([])
 
-    const getData = () => {
+
+    useEffect(() => {
         axiosWithAuth()
-        .get('http://localhost:5000/api/data')
+        .get('http://localhost:5000/api/friends')
         .then(res => {
-            console.log(res.data);
-            setFriends([...friends, res.data]);
+            setFriends(res.data);
+            console.log(friends)
         })
-        .catch(err => {'an error was found in your data fetch, sire: ',err})
-    }
+        .catch(err => {console.log('an error was found in your data fetch, sire: ', err)})
+    }, [])
+   
+        
     
     return (
         <>
-            <button onClick={getData}>Get you some Friend Data</button>
             <div className="friend-container">
-            {friends && friends.map(friend => <Friend friend={friend}/>)}
+            {friends.length > 1 ? friends.map(friend => <Friend friend={friend}/>) : null}
             </div>
             <h4>not enough friends?</h4>
-            <Link to="/add-friend">Add more!</Link>
+            <Link to="/protected-add">Add more!</Link>
         </>
     )
 }
