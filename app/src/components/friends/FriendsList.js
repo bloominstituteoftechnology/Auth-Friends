@@ -21,20 +21,33 @@ const FriendsList = (props) => {
   };
 
   const deleteFriend = (id) => {
+    console.log('delete func')
     axiosWithAuth()
-    .delete(`http://localhost:5000/api/friends/${id}`)
-    .then(res => {
-      setUpdate(!update)
-    })
-    .catch(err => console.log(err.response));
+      .delete(`http://localhost:5000/api/friends/${id}`)
+      .then(res => {
+        setUpdate(!update)
+      })
+      .catch(err => console.log(err.response));
+  }
+
+  const editFriend = (id, values) => {
+    console.log('EDIT FUNC')
+    axiosWithAuth()
+      .put(`http://localhost:5000/api/friends/${id}`, values)
+      .then(res => {
+        setUpdate(!update)
+      })
+      .catch(err => console.log(err.response));
   }
 
   return (
     <div>
       <Form setUpdate={setUpdate} update={update}/>
-      {friendsList.map(friend => {
-        return <Friend friend={friend} key={friend.id} deleteFriend={deleteFriend}/>
-      })}
+      <div>
+        {friendsList.map(friend => {
+          return <Friend friend={friend} key={friend.id} deleteFriend={deleteFriend} editFriend={editFriend}/>
+        })}
+      </div>
     </div>
   )
 }
