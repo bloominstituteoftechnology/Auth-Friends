@@ -41,7 +41,7 @@ const FriendsList = (props) => {
   }
 
   return (
-    <div>
+    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <Form setUpdate={setUpdate} update={update}/>
       <div>
         {friendsList.map(friend => {

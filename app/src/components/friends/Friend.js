@@ -8,9 +8,9 @@ const Friend = ({ friend, deleteFriend, editFriend }) => {
   }
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column',  
-                padding: '20px', fontSize: '20px', marginTop: '20px', border: '0.3px solid black',
-                borderRadius: '4px', textAlign: 'center', alignItems: 'center'}}>
+    <div style={{padding: '20px', fontSize: '20px', marginTop: '20px', border: '0.5px solid #8282a0',
+                borderRadius: '4px', textAlign: 'center', alignItems: 'center', 
+                width: '450px', margin: '20px'}}>
       <div style={{display: edit ? 'none' : null, 
                    width: '450px', margin: '0 auto'}}>
         <p>{friend.name}</p>
@@ -36,7 +36,7 @@ function EditForm(props) {
   }
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column', border: '0.3px solid black', 
+    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', border: '0.3px solid black', 
                  padding: '20px', fontSize: '20px', marginTop: '20px',
                  borderRadius: '4px', textAlign: 'center'}}>
       <form onSubmit={() => {
