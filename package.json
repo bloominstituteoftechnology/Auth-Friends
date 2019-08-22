@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "build": "react-scripts build"
+    "build": "nodemon server.js"
   },
   "author": "Lambda School",
   "license": "ISC"
