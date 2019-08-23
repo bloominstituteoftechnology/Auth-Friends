@@ -1,19 +1,36 @@
 import React, { useState } from 'react';
-import { useContext } from 'react'
+// import { useContext } from 'react'
 import axios from 'axios'
 
-const LoginForm = () => {
-    const [logini, setLogini] = useState([])
+// import axiosWithAuth from '../utils/axiosWithAuth.js'
+
+const LoginForm = (props) => {
+    const [logini, setLogini] = useState({username: '', password:''})
+
     
 
     const changeHandler = (event) => {
-        setLogini({...logini, [event.target.name]: event.target.value})
+        event.preventDefault();
+        setLogini({
+            ...logini, [event.target.name]: event.target.value
+        })
     }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("within handleSubmit", logini);
-        setLogini(logini);
+        //axios call b/c updating info 
+        // setLogini(logini);
         // console.log(person);
+        axios.post('http://localhost:5000/api/login', logini)
+            .then(response => {
+                console.log(response);
+                localStorage.setItem('token', response.data.payload)
+                props.history.push('/protected')
+            })
+            .catch(err => console.log("error in handlesSub", err.response))
+
+
         setLogini({username: "", password: ""})
     };
 
@@ -26,7 +43,7 @@ const LoginForm = () => {
                     placeholder="enter username"
                     type="text"
                     value={logini.username}
-                    name="name"
+                    name="username"
                     onChange={changeHandler}
                 />
                 <input
@@ -34,7 +51,7 @@ const LoginForm = () => {
                     placeholder="enter password"
                     type="password"
                     value={logini.password}
-                    name="age"
+                    name="password"
                     onChange={changeHandler}
                 />
                 <button type="submit" className="SubmitButton">Connect!</button>
