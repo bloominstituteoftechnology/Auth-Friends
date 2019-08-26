@@ -23,3 +23,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, {fetchFriends})(App);
+
