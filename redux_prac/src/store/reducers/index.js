@@ -1,4 +1,4 @@
-import {FETCH_FRIENDS} from '../actions'
+import {FETCH_FRIENDS, POST_FRIENDS, DELETE_FRIENDS} from '../actions'
 
 const initialState = {
     friends: []
@@ -7,9 +7,17 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
         case FETCH_FRIENDS:
-    return {
+            return {
         friends: action.payload
-    }
+        }
+        case POST_FRIENDS:
+            return {
+        friends: action.payload
+        }
+        case DELETE_FRIENDS:
+            return {
+        friends: action.payload
+            }
         default:
             return state
     }
