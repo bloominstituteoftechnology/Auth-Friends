@@ -3,6 +3,7 @@ import axios from 'axios'
 export const FETCH_FRIENDS = "FETCH_FRIENDS"
 export const POST_FRIENDS = "POST_FRIENDS"
 export const DELETE_FRIENDS = "DELETE_FRIENDS"
+export const UPDATE_FRIENDS = "UPDATE_FRIENDS"
 
 const baseURL = 'http://localhost:5000'
 
@@ -39,6 +40,19 @@ export const deleteFriends = (id) => dispatch => {
     .then(res => {
         dispatch({
             type: DELETE_FRIENDS,
+            payload: res.data
+        })
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+export const updateFriends = (id, updatedName) => dispatch => {
+    return axios.put(`${baseURL}/api/friends/${id}`, updatedName)
+    .then(res => {
+        dispatch({
+            type: UPDATE_FRIENDS,
             payload: res.data
         })
     })

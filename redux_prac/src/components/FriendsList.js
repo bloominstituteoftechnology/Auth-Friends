@@ -1,22 +1,51 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { deleteFriends } from "../store/actions/index"
+import { deleteFriends, updateFriends } from "../store/actions/index"
 
-const FriendsList = (props) => {
-    const {id, name, age, email} = props.friend
 
-    const deleteFriends = () => {
-        props.deleteFriends(id)
+class FriendsList extends Component {
+    state = {
+        update: ""
     }
 
+    deleteFriends = () => {
+        this.props.deleteFriends(this.props.friend.id)
+    }
+
+    updateFriends = (e) => {
+        e.preventDefault()
+
+        const updated = {
+            name: this.state.update,
+            age: this.props.friend.age,
+            email: this.props.email
+        }
+
+        this.props.updateFriends(this.props.friend.id, updated)
+    }
+
+    changeHandler2 = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        }) 
+    }
+
+    render() {
     return(
         <div>
-            <h1>{name}</h1>
-            <p>{age}</p>
-            <p>{email}</p>
-            <button onClick={() => deleteFriends()}> DEL </button>
+            <h1>{this.props.friend.name}</h1>
+            <p>{this.props.friend.age}</p>
+            <p>{this.props.friend.email}</p>
+            <button onClick={this.deleteFriends}> DEL </button>
+            <button onClick={this.updateFriends}> UPD </button>
+            <input 
+            name="update"
+            placeholder="Update your name here.."
+            value={this.state.update}
+            onChange={this.changeHandler2}
+            />
         </div>
-    )
+    ) }
 }
 
-export default connect(null, {deleteFriends})(FriendsList)
+export default connect(null, {deleteFriends, updateFriends})(FriendsList)

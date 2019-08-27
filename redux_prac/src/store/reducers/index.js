@@ -1,4 +1,4 @@
-import {FETCH_FRIENDS, POST_FRIENDS, DELETE_FRIENDS} from '../actions'
+import {FETCH_FRIENDS, POST_FRIENDS, DELETE_FRIENDS, UPDATE_FRIENDS} from '../actions'
 
 const initialState = {
     friends: []
@@ -15,6 +15,10 @@ const rootReducer = (state = initialState, action) => {
         friends: action.payload
         }
         case DELETE_FRIENDS:
+            return {
+        friends: action.payload
+            }
+        case UPDATE_FRIENDS:
             return {
         friends: action.payload
             }
