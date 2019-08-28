@@ -10,7 +10,6 @@ const baseURL = 'http://localhost:5000'
 export const fetchFriends = () => dispatch => {
     return axios.get(`${baseURL}/api/friends`)
     .then(res => {
-        console.log(res)
         dispatch({
             type: FETCH_FRIENDS,
             payload: res.data
@@ -24,7 +23,6 @@ export const fetchFriends = () => dispatch => {
 export const postFriends = (friends) => dispatch => {
     return axios.post(`${baseURL}/api/friends`, friends)
     .then(res => {
-        console.log(res)
         dispatch({
             type: POST_FRIENDS,
             payload: res.data
