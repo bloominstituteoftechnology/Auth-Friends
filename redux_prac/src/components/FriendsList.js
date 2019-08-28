@@ -5,7 +5,8 @@ import { deleteFriends, updateFriends } from "../store/actions/index"
 
 class FriendsList extends Component {
     state = {
-        update: ""
+        update: "",
+        updateToggle: false
     }
 
     deleteFriends = () => {
@@ -37,13 +38,15 @@ class FriendsList extends Component {
             <p>{this.props.friend.age}</p>
             <p>{this.props.friend.email}</p>
             <button onClick={this.deleteFriends}> DEL </button>
-            <button onClick={this.updateFriends}> UPD </button>
-            <input 
+            <button onClick={() => {this.setState({updateToggle: !this.state.updateToggle})}}> EDIT </button>
+            {this.state.updateToggle ?
+            <div>
+            <button onClick={this.updateFriends}> UPD </button> 
+            <input
             name="update"
             placeholder="Update your name here.."
             value={this.state.update}
-            onChange={this.changeHandler2}
-            />
+            onChange={this.changeHandler2} /> </div> : null}
         </div>
     ) }
 }
