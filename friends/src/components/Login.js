@@ -9,14 +9,13 @@ const Login = props => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        console.log(user);
+
         axios
         .post('http://localhost:5000/api/login', user)
         .then(res=>{
-            // console.log('success!', res)
-            console.log(res.data.payload)
+
             localStorage.setItem('token', res.data.payload);
-            props.history.push('/protected');
+            props.history.push('/friendslist');
         })
         .catch(err=>{
             console.log("ERROR", err);
