@@ -19,7 +19,6 @@ function App() {
       
       <PrivateRoute path='/protected'  component = {FriendsList} />
       <Route path = "/login" component={Login}/>
-      {/* <Route path = "/friendslist" component={FriendsList}/> */}
     </div>
   );
 }
