@@ -11,7 +11,6 @@ const FriendsList = props => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    //   setLoading(true);
     axiosWithAuth()
       .get("http://localhost:5000/api/friends")
       .then(res => {

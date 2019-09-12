@@ -14,10 +14,10 @@ function App() {
         <Link to="/login">Login</Link>
         <br /><br />
 
-      <Link to="/protected">Protected</Link>
+      <Link to="/friends">Protected</Link>
       <br /><br />
       
-      <PrivateRoute path='/protected'  component = {FriendsList} />
+      <PrivateRoute path='/friends'  component = {FriendsList} />
       <Route path = "/login" component={Login}/>
     </div>
   );
