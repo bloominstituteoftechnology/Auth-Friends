@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "./AxiosAuth";
 
 const EditFriend = props => {
-    const id = props.match.params.id;
-    console.log(id);
     
+    // console.log(id);
+
   const [display, setDisplay] = useState(false);
   const [friend, setFriend] = useState({
     id: null,
@@ -21,10 +21,11 @@ const EditFriend = props => {
     });
   };
   const handleSubmit = e => {
+    const id = props.match.params.id;
     e.preventDefault();
     if (friend.name != "" && friend.age != "" && friend.email != "") {
       axiosWithAuth()
-        .post("http://localhost:5000/api/friends", friend)
+        .put(`http://localhost:5000/api/friends/${id}`, friend)
         .then(res => {
           props.history.push("/friends");
         })
@@ -40,10 +41,15 @@ const EditFriend = props => {
   };
 
   useEffect(() => {
+    const id = props.match.params.id;
     axiosWithAuth()
-      .get("http://localhost:5000/api/friends")
+      .get(`http://localhost:5000/api/friends/${id}`)
       .then(res => {
+          console.log(res);
         setDisplay(true);
+        setFriend({
+            ...res.data
+        })
       })
       .catch(err => {
         localStorage.setItem("token", null);
