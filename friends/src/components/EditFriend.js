@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "./AxiosAuth";
 
 const EditFriend = props => {
-    
-    // console.log(id);
-
   const [display, setDisplay] = useState(false);
   const [friend, setFriend] = useState({
     id: null,
@@ -27,17 +24,8 @@ const EditFriend = props => {
       axiosWithAuth()
         .put(`http://localhost:5000/api/friends/${id}`, friend)
         .then(res => {
-          props.setFriends(res.data);
-          console.log('submitting');
           props.history.push("/friends");
-        })
-        // .catch(err => {});
-    //   setFriend({
-    //     id: null,
-    //     name: "",
-    //     age: "",
-    //     email: ""
-    //   });
+        });
     }
   };
 
@@ -46,11 +34,11 @@ const EditFriend = props => {
     axiosWithAuth()
       .get(`http://localhost:5000/api/friends/${id}`)
       .then(res => {
-          console.log(res);
+        console.log(res);
         setDisplay(true);
         setFriend({
-            ...res.data
-        })
+          ...res.data
+        });
       })
       .catch(err => {
         localStorage.setItem("token", null);
