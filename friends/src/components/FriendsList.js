@@ -32,7 +32,7 @@ const FriendsList = props => {
       {friends && friends.map(friend => {
         return <Friend key={friend.id} friend={friend} />;
       })}
-      <PrivateRoute path='/add'  component = {AddFriend} />
+      
     </div>
   );
 };
