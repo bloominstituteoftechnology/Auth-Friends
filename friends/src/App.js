@@ -5,7 +5,7 @@ import FriendsList from './components/FriendsList';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import AddFriend from './components/AddFriend';
-// import Protect from './components'
+import EditFriend from './components/EditFriend';
 
 function App() {
 
@@ -20,6 +20,7 @@ function App() {
       
       <PrivateRoute path='/friends'  component = {FriendsList} />
       <PrivateRoute path='/add'  component={AddFriend} />
+      <PrivateRoute path='/edit/:id'  component={EditFriend} />
       <Route path = "/login" component={Login}/>
     </div>
   );

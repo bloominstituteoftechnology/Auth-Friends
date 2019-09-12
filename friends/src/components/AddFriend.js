@@ -18,23 +18,14 @@ const AddFriend = props => {
     });
   };
   const handleSubmit = e => {
-      
     e.preventDefault();
-    console.log("submit");
-    console.log(friend);
     if (friend.name != "" && friend.age != "" && friend.email != "") {
       axiosWithAuth()
         .post("http://localhost:5000/api/friends", friend)
         .then(res => {
-            props.history.push('/friends')
-        //   setFriends(res.data);
-        //   setLoading(false);
+          props.history.push("/friends");
         })
-        .catch(err => {
-        //   localStorage.setItem("token", null);
-        //   props.history.push("/login");
-        //   setLoading(false);
-        });
+        .catch(err => {});
 
       setFriend({
         id: null,
