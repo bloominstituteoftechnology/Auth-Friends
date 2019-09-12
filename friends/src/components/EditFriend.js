@@ -30,13 +30,12 @@ const EditFriend = props => {
           props.history.push("/friends");
         })
         .catch(err => {});
-
-      setFriend({
-        id: null,
-        name: "",
-        age: "",
-        email: ""
-      });
+    //   setFriend({
+    //     id: null,
+    //     name: "",
+    //     age: "",
+    //     email: ""
+    //   });
     }
   };
 
@@ -82,7 +81,7 @@ const EditFriend = props => {
             value={friend.email}
             onChange={handleChange}
           />
-          <button>Add my new friend!!</button>
+          <button>Edit friend!!</button>
         </form>
       )}
     </div>

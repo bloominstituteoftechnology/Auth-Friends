@@ -6,7 +6,8 @@ const Friend = props => {
   };
 
   const handleEdit = () => {
-    console.log("edit ", props.friend.name);
+    // console.log("edit ", props.friend.name);
+    props.history.push(`/edit/${props.friend.id}`);
   };
   return (
     <div>

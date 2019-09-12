@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const FriendsList = props => {
   const [friends, setFriends] = useState();
   const [loading, setLoading] = useState(true);
+  console.log(props.history);
 
   useEffect(() => {
     axiosWithAuth()
@@ -30,7 +31,7 @@ const FriendsList = props => {
 
       {friends &&
         friends.map(friend => {
-          return <Friend key={friend.id} friend={friend} />;
+          return <Friend key={friend.id} friend={friend} history={props.history} />;
         })}
     </div>
   );
