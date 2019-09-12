@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "./AxiosAuth";
 import Friend from "./Friend";
-// import PrivateRoute from "./PrivateRoute";
-// import AddFriend from "./AddFriend";
 import { Link } from "react-router-dom";
 
 const FriendsList = props => {
   const [friends, setFriends] = useState();
   const [loading, setLoading] = useState(true);
-  console.log(props.history);
 
   useEffect(() => {
     axiosWithAuth()
@@ -24,6 +21,19 @@ const FriendsList = props => {
       });
   }, []);
 
+  const handleDelete = (e, id) => {
+    console.log("ID ISS....", id);
+    e.preventDefault();
+    console.log("here");
+    axiosWithAuth()
+      .delete(`http://localhost:5000/api/friends/${id}`)
+      .then(res => {
+        setFriends(res.data);
+        console.log("success");
+        console.log(res.data);
+      });
+  };
+
   return (
     <div>
       {loading && "Finding your friends... Please hold..."}
@@ -31,7 +41,14 @@ const FriendsList = props => {
 
       {friends &&
         friends.map(friend => {
-          return <Friend key={friend.id} friend={friend} history={props.history} />;
+          return (
+            <Friend
+              key={friend.id}
+              friend={friend}
+              history={props.history}
+              handleDelete={handleDelete}
+            />
+          );
         })}
     </div>
   );

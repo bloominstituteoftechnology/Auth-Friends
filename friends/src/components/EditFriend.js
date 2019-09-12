@@ -27,9 +27,11 @@ const EditFriend = props => {
       axiosWithAuth()
         .put(`http://localhost:5000/api/friends/${id}`, friend)
         .then(res => {
+          props.setFriends(res.data);
+          console.log('submitting');
           props.history.push("/friends");
         })
-        .catch(err => {});
+        // .catch(err => {});
     //   setFriend({
     //     id: null,
     //     name: "",

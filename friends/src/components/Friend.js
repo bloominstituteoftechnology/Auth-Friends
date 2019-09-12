@@ -1,19 +1,18 @@
 import React from "react";
+import { axiosWithAuth } from "./AxiosAuth";
 
 const Friend = props => {
-  const handleDelete = () => {
-    console.log("delete ", props.friend.name);
-  };
-
-  const handleEdit = () => {
-    // console.log("edit ", props.friend.name);
+  const handleEdit = e => {
+    e.preventDefault();
     props.history.push(`/edit/${props.friend.id}`);
   };
   return (
     <div>
-      <button onClick={() => handleEdit()}>Edit</button>
+      <button onClick={e => handleEdit(e)}>Edit</button>
       {props.friend.name}
-      <button onClick={() => handleDelete()}>delete</button>
+      <button onClick={e => props.handleDelete(e, props.friend.id)}>
+        delete
+      </button>
     </div>
   );
 };
