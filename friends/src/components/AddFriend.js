@@ -13,10 +13,12 @@ const AddFriend = props => {
   const handleChange = e => {
     setFriend({
       ...friend,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      id: Date.now()
     });
   };
   const handleSubmit = e => {
+      
     e.preventDefault();
     console.log("submit");
     console.log(friend);
