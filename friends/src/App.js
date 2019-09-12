@@ -12,13 +12,14 @@ function App() {
     <div className="App">
      
         <Link to="/login">Login</Link>
-        <br />
-      <Link to="/friendslist">Friends</Link>
-      <br />
+        <br /><br />
+
+      <Link to="/protected">Protected</Link>
+      <br /><br />
       
-      
+      <PrivateRoute path='/protected'  component = {FriendsList} />
       <Route path = "/login" component={Login}/>
-      <Route path = "/friendslist" component={FriendsList}/>
+      {/* <Route path = "/friendslist" component={FriendsList}/> */}
     </div>
   );
 }
@@ -26,3 +27,4 @@ function App() {
 
 
 export default App;
+
