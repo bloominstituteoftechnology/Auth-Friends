@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "./AxiosAuth";
 import Friend from "./Friend";
 import { Link } from "react-router-dom";
+import {Card} from 'semantic-ui-react';
 
 const FriendsList = props => {
   const [friends, setFriends] = useState();
@@ -38,7 +39,7 @@ const FriendsList = props => {
     <div>
       {loading && "Finding your friends... Please hold..."}
       {friends && <Link to="/add">Add New Friend</Link>}
-
+    <Card.Group className="card-group">
       {friends &&
         friends.map(friend => {
           return (
@@ -50,6 +51,7 @@ const FriendsList = props => {
             />
           );
         })}
+        </Card.Group>
     </div>
   );
 };
