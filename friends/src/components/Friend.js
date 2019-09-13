@@ -3,7 +3,6 @@ import { axiosWithAuth } from "./AxiosAuth";
 import {Card, Button, Image} from 'semantic-ui-react';
 
 const Friend = props => {
-  console.log(props);
   const handleEdit = e => {
     e.preventDefault();
     props.history.push(`/edit/${props.friend.id}`);

@@ -15,13 +15,15 @@ const Login = props => {
       axiosWithAuth()
         .get("http://localhost:5000/api/friends")
         .then(res => {
+          props.setLogged(false);
           props.history.push("/friends");
         })
         .catch(err => {
           localStorage.setItem("token", null);
+          props.setLogged(true);
           setDisplay(true);
         });
-    } else{
+    } else {
       setDisplay(true);
     }
   }, []);
@@ -33,9 +35,11 @@ const Login = props => {
       .post("http://localhost:5000/api/login", user)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
+        props.setLogged(false);
         props.history.push("/friends");
       })
       .catch(err => {
+        props.setLogged(true);
         console.log("ERROR", err);
       });
   };

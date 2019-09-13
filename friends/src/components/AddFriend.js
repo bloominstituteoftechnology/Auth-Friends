@@ -44,7 +44,7 @@ const AddFriend = props => {
       })
       .catch(err => {
         localStorage.setItem("token", null);
-        props.history.push("/login");
+        props.history.push("/");
       });
   }, []);
 
