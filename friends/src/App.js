@@ -14,6 +14,7 @@ function App(props) {
   const [logged, setLogged] = useState(true);
   return (
     <div className="App">
+      <br />
       {logged && <Button>
       <Link to="/">Log In</Link>
       </Button>}
