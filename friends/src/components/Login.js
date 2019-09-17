@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { axiosWithAuth } from "./AxiosAuth";
+import {Input, Button} from 'semantic-ui-react';
 
 const Login = props => {
   const [user, setUser] = useState({
@@ -13,7 +14,7 @@ const Login = props => {
     const token = localStorage.getItem("token");
     if (token) {
       axiosWithAuth()
-        .get("http://localhost:5000/api/friends")
+        .get("friends")
         .then(res => {
           props.setLogged(false);
           props.history.push("/friends");
@@ -54,21 +55,21 @@ const Login = props => {
     <div>
       {display && (
         <form onSubmit={handleSubmit}>
-          <input
+          <Input
             type="text"
             name="username"
             placeholder="Enter username"
             value={user.username}
             onChange={handleChange}
           />
-          <input
+          <Input
             type="password"
             name="password"
             placeholder="Enter Password"
             value={user.password}
             onChange={handleChange}
           />
-          <button>Submit</button>
+          <Button>Submit</Button>
         </form>
       )}
     </div>

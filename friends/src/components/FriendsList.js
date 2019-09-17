@@ -10,7 +10,7 @@ const FriendsList = props => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get("http://localhost:5000/api/friends")
+      .get("friends")
       .then(res => {
         setFriends(res.data);
         setLoading(false);
@@ -25,7 +25,7 @@ const FriendsList = props => {
   const handleDelete = (e, id) => {
     e.preventDefault();
     axiosWithAuth()
-      .delete(`http://localhost:5000/api/friends/${id}`)
+      .delete(`friends/${id}`)
       .then(res => {
         setFriends(res.data);
       });

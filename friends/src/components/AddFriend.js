@@ -21,7 +21,7 @@ const AddFriend = props => {
     e.preventDefault();
     if (friend.name != "" && friend.age != "" && friend.email != "") {
       axiosWithAuth()
-        .post("http://localhost:5000/api/friends", friend)
+        .post("friends", friend)
         .then(res => {
           props.history.push("/friends");
         })
@@ -38,7 +38,7 @@ const AddFriend = props => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get("http://localhost:5000/api/friends")
+      .get("friends")
       .then(res => {
         setDisplay(true);
       })

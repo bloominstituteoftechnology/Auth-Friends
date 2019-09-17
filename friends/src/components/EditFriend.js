@@ -22,7 +22,7 @@ const EditFriend = props => {
     e.preventDefault();
     if (friend.name != "" && friend.age != "" && friend.email != "") {
       axiosWithAuth()
-        .put(`http://localhost:5000/api/friends/${id}`, friend)
+        .put(`friends/${id}`, friend)
         .then(res => {
           props.history.push("/friends");
         });
@@ -32,7 +32,7 @@ const EditFriend = props => {
   useEffect(() => {
     const id = props.match.params.id;
     axiosWithAuth()
-      .get(`http://localhost:5000/api/friends/${id}`)
+      .get(`friends/${id}`)
       .then(res => {
         console.log(res);
         setDisplay(true);
