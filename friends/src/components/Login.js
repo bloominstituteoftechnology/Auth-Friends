@@ -4,7 +4,8 @@ import axios from 'axios';
 // username: Lambda School
 // password: i<3Lambd4
 
-const Login = (props) => {
+const Login = ({ history }) => {
+
     const [creds, setCreds] = useState({username: "", password: ""});
     const handleChange = event => {
         setCreds({...creds, [event.target.name]: event.target.value});
@@ -16,6 +17,7 @@ const Login = (props) => {
             .then(res => {
                 console.log(res);
                 localStorage.setItem('token', res.data.payload)
+                history.push("/friends");
             })
             .catch(err => console.group(err.response));
     };
