@@ -32,8 +32,8 @@ const Login = props => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:5000/api/login", user)
+    axiosWithAuth()
+      .post("login", user)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         props.setLogged(false);
