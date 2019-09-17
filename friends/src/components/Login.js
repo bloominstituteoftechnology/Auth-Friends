@@ -9,12 +9,12 @@ const Login = (props) => {
         <form>
             <input type="type"
                     name="username"
-                    placeholder="username"
+                    placeholder="Username"
                     onChange={handleChange}
                     value={creds.username} />
             <input type="password"
                     name="password"
-                    placeholder="password"
+                    placeholder="Password"
                     onChange={handleChange}
                     value={creds.password} />
             <button type="submit">Log In</button>
