@@ -24,12 +24,18 @@ const Friends = (props) => {
         .catch(err => console.log(err.response));
     };
 
+    const deleteFriend = id => {
+        console.log(id);
+    };
+
     return (
         <div>
             <h2>Friends</h2>
             <FriendsList submitFriend={addFriend}/>
             {friendsList.map(friend => {
-                return <Card key={friend.id} friend={friend} />;
+                return <Card key={friend.id}
+                             friend={friend}
+                             deleteFriend={deleteFriend}/>;
             })}
         </div>
     );
