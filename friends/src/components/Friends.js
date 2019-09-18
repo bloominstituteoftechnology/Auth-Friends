@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 import axiosAuth from '../utilities/Authorization';
 import FriendsList from './FriendsList';
+import Card from './Card';
 
 const Friends = (props) => {
     const [friendsList, setFriendsList] = useState([]);
@@ -28,7 +29,7 @@ const Friends = (props) => {
             <h2>Friends</h2>
             <FriendsList submitFriend={addFriend}/>
             {friendsList.map(friend => {
-                return <div key={friend.id}>{friend.name}</div>;
+                return <Card key={friend.id} friend={friend} />;
             })}
         </div>
     );
