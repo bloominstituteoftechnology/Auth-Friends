@@ -13,14 +13,35 @@ const Add = props => {
 
   return (
     <form
+      className="addFriend"
       onSubmit={e => {
         e.preventDefault();
         props.addUser(newUser);
       }}
     >
-      <input type="text" name="name" onChange={handleChanges} />
-      <input type="number" name="age" onChange={handleChanges} />
-      <input type="text" name="email" onChange={handleChanges} />
+      Name{" "}
+      <input
+        type="text"
+        name="name"
+        onChange={handleChanges}
+        placeholder="Name"
+      />{" "}
+      <br />
+      Age{" "}
+      <input
+        type="number"
+        name="age"
+        onChange={handleChanges}
+        placeholder="Age"
+      />
+      <br />
+      Email{" "}
+      <input
+        type="text"
+        name="email"
+        onChange={handleChanges}
+        placeholder="Email"
+      />
       <button>New Friends</button>
     </form>
   );

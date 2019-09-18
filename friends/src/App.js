@@ -4,6 +4,7 @@ import { Link, Route, Switch } from "react-router-dom";
 import { axize } from "./actions/axize";
 // import PrivateRoute from "./actions/PrivateRoute";
 import "./App.css";
+import Add from "./components/Add";
 import Friends from "./components/Friends";
 import LoginForm from "./components/LoginForm";
 
@@ -59,11 +60,12 @@ function App(props) {
             <Link to="/users">Friends</Link>
           </li>
         </ul>
+        <Add addUser={addUser} />
 
         <Switch>
           <Route
             exact
-            path="/"
+            path="/login"
             render={props => <LoginForm {...props} submitUser={submitUser} />}
           />
 

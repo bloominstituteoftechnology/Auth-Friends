@@ -11,7 +11,7 @@ const User = props => {
   }
 
   return (
-    <>
+    <div className="friends">
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -69,7 +69,7 @@ const User = props => {
       >
         Edify
       </button>
-    </>
+    </div>
   );
 };
 

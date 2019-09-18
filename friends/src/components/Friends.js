@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Add from "./Add";
 import User from "./User";
 
 const Friends = props => {
@@ -9,7 +8,7 @@ const Friends = props => {
 
   if (props.list.length)
     return (
-      <>
+      <div className="friendList">
         {props.list.map((user, id) => (
           <User
             key={id * Math.random()}
@@ -18,9 +17,7 @@ const Friends = props => {
             delUser={props.delUser}
           />
         ))}
-
-        <Add addUser={props.addUser} />
-      </>
+      </div>
     );
 
   return <h1>NO USERS</h1>;
