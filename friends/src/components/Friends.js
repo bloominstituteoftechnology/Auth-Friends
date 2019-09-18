@@ -46,7 +46,7 @@ const Friends = () => {
         <form onSubmit={handleSubmit}>
             <input type="text" name="name" placeholder="name" value={newFriend.name} onChange={handleChange}/>
             <input type="text" name="age" placeholder="age" value={newFriend.age} onChange={handleChange}/>
-            <input type="text" name="email" placeholder="age" value={newFriend.email} onChange={handleChange}/>
+            <input type="text" name="email" placeholder="email" value={newFriend.email} onChange={handleChange}/>
             <button>addFriend</button>
         </form>
         {friends.friends.map(friend =><h1 key={friend.id}>{friend.name}</h1>)}  
