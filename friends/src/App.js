@@ -5,22 +5,33 @@ import Friends from './components/Friends';
 import { Route, Link, Redirect } from 'react-router-dom';
 // import { prependOnceListener } from 'cluster';
 
-const ProtectedRoute = (props) => {
-  const propsWithNoComponent = {...props, component: undefined};
-  return <Route {...propsWithNoComponent} render={props => {
+const PrivateRoute = ({component: Component, ...rest}) => {
+  // const propsWithNoComponent = {...props, component: undefined};
+  return <Route {...rest} render={props => {
     if (localStorage.getItem('token')) {
-      return <props.component {...props} />;
+      return <Component {...props} />;
     } else {
       return <Redirect to="/login" />;
     }
   }} />;
 };
 
+const protectRoute = Component => props => {
+  if (localStorage.getItem('token')) {
+    return <Component {...props} />;
+  } else {
+    return <Redirect to="/login" />;
+  }
+}
+
+const FriendsRoute = protectRoute(Friends);
+
 function App() {
   return (
     <div className="App">
       <Route path="/login" component={Login} />
-      <ProtectedRoute path="/friends" component={Friends} />
+      {/* <Route path="/friends" component={FriendsRoute}/> */}
+      <PrivateRoute path="/friends" component={Friends} />
     </div>
   );
 }
