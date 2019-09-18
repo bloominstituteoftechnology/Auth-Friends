@@ -6,16 +6,17 @@ import Card from './Card';
 
 const Friends = (props) => {
     const [friendsList, setFriendsList] = useState([]);
-    useEffect(() => {
+
+    const getFriends = () => {
         axiosAuth().get('http://localhost:5000/api/friends')
-        //     headers: {
-        //         Authorization: localStorage.getItem('token')
-        //     }
-        // })
-            .then(res => {
-                setFriendsList(res.data);
-            })
-            .catch(err => console.log(err.response));
+        .then(res => {
+            setFriendsList(res.data);
+        })
+        .catch(err => console.log(err.response));
+    };
+
+    useEffect(() => {
+        getFriends();
     }, []);
 
     const addFriend = friend => {
@@ -27,7 +28,7 @@ const Friends = (props) => {
     const deleteFriend = id => {
         // console.log(id);
         axiosAuth().delete(`http://localhost:5000/api/friends/${id}`)
-            .then(res => console.log(res))
+            .then(res => setFriendsList(res.data))
             .catch(err => console.log(err.response));
     };
 
