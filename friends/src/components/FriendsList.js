@@ -12,7 +12,7 @@ const FriendsList = props => {
         // call withAuth fn >> find endpoint of /friends >> udpate state to the response
         axiosWithAuth().get('/friends')
         .then(res => setName(res.data))
-        .catch()
+        .catch(err => console.log(err))
     }, [])
 
 

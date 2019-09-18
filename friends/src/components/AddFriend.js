@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, withFormik, Field, Form } from 'formik';
+import { withFormik, Field, Form } from 'formik';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const AddFriend = props => {
@@ -25,7 +25,7 @@ const AddFriend = props => {
                 name="email"
                 placeholder="E-mail"
             />
-            <button className="login-btn">Submit Friend</button>
+            <button className="login-btn" type="submit">Submit Friend</button>
         </Form>
     )
 }
