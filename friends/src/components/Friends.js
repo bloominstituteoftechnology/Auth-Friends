@@ -25,7 +25,10 @@ const Friends = (props) => {
     };
 
     const deleteFriend = id => {
-        console.log(id);
+        // console.log(id);
+        axiosAuth().delete(`http://localhost:5000/api/friends/${id}`)
+            .then(res => console.log(res))
+            .catch(err => console.log(err.response));
     };
 
     return (
