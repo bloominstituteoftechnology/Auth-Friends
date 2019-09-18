@@ -17,10 +17,16 @@ const Friends = (props) => {
             .catch(err => console.log(err.response));
     }, []);
 
+    const addFriend = friend => {
+        axiosAuth().post('http://localhost:5000/api/friends', friend)
+        .then(res => setFriendsList(res.data))
+        .catch(err => console.log(err.response));
+    };
+
     return (
         <div>
             <h2>Friends</h2>
-            <FriendsList />
+            <FriendsList submitFriend={addFriend}/>
             {friendsList.map(friend => {
                 return <div key={friend.id}>{friend.name}</div>;
             })}
