@@ -1,14 +1,15 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+
 class Login extends React.Component {
 
     //set default state with empty creds obj
     state = {
-        credentials: {
+        credentials:[ {
             username: '',
             password:''
-        }
+        }]
     };
 
     // Handlers below
@@ -33,8 +34,8 @@ class Login extends React.Component {
           .then(res => {
               // save the returned token to localStorage ***
             localStorage.setItem('token', res.data.payload);
-            // navigate your user to your FriendsList route *** aka pushing to our protected route
-            this.props.history.push('/friends');
+            // navigate your user to your login route *** aka pushing to our protected route
+            this.props.history.push('/protected');
           })
           .catch(err => console.log(err));
       };
@@ -48,14 +49,16 @@ class Login extends React.Component {
                     name="username"
                     value={this.state.credentials.username}
                     onChange={this.handleChange}
+                    placeholder="Email"
                 />
                 <input
                     type="password"
                     name="password"
                     value={this.state.credentials.password}
                     onChange={this.handleChange}
+                    placeholder="Password"
                 />
-                <button>Log In</button>
+                <button className="login-btn">Log In</button>
             </form>
         </div>
     )}// end render

@@ -1,33 +1,283 @@
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script|Prompt|Roboto');
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
+  font-family: 'Roboto', sans-serif;
   text-align: center;
+  padding-bottom: 36px;
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+ul {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+  margin: 0 0 36px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+li {
+  list-style: none;
+  margin-right: 6px;
+  color: #204963;
+}
+
+a {
+  text-decoration: none;
+  padding: 6px;
+  color: #204963;
+}
+
+.gas-wrapper {
+  background-color: #d0c5bb;
+  display: flex;
+  width: fit-content;
+  flex-flow: column nowrap;
+  margin: 0 auto;
+  padding: 24px 58px;
+}
+
+.title-wrapper {
+  background-color: #d0c5bb;
+  padding: 24px 58px;
+  width: 539px;
+  margin: 0 auto;
+}
+
+.title {
+  background-color: #204963;
+  width: 300px;
+  padding: 6px;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.inner-wrapper {
+  background-color: #ffffff;
+  padding: 4px;
+}
+
+.top-title {
+  font-family: 'Prompt', sans-serif;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.62);
+  font-size: 32px;
+  background-color: #ea7158;
+  color: #ffffff;
+}
+
+.bottom-title {
+  font-family: 'Kaushan Script', cursive;
+  color: #204963;
+  font-size: 22px;
+}
+
+.key {
+  background-color: #d0c5bb;
+  padding: 24px 58px;
+  width: 539px;
+  margin: 0 auto;
+  display: flex;
   align-items: center;
+}
+
+.US-key {
+  width: 28px;
+  height: 12px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  margin: 0 6px;
+}
+
+.Hawaii-key {
+  width: 28px;
+  height: 12px;
+  border-radius: 4px;
+  background-color: #204963;
+  margin: 0 6px;
+}
+
+.US-key-text {
+  color: #ffffff;
+  margin: 0;
+  margin-right: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+}
+
+.Hawaii-key-text {
+  color: #204963;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+}
+
+.spinner {
+  display: flex;
+  flex-flow: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  color: #204963;
 }
 
-.App-link {
-  color: #61dafb;
+.year {
+  border-left: 1px solid #ea7158;
+  border-top: 1px solid #ea7158;
+  border-bottom: 1px solid #ea7158;
+  margin: 0 0 32px;
+  height: 376px;
+  font-size: 8px;
+  color: #ea7158;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.year:first-of-type {
+  margin-top: 10px;
+}
+
+.year:last-of-type {
+  height: 205px;
+  margin: 0;
+}
+
+.columns {
+  display: flex;
+}
+
+.price-graph {
+  position: relative;
+}
+
+.date {
+  position: absolute;
+  left: 0;
+  top: -3px;
+  z-index: 12;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  left: -6px;
+  background-color: #ea7158;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date > p {
+  color: #ffffff;
+  font-size: 10px;
+  margin: 0;
+}
+
+.hawaii-graph {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.hawaii-graph > p {
+  margin: 0;
+  margin-left: 6px;
+  color: #204963;
+  font-size: 10px;
+}
+
+.hawaii-line {
+  background-color: #204963;
+  height: 22px;
+  border-radius: 3px;
+}
+
+.us-graph {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  top: 4px;
+}
+
+.us-line {
+  background-color: #ffffff;
+  height: 14px;
+  border-radius: 2px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-right: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.us-line > p {
+  margin: 0;
+  margin-left: 6px;
+  color: #204963;
+  font-size: 8px;
+}
+
+.Login {
+  border: 1.5px solid #252524;
+  border-radius: 7px;
+
+  width: 70%;
+  height: 20vh;
+
+  margin-left: 20%;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  background-color: #204963;
+}
+
+input {
+  border-radius: 7px;
+
+  margin-top: 20%;
+  margin-left: 15px;
+
+  background-color: #c4cdd3
+}
+
+input:hover {
+  opacity: 0.6;
+}
+
+.login-btn {
+  border-radius: 7px;
+  margin-left: 15px;
+}
+
+.login-btn:hover {
+  opacity: 0.6;
+}
+
+.card {
+  /* margin-left: 45%; */
+}
+
+.col {
+
+  margin-left: 10%;
+}
+
+.row {
+  /* border: 1px solid red; */
+
+  width: 70%;
+  margin-left: 30%;
+}
+
+.add-friend {
+  background-color: skyblue;
 }
