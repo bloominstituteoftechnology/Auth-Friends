@@ -1,5 +1,7 @@
 import React from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import Friend from './Friend';
+import AddFriend from './AddFriend';
 
 function FriendsList() {
 	
@@ -9,6 +11,10 @@ function FriendsList() {
 		axiosWithAuth().get("/friends")
 			.then(res => setFriends(res.data))
 	}, [])
+
+	function updateFriends(arr) {
+		setFriends(arr)
+	}
 
 	if(friends.length === 0){
 		return(
@@ -20,16 +26,10 @@ function FriendsList() {
 	return (
 		<div>
 			<h1>Your Friends List</h1>
+			<AddFriend updateFriends={updateFriends}/>
 			<div>
 				{friends.map(friend => {
-					return (
-						<div>
-							<h2>{friend.name}</h2>
-							<h3>{friend.email}</h3>
-							<h3>{friend.age}</h3>
-
-						</div>
-					)
+					return <Friend key={friend.id} friend={friend}/>
 				})}
 			</div>
 		</div>
