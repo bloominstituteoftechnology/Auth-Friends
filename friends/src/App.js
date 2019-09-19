@@ -3,10 +3,12 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Components 
+import Welcome from './components/Welcome';
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
 import PrivateRoute from './components/PrivateRoute';
 import AddFriend from './components/AddFriend'
+
 
 
 class App extends React.Component {
@@ -17,6 +19,9 @@ class App extends React.Component {
     <Router>
       <div className="App">
       <ul>
+      <li>
+          <Link to="/">Welcome</Link>
+        </li>
         <li>
           <Link to="/login">Login</Link>
         </li>
@@ -27,6 +32,7 @@ class App extends React.Component {
           <Link to="/protect">Add a Friend</Link>
         </li>
       </ul>
+      <Route exact path="/" component={Welcome} />
       <Switch>
         <PrivateRoute exact path="/protected" component={FriendsList} />
         <PrivateRoute exact path="/protect" component={AddFriend} />
