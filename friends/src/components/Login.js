@@ -61,11 +61,11 @@ class Login extends React.Component {
                 <button className="login-btn">Log In</button>
                 <p>
                   Login Credentials
-                  <br>
+                  <br/>
                   <span>Username: Username</span>
-                  <br>
+                  <br/>
                   <span>Password: Password</span>
-                  <br>
+                  <br/>
                 </p>
             </form>
         </div>
