@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-function UserLoginForm({ errors, touched, values }) {
+function UserLoginForm({ errors, touched}) {
 
     return (
         <Form>
