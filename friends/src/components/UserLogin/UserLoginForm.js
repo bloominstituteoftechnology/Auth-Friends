@@ -24,7 +24,8 @@ const FormikLoginForm = withFormik({
     mapPropsToValues({ userName, userPassword, setToken }) {
         return {
             userName: userName || "",
-            userPassword: userPassword || ""
+            userPassword: userPassword || "",
+            setToken: setToken
         };
     },
 
@@ -36,7 +37,15 @@ const FormikLoginForm = withFormik({
     }),
 
     handleSubmit(values, { props }) {
-
+        console.log(props)
+        axios.post('http://localhost:5000/api/login', {
+            username: values.userName,
+            password: values.userPassword
+        })
+        .then(res => {
+            props.setToken(res.data.payload);
+            localStorage.setItem('token', res.data.payload);
+        })
     }
 })(UserLoginForm)
 
