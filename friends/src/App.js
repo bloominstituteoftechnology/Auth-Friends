@@ -6,7 +6,7 @@ import axios from "axios";
 // COMPONENTS
 import Login from "./components/Login";
 import withAuth from "./axios";
-import Friends from "./components/Friends";
+import ListFriends from "./components/ListFriends";
 
 const initialLoginCredentials = {
   username: "",
@@ -72,7 +72,13 @@ function App(props) {
         <Route
           path="/friends"
           render={props => {
-            return <Friends {...props} setListFriends={setListFriends} />;
+            return (
+              <ListFriends
+                {...props}
+                setListFriends={setListFriends}
+                listFriends={listFriends}
+              />
+            );
           }}
         />
       </div>

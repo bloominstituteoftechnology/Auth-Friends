@@ -1,18 +1,23 @@
 import React, { useEffect } from "react";
 import withAuth from "../axios";
+import FriendCard from "./FriendCard";
 
-export default function Friends({ setListFriends }) {
+export default function ListFriends({ listFriends, setListFriends }) {
   useEffect(() => {
     withAuth()
       .get("http://localhost:5000/api/friends")
       .then(res => {
-        debugger;
         setListFriends(res.data);
       })
       .catch(error => {
-        debugger;
         alert(error.message);
       });
   }, []);
-  return <div>We are in Friends component</div>;
+  return (
+    <div>
+      {listFriends.map(friend => {
+        return <FriendCard key={friend.id} friend={friend} />;
+      })}
+    </div>
+  );
 }
