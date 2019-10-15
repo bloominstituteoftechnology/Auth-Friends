@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function Login({ loginCredentials, onTypeLoginCredentials }) {
+export default function Login({
+  loginCredentials,
+  onTypeLoginCredentials,
+  onSubmitLoginForm
+}) {
   return (
     <form>
       <label>
@@ -21,7 +25,7 @@ export default function Login({ loginCredentials, onTypeLoginCredentials }) {
           onChange={onTypeLoginCredentials}
         />
       </label>
-      <button>Login</button>
+      <button onClick={onSubmitLoginForm}>Login</button>
     </form>
   );
 }

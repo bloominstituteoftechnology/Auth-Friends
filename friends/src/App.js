@@ -16,13 +16,15 @@ function App() {
   );
 
   const onTypeLoginCredentials = event => {
-    // console.log(event.target.name);
-    // console.log(event.target.value);
     setLoginCredentials({
       ...loginCredentials,
       [event.target.name]: event.target.value
     });
   };
+
+  const onSubmitLoginForm = event => {
+    
+  }
   return (
     <div className="App">
       <nav>
@@ -39,6 +41,7 @@ function App() {
                 {...props}
                 loginCredentials={loginCredentials}
                 onTypeLoginCredentials={onTypeLoginCredentials}
+                onSubmitLoginForm={onSubmitLoginForm}
               />
             );
           }}
