@@ -10,7 +10,6 @@ export default function ListFriends({
   newFriend,
   onSubmitNewFriend
 }) {
-
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -31,18 +30,13 @@ export default function ListFriends({
         newFriend={newFriend}
         onSubmitNewFriend={onSubmitNewFriend}
       />
-      {
-        !isLoading ? (
+      {!isLoading ? (
         <div>Loading data...</div>
-        ) : (
-          listFriends.map(friend => {
-            return <FriendCard key={friend.id} friend={friend} />;
-          })
-        )
-      }
-      {/* {listFriends.map(friend => {
-        return <FriendCard key={friend.id} friend={friend} />;
-      })} */}
+      ) : (
+        listFriends.map(friend => {
+          return <FriendCard key={friend.id} friend={friend} />;
+        })
+      )}
     </div>
   );
 }
