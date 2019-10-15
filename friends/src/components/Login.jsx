@@ -1,17 +1,27 @@
-import React from 'react';
+import React from "react";
 
-export default function Login() {
-    return (
-        <form>
-            <label>
-                Username: 
-                <input type='text' />
-            </label>
-            <label>
-                Password:
-                <input type='text' />
-            </label>
-            <button>Login</button>
-        </form>
-    )
+export default function Login({ loginCredentials, onTypeLoginCredentials }) {
+  return (
+    <form>
+      <label>
+        Username:
+        <input
+          type="text"
+          name="username"
+          value={loginCredentials.username}
+          onChange={onTypeLoginCredentials}
+        />
+      </label>
+      <label>
+        Password:
+        <input
+          type="text"
+          name="password"
+          value={loginCredentials.password}
+          onChange={onTypeLoginCredentials}
+        />
+      </label>
+      <button>Login</button>
+    </form>
+  );
 }
