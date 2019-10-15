@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, withRouter } from "react-router-dom";
 import axios from "axios";
 
 // COMPONENTS
 import Login from "./components/Login";
 import withAuth from "./axios";
-import Axios from "axios";
+import Friends from "./components/Friends";
 
 const initialLoginCredentials = {
   username: "",
   password: ""
 };
 
-function App() {
+function App(props) {
+  // SLICES OF STATE
+
   const [loginCredentials, setLoginCredentials] = useState(
     initialLoginCredentials
   );
+  const [listFriends, setListFriends] = useState([]);
+
+  // LOGIN FORM RELATED FUNCTIONS: ONCHANGE AND SUBMIT
 
   const onTypeLoginCredentials = event => {
     setLoginCredentials({
@@ -30,16 +35,19 @@ function App() {
     axios
       .post("http://localhost:5000/api/login", loginCredentials)
       .then(res => {
-        localStorage.setItem('authorization', res.data.payload);
+        localStorage.setItem("authorization", res.data.payload);
+        props.history.push("/friends");
+        debugger;
       })
       .catch(error => {
-        alert(error.response.data.error)
+        alert(error.response.data.error);
       });
     setLoginCredentials({
       username: "",
-      password: "",
+      password: ""
     });
   };
+
   return (
     <div className="App">
       <nav>
@@ -61,9 +69,15 @@ function App() {
             );
           }}
         />
+        <Route
+          path="/friends"
+          render={props => {
+            return <Friends {...props} setListFriends={setListFriends} />;
+          }}
+        />
       </div>
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
