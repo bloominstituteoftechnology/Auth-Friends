@@ -1,3 +1,4 @@
+import React from 'react';
 import axios from 'axios';
 import { Redirect, Route } from 'react-router-dom';
 
@@ -11,7 +12,7 @@ export const axiosWithAuth = () => {
 	});
 };
 
-export const PrivateRoute = ({ component: Component, ...rest }) => (
+export const asRoute = ({ component: Component, ...rest }) => (
 	<Route
 		{...rest}
 		render={props =>
