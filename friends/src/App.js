@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Route, Link, withRouter } from "react-router-dom";
+import { Route, Link, withRouter, Redirect } from "react-router-dom";
 import axios from "axios";
 
 // COMPONENTS
@@ -37,7 +37,6 @@ function App(props) {
       .then(res => {
         localStorage.setItem("authorization", res.data.payload);
         props.history.push("/friends");
-        debugger;
       })
       .catch(error => {
         alert(error.response.data.error);
@@ -71,19 +70,24 @@ function App(props) {
         />
         <Route
           path="/friends"
-          render={props => {
-            return (
-              <ListFriends
-                {...props}
-                setListFriends={setListFriends}
-                listFriends={listFriends}
-              />
-            );
-          }}
+          render={props => withAuthcheck(ListFriends, props, setListFriends, listFriends)}
         />
       </div>
     </div>
   );
+}
+
+function withAuthcheck(Component, props, setListFriends, listFriends) {
+  if (localStorage.getItem("authorization")) {
+    return (
+      <Component
+        {...props}
+        setListFriends={setListFriends}
+        listFriends={listFriends}
+      />
+    );
+  }
+  return <Redirect to="/" />;
 }
 
 export default withRouter(App);
