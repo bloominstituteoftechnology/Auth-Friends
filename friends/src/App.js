@@ -74,15 +74,11 @@ function App(props) {
       })
       .then(res => {
         setListFriends(res.data);
+        setNewFriend(initialFriend);
       })
       .catch(error => {
         alert(error.message);
       });
-      setNewFriend({
-        name: '',
-        age: '',
-        email:'',
-      })
   };
 
   return (

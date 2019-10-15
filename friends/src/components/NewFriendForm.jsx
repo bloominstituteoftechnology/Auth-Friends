@@ -13,7 +13,7 @@ export default function NewFriendForm({
           type="text"
           name="name"
           onChange={onTypeNewFriendForm}
-          value={newFriend.name.value}
+          value={newFriend.name}
         />
       </label>
       <label>
@@ -22,7 +22,7 @@ export default function NewFriendForm({
           type="number"
           name="age"
           onChange={onTypeNewFriendForm}
-          value={newFriend.age.value}
+          value={newFriend.age}
         />
       </label>
       <label>
@@ -31,7 +31,7 @@ export default function NewFriendForm({
           type="email"
           name="email"
           onChange={onTypeNewFriendForm}
-          value={newFriend.email.value}
+          value={newFriend.email}
         />
       </label>
       <button onClick={onSubmitNewFriend}>Add Friend</button>
