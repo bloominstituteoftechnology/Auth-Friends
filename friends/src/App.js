@@ -30,10 +30,10 @@ function App() {
     axios
       .post("http://localhost:5000/api/login", loginCredentials)
       .then(res => {
-        debugger;
+        localStorage.setItem('authorization', res.data.payload);
       })
       .catch(error => {
-        debugger;
+        alert(error.response.data.error)
       });
     setLoginCredentials({
       username: "",
