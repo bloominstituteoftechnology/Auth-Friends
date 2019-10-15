@@ -2,8 +2,9 @@ import React from 'react'
 
 const Friend = (props) => {
 return(
-  <div>
-    <p>{props.name} Age: {props.age}</p>
+  <div className ="friend-card">
+    <h3>{props.name}</h3>
+    <p>Age: {props.age}</p>
     <p>{props.email}</p>
   </div>
   )

@@ -36,7 +36,7 @@ export default withFormik({
   axios
     .post(url, values)
     .then(response => {
-      console.log("token", response.data.payload);
+      console.log("token from axios", response.data.payload);
       localStorage.setItem("token", response.data.payload);
       formikBag.props.history.push("/friends");
     })

@@ -20,3 +20,34 @@
 .App-link {
   color: #09d3ac;
 }
+
+.friend-card {
+  border: 2px solid black;
+  border-radius:20px;
+  width:50%;
+  margin: 1% auto;
+  background:cadetblue;
+
+}
+
+.links {
+  display:flex;
+  width:60%;
+  justify-content: space-between;
+  margin: 1% auto;
+  font-weight:Bold;
+  text-decoration:none;
+  color:black;
+}
+a{
+  text-decoration:none;
+  color:rebeccapurple;
+}
+a:visited{
+  color:rebeccapurple;
+  text-decoration:none;
+}
+
+html {
+  background: goldenrod;
+}
