@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { Route, Link, withRouter, Redirect } from "react-router-dom";
 import axios from "axios";
+import uuid from "uuid";
 
 // COMPONENTS
 import Login from "./components/Login";
@@ -13,6 +14,12 @@ const initialLoginCredentials = {
   password: ""
 };
 
+const initialFriend = {
+  name: "",
+  age: "",
+  email: ""
+};
+
 function App(props) {
   // SLICES OF STATE
 
@@ -20,6 +27,8 @@ function App(props) {
     initialLoginCredentials
   );
   const [listFriends, setListFriends] = useState([]);
+
+  const [newFriend, setNewFriend] = useState(initialFriend);
 
   // LOGIN FORM RELATED FUNCTIONS: ONCHANGE AND SUBMIT
 
@@ -45,6 +54,35 @@ function App(props) {
       username: "",
       password: ""
     });
+  };
+
+  // NEW FRIEND FORM ON CHANGE AND POST TO SERVER
+
+  const onTypeNewFriendForm = event => {
+    setNewFriend({
+      ...newFriend,
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const onSubmitNewFriend = event => {
+    event.preventDefault();
+    withAuth()
+      .post("http://localhost:5000/api/friends", {
+        ...newFriend,
+        id: uuid()
+      })
+      .then(res => {
+        setListFriends(res.data);
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+      setNewFriend({
+        name: '',
+        age: '',
+        email:'',
+      })
   };
 
   return (
@@ -74,6 +112,9 @@ function App(props) {
           component={ListFriends}
           setListFriends={setListFriends}
           listFriends={listFriends}
+          onTypeNewFriendForm={onTypeNewFriendForm}
+          newFriend={newFriend}
+          onSubmitNewFriend={onSubmitNewFriend}
         />
         {/* <Route
           path="/friends"
@@ -97,10 +138,10 @@ function App(props) {
 //   return <Redirect to="/" />;
 // }
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component, path, ...rest }) => {
   return (
     <Route
-      {...rest}
+      path={path}
       render={props =>
         localStorage.getItem("authorization") ? (
           <Component {...props} {...rest} />
