@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Route, Link } from "react-router-dom";
+import axios from "axios";
 
 // COMPONENTS
 import Login from "./components/Login";
+import withAuth from "./axios";
+import Axios from "axios";
 
 const initialLoginCredentials = {
   username: "",
@@ -23,8 +26,20 @@ function App() {
   };
 
   const onSubmitLoginForm = event => {
-    
-  }
+    event.preventDefault();
+    axios
+      .post("http://localhost:5000/api/login", loginCredentials)
+      .then(res => {
+        debugger;
+      })
+      .catch(error => {
+        debugger;
+      });
+    setLoginCredentials({
+      username: "",
+      password: "",
+    });
+  };
   return (
     <div className="App">
       <nav>
