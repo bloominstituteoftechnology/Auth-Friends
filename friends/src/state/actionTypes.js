@@ -1,0 +1,7 @@
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const SET_LOADING = 'SET_LOADING';
+export const ON_LOGIN_INPUT_CHANGE = 'ON_LOGIN_INPUT_CHANGE';
+export const ON_FRIENDS_INPUT_CHANGE = 'ON_FRIENDS_INPUT_CHANGE';
+export const GET_FRIENDS_LIST = 'GET_FRIENDS_LIST';
+export const SET_FRIENDS_LIST = 'SET_FRIENDS_LIST';

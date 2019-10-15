@@ -1,36 +1,42 @@
 import React from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import * as actionCreators from '../state/actionCreators';
+import * as withAuth from '../helpers/withAuth';
 
-export const Login = ({ formData, setForm, onInputChange }) => {
+export const Login = ({ history, login, onLoginInputChange, attemptLogin, logout, isLoggedIn }) => {
 	const onLogin = (e) => {
 		e.preventDefault();
-		if(formData.username.length === 0 || formData.password.length === 0) return false;
-		axios.post(`http://localhost:5000/api/login`, formData)
-			.then(({ data }) => {
-				console.log('logged in', data);
-				localStorage.setItem('login_token', data.payload)
-				setForm({ username: "", password: "" });
-			})
-			.catch(err => console.log(err));
+		if(login.username.length === 0 || login.password.length === 0) return false;
+		attemptLogin(login);
+		history.push('/friends');
 	}
-	return (
+	const onInputChange = e => {
+		onLoginInputChange(e.target);
+	}
+	const onLogout = () => {
+		logout();
+		history.push('/');
+	}
+	return withAuth.isLoggedIn() ? (
+		<button onClick={onLogout}>Logout</button>
+	) : (
 		<>
 			<h1>Login</h1>
 			<form onSubmit={onLogin}>
-				<label htmlFor="username">Username</label>
+				<label htmlFor="username">Username (Lambda School)</label>
 				<input
 					id="username"
 					name="username"
 					type="text"
-					value={formData.username}
+					value={login.username}
 					onChange={onInputChange}
 				/>
-				<label htmlFor="password">Password</label>
+				<label htmlFor="password">Password (i&lt;3Lambd4)</label>
 				<input
 					id="password"
 					name="password"
 					type="password"
-					value={formData.password}
+					value={login.password}
 					onChange={onInputChange}
 				/>
 				<button type="submit">Submit</button>
@@ -39,4 +45,4 @@ export const Login = ({ formData, setForm, onInputChange }) => {
 	)
 }
 
-export default Login;
+export default connect(state => state, actionCreators)(Login);

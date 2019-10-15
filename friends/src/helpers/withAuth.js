@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect, Route } from 'react-router-dom';
 
-export const axiosWithAuth = () => {
-	const token = localStorage.getItem('token');
+export const asAxios = () => {
+	const token = localStorage.getItem('login_token');
 	return axios.create({
 		headers: {
 			'Content-Type': 'application/json',
@@ -12,15 +12,16 @@ export const axiosWithAuth = () => {
 	});
 };
 
-export const asRoute = ({ component: Component, ...rest }) => (
+export const asRoute = ({ component: Component, props = {}, ...rest }) => (
 	<Route
 		{...rest}
-		render={props =>
-			localStorage.getItem("token") ? (
-				<Component {...props} />
+		render={routeProps =>
+			localStorage.getItem('login_token') ? (
+				<Component {...routeProps} {...props} />
 			) : (
 				<Redirect to="/" />
 			)
 		}
 	/>
 );
+export const isLoggedIn = () => localStorage.getItem('login_token') ? true : false;
