@@ -68,26 +68,48 @@ function App(props) {
             );
           }}
         />
-        <Route
+        <PrivateRoute
+          exact
+          path="/friends"
+          component={ListFriends}
+          setListFriends={setListFriends}
+          listFriends={listFriends}
+        />
+        {/* <Route
           path="/friends"
           render={props => withAuthcheck(ListFriends, props, setListFriends, listFriends)}
-        />
+        /> */}
       </div>
     </div>
   );
 }
 
-function withAuthcheck(Component, props, setListFriends, listFriends) {
-  if (localStorage.getItem("authorization")) {
-    return (
-      <Component
-        {...props}
-        setListFriends={setListFriends}
-        listFriends={listFriends}
-      />
-    );
-  }
-  return <Redirect to="/" />;
-}
+// function withAuthcheck(Component, props, setListFriends, listFriends) {
+//   if (localStorage.getItem("authorization")) {
+//     return (
+//       <Component
+//         {...props}
+//         setListFriends={setListFriends}
+//         listFriends={listFriends}
+//       />
+//     );
+//   }
+//   return <Redirect to="/" />;
+// }
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        localStorage.getItem("authorization") ? (
+          <Component {...props} {...rest} />
+        ) : (
+          <Redirect to="/" />
+        )
+      }
+    />
+  );
+};
 
 export default withRouter(App);
