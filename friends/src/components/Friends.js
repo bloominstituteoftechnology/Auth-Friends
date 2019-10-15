@@ -7,7 +7,7 @@ import Friend from './Friend';
 export const Friends = (props) => {
 	const { 
 		isLoading, friendsList, addFriend, 
-		getFriendsList, onFriendsInputChange, addFriendToList 
+		getFriendsList, onFriendsInputChange, addFriendToList, editFriend
 	} = props;
 	useEffect(() => {
 		getFriendsList();
@@ -16,9 +16,9 @@ export const Friends = (props) => {
 	const onInputChange = e => {
 		onFriendsInputChange(e.target);
 	}
-	const onAddFriend = e => {
+	const onSubmitFriend = e => {
 		e.preventDefault();
-		addFriendToList(addFriend);
+		addFriend.id === null ? addFriendToList(addFriend) : editFriend(addFriend)
 	}
 	return withAuth.isLoggedIn() && isLoading ? (
 		<div className="friends">
@@ -29,11 +29,11 @@ export const Friends = (props) => {
 				<h1>List of friends</h1>
 				{
 					friendsList ?
-						friendsList.map(friend => <Friend key={friend.id} {...friend} />) :
+						friendsList.map(friend => <Friend key={friend.id} friend={friend} />) :
 						null
 				}
 				<h1>Add a friend</h1>
-				<form onSubmit={onAddFriend}>
+				<form onSubmit={onSubmitFriend}>
 					<label htmlFor="name">Name:</label>
 					<input
 						id="name"

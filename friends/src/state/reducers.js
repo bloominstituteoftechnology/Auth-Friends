@@ -56,6 +56,11 @@ export const addFriendReducer = (state = initialAddFriendFormState, action) => {
 				...state,
 				...action.payload
 			}
+		case types.EDIT_FRIEND:
+			return {
+				...state,
+				...action.payload
+			}
 			
 		default:
 			return state;

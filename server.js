@@ -91,7 +91,7 @@ app.get('/api/friends/:id', authenticator, (req, res) => {
 });
 
 app.post('/api/friends', authenticator, (req, res) => {
-  const friend = { id: getNextId(), ...req.body };
+  const friend = { ...req.body, id: getNextId() };
 
   friends = [...friends, friend];
 

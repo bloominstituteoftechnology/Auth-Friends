@@ -18,6 +18,28 @@ export const addFriendToList = friend => dispatch => {
 		})
 		.catch(err => console.log(err))
 }
+export const startEditFriend = friend => {
+	return { type: types.EDIT_FRIEND, payload: friend };
+}
+export const editFriend = friend => dispatch => {
+	dispatch(setLoading(true));
+	dispatch(setLoading(true));
+	withAuth.asAxios().put(`http://localhost:5000/api/friends/${friend.id}`, friend)
+		.then(({ data }) => {
+			dispatch(setFriendsList(data));
+			dispatch(setLoading(false));
+		})
+		.catch(err => console.log(err))
+}
+export const deleteFriend = id => dispatch => {
+	dispatch(setLoading(true));
+	withAuth.asAxios().delete(`http://localhost:5000/api/friends/${id}`)
+		.then(({ data }) => {
+			dispatch(setFriendsList(data));
+			dispatch(setLoading(false));
+		})
+		.catch(err => console.log(err))
+}
 export const getFriendsList = () => dispatch => {
 	withAuth.asAxios().get("http://localhost:5000/api/friends")
 		.then(({ data }) => {
