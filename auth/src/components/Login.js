@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Button, FormGroup, FormControl, FormLabel} from "react-bootstrap";
 import "../Login.css";
 import Logo from "../mischief.jpg";
+// import axios from 'axios';
+
+// const endpoint = `localhost:5000`;
 
 export default function Login(props) {
   const [email, setEmail] = useState("");
@@ -13,7 +16,7 @@ export default function Login(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-  }
+  };
 
   return (
     <div className="Login">
