@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import { axiosWithAuth } from '../utils/axiosWithAuth';
-import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+// import axios from "axios";
 
 // IF USING HOOKS
 const Login = () => {
@@ -19,11 +19,12 @@ const Login = () => {
   const login = e => {
     e.preventDefault();
     // axiosWithAuth ==> ?? an axios instance; .post() ==> ?? promise
-    axios
-      .post(`http://localhost:5000/api/login`, credentials)
+    axiosWithAuth()
+      .post(`/login`, credentials)
       .then(res => {
         localStorage.setItem("token", res.data.token);
         console.log(res);
+        props.history.push("/friends");
       })
       .catch(err => console.log(err));
   };
