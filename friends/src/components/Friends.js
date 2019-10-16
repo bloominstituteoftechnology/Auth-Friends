@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axiosWithAuth from "../utils/axiosWithAuth.js";
+import { axiosWithAuth } from "../utils/axiosWithAuth.js";
 
 // import AddFriend from './AddFriend.js'
 import Friend from "./Friend.js";

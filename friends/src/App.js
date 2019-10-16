@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 // import Footer from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
+import Friends from "./components/Friends";
 // import SignUp from "./components/SignUp";
 // import EventsPage from "./components/EventsPage";
 // import Event from "./components/Event";
@@ -15,7 +16,7 @@ function App() {
     <div className="App">
       <Navigation />
       <Switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/friends" component={Friends} />
         {/* <Route path="/register" component={SignUp} /> */}
         {/* <PrivateRoute exact path="/events-home" component={EventsPage} />

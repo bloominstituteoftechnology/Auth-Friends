@@ -3,7 +3,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 // import axios from "axios";
 
 // IF USING HOOKS
-const Login = () => {
+const Login = props => {
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
@@ -22,7 +22,7 @@ const Login = () => {
     axiosWithAuth()
       .post(`/login`, credentials)
       .then(res => {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.payload);
         console.log(res);
         props.history.push("/friends");
       })
