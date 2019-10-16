@@ -1,13 +1,16 @@
 @media all and (min-width: 480px) {
-    .logo {
-        width: 5%;
-        border-radius: 100%;
-        margin-bottom: 10px;
-    }
+    
     
     .Login {
       padding: 60px 0;
-      margin-top: 100px;
+      /* margin-top: 50px; */
+    }
+
+    .Login .logo {
+        width: 5%;
+        border-radius: 100%;
+        margin-bottom: 10px;
+        margin: 0 650px;
     }
   
     .Login form {

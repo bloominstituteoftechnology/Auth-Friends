@@ -7,6 +7,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.Routes{
+  display: flex;
+  list-style-type: none;
+  margin: 0 500px;
+  padding-top: 50px;
+}
+
+.Routes li {
+  padding: 0 40px;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

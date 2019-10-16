@@ -4,10 +4,12 @@ import './App.css';
 import Login from './components/Login';
 
 
+
 function App() {
   return (
     <div className="App">
-      <Login />
+      <h2 className="h2">Welcome to the App <br /> called App!</h2>
+      <p>A truly uninspiring browser experience. </p>
     </div>
   );
 }

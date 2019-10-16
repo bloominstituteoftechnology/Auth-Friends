@@ -11,6 +11,10 @@ body {
   height: 40vmin;
 }
 
+h2 {
+  margin-top: 150px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -23,5 +27,5 @@ body {
 }
 
 .App-link {
-  color: #09d3ac;
+  /* color: #09d3ac; */
 }
