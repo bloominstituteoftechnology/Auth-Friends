@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import "./Login.css";
+import { Button, FormGroup, FormControl, FormLabel} from "react-bootstrap";
+import "../Login.css";
+import Logo from "../mischief.jpg";
 
 export default function Login(props) {
   const [email, setEmail] = useState("");
@@ -16,9 +17,10 @@ export default function Login(props) {
 
   return (
     <div className="Login">
+    <img src={Logo} className="logo" alt=""/>
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="email" bsSize="large">
-          <ControlLabel>Email</ControlLabel>
+          <FormLabel>Email</FormLabel>
           <FormControl
             autoFocus
             type="email"
@@ -27,7 +29,7 @@ export default function Login(props) {
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
-          <ControlLabel>Password</ControlLabel>
+          <FormLabel>Password</FormLabel>
           <FormControl
             value={password}
             onChange={e => setPassword(e.target.value)}

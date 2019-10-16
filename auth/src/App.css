@@ -1,3 +1,8 @@
+body {
+  background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/7ae7da84932571.5d6d01c5cc781.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
 .App {
   text-align: center;
 }
