@@ -27,7 +27,7 @@ class Login extends React.Component {
             .then(res => {
                 localStorage.setItem("token", res.data.payload);
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err.response));
         this.props.history.push("/friends");
     }
 
