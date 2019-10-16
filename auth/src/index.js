@@ -4,6 +4,7 @@ import {Route, Link, BrowserRouter as Router} from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Login from "./components/Login";
+import AddFriend from "./components/AddFriend";
 import * as serviceWorker from './serviceWorker';
 
 const routing = (
@@ -16,10 +17,13 @@ const routing = (
         <li>
              <Link to="/login">Log In</Link>
         </li>
+        <li>
+             <Link to="/add">Add Friend</Link>
+        </li>
       </ul>
             <Route exact path="/" component={App} />
-            <Route path="/login" component={Login}>
-            </Route>
+            <Route path="/login" component={Login} />
+            <Route path="/add" component={AddFriend}/>
         </div>
     </Router>
 )

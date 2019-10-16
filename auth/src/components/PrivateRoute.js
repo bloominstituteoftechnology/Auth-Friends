@@ -1,5 +1,4 @@
 import React from 'react';
-import 
 
 export default const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
