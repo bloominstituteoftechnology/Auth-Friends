@@ -13,16 +13,20 @@ class FriendsList extends React.Component {
         this.getFriends();
     }
 
-    getFriends = () => {
-        axiosWithAuth()
-            .get("/api/friends")
-            .then(res => this.setState({ friends: res.data }))
-            .catch(err => console.log(err.response));
-    }
-
     updateFriends = friendsArray => {
         this.setState({ friends: friendsArray});
     }
+
+    getFriends = () => {
+        axiosWithAuth()
+            .get("/api/friends")
+            .then(res => this.updateFriends(res.data))
+            .catch(err => console.log(err.response));
+    }
+
+    // updateFriends = friendsArray => {
+    //     this.setState({ friends: friendsArray});
+    // }
 
     render() {
         return(
