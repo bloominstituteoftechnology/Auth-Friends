@@ -29,9 +29,9 @@ class FriendsList extends React.Component {
             <div className="friends-list">
                 <h2>My Friends:</h2>
                 {this.state.friends.map(friend => (
-                    <Friend key={friend.id} friend={friend} updateFriends={this.updateFriends}/>
+                    <Friend key={friend.id} friend={friend} />
                 ))}
-                <NewFriend />
+                <NewFriend updateFriends={this.updateFriends} />
             </div>
         )
     }
