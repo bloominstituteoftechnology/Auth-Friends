@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 class Login extends React.Component {
@@ -30,6 +31,9 @@ class Login extends React.Component {
     };
 
     render(){
+        // if (localStorage.getItem('token')){
+        //     return <Redirect to='protected' />
+        // }
         return (
             <div>
                 <form onSubmit={this.login}>
