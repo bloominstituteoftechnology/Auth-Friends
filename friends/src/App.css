@@ -24,7 +24,7 @@
 .friend-card {
   border: 2px solid black;
   border-radius:20px;
-  width:50%;
+  width:30%;
   margin: 1% auto;
   background:cadetblue;
 
@@ -41,10 +41,20 @@
 }
 a{
   text-decoration:none;
-  color:rebeccapurple;
+  color:rgb(178, 116, 240);
+  width:20%;
+  border-radius:20px;
+  padding: 10px 20px;
+  background:whitesmoke;
+  border: 1px solid grey;
+}
+a:hover {
+  background:rgb(226, 226, 226);
+  color:rgb(178, 116, 240);
+  border: 1px solid black;
 }
 a:visited{
-  color:rebeccapurple;
+  color:default;
   text-decoration:none;
 }
 
