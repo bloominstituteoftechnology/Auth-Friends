@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import AddFriend from './components/AddFriend';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './components/Home';
+import Friends from './components/Friends';
 
 
 function App(props) {
@@ -30,10 +31,14 @@ function App(props) {
         <li>
              <Link to="/add">Add Friend</Link>
         </li>
+        <li>
+             <Link to="/friends">Friends</Link>
+        </li>
       </ul>
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <PrivateRoute path="/add" component={AddFriend} />
+            <PrivateRoute path="/friends" component={Friends} />
         </div>
     </Router>
     </AuthContext.Provider>
