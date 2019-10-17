@@ -2,33 +2,57 @@ import React, { useState } from "react";
 import { Button, FormGroup, FormControl, FormLabel} from "react-bootstrap";
 import "../Login.css";
 import Logo from "../mischief.jpg";
-// import axios from 'axios';
+import axios from 'axios';
+import {Redirect} from 'react-router-dom';
+import {useAuth} from '../context/auth';
 
-// const endpoint = `localhost:5000`;
-
-export default function Login(props) {
-  const [email, setEmail] = useState("");
+function Login() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
+  const { setAuthTokens } = useAuth();
+  
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
+  function postLogin() {
+    let loginURL = 'http://localhost:5000/api/login';
+    axios.post(loginURL, {
+      username,
+      password
+    }).then(result => {
+      if (result.status === 200) {
+        setAuthTokens(result.data);
+        setLoggedIn(true);
+      } else {
+        setIsError(true);
+      }
+    }).catch(e => {
+      setIsError(true);
+    });
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  if (isLoggedIn) {
+    return <Redirect to="/add" />;
+  }
+
+  function handleSubmit(e){
+    e.preventDefault();
   };
 
+
+
   return (
+    
     <div className="Login">
     <img src={Logo} className="logo" alt=""/>
       <form onSubmit={handleSubmit}>
-        <FormGroup controlId="email" bsSize="large">
-          <FormLabel>Email</FormLabel>
+        <FormGroup controlId="username" bsSize="large">
+          <FormLabel>username</FormLabel>
           <FormControl
             autoFocus
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            type="username"
+            value={username}
+            onChange={e => setusername(e.target.value)}
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
@@ -39,10 +63,13 @@ export default function Login(props) {
             type="password"
           />
         </FormGroup>
-        <Button block bsSize="large" disabled={!validateForm()} type="submit">
+        <Button block bsSize="large" onClick={postLogin}>
           Login
         </Button>
+        { isError &&<p>Come on, man. You forgot your login details? Again</p> }
       </form>
     </div>
   );
-}
+};
+
+export default Login;
