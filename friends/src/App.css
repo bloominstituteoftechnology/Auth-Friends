@@ -1,22 +1,206 @@
-.App {
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 30px;
   text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.App-logo {
-  height: 40vmin;
+.wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.error {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.account-row {
+  border: 1px solid #E9E9E9;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+App {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+
+  color: #fff;
+  font-family: Arial;
+  font-size: 12px;
+}
+
+.App {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  width: auto;
+  height: auto;
+  background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
+  background-size: cover;
+  -webkit-filter: blur(0.5px);
+  z-index: 0;
+}
+
+.form {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  width: auto;
+  height: auto;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.65)));
+  /* Chrome,Safari4+ */
+  z-index: 1;
+  opacity: 0.7;
+}
+
+.header {
+  position: absolute;
+  top: calc(50% - 35px);
+  left: calc(50% - 255px);
+  z-index: 2;
+}
+
+.header div {
+  float: left;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 35px;
+  font-weight: 200;
+}
+
+.header div span {
+  color: #5379fa !important;
+}
+
+nav {
+  background: #F0F0F0;
+  padding: 10px;
+  margin-bottom: 50px;
+  border-radius: 4px;
+}
+
+nav a:not(:last-child) {
+  margin-right: 50px;
+}
+
+a {
+  text-decoration: none;
+  color: darkblue;
+}
+
+input {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  outline: none;
+  border-radius: 2px;
+  border: 1px solid #F0F0F0;
+}
+
+button {
+  background: darkblue;
   color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-.App-link {
-  color: #09d3ac;
+button:hover {
+  opacity: 0.7;
 }
+
+.signin {
+  position: absolute;
+  top: calc(50% - 75px);
+  left: calc(50% - 50px);
+  height: 150px;
+  width: 350px;
+  padding: 10px;
+  z-index: 2;
+}
+
+/* .login input[type=text] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+}
+
+.login input[type=password] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.login input[type=button] {
+  width: 260px;
+  height: 35px;
+  background: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  color: #a18d6c;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px;
+  margin-top: 10px;
+}
+
+.login input[type=button]:hover {
+  opacity: 0.8;
+}
+
+.login input[type=button]:active {
+  opacity: 0.6;
+}
+
+.login input[type=text]:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type=password]:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type=button]:focus {
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+::-moz-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+} */ 
