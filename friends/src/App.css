@@ -1,0 +1,76 @@
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.log-in-form {
+  max-width: 60vw;
+  height: 25vh;
+  background-color: wheat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.4rem;
+  border: 3px solid ;
+}
+
+.log-in-form input {
+  min-width: 30vw;
+  min-height: 3vh;
+  border: 1px solid darkgoldenrod;
+  padding-left: .5rem;
+}
+
+button {
+  width: 10vw;
+  border: 1px solid black;
+}
+
+.add-friend-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-friend-form input {
+  min-width: 15vw;
+}
+
+.friends-list {
+  display: flex;
+  min-width: 75vw;
+  justify-content: space-between;
+}
+
+.friend {
+  border: 2px solid black;
+  background-color: antiquewhite;
+  display: inline-block;
+  min-width: 10vw;
+}
