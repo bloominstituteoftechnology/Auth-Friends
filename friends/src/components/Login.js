@@ -21,7 +21,8 @@ function Login(props) {
 
         api().post("/api/login", status)
         .then(res => {
-            localStorage.setItem('token', res.status.payload)
+            console.log(res)
+            localStorage.setItem('token', res.data.payload)
             props.history.push('/account')
         })
         .catch(err => {

@@ -5,6 +5,8 @@ import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
 import Account from './components/Account';
 import Logout from './components/Logout';
+import FriendList from './components/FriendList';
+
 
 
 import './App.css';
@@ -22,8 +24,10 @@ function App() {
           {!signedIn && <Link to="/login">Login</Link>}
           {signedIn && <Link to="/account">My Account</Link>}
           {signedIn && <Link to="/logout">Logout</Link>}
+          <Link to='/friendlist'>Friend List</Link>
         </nav>
 
+      <Route exact path='/friendlist' component={FriendList} />
       <Route exact path='/login' component={Login} />
       <PrivateRoute exact path='/account' component={Account} />
       <PrivateRoute exact path="/logout" component={Logout} />
