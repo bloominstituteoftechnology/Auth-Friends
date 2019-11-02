@@ -25,7 +25,7 @@ function Login(props) {
             props.history.push('/account')
         })
         .catch(err => {
-            setError(err.res, status.message)
+            setError(err.res, status.msg)
         })
     }
 

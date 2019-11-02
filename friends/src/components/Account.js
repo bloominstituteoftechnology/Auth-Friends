@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
 
 
 function Account() {
     const [user, setUser] = useState({
         name: '',
+        age: '',
         email: '',
     })
 
@@ -12,8 +13,9 @@ function Account() {
         api().get('/me')
         .then(result => {
             setUser({
-                name: result.data.name,
-                email: result.data.email,
+                name: result.status.name,
+                age: result.status.age,
+                email: result.status.email,
             })
         })
         .catch(error => {
@@ -25,6 +27,7 @@ function Account() {
         <>
         <h1>My Account</h1>
         <div className="account-row">Name {user.name}</div>
+        <div className="account-row">Age {user.age}</div>
         <div className="account-row">Email {user.email}</div>
         </>
     )

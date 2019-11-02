@@ -30,7 +30,7 @@ App {
   margin: 0;
   padding: 0;
   background: #fff;
-  max-width: auto 0;
+  width: 85%;
   max-height: 85%;
   color: #fff;
   font-family: Arial;
@@ -43,7 +43,7 @@ App {
   left: -20px;
   right: -40px;
   bottom: -40px;
-  max-width: auto 0;
+  width: 85%;
   height: auto 0;
   background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
   background-size: cover;
