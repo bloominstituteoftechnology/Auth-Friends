@@ -19,7 +19,7 @@ function Login(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        api().post("/api/login", status)
+        api().post("/api/login", data)
         .then(res => {
             console.log(res)
             localStorage.setItem('token', res.data.payload)

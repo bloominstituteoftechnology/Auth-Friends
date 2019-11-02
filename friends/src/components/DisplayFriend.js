@@ -1,47 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
 
 
 function DisplayFriend(props) {
-    const [error, setError] = useState()
     const [newFriend, setNewFriend] = useState({
         id: [],
         name: '',
-        age: '',
-        email: '',
     })
 
-    const handleChange = (event) => {
-        setNewFriend({
-            ...newFriend,
-            [event.target.name]: event.target.value,
-        })
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-
-        api().post("/api/friends", newFriend)
+    useEffect(() => {
+        api().get("/api/friends/123")
             .then(res => {
-                localStorage.setItem('token', res.newFriend.payload)
-                props.history.push('/account')
+                console.log(res)
+                setNewFriend(res.data)
             })
             .catch(err => {
-                setError(err.res, newFriend.msg)
+                console.log(err)
             })
-    }
+        })
 
     return (
-        <form onSubmit={handleSubmit}>
-            {error && <div className='error'>{error}</div>}
-            <input type='number' name='id' placeholder="Id" value={status.id} onChange={handleChange} />
-            <input type='text' name='name' placeholder="Name" value={status.name} onChange={handleChange} />
-            <input type='number' name='age' placeholder="Age" value={status.age} onChange={handleChange} />
-            <input type='text' name='email' placeholder="Email" value={status.email} onChange={handleChange} />
-
-            <button type='submit'>Login</button>
-        </form>
+        <div>
+            {newFriend.map(friend => {
+               <p>{friend.name} {friend.id}</p>
+            })}
+        </div>
     )
-}
+   }
+
 
 export default DisplayFriend;
