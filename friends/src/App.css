@@ -21,6 +21,7 @@ body {
 
 .account-row {
   border: 1px solid #E9E9E9;
+  border-radius: 7px;
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -29,7 +30,8 @@ App {
   margin: 0;
   padding: 0;
   background: #fff;
-
+  max-width: auto 0;
+  max-height: 85%;
   color: #fff;
   font-family: Arial;
   font-size: 12px;
@@ -41,15 +43,15 @@ App {
   left: -20px;
   right: -40px;
   bottom: -40px;
-  width: auto;
-  height: auto;
+  max-width: auto 0;
+  height: auto 0;
   background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
   background-size: cover;
   -webkit-filter: blur(0.5px);
   z-index: 0;
 }
 
-.form {
+/* .form {
   position: absolute;
   top: -20px;
   left: -20px;
@@ -59,10 +61,10 @@ App {
   height: auto;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.65)));
   /* Chrome,Safari4+ */
-  z-index: 1;
+  /* z-index: 1;
   opacity: 0.7;
-}
-
+} */
+/* 
 .header {
   position: absolute;
   top: calc(50% - 35px);
@@ -80,13 +82,14 @@ App {
 
 .header div span {
   color: #5379fa !important;
-}
+} */
 
 nav {
   background: #F0F0F0;
   padding: 10px;
   margin-bottom: 50px;
   border-radius: 4px;
+  padding-top: 20px;
 }
 
 nav a:not(:last-child) {
@@ -96,6 +99,11 @@ nav a:not(:last-child) {
 a {
   text-decoration: none;
   color: darkblue;
+}
+
+h1 {
+font-size: 2.6rem;
+padding-top: 20px;
 }
 
 input {
@@ -123,7 +131,7 @@ button:hover {
   opacity: 0.7;
 }
 
-.signin {
+/* .signin {
   position: absolute;
   top: calc(50% - 75px);
   left: calc(50% - 50px);
@@ -131,7 +139,7 @@ button:hover {
   width: 350px;
   padding: 10px;
   z-index: 2;
-}
+} */
 
 /* .login input[type=text] {
   width: 250px;
