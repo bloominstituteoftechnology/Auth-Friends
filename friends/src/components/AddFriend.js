@@ -23,18 +23,22 @@ console.log(newFriend);
     .then(result => {
       console.log(result);
       addNewFriend({ newFriend: result.data })
-      
+      document.getElementById('reset').reset();
     })
     .catch(error => {
       console.log('error you idiot')
     })
   }
 
+  // const resetForm = () => {
+  //   addNewFriend();
+  // }
+
   return (
     <div className="friendsList">
      <h1>New Friends</h1>
      
-     <form onSubmit={handleSubmit}>
+     <form onSubmit={handleSubmit} id='reset'>
       <input 
         type='text'
         name='name'
