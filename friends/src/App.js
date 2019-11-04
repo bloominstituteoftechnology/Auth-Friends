@@ -7,6 +7,7 @@ import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import { getToken } from './utils/api';
 import Logout from './components/Logout';
+import AddFriend from './components/AddFriend';
 
 function App() {
 
@@ -29,6 +30,11 @@ function App() {
           to='/logout'
           className='link'>Logout
         </Link>}
+
+        {signedIn && <Link
+          to='/AddFriend'
+          className='link'>Add Friend
+        </Link>}
       </nav>
 
       <Route 
@@ -45,7 +51,11 @@ function App() {
         exact path='/Logout'
         component={Logout}
       />
-     
+
+      <ProtectedRoute
+        exact path='/AddFriend'
+        component={AddFriend}
+      />
     </div>
   );
 }

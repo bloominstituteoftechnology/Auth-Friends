@@ -52,7 +52,8 @@ button {
 }
 
 .friendsList {
-  display: flex;
+  /*display: flex;*/
+  padding: 30px 0;
   /*justify-content: center;*/
   flex-direction: column;
   margin: 30px auto;
