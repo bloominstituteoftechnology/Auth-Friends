@@ -1,47 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link, Route, withRouter } from 'react-router-dom';
 // import axios from 'axios';
 import './App.css';
 import FriendsList from './components/FriendsList';
 import Login from './components/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import { getToken } from './utils/api';
+import Logout from './components/Logout';
 
 function App() {
-  // const [friends, newFriend] = useState([]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get('http://localhost:5000/api/friends')
-  //     .then(res => {
-  //       // newFriend(res.data)
-  //       console.log(res)
-  //     })
-  //     .catch(error => console.log('error, no data returned'));
-  // }, []);
+  const signedIn = getToken();
 
   return (
     <div className="App">
       <nav className="nav-header">
-       <Link 
-        to='/Login'
-        className='link'>Login</Link>
+        {!signedIn && <Link 
+          to='/Login'
+          className='link'>Login
+        </Link>}
 
-        <Link 
-          to='/'
-          className='link'>Friends</Link>
+        {signedIn && <Link 
+          to='/FriendsList'
+          className='link'>Friends
+        </Link>}
+
+        {signedIn && <Link
+          to='/logout'
+          className='link'>Logout
+        </Link>}
       </nav>
 
       <Route 
-        path='/'
+        exact path='/login'
         component={Login}
       />
       
-      <Route 
+      <ProtectedRoute 
         exact path='/FriendsList'
         component={FriendsList}
+      />
+
+      <ProtectedRoute 
+        exact path='/Logout'
+        component={Logout}
       />
      
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
