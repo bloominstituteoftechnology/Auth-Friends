@@ -1,9 +1,32 @@
 import React from 'react';
 
-function Logout() {
+function Logout(props) {
+
+	const handleSubmit = (event) => {
+		event.preventDefault()
+
+	
+	}
+
 	return (
 		<div className='logout'>
-			<h3>Logout Component</h3>
+
+			<h1>Login</h1>
+			<form onSubmit={handleSubmit}>
+				<input 
+					type='text'
+					name='username'
+					placeholder='Username'
+				/>
+
+				<input 
+					type='password'
+					name='password'
+					placeholder='Password'
+				/>
+
+				<button>Login</button>
+			</form>
 		</div>
 	)
 }

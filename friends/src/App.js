@@ -6,7 +6,7 @@ import Login from './components/Login';
 function App() {
   return (
     <div className="App">
-      <nav className="App-header">
+      <nav className="nav-header">
        <Link 
         to='/Login'
         className='link'
@@ -14,11 +14,15 @@ function App() {
           Login
         </Link>
 
-        
+        <Link 
+          to='/'
+          className='link'
+        >Link
+        </Link>
       </nav>
 
       <Route 
-        exact path='/login'
+        path='/'
         component={Login}
       />
     </div>
