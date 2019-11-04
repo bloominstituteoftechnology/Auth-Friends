@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import api from '../utils/api';
 
 function DeleteFriend() {
     const [deleteFriend, setDeleteFriend] = useState({})
@@ -16,9 +17,9 @@ function DeleteFriend() {
 
     return (
         <div>
-            {deleteFriend.map(friend => {
-                <p>{friend.id}</p>
-            })}
+            {deleteFriend.map(friend => (
+                <p key={friend.id}> Number{friend.id}</p>
+            ))}
         </div>
     )
 }

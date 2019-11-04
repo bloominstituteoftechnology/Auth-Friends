@@ -21,9 +21,9 @@ function DisplayFriend(props) {
 
     return (
         <div>
-            {newFriend.map(friend => {
-               <p>{friend.name} {friend.id}</p>
-            })}
+            {newFriend.map(friend => (
+               <p>My{friend.name}, number{friend.id}</p>
+            ))}
         </div>
     )
    }

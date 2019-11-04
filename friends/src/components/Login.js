@@ -19,10 +19,10 @@ function Login(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        api().post("/api/login", data)
+        api().post("/api/login", status)
         .then(res => {
             console.log(res)
-            localStorage.setItem('token', res.data.payload)
+            localStorage.setItem('token', res.status.payload)
             props.history.push('/account')
         })
         .catch(err => {

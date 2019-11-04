@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import api from '../utils/api';
 
 function UpdateFriend() {
     const [updateFriend, setUpdateFriend] = useState({
@@ -18,9 +19,9 @@ function UpdateFriend() {
 
     return (
         <div>
-            {updateFriend.map(friend => {
-                <p>{friend.id}</p>
-            })}
+            {updateFriend.map(friend => (
+                <p>{friend.name}, {friend.id}</p>
+            ))}
         </div>
     )
 }

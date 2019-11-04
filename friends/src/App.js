@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import { getToken } from './utils/api';
 import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
@@ -34,9 +34,11 @@ function App() {
         </nav>
 
       <Route exact path='/friendlist' component={FriendList} />
+      <ul>
         <Route exact path='/displayfriend' component={DisplayFriend} />
         <Route exact path='/updatefriend' component={UpdateFriend} />
         <Route exact path='/deletefriend' component={DeleteFriend} />
+        </ul>
       <Route exact path='/login' component={Login} />
       <PrivateRoute exact path='/account' component={Account} />
       <PrivateRoute exact path="/logout" component={Logout} />
@@ -45,4 +47,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
