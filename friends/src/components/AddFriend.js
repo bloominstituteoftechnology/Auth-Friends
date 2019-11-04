@@ -22,6 +22,7 @@ console.log(newFriend);
     .post('/api/friends', newFriend)
     .then(result => {
       console.log(result);
+      addNewFriend({ newFriend: result.data })
       
     })
     .catch(error => {
@@ -57,6 +58,8 @@ console.log(newFriend);
         value={newFriend.email}
         onChange={handleChange}
       />
+
+      <button>Add Friend</button>
      </form>
     </div>
   );
