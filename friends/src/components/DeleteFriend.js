@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
 
 function DeleteFriend() {
-    const [deleteFriend, setDeleteFriend] = useState({})
+    const [deleteFriend, setDeleteFriend] = useState([])
 
     useEffect(() => {
         api().delete('/api/friends/123')
@@ -17,7 +17,7 @@ function DeleteFriend() {
 
     return (
         <div>
-            {deleteFriend.map(friend => (
+            {deleteFriend().map(friend => (
                 <p key={friend.id}> Number{friend.id}</p>
             ))}
         </div>

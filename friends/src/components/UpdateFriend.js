@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
 
 function UpdateFriend() {
-    const [updateFriend, setUpdateFriend] = useState({
-        id: [],
-    })
+    const [updateFriend, setUpdateFriend] = useState([])
 
     useEffect(() => {
         api().put('/api/friends/:id')

@@ -3,10 +3,7 @@ import api from '../utils/api';
 
 
 function DisplayFriend(props) {
-    const [newFriend, setNewFriend] = useState({
-        id: [],
-        name: '',
-    })
+    const [newFriend, setNewFriend] = useState([])
 
     useEffect(() => {
         api().get("/api/friends/123")
@@ -23,7 +20,8 @@ function DisplayFriend(props) {
         <div>
             {newFriend.map(friend => (
                <p>My{friend.name}, number{friend.id}</p>
-            ))}
+            //    <button onClick={delete.id} />
+               ))}
         </div>
     )
    }
