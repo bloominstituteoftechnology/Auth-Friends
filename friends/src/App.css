@@ -1,0 +1,77 @@
+body {
+  background-color: red;
+  height: 100vh;
+  padding: 30px;
+}
+.App {
+  text-align: center;
+}
+
+.nav-header {
+  background-color: #282c34;
+  /*min-height: 100vh;*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding-left: 40px;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  padding: 10px;
+}
+
+.logout {
+ 
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 400px;
+  margin: 10px auto;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px black;
+}
+
+button {
+  width: 100px;
+  margin: 5px auto;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px black;
+}
+
+.friendsList {
+  /*display: flex;*/
+  padding: 30px 0;
+  /*justify-content: center;*/
+  flex-direction: column;
+  margin: 30px auto;
+  background-color: grey;
+  width: 75%;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px black;
+}
+
+.person {
+  border-radius: 5px;
+  border: solid 1px red;
+  color: lightgrey;
+  padding: 10px;
+  width: 55%;
+  margin: 10px auto;
+}
+
+strong {
+  color: black;
+}
