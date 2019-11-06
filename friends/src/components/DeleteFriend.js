@@ -17,7 +17,7 @@ function DeleteFriend() {
 
     return (
         <div>
-            {deleteFriend().map(friend => (
+            {deleteFriend.map(friend => (
                 <p key={friend.id}> Number{friend.id}</p>
             ))}
         </div>

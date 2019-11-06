@@ -35,6 +35,7 @@ App {
   color: #fff;
   font-family: Arial;
   font-size: 12px;
+  padding-left: 20px;
 }
 
 .App {
@@ -43,7 +44,7 @@ App {
   left: -20px;
   right: -40px;
   bottom: -40px;
-  width: 85%;
+  width: 100%;
   height: auto 0;
   background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
   background-size: cover;
@@ -114,6 +115,7 @@ input {
   outline: none;
   border-radius: 2px;
   border: 1px solid #F0F0F0;
+  padding-left: 50px;
 }
 
 button {

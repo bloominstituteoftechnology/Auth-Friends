@@ -5,8 +5,12 @@ import api from '../utils/api';
 function DisplayFriend(props) {
     const [newFriend, setNewFriend] = useState([])
 
-    useEffect(() => {
-        api().get("/api/friends/123")
+    // handleDelete = (event) => {
+    //     event.preventDefault()
+    // }    
+
+    useEffect((id) => {
+        api().get(`/api/friends/${id}`)
             .then(res => {
                 console.log(res)
                 setNewFriend(res.data)
@@ -18,13 +22,14 @@ function DisplayFriend(props) {
 
     return (
         <div>
-            {newFriend.map(friend => (
-               <p>My{friend.name}, number{friend.id}</p>
-            //    <button onClick={delete.id} />
+            {newFriend.map((friend, item) => (
+               <p>My key={item} {friend.name}, number{friend.id}</p>
+            //    <button onClick={id.delete}>Delete Friend</button>
                ))}
         </div>
     )
    }
+
 
 
 export default DisplayFriend;
