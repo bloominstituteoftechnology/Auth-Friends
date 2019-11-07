@@ -8,9 +8,6 @@ import Logout from './components/Logout';
 import FriendList from './components/FriendList';
 import DisplayFriend from './components/DisplayFriend';
 import UpdateFriend from './components/UpdateFriend';
-import DeleteFriend from './components/DeleteFriend';
-
-
 
 import './App.css';
 
@@ -30,14 +27,12 @@ function App() {
           <Link to='/friendlist'>Friend List</Link>
           <Link to='/displayfriend'>Display Friend</Link>
           <Link to='/updatefriend'>Update Friend</Link>
-          <Link to='/deletefriend'>Delete Friend</Link>
         </nav>
 
       <Route exact path='/friendlist' component={FriendList} />
       <ul>
         <Route exact path='/displayfriend' component={DisplayFriend} />
         <Route exact path='/updatefriend' component={UpdateFriend} />
-        <Route exact path='/deletefriend' component={DeleteFriend} />
         </ul>
       <Route exact path='/login' component={Login} />
       <PrivateRoute exact path='/account' component={Account} />
