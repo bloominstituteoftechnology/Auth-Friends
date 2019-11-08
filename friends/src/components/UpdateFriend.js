@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
+import { Link } from 'react-router-dom';
 
-function UpdateFriend() {
+function UpdateFriend(props) {
     const [updateFriend, setUpdateFriend] = useState([])
 
     useEffect(() => {
-        api().put('/api/friends/:id')
+        api().put(`/api/friends/${props.match.params.id}`)
         .then(res => {
             console.log(res)
             setUpdateFriend(res.data)
@@ -15,26 +16,7 @@ function UpdateFriend() {
         })
     })
 
-    const handleDelete = (e) =>{
-        e.preventDefault()
-
-        const user = users.filter(user => user.id === id)
-
-        if (window.confirm('Delete Friend?')) {
-            setUpdateFriend(updateFriend.filter(friend => friend.id !== id))
-
-            api().delete('/api/friends/123')
-                .then(res => {
-                    console.log(res)
-                    setDeleteFriend(res.data)
-                })
-                .catch(err => {
-                    console.log(err)
-                    setUpdateFriend([ ...updateFriend, friend ])
-                })
-        }
-    }
-
+    
     return (
         <>
             <h1>Friends</h1>
@@ -44,9 +26,8 @@ function UpdateFriend() {
                     <Link className="friend-update" to={`/friends/${friend.id}`}>
                         Update Friend
                     </Link>
-                    <div className="friend-delete" onClick={(e) => handleDelete(e, friend.id)}>
-                        Delete Friend
-                    </div>
+                    
+                 </div>
             ))}
         </>
     )

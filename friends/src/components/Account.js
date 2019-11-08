@@ -10,20 +10,6 @@ function Account() {
         email: '',
     })
 
-    // useEffect(() => {
-    //     api().get('/me')
-    //     .then(result => {
-    //         setUser({
-    //             name: result.data.name,
-    //             age: result.data.age,
-    //             email: result.data.email,
-    //         })
-    //     })
-    //     .catch(error => {
-    //         console.log(error)
-    //     })
-    // }, [])
-
     return (
         <>
         <h1>My Account</h1>

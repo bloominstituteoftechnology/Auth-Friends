@@ -12,3 +12,5 @@ export default function() {
         }
     })
 }
+
+// Authorization is like a key to the header. Header holds it's own key:value pairs. Header is where we hold the localStorage token.

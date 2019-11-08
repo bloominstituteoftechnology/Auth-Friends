@@ -21,26 +21,29 @@ function CreateFriend(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        api().get("/api/friends", newFriend)
+        api().post("/api/friends", newFriend)
             .then(res => {
-                localStorage.setItem(res.newFriend.payload)
+                console.log(res.data)
                 // props.history.push('/account')
             })
-            .catch(err => {
-                setError(err.res, newFriend.msg)
+            .catch(error => {
+                setError(error.res)
             })
     }
 
     return (
+        <>
+            <h1>Hello</h1>
+        
         <form onSubmit={handleSubmit}>
-            {error && <div className='error'>{error}</div>}
-            <input type='number' name='id' placeholder="Id" value={status.id} onChange={handleChange} />
-            <input type='text' name='name' placeholder="Name" value={status.name} onChange={handleChange} />
-            <input type='number' name='age' placeholder="Age" value={status.age} onChange={handleChange} />
-            <input type='text' name='email' placeholder="Email" value={status.email} onChange={handleChange} />
 
-            <button type='submit'>Login</button>
+            <input type='text' name='name' placeholder="Name" value={newFriend.name} onChange={handleChange} />
+            <input type='number' name='age' placeholder="Age" value={newFriend.age} onChange={handleChange} />
+            <input type='text' name='email' placeholder="Email" value={newFriend.email} onChange={handleChange} />
+
+            <button type='submit'>Add Friend</button>
         </form>
+        </>
     )
 }
 

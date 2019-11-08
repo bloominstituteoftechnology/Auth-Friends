@@ -22,11 +22,11 @@ function Login(props) {
         api().post("/api/login", status)
         .then(res => {
             console.log(res)
-            localStorage.setItem('token', res.status.payload)
+            localStorage.setItem('token', res.data.payload)
             props.history.push('/account')
         })
         .catch(err => {
-            setError(err.res, status.msg)
+            setError(err.res)
         })
     }
 

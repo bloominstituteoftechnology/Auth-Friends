@@ -7,21 +7,46 @@ function FriendList(props) {
     useEffect(() => {
         api().get('/api/friends')
         .then(res => {
-            console.log(res)
+            console.log(res.data)
             setListFriend(res.data)
          })
          .catch(err => {
              console.log(err)
          })
-    })
+    }, [])
+
+    const handleDelete = (e, id) => {
+        e.preventDefault()
+
+        const user = listFriend.filter(friend => friend.id === id)
+
+        if (window.confirm('Delete Friend?')) {
+            setListFriend(listFriend.filter(friend => friend.id !== id))
+
+            api().delete(`/api/friends/${id}`)
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                    setListFriend([...listFriend, user])
+                })
+        }
+    }
 
     return (
-        <div>
-           {listFriend.map(friend => (
-              <p>{friend.name}</p>
-            ))}
-        </div>
+        <>
+        {listFriend.map(friend => {
+            return (
+                <div className='friend-container' key={friend.id}>
+                    <button onClick={(e) => handleDelete(e, friend.id)}>Delete</button>
+                    <h2>{friend.name}</h2>
+                </div>
+            )
+        })}
+        </>
     )
+    
 }
 
-export default FriendList
+export default FriendList;  
