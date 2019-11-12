@@ -56,7 +56,7 @@ function authenticator(req, res, next) {
   if (authorization === token) {
     next();
   } else {
-    res.status(403).json({ error: 'User be logged in to do that.' });
+    res.status(403).json({ error: 'User must be logged in to do that.' });
   }
 }
 
