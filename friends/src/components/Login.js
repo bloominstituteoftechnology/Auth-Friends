@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios"; 
+import { Redirect } from "react-router-dom";
 
-const Login = (props) =>{
+const Login = () =>{
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -21,11 +22,11 @@ const Login = (props) =>{
             .then((response)=>{
                 console.log(response)
                 sessionStorage.setItem("token", response.data.payload);
+               return( <Redirect to="/friends"/> )
             })
             .catch((error)=>{
                 console.log(error);
             })
-
     }
     return(
         <div className="login">
