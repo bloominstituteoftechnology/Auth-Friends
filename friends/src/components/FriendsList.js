@@ -68,6 +68,18 @@ class FriendsList extends React.Component {
                 console.log(error);
             })
     }
+    editFriend = (friendId, editedFriend) =>{
+        axios.put(`http://localhost:5000/api/friends/${friendId}`, editedFriend,  { 
+            headers:{authorization: sessionStorage.getItem("token")}
+        })
+            .then((response)=>{
+                console.log(response)
+                this.setState({friendsList: response.data})
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+    }
 
     render(){
         
@@ -90,7 +102,7 @@ class FriendsList extends React.Component {
                 </form>
                 <h1>Friend's List</h1>
                 {this.state.friendsList.map((item)=>(
-                    <FriendCard key={item.id} {...item} deleteFriend={this.deleteFriend}/>   
+                    <FriendCard key={item.id} {...item} deleteFriend={this.deleteFriend} onSubmit={this.editFriend}/>   
                 ))}
             </div>
         )
