@@ -17,15 +17,16 @@ function Friends () {
 
     return (
         <div>
-       
-        < NavigationCard logout={true}/>
         <AddFriend/>
-        {friends.map(friend => (   
+        < NavigationCard logout={true}/>
+        
+            {friends.map(friend => (
         <Friend key={friend.id}  name={friend.name} age={friend.age} email={friend.email}
          />
          ))}
+
         </div>
     );
 };
 
-export default Friends;
+export default Friends; 
