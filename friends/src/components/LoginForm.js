@@ -1,7 +1,7 @@
 import React from 'react';
 import Loader from "react-loader-spinner";
 import axiosWithAuth from '../axios/index';
-import NavigationCard from './NavigationCard';
+
 
 
 class LoginForm extends React.Component{
@@ -24,13 +24,12 @@ this.setState({
 };
 
 onSubmit = e => {
-    e.preventDefault();
-    const authAxios = axiosWithAuth();
-    authAxios
+    e.preventDefault(); 
+    axiosWithAuth()
     .post ('/login', this.state.credentials)
     .then(response =>{
-        console.log("data", response);
         localStorage.setItem("token", response.data.payload);
+        this.props.history.push('/friends')
         this.setState({ ...this.state, isLoggedIn: true });
     }); 
 };
@@ -46,7 +45,7 @@ if (localStorage.getItem("token")) {
 render() {
     return (
         <div>
-    < NavigationCard login={true} logout={true} register={true}/>
+   
     <h2>{this.state.isLoggedIn ? "Logged In" : "Please Login"}</h2>
    
 
@@ -69,7 +68,7 @@ render() {
             value={this.state.credentials.password}
             onChange={this.handleChange}
             />
-            <button>Log in</button>
+           <button>Log in</button>
         </form>
         </div>
     );
