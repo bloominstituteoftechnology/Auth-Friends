@@ -2,7 +2,7 @@ import React from 'react'
 import axiosWithAuth from '../axios/index';
 
 
-class addFriend extends React.Component {
+class AddFriend extends React.Component {
 state = [{
     id: Date.now(),
     name: '',
@@ -20,13 +20,13 @@ handleChange = e => {
     })
 }
 
-addFriend = e => {
+handleSubmit = e => {
     e.preventDefault()
     axiosWithAuth()
         .post('/friends', this.state)
         .then(response => {
             console.log(response)
-            this.props.history.push('/friends')
+            // this.props.history.push('/friends')
         })
         .catch(error => console.log(error.response))
 
@@ -42,25 +42,28 @@ addFriend = e => {
 render() {
     return (
         <div>
-            <form onSubmit={this.addFriend}>
-                Name
+            <form onSubmit={this.handleSubmit}>
+               
                 <input 
                 name='name'
                 type='text'
                 value={this.state.name}
-                onChange={this.handleChange}/>
-                Age
+                onChange={this.handleChange}
+                placeholder='name'/>
+               
                 <input 
                 name='age'
                 type='number'
                 value={this.state.age}
-                onChange={this.handleChange}/>
-                Email
+                onChange={this.handleChange}
+                placeholder='age'/>
+             
                 <input 
                 name='email'
                 type='email'
                 value={this.state.email}
-                onChange={this.handleChange}/>
+                onChange={this.handleChange}
+                placeholder='email'/>
                 <button type='submit'>Add Friend</button>
             </form>
         </div>
@@ -68,4 +71,4 @@ render() {
 }
 }
 
-export default addFriend;
+export default AddFriend;
