@@ -2,3 +2,19 @@
   text-align: center;
 }
 
+.key {
+  background-color: #d0c5bb;
+  padding: 24px 58px;
+  width: 539px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.spinner {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  color: #204963;
+}

@@ -1,5 +1,7 @@
 import React from 'react';
+import Loader from "react-loader-spinner";
 import axiosWithAuth from '../axios/index';
+import NavigationCard from './NavigationCard';
 
 
 class LoginForm extends React.Component{
@@ -28,13 +30,13 @@ onSubmit = e => {
     .post ('/login', this.state.credentials)
     .then(response =>{
         console.log("data", response);
-        sessionStorage.setItem("token", response.data.payload);
+        localStorage.setItem("token", response.data.payload);
         this.setState({ ...this.state, isLoggedIn: true });
     }); 
 };
 
 componentDidMount() {
-if (sessionStorage.getItem("token")) {
+if (localStorage.getItem("token")) {
     this.setState({ ...this.state, isLoggedIn: true });
 } else {
     this.setState({ ...this.state, isLoggedIn: false });
@@ -44,8 +46,17 @@ if (sessionStorage.getItem("token")) {
 render() {
     return (
         <div>
-    <h2>{this.state.isLoggedIn ? "LOGGED IN!" : "Please login"}</h2>
+    < NavigationCard login={true} logout={true} register={true}/>
+    <h2>{this.state.isLoggedIn ? "Logged In" : "Please Login"}</h2>
+   
+
         <form onSubmit={this.onSubmit}>
+        {this.props.fetchingData && (
+          <div className="key spinner">
+            <Loader type="Puff" color="#204963" height="60" width="60" />
+            <p>Loading...</p>
+          </div>
+        )}
             <input
             type="text"
             name="username"
