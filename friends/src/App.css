@@ -10,7 +10,9 @@ body {
   font-family: 'Roboto', sans-serif;
   text-align: center;
   padding-bottom: 36px;
+  background-color: whitesmoke;
 
+  height: 100vh;
 }
 
 ul {
@@ -229,7 +231,7 @@ a {
   border-radius: 7px;
 
   width: 70%;
-  height: 20vh;
+  height: 30vh;
 
   margin-left: 20%;
 
@@ -239,8 +241,25 @@ a {
 
   background-color: #204963;
 }
+.creds {
+  border: 1px solid lightgray;
+  border-radius: 7px;
+  max-width: 12.5em;
+  font-weight: bold;
+  margin: auto;
+  
+}
+.creds:hover {
+  background-color: lightsalmon;
+  color: red;
+}
 
-input {
+.creds1 {
+  color: white;
+  padding: 8px;
+}
+
+/* input {
   border-radius: 7px;
 
   margin-top: 20%;
@@ -251,7 +270,7 @@ input {
 
 input:hover {
   opacity: 0.6;
-}
+} */
 
 .login-btn {
   border-radius: 7px;

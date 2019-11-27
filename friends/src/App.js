@@ -7,12 +7,10 @@ import Welcome from './components/Welcome';
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
 import PrivateRoute from './components/PrivateRoute';
-import AddFriend from './components/AddFriend'
-
+import AddFriend from './components/AddFriend/AddFriend';
 
 
 class App extends React.Component {
-
 
   render() {
   return (

@@ -49,7 +49,7 @@ class Login extends React.Component {
                     name="username"
                     value={this.state.credentials.username}
                     onChange={this.handleChange}
-                    placeholder="Email"
+                    placeholder="Username"
                 />
                 <input
                     type="password"
@@ -62,9 +62,27 @@ class Login extends React.Component {
                 <p>
                   Login Credentials
                   <br/>
-                  <span>Username: Username</span>
+                  <p
+                    className='creds'
+                  >
+                    Username:  
+                    <span
+                    className='creds1'
+                    >
+                      Username
+                    </span> 
+                  </p>
                   <br/>
-                  <span>Password: Password</span>
+                  <p
+                    className='creds'
+                  >
+                    Password:  
+                    <span
+                      className='creds1'                    
+                    >
+                    Password  
+                    </span>  
+                  </p>
                   <br/>
                 </p>
             </form>

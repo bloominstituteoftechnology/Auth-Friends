@@ -1,29 +1,35 @@
 import React from 'react';
 import { withFormik, Field, Form } from 'formik';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import './index.css'
 
 const AddFriend = props => {
     return (
-        <Form>
-            Name:
+        <Form
+        className='form'
+        >
+            
             <Field
                 type="text"
                 name="name"
                 placeholder="Name"
+                className="field-name"
             />
 
-            Age:
+            
             <Field
                 type="number"
                 name="age"
                 placeholder="Age"
+                className="field-name"
             />
 
-            Email:
+           
             <Field
                 type="email"
                 name="email"
                 placeholder="E-mail"
+                className="field-name"
             />
             <button className="login-btn" type="submit">Submit Friend</button>
         </Form>

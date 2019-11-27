@@ -1,0 +1,14 @@
+.form {
+    border: 1px solid lightslategrey;
+    border-radius: 7px;
+    background-color: steelblue;
+
+    max-width: 80em;
+
+    margin: auto;
+}
+
+.field-name {
+    border: 1px solid red;
+    width: 10px;
+}
