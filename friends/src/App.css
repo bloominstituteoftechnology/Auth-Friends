@@ -1,0 +1,82 @@
+h1{
+  text-align: center;
+  margin-top: 20px!important;
+}
+h2{
+  display: inline;
+  margin: 0!important;
+}
+h3{
+  text-align: center;
+  margin-top: 20px!important;
+}
+h4{
+  text-align: center;
+}
+form.ui.form{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 20px auto;
+}
+form.ui.form .ui.input{
+  margin: 5px 0;
+}
+button.ui.button{
+  width: 100%;
+  margin-top: 5px;
+}
+header{
+  color: #FFF;
+  display: flex!important;
+  align-items: center!important;
+  justify-content: space-between!important;
+  background-color: #5D5C61;
+  height: 60px;
+  padding: 0 20px;
+}
+a {
+  color: #FFF!important;
+  font-size: 1.2rem;
+}
+a:hover{
+  color: #FFF!important;
+}
+header{
+  margin-bottom: 40px;
+}
+header a:hover{
+  background-color: #557A95;
+}
+header a:first-child{
+  padding: 20px;
+}
+header a:last-child{
+  margin-right: 0;  
+  padding: 20px;
+}
+button[type=submit]{
+  color: #FFF!important;
+  background-color: #557A95!important;
+}
+button[type=submit]:hover{
+  color: #FFF!important;
+  background-color: #7395AE!important;
+}
+.active{
+  background-color: #557A95;
+}
+.cards{
+  display: flex!important;
+  align-items: baseline;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+}
+div.ui.buttons{
+  margin-top: 10px;
+  width: 49%;
+}
+.or{
+  margin: 0 2px;
+}
