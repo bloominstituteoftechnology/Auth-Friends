@@ -1,20 +1,30 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import Login from "../Components/Login";
+import FriendsList from '../Components/FriendsList';
 
-const PrivateRoute = ({ component: Component, ...theRest }) => {
+const PrivateRoute = ({ component: Component, ...theRest }) => (
+  
+  <Route 
+  {...theRest}
+  render={props => 
+    localStorage.getItem("token") ? (
+      <Component {...props} />
+    ) : (
+      <Redirect to="/" />
+    )
+  }
+/>
+);
+
+const Routes = () => {
   return (
-    <Route
-      {...theRest}
-      render={() => {
-        if (localStorage.getItem("token")) {
-          return <Component />;
-        } else {
-          console.log("privateRoute redirecting");
-          return <Redirect to="/login" />;
-        }
-      }}
-    />
-  );
-};
+    <div>
+      <Route exact path='/' component={Login} />
+      
+      <PrivateRoute path='/friends' component={FriendsList} />
+    </div>
+  )
+}
 
-export default PrivateRoute;
+export default Routes;

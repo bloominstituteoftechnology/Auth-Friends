@@ -1,18 +1,18 @@
 import React, { Component, useState } from "react";
-import AxiosWithAuth from "../utils/AxiosWithAuth";
+import axiosWithAuth from "../utils/AxiosWithAuth";
 
 
 import "semantic-ui-css/semantic.min.css";
 import { Form, Input, Button } from "semantic-ui-react";
 
 const Login = props => {
-  const [credits, setCredits] = useState({ username: "", pasword: "" });
+  const [credits, setCredits] = useState({ username: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
     setIsLoading(true);
-    AxiosWithAuth()
+    axiosWithAuth()
       .post("/login", credits)
       .then(res => {
         localStorage.setItem("localStorage token", res.data.payload);
@@ -23,7 +23,7 @@ const Login = props => {
   };
 
   const handleChange = e => {
-    setCredits({ ...credits, [e.target.value]: e.target.value });
+    setCredits({ ...credits, [e.target.name]: e.target.value });
   };
 
   return (
@@ -47,7 +47,7 @@ const Login = props => {
             <label>Password</label>
             <Input
               placeholder="Password"
-              type="text"
+              type="password"
               name="password"
               value={credits.password}
               onChange={handleChange}

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const NavHeader = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLogged, setisLogged] = useState(true);
 
   const loggedOutHandle = () => {
     localStorage.removeItem("token");
-    setIsLoggedIn(false);
+    setisLogged(false);
   };
 
   return (
@@ -14,20 +14,21 @@ const NavHeader = () => {
       <header>
         <h1>Friends APP</h1>
         <nav>
-          <NavLink to="/friends" activeClassName="friends">
+          <NavLink to="/friends" activeClassName="active">
             Friends
           </NavLink>
-          {isLoggedIn ? (
+          <br />
+          {isLogged ? (
             <NavLink
               exact
               to="/"
               onClick={loggedOutHandle}
-              activeClassName="log-out"
+              activeClassName="active"
             >
               Log Out
             </NavLink>
           ) : (
-            <NavLink exact to="/" activeClassName="log-in">
+            <NavLink exact to="/" activeClassName="active">
               Log In
             </NavLink>
           )}
