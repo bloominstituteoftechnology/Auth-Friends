@@ -14,7 +14,8 @@
     "nodemon": "^1.17.2"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "build": "[my-framework] build --output public"
   },
   "author": "Lambda School",
   "license": "ISC"
