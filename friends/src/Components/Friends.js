@@ -9,7 +9,7 @@ const Friends = ({ friend }) => {
     const handleDelete = e => {
         e.preventDefault();
         axiosWithAuth()
-        .delete(`/friends/${friend.id}`)
+        .delete(`/api/friends/${friend.id}`)
         .then(res => {
             window.location.reload(false);
             console.log('res', res);

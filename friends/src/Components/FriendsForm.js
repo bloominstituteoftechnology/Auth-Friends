@@ -34,7 +34,8 @@ const FriendsForm = () => {
 
   return (
     <div>
-      <Form onSubmit={handleChange}>
+      <Form onSubmit={handleSubmit}>
+        <label>Add A New Friend</label>
         <Form.Field>
           <label>Name</label>
           <Input

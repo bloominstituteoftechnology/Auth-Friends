@@ -16,8 +16,9 @@ const Login = props => {
       .post("/login", credits)
       .then(res => {
         localStorage.setItem("localStorage token", res.data.payload);
-        props.history.push("/friends");
-        window.location.reload(false);
+        props.history.push("/");
+        window.location.
+        reload(true);
       })
       .catch(err => console.log("err", err));
   };

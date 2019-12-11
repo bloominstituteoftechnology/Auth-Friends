@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const NavHeader = () => {
+import {Button} from 'semantic-ui-react';
+
+const NavHeader = (props) => {
   const [isLogged, setisLogged] = useState(true);
 
   const loggedOutHandle = () => {
@@ -14,24 +16,19 @@ const NavHeader = () => {
       <header>
         <h1>Friends APP</h1>
         <nav>
-          <NavLink to="/friends" activeClassName="active">
+        <NavLink to="/protected" activeClassName="active">
             Friends
-          </NavLink>
-          <br />
-          {isLogged ? (
-            <NavLink
-              exact
-              to="/"
-              onClick={loggedOutHandle}
-              activeClassName="active"
-            >
-              Log Out
+          </NavLink><br />
+           
+            <NavLink exact to="/login" onClick={loggedOutHandle} activeClassName="active">
+              LogOut
+            </NavLink><br />
+          
+            <NavLink exact to="/login" activeClassName="active">
+              Login
             </NavLink>
-          ) : (
-            <NavLink exact to="/" activeClassName="active">
-              Log In
-            </NavLink>
-          )}
+
+          
         </nav>
       </header>
     </div>
