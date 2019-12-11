@@ -7,6 +7,11 @@ const LoginForm = ({ onLoginSubmit }) => {
     password: ""
   });
 
+  const handleLoginSubmit = event => {
+    event.preventDefault();
+    onLoginSubmit(formState);
+  };
+
   const handleInputChange = event => {
     setFormState({
       ...formState,
@@ -16,7 +21,7 @@ const LoginForm = ({ onLoginSubmit }) => {
 
   return (
     <div className={styles.FormContainer}>
-      <form onSubmit={onLoginSubmit} className={styles.Form}>
+      <form onSubmit={handleLoginSubmit} className={styles.Form}>
         <label htmlFor="username">
           Username:
           <input
@@ -30,7 +35,7 @@ const LoginForm = ({ onLoginSubmit }) => {
         <label htmlFor="password">
           Password:
           <input
-            type="text"
+            type="password"
             id="password"
             name="password"
             placeholder="Password"
