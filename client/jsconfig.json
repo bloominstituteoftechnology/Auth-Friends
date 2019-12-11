@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "Actions/*": ["src/actions/*"],
+      "Components/*": ["src/components/*"],
+      "Contexts/*": ["src/contexts/*"],
+      "Hooks/*": ["src/hooks/*"],
+      "Views/*": ["src/views/*"],
+      "Reducers/*": ["src/reducers/*"],
+      "Routes/*": ["src/routes/*"],
+      "Utils/*": ["src/utils/*"]
+    }
+  },
+  "exclude": ["node_modules", "build"]
+}

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component tests should render Home view from root route 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <div>
+      React App - home
+    </div>
+  </div>
+</DocumentFragment>
+`;
