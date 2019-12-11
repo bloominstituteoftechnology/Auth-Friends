@@ -8,6 +8,20 @@
     "type": "git",
     "url": "https://github.com/jasonsbarr/Auth-Friends.git"
   },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint:css": "stylelint \"src/**/*.{js,jsx,css,scss}\"",
+    "lint:js": "eslint \"src/**/*.{js,jsx}\"",
+    "lint": "npm run lint:js && npm run lint:css",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --open --hot --port 3000 --config webpack.config.dev.js",
+    "test": "jest --watch",
+    "test:run": "jest",
+    "test:all": "jest --watchAll",
+    "test:update": "jest -u",
+    "test:coverage": "jest --coverage",
+    "serve": "live-server --port=5000 build"
+  },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.7.4",
     "@emotion/core": "^10.0.22",

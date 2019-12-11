@@ -1,10 +1,10 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Home } from "Views";
+import { Login } from "Views";
 
 const Routes = () => (
   <>
-    <Route exact to="/" component={Home} />
+    <Route exact to="/" component={Login} />
   </>
 );
 

@@ -1,3 +1,3 @@
-import StateContext from "./StateContext";
+import FriendsContext from "./FriendsContext";
 
-export { StateContext };
+export { FriendsContext };

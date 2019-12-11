@@ -2,14 +2,14 @@ import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { StateProvider } from "react-conflux";
-import { StateContext } from "Contexts";
-import { state } from "Reducers";
+import { FriendsContext } from "Contexts";
+import { friends } from "Reducers";
 import { App } from "Components/App";
 import "./index.scss";
 
 render(
   <BrowserRouter>
-    <StateProvider stateContext={StateContext} reducer={state}>
+    <StateProvider stateContext={FriendsContext} reducer={friends}>
       <App />
     </StateProvider>
   </BrowserRouter>,

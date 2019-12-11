@@ -1,3 +1,3 @@
-import state from "./state";
+import friends from "./friends";
 
-export { state };
+export { friends };
