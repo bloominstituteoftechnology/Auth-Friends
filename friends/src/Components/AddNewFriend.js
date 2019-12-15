@@ -4,7 +4,6 @@ import "semantic-ui-css/semantic.min.css";
 import { Form, Input, Button } from "semantic-ui-react";
 
 const NewFriend = props => {
-//   console.log("add-friend:", props);
   const [name, setName] = useState({ name: "", age: "", email: "" });
 
   const handleChange = e => {

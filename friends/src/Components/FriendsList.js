@@ -7,13 +7,12 @@ const FriendList = props => {
   console.log("friend-list props:", props);
   const [friend, setFriend] = useState([]);
 
-
-
   const getData = () => {
     axiosWithAuth()
       .get("http://localhost:5000/api/friends")
       .then(res => {
         setFriend(res.data);
+        // props.history.push("/");
       })
       .catch(err => console.error("err getdata", err));
   };

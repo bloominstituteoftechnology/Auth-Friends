@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { connect } from "react-redux";
 
 import { login } from "../actions";
@@ -7,64 +8,53 @@ import { login } from "../actions";
 import "semantic-ui-css/semantic.min.css";
 import { Form, Input, Button } from "semantic-ui-react";
 
-class Login extends React.Component {
-  state = {
-    credentials: { username: "", password: "" }
-  };
+const Login = props => {
+  console.log("login-props:", props);
+  const [form, setForm] = useState({ username: "", password: "" });
 
-  handleSubmit = e => {
+  const handleChange = e => {
     e.preventDefault();
-    this.props
-      .login(this.state.credentials)
-      .then(() => this.props.history.push("/friends"));
-    this.props.history.push("/");
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  handleChange = e => {
-    this.setState({
-      credentials: {
-        ...this.state.credentials,
-        [e.target.name]: e.target.value
-      }
-    });
+  const handleSubmit = e => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/api/login", form)
+      .then(res => {
+        localStorage.setItem("token", res.data.payload);
+        props.history.push("/protected");
+      })
+      .catch(err => console.error(err.response));
   };
 
-  render() {
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        {this.props.isFetching && <p>loading...</p>}
-        <h1>Login</h1>
-        <Form.Field>
-          <label>Username</label>
-          <Input
-            placeholder="Username"
-            type="text"
-            name="username"
-            value={this.state.credentials.username}
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <Input
-            placeholder="Password"
-            type="password"
-            name="password"
-            value={this.state.credentials.password}
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Button type="submit">Login</Button>
-      </Form>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    error: state.error,
-    isFetching: state.isFetching
-  };
+  return (
+    <Form onSubmit={handleSubmit}>
+      {props.isFetching && <p>loading...</p>}
+      <h1>Login</h1>
+      <Form.Field>
+        <label>Username</label>
+        <Input
+          placeholder="Username"
+          type="text"
+          name="username"
+          value={form.username}
+          onChange={handleChange}
+        />
+      </Form.Field>
+      <Form.Field>
+        <label>Password</label>
+        <Input
+          placeholder="Password"
+          type="password"
+          name="password"
+          value={form.password}
+          onChange={handleChange}
+        />
+      </Form.Field>
+      <Button type="submit">Login</Button>
+    </Form>
+  );
 };
 
-export default connect(mapStateToProps, { login })(Login);
+export default Login;
