@@ -1,33 +1,50 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../utils/AxiosWithAuth";
 import Friends from "./Friends";
-import FriendForm from "./FriendsForm";
+import AddNewFriend from "./AddNewFriend";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getFriends } from "../actions";
+import { withRouter } from "react-router-dom";
 
-const FriendsList = () => {
-  const [friends, setFriends] = useState([]);
+const FriendList = props => {
+  console.log("friend-list props:", props);
+  const [friend, setFriend] = useState([]);
 
   useEffect(() => {
-    axiosWithAuth()
-      .get("/friends")
-      .then(res => {
-        console.log("res.data", res.data);
-        setFriends(res.data);
-      })
-      .catch(err => console.log("err", err));
+    getData();
   }, []);
 
+  const getData = () => {
+    axiosWithAuth()
+      .get("http://localhost:5000/api/friends")
+      .then(res => {
+        setFriend(res.data);
+        props.history.push("/protected");
+      })
+      .catch(err => console.error("err", err));
+  };
+
+  const addFriend = name => {
+    axiosWithAuth()
+      .post("http://localhost:5000/api/friends", name)
+      .then(res => {
+        setFriend(res.data);
+      })
+      .catch(err => console.error(err.response));
+  };
+
   return (
-    <div>
-      <h1>Add A New Friend</h1>
-      <FriendForm />
-      <h2>You have {friends.length} friends</h2>
-      <div className="FriendsList">
-        {friends.map(friend => (
-          <Friends key={friend.id} friend={friend} />
-        ))}
-      </div>
+    <div className="friend-list">
+      <h1>Friend List</h1>
+      <AddNewFriend addFriend={addFriend} />
+      <br />
+
+      {friend.map(friend => (
+        <Friends key={friend.name} friend={friend} />
+      ))}
     </div>
   );
 };
 
-export default FriendsList;
+export default FriendList;

@@ -1,38 +1,22 @@
-import React from 'react';
-import axiosWithAuth from '../utils/AxiosWithAuth';
+import React from "react";
+import { Item } from "semantic-ui-react";
 
-import {Card, Button, CardHeader } from 'semantic-ui-react';
-
-
-const Friends = ({ friend }) => {
-
-    const handleDelete = e => {
-        e.preventDefault();
-        axiosWithAuth()
-        .delete(`/api/friends/${friend.id}`)
-        .then(res => {
-            window.location.reload(false);
-            console.log('res', res);
-        })
-        .catch(err => console.log('err', err));
-    }
-
-    return (
-        <>
-        <Card>
-            <Card.Content>
-                <Card.Header>{friend.id}</Card.Header>
-                <Card.Meta>{friend.age} years old</Card.Meta>
-                <Card.Description>{friend.email}</Card.Description>
-                <Button.Group>
-                    <Button positive>Edit</Button>
-                    <Button.Or />
-                    <Button negative onClick={handleDelete}>Delete</Button>
-                </Button.Group>
-            </Card.Content>
-        </Card>
-        </>
-    )
-}
+const Friends = props => {
+  console.log("friends.js: friends", props.friend);
+  return (
+    <div>
+      <Item.Group>
+        <Item>
+          <Item.Content>
+            <Item.Header as="a">Name: {props.friend.name}</Item.Header>
+            <Item.Meta>Age: {props.friend.age}</Item.Meta>
+            <Item.Extra>Email: {props.friend.email}</Item.Extra>
+            <br />
+          </Item.Content>
+        </Item>
+      </Item.Group>
+    </div>
+  );
+};
 
 export default Friends;
