@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../Utils/axiosWithAuth";
 
-export const AddFriends = () => {
+ const FriendForm = () => {
   const [friend, setFriend] = useState({ name: "", age: "", email: "" });
 
   const handleChange = e => {
@@ -54,3 +54,4 @@ export const AddFriends = () => {
     </form>
   );
 };
+export default FriendForm;
