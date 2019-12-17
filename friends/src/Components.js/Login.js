@@ -19,10 +19,11 @@ const Login = props => {
     const onSubmit = (e) => {
         e.preventDefault();
         axiosWithAuth()
-        .post('/login', credentials)
+        .post('http://localhost:5000/api/login', credentials)
         .then(res => {
-            localStorage.setItem('token', res.data.token);
+            localStorage.setItem('token', res.data.payload);
             props.history.push('/myfriends')
+            console.log(res.data)
         })
         .catch(error => console.log(error))
     }
@@ -32,7 +33,7 @@ const Login = props => {
             <form onSubmit={onSubmit}>
                 <input type='text' placeholder='Enter user name' name='username' value={credentials.username} onChange={handleChange} />
                 <input type='password' placeholder='Enter password' name='password' value={credentials.password} onChange={handleChange} />
-                <button>Login</button>
+                <button type='submit'>Login</button>
             </form>
         </div>
     )

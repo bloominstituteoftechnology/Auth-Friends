@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axiosWithAuth from "../utils/axiosWithAuth.js";
+import axiosWithAuth from '../Utils/axiosWithAuth';
 
 const AddFriends = () => {
     const [friend, setFriend] = useState({name: '', age: '', email: ''})
@@ -13,10 +13,10 @@ const AddFriends = () => {
             )
         }
 
-        const onSumbit =(e) => {
+        const onSubmit =(e) => {
             e.preventDefault()
             axiosWithAuth()
-            .post('/friends', friend)
+            .post('http://localhost:5000/api/friends', friend)
             .then(res => {
                 console.log(e.target)
                 setFriend(
@@ -32,7 +32,7 @@ const AddFriends = () => {
         };
 
         return (
-            <Form onSumbit={onSumbit}>
+            <form onSubmit={onSubmit}>
                 <input
                 type="text"
                 name="name"
@@ -42,20 +42,20 @@ const AddFriends = () => {
                 />
                 <input
                  type="text"
-                 name="name"
+                 name="age"
                  placeholder="friends age"
                  value={friend.age}
                  onChange={handleChange}
                 />
                 <input
                  type="text"
-                 name="name"
+                 name="email"
                  placeholder="friends email"
                  value={friend.email}
                  onChange={handleChange}
                 />
                 <button type='submit'>Add new friend</button>
-            </Form>
+            </form>
         );
 
 
