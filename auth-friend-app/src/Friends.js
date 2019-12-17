@@ -114,7 +114,6 @@ const Friends = props => {
           onChange={onValueChange}
           value={friendObject.name}
           name="name"
-          type="text"
         />
         <TextField
           id="outlined-basic"
@@ -123,10 +122,8 @@ const Friends = props => {
           onChange={onValueChange}
           value={friendObject.age}
           name="age"
-          type="number"
         />
         <TextField
-          type="email"
           id="outlined-basic"
           label="EMail"
           variant="outlined"
