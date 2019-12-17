@@ -17,6 +17,12 @@ const Login = (props) => {
 	const login = event => {
 		event.preventDefault();
 		setIsFetching(true);
+		authAxios().post("/login", credentials)
+			.then(res => {
+				window.localStorage.setItem("friendsToken", res.data.payload);
+				props.history.push("/friends");
+			})
+			.catch(err => console.log(err));
 	}
 
 	return (
@@ -30,16 +36,16 @@ const Login = (props) => {
 				type="text"
 				name="username"
 				placeholder="username"
-				//value={}
-				//onChange={}
+				value={credentials.username}
+				onChange={handleChange}
 			/>
 			<input
 				className="login-base login-input"
 				type="password"
 				name="password"
 				placeholder="password"
-				//value={}
-				//onChange={}
+				value={credentials.password}
+				onChange={handleChange}
 			/>
 			<button className="login-base login-button">LOG IN</button>
 			</form>
