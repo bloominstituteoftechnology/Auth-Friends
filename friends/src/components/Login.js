@@ -1,10 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
 
-function Login() {
-
+function Login(props) {
     const usernameRef = useRef();
     const passwordRef = useRef();
+
+
+    // const [isLoading, setIsLoading] = useState([]);
+
 
     const submitHandler = () => {
         axios.post('http://localhost:5000/login', {
@@ -13,19 +16,16 @@ function Login() {
         })
         .then((response) => {
         // 1- Put the token string in local storage under a 'token' key
-        // localStorage.setItem('token', res.data.token);
+        localStorage.setItem('token', response.data.token);
 
         // // 2- Redirect the user's route.
-        // PaymentResponse.history.push('/friends')
-
+        props.history.push('/friends')
 
         })
         .catch(error => {
             console.log(error);
         })
     }
-
-
 
     return (
         <div>
@@ -41,12 +41,10 @@ function Login() {
                 ref={passwordRef}
                 placeholder='Password'
                 />
-
                 <div>
                     <button>Login!</button>
                 </div>
             </form>
-
         </div>
     )
 
