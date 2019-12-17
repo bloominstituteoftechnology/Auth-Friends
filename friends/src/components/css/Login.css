@@ -1,0 +1,40 @@
+.login-container {
+	display: flex;
+	justify-content: center;
+	height: 50vh;
+	margin: 4rem;
+	background-color: #FFE53B;
+	background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+	border-radius: 2rem;
+	border: 0px solid transparent;
+	font-size: 2.5rem;
+}
+
+.login-inputs-container {
+	display: flex;
+	flex-direction: column;
+	margin: 10rem 0 0 0;
+}
+
+.login-base {
+	width: 30rem;
+	height: 3rem;
+	margin: 1rem;
+	border-radius: 1rem;
+}
+
+.login-input {
+	border: 1px solid lightgrey;
+	color: black;
+	text-indent: 1rem;
+}
+
+.login-button {
+	background-color: #FBAB7E;
+	border: 0px;
+}
+
+.login-button:disabled {
+	color: lightgray;
+	background: lightgrey;
+}

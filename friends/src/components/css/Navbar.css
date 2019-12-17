@@ -1,0 +1,29 @@
+.navbar {
+	height: 7rem;
+	width: 100vw;
+	background: black;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.navbar ul {
+	display: flex;
+	width: 30rem;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.navbar ul li {
+	list-style: none;
+}
+
+.link {
+	color: white;
+	font-size: 1.6rem;
+	text-decoration: none;
+	padding: 2rem 3rem;
+}
+
+.link:hover {
+	background: #4B4A4A
+}
