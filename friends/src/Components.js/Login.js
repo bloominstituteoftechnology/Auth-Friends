@@ -16,7 +16,7 @@ const Login = props => {
         )
     }
 
-    const onSumbit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
         axiosWithAuth()
         .post('/login', credentials)
@@ -26,4 +26,16 @@ const Login = props => {
         })
         .catch(error => console.log(error))
     }
+
+    return (
+        <div>
+            <form onSubmit={onSubmit}>
+                <input />
+                <input />
+                <button>Login</button>
+            </form>
+        </div>
+    )
 }
+
+export default Login;
