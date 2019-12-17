@@ -64,9 +64,18 @@ const Friends = props => {
       .post("/friends", friendObject)
       .then(res => {
         setAllFriends(res.data);
-        console.log("CONSOLE OUTPUT: postNewFriend -> res.data", res.data);
       })
 
+      .catch(err => err);
+  };
+
+  const deleteFriend = theid => {
+    axiosWithAuth()
+      .delete("/friends/" + theid)
+      .then(res => {
+        setAllFriends(res.data);
+        console.log("CONSOLE OUTPUT: delete -> res.data", res.data);
+      })
       .catch(err => err);
   };
 
@@ -128,14 +137,46 @@ const Friends = props => {
         </Fab>
       </form>
 
-      <h1>List of Friends will be here:</h1>
+      <h1>Friends:</h1>
 
       {allFriends.map((buddy, i) => {
         return (
-          <div key={i}>
-            <p>{buddy.name}</p>
-            <p>{buddy.email}</p>
-            <p>{buddy.age}</p>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <Card className={classes.card} key={i} style={{ margin: "10px" }}>
+              <CardActionArea>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    <h2>{buddy.name}</h2>
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    <h3>Age: {buddy.age}</h3>
+                    <h3> Email: {buddy.email}</h3>
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={() => deleteFriend(buddy.id)}
+                >
+                  Delete
+                </Button>
+              </CardActions>
+            </Card>{" "}
           </div>
         );
       })}
