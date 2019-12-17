@@ -5,11 +5,16 @@ import './App.css';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-       <Login />
-      </header>
+     
+       <Link to='/Login'>Login</Link>
+      
     </div>
+    <Switch>
+      <Route path='/login' component={Login} />
+    </Switch>
+    </Router>
   );
 }
 
