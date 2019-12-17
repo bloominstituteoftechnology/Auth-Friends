@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth.js";
 
-const addFriend = () => {
+const AddFriends = () => {
     const [friend, setFriend] = useState({name: '', age: '', email: ''})
 
         const handleChange = (e) => {
@@ -31,8 +31,24 @@ const addFriend = () => {
             .catch(error => console.log(error));
         };
 
+        return (
+            <Form onSumbit={onSumbit}>
+                <input
+                
+                />
+                <input
+                
+                />
+                <input
+                
+                />
+                <button type='submit'>Add new friend</button>
+            </Form>
+        );
 
 
 
 
-}
+};
+
+export default AddFriends;
