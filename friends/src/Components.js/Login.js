@@ -7,7 +7,7 @@ const Login = props => {
         password:'',
     })
 
-    const hadleChange = (e) => {
+    const handleChange = (e) => {
         setCredentials (
             {
                 ...credentials,
@@ -30,8 +30,8 @@ const Login = props => {
     return (
         <div>
             <form onSubmit={onSubmit}>
-                <input />
-                <input />
+                <input type='text' placeholder='Enter user name' name='username' value={credentials.username} onChange={handleChange} />
+                <input type='password' placeholder='Enter password' name='password' value={credentials.password} onChange={handleChange} />
                 <button>Login</button>
             </form>
         </div>
