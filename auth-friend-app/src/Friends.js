@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Redirect } from "react";
 import { axiosWithAuth } from "./axiosAuth";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -11,6 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { withRouter } from "react-router-dom";
 
 const Friends = props => {
   const initialFormValues = {
@@ -67,8 +70,27 @@ const Friends = props => {
       .catch(err => err);
   };
 
+  const onLogout = () => {
+    localStorage.removeItem("token");
+    props.history.push("/");
+  };
   return (
     <div>
+      <ButtonGroup
+        variant="text"
+        color="primary"
+        aria-label="text primary button group"
+      >
+        <Button
+          onClick={onLogout}
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          startIcon={<ExitToAppIcon />}
+        >
+          LogOut
+        </Button>
+      </ButtonGroup>
       <form
         style={{ marginTop: "100px" }}
         className={classes.root}
@@ -121,4 +143,4 @@ const Friends = props => {
   );
 };
 
-export default Friends;
+export default withRouter(Friends);
