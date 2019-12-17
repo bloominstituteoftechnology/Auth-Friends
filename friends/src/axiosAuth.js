@@ -7,14 +7,16 @@ import axios from 'axios';
 
 // Usage should look like: `withAuth().get('http://api.com/friends').then(etc)`
 
-export const axiosWuthAuth = () => {
+const axiosWithAuth = () => {
     const token = localStorage.getItem('token');
 
     const axiosExample = axios.create({
         headers: {
             'Content-Type': 'application/json',
             Authorization: token,
-        }
+        },
     });
     return axiosExample;
-}
+};
+
+export default axiosWithAuth;

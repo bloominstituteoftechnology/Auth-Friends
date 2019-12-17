@@ -10,7 +10,7 @@ function Login(props) {
 
 
     const submitHandler = () => {
-        axios.post('http://localhost:5000/login', {
+        axios.post('http://localhost:5000/api/login', {
             username: usernameRef.current.value,
             password: passwordRef.current.value,
         })
