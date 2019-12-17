@@ -2,29 +2,29 @@ import React, { useState } from "react";
 import axiosWithAuth from "../Axios/axiosWithAuth";
 
 const AddFriends = () => {
-  const [friends, setFriends] = useState({ name: "", age: "", email: "" });
+  const [friend, setFriend] = useState({ name: "", age: "", email: "" });
 
-  const handleChange = event => {
-    setFriends({
-      ...friends,
-      [event.target.name]: event.target.value
+  const handleChange = e => {
+    setFriend({
+      ...friend,
+      [e.target.name]: e.target.value
     });
   };
 
-  const onSubmit = event => {
-    event.preventDefault();
+  const onSubmit = e => {
+    e.preventDefault();
     axiosWithAuth()
-      .post("http://localhost:5000/api/friends", friends)
+      .post("http://localhost:5000/api/friends", friend)
       .then(res => {
-        console.log(res.event.target);
-        setFriends({
-          ...friends,
+        console.log(e.target);
+        setFriend({
+          ...friend,
           name: "",
           age: "",
           email: ""
         });
       })
-      .catch(err => console.log(err));
+      .catch(error => console.log(error));
   };
 
   return (
@@ -33,21 +33,21 @@ const AddFriends = () => {
         type="text"
         name="name"
         placeholder="friends name"
-        value={friends.name}
+        value={friend.name}
         onChange={handleChange}
       />
       <input
         type="text"
         name="age"
         placeholder="friends age"
-        value={friends.age}
+        value={friend.age}
         onChange={handleChange}
       />
       <input
         type="text"
         name="email"
         placeholder="friends email"
-        value={friends.email}
+        value={friend.email}
         onChange={handleChange}
       />
       <button type="submit">Add new friend</button>
