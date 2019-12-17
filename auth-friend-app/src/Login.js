@@ -3,8 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import Button from "@material-ui/core/Button";
 import { useState } from "react";
 import { axiosWithAuth } from "./axiosAuth";
+import VpnKeyOutlinedIcon from "@material-ui/icons/VpnKeyOutlined";
 export const Login = props => {
   const [userId, setUserId] = useState({
     username: "",
@@ -52,6 +54,7 @@ export const Login = props => {
         name="username"
         value={userId.username}
         onChange={onValuechange}
+        type="text"
       />
 
       <TextField
@@ -64,10 +67,15 @@ export const Login = props => {
         onChange={onValuechange}
         type="password"
       />
-
-      <Fab color="primary" aria-label="add" type="submit">
-        <AddIcon />
-      </Fab>
+      <Button
+        variant="contained"
+        color="primary"
+        className={classes.button}
+        startIcon={<VpnKeyOutlinedIcon />}
+        type="submit"
+      >
+        LogIn
+      </Button>
     </form>
   );
 };

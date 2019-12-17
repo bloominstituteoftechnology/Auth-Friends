@@ -14,7 +14,7 @@ import AddIcon from "@material-ui/icons/Add";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { withRouter } from "react-router-dom";
-
+import QueueTwoToneIcon from "@material-ui/icons/QueueTwoTone";
 const Friends = props => {
   const initialFormValues = {
     name: "",
@@ -114,6 +114,7 @@ const Friends = props => {
           onChange={onValueChange}
           value={friendObject.name}
           name="name"
+          type="text"
         />
         <TextField
           id="outlined-basic"
@@ -122,8 +123,10 @@ const Friends = props => {
           onChange={onValueChange}
           value={friendObject.age}
           name="age"
+          type="number"
         />
         <TextField
+          type="email"
           id="outlined-basic"
           label="EMail"
           variant="outlined"
@@ -132,9 +135,10 @@ const Friends = props => {
           name="email"
         />
 
-        <Fab color="primary" aria-label="add" type="submit">
-          <AddIcon />
-        </Fab>
+        <Button color="primary" aria-label="add" type="submit">
+          <QueueTwoToneIcon fontSize="large" />
+          &nbsp;&nbsp;Add a friend
+        </Button>
       </form>
 
       <h1>Friends:</h1>
