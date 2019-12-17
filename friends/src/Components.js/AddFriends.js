@@ -34,13 +34,25 @@ const AddFriends = () => {
         return (
             <Form onSumbit={onSumbit}>
                 <input
-                
+                type="text"
+                name="name"
+                placeholder="friends name"
+                value={friend.name}
+                onChange={handleChange}
                 />
                 <input
-                
+                 type="text"
+                 name="name"
+                 placeholder="friends age"
+                 value={friend.age}
+                 onChange={handleChange}
                 />
                 <input
-                
+                 type="text"
+                 name="name"
+                 placeholder="friends email"
+                 value={friend.email}
+                 onChange={handleChange}
                 />
                 <button type='submit'>Add new friend</button>
             </Form>
