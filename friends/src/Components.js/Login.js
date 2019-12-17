@@ -15,4 +15,15 @@ const Login = props => {
             }
         )
     }
+
+    const onSumbit = (e) => {
+        e.preventDefault();
+        axiosWithAuth()
+        .post('/login', credentials)
+        .then(res => {
+            localStorage.setItem('token', res.data.token);
+            props.history.push('/quotes')
+        })
+        .catch(error => console.log(error))
+    }
 }
