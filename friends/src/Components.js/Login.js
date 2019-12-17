@@ -22,7 +22,7 @@ const Login = props => {
         .post('/login', credentials)
         .then(res => {
             localStorage.setItem('token', res.data.token);
-            props.history.push('/friends')
+            props.history.push('/myfriends')
         })
         .catch(error => console.log(error))
     }
