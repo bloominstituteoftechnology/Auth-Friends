@@ -5,13 +5,13 @@ export function Form(){
     const [form,setForm]=useState({
         name:'',
         age:'',
-        email:'',
+        email:''
     })
 
 
     return(
         <form onSubmit={(e)=>{
-            //e.preventDefault()
+            e.preventDefault()
             axiosWithAuth().post('/friends', form)
             .then(res=>{
                 console.log(res)
@@ -41,7 +41,7 @@ export function Form(){
             }}
             />
              <input
-            name='Email'
+            name='email'
             placeholder='Email.'
             value={form.email}
             onChange={(e)=>{
