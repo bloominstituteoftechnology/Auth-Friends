@@ -24,7 +24,7 @@ export default function FriendsList(props) {
             {
                 list.map(friend => {
                     console.log(friend);
-                return <h3 key={friend.id}>{ friend.name }, { friend.age}</h3>
+                return <h3 key={friend.id}><i>Name:</i> <br></br>{ friend.name } <br></br> <i>Age:</i> <br></br>{ friend.age} <br></br> <i>Email:</i> <br></br>{ friend.email }</h3>
                 })
 
             }
