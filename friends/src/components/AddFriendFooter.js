@@ -3,7 +3,7 @@ import { authAxios } from "../utils/authAxios";
 
 import "./css/AddFriendFooter.css";
 
-const AddFriendFooter = (props) => {
+const AddFriendFooter = props => {
 
 	const a = [];
 	const [ages, setAges] = useState(a);
@@ -64,7 +64,7 @@ const AddFriendFooter = (props) => {
 					value={friend.email}
 					onChange={handleChanges}
 				/>
-				<button className="add-friend-button">Add Friend</button>
+				<button className="add-friend-button"><i className="fas fa-plus-circle fa-2x"></i></button>
 			</form>
 		</div>
 	)

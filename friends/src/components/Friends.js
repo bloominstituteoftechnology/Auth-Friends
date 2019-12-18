@@ -6,7 +6,7 @@ import AddFriendFooter from "./AddFriendFooter";
 
 import "./css/Friends.css";
 
-const Friends = (props) => {
+const Friends = props => {
 
 	const [friends, setFriends] = useState([]);
 
@@ -27,7 +27,7 @@ const Friends = (props) => {
 	return (
 		<div className="container">
 		<div className="container-friends">
-			<h1>Friends</h1>
+			<h1><i className="fas fa-user-friends fa-2x"></i></h1>
 			<div className="container-card">
 				{friends.map(friend => (
 					<FriendCard key={friend.id} friend={friend} />

@@ -1,12 +1,13 @@
 .footer {
 	position: fixed;
-	bottom: 0vh;
+	left: 0;
+	bottom: 0;
 	width: 100vw;
-	height: 5rem;
 	background: white;
 }
 
 .footer-form {
+	margin: 1rem;
 	width: 99vw;
 	height: 5rem;
 	display: flex;
@@ -24,6 +25,16 @@
 }
 
 .add-friend-button {
-	width: 10rem;
+	padding: 0.5rem 0;
+	margin: 0 5.5rem 0 1rem;
+	width: 3.9rem;
 	font-size: 1.2rem;
+	background: white;
+	border: 0px solid white;
+	border-radius: 1rem;
+}
+
+.add-friend-button:hover {
+	background: black;
+	color: white;
 }

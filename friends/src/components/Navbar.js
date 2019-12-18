@@ -6,7 +6,7 @@ import Login from "./Login";
 import Friends from "./Friends";
 import PrivateRoute from "./PrivateRoute";
 
-const Navbar = (props) => {
+const Navbar = props => {
 	return (
 		<div>
 			<nav
@@ -22,7 +22,7 @@ const Navbar = (props) => {
 			</nav>
 			<Switch>
 				<PrivateRoute exact path="/friends" component={Friends} />
-				<Route path="login" component={Login} />
+				<Route path="/login" component={Login} />
 				<Route component={Login} />
 			</Switch>
 		</div>

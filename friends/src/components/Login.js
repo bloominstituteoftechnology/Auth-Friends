@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { authAxios } from "../utils/authAxios";
 import "./css/Login.css";
 
-const Login = (props) => {
+const Login = props => {
 
 	const [credentials, setCredentials] = useState({ username: "", password: ""});
 	const [isFetching, setIsFetching] = useState(false);
