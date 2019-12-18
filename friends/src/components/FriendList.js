@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from './../utils/axiosWithAuth';
-import Friends from './Friends'
+import Friends from './Friends';
+import NewForm from './NewForm';
 
 export default function FriendList(props) {
 
@@ -16,6 +17,8 @@ export default function FriendList(props) {
         .catch(err => console.log(err))
     }
 
+    
+
     useEffect(()=>{
        getData()
     },[]);
@@ -24,6 +27,7 @@ export default function FriendList(props) {
     return (
         <div>
          <h3>Friends</h3>
+         <NewForm/>
          <div>
          {
              friends.map(each => (
@@ -32,6 +36,7 @@ export default function FriendList(props) {
                 </div>
              ))
          }
+         
          </div>
         </div>
     )
