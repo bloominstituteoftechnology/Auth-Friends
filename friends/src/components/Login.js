@@ -48,7 +48,7 @@ class Login extends React.Component{
 
                     <input type="password" name="password" value={this.state.credentials.password} onChange={this.handleChange}/>
 
-                    <button>Log in</button>
+                    <button>Login</button>
                     {this.state.isFetching && (
                     <div className="key spinner">
                         <Loader type="Puff" color="#204963" height="60" width="60" />
