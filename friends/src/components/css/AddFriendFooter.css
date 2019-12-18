@@ -1,0 +1,29 @@
+.footer {
+	position: fixed;
+	bottom: 0vh;
+	width: 100vw;
+	height: 5rem;
+	background: white;
+}
+
+.footer-form {
+	width: 99vw;
+	height: 5rem;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.footer-input {
+	width: 20rem;
+	font-size: 1.6rem;
+	margin: 0 0 0 1rem;
+	border-radius: 0.5rem;
+	border: 1px solid grey;
+	text-indent: 0.2rem;
+}
+
+.add-friend-button {
+	width: 10rem;
+	font-size: 1.2rem;
+}

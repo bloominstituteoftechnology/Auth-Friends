@@ -18,11 +18,12 @@ const Login = (props) => {
 		event.preventDefault();
 		setIsFetching(true);
 		authAxios().post("/login", credentials)
-			.then(res => {
-				window.localStorage.setItem("friendsToken", res.data.payload);
-				props.history.push("/friends");
-			})
-			.catch(err => console.log(err));
+				   .then(res => {
+						window.localStorage.setItem("friendsToken", res.data.payload);
+						setIsFetching(false);
+						props.history.push("/friends");
+					})
+					.catch(err => console.log(err));
 	}
 
 	return (

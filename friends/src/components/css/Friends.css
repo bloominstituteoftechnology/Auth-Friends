@@ -1,0 +1,40 @@
+.container-friends {
+	margin: 0 0 0 3%;
+}
+
+.container-card {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.card {
+	width: 47%;
+	height: 20rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 0.5rem 2rem 0.5rem;
+	color: white;
+	background-color: #4158D0;
+	background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+	border: 0px solid transparent;
+	border-radius: 1rem;
+}
+
+.left {
+	height: 20rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin: 0 0 3rem 1rem;
+	padding: 0 0 1rem 1rem;
+}
+
+.right {
+	font-size: 20rem;
+	margin: 0 1rem 0 0;
+}
+
+.card h4, .card h5, .card h6 {
+	margin: 0;
+} 
