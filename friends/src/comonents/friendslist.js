@@ -7,11 +7,12 @@ export const FriendsList =()=>{
     useEffect(()=>{
         axiosWithAuth().get('/friends')
         .then(res=>{
-            console.log(res)
+            console.log(res.data)
+            setFriends(res.data)
         })
         .catch(err=>console.log(err))
     },[])
-    
+    console.log(friends)
     return(
         <div className='friendsList'>
             {friends.map(friend=>(

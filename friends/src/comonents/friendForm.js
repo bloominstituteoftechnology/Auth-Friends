@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {axiosWithAuth} from '../utils/'
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 export function Form(){
 
     const [form,setForm]=useState({
@@ -8,13 +8,7 @@ export function Form(){
         email:'',
     })
 
-//   const sendSmurf = (form) => {
-//         axios.post('http://localhost:3333/smurfs', form)
-//         .then(res=>{
-//             console.log(res)
-//         })
-//         .catch(err =>{console.log(err)})
-//   }
+
     return(
         <form onSubmit={(e)=>{
             //e.preventDefault()
@@ -57,7 +51,7 @@ export function Form(){
         })
             }}
             />
-            <button type='submit'>Add Smurf!</button>
+            <button type='submit'>Add Friend!</button>
             
         </form>
     )

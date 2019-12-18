@@ -10,7 +10,9 @@ function Login (){
         <form onSubmit={(e)=>{
             e.preventDefault();
             axiosWithAuth().post('/login',form)
-            .then(res=>{console.log(res)})
+            .then(res=>{console.log(res)
+            localStorage.setItem('token',res.data.payload)
+            })
             .catch(err=>{console.log(err)})
         }}>
             <input type='text' name='username'value={form.username} placeholder='Username' onChange={(e)=>{
