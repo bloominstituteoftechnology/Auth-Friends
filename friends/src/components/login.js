@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import AxiosWithAuth from '../utilz/AxiosWithAuth'
 
 
-const Login = () =>{
+const Login = (props) =>{
 
 const [credentials, setCredentials] = useState({
     username: '',
@@ -16,7 +17,7 @@ const handleChange = e => {
 const login = e => {
     e.preventDefault();
     setIsFetching(true);
-    axiosWithAuth()
+    AxiosWithAuth()
     .post('/login', credentials)
     .then(res => {
         localStorage.setItem('token', res.data.payload);
@@ -24,11 +25,14 @@ const login = e => {
     })
     .catch(err => console.log(err))
 }
-
-<form onSubmit={login}>
+return(
+   <form onSubmit={login}>
         <input type="text" name="username" onChange={handleChange} placeholder="username" />
         <input type="text" name="password" onChange={handleChange} placeholder="password"/>
-</form>
+        <button type="submit">LOGIN</button>
+</form> 
+)
+
 
 }
 
