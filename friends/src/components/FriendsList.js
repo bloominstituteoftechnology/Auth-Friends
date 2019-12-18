@@ -5,25 +5,28 @@ export default function FriendsList(props) {
     const [list, setList] = useState([]);
 
     useEffect(() => {
-
+        // Using Token.
         const token = localStorage.getItem('token');
 
-        axios().get('http://localhost:5000/api/friends')
+        axios()
+        .get('http://localhost:5000/api/friends')
         .then(response => {
             setList(response.data);
         })
         .catch(error => {
-            alert('There is an error.');
+            alert(error);
+            console.log(error);
         });
     }, []);
-
 
     return(
         <div>
             {
                 list.map(friend => {
-                    <li key={friend.id}>{friend}</li>
+                    console.log(friend);
+                return <h3 key={friend.id}>{ friend.name }, { friend.age}</h3>
                 })
+
             }
             <h3>Yea dawg, here's something.</h3>
         </div>

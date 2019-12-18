@@ -5,7 +5,7 @@ import FriendsList from './components/FriendsList';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import axiosWithAuth from './axiosAuth';
 
-const PrivateRoute = ({ component: Component, ...reset }) => (
+const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} 
   render={props => 
   localStorage.getItem('token') ? (
