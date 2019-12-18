@@ -73,7 +73,7 @@ const Friends = props => {
     axiosWithAuth()
       .delete("/friends/" + theid)
       .then(res => {
-        setAllFriends(res.data);
+        getListOfFriends();
         console.log("CONSOLE OUTPUT: delete -> res.data", res.data);
       })
       .catch(err => err);
