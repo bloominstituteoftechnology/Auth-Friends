@@ -2,37 +2,74 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title {
+  font-size: 1.7rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.links ul {
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+.links li {
+  width: 90px;
+}
+
+.form {
+  background-color: rgb(160, 127, 168);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 2%;
+}
+
+.form form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 35%;
+  padding: 1%;
 }
 
-.App-link {
-  color: #61dafb;
+.form input {
+  text-align: center;
+  margin: 1%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form button {
+  margin-left: 35%;
+  width: 100px;
+  height: auto;
+}
+
+.add {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(201, 86, 86);
+}
+
+.friend-container {
+  background-color: rgb(101, 101, 221);
+  text-align: center;
+}
+
+.friends {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.friend {
+  border: 1.5px solid black;
+  width: 35%;
+  margin: 1%;
+  padding: 1%;
 }
