@@ -73,7 +73,9 @@ const Friends = props => {
     axiosWithAuth()
       .delete("/friends/" + theid)
       .then(res => {
-        getListOfFriends();
+        // getListOfFriends();
+        setAllFriends(allFriends.filter(buddy => buddy.id !== theid)); // updates front end faster without a network request
+
         console.log("CONSOLE OUTPUT: delete -> res.data", res.data);
       })
       .catch(err => err);
