@@ -1,0 +1,123 @@
+.App {
+  text-align: center;
+}
+
+* {
+  margin: 0;
+}
+
+.App-link {
+  color: #35ddcf7c;
+}
+
+.main-nav {
+  background-color: rgb(73, 70, 70);
+  margin: 0;
+  padding: 0;
+  color: rgb(219, 210, 168);
+}
+
+.navi {
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 3rem;
+}
+.nav {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin-left: 2rem;
+}
+
+h1 {
+  padding: 2rem;
+}
+
+.soccer-list {
+  margin: 0 auto;
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.soccer-item {
+  width: 50%;
+  overflow: hidden;
+}
+h3 {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+.soccer-item p {
+  margin: 20px 30px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+
+form {
+  display: flex;
+  margin-top: 40px;
+  flex-direction: column;
+  align-items: center;
+}
+input {
+  font-size: 1.6rem;
+  padding: 0.2rem 0.8rem;
+  margin: 10px 1rem;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px black;
+  outline: none;
+  width: 30%;
+}
+
+form h2 {
+  margin-top: 40px;
+}
+button {
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  margin: 30px 1rem;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px black;
+  outline: none;
+  background-color: rgb(23, 1, 121);
+  color: white;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-around;
+}
+.btn-small{
+  font-size: 0.8rem;
+  padding: 0.5rem 1.0rem;
+  margin: 10px .4rem;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px black;
+  outline: none;
+  background-color: rgb(90, 1, 1);
+  color: white;
+}
+
+.delete {
+  background-color: white;
+  color: black;
+  font-weight: 700;
+}
+
+.alert{
+  padding: 0.7rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+
+  color: red;
+}
