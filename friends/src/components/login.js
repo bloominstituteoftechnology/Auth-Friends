@@ -16,9 +16,16 @@ const handleChange = e => {
 const login = e => {
     e.preventDefault();
     setIsFetching(true);
+    axiosWithAuth()
+    .post('/login', credentials)
+    .then(res => {
+        localStorage.setItem('token', res.data.payload);
+        props.history.push('/protected');
+    })
+    .catch(err => console.log(err))
 }
 
-<form>
+<form onSubmit={login}>
         <input type="text" name="username" onChange={handleChange} placeholder="username" />
         <input type="text" name="password" onChange={handleChange} placeholder="password"/>
 </form>
