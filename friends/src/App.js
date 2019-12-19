@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import PrivateRoute from "./components/PrivateRoute";
-import Friends from "./components/Friends";
-import LogInForm from "./components/LogInForm";
-​
-​
+import FriendsList from "./components/FriendsList";
+import Login from "./components/Login";
+import './App.css';
+
 function App() {
   return (
     <div className="App">
@@ -19,28 +19,14 @@ function App() {
           </li>
         </ul>
         <Switch>
-          <PrivateRoute path="/friends" component={Friends} />
-          <Route path="/login" component={LogInForm} />
-          <Route component={LogInForm} />
+          <PrivateRoute path="/friends" component={FriendsList} />
+          <Route path="/login" component={Login} />
+          <Route component={Login} />
         </Switch>
       </div>
     </Router>
     </div>
   );
-};
-export default App;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+​export default App;

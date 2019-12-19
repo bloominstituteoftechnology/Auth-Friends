@@ -1,7 +1,7 @@
 import React from "react";
-import axioswithAuth from "../utils/axiosWithAuth";
+import axiosWithAuth from "../utils/axiosWithAuth";
 ​
-class Friends extends React.Component {
+class FriendsList extends React.Component {
   state = {
     addFriend: {
       name: "",
@@ -22,7 +22,7 @@ class Friends extends React.Component {
 ​
   createFriend = e => {
     // e.preventDefault();
-    axioswithAuth()
+    axiosWithAuth()
       .post("/friends", this.state.addFriend)
       .then(res => {
         // localStorage.setItem("token", res.data.payload);
@@ -32,7 +32,7 @@ class Friends extends React.Component {
   };
 ​
   componentDidMount() {
-    axioswithAuth()
+    axiosWithAuth()
       .get("/friends")
       .then(res => {
         console.log(res);
@@ -81,9 +81,4 @@ class Friends extends React.Component {
   }
 }
 ​
-export default Friends;
-
-
-
-
-
+export default FriendsList;
