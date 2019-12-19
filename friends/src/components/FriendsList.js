@@ -1,84 +1,83 @@
-import React from "react";
-import axiosWithAuth from "../utils/axiosWithAuth";
-​
-class FriendsList extends React.Component {
+import React from 'react';
+import axiosWithAuth from '../utils/axiosWithAuth';
+
+class Friends extends React.Component{
   state = {
     addFriend: {
-      name: "",
-      age: "",
-      email: ""
+      name: '',
+      age: '',
+      email: ''
     },
-    friendList: []
+    friendsList: []
   };
-​
+
   handleChange = e => {
-    this.setState({
+    this.setState ({
       addFriend: {
         ...this.state.addFriend,
-        [e.target.name]: e.target.value
+        [e.target.name] : e.target.value
       }
     });
   };
-​
   createFriend = e => {
-    // e.preventDefault();
     axiosWithAuth()
-      .post("/friends", this.state.addFriend)
+      .post('./friends', this.state.addFriend)
       .then(res => {
-        // localStorage.setItem("token", res.data.payload);
-        this.props.history.push("/friends");
+        this.props.history.push('/friends');
       })
-      .catch(err => console.log(err));
-  };
-​
-  componentDidMount() {
-    axiosWithAuth()
-      .get("/friends")
+      .catch(err => console.log (err));
+    };
+    
+    componentDidMount () {
+      axiosWithAuth()
+      .get('/friends')
       .then(res => {
         console.log(res);
-        this.setState({ friendList: res.data });
+        this.setState({friendsList: res.data});
       });
-  }
-​
-  render() {
-    return (
+    }
+
+  render(){
+    return(
       <div>
-        <form onSubmit={this.createFriend}>
+        <form onSubmit = {this.createFriend}>
           <input
-            type="text"
-            name="name"
-            placeholder="name"
-            value={this.state.addFriend.name}
-            onChange={this.handleChange}
+              type= 'text'
+              name = 'name'
+              placeholder = 'name'
+              value = {this.state.addFriend.name}
+              onChange = {this.handleChange}
           />
-          <input
-            type="text"
-            name="age"
-            placeholder="age"
-            value={this.state.addFriend.age}
-            onChange={this.handleChange}
+
+<input
+              type= 'text'
+              name = 'email'
+              placeholder = 'Email'
+              value = {this.state.addFriend.email}
+              onChange = {this.handleChange}
           />
-          <input
-            type="text"
-            name="email"
-            placeholder="email"
-            value={this.state.addFriend.email}
-            onChange={this.handleChange}
+
+<input
+              type= 'text'
+              name = 'age'
+              placeholder = 'Age'
+              value = {this.state.addFriend.name}
+              onChange = {this.handleChange}
           />
-          <button type="submit">Add Friend</button>
+
+          <button type = 'submit'> Add </button>
         </form>
-        {this.state.friendList.map(friends => {
-          return (
-            <div key={friends.id}>
-              <p>{friends.name}</p>
-              <p>{friends.age}</p>
-              <p>{friends.email}</p>
-            </div>
-          );
-        })}
+      {this.state.friendList.map(friends => {
+        return(
+          <div key = {friends.id}>
+            <p>{friends.name}</p>
+            <p> {friends.email}</p>
+            <p> {friends.age}</p>
+          </div>
+        )
+      })}
       </div>
     );
   }
 }
-​
-export default FriendsList;
+export default Friends;

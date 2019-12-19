@@ -1,15 +1,17 @@
-import React from "react";
-import axiosWithAuth from "../utils/axiosWithAuth";
-​
-class Login extends React.Component {
+
+  import React from 'react';
+  import axiosWithAuth from '../utils/axiosWithAuth';
+
+  class LogIn extends React.Component {
     state = {
       credentials: {
         username: '',
         password: ''
+
       },
       isFetching: false
     };
-  
+
     handleChange = e => {
       this.setState({
         credentials: {
@@ -18,7 +20,6 @@ class Login extends React.Component {
         }
       });
     };
-  
     login = e => {
       e.preventDefault();
       this.setState({
@@ -27,34 +28,35 @@ class Login extends React.Component {
       axiosWithAuth()
         .post('/login', this.state.credentials)
         .then(res => {
-          localStorage.setItem('token', res.data.payload);
-          this.props.history.push('/friends');
+          localStorage.setItem('token, res.data.payload');
+          this.props.history.push ('/friends');
         })
         .catch(err => console.log(err));
     };
-  
-    render() {
-      return (
-        <div>
-          <form onSubmit={this.login}>
-            <input
-              type="text"
-              name="username"
-              value={this.state.credentials.username}
-              onChange={this.handleChange}
-            />
-            <input
-              type="password"
-              name="password"
-              value={this.state.credentials.password}
-              onChange={this.handleChange}
-            />
-            <button>Log in</button>
-            {this.state.isFetching && 'logging in'}
-          </form>
-        </div>
+
+  render() {
+    return(
+      <div>
+        <form onSubmit = {this.login}>
+          <input
+            type = 'text'
+            name = 'username'
+            value = {this.state.credentials.username}
+            onChange = {this.handleChange}
+          />
+
+          <input
+            type = 'password'
+            name = 'password'
+            value = {this.state.credentials.password}
+            onChange = {this.handleChange}
+          />
+          <button> Log In </button>
+          {this.state.isFetching && 'logging in'}
+        </form>
+      </div>
       );
     }
   }
-  
-  export default Login;
+
+  export default LogIn;
