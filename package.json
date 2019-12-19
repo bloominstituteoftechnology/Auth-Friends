@@ -12,7 +12,8 @@
     "nodemon": "^1.17.2"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "build": "npm run build"
   },
   "author": "Lambda School",
   "license": "ISC"

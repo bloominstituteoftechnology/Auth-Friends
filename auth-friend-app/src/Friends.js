@@ -172,7 +172,7 @@ const Friends = props => {
               </CardActionArea>
               <CardActions>
                 <Button
-                  size="small"
+                  size="small"push
                   color="primary"
                   onClick={() => deleteFriend(buddy.id)}
                 >
