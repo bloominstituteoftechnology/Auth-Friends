@@ -7,15 +7,25 @@ class FriendsList extends React.Component{
         friends: []
     }
 
-    getData  = () => {
+    componentDidMount(){
+        this.getData()
+    }
+
+    getData = () => {
         axiosWithAuth()
-        .get('/data')
+        .get()
+        .then(res => {
+            console.log(res)
+            this.setState({
+                friends: res.data.data
+            })
+        }).catch(err => console.log(err))
     }
 
     render(){
         return(
             <div>
-            
+            <button onClick={this.getData}>TEST</button>
             </div>
         )
     }
