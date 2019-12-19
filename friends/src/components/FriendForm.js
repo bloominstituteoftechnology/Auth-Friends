@@ -17,6 +17,7 @@ const FriendForm = (props) => {
     const [buttonLabel, setButtonLabel] = useState('Add Friend');
 
     useEffect(() => {
+        console.log('git test')
         setFormValues({
             id: props.editFriend.id,
             name: props.editFriend.name,
