@@ -61,13 +61,13 @@ class Friends extends React.Component{
               type= 'text'
               name = 'age'
               placeholder = 'Age'
-              value = {this.state.addFriend.name}
+              value = {this.state.addFriend.age}
               onChange = {this.handleChange}
           />
 
-          <button type = 'submit'> Add </button>
+          <button type ='submit'> Add </button>
         </form>
-      {this.state.friendList.map(friends => {
+      {this.state.friendsList.map(friends => {
         return(
           <div key = {friends.id}>
             <p>{friends.name}</p>
