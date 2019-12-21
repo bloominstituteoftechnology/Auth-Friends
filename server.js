@@ -1,49 +1,50 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const port = 5000;
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+// const port = 5000;
 const app = express();
+const path = require('path');
 const token =
-  'esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ';
+  "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ";
 
 let nextId = 7;
 
 let friends = [
   {
     id: 1,
-    name: 'Rachel Green',
+    name: "Rachel Green",
     age: 30,
-    email: 'rachel@friends.com'
+    email: "rachel@friends.com"
   },
   {
     id: 2,
-    name: 'Joey Tribbiani',
+    name: "Joey Tribbiani",
     age: 34,
-    email: 'joey@friends.com'
+    email: "joey@friends.com"
   },
   {
     id: 3,
-    name: 'Chandler Bing',
+    name: "Chandler Bing",
     age: 32,
-    email: 'chandler@friends.com'
+    email: "chandler@friends.com"
   },
   {
     id: 4,
-    name: 'Ross Geller',
+    name: "Ross Geller",
     age: 32,
-    email: 'ross@friends.com'
+    email: "ross@friends.com"
   },
   {
     id: 5,
-    name: 'Monica Bing',
+    name: "Monica Bing",
     age: 31,
-    email: 'monica@friends.com'
+    email: "monica@friends.com"
   },
   {
     id: 6,
-    name: 'Phoebe Buffay-Hannigan',
+    name: "Phoebe Buffay-Hannigan",
     age: 30,
-    email: 'phoebe@friends.com'
+    email: "phoebe@friends.com"
   }
 ];
 
@@ -56,13 +57,13 @@ function authenticator(req, res, next) {
   if (authorization === token) {
     next();
   } else {
-    res.status(403).json({ error: 'User must be logged in to do that.' });
+    res.status(403).json({ error: "User must be logged in to do that." });
   }
 }
 
-app.post('/api/login', (req, res) => {
+app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
-  if (username === 'young' && password === '123456') {
+  if (username === "young" && password === "123456") {
     req.loggedIn = true;
     res.status(200).json({
       payload: token
@@ -70,27 +71,27 @@ app.post('/api/login', (req, res) => {
   } else {
     res
       .status(403)
-      .json({ error: 'Username or Password incorrect. Please see Readme' });
+      .json({ error: "Username or Password incorrect. Please see Readme" });
   }
 });
 
-app.get('/api/friends', authenticator, (req, res) => {
+app.get("/api/friends", authenticator, (req, res) => {
   setTimeout(() => {
     res.send(friends);
   }, 1000);
 });
 
-app.get('/api/friends/:id', authenticator, (req, res) => {
+app.get("/api/friends/:id", authenticator, (req, res) => {
   const friend = friends.find(f => f.id == req.params.id);
 
   if (friend) {
     res.status(200).json(friend);
   } else {
-    res.status(404).send({ msg: 'Friend not found' });
+    res.status(404).send({ msg: "Friend not found" });
   }
 });
 
-app.post('/api/friends', authenticator, (req, res) => {
+app.post("/api/friends", authenticator, (req, res) => {
   const friend = { id: getNextId(), ...req.body };
 
   friends = [...friends, friend];
@@ -98,7 +99,7 @@ app.post('/api/friends', authenticator, (req, res) => {
   res.send(friends);
 });
 
-app.put('/api/friends/:id', authenticator, (req, res) => {
+app.put("/api/friends/:id", authenticator, (req, res) => {
   const { id } = req.params;
 
   const friendIndex = friends.findIndex(f => f.id == id);
@@ -113,11 +114,11 @@ app.put('/api/friends/:id', authenticator, (req, res) => {
     ];
     res.send(friends);
   } else {
-    res.status(404).send({ msg: 'Friend not found' });
+    res.status(404).send({ msg: "Friend not found" });
   }
 });
 
-app.delete('/api/friends/:id', authenticator, (req, res) => {
+app.delete("/api/friends/:id", authenticator, (req, res) => {
   const { id } = req.params;
 
   friends = friends.filter(f => f.id !== Number(id));
@@ -128,7 +129,11 @@ app.delete('/api/friends/:id', authenticator, (req, res) => {
 function getNextId() {
   return nextId++;
 }
-
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("friends/build"));
+  app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "friends", 'build', 'index.html')));
+}
+const PORT = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`server listening on port ${port}`);
+  console.log(`server listening on port ${PORT}`);
 });

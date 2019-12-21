@@ -24,7 +24,7 @@ function App(props) {
           
         <Switch>
           <PrivateRoute path="/friends" component={Friends} />
-  <Route path="/login" render = { (props) => <Login {...props} setAlert={setAlert}/>} />
+          <Route path="/login" render = { (props) => <Login {...props} setAlert={setAlert}/>} />
           <Route component={Login} />
         </Switch>
         

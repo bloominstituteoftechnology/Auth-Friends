@@ -23,6 +23,7 @@ export const getFriends = () => dispatch => {
     .get("/friends")
     .then(res => {
       dispatch({ type: FETCH_SUCCESS, payload: res.data });
+      
       console.log("get data", res);
     })
     .catch(err => {
