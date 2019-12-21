@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 // const port = 5000;
 const app = express();
-const path = require('path');
+const path = require("path");
 const token =
   "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ";
 
@@ -131,9 +131,13 @@ function getNextId() {
 }
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("friends/build"));
-  app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "friends", 'build', 'index.html')));
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "friends", "build", "index.html"))
+  );
 }
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`server listening on port ${PORT}`);
 });
+
+
