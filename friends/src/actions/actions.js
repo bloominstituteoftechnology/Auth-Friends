@@ -1,33 +1,33 @@
 import { axiosWithAuth } from "../components/AxiosWithAuth";
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const FETCH_DATA_START = "FETCH_DATA_START";
-export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
-export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
+export const GET_DATA_START = "GET_DATA_START";
+export const GET_DATA_SUCCESS = "GET_DATA_SUCCESS";
+export const GET_DATA_FAILURE = "GET_DATA_FAILURE";
 export const ADD_NEW_FRIEND = "ADD_NEW_FRIEND";
 
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
   return axiosWithAuth()
     .post("/login", creds)
-    .then(res => {
-      localStorage.setItem("token", res.data.payload);
+    .then(response => {
+      localStorage.setItem("token", response.data.payload);
       dispatch({ type: LOGIN_SUCCESS });
       return true;
     })
-    .catch(err => console.log(err.response));
+    .catch(error => console.log(error.response));
 };
 
 export const getData = () => dispatch => {
-  dispatch({ type: FETCH_DATA_START });
+  dispatch({ type: GET_DATA_START });
   axiosWithAuth()
     .get("/friends")
-    .then(res => {
-      dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
+    .then(response => {
+      dispatch({ type: GET_DATA_SUCCESS, payload: response.data });
     })
-    .catch(err => {
-      console.log(err.response);
-      dispatch({ type: FETCH_DATA_FAILURE, payload: err.response.error });
+    .catch(error => {
+      console.log(error.response);
+      dispatch({ type: GET_DATA_FAILURE, payload: error.response.error });
     });
 };
 

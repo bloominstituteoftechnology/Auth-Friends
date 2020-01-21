@@ -1,7 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getData, addNewFriend } from "../actions/actions";
+import { connect } from "react-redux";
 
 class Friends extends React.Component {
   state = {

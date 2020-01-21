@@ -1,17 +1,17 @@
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
-  FETCH_DATA_START,
-  FETCH_DATA_SUCCESS,
-  FETCH_DATA_FAILURE,
+  GET_DATA_START,
+  GET_DATA_SUCCESS,
+  GET_DATA_FAILURE,
   ADD_NEW_FRIEND,
 } from '../actions/actions';
 
 const initialState = {
   friends: [],
   logginIn: false,
-  error: "",
-  fetchingData: false
+  fetchingData: false,
+  error: ""
 };
 
 export const friendReducer = (state = initialState, action) => {
@@ -19,8 +19,8 @@ export const friendReducer = (state = initialState, action) => {
     case LOGIN_START:
       return {
         ...state,
-        error: "",
-        loggingIn: true
+        loggingIn: true,
+        error: ""
       };
     case LOGIN_SUCCESS:
       return {
@@ -28,19 +28,19 @@ export const friendReducer = (state = initialState, action) => {
         loggingIn: false,
         error: ""
       };
-    case FETCH_DATA_START:
+    case GET_DATA_START:
       return {
         ...state,
-        error: "",
-        fetchingData: true
+        fetchingData: true,
+        error: ""
       };
-    case FETCH_DATA_SUCCESS:
+    case GET_DATA_SUCCESS:
       return {
         ...state,
         fetchingData: false,
         friends: action.payload
       };
-    case FETCH_DATA_FAILURE:
+    case GET_DATA_FAILURE:
       return {
         ...state,
         fetchingData: false,

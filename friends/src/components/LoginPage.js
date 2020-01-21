@@ -1,6 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
 import { login } from "../actions/actions";
+import { connect } from "react-redux";
 
 class Login extends React.Component {
   /* username: 'Lambda School', password: 'i<3Lambd4' */
@@ -11,19 +11,19 @@ class Login extends React.Component {
     }
   };
 
-  handleChange = e => {
+  handleChange = event => {
     this.setState({
       credentials: {
         ...this.state.credentials,
-        [e.target.name]: e.target.value
+        [event.target.name]: event.target.value
       }
     });
   };
 
-  login = e => {
-    e.preventDefault();
-    this.props.login(this.state.credentials).then(res => {
-      if (res) {
+  login = event => {
+    event.preventDefault();
+    this.props.login(this.state.credentials).then(response => {
+      if (response) {
         this.props.history.push("/protected");
       }
     });
