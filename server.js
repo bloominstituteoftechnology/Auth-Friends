@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const port = 5000;
+const port = 4000;
 const app = express();
 const token =
   'esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ';
@@ -61,9 +61,11 @@ function authenticator(req, res, next) {
 }
 
 app.post('/api/login', (req, res) => {
+  console.log(req.body);
   const { username, password } = req.body;
-  if (username === 'Lambda School' && password === 'i<3Lambd4') {
+  if (username === 'Lambda' && password === 'password') {
     req.loggedIn = true;
+    console.log('it worked');
     res.status(200).json({
       payload: token
     });
@@ -116,7 +118,6 @@ app.put('/api/friends/:id', authenticator, (req, res) => {
     res.status(404).send({ msg: 'Friend not found' });
   }
 });
-
 app.delete('/api/friends/:id', authenticator, (req, res) => {
   const { id } = req.params;
 
