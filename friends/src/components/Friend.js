@@ -1,48 +1,88 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import Card from './Card';
-import NewFriendForm from './NewFriendForm';
-import { response } from 'express';
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { getData, addFriend } from '../actions/actions';
 
-const Friend = () => {
-    const dispatch = useDispatch();
-    const friends = useSelector(state => state.friendsReducer.friends);
-    
-    useEffect(() => {
-        const gettingFriends = () => {
-            axios
-                .get('http://localhost:5000/api/friends', {
-                    headers: { Authorization: localStorage.getItem('token') }
-                })
-                .then(res => {
-                    console.log('response', res);
-                    dispatch({ type: 'Set_FRIENDS', payload: response.data });
-                })
-                .catch(err => {
-                    console.log('Error', err);
-                });
-        };
-        gettingFriends();
-    }, []);
+class Friend extends React.Component {
+    state = {
+        newFriend: {
+            name: '',
+            age: '',
+            email: ''
+        }
+    };
 
-    return (
-        <div>
-            <NewFriendForm />
-            <h1>Hi Friends</h1>
-            {friends.length > 0 ? friends[0].map(friend => {
-                console.log('Friends', friend);
-                return (
+    componentDidMount() {
+        this.props.getData();
+    }
+
+    addFriend = e => {
+        e.preventDefault();
+        this.props.addFriend(this.state.newFriend);
+    };
+
+    changeHandler = e => {
+        this.setState({
+            newFriend: {
+                ...this.state.newFriend,
+                [e.target.name]: e.target.value
+            }
+        });
+    };
+
+    render() {
+        return (
+            <div>
+                <h3>Add a New Friend</h3>
+                    <form onSubmit={this.addFriend}>
+                        <input
+                            type='text'
+                            name='name'
+                            placeholder='Name'
+                            onChange={this.changeHandler}
+                            value={this.state.newFriend.name}
+                        />
+                        <input
+                            type='text'
+                            name='age'
+                            placeholder='age'
+                            onChange={this.changeHandler}
+                            value={this.state.newFriend.age}
+                        />
+                        <input
+                            type='text'
+                            name='email'
+                            placeholder='Email'
+                            onChange={this.changeHandler}
+                            value={this.state.newFriend.email}
+                        />
+                        <button type='submit' onClick={this.addFriend}>Add Friend!</button>
+                    </form>
+
                     <div>
-                        <h2>Name: {friend.name}</h2>
-                        <h2>Age: {friend.age}</h2>
-                        <h2>Email: {friend.email}</h2>
+                        <h1>Hi Friends</h1>
+                        {this.props.friends.map(friend => {
+                        return (
+                                <div key={friend.id}>
+                                    <h2>Name: {friend.name}</h2>
+                                    <h2>Age: {friend.age}</h2>
+                                    <h2>Email: {friend.email}</h2>
+                                </div>
+                            );
+                        })};
                     </div>
-                );
-            })
-        : null}
-        </div>
-    );
+            </div>
+        )
+    };
 };
 
-export default Friend;
+const mapStateToProps = state => {
+    return {
+        friends: state.friends,
+        error: state.error,
+        fetchingData: state.fetchingData
+    };
+};
+
+export default withRouter(
+    connect(mapStateToProps, { getData, addFriend })(Friend));

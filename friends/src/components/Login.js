@@ -1,41 +1,66 @@
-import React, { useState} from 'react';
-import axios from 'axios';
+import React from 'react';
+import { login } from '../actions/actions';
+import { connect } from 'react-redux';
 
-function Login(props) {
-    const [error, setError] = useState()
-    const [data, setData] = useState({
-        username: '',
-        password: '',
-    })
-
-    const handleChange = e => {
-        setData({
-            ...data,
-            [e.target.name]: e.target.value,
-        })
-    }
-
-    const login = e => {
-        e.preventDefault();
-        axios
-            .post('http://localhost:5000/api/login', data)
-            .then(res => {
-                localStorage.setItem('token', res.data.token)
-                props.history.push('/protected');
-            })
-            .catch(err => {
-                console.log(err.message);
-            });
+class Login extends React.Component {
+    state = {
+        credentials: {
+            username: '',
+            password: ''
+        }
+    };
+    
+    handleChange = e => {
+        this.setState({
+            credentials: {
+                ...this.state.credentials,
+                [e.target.name]: e.target.value
+            }
+        });
     };
 
-    return (
-        <div>
-            <form onSubmit={login} />
-            <input type='text' name='username' placeholder='username' value={data.username} onChange={handleChange} />
-            <input type='password' name='password' placeholder='password' value={data.password} onChange={handleChange} />
-            <button type='submit'>Login</button>
+    login = e => {
+        e.preventDefault();
+        this.props.login(this.state.credentials).then(res => {
+            if (res) {
+                this.props.history.push('/protected');
+            }
+        });
+    };
+
+    render() {
+        return (
+            <div>
+            <h1>Login Form</h1>
+            <form onSubmit={this.login} >
+                <input
+                    onChange={this.handleChange}
+                    value={this.state.credentials.username}
+                    label='username'
+                    type='text'
+                    name='username'
+                    placeholder='username'
+                />
+                <br></br>
+                <input
+                    onChange={this.handleChange}
+                    value={this.state.credentials.password}
+                    label='password'
+                    type='password'
+                    name='password'
+                    placeholder='enter password'
+                />
+                <br></br>
+                <button>{this.props.loggedIn ? <h2>Loading</h2> : 'Send'}</button>
+            </form>
         </div>
-    )
+        );
+    }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+    error: state.error,
+    loggedIn: state.loggedIn
+});
+
+export default connect( mapStateToProps, { login })(Login);

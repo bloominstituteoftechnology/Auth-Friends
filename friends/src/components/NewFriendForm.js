@@ -1,50 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
-class NewFriendForm extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            friend: {
-                id: Date.now(),
-                name: '',
-                age: '',
-                email: ''
-            }
-        }
-    }
+const NewFriendForm = props => {
+    const [friendData, setFriendData] = useState({
+        name: '',
+        age: '',
+        email: ''
+    });
 
-    handleChange = e => {
-        this.setState({
-            friend: {
-                ...this.state.friend,
-                [e.target.name]: e.target.value
-            }
-        });
-    }
+    const dispatch = useDispatch();
+    const friends = useSelector(state => state.friendsReducer.friends);
 
-    handleSubmit = e => {
-        e.preventDefault();
-        if (this.state.friend.name !== "" && this.state.friend.age !== "" && this.state.friend.email !== "") {
-            this.props.addFriend(JSON.parse(JSON.stringify(this.state.friend)));
-            this.setState({
-                friend: {
-                    name: "",
-                    age: "",
-                    email: ""
-                }
+    const handleChanges = e => {
+        setFriendData({ ...friendData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = e => {
+        dispatch({ type: 'SUBMIT_IS_LOADING', payload: true });
+        axios 
+            .post('http://localhost:5000/api/friends', friendData, {
+                headers: { Authorization: localStorage.getItem('token') }
             })
-        }
-    }
+            .then(res => {
+                dispatch({ type: 'SUBMIT_IS_LOADING', payload: false });
+            })
+            .catch(err => {
+                console.log(err)
+                dispatch({ type: 'SUBMIT_IS_LOADING', payload: false });
+            });
+    };
 
-    render() {
-        return(
-            <form onSubmit={this.handleSubmit}>
-                <label>Name: </label>
-                <input type='text' name='name' onChange={this.handleChange} value={this.state.age} />
-                <button type='submit'>Add Friend</button>
+    return(
+        <div>
+            <h3>Add a New Friend</h3>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type='text'
+                    name='name'
+                    placeholder='Name'
+                    onChange={handleChanges}
+                    value={friendData.name}
+                />
+                <input
+                    type='text'
+                    name='age'
+                    placeholder='age'
+                    onChange={handleChanges}
+                    value={friendData.age}
+                />
+                <input
+                    type='text'
+                    name='email'
+                    placeholder='Email'
+                    onChange={handleChanges}
+                    value={friendData.email}
+                />
+                <button type='submit'>Add Friend!</button>
             </form>
-        )
-    }
-}
+        </div>
+    );
+};
 
 export default NewFriendForm;
