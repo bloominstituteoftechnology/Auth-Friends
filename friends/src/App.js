@@ -1,26 +1,32 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
-import PrivateRoute from './components/PrivateRoute';
-import FriendsList from './components/FriendsList';
+import Homescreen from './components/Homescreen';
+import Nav from './components/Nav';
+import { useDispatch, useSelector } from 'react-redux';
+import Friend from './components/Friend';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 function App() {
+  const dispatch = useDispatch();
+  const state = useSelector(state => state);
+  const isLoggedIn = useSelector(state => state.root.isLoggedin);
+  console.log('state', state);
+  console.log(isLoggedIn);
   return (
-    <Router>
-      <div className='App'>
-        <nav>
-          <Link to='/login'>Login</Link>
-          <Link to='/protected'>Protected Page</Link>
-        </nav>
-
-        <Switch>
-          <PrivateRoute exact path='/protected' component={FriendsList}/>
-          <Route path='/login' component={Login} />
-          <Route component={Login} />
-        </Switch>
-      </div>
-    </Router>
+    <div>
+      <Router>
+        <Nav />
+        <div className='App'>
+          <Switch>
+            <Route exact path='/' component={Homescreen}/>
+            <Route path='/login' component={Login} />
+            <ProtectedRoute exact path='/friends' component={Friend} />
+          </Switch>
+        </div>
+      </Router>
+    </div>
   )
 }
 
