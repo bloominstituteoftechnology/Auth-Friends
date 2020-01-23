@@ -15,7 +15,6 @@ function App() {
           <Link to="/protected">Friends List</Link>
           <Switch>
             <ProtectedRoute path="/friends" component={FriendList} />
-            <Route exact path="/protected" component={FriendList} />
             <Route path="/login" component={LoginForm} />
             <Route component={LoginForm} />
           </Switch>
@@ -32,8 +31,10 @@ const AppDiv = styled.div`
   background-color: #e4572e;
   padding-top: 5px;
   padding-bottom: 5px;
+  height: auto;
   font-size: 1 em;
   font-family: "Contrail One";
+  height: 90em;
   h1 {
     margin-top: 1%;
     font-size: 4em;

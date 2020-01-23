@@ -36,10 +36,12 @@ class LogInForm extends React.Component {
   render() {
     return (
       <FormDiv>
+        <h2>Log In</h2>
         <form onSubmit={this.login}>
           <input
             type="text"
             name="username"
+            placeholder="Username"
             value={this.state.credentials.username}
             onChange={this.handleChange}
           />
@@ -47,6 +49,7 @@ class LogInForm extends React.Component {
           <input
             type="password"
             name="password"
+            placeholder="Password"
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
@@ -59,19 +62,36 @@ class LogInForm extends React.Component {
 }
 
 export default LogInForm;
+
 const FormDiv = styled.form`
   background: #29335c;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12), 0 5px 2px rgba(0, 0, 0, 0.24);
   width: 100%;
-  height: 5em;
+  height: 9.5em;
   max-width: 250px;
   padding: 15px;
   margin: 16px auto;
   text-align: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  h2 {
+    margin-top: 2%;
+    margin-bottom: 5%;
+    color: #e4572e;
+  }
+  input {
+    padding: 6px;
+    background: none;
+    border: none;
+    color: white;
+    border-bottom: 1px solid white;
+    margin-top: 0;
+    font-size: 1em;
+    ::placeholder {
+      color: white;
+    }
 `;
 
 const StyledButton = styled.button`
@@ -81,4 +101,5 @@ const StyledButton = styled.button`
   padding: 0.25em 0.75em;
   border: none;
   border-radius: 3px;
+  margin-top: 8%;
 `;
