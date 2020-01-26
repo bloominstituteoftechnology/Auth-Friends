@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import "./App.css";
 import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           </li>
         </ul>
         <Switch>
+          <ProtectedRoute exact path="/protected" component={FriendsList} />
           <Route path="/login" component={Login} />
         </Switch>
       </div>
