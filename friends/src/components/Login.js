@@ -16,7 +16,7 @@ const Login = props => {
     axiosWithAuth()
       .post('api/login', credentials)
       .then(res => {
-          localStorage.setItem('token', res.data);
+          localStorage.setItem('token', res.data.payload);
           props.history.push('/protected');
       })
       .catch(err => console.log(err));
@@ -27,7 +27,7 @@ const Login = props => {
       <form data-testid="login-form" onSubmit={handleSubmit}>
           <input type='text' name='username' value={credentials.username} onChange={handleChange} />
           <input type='password' name='password' value={credentials.password} onChange={handleChange} />
-          <button>Login</button>
+          <button type='submit'>Login</button>
       </form>
     </div>
   );

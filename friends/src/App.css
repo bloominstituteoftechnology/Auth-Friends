@@ -18,11 +18,27 @@ li {
   margin-right: 25px;
 }
 
+a {
+  text-decoration: none;
+  padding: 6px;
+  color: darkgreen;
+  font-weight: bold;
+}
+
+.login-field {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
 .login-form {
   display:flex;
   flex-direction: column;
   align-items:center;
   justify-content:center;
-}
+};
+
+
 
 
