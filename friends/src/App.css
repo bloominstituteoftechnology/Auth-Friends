@@ -10,3 +10,15 @@ form {
 button {
   margin: 16px 0 20px;
 }
+
+.grid-view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+  max-width: 375px;
+  margin: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12), 0 5px 2px rgba(0, 0, 0, 0.24);
+}

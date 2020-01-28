@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { Input, Button } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
+import { Input, Button, Spinner } from 'reactstrap';
 
 function LoginForm() {
   const [credentials, setCredentials] = useState({
@@ -9,6 +10,8 @@ function LoginForm() {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+
+  let history = useHistory();
 
   const handleChange = evt => {
     setCredentials({
@@ -21,23 +24,27 @@ function LoginForm() {
     evt.preventDefault();
     setIsLoading(true);
     // in Redux, this would be in an action creator
-    axiosWithAuth().post('/login', credentials)
+    setTimeout(() => {
+      axiosWithAuth().post('/login', credentials)
       .then(res => {
         // console.dir(res);
         localStorage.setItem('token', res.data.payload);
-        this.props.history.push('/protected');
         setIsLoading(false);
+        history.push('/friends');
       })
       .catch(err => {
         console.log(err);
         setIsLoading(false);
       });
+    }, 4000)
   }
 
   return (
     <>
     <h1>Log In</h1>
     <form onSubmit={evt => login(evt)}>
+      <fieldset disabled={isLoading ? 'disabled' : null}>
+    
       <label>Username</label>
       <Input 
         type="text"
@@ -57,7 +64,13 @@ function LoginForm() {
         onChange={evt => handleChange(evt)}
         required
       />
-      <Button color="primary" size="lg" type="submit">Log In</Button>
+
+      </fieldset>
+
+      {!isLoading ? (<Button color="primary" size="lg" type="submit">Log In</Button>) : (<Button color="secondary" size="lg" type="submit" disabled>
+      <Spinner size="sm" />{' '}
+        LOADING...
+      </Button>)}
     </form>
     </>
   );
