@@ -62,6 +62,20 @@ class Friends extends React.Component{
       .catch(err => console.log(err));
   }
 
+  deleteFriend = (id) => {
+    console.log(id)
+    axiosWithAuth()
+      .delete(`/api/friends/${id}`)
+      .then(res => {
+        console.log(res)
+        this.setState({
+          ...this.state,
+          friends: res.data,
+        })
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <>
@@ -130,9 +144,24 @@ class Friends extends React.Component{
               }}
             >
               <h1>{friend.name}</h1>
-                <p>Age: {friend.age}</p>
-                <p>Email: {friend.email}</p>
-                <p>{friend.id}</p>
+              <p>Age: {friend.age}</p>
+              <p>Email: {friend.email}</p>
+              <p>{friend.id}</p>
+              <div style={{width: '100%', display: 'flex', justifyContent: 'space-evenly', alignContent: 'center', flexFlow: 'column'}}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => this.deleteFriend(friend.id)}
+                  >
+                  Delete Friend!
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  >
+                  Edit Friend!
+                </Button>
+              </div>
             </Card>
           ))}
         </div>
