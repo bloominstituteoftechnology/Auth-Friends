@@ -14,9 +14,12 @@ const Login = props => {
   const handleSubmit = e => {
     e.preventDefault();
     axiosWithAuth()
-      .post()
-      .then()
-      .catch();
+      .post('api/login', credentials)
+      .then(res => {
+          localStorage.setItem('token', res.data);
+          props.history.push('/protected');
+      })
+      .catch(err => console.log(err));
   };
 
   return (
