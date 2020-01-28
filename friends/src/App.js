@@ -2,6 +2,8 @@ import React from 'react';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 
+import './App.css';
+
 
 function App() {
   return (
