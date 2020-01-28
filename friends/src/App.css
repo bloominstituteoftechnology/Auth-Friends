@@ -4,9 +4,18 @@
 
 .App-header {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+ul {
+  display: flex;
+  justify-content: flex-end;  
+}
+
+li {
+  list-style: none;
+  margin-right: 25px;
 }
 
 .login-form {
