@@ -4,7 +4,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 const Login = props => {
   const [credentials, setCredentials] = useState({
     username: "",
-    passwod: ""
+    password: ""
   });
 
   const handleChange = e => {
@@ -26,7 +26,7 @@ const Login = props => {
     <div className="login-form">
       <form data-testid="login-form" onSubmit={handleSubmit}>
           <input type='text' name='username' value={credentials.username} onChange={handleChange} />
-          <input type='password' name='password' value={credentials.password} onChange={handleChange} />
+          <input type='current-password' name='password' value={credentials.password} onChange={handleChange} />
           <button type='submit'>Login</button>
       </form>
     </div>
