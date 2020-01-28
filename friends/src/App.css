@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+button {
+  margin: 16px 0 20px;
+}
