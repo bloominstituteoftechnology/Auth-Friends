@@ -25,8 +25,8 @@ const Login = props => {
   return (
     <div className="login-form">
       <form data-testid="login-form" onSubmit={handleSubmit}>
-          <input type='text' name='username' value={credentials.username} onChange={handleChange} />
-          <input type='current-password' name='password' value={credentials.password} onChange={handleChange} />
+          <input type='text' placeholder='Enter login name...' name='username' value={credentials.username} onChange={handleChange} />
+          <input type='text' placeholder='Enter password...'name='password' value={credentials.password} onChange={handleChange} />
           <button type='submit'>Login</button>
       </form>
     </div>

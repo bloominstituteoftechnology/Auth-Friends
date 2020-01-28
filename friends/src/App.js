@@ -22,13 +22,13 @@ function App() {
           </li>
         </ul>
         </header>
-        <div className='login-field'>
+        {/* <div className='login-field'> */}
         <Switch>
           <PrivateRoute path='/protected' component={Friends} />
           <Route path='/login' component={Login} />
         </Switch>
         </div>
-      </div>
+      {/* </div> */}
     </Router>
   );
 }

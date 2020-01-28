@@ -10,6 +10,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         if (localStorage.getItem("token")) {
           return <Component {...props} />;
         } else {
+          window.alert("You have to enter a login and password to continue!")
           return <Redirect to="/login" />;
         }
       }}
