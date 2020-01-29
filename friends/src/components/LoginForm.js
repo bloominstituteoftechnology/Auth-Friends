@@ -67,7 +67,7 @@ function LoginForm() {
 
       </fieldset>
 
-      {!isLoading ? (<Button color="primary" size="lg" type="submit">Log In</Button>) : (<Button color="secondary" size="lg" type="submit" disabled>
+      {!isLoading ? (<Button color="primary" size="lg" type="submit" className="btn-big">Log In</Button>) : (<Button color="secondary" size="lg" type="submit" disabled className="btn-big">
       <Spinner size="sm" />{' '}
         LOADING...
       </Button>)}
