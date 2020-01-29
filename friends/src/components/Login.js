@@ -23,7 +23,7 @@ const Login = props => {
       })
       .catch(err => {
         console.log(err);
-        console.log("Login failed", userData.username, userData.password);
+        console.log("Login failed for:", userData.username, userData.password);
       });
   };
 
