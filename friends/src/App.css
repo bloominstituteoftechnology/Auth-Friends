@@ -18,3 +18,8 @@ text-decoration:none;
 color:white;
 }
 
+.friend {
+  border:1px solid white;
+  width:40%;
+  margin:3% auto;
+}
