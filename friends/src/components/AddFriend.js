@@ -18,8 +18,7 @@ const AddFriend = () => {
 
     const submitFriend = e => {
         e.preventDefault();
-        axiosWithAuth()
-        .post('/friends', newFriend)
+        axiosWithAuth().post('/friends', newFriend)
         .then(res => {console.log(res)})
         .catch(err => console.log(err));
         setNewFriend({
