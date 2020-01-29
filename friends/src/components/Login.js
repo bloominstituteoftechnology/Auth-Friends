@@ -27,7 +27,7 @@ const Login = props => {
             .catch(err => console.log(err))
     }
 
-    console.log(credentials);
+    // console.log(credentials);
 
     return (
         <form onSubmit={login}>
