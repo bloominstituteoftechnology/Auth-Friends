@@ -8,6 +8,8 @@ const Friend = props => {
         email: props.homie.email
     })
 
+    const [editMode, setEditMode] = useState(false);
+
     const deleteFriend = (e, id) => {
         e.preventDefault();
         axiosWithAuth().delete(`/friends/${id}`)
@@ -40,11 +42,11 @@ const Friend = props => {
                 <input type="text" name="name" value={friendEdit.name} onChange={handleChange} />
                 <input type="text" name="age" value={friendEdit.age} onChange={handleChange} />
                 <input type="email" name="email" value={friendEdit.email} onChange={handleChange} />
-                <button onClick={e => editFriend(e, props.homie.id, friendEdit)}>Confirm</button>
-                <button>Cancel</button>
+                {editMode && <button onClick={e => editFriend(e, props.homie.id, friendEdit)}>Confirm</button>}
+                {editMode && <button onClick={() => setEditMode(false)}>Cancel</button>}
             </div>
             <button onClick={e => deleteFriend(e, props.homie.id)}>X</button>
-            <button>Edit</button>
+            <button onClick={() => setEditMode(true)}>Edit</button>
         </div>
     )
 }
