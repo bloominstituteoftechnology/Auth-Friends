@@ -26,7 +26,7 @@ import axios from 'axios';
         .then(res => {
             console.log(res);
             localStorage.setItem('token', res.data.payload);
-            props.history.push('/protected');
+            props.history.push('/myfriends');
         })
         .catch(err => console.log(err));
     };

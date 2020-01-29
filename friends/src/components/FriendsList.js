@@ -5,24 +5,23 @@ import { axiosWithAuth }from '../utils/axiosWithAuth';
 // import FriendsForm from './FriendsForm';
 
 
-
 const FriendsList = (props) => {
+
+    const [friends, setFriends] = useState([]);
     useEffect(() => {  
         axiosWithAuth()
         .get('http://localhost:5000/api/friends')
         .then(res => {
             console.log('success', res);
-            localStorage.setItem('token', res.data.payload);
-            props.history.push('/protected/list');
+            setFriends(res.data)
         })
-        .catch(err => console.log(err));
-        
-    });
+        .catch(err => console.log(err)); 
+    }, []);
 
 return(
     <div>
     <h2>Friends!</h2>
-    {props.map(item  =>
+    {friends.map(item  =>
         <FriendsCard 
         className="friend-card"
         key={item.id} 

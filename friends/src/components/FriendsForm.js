@@ -3,9 +3,9 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 
     const FriendsForm = props => {
         const [newFriend, setNewFriend] = useState({
-            id: 0, 
+            id: '',
             name: '',
-            age: 0,
+            age: '',
             email:'',
         });
 
@@ -20,13 +20,12 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 
     const addFriend = e => {
         e.preventDefault();
-    
         axiosWithAuth()
         .post('http://localhost:5000/api/friends', newFriend)
         .then(res => {
             console.log('success', res);
-            localStorage.setItem('token', res.data.payload);
-            props.history.push('/protected/list');
+            localStorage.setItem( newFriend, res.data.payload );
+            props.history.push('/myfriends');
         })
         .catch(err => console.log(err));
     };
