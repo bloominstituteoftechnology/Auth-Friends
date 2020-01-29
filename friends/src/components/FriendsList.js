@@ -1,9 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import FriendsCard from './FriendsCard';
+import styled from 'styled-components';
 import { axiosWithAuth }from '../utils/axiosWithAuth';
 
-// import FriendsForm from './FriendsForm';
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+width: 90%;
 
+margin: 0 auto;
+`
+
+const Body = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+flex-wrap: wrap;
+border-top: #282c34 solid 2px;
+`
 
 const FriendsList = (props) => {
 
@@ -19,8 +35,9 @@ const FriendsList = (props) => {
     }, []);
 
 return(
-    <div>
+    <Container>
     <h2>Friends!</h2>
+    <Body>
     {friends.map(item  =>
         <FriendsCard 
         className="friend-card"
@@ -29,7 +46,8 @@ return(
         age={item.age}
         email={item.email} />
     )}
-    </div>
+    </Body>
+    </Container>
 )
 }
 

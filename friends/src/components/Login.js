@@ -1,11 +1,31 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
 
 
+const Body = styled.div`
+margin: 5%;
+`
+
+const Form = styled.form`
+display: flex;
+flex-direction: column;
+width: 50%;
+border-top: 2px solid #282c34;
+`
+
+const Button = styled.button`
+margin: 5%;
+width: 35%;
+background-color: #282c34;
+color: white;
+padding: 1%;
+border-radius: 8px;
+`
 
     const Login = props => {
-            const [credentials, setCredentials] = useState({username:'', password:''})
-            const [isLoading, setIsLoading] = useState(false);
+    
+    const [credentials, setCredentials] = useState({username:'', password:''})
 
     const handleChange = e => {
         setCredentials(
@@ -32,23 +52,30 @@ import axios from 'axios';
     };
 
         return (
-        <div>
-            <form onSubmit={login}>
+        <Body>
+            <h2> Login </h2>
+            <Form onSubmit={login}>
+            <p>Username</p>
             <input
+                label="Username:"
                 type="text"
                 name="username"
+                placeholder="Username"
                 value={credentials.username}
                 onChange={handleChange}
             />
+            <p>Password</p>
             <input
+                label="Password"
                 type="password"
                 name="password"
+                placeholder="Password"
                 value={credentials.password}
                 onChange={handleChange}
             />
-            <button>Log in</button>
-            </form>
-        </div>
+            <Button>Log in</Button>
+            </Form>
+        </Body>
         );
 };
 

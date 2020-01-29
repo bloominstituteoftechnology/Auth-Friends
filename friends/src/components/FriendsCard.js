@@ -5,14 +5,15 @@ const CardBody = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
-border: solid blue 2px;
+text-align: center;
+border: solid #282c34 2px;
 min-width: 300px;
 max-width: 300px;
 margin: 5%;
 background-color: white;
 `
 const CardHeader = styled.h3`
-background-color: blue;
+background-color: #282c34;
 color: white;
 margin: 0;
 padding: 2% 0; 
@@ -26,8 +27,11 @@ const FriendCard = props => {
         <p>Age: {props.age}</p>
         <p>E-mail: {props.email}</p>
 
-        {/* <button>Delete</button>
-        <button>Edit</button> */}
+        {/* 
+        <button>Delete</button>
+        <button>Edit</button> 
+        */}
+
         </CardBody>
     );
 };
