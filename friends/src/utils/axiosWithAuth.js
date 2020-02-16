@@ -1,12 +1,12 @@
-import axios from 'axios';
-
+import axios from "axios";
 
 export const axiosWithAuth = () => {
-  const token = localStorage.getItem()
-}
+	const token = localStorage.getItem("token")
 
-return axios.create({
-  body:
-    { username: 'Lambda School', password: 'i<3Lambd4' },
-  baseURL: 'http://localhost:5000/api'
-})
+	return axios.create({
+		headers: {
+			Authorization: token
+		},
+		baseURL: "http://localhost:5000/api",
+	});
+};

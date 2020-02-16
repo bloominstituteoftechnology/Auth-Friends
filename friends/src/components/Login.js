@@ -1,46 +1,52 @@
 import React, { useState } from "react";
-import axios from 'axios';
-import { Spinner } from 'reactstrap';
+import { Spinner } from "reactstrap";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Login = props => {
-  const [login, setLogin] = useState({ username: "", password: "" });
-  const [loading, setLoading] = useState(false);
+	const [login, setLogin] = useState({ username: "", password: "" });
+	const [loading, setLoading] = useState(false);
 
 	const handleChange = e => {
 		setLogin({ ...login, [e.target.name]: e.target.value });
-  };
+	};
   
-  const onSubmit = e => {
-    e.preventDefault();
+  
+	const onSubmit = e => {
+		e.preventDefault();
+    setLoading(true);
     setTimeout(() => {
-      axios
-        .post('/login', login)
-          .then(res => {
-            localStorage.setItem('token', res.data.payload)
-            /* props.history.push('/path') */
-            setLoading(true);
-          })
-          .catch(error => {
-            console.log('None for You', error);
-          });
-    },  1000)
-  };
-
-
-
-     
+      setLoading(false)
+     }, 3000);
+		axiosWithAuth()
+			.post("/login", login)
+			.then(res => {
+				localStorage.setItem("token", res.data.payload);
+				setLogin(login);
+				props.history.push("/friends" || "/edit-friends");
+			})
+      .catch(err => {
+        localStorage.removeItem('token');
+        console.log("You could not login", err);
+      }, []);
+	};
 
 	return (
-		<section>
-			<form onSubmit={onSubmit}>
-				<input type="text" name="username" value={login.username} placeholder="Username" onChange={handleChange} />
-
-				<input type="password" name="password" value={login.password} placeholder="Password" onChange={handleChange} />
-       
-          {loading===true ? <div><Spinner size="sm" color="success" /> <Spinner size="sm" color="success" /> <Spinner size="sm" color="success" /> </div> : <button>Log In</button>}
-       
-			</form>
-		</section>
+		<section className="login">
+			{!loading ? (
+				<form onSubmit={onSubmit}>
+					<input type="text" name="username" placeholder="Username" value={login.username} onChange={handleChange} />
+					<input type="password" name="password" placeholder="Password" value={login.password} onChange={handleChange} />
+					<button>Login</button>
+				</form>
+			) : (
+				<div>
+					<Spinner size="sm" color="success" />
+					<Spinner size="sm" color="success" />
+					<Spinner size="sm" color="success" />
+				</div>
+        )}
+    </section>
+    
 	);
 };
 
