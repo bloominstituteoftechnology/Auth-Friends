@@ -5,16 +5,26 @@
 .App-header {
   background-color: deepskyblue;
   min-height: 5vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  
 }
 
 .App-link {
   color: #61dafb;
 }
 
+nav{
+  display: flex;
+  justify-content: space-evenly;
+}
 
+.formField{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.forms{
+  display: flex;
+  flex-direction: column;
+}

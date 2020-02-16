@@ -24,7 +24,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
       return (
         <section>
           {info.map(friend =>
-        <div>  
+        <div key={friend.id}>  
           <h3>Name: {friend.name}</h3>
           <h4>Age: {friend.age}</h4>
           <h5>Email: {friend.email}</h5>
