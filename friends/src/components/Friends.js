@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { Card, Col, Row } from 'reactstrap';
 
+const card = {
+  margin: '5% auto',
+  height: '250px',
+	borderTop: '15px groove',
+  borderBottom: '15px groove',
+  color: '#77ad17',
+	textShadow:'-1px 0 gold, 0 1px black, 1px 0 black, 0 -1px black',
+}
 
     const Friends =() =>{
       const [info, setInfo] = useState([]);
@@ -18,19 +27,23 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
         console.log("Whoops go back, thats an error!", error);
         });
       }, []);
-      console.log(info);
+      
+      
 
 
       return (
         <section>
-          {info.map(friend =>
-        <div key={friend.id}>  
+          <Row>
+            {info.map(friend =>
+            <Col lg='3'>
+        <Card color='warning' style={card} key={friend.id}>  
           <h3>Name: {friend.name}</h3>
           <h4>Age: {friend.age}</h4>
           <h5>Email: {friend.email}</h5>
-          </div>
+          </Card>
+          </Col>
         )}
-
+        </Row>
       </section>
       )
     }
