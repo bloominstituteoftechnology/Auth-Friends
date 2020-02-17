@@ -1,7 +1,7 @@
 .App {
-  text-align: center;
-  height: 1000px;
-  background-image: url("./images/4q3qh622.bmp");
+	text-align: center;
+	height: 1000px;
+	background-image: url("./images/4q3qh622.bmp");
 	background-position: center;
 	background-repeat: repeat;
 	background-size: cover;
@@ -9,39 +9,34 @@
 }
 
 .App-header {
-  background-color: #77ad17;
-  min-height: 5vh;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  
+	background-color: #77ad17;
+	min-height: 5vh;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
-
-
-nav{
-  display: flex;
-  justify-content: space-evenly;
+nav {
+	display: flex;
+	justify-content: space-evenly;
 }
 
-
-.formField{
-  display: flex;
-  justify-content: space-evenly;
+.formField {
+	display: flex;
+	justify-content: space-evenly;
 }
 
-.forms{
-  display: flex;
-  flex-direction: column;
-  font-size: 20px;
-  
+.forms {
+	display: flex;
+	flex-direction: column;
+	font-size: 20px;
 }
 
-.login{
-  width: 35%;
-  margin: 2% auto;
+.login {
+	width: 35%;
+	margin: 2% auto;
 }
-.input{
-  border-radius: 25px;
-  border: 2px solid #77ad17;
-  margin: 3%;
+.input {
+	border-radius: 25px;
+	border: 2px solid #77ad17;
+	margin: 3%;
 }
