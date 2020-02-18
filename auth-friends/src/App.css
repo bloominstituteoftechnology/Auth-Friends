@@ -1,10 +1,14 @@
+#root {
+  background-color: #2d2d37;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,24 +18,108 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
   color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
 }
 
 .App-link {
   color: #61dafb;
 }
 
+.form-control {
+  border: solid 1px black;
+  margin-left: auto;
+  margin-right: auto;
+  width: 440px;
+  text-align: center;
+}
+
+
+
+h3 {
+  color: black;
+}
+
+h1 {
+  color: white;
+}
+
+.btn {
+  margin-left: 0;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+ul {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 36px;
+  padding: 12px;
+  background-color: lightgray;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+li {
+  list-style: none;
+  margin-right: 6px;
+  color: #204963;
+  background-color: #2d2d37;
+  border: 1px solid black;
+  border-radius: 20%;
+  font-size: larger;
+}
+
+a {
+  text-decoration: none;
+  padding: 6px;
+  color: #204963;
+}
+
+a:hover {
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 20%;
+
+}
+
+.friend-list {
+  display: grid;
+  grid-auto-rows: 1fr 1fr 1fr;
+  grid-auto-columns: 1fr 1fr;
+
+}
+
+.friendcard {
+  display: grid;
+  grid-auto-rows: 1fr 1fr 1fr;
+  grid-auto-columns: 1fr 1fr;
+  margin: 20px;
+}
+
+
+div.ui.card {
+  display: inline;
+  min-width: 400px;
+  max-width: 440px;
+}
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
