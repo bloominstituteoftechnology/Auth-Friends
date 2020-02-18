@@ -19,7 +19,7 @@ const card = {
 
 const Login = props => {
 	const [login, setLogin] = useState({ username: "", password: "" });
-	const [loading, setLoading] = useState(false);
+	
 
 	const handleChange = e => {
 		setLogin({ ...login, [e.target.name]: e.target.value });
@@ -27,16 +27,12 @@ const Login = props => {
 
 	const onSubmit = e => {
 		e.preventDefault();
-		setLoading(true);
-		setTimeout(() => {
-			setLoading(false);
-		}, 3000);
 		axiosWithAuth()
 			.post("/login", login)
 			.then(res => {
 				localStorage.setItem("token", res.data.payload);
 				setLogin(login);
-				props.history.push("/friends" || "/edit-friends");
+				props.history.push("/friends");
 			})
 			.catch(err => {
 				localStorage.removeItem("token");
@@ -46,7 +42,6 @@ const Login = props => {
 
 	return (
 		<section className="login">
-			{!loading ? (
 				<form className="forms" onSubmit={onSubmit}>
 					<Card outline color="warning" style={card}>
 						<input
@@ -70,13 +65,8 @@ const Login = props => {
 						</Button>
 					</Card>
 				</form>
-			) : (
-				<div>
-					<Spinner size="sm" color="success" />
-					<Spinner size="sm" color="success" />
-					<Spinner size="sm" color="success" />
-				</div>
-			)}
+			
+			
 		</section>
 	);
 };

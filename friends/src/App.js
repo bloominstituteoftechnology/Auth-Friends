@@ -26,7 +26,7 @@ function App() {
 							Friends List
 						</Link>
 						<Link to="/edit-friends" style={links}>
-							Edit Friends
+							Add Friends
 						</Link>
 					</nav>
 					<div className="background"></div>

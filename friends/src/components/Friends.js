@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { Card, Col, Row } from "reactstrap";
+import { Card, Col, Row, Spinner } from "reactstrap";
 
 const card = {
 	margin: "5% auto",
@@ -13,8 +13,13 @@ const card = {
 
 const Friends = () => {
 	const [info, setInfo] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
+		setLoading(true);
+		setTimeout(() => {
+			setLoading(false);
+		}, 3000);
 		axiosWithAuth()
 			.get("/friends")
 			.then(res => {
@@ -28,6 +33,7 @@ const Friends = () => {
 
 	return (
 		<section>
+			{!loading ? (
 			<Row>
 				{info.map(friend => (
 					<Col lg="3">
@@ -38,7 +44,16 @@ const Friends = () => {
 						</Card>
 					</Col>
 				))}
-			</Row>
+				</Row>
+			) : (
+				<div>
+				<Spinner type='grow' color="success" />
+				<Spinner type='grow' color="warning" />
+				<Spinner type='grow' color="success" />
+				<Spinner type='grow' color="warning" />	
+				<Spinner type='grow' color="success" />
+			</div>
+			)}
 		</section>
 	);
 };
