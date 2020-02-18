@@ -82,7 +82,8 @@ li {
 a {
   text-decoration: none;
   padding: 6px;
-  color: #204963;
+  color: yellow;
+  background-color: yellow;
 }
 
 a:hover {
@@ -90,6 +91,10 @@ a:hover {
   border: 1px solid black;
   border-radius: 20%;
 
+}
+input {
+  margin: 16px;
+  padding: 16px;
 }
 
 .friend-list {
