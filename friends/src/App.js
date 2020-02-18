@@ -5,7 +5,7 @@ import Login from "./components/Login";
 import Friends from "./components/Friends";
 import Edit from "./components/Edit";
 import ProtectedRoute from "./utils/ProtectedRoute";
-import ReadMe from './components/ReadMe';
+
 
 const links = {
 	color: "#f5bf60",
