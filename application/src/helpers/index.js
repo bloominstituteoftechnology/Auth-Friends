@@ -1,5 +1,6 @@
-// import React from "react";
+import React from "react";
 import axios from "axios";
+import { Route, Redirect } from "react-router-dom";
 
 export const axiosWithAuth = () => {
     const token = localStorage.getItem("token");
@@ -10,4 +11,18 @@ export const axiosWithAuth = () => {
             Authorization: token
         }
     });
+};
+
+export const PrivateRoute = ({ component: Component, ...props }) => {
+    console.log('What are my PrivateRoute props', props)
+    return (<Route
+        {...props}
+        render={routeProps =>
+            props.isLoggedIn ? (
+                <Component {...routeProps} {...props} />
+            ) : (
+                <Redirect to="/login" />
+            )
+        }
+    />);
 };

@@ -1,29 +1,57 @@
-import React, {useReducer} from 'react';
+import React from "react";
 import { Route } from "react-router-dom";
-import './App.css';
-import { StateContext, DispatchContext } from './contexts';
-import { initialState } from './state';
-import { reducer } from './reducer';
-import Login from './components/Login';
-import Nav from './components/Nav';
+import { PrivateRoute } from './helpers';
+import FriendList from "./components/FriendList";
+import { connect } from "react-redux";
+import { getFriends, login } from "./actions";
+import Nav from "./components/Nav";
+import Login from "./components/Login";
 
-function App() {
-    const [state, dispatch] = useReducer(reducer, initialState);
+import "semantic-ui-css/semantic.min.css";
 
+function App(props) {
     return (
-        <DispatchContext.Provider value={{ dispatch }}>
-            <StateContext.Provider value={{ state }}>
-                <div className='App'>
-                    <Nav />
-                    <Route
-                        exact
-                        path='/login'
-                        component={Login}
+        <>
+            <Nav />
+            <Route
+                {...props}
+                exact
+                path="/login"
+                render={routeProps => (
+                    <Login
+                        {...routeProps}
+                        {...props}
+                        // isLoggedIn={props.isLoggedIn}
+                        // login={props.login}
+                        // isLoading={props.isLoading}
                     />
-                </div>
-            </StateContext.Provider>
-        </DispatchContext.Provider>
+                )}
+            />
+            <PrivateRoute
+                {...props}
+                exact
+                path="/friends"
+                render={routeProps => (
+                    <FriendList
+                        {...routeProps}
+                        {...props}
+                        // friends={props.friends}
+                        // getFriends={getFriends}
+                        // isLoggedIn={props.isLoggedIn}
+                        // isLoading={props.isLoading}
+                    />
+                )}
+            />
+        </>
     );
 }
-
-export default App;
+const mapStateToProps = state => ({
+    friends: state.friends,
+    error: state.error,
+    isLoading: state.isLoading,
+    isLoggedIn: state.isLoggedIn
+});
+export default connect(
+    mapStateToProps,
+    { getFriends, login }
+)(App);
