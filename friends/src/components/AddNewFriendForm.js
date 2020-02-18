@@ -4,10 +4,10 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 class AddNewFriendForm extends React.Component{
     state = {
         friendInfo: {
-            name: 'dsdd',
-            age: '',
+            name: '',
+            age: Number,
             email: '',
-            id: new Date()
+            id: Number
         }
     };
     handleChange = e => {
