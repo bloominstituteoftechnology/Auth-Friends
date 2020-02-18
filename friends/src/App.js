@@ -18,7 +18,6 @@ function App() {
 			<div className="App">
 				<header className="App-header">
 					<nav>
-						<Link to='/' style={links}>Read Me</Link>
 						<Link to="/login" style={links}>
 							Log In
 						</Link>
@@ -35,7 +34,7 @@ function App() {
 					<ProtectedRoute exact path="/edit-friends" component={Edit} />
 					<ProtectedRoute exact path="/friends" component={Friends} />
 					<Route path="/login" component={Login} />
-					<Route exact path='/' component={ReadMe}/>
+					
 				</Switch>
 			</div>
 		</Router>
