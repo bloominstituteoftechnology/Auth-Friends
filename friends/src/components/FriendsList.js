@@ -17,7 +17,7 @@ const FriendsList = () => {
   return(
     <>
       <AddFriend />
-      <h1>MY FRIENDS!</h1>
+      <h1> Cool Kids</h1>
       {friends.map(friend => (
         <div key={friend.id}>
           <Friend friend={friend} />
