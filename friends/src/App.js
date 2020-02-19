@@ -15,11 +15,11 @@ function App() {
             <Link to='/login'>Login</Link>
           </li>
           <li>
-            <Link to ='protected'>Friends List</Link>
+            <Link to ='friendsList'>Friends List</Link>
           </li>
         </ul>
         <Switch>
-          <ProtectedRoute path='/protected' component={FriendsList} />
+          <ProtectedRoute path='/friendsList' component={FriendsList} />
           <Route path='/login' component={Login} />
         </Switch>
       </div>
