@@ -13,7 +13,9 @@ function App() {
             <Link to='/login'>Login</Link>
           </li>
         </ul>
-        <Route path='/login' component={Login} />
+        <Switch>
+          <Route path='/login' component={Login} />
+        </Switch>
       </div>
     </Router>
   );
