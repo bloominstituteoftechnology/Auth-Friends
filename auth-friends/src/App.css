@@ -63,6 +63,7 @@ h1 {
 ul {
   display: flex;
   justify-content: flex-end;
+  color: black;
   margin: 0 0 36px;
   padding: 12px;
   background-color: lightgray;
@@ -72,8 +73,8 @@ ul {
 li {
   list-style: none;
   margin-right: 6px;
-  color: #204963;
-  background-color: #2d2d37;
+  color: black;
+  background-color: yellow;
   border: 1px solid black;
   border-radius: 20%;
   font-size: larger;
@@ -82,7 +83,7 @@ li {
 a {
   text-decoration: none;
   padding: 6px;
-  color: yellow;
+  color: black;
   background-color: yellow;
 }
 
