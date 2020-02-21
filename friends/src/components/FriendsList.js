@@ -5,7 +5,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const FriendsList = () => {
   axios 
-    .get('http://localhost:5000/api/data')
+    .get('http://localhost:5000/api')
     .then(res => {
       console.log(res.data)
     })
