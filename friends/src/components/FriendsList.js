@@ -5,8 +5,10 @@ import { Button } from "reactstrap";
 
 const FriendsList = () => {
   const [friends, setFriends] = useState([]);
+  const [change, setChange] = useState(false);
 
   useEffect(() => {
+    setChange(false);
     axiosWithAuth()
       .get("friends")
       .then(response => {
@@ -16,12 +18,13 @@ const FriendsList = () => {
       .catch(error => {
         console.log("error from server:", error);
       });
-  }, []);
+  }, [change]);
 
   // delete friend
   const deleteFriend = (friend) => {
-    console.log(friend)
+    console.log(friend);
     axiosWithAuth().delete(`friends/${friend.id}`);
+    setChange(true);
   };
 
   // edit a friend
