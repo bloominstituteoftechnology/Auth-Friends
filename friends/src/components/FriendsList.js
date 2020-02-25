@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { Button } from "reactstrap"
+import { Button } from "reactstrap";
 
 const FriendsList = () => {
   const [friends, setFriends] = useState([]);
@@ -18,6 +18,14 @@ const FriendsList = () => {
       });
   }, []);
 
+  // delete friend
+  const deleteFriend = (friend) => {
+    console.log(friend)
+    axiosWithAuth().delete(`friends/${friend.id}`);
+  };
+
+  // edit a friend
+
   return (
     <div>
       <h1>Your Friends</h1>
@@ -31,6 +39,7 @@ const FriendsList = () => {
               Name: {friend.name}, Age: {friend.age}
             </p>
             <p>Email: {friend.email}</p>
+            <Button onClick={() => {deleteFriend(friend)}}>Delete</Button>
           </div>
         );
       })}
