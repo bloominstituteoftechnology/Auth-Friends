@@ -10,6 +10,7 @@ import FriendsList from '../src/components/FriendsList';
 
 //privateRoute
 import PrivateRoute from '../src/components/PrivateRoute';
+import FriendsForm from './components/FriendsForm';
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
         </li>
       </ul>
       <Switch>
-        <PrivateRoute exact path="/friendsList"component={FriendsList}/>
+        <PrivateRoute exact path="/friendsList" component={FriendsList}/>
+        <PrivateRoute component={FriendsForm}/>
       <Route path='/login' component={Login}/>
       </Switch>
     </div>
