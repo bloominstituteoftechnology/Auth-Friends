@@ -37,6 +37,7 @@ const AddFriend = props => {
           name="name"
           value={friendData.name}
           onChange={handleChange}
+          placeholder="John Smith"
           required
         />
       </label>
@@ -44,6 +45,7 @@ const AddFriend = props => {
       <label htmlFor="age">
         Age:
         <input
+          placeholder="34"
           type="text"
           name="age"
           value={friendData.age}
@@ -55,6 +57,7 @@ const AddFriend = props => {
       <label htmlFor="email">
         Email:
         <input
+          placeholder="JohnSmith@email.com"
           type="text"
           name="email"
           value={friendData.email}

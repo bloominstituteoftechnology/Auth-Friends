@@ -21,28 +21,51 @@ const FriendsList = () => {
   }, [change]);
 
   // delete friend
-  const deleteFriend = (friend) => {
+  const deleteFriend = friend => {
     console.log(friend);
     axiosWithAuth().delete(`friends/${friend.id}`);
     setChange(true);
   };
 
   // edit a friend
+  const editFriend = friend => {
+    axiosWithAuth().put(`friends/${friend.id}`, friend.id);
+    setChange(true);
+    console.log(friend);
+  };
 
   return (
     <div>
       <h1>Your Friends</h1>
       <Link to="friends/add">
-        <Button color="info">Add a new friend</Button>
+        <Button color="success">Add a new friend</Button>
       </Link>
       {friends.map(friend => {
         return (
           <div key={friend.id} className="friend">
-            <p>
-              Name: {friend.name}, Age: {friend.age}
-            </p>
+            <p>Name: {friend.name}</p>
+            <input defaultValue={friend.name} />
+            <p>Age: {friend.age}</p>
+            <input defaultValue={friend.age} />
             <p>Email: {friend.email}</p>
-            <Button onClick={() => {deleteFriend(friend)}}>Delete</Button>
+            <input defaultValue={friend.email} />
+            <br />
+            <Button
+              color="danger"
+              onClick={() => {
+                deleteFriend(friend);
+              }}
+            >
+              Delete
+            </Button>
+            <Button
+              color="info"
+              onClick={() => {
+                editFriend(friend);
+              }}
+            >
+              Edit
+            </Button>
           </div>
         );
       })}
