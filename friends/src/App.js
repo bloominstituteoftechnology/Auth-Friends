@@ -14,7 +14,7 @@ function App() {
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="friends">Friends</Link>
+            <Link to="/friends">Friends</Link>
           </li>
         </ul>
         <Switch>

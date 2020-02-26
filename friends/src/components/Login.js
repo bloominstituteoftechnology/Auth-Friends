@@ -1,8 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { render } from "@testing-library/react";
 
-class Login extends React.component {
+class Login extends React.Component {
   state = {
     credentials: {
       username: "",
@@ -11,7 +10,7 @@ class Login extends React.component {
   };
 
   handleChange = e => {
-    this.ListeningStateChangedEvent({
+    this.setState({
       credentials: {
         ...this.state.credentials,
         [e.target.name]: e.target.value
@@ -21,6 +20,14 @@ class Login extends React.component {
 
   login = e => {
     e.preventDefault();
+    axios
+    .post('http://localhost:5000/api/login', this.state.credentials)
+    .then(res => {
+        console.log(res)
+        localStorage.setItem("token", res.data.payload);
+        this.props.history.push("/friends");
+    })
+    .catch(err => console.log(err));
   };
 
   render() {
