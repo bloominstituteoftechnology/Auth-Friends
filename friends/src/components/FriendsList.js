@@ -6,6 +6,11 @@ import { Button } from "reactstrap";
 const FriendsList = () => {
   const [friends, setFriends] = useState([]);
   const [change, setChange] = useState(false);
+  const [updatedFriend, setUpdatedFriend] = useState({
+    name: "",
+    age: 0,
+    email: ""
+  });
 
   useEffect(() => {
     setChange(false);
@@ -29,14 +34,14 @@ const FriendsList = () => {
 
   // edit a friend
   const editFriend = friend => {
-    axiosWithAuth().put(`friends/${friend.id}`, friend);
+    axiosWithAuth().put(`friends/${friend.id}`, updatedFriend);
     setChange(true);
-    console.log("editing friend: ", friend);
+    console.log("editing friend: ", updatedFriend);
   };
 
   // on change for editing
   const handleChange = e => {
-    setFriends([...friends, { [e.target.name]: e.target.value }]);
+    setUpdatedFriend({...updatedFriend, [e.target.name]: e.target.value });
   };
 
   return (
@@ -53,16 +58,16 @@ const FriendsList = () => {
               <p>Age: {friend.age}</p>
               <p>Email: {friend.email}</p>
               <label>Edit Name</label>
-              <input name="name" onChange={handleChange} value={friend.name} />
+              <input name="name" onChange={handleChange} defaultValue={friend.name} />
 
               <label>Edit Age</label>
-              <input name="age" onChange={handleChange} value={friend.age} />
+              <input name="age" onChange={handleChange} defaultValue={friend.age} />
 
               <label>Edit Email</label>
               <input
                 name="email"
                 onChange={handleChange}
-                value={friend.email}
+                defaultValue={friend.email}
               />
               <br />
 
