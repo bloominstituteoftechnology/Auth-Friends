@@ -48,9 +48,9 @@ Topics:
 ```js
 {
   id: 1
-  name: 'Joe',
-  age: 24,
-  email: 'joe@lambdaschool.com',
+  name: 'Zoe',
+  age: 10,
+  email: 'zoe@lambdaschool.com',
 }
 ```
 
