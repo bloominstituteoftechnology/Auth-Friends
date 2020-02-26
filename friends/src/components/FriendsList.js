@@ -22,16 +22,21 @@ const FriendsList = () => {
 
   // delete friend
   const deleteFriend = friend => {
-    console.log(friend);
+    console.log("deleting friend: ", friend);
     axiosWithAuth().delete(`friends/${friend.id}`);
     setChange(true);
   };
 
   // edit a friend
   const editFriend = friend => {
-    axiosWithAuth().put(`friends/${friend.id}`, friend.id);
+    axiosWithAuth().put(`friends/${friend.id}`, friend);
     setChange(true);
-    console.log(friend);
+    console.log("editing friend: ", friend);
+  };
+
+  // on change for editing
+  const handleChange = e => {
+    setFriends([...friends, { [e.target.name]: e.target.value }]);
   };
 
   return (
@@ -40,35 +45,47 @@ const FriendsList = () => {
       <Link to="friends/add">
         <Button color="success">Add a new friend</Button>
       </Link>
-      {friends.map(friend => {
-        return (
-          <div key={friend.id} className="friend">
-            <p>Name: {friend.name}</p>
-            <input defaultValue={friend.name} />
-            <p>Age: {friend.age}</p>
-            <input defaultValue={friend.age} />
-            <p>Email: {friend.email}</p>
-            <input defaultValue={friend.email} />
-            <br />
-            <Button
-              color="danger"
-              onClick={() => {
-                deleteFriend(friend);
-              }}
-            >
-              Delete
-            </Button>
-            <Button
-              color="info"
-              onClick={() => {
-                editFriend(friend);
-              }}
-            >
-              Edit
-            </Button>
-          </div>
-        );
-      })}
+      <div className="friends-container">
+        {friends.map(friend => {
+          return (
+            <div key={friend.id} className="friend">
+              <p>Name: {friend.name}</p>
+              <p>Age: {friend.age}</p>
+              <p>Email: {friend.email}</p>
+              <label>Edit Name</label>
+              <input name="name" onChange={handleChange} value={friend.name} />
+
+              <label>Edit Age</label>
+              <input name="age" onChange={handleChange} value={friend.age} />
+
+              <label>Edit Email</label>
+              <input
+                name="email"
+                onChange={handleChange}
+                value={friend.email}
+              />
+              <br />
+
+              <Button
+                color="danger"
+                onClick={() => {
+                  deleteFriend(friend);
+                }}
+              >
+                Delete
+              </Button>
+              <Button
+                color="info"
+                onClick={() => {
+                  editFriend(friend);
+                }}
+              >
+                Edit
+              </Button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

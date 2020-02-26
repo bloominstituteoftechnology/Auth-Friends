@@ -29,28 +29,30 @@ const Login = props => {
 
   return (
     <form name="login" className="login">
-      <label htmlFor="username">
-        Username:
-        <input
-          required //why aren't these working??
-          type="text"
-          name="username"
-          value={userData.username}
-          onChange={handleChange}
-        />
+      <label className="loginlabels" htmlFor="username">
+        Username:{" "}
       </label>
-      <label htmlFor="password">
-        Password:
-        <input
-          required //why aren't these working??
-          type="password"
-          name="password"
-          value={userData.password}
-          onChange={handleChange}
-        />
+      <input
+        required //why aren't these working??
+        type="text"
+        name="username"
+        value={userData.username}
+        onChange={handleChange}
+      />
+
+      <label className="loginlabels" htmlFor="password">
+        Password:{" "}
       </label>
+      <input
+        required //why aren't these working??
+        type="password"
+        name="password"
+        value={userData.password}
+        onChange={handleChange}
+      />
+
       <br />
-      <Button color="info" name="submit" onClick={handleSubmit}>
+      <Button color="success" name="submit" onClick={handleSubmit}>
         Log in
       </Button>
     </form>
