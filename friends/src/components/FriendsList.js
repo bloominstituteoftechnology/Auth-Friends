@@ -40,7 +40,7 @@ const FriendsList = () => {
   };
 
   return (
-    <div>
+    <section className="container">
       <h1>Your Friends</h1>
       <Link to="friends/add">
         <Button color="success">Add a new friend</Button>
@@ -86,7 +86,7 @@ const FriendsList = () => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

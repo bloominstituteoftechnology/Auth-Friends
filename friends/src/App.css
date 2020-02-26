@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Trade Winds';
 }
 
 .App-header {
@@ -10,6 +11,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
   padding-bottom:1%;
+}
+
+.container {
+  margin:3% auto;
 }
 
 .nav-links {
@@ -61,11 +66,11 @@ margin:5%;
 
 .login input {
   width:50%;
-  margin:0 auto;
+ margin:2% auto;
+  text-align:center;
 }
 
-
 .login button {
-  width:100px;
+  width:200px;
   margin:0 auto;
 }

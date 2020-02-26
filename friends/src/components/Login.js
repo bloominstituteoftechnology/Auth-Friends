@@ -29,7 +29,7 @@ const Login = props => {
 
   return (
     <form name="login" className="login">
-      <label className="loginlabels" htmlFor="username">
+      <label htmlFor="username">
         Username:{" "}
       </label>
       <input

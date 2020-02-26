@@ -29,44 +29,39 @@ const AddFriend = props => {
   };
 
   return (
-    <form name="addFriend">
-      <label htmlFor="name">
-        Name:
-        <input
-          type="text"
-          name="name"
-          value={friendData.name}
-          onChange={handleChange}
-          placeholder="John Smith"
-          required
-        />
-      </label>
+    <form className="login">
+      <label htmlFor="name">Name:</label>
+      <input
+        type="text"
+        name="name"
+        value={friendData.name}
+        onChange={handleChange}
+        placeholder="John Smith"
+        required
+      />
 
-      <label htmlFor="age">
-        Age:
-        <input
-          placeholder="34"
-          type="text"
-          name="age"
-          value={friendData.age}
-          onChange={handleChange}
-          required //not working??
-        />
-      </label>
+      <label htmlFor="age">Age: </label>
+      <input
+        placeholder="34"
+        type="text"
+        name="age"
+        value={friendData.age}
+        onChange={handleChange}
+        required //not working??
+      />
 
-      <label htmlFor="email">
-        Email:
-        <input
-          placeholder="JohnSmith@email.com"
-          type="text"
-          name="email"
-          value={friendData.email}
-          onChange={handleChange}
-          required //not working??
-        />
-      </label>
+      <label htmlFor="email">Email: </label>
+      <input
+        placeholder="JohnSmith@email.com"
+        type="text"
+        name="email"
+        value={friendData.email}
+        onChange={handleChange}
+        required //not working??
+      />
+
       <br />
-      <Button color="info" name="submit" onClick={handleSubmit}>
+      <Button color="success" name="submit" onClick={handleSubmit}>
         Add Friend
       </Button>
     </form>
