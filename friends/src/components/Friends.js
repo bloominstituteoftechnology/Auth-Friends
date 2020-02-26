@@ -7,6 +7,7 @@ function Friends() {
     const [friends, setFriends] = useState([]);
 
     useEffect(() => {
+        console.log('hello')
         axiosWithAuth()
             .get('/api/friends')
             .then(res => setFriends(res.data))

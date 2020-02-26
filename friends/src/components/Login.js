@@ -23,6 +23,7 @@ login = e => {
     e.preventDefault();
     axiosWithAuth()
     .post('/api/login', this.state.credentials)
+    // .then(res => console.log(res))
     .then(res => {
         window.localStorage.setItem('token', res.data.payload);
         this.props.history.push('/protected');

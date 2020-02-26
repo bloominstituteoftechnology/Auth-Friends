@@ -19,7 +19,7 @@ function App() {
           </li>
         </ul>
         <Switch>
-          <PrivateRoute exact path='/friends' component={Friends} />
+          <PrivateRoute path='/friends' component={Friends} />
           <Route path='/login' component={Login} />
         </Switch>
       </div>
