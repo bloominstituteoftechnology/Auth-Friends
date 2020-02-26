@@ -18,7 +18,7 @@ Topics:
 * Take a look at the endpoints that our API has to offer in `server.js`.
 
   * **[POST]** * to `/api/login`: returns a token to be added to the header of all other requests. Pass in the following credentials as the `body` of the request: `{ username: 'Lambda School', password: 'i<3Lambd4' }`
-  * **[GET]** to `/api/friends`: returns the list of friends.
+  * **[GET]** to `/api/friends`: returns the list of friends. hello world
   * **[GET]** to `/api/friends/123`: returns the friend with the id passed as part of the URL (123 in example).
   * **[POST]** to `/api/friends`: creates a friend and return the new list of friends. Pass the friend as the `body` of the request (the second argument passed to `axios.post`).
   * **[PUT]** to `/api/friends/:id`: updates the friend using the `id` passed as part of the URL. Send the an object with the updated information as the `body` of the request (the second argument passed to `axios.put`).

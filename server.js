@@ -13,7 +13,7 @@ let friends = [
     id: 1,
     name: 'Rachel Green',
     age: 30,
-    email: 'rachel@friends.com'
+    email: 'Rachel@friends.com'
   },
   {
     id: 2,
