@@ -1,47 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import Friend from './Friend';
-import AddAFriendForm from './AddAFriendForm';
-
+import React, { useState, useEffect } from "react";
+// import moment from "moment";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Friend from "./Friend";
+import AddAFriendForm from "./AddAFriendForm";
 function Friends() {
-    const [friends, setFriends] = useState([]);
+  const [friends, setFriends] = useState([]);
 
-    useEffect(() => {
-        console.log('hello')
-        axiosWithAuth()
-            .get('/api/friends')
-            .then(res => setFriends(res.data))
-            .catch(err => alert('Error Getting Friends List', err));    
-    },[]);
-
-function getData() {
+  useEffect(() => {
     axiosWithAuth()
-    .get('/api/friends')
-    .then(res => setFriends(res.data))
-    .catch(err => alert('Error getting Friends List', err));
-}
+      .get("/api/friends")
+      .then(res => setFriends(res.data))
+      .catch(err => alert("Error getting friends list! \n" + err));
+  }, []);
 
-function addFriend(friend) {
+  function getData() {
     axiosWithAuth()
-    .post('/api/friends', friend)
-    .then(res => {
+      .get("/api/friends")
+      .then(res => setFriends(res.data))
+      .catch(err => alert("Error getting friends list! \n" + err));
+  }
+
+  function addFriend(friend) {
+    axiosWithAuth()
+      .post("/api/friends", friend)
+      .then(res => {
         getData();
         console.log(res);
-    });
-}
+      });
+  }
 
-return (
+  return (
     <div>
-        <h1> Hello Dear Friends!</h1>
-        <div className='friends'>
-            {friends.map(friend => {
-                return <Friend key={friend.id} friend={friend} />;
-            })}
-        </div>
-        <AddAFriendForm addFriend={addFriend} />
+      <h1>Say Hi to all of your Friends!</h1>
+      <div className="friends">
+        {friends.map(friend => {
+          return <Friend key={friend.id} friend={friend} />;
+        })}
+      </div>
+      <AddAFriendForm addFriend={addFriend} />
     </div>
-);
-
+  );
 }
 
 export default Friends;

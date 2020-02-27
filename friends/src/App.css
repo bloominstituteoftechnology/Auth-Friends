@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  background-color: lightpink;
+}
+h1 {
+  font-size: 80px;
+ 
+
 }
 
 .friends {
@@ -22,4 +28,15 @@ form {
   width: 20%;
   align-items: center;
   margin-left: 40%;
+}
+.nav-btn{
+  color:rgb(25, 196, 39);
+  font-size: 40px;
+  text-decoration: none;
+}
+.button {
+  height: 50px;
+  width: 150px;
+  border-radius:10%;
+  font-size: 15px;
 }
