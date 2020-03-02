@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import api from '../utils/api';
+import './Login.scss';
 
 export default function Login(props) {
 	const [ error, setError ] = useState();
@@ -30,8 +31,8 @@ export default function Login(props) {
 			});
 	};
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
+		<div className="login-container">
+			<form className="form-container" onSubmit={handleSubmit}>
 				{error && <div className="error">Error</div>}
 				<input type="text" name="username" placeholder="Name" value={data.username} onChange={handleChange} />
 				<input

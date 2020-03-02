@@ -1,27 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
+import './FriendList.scss';
+import Friends from './Friends';
 
 export default function FriendsList() {
 	const [ friends, setFriends ] = useState([]);
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-	};
 
 	useEffect(() => {
 		api()
 			.get('api/friends')
 			.then((res) => {
+				console.log('friends', res.data);
 				setFriends(res.data);
-				setFriends([
-					...friends,
-					{
-						id: res.data.id,
-						name: res.data.name,
-						age: res.data.age,
-						email: res.data.email
-					}
-				]);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -29,14 +19,10 @@ export default function FriendsList() {
 	}, []);
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<label htmlFor="name" />
-			<input type="text" name="name" placeholder="Name" value={friends.name} />
-			<label htmlFor="age" />
-			<input type="text" name="age" placeholder="Age" value={friends.age} />
-			<label htmlFor="email" />
-			<input type="email" name="email" placeholder="Email" value={friends.email} />
-			<button>Submit</button>
-		</form>
+		<div>
+			{friends.map((friend, index) => {
+				return <Friends name={friend.name} age={friend.age} email={friend.email} key={index} />;
+			})}
+		</div>
 	);
 }
