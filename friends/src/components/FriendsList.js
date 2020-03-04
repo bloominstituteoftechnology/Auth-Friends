@@ -10,7 +10,6 @@ export default function FriendsList() {
 		api()
 			.get('api/friends')
 			.then((res) => {
-				console.log('friends', res.data);
 				setFriends(res.data);
 			})
 			.catch((err) => {
