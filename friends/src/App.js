@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import FriendsList from './components/FriendsList';
+import AddFriend from './components/AddFriend';
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 			{/* <Route exact path="/friends" component={Friends} /> */}
 			{/* These routes will require an auth token to be set, due to our handy HOC */}
 			<ProtectedRoute exact path="/friends" component={FriendsList} />
+			<ProtectedRoute exact path="/add-friend" component={AddFriend} />
 		</div>
 	);
 }

@@ -1,14 +1,18 @@
 .login-container {
-	width: 10%;
+	width: 30%;
 	margin: 0 auto;
 	font-size: 2.5rem;
 	margin-top: 35vh;
 	font-family: 'Montserrat', sans-serif;
 }
+h2 {
+	color: rgb(100, 183, 211);
+}
 .form-container {
 	display: flex;
 	flex-direction: column;
 	.username-password {
+		width: 20%;
 		margin: 1rem 0 1rem;
 		height: 3rem;
 		border: none;

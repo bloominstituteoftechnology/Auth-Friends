@@ -3,21 +3,23 @@ import { Link } from 'react-router-dom';
 import { getToken } from '../utils/api';
 
 import ProtectedRoute from '../components/ProtectedRoute';
+import FriendsList from './FriendsList';
 import LogOut from '../components/LogOut';
 import './Nav.scss';
+import AddFriend from './AddFriend';
 
 export default function Nav() {
 	const loggedIn = getToken();
 	return (
 		<div className="Nav">
 			<h1>Auth Friends</h1>
+			<div className="logout">
+				<Link to="/add-friend">Add Friend</Link>
+				{loggedIn && <Link to="/logout">Log Out</Link>}
+			</div>
 
-			{loggedIn && (
-				<Link to="/logout" className="logout">
-					Log Out
-				</Link>
-			)}
 			<ProtectedRoute exact path="/logout" component={LogOut} />
+			<ProtectedRoute exact path="/friend-list" component={FriendsList} />
 		</div>
 	);
 }

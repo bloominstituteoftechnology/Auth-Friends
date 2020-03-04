@@ -30,8 +30,10 @@ export default function Login(props) {
 				setError(err);
 			});
 	};
+
 	return (
 		<div className="login-container">
+			<h2>Please Log In</h2>
 			<form className="form-container" onSubmit={handleSubmit}>
 				{error && <div className="error">Error</div>}
 				<input type="text" name="username" placeholder="Name" value={data.username} onChange={handleChange} />
