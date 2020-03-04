@@ -6,14 +6,13 @@ import ProtectedRoute from '../components/ProtectedRoute';
 import FriendsList from './FriendsList';
 import LogOut from '../components/LogOut';
 import './Nav.scss';
-import AddFriend from './AddFriend';
 
 export default function Nav() {
 	const loggedIn = getToken();
 	return (
 		<div className="Nav">
 			<h1>Auth Friends</h1>
-			<div className="logout">
+			<div className="nav-links">
 				<Link to="/add-friend">Add Friend</Link>
 				{loggedIn && <Link to="/logout">Log Out</Link>}
 			</div>
