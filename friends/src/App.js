@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter, Route, Link } from "react-router-dom";
 import Login from "./components/Login";
 import Friends from "./components/Friends";
+import PrivateRoute from "./utils/PraivteRoute";
 function App() {
   return (
     <div
@@ -27,7 +28,7 @@ function App() {
       </div>
       <div>
         <Route exact path="/login" component={Login} />
-        <Route exact path="/friends" component={Friends} />
+        <PrivateRoute path="/friends" exact component={Friends} />
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ function Friends() {
 
   useEffect(() => {
     axiosWithAuth()
-      .get("/friends")
+      .get("/api/friends")
       .then(res => console.log(res))
       .catch(err => console.log(err));
   }, []);

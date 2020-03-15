@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-function Login() {
+function Login(props) {
+  console.log(props);
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
@@ -20,6 +21,7 @@ function Login() {
       .then(res => {
         console.log(res.data.payload);
         localStorage.setItem("token", res.data.payload);
+        props.history.push("/friends");
       });
   };
   return (
