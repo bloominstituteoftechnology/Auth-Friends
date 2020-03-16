@@ -65,5 +65,5 @@ class NewFriendForm extends React.Component {
     }
 }
 
-// export default NewFriendForm; 
+ 
 export default NewFriendForm; 
