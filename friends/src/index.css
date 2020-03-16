@@ -1,3 +1,47 @@
 a {
-  color: white;
+  /* color: white; */
+  font-size: 1.2rem;
+  text-decoration: none;
+  background: white;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+a:hover {
+  background: #333;
+  color: #fff;
+}
+
+.links {
+  height: 200px;
+  background: #ffffe6;
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  align-items: center;
+  margin-top: 100px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.routes {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.friend {
+  margin: 20px;
+  width: 25%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.friend h2 {
+  text-align: center;
+}
+
+.link {
+  width: 100%;
 }
