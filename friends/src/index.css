@@ -1,47 +1,58 @@
-a {
-  /* color: white; */
-  font-size: 1.2rem;
-  text-decoration: none;
-  background: white;
-  padding: 10px 20px;
-  border: 1px solid black;
-  border-radius: 10px;
-}
-a:hover {
-  background: #333;
-  color: #fff;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.links {
-  height: 200px;
-  background: #ffffe6;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.add-friend {
+  margin: 20px 0;
+}
+
+.App > .navbar {
+  padding: 1rem 2.5rem;
+}
+
+.row > div > .card {
+  margin: 5px;
+}
+
+.App > form {
+  width: 40%;
+  margin: 20px auto;
+}
+
+.App > div {
   display: flex;
-  justify-content: space-around;
-  width: 60%;
+  flex-direction: column;
   align-items: center;
-  margin-top: 100px;
-  border: 1px solid black;
-  border-radius: 20px;
 }
-
-.routes {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.friend {
-  margin: 20px;
-  width: 25%;
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: 1px solid black;
-}
-
-.friend h2 {
+.App {
   text-align: center;
 }
 
-.link {
-  width: 100%;
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
 }
