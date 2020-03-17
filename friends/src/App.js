@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import "./App.css";
+
 import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import FriendsList from "./components/FriendsList";
@@ -15,7 +16,7 @@ function App() {
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/protected">Protected Page</Link>
+            <Link to="/protected">Friends List</Link>
           </li>
         </ul>
         <Switch>
