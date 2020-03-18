@@ -17,7 +17,6 @@ ReactDOM.render(
 
 // the too long didn't read
 // client(user) sign up and need to introduce themselves to the api
-// hey nice to meet to you my name is yasir give an account
 // the server takes the credentials and stores somewhere in the data base
 // so when the user login in saying hey this is my information  i need to be auth
 // the server takes them and make sure all the information are a match

@@ -1,53 +1,67 @@
 import React, { useState } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from "axios";
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-function Login(props) {
-  const [credentials, setCredentials] = useState({
+
+const Login = props => {
+
+  const [userData, setUserData] = useState({
     username: "",
-    email: ""
+    password: ""
   });
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = event => {
-    setCredentials({ ...credentials, [event.target.name]: event.target.value });
+    setUserData({ ...userData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    axiosWithAuth()
-      .post("/api/login", credentials)
+  const login = () => {
+    axios
+      .post("http://localhost:5000/api/login", userData)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
-        props.history.push("/friends");
+        props.history.push("/dashboard");
       })
-      .catch();
+      .catch(err => console.log("Error! err: ", err));
+    setIsLoading(false);
   };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <Form
+      onSubmit={event => {
+        event.preventDefault();
+        setIsLoading(true);
+        login();
+      }}
+    >
       <Form.Group controlId="formBasicEmail">
-        <Form.Label>Username:</Form.Label>
+        <Form.Label>Username</Form.Label>
         <Form.Control
           type="text"
           name="username"
-          placeholder="Username"
-          value={credentials.username}
+          placeholder="Enter username"
+          value={userData.username}
           onChange={handleChange}
         />
       </Form.Group>
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>Password:</Form.Label>
+
+      <Form.Group controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
         <Form.Control
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={credentials.email}
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          value={userData.password}
           onChange={handleChange}
         />
       </Form.Group>
-      <Button type="submit" variant="primary">
-        Login
+      <Button type="submit" variant="primary" disabled={isLoading}>
+        {isLoading ? "Loading…" : "Login"}
       </Button>
-    </form>
+    </Form>
   );
-}
+};
 
 export default Login;
