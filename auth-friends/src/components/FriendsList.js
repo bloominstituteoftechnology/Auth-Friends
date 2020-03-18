@@ -17,7 +17,7 @@ const FriendsList = (props) => {
                 .catch(err => console.log(err))
     }
 
-    const handleClick = (props) => {
+    const handleClick = () => {
         props.history.push("/addfriend")
     }
 

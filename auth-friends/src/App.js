@@ -14,10 +14,10 @@ function App() {
           <Link className="link" to="/friends">Protected Page</Link>
       </div>
       <Switch>
-        <Route path="/friends" component={FriendsList} />
+        <Route path="/addfriend" component={AddFriend} />
+        <Route exact path="/friends" component={FriendsList} />
         <Route path="/login" component={Login} />
         <Route component={Login} />
-        <Route path="/addfriend" component={AddFriend} />
       </Switch>
 
     </Router>

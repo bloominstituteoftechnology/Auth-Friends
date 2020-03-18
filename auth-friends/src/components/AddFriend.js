@@ -14,7 +14,7 @@ const AddFriend = props => {
             .post("/friends", newFriend)
                 .then(res => {
                     console.log(res)
-                    props.history.push("localhost:3000/friends")
+                    props.history.push("/friends")
                 })
                 .catch(err => console.log(err))
     }
