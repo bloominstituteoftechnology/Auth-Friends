@@ -1,0 +1,82 @@
+.App {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+}
+
+.link {
+  padding: 20px;
+  font-size: 24px;
+  font-family: "Helvetica";
+  color: purple;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: blue;
+}
+
+.login-form {
+  height: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.login {
+  padding: 5px;
+  margin: 20px;
+  height: 25px;
+  border: .5px solid black;
+  border-radius: 10px;
+}
+
+.input {
+  width: 150px;
+  font-size: 14px;
+}
+
+.button {
+  width: 100px;
+  color: purple;
+  background-color: green;
+  font-size: 18px;
+  height: 36px;
+}
+
+.friendlist {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.friend {
+  width: 30%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: green;
+  color: purple;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+
+.add-friend {
+  width: 10%;
+  height: 36px;
+  font-size: 14px;
+  color: purple;
+  background-color: green;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 20px 0;
+}
+
+
