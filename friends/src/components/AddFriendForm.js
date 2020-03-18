@@ -8,41 +8,32 @@ const AddFriendForm = props => {
     email: ""
   });
 
-  useEffect(() => {
-    axiosWithAuth()
-      .post("/api/friends")
-      .then(
-        res => console.log(res)
-        // res.data.push(friend => {
-        //   this.setState({
-        //     name: this.state.name,
-        //     age: this.state.age,
-        //     email: this.state.email
-        //   });
-        // })
-      )
-      .catch(err => console.log(err));
-  }, []);
-
-  const onChange = e => {
-    setFriendData({ [e.target.name]: e.target.value });
+  const changeHandler = e => {
+    setFriendData({ ...friendData, [e.target.name]: e.target.value });
+    console.log(friendData);
   };
 
-  const onSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
+
+    axiosWithAuth()
+      .post("/api/friends", friendData)
+      .then(res => setFriendData(res.data))
+      .catch(err => console.log(err));
   };
 
   return (
     <div>
+      {console.log(friendData)}
       <h1>Add Friends</h1>
-      <form onSubmit={props.onSubmit}>
+      <form onSubmit={e => handleSubmit(e)}>
         <div>
           <label>Name: </label>
           <br />
           <input
             type="text"
             name="name"
-            onChange={props.onChange}
+            onChange={e => changeHandler(e)}
             value={props.name}
           />
         </div>
@@ -52,7 +43,7 @@ const AddFriendForm = props => {
           <input
             type="text"
             name="age"
-            onChange={props.onChange}
+            onChange={e => changeHandler(e)}
             value={props.age}
           />
         </div>
@@ -62,12 +53,12 @@ const AddFriendForm = props => {
           <input
             type="text"
             name="email"
-            onChange={props.onChange}
+            onChange={e => changeHandler(e)}
             value={props.email}
           />
         </div>
+        <button type="submit">Add Friend</button>
       </form>
-      <button type="submit">Add Friend</button>
       <hr />
     </div>
   );
