@@ -1,6 +1,4 @@
 import React from "react"
-import { render } from "react-dom";
-import axios from "axios"
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 class Login extends React.Component {
@@ -45,13 +43,13 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="LoginPage">
                 <form onSubmit={this.handleSubmit}>
-                    <input name="username" onChange={this.handleChange}/>
-                    <input name="password" onChange={this.handleChange}/>
+                    <input name="username" placeholder="Username" onChange={this.handleChange}/>
+                    <input name="password" placeholder="Password" onChange={this.handleChange}/>
                     <button>Login</button>
                 </form>
-                {this.state.isLoading && <div>Logging in</div>}
+                {this.state.isLoading && <div><h3>Logging in</h3></div>}
             </div>
         )
     }
