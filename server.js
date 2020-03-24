@@ -59,10 +59,10 @@ function authenticator(req, res, next) {
     res.status(403).json({ error: 'User must be logged in to do that.' });
   }
 }
-
+//Returns a token to be added to the header of all other requests.Pass in the following credentials as the body of the request: { username: 'Lambda School', password: 'i<3Lambd4' }
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
-  if (username === 'Lambda School' && password === 'i<3Lambd4') {
+  if (username === 'bips' && password === 'bobs') {
     req.loggedIn = true;
     res.status(200).json({
       payload: token
@@ -73,7 +73,7 @@ app.post('/api/login', (req, res) => {
       .json({ error: 'Username or Password incorrect. Please see Readme' });
   }
 });
-
+//returns a list of the friends
 app.get('/api/friends', authenticator, (req, res) => {
   setTimeout(() => {
     res.send(friends);
