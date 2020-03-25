@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Home = () => {
     return (
         <nav>
-            <Link to='friends'>Friends</Link>
+            <NavLink to='friends'>Friends</NavLink>
+            <NavLink to='addFriend'>Add Friends</NavLink>
         </nav>
     );
 }
