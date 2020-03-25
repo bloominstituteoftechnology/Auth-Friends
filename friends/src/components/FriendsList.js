@@ -1,5 +1,6 @@
-import React from "react";
-import {axiosWithAuth} from "../utils/axiosWithAuth";
+import React from 'react';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import LoadingSpinner from '../img/loading.gif';
 
 class FriendsList extends React.Component{
 
@@ -14,12 +15,11 @@ class FriendsList extends React.Component{
 
     getFriendsList = () => {
         this.setState({...this.state, isLoading: true});
-        const token = window.localStorage.getItem('token')
         axiosWithAuth().get("/api/friends")
         .then(res => {
             console.log("Successfully got friends",res);
-            this.setState({ friends: res.data})
-            this.setState({...this.state, isLoading: false});
+            this.setState({ friends: res.data});
+            this.setState({ ...this.state, isLoading: false });
         })
         .catch(err => {
             console.log(err);
@@ -29,14 +29,14 @@ class FriendsList extends React.Component{
 
     render(){
         return(
-            <div className="FriendsList">    
-                {this.state.isLoading && <div><h3>Loading Friends...</h3></div>}
+            <div className="FriendsList">
+                <h2>Friend List</h2>
+                {this.state.isLoading && <div><img src={LoadingSpinner} alt="Loading Spinner" /></div>}
                 <div className="ListOfFriends">
                     {this.state.friends.map(friend => 
                         <div key={friend.id}>
-                            <h4>Friend ID: {`${friend.id}`}</h4>
-                            <h4>{`${friend.name}, `}</h4>
-                            <h4>{`${friend.age} years old`}</h4>
+                            <h4>{`ID: ${friend.id}`}</h4>
+                            <h4>{`${friend.name}, ${friend.age} years old`}</h4>
                         </div>)
                     }
                 </div>

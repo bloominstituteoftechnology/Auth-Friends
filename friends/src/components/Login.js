@@ -2,6 +2,7 @@ import React from "react"
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 class Login extends React.Component {
+
     constructor() {
         super();
         this.state = {
@@ -44,6 +45,7 @@ class Login extends React.Component {
     render() {
         return (
             <div className="LoginPage">
+                <h2>Login Page</h2>
                 <form onSubmit={this.handleSubmit}>
                     <input name="username" placeholder="Username" onChange={this.handleChange}/>
                     <input name="password" placeholder="Password" onChange={this.handleChange}/>

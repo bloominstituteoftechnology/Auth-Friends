@@ -11,12 +11,7 @@ class AddFriend extends React.Component{
     submitHandler = (event) => {
         event.preventDefault();
         axiosWithAuth()
-        .post("/api/friends", this.state.friend, {
-            headers:
-            {
-                authorization: window.localStorage.getItem('token')
-            }
-        })
+        .post("/api/friends", this.state.friend)
         .then(res => {
             console.log(res)
         })
@@ -31,6 +26,7 @@ class AddFriend extends React.Component{
     render(){
         return(
             <div className="AddFriend">
+                <h2>Add Friend</h2>
                 <form onSubmit={this.submitHandler}>
                     <input onChange={this.changeHandler} placeholder="Name" name="name" />
                     <input onChange={this.changeHandler} placeholder="Age" name="age" />
