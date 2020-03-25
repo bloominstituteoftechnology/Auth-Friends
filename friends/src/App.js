@@ -8,8 +8,8 @@ import PrivateRoute from './components/PrivateRoute';
 function App() {
   return (
   <Router>
-      <Route path='/login' component={Login}/>
-      <Route path='/friends' component={List} />
+      <Route path='/' component={Login}/>
+      <PrivateRoute exact path='/friends' component={List} />
     </Router>
   );
 }
