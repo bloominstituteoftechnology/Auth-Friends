@@ -11,17 +11,12 @@ function App() {
   return (
     <Router>
       <div>
-        <ul>
-          <li>
-            <Link to='/login'>Login</Link>
-          </li>
-          <li>
-            <Link to='/friends'>Friends</Link>
-          </li>
-        </ul>
+          <Link to='/login'>Login</Link>
+          <Link to='/friends'>Friends</Link>
         <Switch>
           <PrivateRoute exact path='/friends' component={Friends} />
           <Route path='/login' component={Login} />
+          <Route component={Login} />
         </Switch>
       </div>
     </Router>

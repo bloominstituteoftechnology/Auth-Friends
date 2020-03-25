@@ -1,29 +1,31 @@
-import React from 'react';
-import moment from 'moment';
-import Loader from 'react-loader-spinner';
+import React, { useState, useEffect } from 'react';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const Friends = props => {
-     useEffect(() => {
-    const getData = () => {
+import FriendsCard from './FriendsCard';
+import FriendsForm from './FriendsForm';
 
+const Friends = (props) => {
+    const [friends, setFriends] = useState([]);
+
+    useEffect(() => {
       axiosWithAuth()
-        .get('/api/data')
+        .get('/api/friends')
         .then(res => {
-          console.log(res);
-          this.setState({
-            gasPrices: res.data.data
-              .filter(price => price.type === 'Gasoline - Regular')
-              .filter(
-                price =>
-                  price.location === 'US' || price.location === 'State of Hawaii'
-              )
-          });
+          setFriends(res.data)
+          })
+        .catch(err => {
+            console.log('err', err);
         });
-    };
-
-    getData();
   }, [])
 
+    return (
+      <div>
+        <FriendsForm />
+        <FriendsCard key={friends.id} friends={friends}/>
+      </div>
+    )
+
 }
+
+export default Friends;
