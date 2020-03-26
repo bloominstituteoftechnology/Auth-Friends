@@ -1,0 +1,129 @@
+html{
+	height: calc(100% - 3px);
+}
+
+body {
+	background: linear-gradient(45deg, rgb(141, 4, 45) 0%, rgb(134, 83, 23) 100%);	font-family: 'Roboto', sans-serif;
+	height: 100%;
+	margin: 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.Container{	
+	color: white;
+
+	.Nav{
+		background-color: rgba(0,0,0,0.33);
+		display: flex;
+		justify-content: space-around;
+		width: 95%;
+		margin: 2px auto 50px auto;
+		padding: 2px 0px;
+
+		a{
+			border-radius: 10px;
+			width: 15%;
+			color: white;
+			text-decoration: none;
+			text-align: center;
+
+			&:hover{
+				color: rgba(255,255,255,1);
+				background-color: rgba(128,128,128,0.5);
+			}
+			&:active{
+				color: black;
+				background-color: rgba(255,255,255,0.5);
+			}
+		}//a
+	}//Nav
+
+	.LoginPage{
+		border-radius: 20px;
+		background-color: rgba(0,0,0,0.66);
+		padding: 40px 0px;
+		width: 500px;
+		margin: 0px auto;
+		display: block;
+		text-align: center;
+
+		form{
+			display: inline-block;
+			line-height: 1.8rem;
+			width: 200px;
+		}
+
+		h2{
+			line-height: 1rem;
+		}
+
+	}//LoginPage
+
+	.FriendsList{
+		border-radius: 20px;
+		background-color: rgba(0,0,0,0.66);
+		text-align: center;
+		font-size: 1.2rem;
+		max-width: 800px;
+		margin: 0px auto;	
+		padding: 20px;	
+
+		img{
+			height: 80px;
+		}
+
+		.ListOfFriends{
+			padding: 10px 0px;
+			max-height: 500px;
+			overflow: auto;	
+			display: flex;
+			justify-content: space-around;
+			flex-wrap: wrap;
+
+			div{
+				margin: 5px auto;
+				border: 1px grey solid;
+				border-radius: 20px;
+				width: 90%;
+
+				h4{
+					line-height: 1.2rem;
+				}
+			}//div
+		}//ListOfFriends
+	}//FriendsList
+
+	.AddFriend{
+		border-radius: 20px;
+		background-color: rgba(0,0,0,0.66);
+		padding: 25px 0px;
+		width: 500px;
+		margin: 0px auto;
+		text-align: center;
+
+		form{
+			display: inline-block;
+			line-height: 1.8rem;
+			width: 200px;
+			margin: 0px auto;
+		}//form
+	}//AddFriend
+
+	.DeleteFriend{
+		border-radius: 20px;
+		background-color: rgba(0,0,0,0.66);
+		padding: 25px 0px;
+		width: 400px;
+		margin: 0px auto;
+		text-align: center;
+
+		form{
+			display: inline-block;
+			line-height: 1.8rem;
+			width: 200px;
+		}//form
+	}//DeleteFriend
+}//Container
