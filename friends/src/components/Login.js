@@ -36,7 +36,7 @@ class Login extends React.Component {
     render() {
         return (
             <section>
-                <form>
+                <form onSubmit={this.login}>
                     <input
                         type="text"
                         name="username"
