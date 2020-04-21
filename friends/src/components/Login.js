@@ -17,6 +17,15 @@ class Login extends React.Component {
         },
     };
 
+    handleChanges = (e) => {
+        this.setState({
+            creds: {
+                ...this.state.creds,
+                [e.target.name]: e.target.value,
+            },
+        });
+    };
+
     login = (e) => {
         e.preventDefault();
         authenticAxios()
