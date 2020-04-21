@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+
+
+
+.landing{
+  background-image: url('https://2.bp.blogspot.com/-PuypMEvPPno/Vs8g16CKLsI/AAAAAAAACgo/xRxZUpqYxTw/s1600/friends_wallpaper_by_the_sun_king-d5aw3dz.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding-top:1rem;
+}
+
+.login{
+  padding-top: 1rem;
+  background-image: url('https://2.bp.blogspot.com/-PuypMEvPPno/Vs8g16CKLsI/AAAAAAAACgo/xRxZUpqYxTw/s1600/friends_wallpaper_by_the_sun_king-d5aw3dz.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height:100vh;
+}
+.form{
+  display:block;
+  margin:25vh 40vw;
+}
+
+.links{
+  width:25%;
+  display:flex;
+  justify-content: space-around;
+}
+.link{
+  text-decoration: none;
+  font-size: x-large;
+}
+.landing-header{ 
+  display: flex;
+  justify-content: space-between;
+  width:90%;
+
+}
+
+// .fetch-btn{
+//   display:block;
+//   margin:40vh 45vw ;
+//   position:absolute;
+  
+// }
