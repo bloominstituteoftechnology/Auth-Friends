@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { authenticAxios } from '../utils/authenticAxios';
 
 class Login extends React.Component {
     state = {
@@ -14,6 +15,19 @@ class Login extends React.Component {
             age: '',
             email: '',
         },
+    };
+
+    login = (e) => {
+        e.preventDefault();
+        authenticAxios()
+            .post('./api/login', this.state.creds)
+            .then((res) => {
+                console.log(res);
+                // localStorage.setItem('token', JSON.stringify(res.data.payload))
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     render() {

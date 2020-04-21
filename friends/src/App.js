@@ -22,11 +22,11 @@ function App() {
                     </ul>
                 </header>
                 <Switch>
-                    <PrivateRouter
+                    {/* <PrivateRouter
                         exact
                         path="/protected"
                         component={FriendsList}
-                    />
+                    /> */}
                     <Route path="/login" component={Login} />
                     <Route component={Login} />
                 </Switch>
