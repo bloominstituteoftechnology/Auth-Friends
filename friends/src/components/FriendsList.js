@@ -24,22 +24,10 @@ class FriendsList extends React.Component {
             .catch((err) => console.log('error', err));
     };
 
-    formatThisData = () => {
-        const formatedData = [];
-        console.log('this.state: ', this.state);
-
-        return formatedData;
-    };
-
     render() {
-        const friends = this.formatThisData();
         return (
             <section>
                 <h1>List of Friends:</h1>
-                {console.log('aaaayyyykiiiidd: ', this.state.friends)}
-                {this.state.friends.map((value) => {
-                    console.log('mapped: ', value.name);
-                })}
                 {this.state.friends.map((value) => {
                     return (
                         <div key={value.id}>

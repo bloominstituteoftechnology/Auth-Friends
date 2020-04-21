@@ -25,6 +25,7 @@ class Login extends React.Component {
             .post('./api/login', this.state.creds)
             .then((res) => {
                 console.log(res);
+                console.log(this.props.history);
                 localStorage.setItem('token', JSON.stringify(res.data.payload));
                 this.props.history.push('/protected');
             })
