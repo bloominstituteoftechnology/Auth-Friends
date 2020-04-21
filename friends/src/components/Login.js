@@ -46,7 +46,7 @@ class Login extends React.Component {
                         value={this.state.creds.password}
                         onChange={this.handleChanges}
                     />
-                    <button value="Log in" />
+                    <button>Login</button>
                 </form>
             </section>
         );
