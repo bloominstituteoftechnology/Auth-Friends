@@ -14,11 +14,11 @@ function FriendsList() {
             console.log(res)
             setFriends(res.data);
         })
-        .catch(err => console.log(err));;
+        .catch(err => console.log(err));
     }, [])
 
     return (
-        <div>
+        <>
           
           {friends.map(friend => (
               <div key={friend.id}>
@@ -29,7 +29,8 @@ function FriendsList() {
             ))}
             
             <AddFriend />
-        </div>
+
+        </>
       );
 }
 
