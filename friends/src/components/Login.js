@@ -27,7 +27,7 @@ return (
     <form onSubmit={login}>
       <input
         type="text"
-        name="password"
+        name="username"
         value={credentials.username}
         onChange={handleChange}
         />

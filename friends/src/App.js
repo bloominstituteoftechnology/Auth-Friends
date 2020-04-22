@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Login from "./components/Login";
@@ -12,7 +11,7 @@ function App() {
   return (
    <Router>
      <div>
-
+       <h1>Friends!</h1>
        <ul>
          <li>
            <Link to= "/login">Log In</Link>
@@ -26,9 +25,9 @@ function App() {
        </ul>
 
         <Route path="/login" component={Login} />
-        <PrivateRoute exact path='/' component={Friends} />
+        <PrivateRoute exact path='/friends' component={Friends} />
         <PrivateRoute path='/newfriend' component={CreateFriend} />
-        <PrivateRoute path='updatefriend' component={UpdateFriend} />
+        <PrivateRoute path='/updatefriend' component={UpdateFriend} />
 
      </div>
    </Router>
