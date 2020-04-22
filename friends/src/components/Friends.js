@@ -3,6 +3,7 @@ import Links from './Links';
 import Friend from './Friend';
 import Loader from 'react-loader-spinner';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import { Link } from 'react-router-dom';
 
 const Friends = (props) => {
     const [friends, setFriends] = useState([]);
@@ -25,6 +26,7 @@ const Friends = (props) => {
     return (
         <div className='friends-list'>
             <Links/>
+            <Link to='/friends/add'>Add Friend</Link>
             <div className='title is-2'>Friends List</div>
             <div id='spinner'>
             {isFetching && (

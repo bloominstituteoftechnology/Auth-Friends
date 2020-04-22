@@ -56,13 +56,19 @@ code {
     padding:2rem;
     display:flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     background-image: url('https://2.bp.blogspot.com/-PuypMEvPPno/Vs8g16CKLsI/AAAAAAAACgo/xRxZUpqYxTw/s1600/friends_wallpaper_by_the_sun_king-d5aw3dz.jpg');
     background-size: cover;
     background-repeat: no-repeat;
   }
   .friend{
     width:30%;
+    height:20rem;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    text-align: center;
+    opacity:0.9
   }
   #spinner{
     position:absolute;
@@ -73,14 +79,12 @@ code {
   
 }
 
-
-
-
-
+.new-friend{
+  padding: 2rem;
+}
 .space-maker{
   height:0.5rem;
 }
-
 .title{
   text-align:center;
 }
