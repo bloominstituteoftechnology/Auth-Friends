@@ -3,13 +3,14 @@ import { axiosWithAuth } from "../util/axiosWithAuth";
 
 const AddFriend = () => {
     const [friend, setFriend] = useState({
+        id: Date.now(),
         name: "",
         age: "",
         email: "",
     });
 
     const handleChanges = e => {
-        setFriends({
+        setFriend({
             ...friend,
             [e.target.name]: e.target.value,
         });
