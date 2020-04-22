@@ -13,10 +13,6 @@ code {
 }
 
 
-
-
-
-
 .landing{
   background-image: url('https://2.bp.blogspot.com/-PuypMEvPPno/Vs8g16CKLsI/AAAAAAAACgo/xRxZUpqYxTw/s1600/friends_wallpaper_by_the_sun_king-d5aw3dz.jpg');
   background-size: cover;
@@ -46,16 +42,45 @@ code {
   text-decoration: none;
   font-size: x-large;
 }
-.landing-header{ 
-  display: flex;
-  justify-content: space-between;
-  width:90%;
 
+.friends-list{
+  padding-top: 1rem;
+  .friends-header{ 
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:3rem;
+    width:80%;
+  }
+
+  .friends{
+    padding:2rem;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    background-image: url('https://2.bp.blogspot.com/-PuypMEvPPno/Vs8g16CKLsI/AAAAAAAACgo/xRxZUpqYxTw/s1600/friends_wallpaper_by_the_sun_king-d5aw3dz.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .friend{
+    width:30%;
+  }
+  #spinner{
+    position:absolute;
+    display:block;
+    margin:40vh 50vw;
+  }
+  
+  
 }
 
-// .fetch-btn{
-//   display:block;
-//   margin:40vh 45vw ;
-//   position:absolute;
-  
-// }
+
+
+
+
+.space-maker{
+  height:0.5rem;
+}
+
+.title{
+  text-align:center;
+}
