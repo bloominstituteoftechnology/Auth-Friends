@@ -1,29 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
-  const [credentialObject, setCredentialObject] = useState("");
+  const [credentials, setCredentials] = useState("");
   const [usernameInput, setUserNameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
 
   const handleChange = (e, setter) => {
-    setter(e.target.value);
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  useEffect(() => {
-    setCredentialObject({
-      ...credentialObject,
-      username: usernameInput,
-      password: passwordInput,
-    });
-  }, [usernameInput, passwordInput]);
+  const login = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/api/login", credentials)
+      .then((res) => {
+        console.log("bk: Login.js: login: success: res: ", res);
+        localStorage.setItem("token", res.data.payload);
+      })
+      .catch((err) => console.error("There was an error, sorry. ", err));
+  };
 
   return (
-    <form onSubmit={""}>
+    <form onSubmit={login}>
       <input
         type="text"
         name="username"
-        value={usernameInput}
+        value={credentials.username}
         onChange={(e) => {
           handleChange(e, setUserNameInput);
         }}
@@ -31,12 +38,22 @@ function Login() {
       <input
         type="password"
         name="password"
-        value={passwordInput}
+        value={credentials.password}
         onChange={(e) => {
           handleChange(e, setPasswordInput);
+          console.log(credentials);
         }}
       />
       <button>Log in</button>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+
+          console.log(credentials);
+        }}
+      >
+        log sthings PLEASE
+      </button>
     </form>
   );
 }
