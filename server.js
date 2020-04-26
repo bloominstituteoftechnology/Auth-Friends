@@ -8,6 +8,27 @@ const token =
 
 let nextId = 7;
 
+let users = [
+    {
+    id: 7,
+    name: 'Barney Stinson',
+    age: 32,
+    email: 'barney@friends.com'
+  },
+    {
+    id: 8,
+    name: 'Ted Mosby',
+    age: 30,
+    email: 'Ted@friends.com'
+  },
+    {
+    id: 1,
+    name: 'Robin Scherbatzky',
+    age: 30,
+    email: 'robin@friends.com'
+  },
+]
+
 let friends = [
   {
     id: 1,
@@ -62,9 +83,10 @@ function authenticator(req, res, next) {
 
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
-  if (username === 'Lambda School' && password === 'i<3Lambd4') {
+  if (username === 'thom' && password === '123') {
     req.loggedIn = true;
     res.status(200).json({
+      username,
       payload: token
     });
   } else {
@@ -75,9 +97,13 @@ app.post('/api/login', (req, res) => {
 });
 
 app.get('/api/friends', authenticator, (req, res) => {
-  setTimeout(() => {
-    res.send(friends);
-  }, 1000);
+  res.send(friends);
+});
+
+app.get('/api/users/:searchTerm', authenticator, (req, res) => {
+  const searchTerm = req.params.searchTerm !== "none" ?  req.params.searchTerm.toLowerCase() : ""
+  const searchedUsers = users.filter((user => user.name.toLowerCase().includes(searchTerm) ))
+  res.send(searchedUsers);
 });
 
 app.get('/api/friends/:id', authenticator, (req, res) => {
@@ -88,6 +114,16 @@ app.get('/api/friends/:id', authenticator, (req, res) => {
   } else {
     res.status(404).send({ msg: 'Friend not found' });
   }
+});
+
+app.get('/api/friends', authenticator, (req, res) => {
+  setTimeout(() => {
+    res.send(friends);
+  }, 1000);
+});
+
+app.get('/api/me', authenticator, (req, res) => {
+    res.status(200).json({username: 'thom'});
 });
 
 app.post('/api/friends', authenticator, (req, res) => {
