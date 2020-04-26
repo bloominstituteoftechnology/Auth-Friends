@@ -16,9 +16,14 @@ const Container = styled.div`
 `
 
 
-const Card = ({name}) => {
+const Card = ({ pushToFriend, setFriend, friend }) => {
+    const { name, id } = friend
+    const handleOnClick = () => {
+        setFriend(friend)
+        pushToFriend(id)
+    }
     return (
-        <Container>
+        <Container onClick={() => handleOnClick()}>
             <div></div>
             <p>{name.split(" ")[0]}</p>
         </Container>

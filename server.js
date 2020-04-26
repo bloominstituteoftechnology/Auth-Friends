@@ -8,6 +8,8 @@ const token =
 
 let nextId = 7;
 
+let username = "thom";
+
 let users = [
     {
     id: 7,
@@ -82,8 +84,8 @@ function authenticator(req, res, next) {
 }
 
 app.post('/api/login', (req, res) => {
-  const { username, password } = req.body;
-  if (username === 'thom' && password === '123') {
+  const { password } = req.body;
+  if (req.body.username === username  && password === '123') {
     req.loggedIn = true;
     res.status(200).json({
       username,
@@ -123,8 +125,13 @@ app.get('/api/friends', authenticator, (req, res) => {
 });
 
 app.get('/api/me', authenticator, (req, res) => {
-    res.status(200).json({username: 'thom'});
+    res.status(200).json({username});
 });
+
+app.put('/api/me', authenticator, (req, res) => {
+  username = req.body.username;
+  res.status(200).json({ username })
+})
 
 app.post('/api/friends', authenticator, (req, res) => {
   const friend = { id: getNextId(), ...req.body };

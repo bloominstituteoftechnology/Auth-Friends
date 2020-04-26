@@ -16,7 +16,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Landing}/>
         <Route path="/login" component={(props) => <Login {...props} setUser={setUser} />} />
-        <PrivateRoute path="/home" compoent={() => <Home user={user} setUser={setUser} />} />  
+        <PrivateRoute path="/home" component={(props) => <Home {...props} user={user} setUser={setUser} />} />  
       </Switch>
     </div>
   );
