@@ -39,7 +39,7 @@ function Friends(props) {
     axiosWithAuth()
       .post("http://localhost:5000/api/friends", newFriend)
       .then((res) => {
-        setFriends([...friends, ...res.data]);
+        setFriends([...res.data]);
         loadingToggler(res);
         console.log(res);
         setNewFriend({
