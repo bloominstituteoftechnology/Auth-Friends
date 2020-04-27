@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
 
-const [friends, setFriend] = useState({});
+const FriendsList = () => {
 
+};
+
+export default FriendsList;
