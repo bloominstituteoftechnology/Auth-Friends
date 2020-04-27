@@ -53,7 +53,10 @@ function Login(props) {
         }}
       />
       <br />
-      <Button variant="primary">Log in</Button>
+      <br />
+      <Button type="submit" variant="primary">
+        Log in
+      </Button>
     </form>
   );
 }

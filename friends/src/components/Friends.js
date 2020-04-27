@@ -5,7 +5,10 @@ import Button from "react-bootstrap/Button";
 function Friends(props) {
   const [friends, setFriends] = useState([]);
   const [newFriend, setNewFriend] = useState({});
-  const [loadingText, setLoadingText] = useState("Loading...");
+  const [loadingText, setLoadingText] = useState({
+    text: "Loading...",
+    class: "loading",
+  });
   const logOut = () => {
     localStorage.removeItem("token");
     props.setIsLoggedIn(!props.isLoggedIn);
@@ -13,9 +16,11 @@ function Friends(props) {
 
   const loadingToggler = (res) => {
     res.data.length === 0
-      ? setLoadingText(
-          "You don't have any friends yet, you can add friends using the form above"
-        )
+      ? setLoadingText({
+          text:
+            "You don't have any friends yet, you can add friends using the form above",
+          class: "emptyList",
+        })
       : console.log("Alright, you have friends, so you got lucky.");
   };
 
@@ -68,6 +73,9 @@ function Friends(props) {
   let loadingString = "Loading...";
   return (
     <>
+      Welcome back, dear user
+      <br />
+      <br />
       Add New Friend <br />
       <br /> Name:{" "}
       <input
@@ -139,7 +147,7 @@ function Friends(props) {
           );
         })
       ) : (
-        <div>{loadingText}</div>
+        <div className={loadingText.class}>{loadingText.text}</div>
       )}
     </>
   );
