@@ -40,7 +40,7 @@ const FriendsList = () => {
     
           <hr />
     
-          <AddFriend setFriends={setFriendsList} />
+          <AddFriend setFriendsList={setFriendsList} />
         </div>
       );
     };
