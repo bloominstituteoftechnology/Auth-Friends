@@ -51,9 +51,14 @@ function Login(props) {
       />
       <br />
       <br />
-      <Button type="submit" variant="primary">
-        Log in
-      </Button>
+      <div className="buttonsContainer">
+        <Button type="submit" variant="primary">
+          Log in
+        </Button>
+        <Button onClick={(e) => {}} variant="secondary">
+          Sign Up
+        </Button>
+      </div>
     </form>
   );
 }

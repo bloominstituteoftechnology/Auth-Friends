@@ -78,3 +78,9 @@
   animation-direction: alternate-reverse;
   animation-timing-function: ease-in-out;
 }
+
+.buttonsContainer {
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+}
