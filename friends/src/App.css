@@ -51,14 +51,19 @@
 
 .friendCard {
   background-color: black;
-  width: 40vw;
+  width: -moz-fit-content;
+  width: fit-content;
   margin-bottom: 5vh;
-  padding: 20px;
+  padding: 20px 80px;
   border-radius: 50px;
   transition: opacity 1s;
   animation-name: fadeIn;
   animation-duration: 0.5s;
   animation-iteration-count: 1;
+  display: flex;
+  flex-flow: column;
+  min-width: 35%;
+  align-items: center;
 }
 
 @keyframes scrub {
@@ -88,4 +93,9 @@
 .hugRight {
   align-self: flex-end;
   margin: 1vw;
+}
+
+.removeFriend {
+  transform: scale(0.7);
+  max-width: 50%;
 }

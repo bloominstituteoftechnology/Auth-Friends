@@ -137,6 +137,7 @@ function Friends(props) {
               <div>email: {friend.email}</div>
               <br />
               <Button
+                className="removeFriend"
                 variant="danger"
                 onClick={(e) => {
                   e.preventDefault();
