@@ -1,9 +1,6 @@
 import React from 'react';
 import Login from './components/Login';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-
-import './App.css';
-
+import FriendsList from './components/FriendsList';
 function App() {
   return (
     <div className="App">
@@ -15,11 +12,11 @@ function App() {
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/protected">Protected Page</Link>
+            <Link to="/protected">Friends List</Link>
           </li>
         </ul>
         <Switch>
-          <Route exact path="/protected" component={/* insert protected coponent here */} />
+          <PrivateRoute exact path="/protected" component={FriendsList} />
           <Route path="/login" component={Login} />
           <Route component={Login} />
         </Switch>
