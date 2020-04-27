@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Button from "react-bootstrap/Button";
+
 function Friends(props) {
   const [friends, setFriends] = useState([]);
   const [newFriend, setNewFriend] = useState({});
@@ -95,22 +97,24 @@ function Friends(props) {
         }}
       />
       <br />
-      <button
+      <Button
+        variant="primary"
         onClick={(e) => {
           e.preventDefault();
           postFriend();
         }}
       >
         ADD FRIEND
-      </button>
+      </Button>
       <br />
-      <button
+      <Button
+        variant="warning"
         onClick={(e) => {
           logOut();
         }}
       >
         SIGN OUT
-      </button>
+      </Button>
       <br />
       Your Friends:
       <br />
@@ -122,14 +126,15 @@ function Friends(props) {
               <div> name: {friend.name}</div> <div>age: {friend.age}</div>{" "}
               <div>email: {friend.email}</div>
               <br />
-              <button
+              <Button
+                variant="danger"
                 onClick={(e) => {
                   e.preventDefault();
                   deleteFriend(friend);
                 }}
               >
                 Remove Friend
-              </button>
+              </Button>
             </div>
           );
         })

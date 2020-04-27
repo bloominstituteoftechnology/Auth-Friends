@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
 
 function Login(props) {
   const [credentials, setCredentials] = useState("");
@@ -52,7 +53,7 @@ function Login(props) {
         }}
       />
       <br />
-      <button>Log in</button>
+      <Button variant="primary">Log in</Button>
     </form>
   );
 }

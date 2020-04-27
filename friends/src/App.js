@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import Login from "./components/Login";
 import Friends from "./components/Friends";
 import {
