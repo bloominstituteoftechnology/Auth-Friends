@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 const FriendsList = () => {
@@ -38,7 +38,7 @@ const FriendsList = () => {
     
           <hr />
     
-          <AddFriend setFriends={setFriends} />
+         {/* <AddFriend setFriendsList={setFriendsList} /> */}
         </div>
       );
     };
