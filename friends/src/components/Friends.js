@@ -74,6 +74,15 @@ function Friends(props) {
   let loadingString = "Loading...";
   return (
     <>
+      <Button
+        className="hugRight"
+        variant="warning"
+        onClick={(e) => {
+          logOut();
+        }}
+      >
+        SIGN OUT
+      </Button>
       Welcome back, {props.username}
       <br />
       <br />
@@ -116,14 +125,6 @@ function Friends(props) {
         ADD FRIEND
       </Button>
       <br />
-      <Button
-        variant="warning"
-        onClick={(e) => {
-          logOut();
-        }}
-      >
-        SIGN OUT
-      </Button>
       <br />
       Your Friends:
       <br />

@@ -84,3 +84,8 @@
   display: flex;
   justify-content: space-around;
 }
+
+.hugRight {
+  align-self: flex-end;
+  margin: 1vw;
+}
