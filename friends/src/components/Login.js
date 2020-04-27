@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 
-function Login() {
+function Login(props) {
   const [credentials, setCredentials] = useState("");
   const [usernameInput, setUserNameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
@@ -21,12 +21,17 @@ function Login() {
       .then((res) => {
         console.log("bk: Login.js: login: success: res: ", res);
         localStorage.setItem("token", res.data.payload);
+        props.history.push("/friends");
       })
       .catch((err) => console.error("There was an error, sorry. ", err));
   };
 
   return (
     <form onSubmit={login}>
+      Do you have friends? Log in to find out.
+      <br />
+      <br />
+      Username <br />
       <input
         type="text"
         name="username"
@@ -35,6 +40,8 @@ function Login() {
           handleChange(e, setUserNameInput);
         }}
       />
+      <br />
+      Password <br />
       <input
         type="password"
         name="password"
@@ -44,16 +51,8 @@ function Login() {
           console.log(credentials);
         }}
       />
+      <br />
       <button>Log in</button>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-
-          console.log(credentials);
-        }}
-      >
-        log sthings PLEASE
-      </button>
     </form>
   );
 }

@@ -3,6 +3,19 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 function Friends(props) {
   const [friends, setFriends] = useState([]);
   const [newFriend, setNewFriend] = useState({});
+  const [loadingText, setLoadingText] = useState("Loading...");
+  const logOut = () => {
+    localStorage.removeItem("token");
+    props.setIsLoggedIn(!props.isLoggedIn);
+  };
+
+  const loadingToggler = (res) => {
+    res.data.length === 0
+      ? setLoadingText(
+          "You don't have any friends yet, you can add friends using the form above"
+        )
+      : console.log("Alright, you have friends, so you got lucky.");
+  };
 
   const getData = () => {
     axiosWithAuth()
@@ -10,6 +23,7 @@ function Friends(props) {
       .then((res) => {
         console.log("data on server response ", res);
         setFriends([...friends, ...res.data]);
+        loadingToggler(res);
       })
       .catch((err) => console.error("error when retrieving frendz ", err));
   };
@@ -18,10 +32,27 @@ function Friends(props) {
     axiosWithAuth()
       .post("http://localhost:5000/api/friends", newFriend)
       .then((res) => {
-        console.log("data on server response ", res);
         setFriends([...friends, ...res.data]);
+        loadingToggler(res);
+        console.log(res);
+        setNewFriend({
+          name: "",
+          age: "",
+          email: "",
+          id: "",
+        });
       })
-      .catch((err) => console.error("error when retrieving frendz ", err));
+      .catch((err) => console.error("error when posting new frendz ", err));
+  };
+
+  const deleteFriend = (delFriend) => {
+    axiosWithAuth()
+      .delete(`http://localhost:5000/api/friends/${delFriend.id}`)
+      .then((res) => {
+        setFriends([...res.data]);
+        loadingToggler(res);
+      })
+      .catch((err) => console.error("error when posting new frendz ", err));
   };
 
   useEffect(() => {
@@ -32,9 +63,11 @@ function Friends(props) {
     setNewFriend({ ...newFriend, [e.target.name]: e.target.value });
     console.log(newFriend);
   };
-
+  let loadingString = "Loading...";
   return (
     <>
+      Add New Friend <br />
+      <br /> Name:{" "}
       <input
         type="text"
         name="name"
@@ -43,6 +76,7 @@ function Friends(props) {
           handleChange(e);
         }}
       />
+      Age:{" "}
       <input
         type="text"
         name="age"
@@ -51,6 +85,7 @@ function Friends(props) {
           handleChange(e);
         }}
       />
+      Email:{" "}
       <input
         type="text"
         name="email"
@@ -59,6 +94,7 @@ function Friends(props) {
           handleChange(e);
         }}
       />
+      <br />
       <button
         onClick={(e) => {
           e.preventDefault();
@@ -67,15 +103,39 @@ function Friends(props) {
       >
         ADD FRIEND
       </button>
-      {friends.map((friend) => {
-        console.log(friend.name);
-        return (
-          <div>
-            <div> name: {friend.name}</div> <div>age: {friend.age}</div>{" "}
-            <div>email: {friend.email}</div>
-          </div>
-        );
-      })}
+      <br />
+      <button
+        onClick={(e) => {
+          logOut();
+        }}
+      >
+        SIGN OUT
+      </button>
+      <br />
+      Your Friends:
+      <br />
+      <br />
+      {friends.length != 0 ? (
+        friends.map((friend) => {
+          return (
+            <div>
+              <div> name: {friend.name}</div> <div>age: {friend.age}</div>{" "}
+              <div>email: {friend.email}</div>
+              <br />
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  deleteFriend(friend);
+                }}
+              >
+                Remove Friend
+              </button>
+            </div>
+          );
+        })
+      ) : (
+        <div>{loadingText}</div>
+      )}
     </>
   );
 }
