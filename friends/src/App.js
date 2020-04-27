@@ -25,7 +25,6 @@ const verifyToken = () => {
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
 
   useEffect(() => {
     setIsLoggedIn(verifyToken());
@@ -43,12 +42,8 @@ function App() {
               component={Friends}
               setIsLoggedIn={setIsLoggedIn}
               isLoggedIn={isLoggedIn}
-              username={username}
             />
-            <Route
-              path="/login"
-              render={(props) => <Login {...props} setUsername={setUsername} />}
-            />
+            <Route path="/login" render={(props) => <Login {...props} />} />
           </Switch>
         </header>
       </div>

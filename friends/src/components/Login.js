@@ -19,7 +19,7 @@ function Login(props) {
       .then((res) => {
         console.log("Login successful", res);
         localStorage.setItem("token", res.data.payload.token);
-        props.setUsername(res.data.payload.username);
+        localStorage.setItem("username", res.data.payload.username);
         props.history.push("/friends");
       })
       .catch((err) => console.error("There was an error, sorry. ", err));

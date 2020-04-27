@@ -52,7 +52,7 @@
 .friendCard {
   background-color: black;
   width: -moz-fit-content;
-  width: fit-content;
+  max-width: 100%;
   margin-bottom: 5vh;
   padding: 20px 80px;
   border-radius: 50px;
@@ -64,6 +64,7 @@
   flex-flow: column;
   min-width: 35%;
   align-items: center;
+  min-width: 42vw;
 }
 
 @keyframes scrub {

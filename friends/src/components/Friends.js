@@ -3,6 +3,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Button from "react-bootstrap/Button";
 
 function Friends(props) {
+  const [username, setUsername] = useState(localStorage.getItem("username"));
   const [friends, setFriends] = useState([]);
   const [newFriend, setNewFriend] = useState({});
   const [loadingText, setLoadingText] = useState({
@@ -66,6 +67,7 @@ function Friends(props) {
 
   useEffect(() => {
     getData();
+    setUsername(localStorage.getItem("username"));
   }, []);
 
   const handleChange = (e) => {
@@ -83,7 +85,7 @@ function Friends(props) {
       >
         SIGN OUT
       </Button>
-      Welcome back, {props.username}
+      Welcome back, {username}
       <br />
       <br />
       Add New Friend <br />
