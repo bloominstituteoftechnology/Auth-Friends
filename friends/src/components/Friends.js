@@ -68,7 +68,6 @@ function Friends(props) {
 
   const handleChange = (e) => {
     setNewFriend({ ...newFriend, [e.target.name]: e.target.value });
-    console.log(newFriend);
   };
   let loadingString = "Loading...";
   return (
