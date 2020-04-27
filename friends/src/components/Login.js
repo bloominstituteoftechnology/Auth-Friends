@@ -5,8 +5,6 @@ import Button from "react-bootstrap/Button";
 
 function Login(props) {
   const [credentials, setCredentials] = useState("");
-  const [usernameInput, setUserNameInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
 
   const handleChange = (e, setter) => {
     setCredentials({
@@ -21,7 +19,9 @@ function Login(props) {
       .post("http://localhost:5000/api/login", credentials)
       .then((res) => {
         console.log("bk: Login.js: login: success: res: ", res);
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", res.data.payload.token);
+        console.log(res.data.payload.username);
+        props.setUsername(res.data.payload.username);
         props.history.push("/friends");
       })
       .catch((err) => console.error("There was an error, sorry. ", err));
@@ -38,7 +38,7 @@ function Login(props) {
         name="username"
         value={credentials.username}
         onChange={(e) => {
-          handleChange(e, setUserNameInput);
+          handleChange(e);
         }}
       />
       <br />
@@ -48,7 +48,7 @@ function Login(props) {
         name="password"
         value={credentials.password}
         onChange={(e) => {
-          handleChange(e, setPasswordInput);
+          handleChange(e);
           console.log(credentials);
         }}
       />

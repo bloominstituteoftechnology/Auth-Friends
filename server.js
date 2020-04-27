@@ -64,7 +64,7 @@ app.post("/api/login", (req, res) => {
   if (username === "Josh" && password === "joshcodes") {
     req.loggedIn = true;
     res.status(200).json({
-      payload: token,
+      payload: { token, username },
     });
   } else {
     res

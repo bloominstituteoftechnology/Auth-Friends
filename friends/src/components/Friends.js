@@ -29,7 +29,7 @@ function Friends(props) {
       .get("http://localhost:5000/api/friends")
       .then((res) => {
         console.log("data on server response ", res);
-        setFriends([...friends, ...res.data]);
+        setFriends([...res.data]);
         loadingToggler(res);
       })
       .catch((err) => console.error("error when retrieving frendz ", err));
@@ -70,9 +70,10 @@ function Friends(props) {
     setNewFriend({ ...newFriend, [e.target.name]: e.target.value });
   };
   let loadingString = "Loading...";
+  console.log(props.username);
   return (
     <>
-      Welcome back, dear user
+      Welcome back, {props.username}
       <br />
       <br />
       Add New Friend <br />
