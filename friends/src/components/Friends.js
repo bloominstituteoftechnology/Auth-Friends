@@ -122,7 +122,7 @@ function Friends(props) {
       {friends.length != 0 ? (
         friends.map((friend) => {
           return (
-            <div>
+            <div className="friendCard">
               <div> name: {friend.name}</div> <div>age: {friend.age}</div>{" "}
               <div>email: {friend.email}</div>
               <br />

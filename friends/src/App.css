@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.friendCard {
+  background-color: black;
+  width: 40vw;
+  margin-bottom: 5vh;
+  padding: 20px;
+  border-radius: 50px;
+}
