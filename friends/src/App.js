@@ -4,7 +4,6 @@ import FriendsList from './components/FriendsList';
 import PrivateRoute from './components/PrivateRoute';
 import {
   BrowserRouter as Router,
-  Redirect,
   Route,
   Link,
   Switch
