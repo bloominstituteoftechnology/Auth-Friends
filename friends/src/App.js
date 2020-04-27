@@ -29,7 +29,6 @@ function App() {
 
   useEffect(() => {
     setIsLoggedIn(verifyToken());
-    console.log("up the chaiaaaaain");
   }, [isLoggedIn]);
 
   return (

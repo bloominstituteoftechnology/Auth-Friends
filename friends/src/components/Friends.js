@@ -15,13 +15,15 @@ function Friends(props) {
   };
 
   const loadingToggler = (res) => {
-    res.data.length === 0
-      ? setLoadingText({
-          text:
-            "You don't have any friends yet, you can add friends using the form above",
-          class: "emptyList",
-        })
-      : console.log("Alright, you have friends, so you got lucky.");
+    if (res.data.length === 0) {
+      setLoadingText({
+        text:
+          "You don't have any friends yet, you can add friends using the form above",
+        class: "emptyList",
+      });
+    } else {
+      return null;
+    }
   };
 
   const getData = () => {
@@ -70,7 +72,6 @@ function Friends(props) {
     setNewFriend({ ...newFriend, [e.target.name]: e.target.value });
   };
   let loadingString = "Loading...";
-  console.log(props.username);
   return (
     <>
       Welcome back, {props.username}

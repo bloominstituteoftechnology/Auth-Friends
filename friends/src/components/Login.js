@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
-
 function Login(props) {
   const [credentials, setCredentials] = useState("");
 
@@ -18,9 +17,8 @@ function Login(props) {
     axios
       .post("http://localhost:5000/api/login", credentials)
       .then((res) => {
-        console.log("bk: Login.js: login: success: res: ", res);
+        console.log("Login successful", res);
         localStorage.setItem("token", res.data.payload.token);
-        console.log(res.data.payload.username);
         props.setUsername(res.data.payload.username);
         props.history.push("/friends");
       })
@@ -49,7 +47,6 @@ function Login(props) {
         value={credentials.password}
         onChange={(e) => {
           handleChange(e);
-          console.log(credentials);
         }}
       />
       <br />
