@@ -1,50 +1,50 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 const port = 5000;
 const app = express();
 const token =
-  'esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ';
+  "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ";
 
 let nextId = 7;
 
 let friends = [
   {
     id: 1,
-    name: 'Ben',
+    name: "Ben",
     age: 30,
-    email: 'ben@lambdaschool.com'
+    email: "ben@lambdaschool.com",
   },
   {
     id: 2,
-    name: 'Austen',
+    name: "Austen",
     age: 45,
-    email: 'austen@lambdaschool.com'
+    email: "austen@lambdaschool.com",
   },
   {
     id: 3,
-    name: 'Ryan',
+    name: "Ryan",
     age: 15,
-    email: 'ryan@lambdaschool.com'
+    email: "ryan@lambdaschool.com",
   },
   {
     id: 4,
-    name: 'Dustin',
+    name: "Dustin",
     age: 25,
-    email: 'D-munny@lambdaschool.com'
+    email: "D-munny@lambdaschool.com",
   },
   {
     id: 5,
-    name: 'Sean',
+    name: "Sean",
     age: 35,
-    email: 'sean@lambdaschool.com'
+    email: "sean@lambdaschool.com",
   },
   {
     id: 6,
-    name: 'Michelle',
+    name: "Michelle",
     age: 67,
-    email: 'michelle@gmail.com'
-  }
+    email: "michelle@gmail.com",
+  },
 ];
 
 app.use(bodyParser.json());
@@ -56,41 +56,41 @@ function authenticator(req, res, next) {
   if (authorization === token) {
     next();
   } else {
-    res.status(403).json({ error: 'User be logged in to do that.' });
+    res.status(403).json({ error: "User be logged in to do that." });
   }
 }
 
-app.post('/api/login', (req, res) => {
+app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
-  if (username === 'Lambda School' && password === 'i<3Lambd4') {
+  if (username === "noor" && password === "ali") {
     req.loggedIn = true;
     res.status(200).json({
-      payload: token
+      payload: token,
     });
   } else {
     res
       .status(403)
-      .json({ error: 'Username or Password incorrect. Please see Readme' });
+      .json({ error: "Username or Password incorrect. Please see Readme" });
   }
 });
 
-app.get('/api/friends', authenticator, (req, res) => {
+app.get("/api/friends", authenticator, (req, res) => {
   setTimeout(() => {
     res.send(friends);
   }, 1000);
 });
 
-app.get('/api/friends/:id', authenticator, (req, res) => {
-  const friend = friends.find(f => f.id == req.params.id);
+app.get("/api/friends/:id", authenticator, (req, res) => {
+  const friend = friends.find((f) => f.id == req.params.id);
 
   if (friend) {
     res.status(200).json(friend);
   } else {
-    res.status(404).send({ msg: 'Friend not found' });
+    res.status(404).send({ msg: "Friend not found" });
   }
 });
 
-app.post('/api/friends', authenticator, (req, res) => {
+app.post("/api/friends", authenticator, (req, res) => {
   const friend = { id: getNextId(), ...req.body };
 
   friends = [...friends, friend];
@@ -98,10 +98,10 @@ app.post('/api/friends', authenticator, (req, res) => {
   res.send(friends);
 });
 
-app.put('/api/friends/:id', authenticator, (req, res) => {
+app.put("/api/friends/:id", authenticator, (req, res) => {
   const { id } = req.params;
 
-  const friendIndex = friends.findIndex(f => f.id == id);
+  const friendIndex = friends.findIndex((f) => f.id == id);
 
   if (friendIndex > -1) {
     const friend = { ...friends[friendIndex], ...req.body };
@@ -109,18 +109,18 @@ app.put('/api/friends/:id', authenticator, (req, res) => {
     friends = [
       ...friends.slice(0, friendIndex),
       friend,
-      ...friends.slice(friendIndex + 1)
+      ...friends.slice(friendIndex + 1),
     ];
     res.send(friends);
   } else {
-    res.status(404).send({ msg: 'Friend not found' });
+    res.status(404).send({ msg: "Friend not found" });
   }
 });
 
-app.delete('/api/friends/:id', authenticator, (req, res) => {
+app.delete("/api/friends/:id", authenticator, (req, res) => {
   const { id } = req.params;
 
-  friends = friends.filter(f => f.id !== Number(id));
+  friends = friends.filter((f) => f.id !== Number(id));
 
   res.send(friends);
 });
