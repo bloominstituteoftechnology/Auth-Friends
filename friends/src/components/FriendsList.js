@@ -16,7 +16,7 @@ function FriendsList() {
   return (
     <div>
       {friends.map(friend =>
-        <Friend key={friend.id} friend={friend} />
+        <Friend key={friend.id} friend={friend} setFriends={setFriends} />
       )}
       <FriendForm setFriends={setFriends} />
     </div>
