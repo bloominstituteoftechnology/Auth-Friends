@@ -31,9 +31,9 @@ function Login(props) {
   }
 
   function login(credentials) {
-    console.log(credentials);
     axios.post('http://192.168.1.211:5000/api/login', credentials).then(res => {
-      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('token', res.data.payload);
+      props.loginCallback();
       props.history.push('/friends');
     });
   }
