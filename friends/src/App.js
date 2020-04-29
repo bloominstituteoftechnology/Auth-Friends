@@ -1,15 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Login from "./components/Login";
+import Login from "./components/Login;
 import Register from "./components/Register";
-import { NavLink, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Route exact path="/" component={Login} />
-      <Route exact path="/" component={Register} />
+      <Router>
+        <Link to="/">Index</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
+      </Router>
+      <Switch>
+        <Route path="/login" component={Login}/>
+        <Route path="/register" component={Register}/>
+      </Switch>
     </div>
   );
 }
