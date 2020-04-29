@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const initialFriend = {
   id: "",
@@ -7,11 +10,27 @@ const initialFriend = {
   email: ""
 };
 
-const AddFriend = () => {
+const AddFriend = props => {
   const [newFriend, setNewFriend] = useState(initialFriend);
 
+  const changeHandler = e => {
+    console.log(e.target.value)
+    setNewFriend({...newFriend, [e.target.name]: e.target.value})
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post("/friends", newFriend)
+      .then(res => {
+        console.log(res);
+        // props.updateItems(res.data);
+      })
+      .catch(err => console.error(err));
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input 
         type='text'
         name='name'
@@ -35,6 +54,8 @@ const AddFriend = () => {
         placeholder='Email@email.com'
         value={newFriend.email}
       />
+
+      <button>Add Friend</button>
     </form>
   )
 }

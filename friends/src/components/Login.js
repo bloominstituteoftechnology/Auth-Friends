@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -17,17 +18,18 @@ class Login extends React.Component {
         [e.target.name]: e.target.value
       }
     });
+    // console.log(this.state.credentials);
   };
 
   login = e => {
     e.preventDefault();
     axiosWithAuth()
-      .post("http://localhost:5000/api/login", this.state.credentials)
+      .post("/login", this.state.credentials)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         this.props.history.push("/protected");
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   };
 
   render() {
@@ -48,7 +50,7 @@ class Login extends React.Component {
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
-          <button>Log in</button>
+          <button type="submit">Log in</button>
         </form>
       </div>
     );

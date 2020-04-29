@@ -4,16 +4,11 @@ import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const FriendsList = () => {
-  const [friends, setFriends] = useState({
-    id: '', 
-    name: '', 
-    age: '',
-    email: ''
-  });
+  const [friends, setFriends] = useState([]);
  
   useEffect(() => {
     axiosWithAuth()
-    .get('http://localhost:5000/api/friends')
+    .get('/friends')
     .then(res => {
       console.log(res);
       setFriends(res.data)
@@ -25,9 +20,9 @@ const FriendsList = () => {
 
     return (
       <div>
-        {/* {friends.map(friend => (
+        {friends.map(friend => (
           <p>{friend.name}</p>
-        ))} */}
+        ))}
         <h1>duh!!!!</h1>
 
 
