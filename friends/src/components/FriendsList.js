@@ -5,8 +5,10 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const FriendsList = () => {
   const [friends, setFriends] = useState({
-    name: ''
-    
+    id: '', 
+    name: '', 
+    age: '',
+    email: ''
   });
  
   useEffect(() => {
