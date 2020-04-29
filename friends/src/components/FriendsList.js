@@ -1,10 +1,9 @@
 import React from 'react';
-import axios from 'axios';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const FriendsList = () => {
-  axios 
+  axiosWithAuth() 
     .get('http://localhost:5000/api')
     .then(res => {
       console.log(res.data)
@@ -15,7 +14,7 @@ const FriendsList = () => {
 
     return (
       <div>
-        
+        <h1>here</h1>
       </div>
     )
 }
