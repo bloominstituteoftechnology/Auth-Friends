@@ -8,11 +8,10 @@ const FriendsList = () => {
     name: '',
     age: '',
     email: ''
-  }
-  );
+  });
  
   useEffect(() => {
-    axios
+    axiosWithAuth
     .get('http://localhost:5000/api/friends/')
     .then(res => {
       console.log(res);
