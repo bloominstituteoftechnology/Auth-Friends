@@ -9,7 +9,9 @@ import '../App.css';
 class FriendsList extends React.Component {
   state = {
     friends: [],
-    isLoading: false
+    isLoading: false,
+    SuccessMsg: '',
+    errorMsg: ''
   };
 
   componentDidMount() {
@@ -32,6 +34,18 @@ class FriendsList extends React.Component {
     //
   };
 
+  delFriend = id => {
+    AxiosWithAuth()
+      .delete(`/api/friends/${id} `)
+      .then(response => {
+        // console.log(response);
+        this.setState({ friends: response.data });
+        this.setState({ SuccessMsg: response.statusText });
+      })
+      // console.log(this.state.friends)
+      .catch(err => console.log('Error Deleting Item', err));
+  };
+
   render() {
     return (
       <div>
@@ -40,6 +54,9 @@ class FriendsList extends React.Component {
           <Loading />
         ) : (
           <div className='cardBody'>
+            <p className='succMsg'>
+              {this.state.SuccessMsg ? 'Delete Success!' : null}
+            </p>
             <Table responsive>
               <thead>
                 <tr>
@@ -58,7 +75,11 @@ class FriendsList extends React.Component {
                       <td>{friend.age}</td>
                       <td>{friend.email}</td>
                       <td>
-                        <button className='smallBtn'>Delete</button>
+                        <button
+                          onClick={() => this.delFriend(friend.id)}
+                          className='smallBtn'>
+                          Delete
+                        </button>
                       </td>
                       <td>
                         <button className='smallBtn'>Edit</button>

@@ -1,18 +1,6 @@
-// import React from 'react';
 import Header from './Header';
 import '../App.css';
 import { AxiosWithAuth } from './utils/AxiosWithAuth';
-
-// const NewFriend = () => {
-//   return (
-//     <div>
-//       <Header />
-//       New Friend
-//     </div>
-//   );
-// };
-
-// export default NewFriend;
 
 import React, { Component } from 'react';
 
@@ -22,7 +10,9 @@ class NewFriend extends Component {
     this.state = {
       name: '',
       age: '',
-      email: ''
+      email: '',
+      SuccessMsg: '',
+      errorMsg: ''
     };
   }
 
@@ -37,11 +27,12 @@ class NewFriend extends Component {
     AxiosWithAuth()
       .post('/api/friends', this.state)
       .then(response => {
-        // console.log('Responded Values', response);
-        this.setState({ name: '', age: '', email: '' });
+        console.log('Responded Values', response.statusText);
+        this.setState({ SuccessMsg: response.statusText });
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
+        this.setState({ errorMsg: error });
       });
     this.setState({ name: '', age: '', email: '' });
   };
@@ -58,6 +49,7 @@ class NewFriend extends Component {
               value={this.state.name}
               onChange={this.handleChange}
               placeholder='Name:'
+              required
             />
             <input
               type='number'
@@ -65,6 +57,7 @@ class NewFriend extends Component {
               value={this.state.age}
               onChange={this.handleChange}
               placeholder='Age:'
+              required
             />
             <input
               type='email'
@@ -72,8 +65,15 @@ class NewFriend extends Component {
               value={this.state.email}
               onChange={this.handleChange}
               placeholder='Email:'
+              required
             />
             <button type='submit'>Add New</button>
+            <p className='succMsg'>
+              {this.state.SuccessMsg ? 'Success!' : null}
+            </p>
+            <p className='errorMsg'>
+              {this.state.errorMsg ? 'Unable to add' : null}
+            </p>
           </form>
         </div>
       </div>

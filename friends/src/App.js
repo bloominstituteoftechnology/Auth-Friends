@@ -3,7 +3,6 @@ import FriendsList from './components/FriendsList';
 import Login from './components/Login';
 
 import PrivateRoute from './components/PrivateRoute';
-// import { LogIn, LogOut } from './components/ButtonLogin';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 

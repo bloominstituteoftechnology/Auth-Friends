@@ -246,6 +246,15 @@ a {
   text-align: center;
 }
 
+.succMsg {
+  color: green;
+  text-align: center;
+}
+
+.errorMsg {
+  color: red;
+  text-align: center;
+}
 /* ================================= 
   Media Queries
 ==================================== */
