@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import SignUp from "./components/SignUp";
 
 import Login from "./components/Login";
 import Friends from "./components/Friends";
@@ -44,6 +45,7 @@ function App() {
               isLoggedIn={isLoggedIn}
             />
             <Route path="/login" render={(props) => <Login {...props} />} />
+            <Route path="/sign-up" render={(props) => <SignUp {...props} />} />
           </Switch>
         </header>
       </div>

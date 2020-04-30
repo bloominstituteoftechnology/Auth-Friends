@@ -100,3 +100,50 @@
   transform: scale(0.7);
   max-width: 50%;
 }
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.signUpContainer {
+  display: flex;
+  flex-direction: column;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signUpContainer h1 {
+  margin-bottom: 10vh;
+}
+
+.signUpForm input {
+  margin-bottom: 5vh;
+  width: 30vw;
+}
+
+.loginForm {
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.userArea {
+  display: flex;
+  flex-flow: column;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  width: 50vw;
+}

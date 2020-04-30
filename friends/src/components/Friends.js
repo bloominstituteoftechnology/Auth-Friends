@@ -76,84 +76,88 @@ function Friends(props) {
   let loadingString = "Loading...";
   return (
     <>
-      <Button
-        className="hugRight"
-        variant="warning"
-        onClick={(e) => {
-          logOut();
-        }}
-      >
-        SIGN OUT
-      </Button>
-      Welcome back, {username}
-      <br />
-      <br />
-      Add New Friend <br />
-      <br /> Name:{" "}
-      <input
-        type="text"
-        name="name"
-        value={newFriend.name}
-        onChange={(e) => {
-          handleChange(e);
-        }}
-      />
-      Age:{" "}
-      <input
-        type="text"
-        name="age"
-        value={newFriend.age}
-        onChange={(e) => {
-          handleChange(e);
-        }}
-      />
-      Email:{" "}
-      <input
-        type="text"
-        name="email"
-        value={newFriend.email}
-        onChange={(e) => {
-          handleChange(e);
-        }}
-      />
-      <br />
-      <Button
-        variant="primary"
-        onClick={(e) => {
-          e.preventDefault();
-          postFriend();
-        }}
-      >
-        ADD FRIEND
-      </Button>
+      <div className="userArea">
+        <Button
+          className="hugRight"
+          variant="warning"
+          onClick={(e) => {
+            logOut();
+          }}
+        >
+          SIGN OUT
+        </Button>
+        Welcome back, {username}
+        <br />
+        <br />
+        Add New Friend <br />
+        <br /> Name:{" "}
+        <input
+          type="text"
+          name="name"
+          value={newFriend.name}
+          onChange={(e) => {
+            handleChange(e);
+          }}
+        />
+        Age:{" "}
+        <input
+          type="text"
+          name="age"
+          value={newFriend.age}
+          onChange={(e) => {
+            handleChange(e);
+          }}
+        />
+        Email:{" "}
+        <input
+          type="text"
+          name="email"
+          value={newFriend.email}
+          onChange={(e) => {
+            handleChange(e);
+          }}
+        />
+        <br />
+        <Button
+          variant="primary"
+          onClick={(e) => {
+            e.preventDefault();
+            postFriend();
+          }}
+        >
+          ADD FRIEND
+        </Button>
+      </div>
       <br />
       <br />
       Your Friends:
       <br />
       <br />
-      {friends.length != 0 ? (
-        friends.map((friend) => {
-          return (
-            <div className="friendCard">
-              <div> name: {friend.name}</div> <div>age: {friend.age}</div>{" "}
-              <div>email: {friend.email}</div>
-              <br />
-              <Button
-                className="removeFriend"
-                variant="danger"
-                onClick={(e) => {
-                  e.preventDefault();
-                  deleteFriend(friend);
-                }}
-              >
-                Remove Friend
-              </Button>
-            </div>
-          );
-        })
-      ) : (
-        <div className={loadingText.class}>{loadingText.text}</div>
-      )}
+      <div>
+        {friends.length != 0 ? (
+          friends.map((friend) => {
+            return (
+              <div className="friendCard">
+                <div> name: {friend.name}</div> <div>age: {friend.age}</div>{" "}
+                <div>email: {friend.email}</div>
+                <br />
+                <Button
+                  className="removeFriend"
+                  variant="danger"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    deleteFriend(friend);
+                  }}
+                >
+                  Remove Friend
+                </Button>
+              </div>
+            );
+          })
+        ) : (
+          <div className={loadingText.class}>{loadingText.text}</div>
+        )}
+      </div>
     </>
   );
 }

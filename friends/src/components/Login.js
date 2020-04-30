@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 function Login(props) {
@@ -26,7 +26,7 @@ function Login(props) {
   };
 
   return (
-    <form onSubmit={login}>
+    <form className="loginForm" onSubmit={login}>
       Do you have friends? Log in to find out.
       <br />
       <br />
@@ -55,9 +55,11 @@ function Login(props) {
         <Button type="submit" variant="primary">
           Log in
         </Button>
-        <Button onClick={(e) => {}} variant="secondary">
-          Sign Up
-        </Button>
+        <Link to="/sign-up">
+          <Button onClick={(e) => {}} variant="secondary">
+            Sign Up
+          </Button>
+        </Link>
       </div>
     </form>
   );
