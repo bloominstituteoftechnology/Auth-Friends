@@ -10,6 +10,7 @@ function SignUp(props) {
         Welcome, new user. Please enter your desired username and password to
         sign up.
       </h1>{" "}
+      <h5>this doesn't work yet...</h5>{" "}
       <form
         className="signUpForm"
         onSubmit={(e) => {
@@ -25,7 +26,9 @@ function SignUp(props) {
         <input minlength="2" name="director" onChange={(e) => {}}></input>
         <Button>Complete Registration</Button>
         <Link to="/login">
-          <Button>Back</Button>
+          <Button outline variant="outline-secondary">
+            Back
+          </Button>
         </Link>
       </form>
     </div>

@@ -97,7 +97,7 @@
 }
 
 .removeFriend {
-  transform: scale(0.7);
+  transform: scale(0.8);
   max-width: 50%;
 }
 
@@ -132,7 +132,8 @@
   margin-bottom: 5vh;
   width: 30vw;
 }
-
+input:invalid {
+}
 .loginForm {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
