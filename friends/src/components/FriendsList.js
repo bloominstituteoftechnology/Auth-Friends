@@ -21,11 +21,12 @@ const FriendsList = () => {
     return (
       <div>
         {friends.map(friend => (
-          <p>{friend.name}</p>
+          <div>
+            <h3>{friend.name}</h3>
+            <p>{friend.age}</p>
+            <p>{friend.email}</p>
+          </div>
         ))}
-        <h1>duh!!!!</h1>
-
-
       </div>
     )
 }
