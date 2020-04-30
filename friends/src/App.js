@@ -25,7 +25,7 @@ function App() {
         <Switch>
           <ProtectedRoute path='/protected' component={FriendsList} />
           <Route path='/login' component={Login} />
-          <Route path='/addfriend'  />
+          <Route path='/addfriend' {...props} component={AddFriend} />
         </Switch>
       </div>
     </Router>
