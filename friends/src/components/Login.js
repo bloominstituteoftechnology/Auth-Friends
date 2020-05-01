@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 function Login() {
     const [values, setValues] = useState({
-        email: "",
+        username: "",
         password: ""
     })
 
@@ -23,8 +23,8 @@ function Login() {
             <h1>Friends!</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <h3>E-Mail Address</h3>
-                    <input type="text" placeholder="email" name="email" onChange={handleChange} value={values.email} />
+                    <h3>Username</h3>
+                    <input type="text" placeholder="username" name="username" onChange={handleChange} value={values.username} />
                 </div>
                 <div>
                     <h3>Password</h3>
