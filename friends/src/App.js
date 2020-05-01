@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Login from "./components/Login";
+import AddFriend from "./components/AddFriend";
+import FriendsList from "./components/FriendsList";
 
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 

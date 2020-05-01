@@ -1,7 +1,7 @@
-import React from "React";
+import React, { useState, useEffect } from "React";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const addFriend = props => {
+const AddFriend = props => {
     const [friend, setFriend] = useState({
         name: "",
         age: "",
@@ -61,4 +61,4 @@ const addFriend = props => {
 
 }
 
-export default addFriend;
+export default AddFriend;
