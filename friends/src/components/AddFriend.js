@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import FriendsList from "./FriendsList";
 
 const AddFriend = props => {
     const [friend, setFriend] = useState({
@@ -7,11 +8,23 @@ const AddFriend = props => {
         age: "",
         email: ""
     });
+    const [friends, setFriends] = useState([]);
 
-    const addFriend = props => {
+    useEffect(() => {
+        const fetchFriends = () => {
+            axiosWithAuth().get('/api/friends')
+                .then(res => {
+                    setFriends(res.data);
+                })
+                .catch(err => console.log(err))
+        }
+        fetchFriends();
+    }, [])
+
+    const addFriend = banana => {
         axiosWithAuth()
         .post(
-            "/api/friends", props
+            "/api/friends", banana
             )
         .then(
             res => {
@@ -52,10 +65,12 @@ const AddFriend = props => {
                 <input type="text" placeholder="Enter Age" name="age" onChange={handleChange} value={props.age} />
 
                 <h3>Email</h3>
-                <input type="text" placeholder="Enter Email" name="email" onChange={handleChange} value={props.email} />
+                <input type="text" placeholder="Enter Email" name="email" onChange={handleChange} value={props.email} />1
 
                 <button>Add Friend</button>
             </form>
+
+            <FriendsList friends={friends}/>
         </div>
     )
 

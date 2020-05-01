@@ -12,9 +12,11 @@ function App() {
       <Router>
         <Link to="/">Index</Link>
         <Link to="/login">Login</Link>
+        <Link to="/addfriend">Add Friend</Link>
       </Router>
       <Switch>
         <Route path="/login" component={Login}/>
+        <Route path="/addfriend" component={AddFriend}/>
       </Switch>
     </div>
   );
