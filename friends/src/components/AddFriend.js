@@ -24,7 +24,7 @@ const addFriend = props => {
     }
 
     function handleChange(e) {
-        setAddFriend({
+        setFriend({
             ...friend,
             [e.target.name] : e.target.value
         })
