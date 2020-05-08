@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Axios from 'axios'
+import Axios from "axios";
 import { link } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
@@ -8,7 +8,9 @@ import {
   Button,
   Typography,
   CircularProgress,
+  FormHelperText,
 } from "@material-ui/core";
+import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   button_style: {
@@ -27,25 +29,45 @@ const useStyles = makeStyles((theme) => ({
   login: {
     marginTop: "5rem",
   },
+  error_message: {
+    color: "#FF0001",
+  },
 }));
 
-const LogInForm = () => {
+const LogInForm = (props) => {
+    console.log("Login Form Props", props)
   const [userData, setUserData] = useState({
     username: "",
     password: "",
   });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorMessage] = useState(
+    "Username or Password incorrect. Please see Readme"
+  );
 
   const classes = useStyles();
   const theme = useTheme();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Welcome, ${userData.username}`);
     setLoading(true);
-    Axios.post('http://localhost:5000/api/login', userData)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    Axios.post("http://localhost:5000/api/login", userData)
+      .then((res) => {
+        localStorage.setItem("token", res.data.payload);
+        props.history.push('/portfolio')
+      })
+      .then(setLoading(false))
+      .then(() => {
+          setUserData({
+              username:"",
+              password:""
+          })
+      })
+      
+      .catch(() => {
+          setError(true)
+      });
   };
 
   const handleChange = (event) => {
@@ -68,6 +90,11 @@ const LogInForm = () => {
                 Log In
               </Typography>
             </Grid>
+            {error && (
+              <FormHelperText className={classes.error_message}>
+                {errorMessage}
+              </FormHelperText>
+            )}
             <form>
               <Grid item>
                 <TextField
