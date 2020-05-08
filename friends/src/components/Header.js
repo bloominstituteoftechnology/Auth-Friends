@@ -74,7 +74,7 @@ const Header = () => {
               className={header_Styles.tab}
               label="Log In"
               component={Link}
-              to="/contact"
+              to="/login"
               disableRipple
             />
           </Tabs>

@@ -16,5 +16,16 @@ export default createMuiTheme({
             main:`${eggshell}`,
         }
         
+    },
+    overrides: {
+       MuiInputLabel: {
+           root: {
+               color: blue,
+               fontSize: "1rem"
+           }
+       },
+       MuiInput: {
+           
+       }
     }
 })
