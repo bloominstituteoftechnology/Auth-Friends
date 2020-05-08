@@ -67,7 +67,7 @@ const Header = () => {
             />
             <Tab
               className={header_Styles.tab}
-              label="Portfolio"
+              label="Friends"
               component={Link}
               to="/portfolio"
               disableRipple

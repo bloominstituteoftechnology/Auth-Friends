@@ -27,15 +27,12 @@ const Portfolio = () => {
       ) : (
         friend.map((friend) => {
           return (
-            <Grid container>
-              <Grid item>
-                <Card varrient="outlined">
+                <Card varrient="outlined" style={{margin:"1rem 0 1rem 1rem", width:"350px"}}>
                   <CardContent>
                     <Typography varient="h5">{friend.name}</Typography>
+                    <Typography varient="h6">{friend.email}</Typography>
                   </CardContent>
                 </Card>
-              </Grid>
-            </Grid>
           );
         })
       )}
