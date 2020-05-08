@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
-import { link } from "react-router-dom";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { axiosWithAuth } from '../util/AxiosWithAuth'
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
   TextField,
@@ -10,7 +10,6 @@ import {
   CircularProgress,
   FormHelperText,
 } from "@material-ui/core";
-import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   button_style: {
@@ -35,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LogInForm = (props) => {
-    console.log("Login Form Props", props)
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -47,12 +45,13 @@ const LogInForm = (props) => {
   );
 
   const classes = useStyles();
-  const theme = useTheme();
+//   const theme = useTheme();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
-    Axios.post("http://localhost:5000/api/login", userData)
+    axiosWithAuth()
+    .post("/api/login", userData)
       .then((res) => {
         localStorage.setItem("token", res.data.payload);
         props.history.push('/portfolio')

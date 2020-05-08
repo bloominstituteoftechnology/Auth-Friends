@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { AppBar, Toolbar, Typography, Tabs, Tab } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/styles";
+import { AppBar, Toolbar, Tabs, Tab } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const header_Styles = useStyles();
   const [value, setValue] = useState(0);
-  const theme = useTheme();
+//   const theme = useTheme();
 
   useEffect(() => {
     if (window.location.pathname === "/" && value !== 0) {
