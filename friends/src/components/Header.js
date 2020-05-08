@@ -45,6 +45,8 @@ const Header = () => {
     }
   }, [value]);
 
+  //set a useEffect to make an API call
+
   return (
     <>
       <AppBar position="static" color="transparent">
