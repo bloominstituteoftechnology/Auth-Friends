@@ -38,14 +38,13 @@ const AddFriend = () => {
     age: "",
     email: "",
   });
-  const [newFriendAdded, setNewFriendAdded] = useState('')
 
   const [loading, setLoading] = useState(false);
 
 
   const classes = useStyles();
   const handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     setLoading(true)
     axiosWithAuth()
       .post('/api/friends', newFriend)
