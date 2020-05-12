@@ -30,7 +30,7 @@ Topics:
 * Run `npm start` to start the API server.
 * Run `npx create-react-app friends --use-npm` in a separate terminal window in the root directory of the project to create your starter application.
 * If you experience issues with `npx`, you may create your starter application by running `create-react-app friends --use-npm`.
-* `cd` into the _friends_ folder and type `npm install axios react-router-dom` which will install the needed dependencies.
+* `cd` into the _friends_ folder and type `cd` which will install the needed dependencies.
 
 ## Build the App!
 * Add a route for a login page and build out a simple login form with username and password inputs and a submit button (design this however you would like).

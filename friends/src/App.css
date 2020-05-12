@@ -1,0 +1,38 @@
+body {
+	background-color: rgb(159, 221, 200);
+}
+
+.App {
+	text-align: center;
+}
+
+.nav {
+	background-color: black;
+	padding: 15px;
+	margin: 0;
+	text-decoration: none;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.link {
+	text-decoration: none;
+	color: rgb(250, 244, 244);
+}
+
+form input {
+	border: solid grey 1px;
+	margin: 5px;
+	height: 22px;
+	border-radius: 4px;
+}
+
+button {
+	background-color: black;
+	color: rgb(250, 244, 244);
+	border: none;
+	height: 25px;
+	width: 100px;
+	border-radius: 4px;
+	margin: 5px;
+}
