@@ -1,58 +1,74 @@
-import React from "react";
+import React, { useState } from 'react'
+import { axiosWithAuth } from '../util/axiosWithAuth'
+import { useHistory } from 'react-router-dom'
 
-import { axiosWithAuth } from "../util/axiosWithAuth";
 
-class Login extends React.Component {
-  state = {
-    credentials: {
-      username: "",
-      password: ""
-    }
-  }
+const Login = () => {
 
-  handleChange = e => {
-    this.setState({
-      credentials: {
-        ...this.state.credentials,
-        [e.target.name]: e.target.value
-      }
+  const [login, setLogin] = useState({
+    username:'',
+    password:'',
+  })
+
+  const [isLoading, setIsLoading] = useState(false)
+
+const history = useHistory()
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setLogin({
+      ...login,
+      [e.target.name]: e.target.value
     })
   }
 
-  login = e => {
+  const handleSubmit = (e) => {
     e.preventDefault()
+    setIsLoading(true)
     axiosWithAuth()
-      .post("/login", this.state.credentials)
-      .then(res => {
-        localStorage.setItem("token", res.data.payload)
-        this.props.history.push("/protected")
+      .post('/api/login', login)
+      .then((res) => {
+        localStorage.setItem('token', (res.data.payload))
+
+        setLogin({
+          username:'',
+          password:'',
+        })
+        history.push('/friends')
+
       })
-      .catch(err => {
-        console.log("Err is: ", err)
-      })
+
+      .catch(err => console.log(err))
+      setLogin({username: '', password:''})   
+      setIsLoading(false)
+
   }
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.login}>
-          <input
-            type="text"
-            name="username"
-            value={this.state.credentials.username}
-            onChange={this.handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            value={this.state.credentials.password}
-            onChange={this.handleChange}
-          />
-          <button>Log in</button>
-        </form>
-      </div>
-    )
-  }
+return (
+  <div>
+    <form onSubmit={handleSubmit}>
+      <input 
+          type='text'
+          name='username'
+          placeholder='username'
+          value={login.username}
+          onChange={handleChange}
+      />
+      <input 
+          type='password'
+          name='password'
+          placeholder='password'
+          value={login.password}
+          onChange={handleChange}
+      />
+      <button type='submit'>Log in</button>
+      {isLoading ?  (
+        <div>Loading ...</div>
+      ) : (
+        null
+      )}
+  </form>
+</div>
+)
 }
-
 export default Login
