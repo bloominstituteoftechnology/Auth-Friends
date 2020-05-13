@@ -2,7 +2,8 @@ import React from 'react'
 
 
 const FriendsCard = (props) => {
-
+//simply the card that displays the friend data. data were accessing here
+//is passed to props from Friends.js
     return (
         <div>
                     <div>
