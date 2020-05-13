@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../util/axiosWithAuth'
 
 const AddFriend = () => {
@@ -8,12 +8,13 @@ const AddFriend = () => {
         email: ''
     })
 
-
     const handleChange = (e) => {
         e.preventDefault()
+
         setNewFriend({
             ...newFriend,
             [e.target.name]: e.target.value
+            
         })
     }
 
@@ -26,10 +27,12 @@ const AddFriend = () => {
             setNewFriend({name: '', age: '', email: ''})
             window.location.reload()
             })
+            .catch(err => err)
 
     }
 
     return(
+        <div>
         <form onSubmit={handleSubmit}>
             <input 
                 type='text'
@@ -60,6 +63,7 @@ const AddFriend = () => {
             />
             <button type='submit'>Add Friend</button>
         </form>
+        </div>
     )
 }
 

@@ -62,10 +62,8 @@ return (
           onChange={handleChange}
       />
       <button type='submit'>Log in</button>
-      {isLoading ?  (
+      {isLoading &&  (
         <div>Loading ...</div>
-      ) : (
-        null
       )}
   </form>
 </div>

@@ -5,15 +5,11 @@ const FriendsCard = (props) => {
 
     return (
         <div>
-            {props.friends.map(friend => {
-                return (
                     <div>
-                        <h2>{friend.name}</h2>
-                        <p>Age: {friend.age}</p>
-                        <p>Email: {friend.email}</p>
+                        <h2>{props.friend.name}</h2>
+                        <p>Age: {props.friend.age}</p>
+                        <p>Email: {props.friend.email}</p>
                     </div>
-                )
-            })}
         </div>
     )
 }
