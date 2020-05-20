@@ -2,27 +2,30 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-//import components 
-
+import { Route, Link } from 'react-router-dom';
+//import components
+import LoginForm from './components/Login';
+import Friends from './components/Friends';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div classname="App">
+      <div>
+        <ul>
+          <Link classname="nav" to="/login">
+            Login
+          </Link>
+          <Link classname="nav" to="/protected">
+            Protected Page
+          </Link>
+        </ul>
+      </div>
+
+      <Route exact path="/login">
+        <LoginForm />
+      </Route>
+      <ProtectedRoute path="/protected" component={Friends} />
     </div>
   );
 }
