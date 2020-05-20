@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import ProtectedRoute from './ProtectedRoute';
 
 const Friends = () => {
   const [friendsList, setFriendList] = useState([]);

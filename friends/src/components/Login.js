@@ -4,8 +4,10 @@ import {useHistory} from 'react-router-dom';
 import {axiosWithAuth} from "../utils/axiosWithAuth";
 
 function LoginForm(){
+    //router hooks
     const history = useHistory();
 
+    //state
     const [credentials, setFormCredentials] = useState({
         id: '', 
         username: '', 
