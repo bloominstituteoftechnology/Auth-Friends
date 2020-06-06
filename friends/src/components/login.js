@@ -7,7 +7,8 @@ class Login extends React.Component {
         credentials: {
             username:"",
             password:""
-        }
+        },
+        isLoading:false
     };
 
     handleChange = e => {
@@ -19,13 +20,30 @@ class Login extends React.Component {
         });
     };
 
+    handleSubmit = e => {
+        e.preventDefault();
+        this.setState({...this.state, isLoading: true });
+
+        axiosWithAuth().post('/api/login', this.state.credentials)
+        .then(res => {
+            window.localStorage.setItem('token', res.data.payload);
+            this.setState({...this.state, isLoading: false });
+            this.props.history.push('/protected');
+        })
+        .catch(err => {
+            console.log(err)
+            alert("Can't login");
+            this.setState({...this.state, isLoading: false})
+        })
+    }
+
 
 login = e => {
     e.preventDefault();
     axiosWithAuth
     .post("login", this.state.credentials)
     .then(res => {
-        localStorage.setItem("toke", res.data.payload);
+        localStorage.setItem("token", res.data.payload);
         this.props.history.push("/protected");
         console.log(res)
     })
@@ -37,7 +55,7 @@ login = e => {
 render() {
     return(
         <div>
-            <form onSubmit={this.login}>
+            <form onSubmit={this.handleSubmit}>
                 <input
                     type="text"
                     name="username"
@@ -50,6 +68,7 @@ render() {
                     value={this.state.credentials.password}
                     onChange={this.handleChange}
                 />
+                <button>Login</button>
             </form>
         </div>
     );
