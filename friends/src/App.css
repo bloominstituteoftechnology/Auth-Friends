@@ -1,0 +1,19 @@
+.links {
+  display: flex;
+}
+
+p {
+  margin-left: 2%;
+}
+
+.friend {
+  border: 3px solid Black;
+  width: 25%;
+  margin-bottom: 2%;
+  margin-left: 4%;
+}
+
+.friends-list {
+  display: flex;
+  flex-flow: row wrap;
+}
