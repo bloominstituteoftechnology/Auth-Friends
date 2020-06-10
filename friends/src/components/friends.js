@@ -1,41 +1,40 @@
-import React from 'react';
-import moment from 'moment';
-import Loader from 'react-loader-spinner';
-import axiosWithAuth from '../utils/axiosWithAuth';
+import React from "react"
 
-class Friends extends React.Component {
-    state= {
-        friendsList: [],
-        isLoading: false
-    };
+import {axiosWithAuth} from "../utils/axiosWithAuth"
 
+class FriendsList extends React.Component{
+    state = { friends: []}
+    
     componentDidMount() {
-        this.getData();
+        this.getFriendsList();
     }
-
-    getData = () => {
-        axiosWithAuth()
-        .get('/api/friends')
+    getFriendsList = () => {
+        const token = JSON.parse(localStorage.getItem('token'))
+        axiosWithAuth().get("/api/friends")
         .then(res => {
             console.log(res);
-            this.setState({
-                friendsList: res.data.data
-            })
+            this.setState({ friends: res.data})
         })
-        .catch(err =>
-            console.error("AA: FriendsList.js: getData: err.message", err.message)
-            );
-    };
-
+        .catch(err => console.log(err))
+    }
     render(){
         return(
             <div>
-                <h1>My Friends</h1>
-
+                 Friends Info:
+                 <div className='list'>
+        {this.state.friends.map(friend => <div className='friends-list'>
+            Name: {`${friend.name}, 
+            Email: ${friend.email}, 
+            Age: ${friend.age} years old`}
+            </div>)}
+            </div>
             </div>
         )
+            
+  
     }
+}
 
-};
 
-export default Friends;
+
+export default FriendsList;

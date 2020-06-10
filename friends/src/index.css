@@ -5,9 +5,30 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://www.desktopbackground.org/p/2011/04/02/181629_friends-tv-show-wallpapers_1024x768_h.jpg');
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-position: center; */
+  background-attachment: fixed;
+  /* min-height: 500px; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.friends-list {
+  text-align: center;
+  margin: 7px;
+  display: flex;
+  flex-direction: row;
+  width: 192px;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  
 }

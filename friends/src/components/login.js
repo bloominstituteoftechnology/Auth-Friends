@@ -1,15 +1,15 @@
 import React from 'react';
 
-import axiosWithAuth from '../utils/axiosWithAuth';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 class Login extends React.Component {
     state= {
         credentials: {
-            username:"",
-            password:""
+            username:'',
+            password:''
         },
         isLoading:false
-    };
+    }
 
     handleChange = e => {
         this.setState({
@@ -17,8 +17,8 @@ class Login extends React.Component {
                 ...this.state.credentials,
                 [e.target.name]: e.target.value
             }
-        });
-    };
+        })
+    }
 
     handleSubmit = e => {
         e.preventDefault();
@@ -26,9 +26,9 @@ class Login extends React.Component {
 
         axiosWithAuth().post('/api/login', this.state.credentials)
         .then(res => {
-            window.localStorage.setItem('token', res.data.payload);
+            localStorage.setItem('token', JSON.stringify(res.data.payload));
             this.setState({...this.state, isLoading: false });
-            this.props.history.push('/protected');
+            this.props.history.push('/friends-list');
         })
         .catch(err => {
             console.log(err)
@@ -38,41 +38,29 @@ class Login extends React.Component {
     }
 
 
-login = e => {
-    e.preventDefault();
-    axiosWithAuth
-    .post("login", this.state.credentials)
-    .then(res => {
-        localStorage.setItem("token", res.data.payload);
-        this.props.history.push("/protected");
-        console.log(res)
-    })
-    .catch(err => 
-        console.error("AA: Login.js: Login: err.message", err.message)
-    );
-};
-
-render() {
-    return(
-        <div>
-            <form onSubmit={this.handleSubmit}>
-                <input
-                    type="text"
-                    name="username"
-                    value={this.state.credentials.username}
-                    onChange={this.handleChange}
-                />
-                <input  
-                    type="text"
-                    name="password"
-                    value={this.state.credentials.password}
-                    onChange={this.handleChange}
-                />
-                <button>Login</button>
-            </form>
-        </div>
-    );
-}
+    render() {
+        return(
+            <div>
+                <h2>Login</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                        type="text"
+                        name="username"
+                        value={this.state.credentials.username}
+                        onChange={this.handleChange}
+                    />
+                    <input  
+                        type="text"
+                        name="password"
+                        value={this.state.credentials.password}
+                        onChange={this.handleChange}
+                    />
+                    <button>Login</button>
+                </form>
+                {this.state.isLoading && <div><h3>Logging in</h3></div>}
+            </div>
+        );
+    }
 };
 
 export default Login;
