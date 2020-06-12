@@ -14,7 +14,7 @@ class FriendsList extends React.Component {
     axiosWithAuth()
       .get("/api/friends")
       .then(res => {
-       
+       console.log(res.data)
         })
       .catch(err =>
         console.error("ERROR", err.message)

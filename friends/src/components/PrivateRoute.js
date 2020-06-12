@@ -7,7 +7,7 @@ const PrivateRoute = ({ component: Component, ...routeProps }) => {
     <Route
       {...routeProps}
       render={props => {
-        // check to see if we think we have a good token
+
         if (localStorage.getItem("token")) {
           return <Component {...props} />;
         } else {
