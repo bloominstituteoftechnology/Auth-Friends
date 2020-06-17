@@ -16,23 +16,55 @@ const Friends = () => {
     axiosWithAuth()
       .get("/api/friends")
       .then(response => {
-        console.log(response, "friends.js .get request");
-        setFriends({friends: response.data});
+        console.log(response, "FRIENDS.JS GET");
+        setFriends(response.data);
       })
       .catch(err => console.log(err));
   };
   getData();
 }, []);
+
+
+const postFriend = friend => {
+  axiosWithAuth()
+    .post('/api/friends', friend)
+    .then(res => {
+      console.log(res)
+      setFriends([
+        ...friends,
+        friend
+      ])
+    })
+}
+
+
+const addFriend = e => {
+  e.preventDefault()
+  postFriend(newFriend)
+}
+
+const [newFriend, setNewFriend] = useState({name: '', id: ''})
+const inputChange = e => {
+  setNewFriend({
+    ...newFriend,
+    [e.target.name]: e.target.value
+ })
+}
+
  
     return (
         <div>
             <h1>Dashboard</h1>
+            <form onSubmit={addFriend}>
+              <input type="text" name="name" onChange={inputChange} placeholder="name"/>
+              <input type="text" name="id" onChange={inputChange} placeholder="id"/>
+              <button>Add Friend</button>
+            </form>
           <div>
             {friends.map(friend => (
-              <FriendsCard key={friends.id} friend={friend} />
+              <FriendsCard key={friend.id} friend={friend} />
             ))}
           </div>
-          <button >Get Friends List</button>
         </div>
 )}
 
