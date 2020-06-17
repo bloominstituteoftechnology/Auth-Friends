@@ -1,46 +1,39 @@
 import React, {useState, useEffect} from "react";
-
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import FriendsCard from './FriendsCard'
 
-const Friends = (props) => {
-  const [gasPrices, setGasPrices] = useState({
-    gasPrices: []
-  })
+
+const Friends = () => {
+  const [friends, setFriends] = useState([])
 
   useEffect(() => {
-   return () => {
-    getData();
-   }   
-}, []);
+   const getData = () => {
 
- 
-  const getData = () => {
     //get request
     //add the token to the authorization header
-    //filter data for just US and Hawaii and regular gasoline prices
+    //filter data 
     const token = window.localStorage.getItem("token");
     axiosWithAuth()
-      .get("/api/data")
-      .then(res => {
-        this.setState({
-          gasPrices: res.data.data.filter(
-            price =>
-              (price.location === "US" ||
-                price.location === "State of Hawaii") &&
-              price.type === "Gasoline - Regular"
-          )
-        });
+      .get("/api/friends")
+      .then(response => {
+        console.log(response, "friends.js .get request");
+        setFriends({friends: response.data});
       })
       .catch(err => console.log(err));
   };
-
-  
+  getData();
+}, []);
+ 
     return (
-      <div className="gas-prices">
-        
-      </div>
-    );
-  }
-
+        <div>
+            <h1>Dashboard</h1>
+          <div>
+            {friends.map(friend => (
+              <FriendsCard key={friends.id} friend={friend} />
+            ))}
+          </div>
+          <button >Get Friends List</button>
+        </div>
+)}
 
 export default Friends;

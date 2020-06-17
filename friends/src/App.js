@@ -1,7 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import Login from './components/Login';
-import Friends from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
+import Friends from './components/Friends';
 
 function App() {
     return (
@@ -12,11 +13,11 @@ function App() {
                     <Link to='/login'>Login</Link>
                 </li>
                 <li>
-                    <Link to='/dashboard'>Dashboard</Link>
+                    <Link to='/protected'>Dashboard</Link>
                 </li>
             </ul>
             <Switch>
-                <Route exact path='/protected' component={Friends}/>
+                <PrivateRoute exact path='/protected' component={Friends}/>
                 <Route path='/login' component={Login}/>
                 <Route component={Login}/>
             </Switch>

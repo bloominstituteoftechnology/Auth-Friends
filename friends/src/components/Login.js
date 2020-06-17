@@ -4,12 +4,10 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 const Login = (props) => {
  const [credentials, setCredentials] = useState({
     credentials: {
-      username: "",
-      password: ""
+      username: "lambda",
+      password: "school"
     }
   });
-
-  console.log(props, 'login props')
 
  const handleChange = e => {
     setCredentials({
@@ -24,7 +22,9 @@ const Login = (props) => {
     axiosWithAuth()
       .post("/api/login", credentials)
       .then(res => {
+        console.log(res, "DELETE AFTER")
         window.localStorage.setItem("token", res.data.payload);
+        props.history.push("/protected")
       })
       .catch(err => {
         console.log("Could not login", err);
