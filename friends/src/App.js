@@ -1,7 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Swithc } from "react-router-dom";
+import "./App.css";
 
+import PrivateRoute from "./components/PrivateRoute";
 function App() {
   return (
     <div className="App">
