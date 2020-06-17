@@ -29,7 +29,7 @@ const postFriend = friend => {
   axiosWithAuth()
     .post('/api/friends', friend)
     .then(res => {
-      console.log(res)
+      console.log(res, "new friend post")
       setFriends([
         ...friends,
         friend
@@ -43,7 +43,7 @@ const addFriend = e => {
   postFriend(newFriend)
 }
 
-const [newFriend, setNewFriend] = useState({name: '', id: ''})
+const [newFriend, setNewFriend] = useState({name: '', age: ''})
 const inputChange = e => {
   setNewFriend({
     ...newFriend,
@@ -56,8 +56,8 @@ const inputChange = e => {
         <div>
             <h1>Dashboard</h1>
             <form onSubmit={addFriend}>
-              <input type="text" name="name" onChange={inputChange} placeholder="name"/>
-              <input type="text" name="id" onChange={inputChange} placeholder="id"/>
+              <input type="text" name="name" onChange={inputChange} placeholder="name" required/>
+              <input type="text" name="age" onChange={inputChange} placeholder="age" required/>
               <button>Add Friend</button>
             </form>
           <div>

@@ -3,16 +3,14 @@ import React from 'react';
 
 const FriendsCard = props => {
 
-  const { name, id } = props.friend;
+  const { name, age } = props.friend;
 
   return(
     <div >
-        <h4>{name}</h4>
+        <h2>{name}</h2>
         <div >
-          <h5>{id}</h5>
+          <h5>Age: {age}</h5>
         </div>
-      
-    
       </div>
   );
 };
