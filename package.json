@@ -19,7 +19,7 @@
     "nodemon": "^2.0.2"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "server": "nodemon server.js"
   },
   "author": "Lambda School",
   "license": "ISC"

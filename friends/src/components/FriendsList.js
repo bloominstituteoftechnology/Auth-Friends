@@ -18,6 +18,7 @@ class FriendsList extends React.Component {
     this.getData();
   }
 
+  // Get request
   getData = () => {
     this.setState({ isLoading: true });
     setTimeout(() => {
@@ -34,6 +35,7 @@ class FriendsList extends React.Component {
     //
   };
 
+  //Delete request
   delFriend = id => {
     AxiosWithAuth()
       .delete(`/api/friends/${id} `)
@@ -43,17 +45,21 @@ class FriendsList extends React.Component {
         this.setState({ SuccessMsg: response.statusText });
       })
       // console.log(this.state.friends)
-      .catch(err => console.log('Error Deleting Item', err));
+      .catch(err => this.setState({ errorMsg: err }));
   };
 
   render() {
     return (
       <div>
         <Header />
+
         {this.state.isLoading === true ? (
           <Loading />
         ) : (
           <div className='cardBody'>
+            <p className='errorMsg'>
+              {this.state.errorMsg ? 'Unable to Delete' : null}
+            </p>
             <p className='succMsg'>
               {this.state.SuccessMsg ? 'Delete Success!' : null}
             </p>
