@@ -1,132 +1,85 @@
 import * as React from "react";
 import "./Login.css";
+import {CircularProgress} from "@material-ui/core";
+import {useState} from "react";
+import axios from "axios";
 
 
 
 interface LoginProps {
-
+    loading: boolean;
+    setLoading: (loading: boolean) =>{};
+    history: any
 }
 
-const Login:React.FC<LoginProps> = (props)=>{
+const Login:React.FC<LoginProps> = ({loading, setLoading, history}) => {
+    const [credentials, setCredentials] = useState({
+        username: "",
+        password: ""
+    });
 
+    const submitLogin = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+
+        axios.post("http://localhost:5000/api/login", credentials)
+            .then(res => {//todo: do I need a type for res with ts?
+                console.log(res);
+                localStorage.setItem("token", res.data.payload);
+                history.push("/friends");
+                setLoading(false);
+            }).catch(console.log);
+    }
+
+    /*
+    login = e => {
+    e.preventDefault();
+    // make a post request to the login endpoint on the server
+    axios
+      .post("http://localhost:5000/api/login", this.state.credentials)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("token", res.data.payload);
+        // redirect the user to the app's main logged in page
+        this.props.history.push("/protected");
+      })
+      .catch(err => console.log({ err }));
+  };
+     */
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCredentials({...credentials, [e.target.name]: e.target.value});
+    }
 
     return(
         <div className="login">
-            <form className="form">
+            {!loading ?
+            <form className="form" onSubmit={submitLogin}>
                 <label className="label">
-                    <input className="input" type="text" placeholder="username"/>
+                    <input
+                        className="input"
+                        type="text"
+                        name="username"
+                        placeholder="username"
+                        onChange={handleChange}
+                        value={credentials.username}
+                    />
                 </label>
                 <label className="label">
-                    <input className="input" type="password" placeholder="password"/>
+                    <input
+                        className="input"
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                        onChange={handleChange}
+                        value={credentials.password}
+                    />
                 </label>
+                <button className="button">LOG IN</button>
             </form>
+                : <CircularProgress/>}
         </div>
     );
 }
 
 export default Login;
-
-
-
-
-/*
-(
-    <>
-      {!loading ? (
-        <Grid
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
-          style={{ marginTop: matchesSM && "2em" }}
-        >
-          <Grid item className={classes.formGridItem}>
-            <Typography variant="h3">Sign In:</Typography>
-          </Grid>
-          <Grid item className={classes.formGridItem}>
-            <Grid
-              container
-              direction="column"
-              justify="center"
-              alignItems="center"
-            >
-              <FormControl
-                className={classes.formControl}
-                onSubmit={handleSubmit}
-              >
-                <Grid
-                  item
-                  container
-                  direction={matchesSM ? "column" : "row"}
-                  justify="center"
-                  alignItems="center"
-                >
-                  <Grid item className={classes.formGridItem}>
-                    <TextField
-                      style={{ padding: 0 }}
-                      type="text"
-                      name="email"
-                      value={state.email}
-                      onChange={handleChange}
-                      label="Email"
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item className={classes.formGridItem}>
-                    <TextField
-                      type="password"
-                      name="password"
-                      value={state.password}
-                      onChange={handleChange}
-                      label="Password"
-                      variant="outlined"
-                    />
-                  </Grid>
-                </Grid>
-                <Grid item className={classes.formGridItem} align="center">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleSubmit}
-                  >
-                    LOG IN
-                  </Button>
-                </Grid>
-              </FormControl>
-            </Grid>
-          </Grid>
-          <Grid item className={classes.formGridItem}>
-            – OR –
-          </Grid>
-          <Grid item className={classes.formGridItem}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                //todo: loading spinner here
-                setLoading(true);
-                signInWithGoogle()
-                  .then((res) => {
-                    console.log("login res: ", res);
-                    history.push("/");
-                    setLoading(false);
-                  })
-                  .catch((err) => {
-                    console.log("Error: ", err);
-                    setLoading(false);
-                  });
-              }}
-            >
-              Sign in With Google
-            </Button>
-</Grid>
-<Grid item>
-<Link to="/reset-password" className="formLink,">
-Forgot password?
-</Link>
-</Grid>
-</Grid>
-) : null}
-</>
-);
- */
