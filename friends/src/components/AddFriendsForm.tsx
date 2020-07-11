@@ -8,9 +8,10 @@ import {axiosWithAuth} from "../utils/axiosWithAuth";
 
 interface AddFriendsProps {
     loading: boolean;
+    setLoading: any;//(loading: boolean) => void;
 }
 
-const AddFriendsForm: React.FC<AddFriendsProps> = ({loading}) => {
+const AddFriendsForm: React.FC<AddFriendsProps> = ({loading, setLoading}) => {
     const [friendData, setFriendData] = useState({
         id: Date.now(),
         name: "",
@@ -18,18 +19,33 @@ const AddFriendsForm: React.FC<AddFriendsProps> = ({loading}) => {
         email: "",
     });
 
-    const postFriend = (e: React.FormEvent<HTMLFormElement>) => {
+    const postFriend = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        const formatedFriend = {...friendData, age: parseInt(friendData.age)};
+        //setLoading(true);
+        const formattedFriend = {...friendData, age: parseInt(friendData.age)};
 
-        axiosWithAuth().post("http://localhost:5000/api/friends", formatedFriend)
+        axiosWithAuth().post("http://localhost:5000/api/friends", formattedFriend)
             .then(res => {//todo: do I need a type for res with ts?
                 console.log(res);
-            }).catch(console.log);
+                clearForm();
+                //setLoading(false);
+            }).catch(err => {
+            console.log("Could not add new friend: ", err);
+            //setLoading(false);
+        });
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setFriendData({...friendData, [e.target.name]: e.target.value});
+    }
+
+    const clearForm = (): void => {
+        setFriendData({
+            id: Date.now(),
+            name: "",
+            age: "",
+            email: "",
+        });
     }
 
     return (

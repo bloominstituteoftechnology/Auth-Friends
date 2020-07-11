@@ -13,7 +13,7 @@ function App() {
     return (
         <div className="App">
             <Switch>
-                <PrivateRoute exact path="/friends" history={history} loading={loading} component={FriendList}/>
+                <PrivateRoute exact path="/friends" history={history} loading={loading} setLoading={setLoading} component={FriendList}/>
                 <Route path="/login">
                     <Login loading={loading} setLoading={setLoading} history={history}/>
                 </Route>
