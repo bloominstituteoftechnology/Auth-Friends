@@ -1,12 +1,16 @@
 import * as React from "react";
 import "./LogoutHeader.css";
+import {useContext} from "react";
+import {FriendsContext} from "../contexts/FriendsContext";
 
 
 interface LogoutProps {
-    history: any;
+    //history: any;
 }
 
-const LogoutHeader:React.FC<LogoutProps> = ({history}) => {
+const LogoutHeader:React.FC<LogoutProps> = () => {
+
+    const {history} = useContext(FriendsContext);
 
     const logout = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();

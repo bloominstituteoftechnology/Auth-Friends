@@ -1,21 +1,23 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './App.css';
 import Login from "./components/Login";
-import {Route, Switch, useHistory} from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute";
+import {Route, Switch} from "react-router-dom";
+import PrivateRoute from "./components/PrivateRouteTS";
 import FriendList from "./components/FriendList";
+import {FriendsContext} from "./contexts/FriendsContext";
 
 function App() {
-    const history = useHistory();
+    const {history} = useContext(FriendsContext);
 
-    const [loading, setLoading] = useState(false);//todo: setup context
+
 
     return (
         <div className="App">
+            {history.push("/friends")} {/*this redirects "/" to friends, which will redirect to login if needed*/}
             <Switch>
-                <PrivateRoute exact path="/friends" history={history} loading={loading} setLoading={setLoading} component={FriendList}/>
+                <PrivateRoute exact path="/friends" component={FriendList}/>
                 <Route path="/login">
-                    <Login loading={loading} setLoading={setLoading} history={history}/>
+                    <Login/>
                 </Route>
             </Switch>
         </div>

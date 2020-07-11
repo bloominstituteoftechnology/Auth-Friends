@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from "react-router-dom";
+import {FriendsProvider} from "./contexts/FriendsContext";
 
 ReactDOM.render(
     <Router>
-    <App />
+        <FriendsProvider>
+            <App/>
+        </FriendsProvider>
     </Router>,
-  document.getElementById('root')
-);
+document.getElementById('root')
+)
+;
 
 serviceWorker.unregister();

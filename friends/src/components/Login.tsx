@@ -1,22 +1,25 @@
 import * as React from "react";
 import "./Login.css";
 import {CircularProgress} from "@material-ui/core";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import axios from "axios";
+import {FriendsContext} from "../contexts/FriendsContext";
 
 
 
 interface LoginProps {
-    loading: boolean;
-    setLoading: (loading: boolean) =>{};
-    history: any;
+    //loading: boolean;
+    //setLoading: (loading: boolean) =>{};
+    //history: any;
 }
 
-const Login:React.FC<LoginProps> = ({loading, setLoading, history}) => {
+const Login:React.FC<LoginProps> = () => {
     const [credentials, setCredentials] = useState({
         username: "",
         password: ""
     });
+
+    const {loading, setLoading, history} = useContext(FriendsContext);
 
     const submitLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

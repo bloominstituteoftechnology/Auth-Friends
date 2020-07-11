@@ -1,17 +1,18 @@
 import * as React from "react";
 import {CircularProgress} from "@material-ui/core";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import axios from "axios";
 import "./AddFriendsForm.css";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
+import {FriendsContext} from "../contexts/FriendsContext";
 
 
 interface AddFriendsProps {
-    loading: boolean;
-    setLoading: any;//(loading: boolean) => void;
+    //loading: boolean;
+    //setLoading: any;//(loading: boolean) => void;
 }
 
-const AddFriendsForm: React.FC<AddFriendsProps> = ({loading, setLoading}) => {
+const AddFriendsForm: React.FC<AddFriendsProps> = () => {
     const [friendData, setFriendData] = useState({
         id: Date.now(),
         name: "",
@@ -19,19 +20,21 @@ const AddFriendsForm: React.FC<AddFriendsProps> = ({loading, setLoading}) => {
         email: "",
     });
 
+    const{loading, setLoading} = useContext(FriendsContext);
+
     const postFriend = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        //setLoading(true);
+        setLoading(true);
         const formattedFriend = {...friendData, age: parseInt(friendData.age)};
 
         axiosWithAuth().post("http://localhost:5000/api/friends", formattedFriend)
             .then(res => {//todo: do I need a type for res with ts?
                 console.log(res);
                 clearForm();
-                //setLoading(false);
+                setLoading(false);
             }).catch(err => {
             console.log("Could not add new friend: ", err);
-            //setLoading(false);
+            setLoading(false);
         });
     }
 
