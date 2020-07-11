@@ -3,7 +3,7 @@ import "./LogoutHeader.css";
 
 
 interface LogoutProps {
-    history: any
+    history: any;
 }
 
 const LogoutHeader:React.FC<LogoutProps> = ({history}) => {
