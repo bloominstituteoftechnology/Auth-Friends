@@ -20,7 +20,7 @@ const AddFriendsForm: React.FC<AddFriendsProps> = () => {
         email: "",
     });
 
-    const{loading, setLoading} = useContext(FriendsContext);
+    const{loading, setLoading, setFriends} = useContext(FriendsContext);
 
     const postFriend = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
@@ -29,7 +29,7 @@ const AddFriendsForm: React.FC<AddFriendsProps> = () => {
 
         axiosWithAuth().post("http://localhost:5000/api/friends", formattedFriend)
             .then(res => {//todo: do I need a type for res with ts?
-                console.log(res);
+                setFriends(res.data);
                 clearForm();
                 setLoading(false);
             }).catch(err => {

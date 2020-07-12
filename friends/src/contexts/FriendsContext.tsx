@@ -4,10 +4,10 @@ import {useHistory} from "react-router-dom";
 
 export const FriendsContext: Context<any> = createContext({});
 
-
 export const FriendsProvider = ({children}: any) => {
     const history = useHistory();
     const [loading, setLoading] = useState(false);
+    const [friends, setFriends] = useState([]);
 
     return (
         <FriendsContext.Provider
@@ -15,6 +15,8 @@ export const FriendsProvider = ({children}: any) => {
                 history,
                 loading,
                 setLoading,
+                friends,
+                setFriends
             }}
         >
             {children}

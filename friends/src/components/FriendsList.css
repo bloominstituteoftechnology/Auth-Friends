@@ -1,0 +1,23 @@
+.friends{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.friendCard{
+    height: 200px;
+    width: 200px;
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4%;
+    text-transform: capitalize;
+
+    color: #113c6a;
+    background-color: #ffcd00;
+}

@@ -5,6 +5,7 @@ import {Route, Switch} from "react-router-dom";
 import PrivateRoute from "./components/PrivateRouteTS";
 import FriendList from "./components/FriendList";
 import {FriendsContext} from "./contexts/FriendsContext";
+import FriendsList from "./components/FriendsList";
 
 function App() {
     const {history} = useContext(FriendsContext);
@@ -16,9 +17,8 @@ function App() {
             {history.push("/friends")} {/*this redirects "/" to friends, which will redirect to login if needed*/}
             <Switch>
                 <PrivateRoute exact path="/friends" component={FriendList}/>
-                <Route path="/login">
-                    <Login/>
-                </Route>
+                <Route path="/login" component={Login}/>
+                <Route path="/friends_list" component={FriendsList}/>
             </Switch>
         </div>
     );

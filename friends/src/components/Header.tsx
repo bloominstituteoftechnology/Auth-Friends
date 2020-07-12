@@ -1,14 +1,14 @@
 import * as React from "react";
-import "./LogoutHeader.css";
+import "./Header.css";
 import {useContext} from "react";
 import {FriendsContext} from "../contexts/FriendsContext";
 
 
-interface LogoutProps {
+interface HeaderProps {
     //history: any;
 }
 
-const LogoutHeader:React.FC<LogoutProps> = () => {
+const Header:React.FC<HeaderProps> = () => {
 
     const {history} = useContext(FriendsContext);
 
@@ -19,10 +19,12 @@ const LogoutHeader:React.FC<LogoutProps> = () => {
     }
 
     return(
-        <div className="logout">
+        <div className="header">
+            <button onClick={() => history.push("/friends_list")}>View Friends</button>
+            <button onClick={() => {history.push("/friends")}}>Add Friends</button>
             <button onClick={logout}>Logout</button>
         </div>
     );
 }
 
-export default LogoutHeader;
+export default Header;

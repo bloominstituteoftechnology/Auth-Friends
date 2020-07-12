@@ -1,10 +1,10 @@
 import * as React from "react";
-import LogoutHeader from "./LogoutHeader";
+import Header from "./Header";
 import AddFriendsForm from "./AddFriendsForm";
 import {useContext, useEffect} from "react";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
 import {FriendsContext} from "../contexts/FriendsContext";
-
+//todo: rename this to AddFriendPage
 
 
 interface FriendProps {
@@ -15,13 +15,14 @@ interface FriendProps {
 
 const FriendList:React.FC<FriendProps> = () => {
 
-    const {loading, setLoading} = useContext(FriendsContext);
+    const {setLoading, setFriends} = useContext(FriendsContext);
 
     useEffect(() => {
         setLoading(true);//todo: getting "setLoading" is not a function? loading and setLoading seam undefined but history passed okay (when passed as props)
         axiosWithAuth().get("http://localhost:5000/api/friends")
             .then(res => {
-                console.log("Friends: ", res);
+                console.log("Friends: ", res.data);
+                setFriends(res.data);
                 setLoading(false);
             })
             .catch(err=> {
@@ -32,7 +33,7 @@ const FriendList:React.FC<FriendProps> = () => {
 
     return(
         <div className="friendList">
-            <LogoutHeader/>
+            <Header/>
             <AddFriendsForm />
         </div>
     );
