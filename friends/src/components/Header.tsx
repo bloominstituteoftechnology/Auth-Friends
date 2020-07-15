@@ -4,11 +4,9 @@ import {useContext} from "react";
 import {FriendsContext} from "../contexts/FriendsContext";
 
 
-interface HeaderProps {
-    //history: any;
-}
 
-const Header:React.FC<HeaderProps> = () => {
+
+const Header:React.FC = () => {
 
     const {history} = useContext(FriendsContext);
 

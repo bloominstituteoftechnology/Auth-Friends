@@ -4,11 +4,11 @@ import {useContext} from "react";
 import {FriendsContext} from "../contexts/FriendsContext";
 import "./FriendsList.css";
 
-type Friend = {
-    age: number
-    email: string
-    id: number
-    name: string
+interface Friend  {
+    age: number;
+    email: string;
+    id: number;
+    name: string;
 };
 
 const FriendsList = () => {
@@ -17,8 +17,8 @@ const FriendsList = () => {
 
     return (
         <div className="friendsList">
-            <Header/> {/*todo: the friends map pushes the header down?*/}
-            <div className="friends">
+            <Header/>
+            <div className="friendsCards">
                 {friends.map((friend: Friend) => {
                     return <div key={friend.id} className="friendCard">{friend.name}</div>
                 })}

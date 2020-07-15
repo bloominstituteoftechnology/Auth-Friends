@@ -8,8 +8,6 @@ import {FriendsContext} from "../contexts/FriendsContext";
 
 
 interface AddFriendsProps {
-    //loading: boolean;
-    //setLoading: any;//(loading: boolean) => void;
 }
 
 const AddFriendsForm: React.FC<AddFriendsProps> = () => {
@@ -30,6 +28,7 @@ const AddFriendsForm: React.FC<AddFriendsProps> = () => {
         axiosWithAuth().post("http://localhost:5000/api/friends", formattedFriend)
             .then(res => {//todo: do I need a type for res with ts?
                 setFriends(res.data);
+                console.log("res fromadd", res.data);
                 clearForm();
                 setLoading(false);
             }).catch(err => {
