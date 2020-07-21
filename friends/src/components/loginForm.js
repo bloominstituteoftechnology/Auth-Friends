@@ -1,15 +1,16 @@
 import React from 'react'
-import {axiosWithAuth} from '../utils/axiosWithAuth'
+import axiosWithAuth from '../utils/axiosWithAuth' 
 
 
-
-class loginForm extends React.Component {
+class LoginForm extends React.Component {
     state = {
         credentials: {
             username: '',
-            password: ''
+            password: '',
+            
         }
     }
+
     handleChanges = e => {
         this.setState({
             credentials: {
@@ -19,41 +20,44 @@ class loginForm extends React.Component {
         })
     }
 
-    handleSubmit = e => {
+    login = e => {
         e.preventDefault();
         axiosWithAuth()
-        .post('http://localhost:5000/api/login', this.state.credentials)
-        .then(res => {
-            console.log(res);
-            window.localStorage.setItem('token', res.data.payload);
-            this.props.history.push('/friends');
-        })
-        .catch(err => console.log(err))
+        .post('api/login', this.state.credentials)
+            .then(res => {
+                // console.log(res)
+                localStorage.setItem('token', res.data.payload)
+                this.props.history.push('/protected')
+            })
+            .catch(error => {
+                console.log('There was an error', error)
+            })
     }
 
-    render(){
-    return(
-        <div className='login'>
-            <form>
-                <input
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.login}>
+                    <input 
                     type='text'
                     name='username'
                     value={this.state.credentials.username}
                     onChange={this.handleChanges}
-                />
-                
-                <input
+                    placeholder='username'
+                    />
+                    <input 
                     type='password'
                     name='password'
                     value={this.state.credentials.password}
                     onChange={this.handleChanges}
-                />
-                <button>Login</button>
-            </form>
-        </div>
+                    placeholder='password'
+                    /><br/>
+                    <button>Log in</button>
+                </form>
+            </div>
         )
     }
 }
 
 
-export default loginForm
+export default LoginForm

@@ -1,45 +1,29 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import loginForm from './components/loginForm'
-import './App.css';
-import Friend from './components/Friend'
-import PrivateRoute from './components/PrivateRoute';
+import React from 'react'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import LoginForm from './components/LoginForm'
+import PrivateRoute from './components/PrivateRoute'
+import FriendsList from './components/FriendsList'
+import './App.css'
 
-function App() {
-
-  const logginIn = () => {
-    if(localStorage.getItem('Logged in')){
-      return localStorage.getItem('Logged out')
-    }
-    return false;
-  }
-
-  const [isLoggedIn, setIsLoggedIn] = useState(loggedIn())
-
-  const logOut = () => {
-    setIsLoggedIn(false);
-    localStorage.setItem('Logged in", false');
-    localStorage.removeItem('token')
-  }
+const App = () => {
   return (
     <Router>
-      <div className="App">
+      <div className='App'>
         <header>
-          <h1>Friends Routing</h1>
-          <Link to='/login'>Login</Link>
-          <Link to='/protected'>Protected Page</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/friends">Friends</Link>
         </header>
 
         <Switch>
-          <PrivateRoute exact path='/protected'/>
-          <Route to='/login' component={loginForm}/>
-          <Route component={loginForm}/>
+          <PrivateRoute exact path="/friends" component={FriendsList}/>
+          <Route path='/login' component={LoginForm} />
+          <Route component={LoginForm} />
         </Switch>
-
       </div>
-
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
+
+
