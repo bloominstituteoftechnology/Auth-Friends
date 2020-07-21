@@ -4,7 +4,7 @@ import PrivateRoute from './components/PrivateRoute'
 
 import Home from './components/Home'
 import Login from './components/Login'
-import Dashboard from './components/Dashboard'
+import FriendsList from './components/FriendsList'
 
 import { Button } from '@material-ui/core';
 import './App.css';
@@ -15,11 +15,11 @@ function App() {
       <Router>
       <Link to="/"><Button>Home</Button></Link>
         <Link to="/login"><Button>Login</Button></Link>
-        <Link to="/dashboard"><Button>Dashboard</Button></Link>
+        <Link to="/friends-list"><Button>Friends List</Button></Link>
 
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
-        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/friends-list" component={FriendsList} />
       </Router>
     </div>
   );
