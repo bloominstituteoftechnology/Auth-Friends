@@ -32,10 +32,9 @@ class AddFriend extends React.Component {
     axiosWithAuth().post("/api/friends", this.state.friend)
     .then(res => {
       console.log(res)
-      // console.log(res)
-      // localStorage.setItem("token", res.data.payload)
-      // this.setState({...initialState})
-      // this.props.history.push("/dashboard")
+      this.setState({...initialState})
+      console.log(this)
+      this.props.history.push("/friends-list")
     })
     .catch(err => {
       this.setState({...initialState})

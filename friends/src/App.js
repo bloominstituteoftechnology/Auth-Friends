@@ -21,7 +21,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <PrivateRoute path="/friends-list" component={FriendsList} />
-        <PrivateRoute path="/add-friend" component={AddFriend} />
+        <Route path="/add-friend" component={AddFriend} />
       </Router>
     </div>
   );
