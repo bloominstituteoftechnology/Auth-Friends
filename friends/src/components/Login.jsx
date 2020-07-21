@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, TextField } from '@material-ui/core';
-import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 class Login extends React.Component {
   state = {
@@ -22,12 +22,14 @@ class Login extends React.Component {
 
   submit = e => {
     e.preventDefault()
-    axios.post("http://localhost:5000/api/login", {
-      username: 'Lambda School',
-      password: '1<3Lambd4'
+    axiosWithAuth().post("/api/login", {
+      username: this.state.credentials.username,
+      password: this.state.credentials.password
     })
     .then(res => {
       console.log(res)
+      localStorage.setItem("token", res.data.payload)
+      this.props.history.push("/dashboard")
     })
     .catch(err => {
       console.error(err)
@@ -39,9 +41,9 @@ class Login extends React.Component {
       <div>
         <h1>Welcome to the login!</h1>
         <form>
-          <TextField onChange={this.handleChanges} label="Username"/>
-          <TextField onChange={this.handleChanges} type="password" label="Password"/>
-          <Button variant="contained">Submit</Button>
+          <TextField onChange={this.handleChanges} label="Username" name="username"/>
+          <TextField onChange={this.handleChanges} type="password" label="Password" name="password"/>
+          <Button variant="contained" onClick={this.submit}>Submit</Button>
         </form>
       </div>
     )

@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { Button } from '@material-ui/core';
+import PrivateRoute from './components/PrivateRoute'
 
 import Home from './components/Home'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
+
+import { Button } from '@material-ui/core';
 import './App.css';
 
 function App() {
@@ -17,7 +19,7 @@ function App() {
 
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
-        <Route path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
       </Router>
     </div>
   );
