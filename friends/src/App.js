@@ -5,7 +5,7 @@ import PrivateRoute from './components/PrivateRoute'
 import Home from './components/Home'
 import Login from './components/Login'
 import FriendsList from './components/FriendsList'
-import AddFriend from './components/AddFriend'
+import AddFriend from './components/AddFriend_old'
 
 import { Button } from '@material-ui/core';
 import './App.css';

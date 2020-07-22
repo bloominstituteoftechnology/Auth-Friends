@@ -1,57 +1,46 @@
-import React from 'react'
-import { v4 as uuid } from 'uuid'
+import React, { useState } from 'react'
 import { Button, TextField, CircularProgress } from '@material-ui/core';
 import axiosWithAuth from '../utils/axiosWithAuth'
 
 const initialState = {
-  friend: {
-    id: null,
-    name: null,
-    age: null,
-    email: null
-  },
+  name: "",
+  age: "",
+  email: "",
   isLoading: false
 }
 
-class AddFriend extends React.Component {
-  state = {...initialState}
+const AddFriend = props => {
+  const [state, setState] = useState({})
 
-  handleChanges = e => {
-    this.setState({
-      ...this.state,
-      friend: {
-        ...this.state.friend,
-        [e.target.name]: e.target.value
-      }
+  const handleChanges = e => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value
     })
   }
 
-  submit = e => {
+  const submit = e => {
     e.preventDefault()
-    this.setState({...this.state, friend: {...this.state.friend, id: uuid()}, isLoading: true}) // set the loading state and assign uuid
-    axiosWithAuth().post("/api/friends", this.state.friend)
-    .then(res => {
-      console.log(res)
-      this.setState({...initialState})
-      console.log(this)
-      this.props.history.push("/friends-list")
-    })
-    .catch(err => {
-      this.setState({...initialState})
-      console.error(err)
-    })
+
+    axiosWithAuth().post("/api/friends", state)
+      .then(res => {
+        setState({...initialState})
+        props.history.push("/friends-list")
+      })
+      .catch(err => {
+        setState({...initialState})
+        console.error(err)
+      })
   }
 
-  render() {
-    return (
-      <form>
-        <TextField onChange={this.handleChanges} label="Name" name="name" />
-        <TextField onChange={this.handleChanges} label="Age" name="age" />
-        <TextField onChange={this.handleChanges} label="Email" name="email" />
-        <Button variant="contained" onClick={this.submit}>{this.state.isLoading ? <CircularProgress /> : <>Submit</>}</Button>
-      </form>
-    )
-  }
+  return (
+    <form>
+      <TextField onChange={handleChanges} label="Name" name="name" />
+      <TextField onChange={handleChanges} label="Age" name="age" />
+      <TextField onChange={handleChanges} label="Email" name="email" />
+      <Button variant="contained" onClick={submit}>{state.isLoading ? <CircularProgress /> : <>Submit</>}</Button>
+    </form>
+  )
 }
 
 export default AddFriend
