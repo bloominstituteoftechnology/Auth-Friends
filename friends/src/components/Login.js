@@ -19,7 +19,7 @@ const Login = () => {
         })
 
     }
-    console.log('userState',user)
+    // console.log('userState',user)
     return(
         <form onSubmit={submitLogin}>
         <label>
