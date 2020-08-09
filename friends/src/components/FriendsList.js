@@ -9,14 +9,19 @@ const FriendsList = () => {
     useEffect(() => {
         axiosWithAuth().get('http://localhost:5000/api/friends')
             .then(res => {
-                console.log('get success: res', res);
-                setFriends({
-                    friends: res.data
-                })
+                console.log('get success:res', res);
+                setFriends([{
+                    ...friends,
+                    id: res.data.id,
+                    name: res.data.name,
+                    age: res.data.age,
+                    email: res.data.email
+                }])
             })
-            .catch(err =>
-                console.log('get failed: err', err.message));
-    }, [friends]);
+            .catch(err => {
+                console.log('get failed: err', err.message)
+            })
+    }, []);
 
     return (
         <div>
@@ -34,3 +39,4 @@ const FriendsList = () => {
 }
 
 export default FriendsList;
+
