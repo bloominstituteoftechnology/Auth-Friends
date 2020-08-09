@@ -27,6 +27,7 @@ console.log('userState',credentials)
             username:'',
             password:''
         })
+        // history.push('/friends')
 
     }
 

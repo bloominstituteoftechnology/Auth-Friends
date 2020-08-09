@@ -1,6 +1,5 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
-import e from 'express'
 
 const Friends = () => {
 
@@ -8,25 +7,41 @@ const Friends = () => {
     const [addFriend,setAddFriend] = useState({
         name:"",
         age:"",
-        email:''
+        email:'',
+        id:(Date.now())
     })
 
-    axiosWithAuth()
-        .get('/api/friends')
-        .then(res => 
-            setFriendsList(
-                 res.data
+
+    useEffect(() => {
+        axiosWithAuth()
+            .get('/api/friends')
+            .then(res => 
+                setFriendsList(
+                    res.data
+                )          
             )
-            // console.log('friendslist',res.data)            
-        )
-        .catch(err=> console.log(err))
+            .catch(err=> console.log(err))        
+    },[])
+
 
     const handleChange = (e) => {
         setAddFriend({
             ...addFriend,
             [e.target.name]: e.target.value
         })
-        
+    }
+
+    const addFriendSubmit = (e) => {
+
+        e.preventDefault()
+        axiosWithAuth()
+            .post('api/friends',addFriend)
+            .then(res => 
+                setFriendsList(
+                    res.data
+                )          
+            )
+            .catch(err=> console.log(err)) 
     }
 
     return(
@@ -37,8 +52,9 @@ const Friends = () => {
                 <input name='name' placeholder='Name' onChange={handleChange}/>
                 <input name='age' placeholder='Age' onChange={handleChange}/>
                 <input name='email' placeholder='Email' onChange={handleChange}/>
+                
             </lable>
-            <button>Add to the list!</button>
+            <button onClick={addFriendSubmit}>Add to the list!</button>
 
 
             {friendsList.map(friend => 
