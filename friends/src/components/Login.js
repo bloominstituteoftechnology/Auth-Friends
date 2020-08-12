@@ -1,7 +1,10 @@
 import React,{useState} from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
+import {useHistory} from 'react-router-dom'
 
 const Login = () => {
+
+    const {push} = useHistory()
 
     const [credentials,setCredentials] = useState({username:'',password:''})
 console.log('userState',credentials)
@@ -26,9 +29,9 @@ console.log('userState',credentials)
         setCredentials({
             username:'',
             password:''
+            
         })
-        // history.push('/friends')
-
+        push('/friends')
     }
 
     return(
