@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
-import Loader from 'react-loader-spinner';
+// import moment from 'moment';
+// import Loader from 'react-loader-spinner';
 
 import { axiosWithAuth } from '../util/axiosWithAuth';
 import FriendsCard from './FriendsCard';
@@ -21,11 +21,11 @@ const Friends = () => {
         const getData = () => {
 
             axiosWithAuth() //axiosWithAuth is a function so don't forget () to call it
-            .post(`/login`, credentials) //sends info to route and double checks credentials
+            .post(`/login`, this.credentials) //sends info to route and double checks credentials
             .then((res) => {
                 console.log(res)
                 window.localStorage.setItem('token', res.data.payload); //Puts in a key called token with a value of data.payload
-                props.history.push('/friends'); //Once logging in, sends them to the protected/logged in page
+                this.props.history.push('/friends'); //Once logging in, sends them to the protected/logged in page
             })
             .catch((err) => {
                 console.log('Err is: ', err);
@@ -58,4 +58,40 @@ const Friends = () => {
         });
     };
 
+    return (
+        <div>
+            Add Friends
+            <form onSubmit={addFriend}>
+                <input
+                    type='text'
+                    name='name'
+                    onChange={inputChange}
+                    placeholder='Name'
+                    required
+                />
+                <input
+                    type='number'
+                    name='age'
+                    onChange={inputChange}
+                    placeholder='Age'
+                    required
+                />
+                <input
+                    type='email'
+                    name='email'
+                    onChange={inputChange}
+                    placeholder='Email'
+                    required
+                />
+                <button>Add Friend</button>
+            </form>
+            <div>
+                Friends List
+                {friends.map(friend=> (
+                    <FriendsCard key={friend.id} friend={friend} />
+                ))}
+            </div>
+        </div>
+    )
 }
+export default Friends;

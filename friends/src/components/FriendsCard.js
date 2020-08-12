@@ -2,7 +2,7 @@ import React from 'react';
 
 const FriendsCard = () => {
 
-    const { id, name, age, email } = props.friend;
+    const { id, name, age, email } = this.props.friend;
 
     return (
         <div>
