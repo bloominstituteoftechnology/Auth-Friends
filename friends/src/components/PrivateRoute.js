@@ -7,12 +7,13 @@ import { Route, Redirect } from 'react-router-dom';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     //Pass in component & props^ and destructure them using component: Component, rename it using a capital letter or else we can't render it in JSX
+    const token = window.localStorage.getItem('token');
     return (
         //the following allows us to render components with associated props
         <Route
             {...rest} 
             render={props => {
-                if (localStorage.getItem('token')) {
+                if (token) {
                     return <Component {...props} />
                 } else {
                     return <Redirect to='/login' />;
