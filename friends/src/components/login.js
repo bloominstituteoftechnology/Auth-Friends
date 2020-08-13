@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-
-
-// import TextField from '@material-ui/core/TextField';
-// import Grid from '@material-ui/core/Grid';
+import { axiosWithAuth } from '../util/axiosWithAuth';
 
 export default function Login(props) {
 
@@ -20,16 +17,17 @@ const handleChange = e => {
 
 const login = e => {
     e.preventDefault();
-    // axios <-- axios call eventually moved to friends.js file
-    //     .post(`http://localhost:5000`, credentials) //sends info to route and double checks credentials
-    //     .then((res) => {
-    //         console.log(res)
-    //         window.localStorage.setItem('token', res.data.payload); //Puts in a key called token with a value of data.payload
-    //         props.history.push('/friends'); //Once logging in, sends them to the protected/logged in page
-    //     })
-    //     .catch((err) => {
-    //         console.log('Err is: ', err);
-    //     })
+    axiosWithAuth()
+        .post(`/login`, credentials) //POST request sends info to route as an object and double checks credentials
+        .then(res => {
+            // console.log(res)
+            localStorage.setItem('token', res.data.payload); 
+            //Puts in a key called token with a value of data.payload
+            props.history.push('/friends'); //Once logging in, sends them to the protected/logged in page
+        })
+        .catch((err) => {
+            console.log('Err is: ', err);
+        })
 };
 
     return (

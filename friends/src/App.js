@@ -13,7 +13,7 @@ function App() {
       <div className='App'>
         <ul>
           <li>
-            <Link to='/login/'>Log In</Link>
+            <Link to='/login'>Log In</Link>
           </li>
           <li>
             <Link to='/friends'>Friends List</Link>

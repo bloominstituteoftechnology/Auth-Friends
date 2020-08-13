@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FriendsCard = () => {
+const FriendsCard = props => {
 
     const { id, name, age, email } = this.props.friend;
 

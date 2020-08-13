@@ -11,21 +11,21 @@ const Friends = () => {
      id: '',
      name: '',
      age: '',
-     email: '',
-     value: ''
+     email: ''
+    //  value: ''
     });
 
-    const [id, setId] = useState('');
+    // const [id, setId] = useState('');
 
     useEffect(() => {
         const getData = () => {
 
             axiosWithAuth() //axiosWithAuth is a function so don't forget () to call it
-            .post(`/login`, this.credentials) //sends info to route and double checks credentials
-            .then((res) => {
-                console.log(res)
-                window.localStorage.setItem('token', res.data.payload); //Puts in a key called token with a value of data.payload
-                this.props.history.push('/friends'); //Once logging in, sends them to the protected/logged in page
+            //Use GET request to fetch then set data
+            .get('/friends')
+            .then(res => {
+                console.log(res, 'Friends');
+                setFriends(res.data);
             })
             .catch((err) => {
                 console.log('Err is: ', err);
@@ -36,7 +36,7 @@ const Friends = () => {
 
     const addNewFriend = friend => {
         axiosWithAuth()
-        .post('/friends', 'new friend')
+        .post('/api/friends', 'new friend')
         .then(res => {
             console.log(res, 'new friend')
             setFriends([
