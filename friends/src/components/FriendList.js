@@ -85,6 +85,7 @@ function FriendList() {
                     </form>
                 </section>
                 <section className='friendList'>
+                    <h2>Friends: </h2>
                     <ol>
                         {
                             friends.map(aFriend => {
