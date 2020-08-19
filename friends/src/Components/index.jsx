@@ -1,9 +1,11 @@
 import Header from './Header'
-import FriendSheet from './FriendsSheet'
+import FriendsSheet from './FriendsSheet'
 import Login from './Login'
+import NewFriendForm from './NewFriendForm'
 
 export{
     Header, 
     Login,
-    FriendSheet,
+    NewFriendForm,
+    FriendsSheet,
 }

@@ -10,22 +10,23 @@ const initialValue = {
 const Login = (props) =>{
 
     const {history} = props;
-    const [value, setValue] = useState(initialValue)
+    const [creds, setCreds] = useState(initialValue)
 
     const handleChange = e =>{
         const {name, value} = e.target
-        setValue({...value, [name]: value})
+        setCreds({...creds, [name]: value})
     }
 
     //login using axios with off and login endpoint, finally redirects to /friends page
     const login = e =>{
         e.preventDefault();
         axiosWithAuth()
-        .post('/api/login' , value)
+        .post('/api/login', creds)
         .then((res)=>{
             localStorage.setItem('token', res.data.payload)
             history.push('/friends')
         })
+        .catch((err) => console.log(err))
     }
     return(
         <div>
@@ -34,7 +35,7 @@ const Login = (props) =>{
                     <input
                     type='text'
                     name='username'
-                    value={value.username}
+                    value={creds.username}
                     onChange={handleChange}
                     />
                 </label>
@@ -42,7 +43,7 @@ const Login = (props) =>{
                     <input
                     type='text'
                     name='password'
-                    value={value.password}
+                    value={creds.password}
                     onChange={handleChange}
                     />
                 </label>
