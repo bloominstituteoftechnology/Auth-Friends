@@ -1,11 +1,13 @@
 import React, { useState } from 'react'; 
+import { useHistory } from 'react-router-dom'; 
 import axios from 'axios'; 
 
-const Login = () => {
+const Login = (props) => {
     const [state, setState] = useState({
         username: "", 
         password: "" 
     }); 
+    const history = useHistory(); 
 
     const handleChange = (e) => {
         const { id, value } = e.target
@@ -20,10 +22,10 @@ const Login = () => {
         axios
         .post("http://localhost:5000/api/login", state)
         .then((res) => {
-            console.log(res)
             localStorage.setItem("token", res.data.payload); 
+            history.push("/protected");
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
     }
 
     return (
@@ -59,10 +61,9 @@ const Login = () => {
                     type="submit"
                     className="btn btn-primary"
                 >
-                    Register
+                    login
                 </button>
             </form>
-
         </div>
     )
 }
