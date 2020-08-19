@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {axiosWithAuth} from '../Utils/axiosWithAuth'
+import {useHistory} from 'react-router-dom';
 
 const initialFormValues = {
     id: '',
@@ -10,7 +11,7 @@ const initialFormValues = {
 
 const NewFriendForm = props =>{
     const [formValues, setValues] = useState(initialFormValues);
-
+    const history = useHistory();
    
 
     const handleChange = e =>{
@@ -18,8 +19,14 @@ const NewFriendForm = props =>{
         setValues({...formValues, [name]: value})
     }
 
-    const postFriend = () =>{
-        console.log('post')
+    const postFriend = e =>{
+        e.preventDefault()
+        axiosWithAuth()
+            .post('/api/friends', formValues)
+            .then(res =>{
+                setValues(initialFormValues)
+            })
+        history.push('/friends')
     }
 
     return (   
@@ -47,7 +54,7 @@ const NewFriendForm = props =>{
                         name='email'
                         type='email'
                         onChange={handleChange}
-                        value={formValues.age} />
+                        value={formValues.email} />
                 </label>
                 <button>Submit</button>
             </form>
