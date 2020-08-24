@@ -9,8 +9,10 @@ function FriendPage() {
   useEffect(() => {
     const token = window.localStorage.getItem("token");
     axiosWithAuth()
-      .get("http://localhost:5000/api/friends")
+      .get("api/friends")
       .then((res) => {
+        console.log(res)
+        console.log(res.data)
         setFriends(res.data);
       })
       .catch((error) => {
