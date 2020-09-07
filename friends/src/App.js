@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 import Login from '../src/components/Login'
-import FriendsList from '../src/components/FriendsList'
+import FriendForm from '../src/components/FriendForm'
 import PrivateRoute from '../src/components/PrivateRoute'
 
 
@@ -16,7 +16,7 @@ function App() {
       </div>
 
       <Switch>
-        <PrivateRoute exact path ="/protected" component={FriendsList} />
+        <PrivateRoute exact path ="/protected" component={FriendForm} />
         <Route path="/Login" component={Login} />
         <Route component={Login} />
       </Switch>
