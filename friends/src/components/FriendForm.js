@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-
+import FriendList from './FriendList'
 
 class FriendForm extends React.Component {
-    state = {
-        friends: {
-            name: "",
-            age: "",
-            email: "",
+
+    constructor() {
+        super();
+        this.state = {
+            friends: {
+                name: "",
+                age: "",
+                email: "",
+            },
+            post: []
         }
     }
-
   
     handleChange = event => {
         this.setState({
@@ -27,9 +31,10 @@ class FriendForm extends React.Component {
         axiosWithAuth().post("http://localhost:5000/api/friends",this.state.friends)
         .then((res) => {
             this.setState({
-                friends:res.data
+                post:res.data
             })
-            console.log("newFriend API Working", res)
+            console.log("newFriend API Working", res) 
+                
          })
          .catch((err) => {console.log("get error", err)})
     }
@@ -56,7 +61,7 @@ class FriendForm extends React.Component {
                     <input 
                         type="text"
                         name="email"
-                        placeholder="Name"
+                        placeholder="Email"
                         value={this.state.friends.email}
                         onChange={this.handleChange}
                     />

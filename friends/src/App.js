@@ -1,13 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 import Login from '../src/components/Login'
 import FriendForm from '../src/components/FriendForm'
 import PrivateRoute from '../src/components/PrivateRoute'
-
+import Friend from '../src/components/Friend'
 
 function App() {
+
+
   return (
     <Router>
       <div className="App">
