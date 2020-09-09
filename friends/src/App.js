@@ -3,19 +3,25 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import GetFriends from './components/GetFriends';
+import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <ul>
-          <li>
+        <div className="nav">
+          <div>
+
             <Link to="/login">Login</Link>
-          </li>
-          <li>
+          </div>
+
+          
+          <div>
+
             <Link to="/protected">Protected Page</Link>
-          </li>
-        </ul>
+          </div>
+          
+        </div>
         <Switch>
           <ProtectedRoute exact path="/protected" component={GetFriends} />
           <Route path="/login" component={Login} />

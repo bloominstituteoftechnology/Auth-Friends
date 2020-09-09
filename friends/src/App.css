@@ -1,0 +1,37 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-decoration: none;
+}
+
+.form-group{
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+
+.input-group{
+    margin-bottom: 4%;
+}
+
+.friends-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.friends-list h1 {
+    width: 100%;
+  }
+  
+  .friends-name {
+    font-weight: bold;
+  }
+  
+  .friends-list .friend {
+    box-sizing: border-box;
+    border: 1px solid gray;
+    background: #fafafa;
+    width: 22%;
+    margin: 5px;
+    padding: 2vh 1vh;
+  }
