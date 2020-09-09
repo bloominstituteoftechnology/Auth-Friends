@@ -1,78 +1,70 @@
-import React from 'react'
-import { axiosWithAuth } from '../utils/axiosWithAuth'
-import FriendList from './FriendList'
 
-class FriendForm extends React.Component {
-
-    constructor() {
-        super();
-        this.state = {
-            friends: {
-                name: "",
-                age: "",
-                email: "",
-            },
-            post: []
-        }
-    }
-  
-    handleChange = event => {
-        this.setState({
-            friends: {
-                ...this.state.friends,
-                [event.target.name]: event.target.value
-            }
-        })
-    }
+import React, { useState } from "react";
+import axios from "axios";
 
 
-    newFriend = event => {
-        event.preventDefault();
-        axiosWithAuth().post("http://localhost:5000/api/friends",this.state.friends)
-        .then((res) => {
-            this.setState({
-                post:res.data
-            })
-            console.log("newFriend API Working", res) 
-                
-         })
-         .catch((err) => {console.log("get error", err)})
-    }
+const FriendForm = props => {
+  const [friendForm, setFriendForm] = useState({
+    name: "",
+    age: "",
+    email: ""
+  });
 
-    render() {
-        return (
-            <div>
-                <h1>Add A Friend</h1>
-                <form onSubmit={this.newFriend}>
-                    <input 
-                        type="text"
-                        name="name"
-                        placeholder="Name"
-                        value={this.state.friends.name}
-                        onChange={this.handleChange}
-                    />
-                    <input 
-                        type="text"
-                        name="age"
-                        placeholder="Age"
-                        value={this.state.friends.age}
-                        onChange={this.handleChange}
-                    />
-                    <input 
-                        type="text"
-                        name="email"
-                        placeholder="Email"
-                        value={this.state.friends.email}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="submit"
-                    />
-                </form>
-            </div>
-        )
-    }
-}
+  const [post, setPost] = useState([]);
 
+  const handleChanges = e => {
+    setFriendForm({
+      ...friendForm,
+      [e.target.name]: e.target.value
+    });
+  };
 
-export default FriendForm
+  const submitForm = e => {
+    e.preventDefault();
+    props.newFriend(friendForm);
+    axios
+      .post("api/friends", friendForm)
+      .then((res) => {
+        setPost(res.data);
+        console.log("Friend Post Api Working", post);
+
+        setFriendForm({ name: "", age: "", email: "" });
+      })
+      .catch((err) => console.log("Friend API NOT WORKING", err));
+  };
+
+  return (
+    <form onSubmit={submitForm}>
+      <label htmlFor="name">Name</label>
+      <input
+        id="name"
+        type="text"
+        name="name"
+        onChange={handleChanges}
+        value={friendForm.name}
+      />
+      <label htmlFor="age">Age</label>
+      <input
+        id="age"
+        type="text"
+        name="age"
+        onChange={handleChanges}
+        value={friendForm.age}
+      />
+      <label htmlFor="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        onChange={handleChanges}
+        value={friendForm.email}
+      />
+
+      <input 
+      type="submit"
+      />
+    </form>
+  );
+};
+
+export default FriendForm;
