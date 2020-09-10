@@ -2,7 +2,7 @@ import React from "react";
 import {Route, Redirect} from 'react-router-dom';
 
 
-const Friends = ({component: Component, ...rest}) => {
+const ProtectedRoute = ({component: Component, ...rest}) => {
   return(
         <Route 
             {...rest} 
@@ -17,4 +17,4 @@ const Friends = ({component: Component, ...rest}) => {
     );
 };
 
-export default Friends;
+export default ProtectedRoute;

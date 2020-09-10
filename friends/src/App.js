@@ -1,28 +1,38 @@
 import React from 'react';
-import Friends from './components/Friends';
+import ProtectedRoute from './components/ProtectedRoute';
 import Login from './components/Login';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import './App.css';
-import friendCard from './components/friendCard';
+import FriendsList from './components/FriendsList';
+import Friend from './components/Friend';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div className="App">
+        
         <ul>
           <li>
             <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to ="/frinds">Friends</Link>
+            <Link to="/protected">Protected Page</Link>
           </li>
         </ul>
         <Switch>
-          <Friends exact path='/friends' component={friendCard} />
-          <Route path='/login' component={Login}/>
-          <Route component={Login}/>
+          <Route exact path='/login'>
+            <Link to="/api/login">Login</Link>
+          </Route>
+          <Route exact path ='/api/login'>
+            <Login/>
+          </Route>
+          <ProtectedRoute exact path='/api/friends'/>
+            <FriendsList/>
+          <ProtectedRoute/>
+          <ProtectedRoute exact path='/api/friends/:id'/>
+            <Friend/>
+          <ProtectedRoute/>
         </Switch>
-        <Friends/>
       </div>
     </Router>
   );
