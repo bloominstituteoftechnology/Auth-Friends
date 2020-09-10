@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
+import { Link } from "react-router-dom";
 
 
 const AddFriend = () => {
@@ -22,7 +23,7 @@ const AddFriend = () => {
       .post(`http://localhost:5000/api/friends`, newFriend)
       .then((res) => {
         console.log("friend added", res);
-        setNewFriend({name:"", age:"", email:""})
+        setNewFriend({ name: "", age: "", email: "" })
       })
       .catch((err) => console.log("No new friends, No new friends", err))
   }
@@ -57,7 +58,15 @@ const AddFriend = () => {
           value={newFriend.email}
           onChange={handleChange}
         />
-        <button className="btn btn-primary p-1" type="submit">Add</button>
+        <Link to={`/friends/${newFriend.id}`}>
+          <button
+            type="button"
+            className="btn btn-secondary m-2"
+            >
+            View {newFriend.name}
+          </button>
+        </Link>
+        <button className="btn btn-primary m-1" type="submit">Add</button>
       </form>
     </div>
   );
