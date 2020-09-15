@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
+import FriendCard from './FriendCard';
+
 const FriendsList = () => {
   const [ friendsData, setFriendsData ] = useState([]);
 
@@ -15,7 +17,7 @@ const FriendsList = () => {
         console.log(err)
       })
   }
-  
+
   useEffect (() => {
     getFriends();
   }, [])
@@ -26,11 +28,12 @@ const FriendsList = () => {
       Friends List 
       {friendsData.map(friend => {
         return(
-          <div key={friend.id}>
-            <h3>{friend.name}</h3>
-            <p>{friend.email}</p>
-            <p>{friend.age}</p>
-          </div>   
+          <FriendCard
+            key={friend.id}
+            name={friend.name}
+            email={friend.email}
+            age={friend.age}
+          /> 
         ) 
       })}
     </div>
