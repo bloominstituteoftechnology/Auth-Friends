@@ -43,14 +43,39 @@
       * **[POST]** to `/api/friends`: creates a friend and return the new list of friends. Pass the friend as the `body` of the request (the second argument passed to `axios.post`).
       * **[PUT]** to `/api/friends/:id`: updates the friend using the `id` passed as part of the URL. Send the an object with the updated information as the `body` of the request (the second argument passed to `axios.put`).
       * **[DELETE]** to `/api/friends/123`: removes the friend using the `id` passed as part of the URL (123 in example).
+      
+      Ref: https://codesandbox.io/s/auth-starter-forked-5pki6
+
+      Walkthrough:
+
+      1. Form captures user credentials
+          1. Login > handler > axios request > post request that sends credentials
+          2. if correct server sends a token as payload
+              1. set as local storage
+              2. routed to our landing page /protected
+          3. err > err
+      2. Private Route
+          1. (We are at private route now) rendered on dom
+              1. **PrivateRoute.js - will see if token passes
+                  1. renders component with props if passes
+                  2. loads login screen 
+      3. Gas Prices component:
+          1. when componentDidMount is called
+              1. getData
+                  1. makes axios request (axiosWithAuth)
+                      1. get's sent with authorization header
+                  2. When data comes back we filter to get the correct data
+                      1. set that to state
+                      2. Format the data to receive that.
 
 
   #### Task 3: Build the App!
-    * 3A [ ] Add a route for a login page and build out a simple login form with username and password inputs and a submit button (design this however you would like).
+    * 3A [x] Add a route for a login page and build out a simple login form with username and password inputs and a submit button (design this however you would like).
 
     * 3B [ ] The login function should save the returned token to localStorage. You can setup `isLoading` state in your Login component, and show a spinner on your form or in your button while the login request is happening.
 
     * 3C [ ] When the request returns, save the token to `localStorage`, then use the history object in your Login component to navigate your user to your FriendsList route
+
 
     * 3D [ ] Create a `<PrivateRoute />` component to protect your other routes. It should check localStorage for a token, and redirect the user to your login route if there is not a token.
     
@@ -94,3 +119,5 @@
 ## Task 7: Review/Clean/Submit
   * [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
   * [ ] Fill out your module retrospective form [here](https://forms.lambdaschool.com/module-retrospective) with a link to your PR
+
+
