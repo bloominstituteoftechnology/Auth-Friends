@@ -2,9 +2,17 @@ import React from 'react';
 
 class Login extends React.Component {
 
-  handleChanges = (e) => {
+  state = {
+    credentials: {
+      username: "",
+      password: ""
+    }
+  }
+
+  handleChange = (e) => {
     console.log(e.target.value)
   }
+
   render() {
     return(
       <div>
@@ -14,7 +22,7 @@ class Login extends React.Component {
             type="text"
             name="username"
             value={"foo"}
-            onChange={this.handleChanges}
+            onChange={this.handleChange}
           />
 
           <input 
@@ -22,7 +30,7 @@ class Login extends React.Component {
             type="text"
             name="password"
             value={"foo"}
-            onChange={this.handleChanges}
+            onChange={this.handleChange}
           />
           <button>Submit</button>
         </form>

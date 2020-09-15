@@ -37,7 +37,7 @@
     * Once your server is up and running, the URL you'll be able to hit from within your app is `http://localhost:5000`. You will however need an authentication header on all the calls except the login call.
     * Take a look at the endpoints that our API has to offer in `server.js`.
 
-      * **[POST]** * to `/api/login`: returns a token to be added to the header of all other requests. Pass in the following credentials as the `body` of the request: `{ username: 'Lambda School', password: 'i<3Lambd4' }`
+      * **[POST]** * to `/api/login`: returns a token to be added to the header of all other requests. Pass in the following credentials as the `body` of the request: `{ username: 'Lambda School', password: 'i<3Lambda4' }`
       * **[GET]** to `/api/friends`: returns the list of friends.
       * **[GET]** to `/api/friends/123`: returns the friend with the id passed as part of the URL (123 in example).
       * **[POST]** to `/api/friends`: creates a friend and return the new list of friends. Pass the friend as the `body` of the request (the second argument passed to `axios.post`).
@@ -46,7 +46,7 @@
       
       Ref: https://codesandbox.io/s/auth-starter-forked-5pki6
 
-      Walkthrough:
+      Walk-through:
 
       1. Form captures user credentials
           1. Login > handler > axios request > post request that sends credentials
@@ -63,7 +63,7 @@
           1. when componentDidMount is called
               1. getData
                   1. makes axios request (axiosWithAuth)
-                      1. get's sent with authorization header
+                      1. gets sent with authorization header
                   2. When data comes back we filter to get the correct data
                       1. set that to state
                       2. Format the data to receive that.
