@@ -47,3 +47,26 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+h2 {
+  font-size: 2.6rem;
+  margin: 1rem;
+}
+
+#root {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar{
+  width: 100vw;
+}
+
+.login{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}

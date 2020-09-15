@@ -19,7 +19,8 @@ function Login() {
     console.log(creds);
   };
   return (
-    <div>
+    <div className="login">
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username: </label>
         <br />
