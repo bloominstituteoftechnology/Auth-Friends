@@ -50,7 +50,7 @@ table {
 
 h2 {
   font-size: 2.6rem;
-  margin: 1rem;
+  margin: 1rem 0rem;
 }
 
 #root {
@@ -59,9 +59,13 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+.App{
+  width: 70%;
+}
 
 .navbar{
   width: 100vw;
+  padding: 2rem 0.5rem;
 }
 
 .login{

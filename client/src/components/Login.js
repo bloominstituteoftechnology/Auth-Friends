@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils";
+
+
 
 function Login() {
   const [creds, setCreds] = useState({
@@ -8,7 +11,7 @@ function Login() {
   });
 
   const [errors, setErrors] = useState(false);
-
+  let history = useHistory();
   const handleChange = (e) => {
     setCreds({
       ...creds,
@@ -24,6 +27,7 @@ function Login() {
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.payload);
+        history.push("./friends");
       })
       .catch((err) => {
         setErrors(true);
