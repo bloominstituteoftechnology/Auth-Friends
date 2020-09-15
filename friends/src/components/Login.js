@@ -8,7 +8,8 @@ class Login extends React.Component {
     credentials: {
       username: "",
       password: ""
-    }
+    },
+    error: 'Incorect login information'
   }
 
   handleChange = (e) => {
@@ -37,7 +38,8 @@ class Login extends React.Component {
         //^^^
       })
       .catch(err => {
-        console.log('login catch', err)
+        console.log('login handler catch error', err)
+        alert('Login handler error');
       })
   }
 
@@ -66,7 +68,7 @@ class Login extends React.Component {
           />
           <button>Submit</button>
         </form>
-        {/* <p style={{ color: "red" }}>{this.state.error}</p> */}
+        <p style={{ color: "red" }}>{this.state.error}</p>
       </div>
     )
   }
