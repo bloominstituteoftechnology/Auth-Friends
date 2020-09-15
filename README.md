@@ -113,6 +113,7 @@
   The completion of these questions is mandatory for MVP. However, passing the quiz doesn't affect your standing as a Lambda School student whatsoever. This is Lambda School testing itself! Please answer honestly and to the best of your ability without using external references.
 
 ### Task 6: Stretch Problems
+  -[x] (No Stretch)
   * In the requirements for this project, we implemented a login POST operation, a GET operation, and a "add friend" POST operation. Add two more functions, one for making a PUT request, and the other for making a DELETE request.
   * Style the friends list and the input field and make everything look nice.
   * Expand the number of properties that you put on each friend object. Feel free to remove the dummy data on the server or modify it in any way.
