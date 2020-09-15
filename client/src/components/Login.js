@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Button } from "antd";
+import { axiosWithAuth } from "../utils";
 
 function Login() {
   const [creds, setCreds] = useState({
     username: "",
     password: "",
   });
+
+  const [errors, setErrors] = useState(false);
 
   const handleChange = (e) => {
     setCreds({
@@ -17,10 +19,20 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(creds);
+    axiosWithAuth()
+      .post("/api/login", creds)
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data.payload);
+      })
+      .catch((err) => {
+        setErrors(true);
+      });
   };
   return (
     <div className="login">
       <h2>Login</h2>
+      {errors && <p>There was an error with your information</p>}
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username: </label>
         <br />
