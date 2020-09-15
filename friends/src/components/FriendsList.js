@@ -10,7 +10,7 @@ const FriendsList = () => {
     axiosWithAuth()
       .get('/api/friends')
       .then(res => {
-        // console.log(res.data)
+        console.log(res.data)
         setFriendsData(res.data)
       })
       .catch(err => {

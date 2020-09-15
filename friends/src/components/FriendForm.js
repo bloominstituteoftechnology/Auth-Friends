@@ -22,13 +22,11 @@ const FriendForm = () => {
   }
   
   const handleChanges = event => {
-    // console.log(event);
     return(
       setNewFriend(
         {...newFriend, [event.target.name]: event.target.value}
       )
-      )
-      console.log('FriendForm', newFriend)
+    )
   }
 
   return (

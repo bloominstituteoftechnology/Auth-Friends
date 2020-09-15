@@ -24,7 +24,6 @@ function App() {
       </ul>
       <Switch>
         <Route path="/login" component={Login} />
-        {/* >>> 3E (Don't forget to clear tolkens in devtools>Application to test redirect) */}
         <PrivateRoute exact path="/FriendsList" component={FriendsList} />
         <PrivateRoute exact path="/add-friend" component={FriendForm} />
       </Switch>

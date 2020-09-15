@@ -13,7 +13,6 @@ class Login extends React.Component {
   }
 
   handleChange = (e) => {
-    // console.log(e.target.value)
     this.setState({
       credentials: {
        ...this.state.credentials,
@@ -29,13 +28,8 @@ class Login extends React.Component {
     axiosWithAuth()
       .post('/api/login', this.state.credentials)
       .then(res => {
-        // console.log(res)
-        //if token is correct set as local storage
         localStorage.setItem('token', res.data.payload)
-
-        // route to landing page
         this.props.history.push('/FriendsList');
-        //^^^
       })
       .catch(err => {
         console.log('login handler catch error', err)
