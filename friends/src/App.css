@@ -1,0 +1,28 @@
+.App {
+  text-align: center;
+  height: 95vh;
+  
+}
+nav{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.data{
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 5%;
+}
+.inputfetch{
+  display: flex;
+  flex-direction: column;
+}
+.inputfetch button, input{
+  margin-top:10%;
+}
+.friend{
+  margin:2%;
+  border-radius: 25px;
+  background-color:darksalmon
+
+}

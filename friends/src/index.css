@@ -1,0 +1,31 @@
+body, html {
+  height: 90vh;
+  
+}
+.home{
+  height: 100%;
+  background-color: 
+  #A8A8FF; 
+}
+
+.login{
+  height: 100%;
+  background-color: #f8f8ff;
+}
+.data{
+  height: 100%;
+  background-color: #FCFFDB;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
