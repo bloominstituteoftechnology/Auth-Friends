@@ -10,7 +10,7 @@ const FriendsList = () => {
     axiosWithAuth()
       .get('/api/friends')
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         setFriendsData(res.data)
       })
       .catch(err => {
@@ -24,18 +24,20 @@ const FriendsList = () => {
 
   
     return (
-    <div  style={{"margin" : "10px"}}>
-      Friends List 
-      {friendsData.map(friend => {
-        return(
-          <FriendCard
-            key={friend.id}
-            name={friend.name}
-            email={friend.email}
-            age={friend.age}
-          /> 
-        ) 
-      })}
+    <div>
+      <div  style={{"margin" : "10px"}}>
+        Friends List 
+        {friendsData.map(friend => {
+          return(
+            <FriendCard
+              key={friend.id}
+              name={friend.name}
+              email={friend.email}
+              age={friend.age}
+            /> 
+          ) 
+        })}
+      </div>
     </div>
     )
 

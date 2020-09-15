@@ -4,6 +4,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import FriendsList from './components/FriendsList';
+import FriendForm from './components/FriendForm';
 
 import './App.css';
 
@@ -17,11 +18,15 @@ function App() {
         <li>
           <Link to="/FriendsList">Friends List</Link>
         </li>
+        <li>
+          <Link to="/add-friend">Add Friend</Link>
+        </li>
       </ul>
       <Switch>
         <Route path="/login" component={Login} />
         {/* >>> 3E (Don't forget to clear tolkens in devtools>Application to test redirect) */}
         <PrivateRoute exact path="/FriendsList" component={FriendsList} />
+        <PrivateRoute exact path="/add-friend" component={FriendForm} />
       </Switch>
     </div>
   );
