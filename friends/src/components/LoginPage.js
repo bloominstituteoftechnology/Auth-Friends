@@ -26,7 +26,7 @@ const initialValues = {
           .then(res => {
             window.localStorage.setItem('token', res.data.payload);
             // navigate the user to /protected (whatever landing page)
-            history.push('/protected');
+            history.push('/friends');
           })
           .catch(err => console.log(err));
    

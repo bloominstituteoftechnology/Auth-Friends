@@ -1,3 +1,21 @@
+body, html {
+  height: 90vh;
+  
+}
+.home{
+  height: 100%;
+  background-color: 
+  #A8A8FF; 
+}
+
+.login{
+  height: 100%;
+  background-color: #f8f8ff;
+}
+.data{
+  height: 100%;
+  background-color: #FCFFDB;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

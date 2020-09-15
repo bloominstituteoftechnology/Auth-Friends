@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  height: 95vh;
+  
 }
 nav{
   display: flex;
@@ -14,6 +16,9 @@ nav{
 .inputfetch{
   display: flex;
   flex-direction: column;
+}
+.inputfetch button, input{
+  margin-top:10%;
 }
 .friend{
   margin:2%;

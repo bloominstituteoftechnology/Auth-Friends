@@ -9,6 +9,7 @@ import './App.css';
 
 function App() {
   return (
+    
     <Router>
       <div className="App">
         <nav>
@@ -18,7 +19,7 @@ function App() {
           
         </nav>
         <Switch>
-        <Route exact path="/protected" ><PrivateRoute component={Data}/></Route>
+        <Route exact path="/friends" ><PrivateRoute component={Data}/></Route>
           <Route path="/login"><LoginPage /></Route>
           <Route path="/"><HomePage /></Route>
         </Switch>
