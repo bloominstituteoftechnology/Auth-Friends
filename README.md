@@ -90,7 +90,7 @@
 
     * 4B [x]Make a POST request to add a friend to the database
     
-    * 4C [ ] Each `friend` item that is in the `friends` array should have the following format:
+    * 4C [x] Each `friend` item that is in the `friends` array should have the following format:
 
   ```js
   {
