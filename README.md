@@ -82,7 +82,7 @@
     
     * 3E [x] Create a protected route for your friends list. Remember, if the user isn't logged in, navigating to this protected route will redirect them to the login page.
 
-    * 3F [ ] In your FriendsList component, rendered with `<ProtectedRoute />`, you will create a list of your friends that you get from the API.
+    * 3F [x] In your FriendsList component, rendered with `<ProtectedRoute />`, you will create a list of your friends that you get from the API.
 
 
   ## Task 4: Adding New Friends**
