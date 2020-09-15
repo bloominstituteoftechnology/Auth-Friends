@@ -1,25 +1,26 @@
 # Auth Friends
 
-Topics:
+  Topics:
 
-* React Router
-* Protected Routes
-* `axios` package
-* AJAX
-* Promises
-* Authentication tokens
+  * React Router
+  * Protected Routes
+  * `axios` package
+  * AJAX
+  * Promises
+  * Authentication tokens
 
 ## Instructions
 
-### Task 1: Set Up
+  ### Task 1: Set Up
 
-#### Initialize Project
+  #### Initialize Project
 
-* Run `npm install` inside the root directory of this project to install dependencies for the API server.
-* Run `npm start` to start the API server.
-* Run `npx create-react-app friends --use-npm` in a separate terminal window in the root directory of the project to create your starter application.
-* If you experience issues with `npx`, you may create your starter application by running `create-react-app friends --use-npm`.
-* `cd` into the _friends_ folder and type `npm install axios react-router-dom` which will install the needed dependencies.
+  * Initial commit
+  * Run `npm install` inside the root directory of this project to install dependencies for the API server.
+  * Run `npm start` to start the API server.
+  * Run `npx create-react-app friends --use-npm` in a separate terminal window in the root directory of the project to create your starter application.
+  * If you experience issues with `npx`, you may create your starter application by running `create-react-app friends --use-npm`.
+  * `cd` into the _friends_ folder and type `npm install axios react-router-dom` which will install the needed dependencies.
 
 ### Task 2a: MVP
 
@@ -64,19 +65,19 @@ Topics:
 * If you'd like, you can create multiple "view" components for your routes. You could have a component who's sole purpose is to render the login form; one for a form for updating a user; another component who's sole purpose is for creating users; and then another component who's sole purpose is to delete a user.
 * It really is up to you how you build this project. I suggest writing down the flow you want to follow, and then writing down each individual piece you need for each step in the flow so that this process doesn't feel as overwhelming.
 
-### Task 2b: Exit Ticket
+### Task 3: Exit Ticket
 
 Once you begin, you will have 15 minutes to answer the questions [here](https://app.codesignal.com/public-test/HTCR4wnK3eu6Q94z9/cHkY6rNFiHbPFm).
 
 The completion of these questions is mandatory for MVP. However, passing the quiz doesn't affect your standing as a Lambda School student whatsoever. This is Lambda School testing itself! Please answer honestly and to the best of your ability without using external references.
 
 
-### Task 3: Stretch Problems
+### Task 4: Stretch Problems
 
 * In the requirements for this project, we implemented a login POST operation, a GET operation, and a "add friend" POST operation. Add two more functions, one for making a PUT request, and the other for making a DELETE request.
 * Style the friends list and the input field and make everything look nice.
 * Expand the number of properties that you put on each friend object. Feel free to remove the dummy data on the server or modify it in any way.
 
-## Submission Format
+## Task 5: Review/Clean/Submit
 * [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
 * [ ] Fill out your module retrospective form [here](https://forms.lambdaschool.com/module-retrospective) with a link to your PR
