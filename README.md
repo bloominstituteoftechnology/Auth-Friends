@@ -72,9 +72,10 @@
   #### Task 3: Build the App!
     * 3A [x] Add a route for a login page and build out a simple login form with username and password inputs and a submit button (design this however you would like).
 
-    * 3B [ ] The login function should save the returned token to localStorage. You can setup `isLoading` state in your Login component, and show a spinner on your form or in your button while the login request is happening.
+    * 3B [x] The login function should save the returned token to localStorage. 
+    You can setup `isLoading` state in your Login component, and show a spinner on your form or in your button while the login request is happening.
 
-    * 3C [ ] When the request returns, save the token to `localStorage`, then use the history object in your Login component to navigate your user to your FriendsList route
+    * 3C [x] When the request returns, save the token to `localStorage`, then use the history object in your Login component to navigate your user to your FriendsList route
 
 
     * 3D [ ] Create a `<PrivateRoute />` component to protect your other routes. It should check localStorage for a token, and redirect the user to your login route if there is not a token.

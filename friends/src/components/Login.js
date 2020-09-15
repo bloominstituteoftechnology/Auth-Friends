@@ -1,5 +1,6 @@
 // import e from 'express';
 import React from 'react';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 class Login extends React.Component {
 
@@ -23,7 +24,21 @@ class Login extends React.Component {
 
   login = (e) => {
     e.preventDefault();
-    
+
+    axiosWithAuth()
+      .post('/api/login', this.state.credentials)
+      .then(res => {
+        console.log(res)
+        //if token is correct set as local storage
+        localStorage.setItem('token', res.data.payload)
+
+        // route to landing page
+        this.props.history.push('/FriendsList');
+        //^^^
+      })
+      .catch(err => {
+        console.log('login catch', err)
+      })
   }
 
   render() {
@@ -36,7 +51,7 @@ class Login extends React.Component {
             name="username"
             placholder="Username"
 
-            // value={e.target.value}
+            value={this.state.credentials.username}
             onChange={this.handleChange}
           />
 
@@ -46,7 +61,7 @@ class Login extends React.Component {
             name="password"
             placeholder="Password"
 
-            // value={e.target.value}
+            value={this.state.credentials.password}
             onChange={this.handleChange}
           />
           <button>Submit</button>

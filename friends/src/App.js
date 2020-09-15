@@ -13,11 +13,12 @@ function App() {
           <Link to="/login">Login</Link>
         </li>
         <li>
-          <Link to="/protected">Protected</Link>
+          <Link to="/FriendsList">Friends List</Link>
         </li>
       </ul>
       <Switch>
         <Route path="/login" component={Login} />
+
       </Switch>
     </div>
   );
