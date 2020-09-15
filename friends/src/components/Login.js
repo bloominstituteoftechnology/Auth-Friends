@@ -1,3 +1,4 @@
+// import e from 'express';
 import React from 'react';
 
 class Login extends React.Component {
@@ -10,26 +11,42 @@ class Login extends React.Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
+    this.setState({
+      credentials: {
+       ...this.state.credentials,
+       [e.target.name]: e.target.value
+      },
+      error: ""
+    })
+  }
+
+  login = (e) => {
+    e.preventDefault();
+    
   }
 
   render() {
     return(
       <div>
-        <form onSubmit={() => console.log("foo")}>
+        <form onSubmit={this.login}>
           <input 
             style={{"margin" : "10px"}}
             type="text"
             name="username"
-            value={"foo"}
+            placholder="Username"
+
+            // value={e.target.value}
             onChange={this.handleChange}
           />
 
           <input 
             style={{"margin" : "10px"}}
-            type="text"
+            type="password"
             name="password"
-            value={"foo"}
+            placeholder="Password"
+
+            // value={e.target.value}
             onChange={this.handleChange}
           />
           <button>Submit</button>

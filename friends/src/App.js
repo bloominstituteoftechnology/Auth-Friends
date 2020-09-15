@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <ul>
         <li>
           <Link to="/login">Login</Link>
