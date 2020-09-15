@@ -37,7 +37,7 @@ const initialValues = {
             <h1>Login</h1>
             <div className="form">
                 <input type="text" name="username" value={values.username} onChange={handleChanges} placeholder="Username"  />
-                <input type="text" name ="password" value={values.password} onChange={handleChanges} placeholder="Password"  />
+                <input type="password" name ="password" value={values.password} onChange={handleChanges} placeholder="Password"  />
                 <button onClick={handleSubmit}>Submit</button>
             </div>
         </div>
