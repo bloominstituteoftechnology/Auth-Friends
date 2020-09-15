@@ -88,7 +88,7 @@
   ## Task 4: Adding New Friends**
     * 4A [x]Create a form to collects data for a new friend.
 
-    * 4B [ ]Make a POST request to add a friend to the database
+    * 4B [x]Make a POST request to add a friend to the database
     
     * 4C [ ] Each `friend` item that is in the `friends` array should have the following format:
 

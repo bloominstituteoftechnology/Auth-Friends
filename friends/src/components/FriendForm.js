@@ -8,6 +8,18 @@ const FriendForm = () => {
     email: '',
     age: ''
   })
+
+  const handleSubmit = event => {
+    axiosWithAuth()
+      .post('/api/friends', newFriend)
+      .then(res => {
+        console.log(res)
+        alert(`NEW FRIEND ${newFriend.name} added`)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
   
   const handleChanges = event => {
     // console.log(event);
