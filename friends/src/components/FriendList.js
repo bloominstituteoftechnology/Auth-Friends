@@ -56,7 +56,7 @@ const FriendsList = () => {
     return (
         <div className="friend-form-container">
         <section className="friends-container">
-            <h1>My friends...</h1>
+            <h3>My friends...</h3>
             {friends.map(friend => {
                 return <h3 key={friend.id}>{friend.name}</h3>
             })}
