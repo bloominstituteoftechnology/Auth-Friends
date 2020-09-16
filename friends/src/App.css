@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   font-weight: lighter;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -35,9 +37,9 @@ ul{
   list-style-type: none;
 }
 input[type=text] {
-  width: 80%;
-  padding: 2%;
-  margin: 2% auto;
+  width: 100%;
+  padding: 3%;
+  margin: 4% auto;
   display: flex;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -57,7 +59,8 @@ button {
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+  text-shadow:0px 1px 0px #ffffff;
+  margin-bottom: 2%;
 }
 button:hover {
 	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
