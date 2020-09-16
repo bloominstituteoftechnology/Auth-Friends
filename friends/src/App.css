@@ -1,11 +1,10 @@
 .App {
   text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: lighter;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -22,8 +21,19 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  text-decoration: none;
 }
+div .App-header{
+  text-decoration: none;
+}
+ul{
+  list-style-type: none;
 
+}
+li{
+  text-decoration: none;
+  color:white;
+}
 .App-link {
   color: #61dafb;
 }
