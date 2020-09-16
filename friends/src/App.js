@@ -1,43 +1,32 @@
-import React , { useState, useEffect } from "react";
-import "./App.css";
+import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+
 import Login from "./components/Login";
-import AddFriends from "./components/AddFriends";
+import FriendsList from "./components/FriendList";
 import PrivateRoute from "./components/PrivateRoute";
-import FriendList from "./components/FriendList";
-import axiosWithAuth from "./utils/axiosWithAuth"
+
+import "./App.css";
 
 function App() {
-  const [friends,setFriends] = useState([]) 
-
-  useEffect( () => {
-    axiosWithAuth()
-    .get('/api/friends')
-    .then(res => {
-        console.log(res.data)
-        setFriends(res.data)
-    })
-}, [])
-
   return (
     <Router>
       <div className="App">
         <div className="App-header">
           <Switch>
-            
+            <PrivateRoute exact path="/friends" component={FriendsList} />
             <Route path="/login" component={Login} />
-            <Route path="/addfriend" component={AddFriends} />
-            <PrivateRoute path="/friends" component={()=> <FriendList friends={friends}/>} />
+            <Route>
+              <Login />
+            </Route>
           </Switch>
           <ul>
-            <li className="li">
+            <li>
               <Link to="/login">Login</Link>
             </li>
-            <li className="li">
-              <Link to="/friendlist">FriendList</Link>
+            <li>
+              <Link to="/friends">Friends List</Link>
             </li>
           </ul>
-          {/* <AddFriends /> */}
         </div>
       </div>
     </Router>

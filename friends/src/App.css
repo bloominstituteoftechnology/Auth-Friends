@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  font-family: 'Open Sans Condensed', sans-serif;
   font-weight: lighter;
 }
 
@@ -22,6 +21,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
   text-decoration: none;
+ 
 }
 div .App-header{
   text-decoration: none;
@@ -34,15 +34,5 @@ li{
   text-decoration: none;
   color:white;
 }
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState} from "react";
+import { useHistory } from 'react-router-dom'
+
 import  axiosWithAuth  from "../utils/axiosWithAuth";
-import { BrowserRouter as Router} from "react-router-dom";
+// import { BrowserRouter as Router} from "react-router-dom";
 // import styled from "style-component";
 
 // const FormWrapper = styled.div`
@@ -13,72 +15,62 @@ import { BrowserRouter as Router} from "react-router-dom";
 //   border: 6px solid #305a72;
 // `;
 
-export class Login extends React.Component {
-  // const history = useHistory();
-  state = {
-    credentials: {
-      username: "",
-      password: "",
-    },
-  };
-
-  handleChange = (e) => {
-    this.setState({
-      credentials: {
-        ...this.state.credentials,
-        [e.target.name]: e.target.value,
-      },
-      error: "",
-    });
-  };
-
-  login = (e) => {
-    e.preventDefault();
-
-    axiosWithAuth()
-      .post("/api/login", this.state.credentials)
-      .then((res) => {        
-        localStorage.setItem("token", res.data.payload)
-        console.log(res.data)
-        this.props.history.push("/protected");
-      })
-      .catch((err) => {
-           console.log(err)
-        this.setState({
-          error: err.response.data.error,
-        });
-      });
-  };
-
-  render() {
-    return (
-    <Router> 
-        
-      <div className="login-form">
-          <h1>Login Form</h1>
-        <form onSubmit={this.login}>
-            <label> Name </label>
-          <input 
-            type="text"
-            name="username"
-            value={this.state.credentials.username}
-            onChange={this.handleChange}
-          />
-          <label> Password </label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.credentials.password}
-            onChange={this.handleChange}
-          />
-          <button>Log in</button>
-        </form>
-        <p style={{ color: "red" }}>{this.state.error}</p>
-      </div>
-      
-      </Router>
-    );
-  }
+const initCredentials = {
+    username: "",
+    password: "",
 }
 
-export default Login;
+
+
+const Login = () => {
+    const history = useHistory()
+    const [ credentials, setCredentials] = useState(initCredentials)
+
+    const onFormChange = e => {
+        setCredentials({
+            ...credentials,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const onSubmit = e => {
+        e.preventDefault()
+        axiosWithAuth()
+        .post('/api/login', credentials)
+        .then(res => {
+            localStorage.setItem("token", res.data.payload);
+            history.push('/friends')
+        })
+        .catch(err => {
+            console.log(err, "err.")
+        })
+        setCredentials(credentials)
+    }
+
+    return (
+        <section className="form-style">
+            <h1 className="form-header">Login</h1>
+            <form  onSubmit={onSubmit} className="friend-form">
+                <label className="form-label">Username  &nbsp;
+                    <input 
+                    name="username"
+                    type="text"
+                    value={credentials.username}
+                    onChange={onFormChange}                    
+                    />
+                </label>
+                <label className="form-label">Password &nbsp;
+                    <input 
+                    name="password"
+                    type="text"
+                    value={credentials.password}
+                    onChange={onFormChange}                      
+                    />
+                </label>
+                <button className="submit">Login</button>
+            </form>
+        </section>
+    )
+}
+
+export default Login
