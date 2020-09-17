@@ -9,7 +9,7 @@ const UserFriends = () => {
     useEffect(() => {
         axiosAuthWithToken().get('/api/friends')
             .then(res=> {
-                console.log(res.data);
+                // console.log(res.data);
                 setFriendsList(res.data)
             })
             .catch (err => {
@@ -17,10 +17,29 @@ const UserFriends = () => {
             })
     },[])
 
+    const postFriend = (friendObj) => {
+        axiosAuthWithToken().post('/api/friends', friendObj)
+            .then(res => {
+                // console.log(res.data)
+                setFriendsList(res.data)
+            })
+            .catch (err => {
+                console.log(err)
+            })
+    }
+
+    const deleteFriend = (id) => {
+        console.log(id);
+    }
+
     return (
         <div>
             <h2>User Friends</h2>
-            <h3>Add Friend Form</h3>
+            <div>
+                <h3>Add Friend Form</h3>
+                <FriendForm post = {postFriend}/>
+            </div>
+            
             <div>
                 <h3>Friend List</h3>
                 {friendsList.map(f => {
