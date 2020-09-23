@@ -44,7 +44,7 @@ const FriendsList = () => {
             ])
         })
         .catch(err => {
-            console.log(err, "You fool! You absolute buffoon!")
+            console.log(err, "error")
         })
         setFormValues(initialFormValues)
     }
