@@ -1,38 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+
 .App {
   text-align: center;
+  background-image: url("https://randomc.net/image/Bokura%20wa%20Minna%20Kawaisou/Bokura%20wa%20Minna%20Kawaisou%20-%2011%20-%20Large%2036.jpg");
+  min-height: 100%;
+  color:white;
+  font-family: 'Indie Flower', cursive;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login-form{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 40%;
+  height: 250%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-left: 35rem;
+  margin-top: 15%;
+} 
+.login-form form{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 250%;
+  justify-content: center;
+  margin-top:-15% ;
+  margin-left: 35%;
+  margin-bottom: 30%;
+} 
+nav a{
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  color: aliceblue;
 }
 
-.App-link {
-  color: #61dafb;
+.links{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-left: 70%;
+  font-size: 2rem;
+
+}
+label{
+  font-size: 3rem;
+}
+input{
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+  font-size:2rem;
+}
+button{
+  margin-top: 15%;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgb(205, 169, 230);
+  padding: 15px 40px;
+  border-radius: 4px;
+  font-weight: normal;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.add-friend {
+  display: flex;
+  justify-content: flex-start;
+  
+  
+} 
+
+
+section {
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  display: flex;
+  background-image: url("https://randomc.net/image/Bokura%20wa%20Minna%20Kawaisou/Bokura%20wa%20Minna%20Kawaisou%20-%2011%20-%20Large%2036.jpg");
+
+
+}
+.new-added-friends{
+  background-color: burlywood;
+
+  
 }
