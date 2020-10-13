@@ -17,6 +17,9 @@ const Login = function() {
             console.log(res)
             window.localStorage.setItem("token", res.data.payload)
         })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     const handleChange = (e) => {
