@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
+import Friend from "./Friend"
+import NewFriend from "./NewFriend"
+
 const ProtectedContent = function () {
   const [friends, setFriends] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -11,12 +14,12 @@ const ProtectedContent = function () {
     axiosWithAuth()
       .get("/friends")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setIsLoading(false);
         setFriends(res.data);
       })
       .catch((err) => {
-        console.log("THIS", err);
+        console.log(err);
       });
   };
 
@@ -24,9 +27,30 @@ const ProtectedContent = function () {
     getData();
   }, []);
 
+  const deleteFriend = (id) => {
+      axiosWithAuth()
+        .delete(`/friends/${id}`)
+        .then(res => {
+          setFriends(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+  }
+
+  const selectFriend = function(currentFriendId) {
+    const selectAFriend = friends.filter((friend) => {
+        return currentFriendId === friend.id
+    })
+    console.log(selectAFriend[0])
+    deleteFriend(selectAFriend[0].id)
+  }
+
+  
+
   return (
     <div>
-      <p>This content is inaccessable unless you have a token</p>
+      <NewFriend setFriends={setFriends}/>
       {isLoading ? (
         <div>
           <p>Loading Data...</p>
@@ -34,11 +58,7 @@ const ProtectedContent = function () {
       ) : (
         friends.map((friend) => {
           return (
-            <div key={friend.id}>
-              <p>Name: {friend.name} </p>
-              <p>Age: {friend.age} </p>
-              <p>Email: {friend.email} </p>
-            </div>
+            <Friend key={friend.id} friendData={friend} selectFriend={selectFriend} />
           );
         })
       )}

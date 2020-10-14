@@ -5,6 +5,7 @@ import "./App.css";
 import Login from "./Components/Login"
 import HomePage from "./Components/HomePage"
 import ProtectedContent from "./Components/ProtectedContent"
+import PrivateRout from "./Components/PrivateRout"
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Link to="/login">Login</Link>
         <Link to="/protected">Content</Link>
         <Switch>
-          <Route exact path="/protected" component={ProtectedContent} />
+          <PrivateRout exact path="/protected" component={ProtectedContent} />
           <Route path="/login" component={Login} />
           <Route path="/" component={HomePage} />
         </Switch>

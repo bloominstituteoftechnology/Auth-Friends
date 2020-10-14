@@ -14,7 +14,7 @@ const Login = function() {
         e.preventDefault()
         axios.post("http://localhost:5000/api/login", credentials)
         .then(res => {
-            console.log(res)
+            // console.log(res)
             window.localStorage.setItem("token", res.data.payload)
         })
         .catch(err => {
