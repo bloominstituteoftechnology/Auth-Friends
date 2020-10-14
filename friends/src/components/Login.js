@@ -17,19 +17,21 @@ class Login extends React.Component {
             }
         });
     };
-
-    login = e => {
+// first post request
+   login = e => {
         e.preventDefault();
 
-        axios.post('http://localhost:5000/api/login'), this.state.credentials)
+        axios.post('api/login'), this.state.credentials)
         .then(res => {
-            localStorage.setItem('token', res.data.payload);
+            localStorage.setItem('token', res.data.token);
             this.props.history.push('/friends');
         })
         .catch((err) => {
             console.log(err);
         });
     };
+
+//login form
 
     render() {
     return(
@@ -53,3 +55,4 @@ class Login extends React.Component {
     )
 }
 }
+export default Login;
