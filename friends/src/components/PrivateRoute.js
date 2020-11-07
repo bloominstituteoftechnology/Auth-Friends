@@ -10,7 +10,7 @@
       if (localStorage.getItem("token")) {
         return <Component {...props} />;
       }else{
-        return <Redirect to="/login" />;
+        return <Redirect to="/" />;
       }
     }}
     />

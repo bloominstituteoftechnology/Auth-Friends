@@ -1,19 +1,38 @@
 import React, { useState } from 'react';
-import Form from './components/Login'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import Login from './components/Login'
+import PrivateRoute from './components/PrivateRoute';
+import FriendsList from './components/FriendsList';
 import './App.css';
 
 
 function App() {
   
-  const [users, setUsers] = useState([]);
 
   return (
-      <div className="App">
-        <Form users={users} setUsers={setUsers}/>
-        <div>
-          {users.map((user, index) => (<p>Name: {user.name} Email: {user.email}</p>))}
-        </div>
+    <Router>
+    <div className="App">
+
+      <div>
+
+        <Link to="/login">Login</Link>
+        <br />
+        <Link to="/friends">Friends List</Link>
+
       </div>
+
+      <Switch>
+
+        <PrivateRoute exact path="/friends" component={FriendsList} />
+
+        <Route path="/login" component={Login} />
+        <Route component={Login} />
+
+      </Switch>
+
+    </div>
+    
+  </Router>
     );
   }
 

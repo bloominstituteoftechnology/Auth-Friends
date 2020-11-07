@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as yup from 'yup';
-import axios from "axios";
+import { axiosWithAuth } from '../utilities/axiosWithAuth';
+
 
 
 const formSchema = yup.object().shape({
@@ -9,14 +10,16 @@ const formSchema = yup.object().shape({
     terms: yup.boolean().oneOf([true], "Please agree to the terms of use"),
 });
 
+const initialCredentials = {
+  credentials: { username: "", password: "" },
+  terms: "",
+  error: "",
+};
+
 
 function Login() {
 
-const [formState, setFormState] = useState({
-    username: "",
-    password: "",
-    terms: "",
-});
+const [formState, setFormState] = useState(initialCredentials);
 
 const [errors, setErrors] = useState({
     username: "",
@@ -36,7 +39,7 @@ useEffect(() => {
     });
   }, [formState]);
 
-const handleChange = e => {
+const handleLoginChange = e => {
     e.persist();
     const newFormData = {
       ...formState,
@@ -47,14 +50,14 @@ const handleChange = e => {
     setFormState(newFormData);
   };
 
-  const handleSubmit = e => {
+  const handleLoginSubmit = e => {
       e.preventDefault();
-      axios
+      axiosWithAuth()
       .post("http://localhost:5000/api/login", formState)
       .then((res)=>{
-        localStorage.setItem('token', res.data.payload);
+        window.localStorage.setItem('token', res.data.payload);
           setNewForm(res.data);
-          console.log("It works!", newForm)
+          
           setFormState({
               username: "",
               password: "",
@@ -83,10 +86,10 @@ const handleChange = e => {
 };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleLoginSubmit}>
     <label htmlFor='username'>
       <input
-        onChange={handleChange}
+        onChange={handleLoginChange}
         type="text"
         name="username"
         value={formState.name}
@@ -97,7 +100,7 @@ const handleChange = e => {
 
       <label htmlFor='password'>
       <input
-        onChange={handleChange}
+        onChange={handleLoginChange}
         type="password"
         name="password"
         value={formState.password}
@@ -115,7 +118,7 @@ const handleChange = e => {
           type='checkbox'
           name='terms'
           checked={formState.terms}
-          onChange={handleChange}
+          onChange={handleLoginChange}
         />
         Terms & Conditions
       </label>

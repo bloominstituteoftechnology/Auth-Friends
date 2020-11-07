@@ -1,5 +1,5 @@
 import React from 'react';
-import JSONpretty from 'react-json-pretty';
+
 
 const Friend = (props) => {
     return (
@@ -7,7 +7,7 @@ const Friend = (props) => {
             <h3>{props.name}</h3>
             <p>{props.age}</p>
             <p>{props.email}</p>
-            <JSONPretty data={props} />
+            <p data={props} ></p>
         </div>
     )
 }
