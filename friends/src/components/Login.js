@@ -4,25 +4,22 @@ import axios from "axios";
 
 
 const formSchema = yup.object().shape({
-    name: yup.string().required("Name is a required field."),
-    email: yup.string().email("Must be a valid email address").required("Must include email address."),
+    username: yup.string().required("Name is a required field."),
     password: yup.string().required("Must create a password"),
     terms: yup.boolean().oneOf([true], "Please agree to the terms of use"),
 });
 
 
-function Form() {
+function Login() {
 
 const [formState, setFormState] = useState({
-    name: "",
-    email: "",
+    username: "",
     password: "",
     terms: "",
 });
 
 const [errors, setErrors] = useState({
-    name: "",
-    email: "",
+    username: "",
     password: "",
     terms: "",
   });
@@ -39,26 +36,27 @@ useEffect(() => {
     });
   }, [formState]);
 
-const handleChange = event => {
-    event.persist();
+const handleChange = e => {
+    e.persist();
     const newFormData = {
       ...formState,
-      [event.target.name]:
-        event.target.type === "checkbox" ? event.target.checked : event.target.value
+      [e.target.name]:
+        e.target.type === "checkbox" ? e.target.checked : e.target.value
     };
-    validateChange(event);
+    validateChange(e);
     setFormState(newFormData);
   };
 
-  const handleSubmit = event => {
-      event.preventDefault();
-      axios.post("https://reqres.in/api/users", formState)
-      .then(res => {console.log("1 It works!", newForm)
+  const handleSubmit = e => {
+      e.preventDefault();
+      axios
+      .post("http://localhost:5000/api/login", formState)
+      .then((res)=>{
+        localStorage.setItem('token', res.data.payload);
           setNewForm(res.data);
-          console.log("2 It works!", newForm)
+          console.log("It works!", newForm)
           setFormState({
-              name: "",
-              email: "",
+              username: "",
               password: "",
               terms: "",
           });   
@@ -86,28 +84,15 @@ const handleChange = event => {
 
   return (
     <form onSubmit={handleSubmit}>
-    <label htmlFor='name'>
+    <label htmlFor='username'>
       <input
         onChange={handleChange}
         type="text"
-        name="name"
+        name="username"
         value={formState.name}
-        placeholder="Name"
+        placeholder="Username"
       />
-      {errors.name.length > 0 ? <p className='error'>{errors.name}</p> : null}
-      </label>
-      <label htmlFor='email'>
-      <input
-        onChange={handleChange}
-        type="text"
-        name="email"
-        value={formState.email}
-        placeholder="Email"
-      />
-              {errors.email.length > 0 ? (
-          <p data-cy="email-error-msg" className='error'>{errors.email}</p>
-        ) : null}
-
+      {errors.username.length > 0 ? <p className='error'>{errors.username}</p> : null}
       </label>
 
       <label htmlFor='password'>
@@ -140,4 +125,4 @@ const handleChange = event => {
 );
   }
 
-export default Form;
+export default Login;
