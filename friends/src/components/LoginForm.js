@@ -21,6 +21,7 @@ class LoginForm extends React.Component {
 
   login = (e) => {
     e.preventDefault();
+    console.log(this.login)
     axios
     .post('http://localhost:5000/api/login', this.state.credentials)
     .then(res => {
@@ -30,10 +31,11 @@ class LoginForm extends React.Component {
     .catch(err => console.log(err));
   };
 
+
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.login}>
           <input
             type="text"
             name="username"
