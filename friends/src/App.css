@@ -1,0 +1,51 @@
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(178, 197, 178);
+  height: 100vh;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+input {
+  padding: 1rem;
+  border-radius: 10px;
+  background: black;
+  color: wheat;
+}
+
+button {
+  padding: 1rem;
+  border-radius: 10px;
+  background: black;
+  color: wheat;
+}
+
+.new-friend-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Times New Roman', Times, serif;
+}
