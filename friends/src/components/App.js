@@ -1,5 +1,9 @@
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+
+import Login from './Login';
 import '../App.css';
+
+
 
 function App() {
   return (
@@ -11,7 +15,9 @@ function App() {
           </li>
         </ul>
         <h1>Friends App</h1>
-        
+        <Switch>
+          <Route path="/login" component={Login} />
+        </Switch>
       </div>
     </Router>
   );
