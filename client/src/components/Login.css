@@ -1,0 +1,51 @@
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    margin: 2%;
+    background-color: #c7c7c7;
+}
+
+.LoginForm h3 {
+    text-transform: uppercase;
+}
+
+.UsernameStyle {
+    width: 100%;
+    padding: 2% 0%;
+}
+
+.PasswordStyle {
+    width: 100%;
+    padding: 2% 0%;
+}
+
+.InputStyle {
+    border-radius: 3px;
+    border: none;
+    padding: 1% 0%;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.InputStyle:focus {
+    outline-style: none;
+    border: 2px solid cyan;
+    border-radius: 3px;
+}
+
+.ButtonStyle {
+    border-radius: 3px;
+    border: none;
+    padding: 1% 2%;
+    margin: 2% 0%;
+}
+
+.ButtonStyle:hover {
+    cursor: pointer;
+    background-color: greenyellow;
+}
+
+.ButtonStyle:focus {
+    outline-style: none;
+}
