@@ -26,8 +26,26 @@ function App() {
   };
 
   return (
-    <div className="App">
-    </div>
+
+    <Router>
+      <div className="App">
+        <ul>
+          { (!isLoggedIn) ? (<li><Link to='/login'>Login</Link></li>) : (<div></div>)}
+          <li>
+            <Link to='#' onClick={logout}>Logout</Link>
+          </li>
+          { (isLoggedIn) ? (<li><Link to='/protected'>Protected Page</Link></li>) : (<div></div>) }
+        </ul>
+
+        <Switch>
+          <PrivateRoute exact path='/protected' component={Friends} />
+          <Route path='/login' render={(props) => {
+            return <Login {...props} setLoggedIn={setLoggedIn} />
+          }} />
+          <Route component={Login} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
