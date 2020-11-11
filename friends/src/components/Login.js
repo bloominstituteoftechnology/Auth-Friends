@@ -1,6 +1,6 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useState } from 'react';
-import {Redirect} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 
 const Login = () => {
@@ -20,12 +20,14 @@ const Login = () => {
             });
     }
 
+    const history = useHistory();
+
     const login = e => {
         e.preventDefault();
         axiosWithAuth().post('api/login', credInput)
             .then(res => {
                 window.localStorage.setItem('token', res.data.payload);
-                
+                history.push('/protected')
             })
             .catch(err => console.log(err))
     }
