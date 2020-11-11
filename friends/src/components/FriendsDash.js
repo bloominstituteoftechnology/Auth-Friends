@@ -15,6 +15,8 @@ const FriendsDash = () => {
             .catch(err => console.log(err))
     };
 
+    
+
     useEffect(() => {
         getFriends();
     }, [])

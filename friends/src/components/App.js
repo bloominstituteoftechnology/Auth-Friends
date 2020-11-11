@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 
 import Login from './Login';
 import FriendsDash from './FriendsDash';
+import { PrivateRoute } from './PrivateRoute'
 import '../App.css';
 
 
@@ -20,8 +21,8 @@ function App() {
         </ul>
         <h1>Friends App</h1>
         <Switch>
+          <PrivateRoute exact path = "/protected" component={FriendsDash} />
           <Route path="/login" component={Login} />
-          <Route exact path = "/protected" component={FriendsDash} />
         </Switch>
       </div>
     </Router>
