@@ -37,8 +37,8 @@ class FriendsList extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>This is the Friends List component!</h1>
+            <div className="friends-page">
+                <h1>These are my Friends!</h1>
                 {this.state.friends.map((friend) => {
                     return (<div>{friend.name} {friend.age} {friend.email} {friend.id} </div>)
                     
