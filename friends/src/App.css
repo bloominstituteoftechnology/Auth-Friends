@@ -1,0 +1,88 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+nav{
+  display: flex;
+  justify-content: space-around;
+  background-color: #DB3069;
+  color: #EBEBD3;
+}
+a{
+  color: #EBEBD3;
+  font-size: 20px;
+}
+body{
+  background-color: #F5D547;
+  color: #1446A0;
+}
+.navButt{
+  background-color:#DB3069;
+  color: #EBEBD3;
+  border: none;
+  font-size: 20px;
+  text-decoration: underline;
+  width: inherit;
+}
+input{
+  margin-left: 10px;
+  width: 200px;
+  height: 30px;
+  font-size: 25px;
+  background-color: #3C3C3B;
+  color: #EBEBD3;
+}
+.form-input{
+  color: #DB3069;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+label{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+button{
+  background-color: #DB3069;
+  color: #EBEBD3;
+  border: 1px solid #3C3C3B;
+  width: 350px;
+  height: 30px;
+  font-size: 25px;
+}
