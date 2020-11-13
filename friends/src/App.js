@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import FriendsList from './components/FriendsList';
-//import { axiosWithAuth } from './utils/axiosWithAuth';
 import './App.css';
 
 
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
+
 
   const logout = () => {
     localStorage.clear();
@@ -25,11 +24,10 @@ function App() {
         </header>
       
         <Switch>
-          <PrivateRoute exact path="/dashboard" component={FriendsList}></PrivateRoute>
-          <Route path="/login" render={(props)=>{
-            return <Login {...props} setLoggedIn={setLoggedIn} />
-          }} />
-          <Route component={Login} />
+          
+          <Route exact path="/login" component={Login}/>
+          <PrivateRoute path="/dashboard" component={FriendsList}/>
+          
         </Switch>
       </div> 
     </Router>
