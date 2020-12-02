@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Login = () => {
+  const history = useHistory();
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
   });
+  const [error, setError] = useState("");
+  console.log("error message: ", error);
 
   const handleChange = (e) => {
     setCredentials({
@@ -21,8 +25,12 @@ const Login = () => {
       .then((res) => {
         console.log("success: ", res);
         localStorage.setItem("token", JSON.stringify(res.data.payload));
+        history.push("/friends");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setError(err.message);
+      });
     setCredentials({
       username: "",
       password: "",
@@ -46,6 +54,7 @@ const Login = () => {
         />
         <button>Login</button>
       </form>
+      {error.length > 0 ? <p>Incorrect username or password</p> : null}
     </div>
   );
 };
