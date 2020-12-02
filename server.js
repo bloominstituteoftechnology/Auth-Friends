@@ -68,9 +68,9 @@ app.post("/api/login", (req, res) => {
       payload: token,
     });
   } else {
-    res
-      .status(403)
-      .json({ error: "Username or Password incorrect. Please see Readme" });
+    res.status(403).json({
+      error: "Username or Password incorrect. Please see README",
+    });
   }
 });
 
