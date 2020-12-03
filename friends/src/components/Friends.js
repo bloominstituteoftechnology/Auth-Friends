@@ -37,7 +37,7 @@ const Friends = () => {
       <h3>Current Friends</h3>
 
       {loading ? (
-        <Loader type="ThreeDots" color="#2C595B" height="100" width="100" />
+        <Loader type="ThreeDots" color="#7350E2" height="100" width="100" />
       ) : (
         friends.map((friend) => <p key={friend.id}> {friend.name}</p>)
       )}

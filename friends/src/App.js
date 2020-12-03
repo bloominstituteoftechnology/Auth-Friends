@@ -7,6 +7,8 @@ import Friends from "./components/Friends";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/Home";
 import OtherProtected from "./components/OtherProtected";
+import AddFriendForm from "./components/AddFriendForm";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
         </PrivateRoute>
         <PrivateRoute path="/friends">
           <Friends />
+        </PrivateRoute>
+        <PrivateRoute path="/dashboard">
+          <Dashboard />
         </PrivateRoute>
         <Route path="/login" component={Login} />
         <Route path="/" component={Home} />
