@@ -9,7 +9,6 @@ const Login = () => {
     password: "",
   });
   const [error, setError] = useState("");
-  console.log("error message: ", error);
 
   const handleChange = (e) => {
     setCredentials({
@@ -54,7 +53,9 @@ const Login = () => {
         />
         <button>Login</button>
       </form>
-      {error.length > 0 ? <p>Incorrect username or password</p> : null}
+      {error.length > 0 ? (
+        <p className="errorMessage">Incorrect username or password</p>
+      ) : null}
     </div>
   );
 };

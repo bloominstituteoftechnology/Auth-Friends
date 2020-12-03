@@ -14,6 +14,9 @@ const NavBar = () => {
       <Link to="/friends">
         <div>Friends</div>
       </Link>
+      <Link to="/other">
+        <div>Other protected</div>
+      </Link>
     </div>
   );
 };
