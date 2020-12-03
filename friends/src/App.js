@@ -13,7 +13,9 @@ function App() {
     <div className="App">
       <NavBar />
       <Switch>
-        <PrivateRoute path="/other" component={OtherProtected} />
+        <PrivateRoute path="/other">
+          <OtherProtected />
+        </PrivateRoute>
         <PrivateRoute path="/friends" component={Friends} />
         <Route path="/login" component={Login} />
         <Route path="/" component={Home} />

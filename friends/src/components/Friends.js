@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Loader from "react-loader-spinner";
 
 const Friends = () => {
   const [friends, setFriends] = useState([]);
+  const [loading, setLoading] = useState(false);
   console.log("Friends: ", friends);
 
   useEffect(() => {
@@ -11,10 +12,11 @@ const Friends = () => {
   }, []);
 
   const getFriends = () => {
+    setLoading(true);
     const token = localStorage.getItem("token");
-    /* axiosWithAuth() */
-    axios
-      .get("http://localhost:5000/api/friends", {
+
+    axiosWithAuth()
+      .get("/api/friends", {
         headers: {
           Authorization: JSON.parse(token),
         },
@@ -22,17 +24,23 @@ const Friends = () => {
       .then((res) => {
         console.log("success response: ", res);
         setFriends(res.data);
+        setLoading(false);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        console.log(err.message);
+        setLoading(false);
+      });
   };
 
   return (
     <div>
-      <h3>This is a PROTECTED Friends component</h3>
-      {/* <button onClick={getFriends}>get Friends</button> */}
-      {friends.map((friend) => (
-        <p>Friend name: {friend.name}</p>
-      ))}
+      <h3>Current Friends</h3>
+
+      {loading ? (
+        <Loader type="ThreeDots" color="#2C595B" height="100" width="100" />
+      ) : (
+        friends.map((friend) => <p key={friend.id}> {friend.name}</p>)
+      )}
     </div>
   );
 };
