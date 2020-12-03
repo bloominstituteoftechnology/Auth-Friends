@@ -16,7 +16,9 @@ function App() {
         <PrivateRoute path="/other">
           <OtherProtected />
         </PrivateRoute>
-        <PrivateRoute path="/friends" component={Friends} />
+        <PrivateRoute path="/friends">
+          <Friends />
+        </PrivateRoute>
         <Route path="/login" component={Login} />
         <Route path="/" component={Home} />
       </Switch>
