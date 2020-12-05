@@ -44,24 +44,21 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      {/* Look in your notes to make the dynamic routes */}
       <PrivateRoute>
-        <Friend props={"someProps"} />
+        <Friend exact path="/friends/:id" friends={friends} />
       </PrivateRoute>
-      <Switch>
-        {/* Look in your notes to make the dynamic routes */}
-
-        <PrivateRoute path="/add_friend">
-          <AddFriendForm />
-        </PrivateRoute>
-        <PrivateRoute path="/friends">
-          <Friends friends={friends} loading={loading} />
-        </PrivateRoute>
-        <PrivateRoute path="/dashboard">
-          <Dashboard />
-        </PrivateRoute>
-        <Route path="/login" component={Login} />
-        <Route path="/" component={Home} />
-      </Switch>
+      <PrivateRoute exact path="/friends">
+        <Friends friends={friends} loading={loading} />
+      </PrivateRoute>
+      <PrivateRoute path="/add_friend">
+        <AddFriendForm />
+      </PrivateRoute>
+      <PrivateRoute path="/dashboard">
+        <Dashboard />
+      </PrivateRoute>{" "}
+      <Route path="/login" component={Login} />
+      <Route exact path="/" component={Home} />
     </div>
   );
 }
