@@ -45,8 +45,8 @@ function App() {
     <div className="App">
       <NavBar />
       {/* Look in your notes to make the dynamic routes */}
-      <PrivateRoute>
-        <Friend exact path="/friends/:id" friends={friends} />
+      <PrivateRoute exact path="/friends/:id">
+        <Friend friends={friends} />
       </PrivateRoute>
       <PrivateRoute exact path="/friends">
         <Friends friends={friends} loading={loading} />
