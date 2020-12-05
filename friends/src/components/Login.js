@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
+import axiosWithAuth from '../utils/axiosWithAuth';
+
 
 function Login() {
 
-const [state, setState] = useState([{
+const [state, setState] = useState({
             username: '',
             password: ''
-    }])
+    })
 
     const handleChange = e => {
         const value = e.target.value;
@@ -18,9 +20,18 @@ const [state, setState] = useState([{
 
 
 
-    const login = e => {
+    const login = (e,props) => {
         e.preventDefault()
         //logs into the server
+        axiosWithAuth().post("http://localhost:5000/api/login", state)
+        .then(res => {
+          console.log('al: Login.js: login: res: ', res)
+          localStorage.setItem('token', res.data.payload)
+          props.history.push('/protected')
+        })
+        .catch(err => {
+          console.error(err.response)
+        })
 
     }
 
