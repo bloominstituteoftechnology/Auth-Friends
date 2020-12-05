@@ -37,7 +37,6 @@ function FriendProfile(){
              <Button color="info" onClick={handleClick}>Back to List!</Button>
 
         </div>
-
     )
 }
 export default FriendProfile;
