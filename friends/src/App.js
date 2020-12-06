@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
-import Friends from "./components/Friends";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./components/Home";
 import AddFriendForm from "./components/AddFriendForm";
@@ -19,12 +18,9 @@ function App(props) {
       <NavBar />
       {/* The path goes with the <PrivateRoute /> , the props go in the child component */}
       <PrivateRoute exact path="/friends/:id">
-        <Friend friends={props.friends} />
+        <Friend />
       </PrivateRoute>
-      <PrivateRoute exact path="/friends">
-        <Friends />
-      </PrivateRoute>
-      <PrivateRoute exact path="/add_friend">
+      <PrivateRoute exact path="/dashboard/add_friend">
         <AddFriendForm />
       </PrivateRoute>
       <PrivateRoute path="/dashboard">

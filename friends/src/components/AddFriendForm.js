@@ -12,7 +12,6 @@ const AddFriendForm = (props) => {
     age: "",
     id: Date.now(),
   });
-  console.log("friendForm", friendForm);
 
   const [newFriend, setNewFriend] = useState([]);
 
@@ -34,19 +33,18 @@ const AddFriendForm = (props) => {
         props.getFriends(newFriend);
       })
       .catch((err) => console.log(err));
-    /* props.postFriend(friendForm); */
     setFriendForm({
       name: "",
       age: "",
       email: "",
       id: "",
     });
-    history.push("/friends");
+    history.push("/dashboard/friends");
   };
 
   return (
     <div>
-      <h2>Add a New Friend</h2>
+      <h3>Add a New Friend</h3>
       <form onSubmit={handleSubmit}>
         <input
           name="name"
@@ -69,6 +67,7 @@ const AddFriendForm = (props) => {
         />
         <button>ADD FRIEND</button>
       </form>
+      <button onClick={history.push("/dashboard")}>Cancel</button>
     </div>
   );
 };

@@ -6,11 +6,9 @@ const Friend = (props) => {
   console.log("Props in the Friend component: ", props.friends);
   const params = useParams();
   const history = useHistory();
-  const goHome = () => {
-    history.push("/dashboard");
-  };
+
   const goToFriends = () => {
-    history.push("/friends");
+    history.push("/dashboard/friends");
   };
 
   const friend = props.friends.find((fr) => fr.id === Number(params.id));
@@ -20,9 +18,12 @@ const Friend = (props) => {
       <h3>This is the Friend component</h3>
 
       <p>Friend: {friend.name}</p>
-      <button onClick={goToFriends}>Back to Friends</button>
+      <p>Age: {friend.age}</p>
+      <p>Email: {friend.email}</p>
+      <button>Edit Friend</button>
+      <button>Delete Friend</button>
       <br />
-      <button onClick={goHome}>Go back home</button>
+      <button onClick={goToFriends}>Back to Friends</button>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const Friends = (props) => {
 
   return (
     <div>
-      <h3>Current Friends</h3>
+      <h3>Friends</h3>
 
       {props.loading ? (
         <Loader type="ThreeDots" color="#7350E2" height="100" width="100" />
