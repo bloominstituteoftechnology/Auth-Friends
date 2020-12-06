@@ -44,7 +44,8 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      {/* Look in your notes to make the dynamic routes */}
+      <AddFriendForm />
+      {/* The path goers with the <PrivateRoute /> , the props go in the child component */}
       <PrivateRoute exact path="/friends/:id">
         <Friend friends={friends} />
       </PrivateRoute>

@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import Loader from "react-loader-spinner";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Friends = (props) => {
+  axiosWithAuth()
+    .get("/api/friends")
+    .then((res) => console.log("success response: ", res.data))
+    .catch((err) => console.log(err));
+
   return (
     <div>
       <h3>Current Friends</h3>
