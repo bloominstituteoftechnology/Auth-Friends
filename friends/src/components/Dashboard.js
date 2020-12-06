@@ -15,7 +15,6 @@ const Dashboard = () => {
       <h2>This the MyAccount/Dashboard component</h2>
       <button onClick={logout}>Logout</button>
       <br />
-
       <AddFriendForm />
       <Friends />
     </div>

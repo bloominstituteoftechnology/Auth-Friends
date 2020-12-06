@@ -17,7 +17,7 @@ function App(props) {
     <div className="App">
       <NavBar />
       {/* The path goes with the <PrivateRoute /> , the props go in the child component */}
-      <PrivateRoute exact path="/friends/:id">
+      <PrivateRoute exact path="/dashboard/friends/:id">
         <Friend />
       </PrivateRoute>
       <PrivateRoute exact path="/dashboard/add_friend">

@@ -67,7 +67,6 @@ const AddFriendForm = (props) => {
         />
         <button>ADD FRIEND</button>
       </form>
-      <button onClick={history.push("/dashboard")}>Cancel</button>
     </div>
   );
 };

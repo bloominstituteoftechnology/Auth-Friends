@@ -1,6 +1,8 @@
 import React from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link, Redirect } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 import { connect } from "react-redux";
+import Edit from "./Edit";
 
 const Friend = (props) => {
   console.log("Props in the Friend component: ", props.friends);
@@ -20,9 +22,7 @@ const Friend = (props) => {
       <p>Friend: {friend.name}</p>
       <p>Age: {friend.age}</p>
       <p>Email: {friend.email}</p>
-      <button>Edit Friend</button>
-      <button>Delete Friend</button>
-      <br />
+
       <button onClick={goToFriends}>Back to Friends</button>
     </div>
   );
