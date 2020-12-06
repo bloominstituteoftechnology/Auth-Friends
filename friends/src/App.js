@@ -25,7 +25,7 @@ function App() {
       <PrivateRoute exact path="/protected" component={Friends}/> 
       <Route path="/api/login" component={Login} />
       <Route component={Login} /> 
-      
+
       {/* //dont know if i need this route */}
 
       </Switch>
