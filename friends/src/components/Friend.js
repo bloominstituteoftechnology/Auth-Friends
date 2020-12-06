@@ -1,7 +1,9 @@
 import React from "react";
 import { useParams, useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Friend = (props) => {
+  console.log("Props in the Friend component: ", props.friends);
   const params = useParams();
   const history = useHistory();
   const goHome = () => {
@@ -17,7 +19,7 @@ const Friend = (props) => {
     <div>
       <h3>This is the Friend component</h3>
 
-      {/* <p>Friend: {friend.name}</p> */}
+      <p>Friend: {friend.name}</p>
       <button onClick={goToFriends}>Back to Friends</button>
       <br />
       <button onClick={goHome}>Go back home</button>
@@ -25,4 +27,9 @@ const Friend = (props) => {
   );
 };
 
-export default Friend;
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+  };
+};
+export default connect(mapStateToProps, {})(Friend);

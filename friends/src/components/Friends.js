@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { getFriends } from "../actions";
 
 const Friends = (props) => {

@@ -1,9 +1,4 @@
-import {
-  GET_FRIENDS,
-  START_FRIENDS,
-  FRIENDS_SUCCESS,
-  FRIENDS_FAIL,
-} from "../actions";
+import { START_FRIENDS, FRIENDS_SUCCESS, FRIENDS_FAIL } from "../actions";
 
 const initialState = {
   friends: [],

@@ -1,42 +1,47 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import axios from "axios";
+import { getFriends } from "../actions";
+import { useHistory } from "react-router-dom";
 
-const AddFriendForm = () => {
-  const [newFriend, setNewFriend] = useState({
+const AddFriendForm = (props) => {
+  const history = useHistory();
+  const [friendForm, setFriendForm] = useState({
     name: "",
     email: "",
-    id: "",
     age: "",
     id: Date.now(),
   });
-  console.log("newFriend", newFriend);
+  console.log("friendForm", friendForm);
 
-  const [newGang, setNewGang] = useState([]);
+  const [newFriend, setNewFriend] = useState([]);
 
   const handleChange = (e) => {
-    setNewFriend({
-      ...newFriend,
+    setFriendForm({
+      ...friendForm,
       [e.target.name]: e.target.value,
+      id: Date.now(),
     });
-  };
-
-  const postFriend = (friend) => {
-    axiosWithAuth()
-      .post("api/friends", friend)
-      .then((res) => console.log("successful res: ", res))
-      .catch((err) => console.log(err.message));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postFriend(newFriend);
-    setNewFriend({
+    axiosWithAuth()
+      .post("/api/friends", friendForm)
+      .then((res) => {
+        console.log("res on the handlesubmit", res.data);
+        setNewFriend(res.data);
+        props.getFriends(newFriend);
+      })
+      .catch((err) => console.log(err));
+    /* props.postFriend(friendForm); */
+    setFriendForm({
       name: "",
       age: "",
       email: "",
       id: "",
     });
+    history.push("/friends");
   };
 
   return (
@@ -46,20 +51,20 @@ const AddFriendForm = () => {
         <input
           name="name"
           placeholder="Friend's name"
-          value={newFriend.name}
+          value={friendForm.name}
           onChange={handleChange}
         />
         <input
           name="email"
           placeholder="Friend's email"
-          value={newFriend.email}
+          value={friendForm.email}
           onChange={handleChange}
         />
 
         <input
           name="age"
           placeholder="Friend's age"
-          value={newFriend.age}
+          value={friendForm.age}
           onChange={handleChange}
         />
         <button>ADD FRIEND</button>
@@ -68,4 +73,9 @@ const AddFriendForm = () => {
   );
 };
 
-export default AddFriendForm;
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+  };
+};
+export default connect(mapStateToProps, { getFriends })(AddFriendForm);

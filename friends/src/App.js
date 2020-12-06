@@ -1,7 +1,7 @@
 import "./App.css";
-import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
-import { axiosWithAuth } from "./utils/axiosWithAuth";
+import React from "react";
+import { Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
@@ -12,47 +12,19 @@ import AddFriendForm from "./components/AddFriendForm";
 import Dashboard from "./components/Dashboard";
 import Friend from "./components/Friend";
 
-function App() {
-  const [friends, setFriends] = useState([]);
-  const [loading, setLoading] = useState(false);
-  console.log("Friends: ", friends);
-
-  useEffect(() => {
-    getFriends();
-  }, []);
-
-  const getFriends = () => {
-    setLoading(true);
-    const token = localStorage.getItem("token");
-
-    axiosWithAuth()
-      .get("/api/friends", {
-        headers: {
-          Authorization: JSON.parse(token),
-        },
-      })
-      .then((res) => {
-        console.log("success response: ", res);
-        setFriends(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err.message);
-        setLoading(false);
-      });
-  };
+function App(props) {
+  console.log("Props in the App component: ", props);
   return (
     <div className="App">
       <NavBar />
-      <AddFriendForm />
-      {/* The path goers with the <PrivateRoute /> , the props go in the child component */}
+      {/* The path goes with the <PrivateRoute /> , the props go in the child component */}
       <PrivateRoute exact path="/friends/:id">
-        <Friend friends={friends} />
+        <Friend friends={props.friends} />
       </PrivateRoute>
       <PrivateRoute exact path="/friends">
-        <Friends friends={friends} loading={loading} />
+        <Friends />
       </PrivateRoute>
-      <PrivateRoute path="/add_friend">
+      <PrivateRoute exact path="/add_friend">
         <AddFriendForm />
       </PrivateRoute>
       <PrivateRoute path="/dashboard">
@@ -64,4 +36,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+    loading: state.loading,
+  };
+};
+export default connect(mapStateToProps, {})(App);
