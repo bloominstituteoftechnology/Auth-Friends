@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { getFriends } from "../actions";
 
 const Friends = (props) => {
-  axiosWithAuth()
-    .get("/api/friends")
-    .then((res) => console.log("success response: ", res.data))
-    .catch((err) => console.log(err));
+  useEffect(() => {
+    props.getFriends();
+  }, []);
 
   return (
     <div>
@@ -22,8 +23,16 @@ const Friends = (props) => {
           </Link>
         ))
       )}
+      {props.error && <p className="errorMessage">{props.error}</p>}
     </div>
   );
 };
 
-export default Friends;
+const mapStateToProps = (state) => {
+  return {
+    friends: state.friends,
+    loading: state.loading,
+    error: state.error,
+  };
+};
+export default connect(mapStateToProps, { getFriends })(Friends);
