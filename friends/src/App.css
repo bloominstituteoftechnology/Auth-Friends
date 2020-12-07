@@ -1,13 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 .App {
   text-align: center;
-  background-image: url("https://randomc.net/image/Bokura%20wa%20Minna%20Kawaisou/Bokura%20wa%20Minna%20Kawaisou%20-%2011%20-%20Large%2036.jpg");
+  background-image: url("https://i.ytimg.com/vi/MJ9bptbA070/maxresdefault.jpg");
   min-height: 100%;
-  color:white;
-  font-family: 'Indie Flower', cursive;
-  
+  color:teal;
+  font-family: 'Do Hyeon', sans-serif;  
 }
 
 .login-form{
@@ -33,7 +31,6 @@ nav a{
   text-decoration: none;
   display: flex;
   flex-direction: row;
-  color: aliceblue;
 }
 
 .links{
@@ -50,7 +47,7 @@ label{
 }
 input{
   text-align: center;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Do Hyeon', sans-serif;
   font-size:2rem;
 }
 button{
@@ -72,8 +69,8 @@ button:hover {
 .add-friend {
   display: flex;
   justify-content: flex-start;
-  
-  
+  flex-direction: column;
+  width: 80%;
 } 
 
 
@@ -83,12 +80,12 @@ section {
   justify-content: space-evenly;
   flex-wrap: wrap;
   display: flex;
-  background-image: url("https://randomc.net/image/Bokura%20wa%20Minna%20Kawaisou/Bokura%20wa%20Minna%20Kawaisou%20-%2011%20-%20Large%2036.jpg");
 
 
 }
 .new-added-friends{
-  background-color: burlywood;
-
+  background-color: grey;
+  margin-top: 5rem;
+  color:white
   
 }
