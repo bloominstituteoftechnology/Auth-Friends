@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import {axiosWithAuth} from '../api/axiosWithAuth'
-
+import axios from "react"
 
 const NewFriendForm = () => {
+    
     const [input, setInput] = useState({
         name:'',
         age:'',
@@ -18,6 +19,9 @@ const NewFriendForm = () => {
             })   
     }
 
+ 
+    
+
     const postFriend = e => {
         e.preventDefault();
         axiosWithAuth()
@@ -29,13 +33,13 @@ const NewFriendForm = () => {
                 console.log('Post error', err)
             })
             .finally(() => {
+        
                 setInput({
                     name:'',
                     age:'',
                     email:'',
                     
                 })
-               
                 console.log(input)
                
             })
