@@ -1,24 +1,53 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import PrivateRoute from "./components/PrivateRoute";
+
 import './App.css';
 
 function App() {
+  // possibly for use within component
+  const logout = () => {
+    localStorage.removeItem('token')
+  };
+
+
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
+        <h1>
+          Hang With Friends !
+        </h1>
+       
       </header>
+
+      <ul>
+        <li>
+          <Link to="/login">Log-In</Link>
+        </li>
+        <li>
+          <Link to="/friendlist">My Friends</Link>
+        </li>
+        <li>
+          <Link to ="/add">Add a Friend</Link>
+        </li>
+        <li>
+          <Link to="/update">Add/Delete</Link>
+        </li>
+        <li>
+          <Link to={logout}>LogOut</Link>
+        </li>
+      </ul>
+      <Switch>
+        <Route path="/login" />
+        <PrivateRoute />
+        <PrivateRoute />
+        <PrivateRoute />
+        <PrivateRoute />
+      </Switch>
     </div>
+    </Router>
   );
 }
 
