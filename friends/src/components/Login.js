@@ -3,7 +3,7 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 
 function Login(props) {
 
-const {username, password} = props
+const { username, password } = props;
 
 const [state, setState] = useState({
             username: '',
