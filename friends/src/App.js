@@ -15,16 +15,24 @@ function App() {
   return (
     <Router>
       <div>
-
-      <Link to="/api/login">Login</Link>
+      <ul>
+        <li>
+      <Link to="/login">Login</Link>
+      </li>
+      <li>
       <Link onClick={logout}>Logout</Link>
-
-      <Link to="/protected">Protected Page</Link>
-      
+      </li>
+      <li>
+      <Link to="/friends">Friends List</Link>
+      </li>
+      <li>
+      <Link to="/add">Add Friend</Link>
+      </li>
+      </ul>
       <Switch>
-      <PrivateRoute exact path="/protected" component={Friends}/> 
-      <Route path="/api/login" component={Login} />
-      <Route component={Login} /> 
+      <PrivateRoute exact path="/" component={Login}/> 
+      <Route path="/protected" component={Friends} />
+      <Route  path="/protected" component={AddFriend} /> 
 
       {/* //dont know if i need this route */}
 
