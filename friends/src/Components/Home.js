@@ -1,9 +1,12 @@
 import React from "react";
-
-export default function Home() {
-  return (
-    <div>
-      <h1>Friend Zone:</h1>
-    </div>
-  );
+class Home extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Friend Zone:</h1>
+      </div>
+    );
+  }
 }
+
+export default Home;
