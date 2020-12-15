@@ -1,7 +1,3 @@
-
-
-
-
 * {
   margin: 0;
   padding: 0;
@@ -9,34 +5,80 @@
 }
 
 body {
-  background: rgb(178, 197, 178);
   height: 100vh;
   width: 100%;
 }
 
-.form {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+.App {
+  background-image: url('./svg/background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 10px solid black;
+  border-radius: 10px;
+}
+
+h1 {
+  color: rgb(224, 144, 144);
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: underline;
+  background: black;
+  border: 2px solid rgb(224, 144, 144);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.form-instruct {
+  color: rgb(224, 144, 144);
   padding: 1rem;
   font-size: 1.5rem;
   font-weight: 700;
-  font-family: 'Times New Roman', Times, serif;
+  text-decoration: underline;
+  background: rgb(59, 53, 53);
+  border: 6px solid rgb(224, 144, 144);
+  border-radius: 10px;
+  text-align: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 input {
   padding: 1rem;
+  margin-left: 5rem;
+  margin: 4rem 10rem 4rem 2rem;
+  justify-content: space-around;
   border-radius: 10px;
   background: black;
   color: wheat;
+  text-align: center;
+  border: 2px solid rgb(224, 144, 144);
+  border-radius: 10px;
 }
 
 button {
   padding: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
   border-radius: 10px;
   background: black;
   color: wheat;
+  border: 2px solid rgb(224, 144, 144);
+  border-radius: 10px;
+}
+
+button:hover {
+  padding: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  border-radius: 10px;
+  background: wheat;
+  color: black;
+  border: 2px solid rgb(224, 144, 144);
+  border-radius: 10px;
 }
 
 .new-friend-form {
@@ -50,22 +92,71 @@ button {
   font-family: 'Times New Roman', Times, serif;
 }
 
-.friends-page {
+.container-output {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  border: 2px solid black;
-  padding: 1rem;
-  font-size: 1.5rem;
+  overflow: hidden;
+  flex-wrap: wrap;
+  border: 5px solid black;
+  border-radius: 10px;
+  margin: 2rem;
   font-weight: 700;
-  font-family: 'Times New Roman', Times, serif;
+  background: rgba(231, 227, 227, 0.6);
 }
 
-div ul li a{
-  color: black;
+.p-container-output {
+  padding: 2rem;
+}
+
+ul {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: rgba(248,154,3, 0.6);
+  border: 5px solid black;
+  border-radius: 10px;
+}
+
+li {
+  list-style-type: none;
+  text-transform: uppercase;
+}
+
+a {
+ text-decoration: none; 
+ color: black;
+ font-size: 1rem;
+ font-weight: 900;
+ background: wheat;
+ border: 2px solid black;
+ border-radius: 10px;
+ padding: 1rem;
+}
+
+a:hover {
+  text-decoration: none; 
+  color: wheat;
+  font-size: 1rem;
+  font-weight: 900;
+  background: black;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+ }
+
+footer {
+  height: 15vh;
+  background: black;
+  width: 100%;
+  border: 2px solid rgb(224, 144, 144);
+  border-radius: 10px;
+}
+
+footer h4 {
+  color: whitesmoke;
+  text-align: center;
+  display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 2rem;
 }
