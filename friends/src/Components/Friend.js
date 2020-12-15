@@ -7,8 +7,9 @@ export default class Friend extends Component {
   render() {
     return (
       <div>
-        Name: <p>{this.props.homie.name}</p>
-        Email: <p>{this.props.homie.email}</p>
+        <h3>{this.props.homie.name}</h3>
+        <p>Age: {this.props.homie.age}</p>
+        <p>Email: {this.props.homie.email}</p>
       </div>
     );
   }
