@@ -2,6 +2,9 @@ import React from "react";
 import "./App.css";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
+import FriendsList from "./Components/FriendsList";
+import PrivateRoute from "./Components/PrivateRoute";
+
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 
 class App extends React.Component {
@@ -20,8 +23,11 @@ class App extends React.Component {
               <Link to="/logout">Logout</Link>
             </li>
           </ul>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={Home} />
+          <Switch>
+            <PrivateRoute path="/protected" component={FriendsList} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Home} />
+          </Switch>
         </div>
       </Router>
     );

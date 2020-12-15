@@ -23,7 +23,8 @@ class Login extends React.Component {
     axios
       .post("http://localhost:5000/api/login", this.state.credentials)
       .then(res => {
-        console.log(res, "RES IS HERE!");
+        localStorage.setItem("token", res.data.payload);
+        this.props.history.push("/protected");
       })
       .catch(err => {
         console.log(err);
@@ -58,7 +59,7 @@ class Login extends React.Component {
             />
           </label>
           <br />
-          <button>Login</button>
+          <button type="submit">Login</button>
         </form>
       </div>
     );
