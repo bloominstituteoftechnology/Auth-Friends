@@ -4,8 +4,12 @@ import NavBar from '../Components/NavBar'
 import Loader from 'react-loader-spinner'
 import axios from 'axios'
 
+const initialFormState = {
+    name:''
+}
+
 const Friends = () => {
-    const [formData, setFormData] = useState('')
+    const [formData, setFormData] = useState(initialFormState)
     const [friendList, setFriendList]=useState([])
     const [loading, setLoading] = useState(false)
 
@@ -25,14 +29,18 @@ const Friends = () => {
     const handleClick = (e) => {
         e.preventDefault();
         axiosWithAuth()
-            .post('http://localhost:5000/api/friends', formData)
+            .post('/friends', formData)
             .then(res => {
-                setFormData(...friendList, {name: res.data})
+                setFriendList(res.data)
+                setFormData(initialFormState)
             })
+            .catch(err => 
+                console.log(err)    
+            )
     }
 
     const handleChange = (e) => {
-        setFormData({name: e.target.value})
+        setFormData({...formData, [e.target.name]: e.target.value})
     }
 
     if (loading) {
@@ -40,7 +48,7 @@ const Friends = () => {
         <div>
             <NavBar/>
             <form>
-                <input onChange={handleChange} value={formData} type='text' placeholder='name' disabled='true'/>
+                <input type='text' placeholder='name' disabled='true'/>
                 <button disabled='true'>Add</button>
             </form> <br/>
             <Loader type="Puff" color="#204963" height="60" width="60" />
@@ -52,7 +60,7 @@ const Friends = () => {
         <div> 
             <NavBar/>
             <form>
-                <input type='text' placeholder='name'/>
+                <input onChange={handleChange} value={formData.name} type='text' name='name' placeholder='name'/>
                 <button onClick={handleClick}>Add</button>
             </form>  
             {friendList.map(item => (
