@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 
 const initialState = {
     credentials: {
@@ -11,6 +12,7 @@ const initialState = {
 const Login = () => {
 
     const [formData, setFormData] = useState(initialState)
+    const {push} = useHistory()
 
     const handleChange = (e) => {
         setFormData({
@@ -27,7 +29,7 @@ const Login = () => {
             .post('http://localhost:5000/api/login', formData.credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.payload);
-                // history.push('/protected')
+                push('/protected')
             })
             .catch(err => {
                 console.log(err)
@@ -38,6 +40,7 @@ const Login = () => {
 
     return(
         <div>
+            <br/>
             <form onSubmit={handleSubmit}>
                 <input value={formData.credentials.username} onChange={handleChange} type='text' name='username' placeholder= 'UserName'/> <br/>
                 <br/>
