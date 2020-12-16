@@ -1,5 +1,5 @@
 import React from 'react'
-import axiosWithAuth from '../utils/axiosWithAuth'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 class FriendsList extends React.Component {
 
@@ -7,32 +7,36 @@ class FriendsList extends React.Component {
             friends: []
         }
 
-        ComponentDidMount() {
+        componentDidMount() {
             this.getData()
         }
 
-        getData = () => {
+    getData = () => {
             axiosWithAuth()
-            .get(/api/friends)
+            .get(`api/friends`)
             .then(res => {
-                console.log('Auth data ', res)
+                this.setState({
+                    friends: res.data
+                })
             })
             .catch(err => {
                 console.log('ERRROR: ', err)
             })
         }
 
-        formatData = () => {
-            const formattedData = []
-
-    }
-
  render() {
 
         return(
 
             <div>
-            
+                <button onClick={this.getData}>Find More Friends</button>
+
+                {this.state.friends.map(friend => (
+                    <div key={friend.id}>
+                    <p><strong>{friend.name}</strong> is {friend.age} years old.</p>
+                    <p>If you want to know more weirdly personal information about {friend.name}, you can contact them at {friend.email}</p>
+                    </div>
+                ))}
             </div>
         )
     }
