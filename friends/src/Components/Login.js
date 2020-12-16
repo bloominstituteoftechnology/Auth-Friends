@@ -53,7 +53,7 @@ class Login extends React.Component {
             <input
               id="password"
               name="password"
-              type="text"
+              type="password"
               placeholder="password"
               value={this.state.credentials.password}
               onChange={this.onChange}
