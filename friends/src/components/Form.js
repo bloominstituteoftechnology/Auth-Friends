@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+import styled from 'styled-components';
+
+const StyledForm = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  .inputField{
+      margin-top: .5rem;
+  }
+`
+
 const initialState = {
     name: '',
     age: '',
@@ -21,34 +33,46 @@ const FriendForm = ({ setFriends }) => {
             .post('/api/friends', formValue)
             .then(response => {
                 setFriends(response.data);
+                setFormValue(initialState);
             })
             .catch(error => console.error(error));
     };
 
     return(
-        <div>
+        <StyledForm>
             <form onSubmit={handleSubmit}>
-                <input
-                    name='name'
-                    type='text'
-                    value={formValue.name}
-                    onChange={handleChanges}
-                />
-                <input
-                    name='age'
-                    type='text'
-                    value={formValue.age}
-                    onChange={handleChanges}
-                />
-                <input
-                    name='email'
-                    type='email'
-                    value={formValue.email}
-                    onChange={handleChanges}
-                />
-                <button type='submit'>Submit</button>
+                <div className='inputField'>
+                    <input
+                        name='name'
+                        type='text'
+                        placeholder='name'
+                        value={formValue.name}
+                        onChange={handleChanges}
+                    />
+                </div>
+                <div className='inputField'>
+                    <input
+                        name='age'
+                        type='text'
+                        placeholder='age'
+                        value={formValue.age}
+                        onChange={handleChanges}
+                    />
+                </div>
+                <div className='inputField'>
+                    <input
+                        name='email'
+                        type='email'
+                        placeholder='email'
+                        value={formValue.email}
+                        onChange={handleChanges}
+                    />
+                </div>
+                <div className='inputField'>
+                    <button type='submit'>Submit</button>
+                </div>
             </form>
-        </div>
+        </StyledForm>
     );
 };
 

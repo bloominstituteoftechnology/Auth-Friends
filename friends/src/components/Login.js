@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+
+import styled from 'styled-components';
+
+const StyledLogin = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  .inputField{
+      margin-top: .5rem;
+  }
+`
 
 const initialState = {
     credentials: {
@@ -27,6 +38,7 @@ const Login = () => {
             .then(response => {
                 window.localStorage.setItem('token', response.data.payload);
                 history.push('/friends');
+                window.location.reload(true)
             })
             .catch(error => {
                 setState({ ...state, error: error.response.data.error });
@@ -34,26 +46,32 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <StyledLogin>
             <form onSubmit={userLogin}>
-                <input
-                    name='username'
-                    type='text'
-                    value={state.credentials.username}
-                    onChange={handleChanges}
-                    placeholder='username'
-                />
-                <input
-                    name='password'
-                    type='password'
-                    value={state.credentials.password}
-                    onChange={handleChanges}
-                    placeholder='password'
-                />
-                <button type='submit'>Submit</button>
+                <div className='inputField'>
+                    <input
+                        name='username'
+                        type='text'
+                        value={state.credentials.username}
+                        onChange={handleChanges}
+                        placeholder='username'
+                    />
+                </div>
+                <div className='inputField'>
+                    <input
+                        name='password'
+                        type='password'
+                        value={state.credentials.password}
+                        onChange={handleChanges}
+                        placeholder='password'
+                    />
+                </div>
+                <div className='inputField'>
+                    <button type='submit'>Submit</button>
+                </div>
             </form>
             <p>{state.error}</p>
-        </div>
+        </StyledLogin>
     )
 }
 
