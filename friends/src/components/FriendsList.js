@@ -1,22 +1,20 @@
-import React from 'react'
+import React, { useState} from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import AddFriend from './AddFriend'
 
-class FriendsList extends React.Component {
+const FriendsList = () => {
 
-        state = {
-            friends: []
-        }
+const [friend, setFriend] = useState({
+    friends: []
+})
 
-        componentDidMount() {
-            this.getData()
-        }
 
-    getData = () => {
+    const getFriend = () => {
             axiosWithAuth()
             .get(`api/friends`)
             .then(res => {
-                this.setState({
-                    friends: res.data
+                setFriend({
+                friends: res.data
                 })
             })
             .catch(err => {
@@ -24,22 +22,21 @@ class FriendsList extends React.Component {
             })
         }
 
- render() {
-
         return(
 
             <div>
-                <button onClick={this.getData}>Find More Friends</button>
-
-                {this.state.friends.map(friend => (
+                {friend.friends === [] ? <h2>Fetching Friends...</h2>
+                : ''}
+                <button onClick={getFriend}>View Friends</button>
+                {friend.friends.map(friend => (
                     <div key={friend.id}>
-                    <p><strong>{friend.name}</strong> is {friend.age} years old.</p>
-                    <p>If you want to know more weirdly personal information about {friend.name}, you can contact them at {friend.email}</p>
+                    <p><strong>{friend.name}</strong>, {friend.age}. For more weirdly personal info, contact them at {friend.email}</p>
                     </div>
                 ))}
+                <AddFriend />
             </div>
         )
     }
-}
+
 
 export default FriendsList
