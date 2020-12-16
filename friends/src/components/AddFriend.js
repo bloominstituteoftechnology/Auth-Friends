@@ -1,58 +1,26 @@
-import React, { useState } from 'react'
-import { axiosWithAuth } from '../utils/axiosWithAuth'
-
-
-const initialState = {
-    id: '',
-    name: '',
-    age: '',
-    email: ''
-}
+import React from 'react'
 
 const AddFriend = props => {
-const [newFriend, setNewFriend ] = useState(initialState)
-
-    const handleChange = e => {
-        setNewFriend({
-            ...newFriend,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const handleSubmit = e => {
-        e.preventDefault()
-        axiosWithAuth()
-        .post('/api/friends', newFriend)
-        .then(res => {
-            props.handleSubmit(res)
-            setNewFriend(initialState)
-        })
-        .catch(err => {
-            console.log('ERROR :', err)
-        })
-    }
 
         return(
 
             <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={props.onSubmit}>
 
             <label>Name: </label>
             <input
             id="name"
             type="text"
             name="name"
-            value={newFriend.name}
-            onChange={handleChange}
+            onChange={props.handleChange}
             />
 
              <label> Age: </label>
             <input
             id="age"
-            type="text"
+            type="number"
             name="age"
-            value={newFriend.age}
-            onChange={handleChange}
+            onChange={props.handleChange}
             />
 
              <label> Email: </label>
@@ -60,11 +28,10 @@ const [newFriend, setNewFriend ] = useState(initialState)
             id="email"
             type="text"
             name="email"
-            value={newFriend.email}
-            onChange={handleChange}
+            onChange={props.handleChange}
             />
+            <button type='submit'>Add a Friend!</button>
             </form>
-            <button type="submit">Add a Friend!</button>
             </div>
         )
     }

@@ -1,25 +1,14 @@
-import React, { useState, useEffect} from 'react'
-import { axiosWithAuth } from '../utils/axiosWithAuth'
+import React from 'react'
 
-export default function FriendCard ({ friend }) {
+export default function FriendCard (props) {
 
-const [friendRender, setFriendRender] = useState({})
-
-useEffect(() => {
-    axiosWithAuth()
-    .get('/api/friends/')
-    .then(res => {
-        setFriendRender(res.data)
-    })
-    .catch(err => {
-        console.log('ERROR :', err)
-    })
-}, [])
+const { friend } = props
 
     return(
         <div> 
             <p><strong>{friend.name}</strong>, {friend.age} </p>
             <p>For more weirdly personal info, contact them at {friend.email}.</p>
+            <button id={friend.id} onClick={e => props.handleDelete(e)}>Delete!</button>
         </div>
     )
 }
