@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import Friend from './Friend';
 import Form from './Form';
 
 const FriendsList = () => {
@@ -11,6 +10,7 @@ const FriendsList = () => {
             .get('/api/friends')
             .then(response => {
                 setFriends(response.data);
+                console.log(friends);
             })
             .catch(error => console.error(error));
     },[]);
@@ -18,8 +18,12 @@ const FriendsList = () => {
     return (
         <div>
             <Form setFriends={setFriends} />
-            {friends.map((friend, index) => (
-                <Friend key={index} friend={friend} />
+            {friends.map(friend => (
+                <div key={friend.id}>
+                    <p>{friend.name}</p>
+                    <p>{friend.age}</p>
+                    <p>{friend.email}</p>
+                </div>
             ))}
         </div>
     );
