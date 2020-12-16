@@ -74,6 +74,17 @@ app.post('/api/login', (req, res) => {
   }
 });
 
+app.post("/api/logout", (req, res) => {
+  const { userToken } = req.body;
+  if (userToken === token) {
+    //remove token from db
+  }
+  
+  res.status(200).json({
+    payload: token
+  });
+});
+
 app.get('/api/friends', authenticator, (req, res) => {
   setTimeout(() => {
     res.send(friends);
