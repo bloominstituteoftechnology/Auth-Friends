@@ -1,19 +1,24 @@
-import React, { useState} from 'react'
+import React from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import Loader from 'react-loader-spinner'
 import AddFriend from './AddFriend'
+import Friends from './Friends'
 
-const FriendsList = () => {
+class FriendsList extends React.Component {
 
-const [friend, setFriend] = useState({
+state = {
     friends: []
-})
+}
 
+    componentDidMount() {
+        this.getFriend()
+    }
 
-    const getFriend = () => {
+    getFriend = () => {
             axiosWithAuth()
             .get(`api/friends`)
             .then(res => {
-                setFriend({
+                this.setState({
                 friends: res.data
                 })
             })
@@ -21,22 +26,27 @@ const [friend, setFriend] = useState({
                 console.log('ERRROR: ', err)
             })
         }
+    
+    handleSubmit = friend => {
+        this.setState({friend})
+    }
+
+render() {
 
         return(
 
             <div>
-                {friend.friends === [] ? <h2>Fetching Friends...</h2>
-                : ''}
-                <button onClick={getFriend}>View Friends</button>
-                {friend.friends.map(friend => (
-                    <div key={friend.id}>
-                    <p><strong>{friend.name}</strong>, {friend.age}. For more weirdly personal info, contact them at {friend.email}</p>
-                    </div>
-                ))}
-                <AddFriend />
+                {this.state.friends.length ? ''
+                : <Loader type="Puff" color="#000000" height="60" width="60"/>}
+                {this.state.friends.map(friend => {
+                    return(
+                        <Friends key={friend.id} friend={friend}/>
+                    )
+                })}
+                <AddFriend onSubmit={this.handleSubmit}/>
             </div>
         )
     }
-
+}
 
 export default FriendsList

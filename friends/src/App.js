@@ -23,9 +23,9 @@ function App() {
     <li><Link onClick={logout} to='/login'>Logout</Link></li>
     </ul>
     <Switch>
-    <Route exact path='/login' component={Login}/>
     <PrivateRoute path='/protected' component={FriendsList}/>
     <PrivateRoute path='/protected' component={AddFriend}/>
+    <Route exact path='/login' component={Login}/>
     <Route component={Login}/>
     </Switch>
     </div>

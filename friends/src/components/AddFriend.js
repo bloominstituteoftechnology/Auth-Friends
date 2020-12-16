@@ -1,30 +1,31 @@
 import React, { useState } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-const AddFriend = props => {
 
-const { name, age, email } = props
-
-const [ form, setForm ] = useState({
+const initialState = {
+    id: '',
     name: '',
     age: '',
-    email: '',
-    id: Date.now()
-})
+    email: ''
+}
+
+const AddFriend = props => {
+const [newFriend, setNewFriend ] = useState(initialState)
 
     const handleChange = e => {
-        e.preventDefault()
-        setForm({
-            ...form,
+        setNewFriend({
+            ...newFriend,
             [e.target.name]: e.target.value
         })
     }
 
-    const addFriends = e => {
+    const handleSubmit = e => {
+        e.preventDefault()
         axiosWithAuth()
-        .post('/api/friends', form)
+        .post('/api/friends', newFriend)
         .then(res => {
-            console.log(res)
+            props.handleSubmit(res)
+            setNewFriend(initialState)
         })
         .catch(err => {
             console.log('ERROR :', err)
@@ -34,33 +35,36 @@ const [ form, setForm ] = useState({
         return(
 
             <div>
-            <form onSubmit={addFriends}>
+            <form onSubmit={handleSubmit}>
 
             <label>Name: </label>
             <input
+            id="name"
             type="text"
             name="name"
-            value={name}
+            value={newFriend.name}
             onChange={handleChange}
             />
 
              <label> Age: </label>
             <input
+            id="age"
             type="text"
             name="age"
-            value={age}
+            value={newFriend.age}
             onChange={handleChange}
             />
 
              <label> Email: </label>
             <input
-            type="email"
+            id="email"
+            type="text"
             name="email"
-            value={email}
+            value={newFriend.email}
             onChange={handleChange}
             />
             </form>
-            <button>Add a Friend!</button>
+            <button type="submit">Add a Friend!</button>
             </div>
         )
     }
