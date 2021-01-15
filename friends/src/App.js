@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
 import './App.css';
-import FriendList from './components/FriendList';
+import FriendList from './components/Friends';
 import AddFriend from './components/AddFriend';
 
 function App() {
@@ -31,4 +30,3 @@ function App() {
 }
 
 export default App;
-
