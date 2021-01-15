@@ -9,9 +9,9 @@ function FriendBox({friend, reload}) {
 
     //Controlling Modal and setting updated values
     const [open, setOpen] = useState(false);
-    const [name, setName] = useState(friends.name ? friends.name : "")
-    const [age, setAge] = useState(friends.age ? friends.age : "")
-    const [email, setEmail] = useState(friends.email ? friends.email : "")
+    const [name, setName] = useState(friend.name ? friend.name : "")
+    const [age, setAge] = useState(friend.age ? friend.age : "")
+    const [email, setEmail] = useState(friend.email ? friend.email : "")
 
     const id = friend.id;
 
@@ -25,7 +25,7 @@ function FriendBox({friend, reload}) {
     const updateFriend = (e) => {
         e.preventDefault();
         axios.put(`http://localhost:5000/api/friends/:${id}`, 
-        payload={
+        {
             name,
             age,
             email
@@ -38,7 +38,6 @@ function FriendBox({friend, reload}) {
              <Modal
           open={open}
           onclose={(e) => setOpen(false)}
-          className={classes.paper}
           id="modal"
         >
             <div>
