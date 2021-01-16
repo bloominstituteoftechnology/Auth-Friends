@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import {Button} from "@material-ui/core";
 
-function Header() {
+function Header(props) {
     let userInfo = localStorage.getItem("token")
     console.log(userInfo)
 
@@ -21,9 +20,9 @@ function Header() {
                     <h2>Add Friend</h2>
                 </Link>
                 {userInfo ? (
-                <Button onClick={signOut}>
-                     Sign Out
-                </Button>
+                <a onClick={signOut}>
+                     <h2>Sign Out</h2>
+                </a>
                 ) : (
                     <Link to="/signin">
                         <h2>Sign In</h2>

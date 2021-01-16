@@ -15,13 +15,15 @@ function HomeScreen() {
                 database is only viewable to users who have authenticated themselves by logging in using the username and password provided. <br/>
                 I challenged myself to complete this assignment without Redux. (Which in hind sight would have made things MUCH easier...<br/>
                 </p>
+                <div className="homeScreen__body__loginText">
                 <h3>Log in by clicking either the link at the top of the page or this shiny button below and enter the following login info:</h3>
                 <h3>Username: Lambda School</h3>
                 <h3>Password: {`i<3Lambd4`}</h3>
                 <div className="homeScreen__buttonContainer">
                     <Link to="/signin">
-                        <Button>Login</Button>
+                        <Button style={{backgroundColor: "black", color: "white", textDecoration: "none"}}>Login</Button>
                     </Link>
+                    </div>
                 </div>
             </div>
         </div>
