@@ -1,8 +1,9 @@
 import axios, {useState} from 'axios';
 import React from 'react';
-import Button from "@material-ui/core";
+import {Button} from "@material-ui/core";
+import AxiosWithAuth from "../utils/AxiosWithAuth";
 
-function AddFriend() {
+function AddFriend(props) {
 
     const [name, setName] = useState("")
     const [age, setAge] = useState(0)
@@ -10,16 +11,18 @@ function AddFriend() {
 
     const [error, setError] = useState("")
 
-    const addFriendHandler = (e) => {
+    function addFriendHandler(e) {
         e.preventDefault();
-        axios.post("http://localhost:5000/api/friends", {
+        AxiosWithAuth().post("/friends", {
             id: Date.now(),
             name,
             age,
             email
         })
-        .then(props.history.push("/friends-list"))
+        .then(res => console.log(res.data))
         .catch(err => setError(err.message))
+
+        props.history.push("/friends-list")
     }
     return (
         <div className="addFriend">
@@ -29,11 +32,11 @@ function AddFriend() {
             }
             <form onSubmit={addFriendHandler}>
                 <label htmlFor="name">Name:</label>
-                <input id="name" type="text" required />
+                <input id="name" required onChange={(e) => setName(e.target.value)}/>
                 <label htmlFor="age">Age:</label>
-                <input id="age" type="number" required />
+                <input id="age" required onChange={(e) => setAge(e.target.value)}/>
                 <label htmlFor="email">Email:</label>
-                <input id="email" type="text" required />
+                <input id="email" required onChange={(e) => setEmail(e.target.value)}/>
                 <Button type="submit">Add Friend</Button>
             </form>
             

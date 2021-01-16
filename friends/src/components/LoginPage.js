@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
 import axios from "axios";
+import Header from "./Header";
 
 function LoginPage() {
     const [login, setLogin] = useState({username: "", password: ""});
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("clicked")
         axios.post("http://localhost:5000/api/login", login)
         .then(res => {
             localStorage.setItem("token", res.data.payload);
@@ -17,6 +19,7 @@ function LoginPage() {
 
     return (
         <div className="login">
+            <Header />
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name:</label>
                 <input id="name" type="text" required onChange={(e) => setLogin({...login, username: e.target.value})}/>

@@ -5,7 +5,8 @@ import {Modal, Button} from "@material-ui/core";
 
 import axios from 'axios';
 
-function FriendBox({friend, reload}) {
+function FriendBox({friend}) {
+
 
     //Controlling Modal and setting updated values
     const [open, setOpen] = useState(false);
@@ -19,7 +20,6 @@ function FriendBox({friend, reload}) {
     const deleteFriend = (e) => {
         e.preventDefault();
         axios.delete(`http://localhost:5000/api/friends/${id}`)
-        .then(reload.setReload(!reload))
     }
 
     const updateFriend = (e) => {
@@ -30,7 +30,6 @@ function FriendBox({friend, reload}) {
             age,
             email
         })
-        .then(reload.setReload(!reload))
     }
 
     return (
@@ -56,10 +55,10 @@ function FriendBox({friend, reload}) {
             </div>
         </Modal>
         <div className="friendBox">
-            <h1>{friend.name}</h1>
-            <h3>{friend.age}</h3>
-            <h2>{friend.email}</h2>
-            <a onClick={open.setOpen(true)}>
+         <h1>{friend.name}</h1>
+        <h3>{friend.age}</h3>
+        <h2>{friend.email}</h2>
+            <a onClick={setOpen(true)}>
                 <EditIcon />
             </a>
             <a onClick={deleteFriend}>
