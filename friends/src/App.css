@@ -1,0 +1,104 @@
+/* Almost no time was spent styling this assignment. It's not the prettiest but 
+it will do. */
+
+.App {
+    overflow-X: hidden;
+}
+
+/* Styling the header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links {
+    display: flex; 
+    justify-content: flex-end;
+    margin-right: 1rem;
+}
+.links h2 {
+    padding-right: 0.7rem;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Styling the home page */
+
+.homeScreen__body {
+    display: flex;
+    flex-direction: column;
+    width: 100vw; 
+    height: 90vh; 
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.homeScreen__body h1 {
+    font-size: 6rem;
+    text-transform: uppercase;
+}
+
+.homeScreen__body p {
+    font-size: 1.2rem;
+    line-height: 200%;
+}
+
+.homeScreen__body__loginText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling the login page */
+
+.login__content {
+    display: flex;
+    width: 100vw; 
+    justify-content: center;
+    padding-top: 10vh;
+}
+
+.login__content input {
+    margin-right: 0.7rem;
+}
+
+/* Styling the error box */
+.error-box h1 {
+    text-align: center;
+    padding-top: 10vh;
+}
+
+/* Styling the Friend's List */
+
+.friends-content {
+    width: 100vw; 
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friendBox {
+    height: 150px;
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: 2rem;
+}
+
+/* Styling the Add Friend Page */
+
+.form {
+    display: flex;
+    justify-content: center; 
+    padding-top: 10vh;
+}
+
+.form input {
+    margin-right: 1rem;
+}
