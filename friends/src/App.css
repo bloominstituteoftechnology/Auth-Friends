@@ -1,0 +1,194 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.App {
+	font-family: 'Poppins', sans-serif;
+	width: 100vw;
+	height: 100vh;
+}
+
+/* Navbar */
+.navbar__container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 15%;
+	margin: 0 auto;
+	width: 60%;
+	border-bottom: 2px solid #cecece;
+}
+
+.links__list a:first-child {
+	padding: 0.5rem 1rem;
+	/* margin: 0 0.3rem; */
+	text-decoration: none;
+	color: #000;
+}
+
+.nav__btn {
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+	color: #fff;
+	background-color: lightcoral;
+	margin: 0 1.2rem;
+	border-radius: 5px;
+}
+
+/* Home components */
+.home__container {
+	width: 25%;
+	margin: 10rem auto;
+	border: 2px solid rgb(240, 240, 240);
+	box-shadow: 1px 1px 10px rgb(235, 235, 235);
+	border-radius: 10px;
+	padding: 2rem;
+}
+
+/* Log in form */
+.login__container {
+	width: 25%;
+	margin: 10rem auto;
+	border: 2px solid rgb(240, 240, 240);
+	box-shadow: 1px 1px 10px rgb(235, 235, 235);
+	border-radius: 10px;
+	padding: 2rem;
+}
+
+.login__container h1 {
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.login__container form {
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+	margin: 0 auto;
+}
+
+.login__container form input {
+	padding: 0.7rem 0.3rem;
+	background: rgb(238, 238, 238);
+	border: none;
+	border-radius: 5px;
+	margin-bottom: 1rem;
+}
+
+.login__container form button {
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+	color: #fff;
+	background-color: lightcoral;
+	border: none;
+	margin: 1rem 0;
+	border-radius: 5px;
+}
+
+/* Freind list component */
+
+.thelist__container {
+	/* background: lightcoral; */
+	width: 50%;
+	margin: 4rem auto;
+}
+
+.thelist__top {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.add__friend__btn {
+	border: none;
+	background: lightcoral;
+	padding: 0.4rem 0.8rem;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 1.6rem;
+	cursor: pointer;
+	outline: none;
+}
+
+.thelist__container h1 {
+	text-align: center;
+}
+
+.friends {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.loading {
+	margin-top: 10rem;
+	color: rgb(228, 228, 228);
+	letter-spacing: 0.3rem;
+}
+
+/* Friend component */
+
+.friend__container {
+	width: 40%;
+	margin: 1rem 1rem;
+	border: 2px solid rgb(240, 240, 240);
+	box-shadow: 1px 1px 10px rgb(235, 235, 235);
+	border-radius: 10px;
+	padding: 2rem;
+}
+
+.age {
+	font-size: 0.8rem;
+	color: #333;
+	margin-bottom: 0.6rem;
+	font-style: italic;
+}
+
+/* add friend component */
+.add__container {
+	height: 85%;
+	width: 100%;
+	position: absolute;
+	background-color: #f7f7f7ee;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.add__form__container {
+	margin: 8rem;
+	border-radius: 15px;
+	background: #fff;
+	width: 30%;
+	height: 55%;
+	padding: 2rem;
+}
+
+.add__form__container h1 {
+	text-align: center;
+}
+
+.add__form__container form {
+	display: flex;
+	flex-direction: column;
+}
+
+.add__form__container form input {
+	padding: 0.7rem 0.3rem;
+	background: rgb(238, 238, 238);
+	border: none;
+	border-radius: 5px;
+	margin-bottom: 1rem;
+}
+
+.add__form__container form button {
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+	color: #fff;
+	background-color: lightcoral;
+	border: none;
+	margin: 1rem 0;
+	border-radius: 5px;
+}
