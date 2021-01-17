@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function LoginForm() {
+function LoginForm(props) {
 	const [formValues, setFormValues] = useState({
 		username: '',
 		password: ''
@@ -20,6 +20,7 @@ function LoginForm() {
 			.post('http://localhost:5000/api/login', formValues)
 			.then(res => {
 				localStorage.setItem('token', res.data.payload);
+				props.history.push('/friends');
 			})
 			.catch(err => console.log(err));
 	};

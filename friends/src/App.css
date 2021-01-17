@@ -95,6 +95,23 @@
 	margin: 4rem auto;
 }
 
+.thelist__top {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.add__friend__btn {
+	border: none;
+	background: lightcoral;
+	padding: 0.4rem 0.8rem;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 1.6rem;
+	cursor: pointer;
+	outline: none;
+}
+
 .thelist__container h1 {
 	text-align: center;
 }
@@ -103,6 +120,12 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+}
+
+.loading {
+	margin-top: 10rem;
+	color: rgb(228, 228, 228);
+	letter-spacing: 0.3rem;
 }
 
 /* Friend component */
@@ -121,4 +144,51 @@
 	color: #333;
 	margin-bottom: 0.6rem;
 	font-style: italic;
+}
+
+/* add friend component */
+.add__container {
+	height: 85%;
+	width: 100%;
+	position: absolute;
+	background-color: #f7f7f7ee;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.add__form__container {
+	margin: 8rem;
+	border-radius: 15px;
+	background: #fff;
+	width: 30%;
+	height: 55%;
+	padding: 2rem;
+}
+
+.add__form__container h1 {
+	text-align: center;
+}
+
+.add__form__container form {
+	display: flex;
+	flex-direction: column;
+}
+
+.add__form__container form input {
+	padding: 0.7rem 0.3rem;
+	background: rgb(238, 238, 238);
+	border: none;
+	border-radius: 5px;
+	margin-bottom: 1rem;
+}
+
+.add__form__container form button {
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+	color: #fff;
+	background-color: lightcoral;
+	border: none;
+	margin: 1rem 0;
+	border-radius: 5px;
 }
