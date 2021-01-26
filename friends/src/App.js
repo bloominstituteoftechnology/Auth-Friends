@@ -4,6 +4,7 @@ import Login from './components/Login';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import Friends from './components/Friends';
 
+
 function App() {
   const logout = () => {
     axiosWithAuth()
@@ -23,10 +24,10 @@ function App() {
         <div className="navbar">
           <Link to="/login">Login</Link>
           <Link to="/login" onClick={logout}>Logout</Link>
-          {(localStorage.getItem('token') && <Link to="/protected">Friends</Link>)}
+          <Link to="/protected">Friends</Link>
         </div>
         <br />
-
+        
         <Switch>
           <Route exact path="/protected" component={Friends} />
           <Route path="/login" component={Login} />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import "./Friends.css";
+import Loader from "react-loader-spinner";
 
 function Friends() {
     const [friends, setFriends] = useState([]);
@@ -22,6 +23,7 @@ function Friends() {
     return (
         <div className="friends">
             <h1>Friends!</h1>
+            <Loader type="ThreeDots" color="skyblue" height={80} width={80} timeout={1000}/>
             {friends.map((friend) => (
                 <div key={friend.id} className='friends-list'>
                     <h3>{friend.name}</h3>
