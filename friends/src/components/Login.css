@@ -1,0 +1,22 @@
+.login {
+  display: flex;
+  justify-content: center;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  padding: 1%;
+  width: 100%;
+}
+.form input {
+  margin-right: 2%;
+  padding: 1%;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px 4px skyblue;
+}
+.form button {
+  padding: 1% 2%;
+  color: #333;
+  box-shadow: 1px 1px 10px 4px skyblue;
+  border-radius: 5px;
+}
