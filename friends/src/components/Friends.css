@@ -1,0 +1,19 @@
+.friends {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.friends-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.friends-list p {
+  margin: 0;
+  padding: 2%;
+}
+.friends-list h5 {
+  text-decoration: underline;
+  cursor: pointer;
+}

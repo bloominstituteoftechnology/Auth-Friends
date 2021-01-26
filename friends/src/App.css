@@ -1,0 +1,19 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 3% auto;
+  padding: 3%;
+  border-radius: 5px;
+  box-shadow: 1px 1px 20px 4px skyblue;
+}
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+}
+.navbar a {
+  text-decoration: none;
+}
+.component-routes {
+  justify-content: center;
+}
