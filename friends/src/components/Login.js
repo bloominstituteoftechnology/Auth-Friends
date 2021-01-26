@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import e from 'express';
+
+
 
 class Login extends React.Component{
+
     state={
         credentials:{
             username:'',
@@ -21,11 +23,12 @@ class Login extends React.Component{
 
 
     login =(evt) =>{
-        e.preventDefault();
-        axios.post('http:localhost5000/api/login', this.state.credentials)
+        evt.preventDefault();
+        axios.post('http://localhost:5000/api/login', this.state.credentials)
         .then((res) =>{
-            sessionStorage.setItem('token', res.data.payload);
-            this.props.history.push('/friendslist')
+            console.log('Helloo', res.data.payload)
+            localStorage.setItem('token', res.data.payload);
+            this.props.history.push('/friendsList')
         })
         .catch((err) =>{
             console.log(err);
