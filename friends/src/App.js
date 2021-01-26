@@ -7,12 +7,12 @@ import Friends from './components/Friends';
 function App() {
   const logout = () => {
     axiosWithAuth()
-      .post('http://localhost:5000/api/logout')
-      .then(res=>{
+      .post('/logout')
+      .then(res =>  {
         localStorage.removeItem('token');
-        window.location.href =  '/login';
+        window.location.href = '/login';
       })
-      .catch(err=>{
+      .catch(err => {
         console.log(err);
       })
   };
@@ -23,7 +23,7 @@ function App() {
         <div className="navbar">
           <Link to="/login">Login</Link>
           <Link to="/login" onClick={logout}>Logout</Link>
-          <Link to="/protected">Protected Friends</Link>
+          {(localStorage.getItem('token') && <Link to="/protected">Friends</Link>)}
         </div>
         <br />
 
