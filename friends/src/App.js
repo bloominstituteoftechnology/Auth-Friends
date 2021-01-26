@@ -1,21 +1,13 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Login from './components/Login';
-import { axiosWithAuth } from './utils/axiosWithAuth';
 import Friends from './components/Friends';
 
 
 function App() {
   const logout = () => {
-    axiosWithAuth()
-      .post('/logout')
-      .then(res =>  {
-        localStorage.removeItem('token');
-        window.location.href = '/login';
-      })
-      .catch(err => {
-        console.log(err);
-      })
+    localStorage.removeItem('token');
+    window.location.href = '/login';
   };
 
   return (
