@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Header/>
       <Route path = "/login" component = {Login}/>
-      <PrivateRoute path= "/friends"/>
+      <PrivateRoute path= "/protected" component = {FriendList}/>
     </div>
   );
 }

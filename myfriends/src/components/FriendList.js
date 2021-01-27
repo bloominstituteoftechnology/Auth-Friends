@@ -1,6 +1,7 @@
 import axios from "axios"
 import { axiosWithAuth } from "./../utils/axiosWithAuth";
 import React, { useState, useEffect } from "react";
+import Friend from "./Friend"
 
 
 const initialFormValues = {
@@ -23,7 +24,7 @@ function FriendList() {
       })
     }
   
-    const handleSubmit = (e) => {
+    const onSubmit = (e) => {
       e.preventDefault(); 
       axiosWithAuth()
         .post("http://localhost:5000/api/friends", formValues)
@@ -33,17 +34,44 @@ function FriendList() {
       
     }
 
-    useEffect = () => {
+    useEffect(async () => {
+        try {
+          const { data } = await axiosWithAuth().get(
+            "http://localhost:5000/api/friends"
+          );
+          setFriendList(data);
+          console.table(data);
+        } catch (err) {
+          console.log(err);
+        }
+      }, []);
 
-    }
     return (
         <div>
-
-            <form>
-                <input></input>
-                <input></input>
-                <input></input>
+            <form onSubmit = {onSubmit}>
+                <input 
+                type = "text"
+                name = "name" 
+                values = {formValues.name}
+                onChange = {handleChange}
+                ></input>
+                <input
+                type = "email"
+                name = "email"
+                values = {formValues.email}
+                onChange = {handleChange}
+                ></input>
+                <input
+                type = "number"
+                name = "age"
+                values = {formValues.age}
+                onChange = {handleChange}
+                ></input>
+                <button>Add</button>
             </form>
+            {friendList.map((friend) => {
+            return <Friend friend={friend} />;
+        })}
         </div>
     )
 }
