@@ -1,24 +1,27 @@
-import React, { useEffect } from 'react';
-import { Link, Route } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Friend(props) {
-  const { friend, setFriend } = props;
-
-  useEffect(() => {
-    setFriend(friend.id);
-  },[featuredFriend]);
+  const { friend, setFriend, featuredFriend } = props;
+  
 
   const handleClick = e => {
     setFriend(e.target.dataset.id * 1);
   }
 
   return (
-    <div className='friend'>
+    friend.id === featuredFriend.id
+    ? <div className='featured-container'>
+        <div className='friend'>
+        <h4>{friend.name}</h4>
+        <ul>
+          <li>Age: {friend.age}</li>
+          <li>{friend.email}</li>
+        </ul>
+      </div>
+    </div>
+    : <div className='friend'>
       <h4>{friend.name}</h4>
-      <ul>
-        <li>Age: {friend.age}</li>
-        <li>{friend.email}</li>
-      </ul>
       <Link to={`/friends/${friend.id}`} onClick={handleClick} data-id={friend.id}>view </Link>
     </div>
   )

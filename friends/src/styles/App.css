@@ -73,3 +73,11 @@ ul {
 ul.nav li a {
   text-decoration: underline;
 }
+.featured-container {
+  display: block;
+  width: 100%;
+}
+.featured-container .friend {
+  border-color: red;
+  margin: 0 auto;
+}

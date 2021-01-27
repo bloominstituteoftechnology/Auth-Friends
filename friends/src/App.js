@@ -3,7 +3,7 @@ import Friends from './components/Friends';
 import { Route, Link, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
-import Friend from './components/Friend';
+import AddForm from './components/AddForm';
 // import { axiosWithAuth } from './utlis/axiosWithAuth';
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
 
       <Switch>
         <PrivateRoute path='/friends' component={Friends} />
+        <PrivateRoute path='/add' component={AddForm} />
         <Route path='/' component={Login} />
         <Route component={Login} />
       </Switch>
