@@ -1,63 +1,67 @@
-import React,{ useState } from 'react';
-
-import {  axiosAuth } from "../axios/axios";
-
-
+import React, { useState } from "react";
+import axios from "axios"
+import { axiosAuth } from "../axios/axios"
 
 
-
-export default function Friends() {
-    const initialState = {
-        
-        friends:[]
+    export default function Friends () {
+        const initialState = {
+            friends:{
+            name:"",
+            email:"",
+            age:""
+        }
     }
-  
- const [friends, setFriends] = useState(initialState)
-    
-    
-    
-    const getData =  () => {
-        axiosAuth()
-          .get('/friends')
-          .then(res=> {
-              console.log(res)
-            setFriends({
-            friends: res.data
+        const [data,setData] = useState(initialState)
+       
+        const getData = () =>{
+            axiosAuth();
+            axios
+            .get("/friends")
+            .then(res=>{
+                setData({friends:res.data})
             })
-          })
-          .catch(err=>{
-            console.log(err.response.data.error);
-          })
-        } 
+            .catch(err=>{
+                console.log(err)
+            })
+        }
 
-             getData()
+        getData();
 
         return (
-            
-         { friends.map(friend =>(
-             
-            <div>
-                <p>key={friend.id}</p>
-                <p>{friend.name}</p>
-                <p>{friend.age}</p>
-                <p>{friend.email}</p>
-            </div> 
-            
-             
-           
-        ))}
 
-    
+            {data.map(function(friend){
+                return
+                
+                <div>
+                    <p>{friend.name}</p>
+                    <p>{friend.age}</p>
+                    <p>{friend.email}</p>
+                </div>
+                
+
+
+
+            })
+        
+        }
+      
         )
-    }
+    
 
+        
 
+                
+            
+        }        
+            
+            
+            
+            
+            
+            
+            
+     
 
-
-
-
-   
-
-
-
- 
+     
+        
+    
