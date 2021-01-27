@@ -1,0 +1,13 @@
+.header-container {
+  padding-bottom: 2%;
+}
+
+.link-box {
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
