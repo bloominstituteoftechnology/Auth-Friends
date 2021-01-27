@@ -14,25 +14,31 @@
 }
 
 .App-header {
+  width: 100%;
+  text-align: right;
+  min-height: 10vh;
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
+  color: white;
+  margin-bottom: 40px;
+}
+
+a:visited {
+  color: white;
+}
+a:hover{
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.form_box {
+  padding: 20px 0;
+  margin: 0 auto;
+  width: 40%;
+  background-color: lightblue;
+  border: 1px red solid;
+  align-items: space-evenly;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

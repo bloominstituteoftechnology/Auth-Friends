@@ -1,57 +1,70 @@
 import axios from 'axios'
-import React, {useState} from 'react'
+import React, {Component} from 'react'
 
-const initialFormState = {
-    username: '',
-    password: '',
-}
+
   
+export default class Login extends Component {
   
-export default function Login () {
-  const [formState, setFormState] = useState(initialFormState)
-  const [loadingState, setLoadingState] = useState(true)
+  state = {
+    isLoading: true,
+    credentials: {
+      username: '',
+      password:''
+    }
+  }
+  
+  handleChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
 
-  const handleChange = e => {
-  setFormState({...formState, [e.target.name]: e.target.value})
-}
-
-  const handleLoad = e => {
+  login = e => {
     e.preventDefault();
-    axios.post("http://localhost:5000/api/login", formState)
+    axios.post("http://localhost:5000/api/login", this.state.credentials)
     // "when I submit the login button, I'm going to post the new information to this API in the initialFormState view"
       .then(res => {
         console.log(res.data)
         localStorage.setItem('token', res.data.payload);
+        //now that we have our token back, we want to save it and now we can make use of it in our app.
         this.props.history.push('/protected');
+        // this.props has data info that we can access such as ".push" that we're wanting to "from history" push into our path into the protected route path
       })
       .catch(err=>{
         console.log(err);
       });
-}
+  }
+  render() {
   return (
-    <div>
+    <div className="form_box">
       
-      <h2>Login Here!</h2>
+      <h3>Login Here!</h3>
 
-      <form onSubmit={handleLoad}>
-        <label>UserName:
-         <input type="name"
+      <form onSubmit={this.login}>
+         <label>UserName: 
+         <input type="text"
             name="username"
-            value={handleChange}/>
+            value={this.state.credentials.username}
+            onChange={this.handleChange}/>
         </label>
-      
-        <label>Password:
+          
+          <br/>
+        <label>Password: 
          <input type="password"
             name="password"
-            value={handleChange}/>
+            value={this.state.credentials.password}
+            onChange={this.handleChange}/>
         </label>
-      
-        <button>Submit
+
+          <br/><br/>
+        <button>Login
         </button>
-      
       </form>
 
     </div>
   )
-
+}
 }
