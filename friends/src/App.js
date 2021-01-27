@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch  } from 'react-router-dom';
-import axios from 'axios';
-import './App.css';
+
 
 import axiosWithAuth from './utils/axiosWithAuth';
 
@@ -11,7 +10,6 @@ import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
 
 function App() {
-
 
   const logout = () => {
     axiosWithAuth().post('/logout')
@@ -32,7 +30,7 @@ function App() {
       <nav>
         <Link to='/login'>Login</Link>
           <p></p>
-        <Link to='/friendsList'>Add Friends</Link>
+        <Link to='/addFriends'>Add Friends</Link>
           <p></p>
           <Link to='/friendsList'>Friends List</Link>
             <p></p>
@@ -43,7 +41,7 @@ function App() {
 
       <Switch>
       <PrivateRoute exact path='/friendsList' component={FriendsList} />
-      <PrivateRoute exact path='/addFriend' component={AddFriendForm} />
+      <PrivateRoute exact path='/addFriends' component={AddFriendForm} />
         <Route path='/login' component={Login}/>
         <Route component={Login}/>
       </Switch>

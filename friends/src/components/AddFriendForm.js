@@ -23,8 +23,7 @@ const initalValues ={
 
     const handleSubmit = (evt) =>{
         evt.preventDefault();
-        axiosWithAuth()
-        .post('http://localhost:5000/api/friends', formValues)
+        axiosWithAuth().post('friends', formValues)
         .then((res) =>{
             setFormValues({
                 // id: ,
