@@ -41,4 +41,17 @@ a:hover{
   border: 1px red solid;
   align-items: space-evenly;
 }
+.friends{
+  display: flex;
+  justify-content: space-around;
+  /* margin: 20px; */
 
+}
+.friend_component {
+  margin: 20px;
+  background-color: #282c34;
+  color: lightblue;
+  font-weight: bold;
+  width: 30%;
+  border: 1px red solid;
+}

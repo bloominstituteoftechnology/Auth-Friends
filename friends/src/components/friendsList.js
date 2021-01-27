@@ -1,10 +1,14 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 
+import { axiosWithAuth } from "./../utils/axiosWithAuth"
+
+import Friend from "./Friend"
+
 export default class friendsList extends Component {
   state = {
-    newFriends: [],
-    friend: {
+    allFriends: [],
+    newFriend: {
       id: "",
       name: "",
       age: "",
@@ -16,28 +20,44 @@ export default class friendsList extends Component {
   }
   
   getData = () => {
-    axios.get("http://localhost:5000/api/friends", {
-      headers: {Authorization: localStorage.getItem('token')}
-    })
+    axiosWithAuth()
+    .get("/friends")
       .then(res => {
         console.log(res.data)
         this.setState({
-          newFriends: res.data.data
+          allFriends: res.data
         })
+        // console.log(this.state)
       })
       .catch(err => {
       console.log(err.response.data.error)
     })
   }
+  //this is supposed to get data from the server so that WHEN logged in, it will show the friends.
 
   handleChange = e => {
     this.setState({
-      friend: {
-        ...this.state.friend,
+      newFriend: {
+        ...this.state.newFriend,
         [e.target.name]: e.target.value
       }
     })
   }
+
+    // postNewFriend = () => {
+    //   axiosWithAuth()
+    //   .post("/friends")
+    //   don't want someone random to add so use axioswithAuth
+    //   .then(res => {  
+    //     console.log(res.data)
+    //     this.setState({
+    //       allFriends: res.data, 
+    //     })
+    //   })
+    //   .catch(err => {
+    //   console.log(err)
+    // })
+  // }
 
   render() {
     return (
@@ -45,24 +65,31 @@ export default class friendsList extends Component {
         <div className="App-header">
         <h2>Friends Info</h2>
         </div>
-        <p> {this.state.newFriends}</p>
+        <div className="friends" >
+        {
+          this.state.allFriends ? this.state.allFriends.map((item, index) => {
+            return <Friend friend={item} key={index} />
+          })
+              : ""
+        }
+        </div>
         <div className="form_box">
           <form >
              <h3>Add Friend:</h3>
-            
+            <p> I'll be there for you....</p>
             <label>Name:<input type="text"
               name="name"
-              value={this.state.friend.name}
+              value={this.state.newFriend.name}
               onChange={this.handleChange} />
             </label><br/>
             <label>Age:<input type="text"
               name="age"
-              value={this.state.friend.age}
+              value={this.state.newFriend.age}
               onChange={this.handleChange} />
             </label><br/>
             <label>Email:<input type="text"
               name="email"
-              value={this.state.friend.email}
+              value={this.state.newFriend.email}
               onChange={this.handleChange} />
             </label><br/><br/>
             <button>Submit</button>

@@ -7,6 +7,7 @@ export default class Login extends Component {
   
   state = {
     isLoading: true,
+    errorMessage:"",
     credentials: {
       username: '',
       password:''
@@ -34,7 +35,8 @@ export default class Login extends Component {
         // this.props has data info that we can access such as ".push" that we're wanting to "from history" push into our path into the protected route path
       })
       .catch(err=>{
-        console.log(err);
+        console.log(err.error);
+        return this.setState({ errorMessage: "Must submit valid login details." })
       });
   }
   render() {
@@ -59,7 +61,8 @@ export default class Login extends Component {
             onChange={this.handleChange}/>
         </label>
 
-          <br/><br/>
+        <br /><br />
+        <p>{this.state.errorMessage}</p>
         <button>Login
         </button>
       </form>
