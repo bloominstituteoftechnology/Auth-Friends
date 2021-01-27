@@ -1,6 +1,6 @@
-import axios from 'axios'
 import React , {useState, useEffect} from 'react'
-import friendCard from '../components/friendsCard'
+import Addfriend from './addFriend'
+import FriendCard from '../components/friendsCard'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 
@@ -22,14 +22,22 @@ const getFriends = () => {
     })
  }
 
+ 
  useEffect(() => {
      getFriends()
  }, [])
 
+//in return AddFriend is my form so thats first then comes the map under my form to showcase the friends inside the array already!
     return(
         <div className='friends-list'>
-            <h2>Friends List :)</h2>
-            
+                <Addfriend /> 
+                <h2>Friends:</h2>
+                <div className='array-friends'>
+                {friends.map(friend => {
+                    return <FriendCard friend={friend} />
+                })}
+                </div>
+        
         </div>
     )
 }
