@@ -3,7 +3,8 @@ import axios from "axios"
 import { Spinner } from 'react-bootstrap'
 
 
-export default function Login () {
+
+export default function Login (props) {
 
     const InitialFormState = {
      credentials:{
@@ -15,17 +16,18 @@ export default function Login () {
   const [isLoading,setIsLoading] = useState(true)
 
  const login = e => {
+   console.log(login)
     e.preventDefault();
     axios.post('http://localhost:5000/api/login', form.credentials)
       .then(res=>{
           console.log(res.data.payload)
         localStorage.setItem('token', res.data.payload);
-      //  this.props.history.push('/protected');
+    props.history.push('/protected');
       })
       .catch(err=>{
         console.log(err);
       });
-
+    
   }
   
   const setLoading=()=>{
@@ -41,6 +43,7 @@ export default function Login () {
   };
 
         return (
+          <>
      <div>
         <form onSubmit={login}>
             <label htmlFor="name">
@@ -64,13 +67,15 @@ export default function Login () {
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous"
         />
-          <button className="button" onClick={setLoading}onChange={handleChange}>Login</button>
+          <button className="button" onClick={setLoading}onChange={handleChange} onSubmit={login}>Login</button>
                 {isLoading && <Spinner animation="border" role="status">
           </Spinner>}
 
             </div>
        </form>
     </div>
+    
+    </>
 
         )
        
