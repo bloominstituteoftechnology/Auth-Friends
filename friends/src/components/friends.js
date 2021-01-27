@@ -28,30 +28,21 @@ import { axiosAuth } from "../axios/axios"
         getData();
 
         return (
-
-            {data.map(function(friend){
-                return
-                
-                <div>
-                    <p>{friend.name}</p>
-                    <p>{friend.age}</p>
-                    <p>{friend.email}</p>
-                </div>
-                
-
-
-
-            })
+            {
+                data.map(friend => (
+                  <div>
+                      <p>{friend.name}</p>
+                      <p>{friend.email}</p>
+                      <p>{friend.age}</p>
+                  </div>
+                ))
+              } 
+    
         
-        }
+        
       
         )
-    
-
-        
-
-                
-            
+          
         }        
             
             
