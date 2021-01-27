@@ -5,7 +5,10 @@ import FriendsList from './components/friendsList'
 import PrivateRoute from './components/PrivateRoute'
 
 function App() {
-
+  const logout =() =>{
+    localStorage.removeItem('token')
+    window.location.href = '/login'
+  }
 
 
 
@@ -14,7 +17,7 @@ function App() {
     <Router>
     <div className="App">
       <Link to='/login'>Login</Link>
-
+      <Link onClick ={logout}>Log Out</Link>
       <Switch>
         <PrivateRoute exact path ='/protected' component={FriendsList} />
         <Route path='login' component={Login}/>
