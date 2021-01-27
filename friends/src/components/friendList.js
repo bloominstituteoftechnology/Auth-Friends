@@ -43,7 +43,7 @@ export function GetFriends(props) {
   }, []);
 
   return (
-    <div>
+    <div className="input">
       <h1>Friend list</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -76,7 +76,10 @@ export function GetFriends(props) {
           />
         </label>
         <br></br>
-        <button>Add New Friend</button>
+        <button className="button">
+          <span>Add New Friend </span>
+        </button>
+        <h4>Hover over cards to reveal friends</h4>
       </form>
       <div className="cardContainer">
         {friendList.map((friend) => {
