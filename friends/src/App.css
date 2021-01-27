@@ -17,33 +17,41 @@ body {
   border-radius: 10px;
 }
 
-h1 {
-  color: rgb(224, 144, 144);
-  padding: 1rem;
-  margin-top: 2rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  font-size: 2rem;
-  font-weight: 700;
-  text-decoration: underline;
-  background: black;
-  border: 2px solid rgb(224, 144, 144);
-  border-radius: 10px;
-  text-align: center;
+.form-container {
+  width: 80%;
+  padding-bottom: 3rem;
+  border: 3px solid black;
+  background: rgba(20,20,20,0.5)
 }
 
-.form-instruct {
-  color: rgb(224, 144, 144);
-  padding: 1rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-decoration: underline;
-  background: rgb(59, 53, 53);
-  border: 6px solid rgb(224, 144, 144);
-  border-radius: 10px;
+.form-container button {
+  width: 20%;
+}
+
+.form-container h1 {
   text-align: center;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  padding-top: 2rem;
+}
+
+.add-new-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.friends-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: rgb(181, 197, 186);
+  border: 1px solid black;
+  background: rgba(20,20,20,0.5);
+  margin: 2rem;
+  padding: 2rem;
 }
 
 input {
@@ -81,46 +89,9 @@ button:hover {
   border-radius: 10px;
 }
 
-.new-friend-form {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  font-family: 'Times New Roman', Times, serif;
-}
-
-.container-output {
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  flex-wrap: wrap;
-  border: 5px solid black;
-  border-radius: 10px;
-  margin: 2rem;
-  font-weight: 700;
-  background: rgba(231, 227, 227, 0.6);
-}
-
-.p-container-output {
-  padding: 2rem;
-}
-
-ul {
-  display: flex;
-  justify-content: space-around;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  background: rgba(248,154,3, 0.6);
-  border: 5px solid black;
-  border-radius: 10px;
-}
-
-li {
-  list-style-type: none;
-  text-transform: uppercase;
+.nav-links {
+  margin-top: 5rem;
+  padding-left: 10rem;
 }
 
 a {
@@ -132,6 +103,7 @@ a {
  border: 2px solid black;
  border-radius: 10px;
  padding: 1rem;
+ margin: 1rem;
 }
 
 a:hover {
@@ -143,6 +115,31 @@ a:hover {
   border: 2px solid black;
   border-radius: 10px;
   padding: 1rem;
+  margin: 1rem;
+ }
+
+ .logout-btn {
+  text-decoration: none; 
+  color: black;
+  font-size: 1rem;
+  font-weight: 900;
+  background: wheat;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: -5rem;
+ }
+
+ .logout-btn:hover {
+  text-decoration: none; 
+  color: wheat;
+  font-size: 1rem;
+  font-weight: 900;
+  background: black;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: -5rem;
  }
 
 footer {
