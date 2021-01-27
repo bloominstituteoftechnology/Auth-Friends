@@ -12,7 +12,8 @@ function App() {
             <Link to="/login" component={Login}>
               {" "}
               Login
-              {/* <Login /> */}
+    <PrivateRoute exact path="/protected" component={friendsList} />
+
             </Link>
           </Switch>
         </div>
