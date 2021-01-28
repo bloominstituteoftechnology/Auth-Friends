@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 const initialFormValues = {
     username: '',
@@ -19,16 +20,18 @@ const Login = () => {
         console.log(formValue)
     }
 
+    // Post formValues to api
+    // If successful .then will recieve token from api representing successful login
+    // We will store that token in local storage and push the user to url ending in /friends
     const login = (e) => {
         e.preventDefault()
         console.log('clicked')
         // axios
-        axios.post('http://localhost:5000/api/login', formValue)
+        axiosWithAuth()
+        .post('/login', formValue)
         .then(res => 
-            // res.data.payload
             localStorage.setItem('token', res.data.payload),
             push('/friends')
-            // console.log(res)
             )
         .catch(err => console.log(err))
     }
@@ -52,7 +55,7 @@ const Login = () => {
                 <input
                 name='password'
                 id='password'
-                type='password'
+                type='text'
                 onChange={handleChange}
                 value={formValue.password}
                 />
