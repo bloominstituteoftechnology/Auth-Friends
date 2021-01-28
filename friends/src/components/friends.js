@@ -1,24 +1,22 @@
 import React, { useState } from "react";
-import axios from "axios"
 import { axiosAuth } from "../axios/axios"
 
-
     export default function Friends () {
-        const initialState = {
-            friends:{
+    
+    
+        const [data,setData] = useState({
+            allFriends:[],
+            id:"",
             name:"",
             email:"",
             age:""
-        }
-    }
-        const [data,setData] = useState(initialState)
+        })
        
         const getData = () =>{
-            axiosAuth();
-            axios
+            axiosAuth()
             .get("/friends")
             .then(res=>{
-                setData({friends:res.data})
+                setData({allFriends:res.data})
             })
             .catch(err=>{
                 console.log(err)
@@ -28,22 +26,27 @@ import { axiosAuth } from "../axios/axios"
         getData();
 
         return (
-            {
-                data.map(friend => (
-                  <div>
-                      <p>{friend.name}</p>
-                      <p>{friend.email}</p>
-                      <p>{friend.age}</p>
-                  </div>
-                ))
-              } 
-    
+    <div>
+     { 
+      data.allFriends.map((item,index )=>{
+            return (
+            <div key={index}>
+                <p>{item.name}</p>
+                <p>{item.email}</p>
+                <p>{item.age}</p>
+            </div>
+                    )
+
+              })
+               
+              }
         
-        
+            </div>
       
         )
           
-        }        
+        
+            }    
             
             
             
