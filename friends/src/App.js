@@ -11,9 +11,8 @@ function App() {
           <Link to="/login">Login</Link>
         </li>
       </ul>
-      <h2>Welcome! Have an account? Log in!</h2>
       <Switch>
-        <Route exact path="/login" component={Login} />
+        <Route path="/login" component={Login} />
       </Switch>
     </div>
   );
