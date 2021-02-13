@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./components/Login";
+import FriendsList from "./components/FriendsList";
 import "./App.css";
 
 function App() {
@@ -10,8 +12,12 @@ function App() {
         <li>
           <Link to="/login">Login</Link>
         </li>
+        <li>
+          <Link to="/friends">Friends List</Link>
+        </li>
       </ul>
       <Switch>
+        <ProtectedRoute exact path="/friends" component={FriendsList} />
         <Route path="/login" component={Login} />
       </Switch>
     </div>

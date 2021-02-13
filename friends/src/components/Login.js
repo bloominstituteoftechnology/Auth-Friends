@@ -8,11 +8,6 @@ const Login = () => {
     username: "",
     password: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
-
-  if (isLoading) {
-    return <div>Getting your friends!</div>;
-  }
 
   const changeHandler = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -27,7 +22,7 @@ const Login = () => {
         localStorage.setItem("token", res.data.payload);
         history.push("/friends");
       })
-      .catch((err) => console.log("cannot login: ", err));
+      .catch((err) => console.log("cannot login: ", err.message));
   };
 
   return (
@@ -43,6 +38,7 @@ const Login = () => {
         />
         <label>Password</label>
         <input
+          type="password"
           placeholder="password... shhhh"
           id="password"
           name="password"
