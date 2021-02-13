@@ -24,6 +24,7 @@ class Login extends React.Component {
             .then(res => {
                 console.log("AM: Login.js: login: res: ", res);
                 localStorage.setItem("token", res.data.payload);
+                this.props.history.push('/friendsList');
             })
             .catch(err => console.error("Cannot Login to server", err.message));
     };
