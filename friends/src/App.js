@@ -11,6 +11,10 @@ import FriendsList from './components/FriendsList';
 
 
 function App() {
+  const logout = () => {
+    localStorage.removeItem("token");
+  };
+ 
   return (
     <Router>
       <div className="App">
@@ -21,7 +25,7 @@ function App() {
             </li>
 
             <li>
-              <Link to="/login" >Logout</Link>
+              <Link to="/login" onClick={logout} >Logout</Link>
             </li>
 
             <li>
