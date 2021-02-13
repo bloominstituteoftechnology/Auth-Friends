@@ -6,6 +6,9 @@ import './App.css';
 
 // Components
 import Login from './components/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import FriendsList from './components/FriendsList';
+
 
 function App() {
   return (
@@ -22,12 +25,13 @@ function App() {
             </li>
 
             <li>
-              <Link to="friends" >Friends</Link>
+              <Link to="/friendsList" >Friends</Link>
             </li>
           </ul>
         </header>
 
         <Switch>
+          <ProtectedRoute exact path="/friendsList" component={FriendsList} />
           <Route path="/login" component={Login} />
           <Route component={Login} />
         </Switch>
