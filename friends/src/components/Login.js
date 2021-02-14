@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import './Login.css';
+
 function Login(props) {
 
     const [cred, setCred] = useState({
@@ -24,21 +26,21 @@ function Login(props) {
       };
     
       return (
-        <div>
-          <form onSubmit={handleSubmit}>
-            <input
-              name='username'
-              value={cred.username}
-              onChange={handleChange}
-            />
-            <input
-              name='password'
-              value={cred.password}
-              onChange={handleChange}
-            />
-            <button>Login</button>
-          </form>
-        </div>
+            <div className='loginform'>
+                <form onSubmit={handleSubmit}>
+                    <input
+                    name='username'
+                    value={cred.username}
+                    onChange={handleChange}
+                    />
+                    <input
+                    name='password'
+                    value={cred.password}
+                    onChange={handleChange}
+                    />
+                    <button>Login</button>
+                </form>
+            </div>
       );
 }
 

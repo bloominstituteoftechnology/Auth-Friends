@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+import './FriendsList.css';
+
 function FriendsList() {
     const [friends, setFriends] = useState([]);
     const [newFriend, setNewFriend] = useState({
@@ -40,28 +42,36 @@ function FriendsList() {
     }, []);
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input 
-                    name='name'
-                    value={newFriend.name}
-                    onChange={handleChange}
-                />
-                <input 
-                    name='age'
-                    value={newFriend.age}
-                    onChange={handleChange}
-                />
-                <input 
-                    name='email'
-                    value={newFriend.email}
-                    onChange={handleChange}
-                />
-                <button>Add Friend</button>
+        <div className='friendsform'>
+            <form className='form' onSubmit={handleSubmit}>
+                <label className='labelinput'id='name'>Name:
+                    <input 
+                        name='name'
+                        value={newFriend.name}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label className='labelinput' id='age'>Age:
+                    <input 
+                        name='age'
+                        value={newFriend.age}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label className='labelinput' id='email'>Email:
+                    <input 
+                        name='email'
+                        value={newFriend.email}
+                        onChange={handleChange}
+                    />
+                </label>
+                <button className='btn'>Add Friend</button>
             </form>
-            {friends.map(friend => (
-                <h4 key={friend.id}>{friend.name}</h4>
-            ))}
+            <div className='friends'>
+                {friends.map(friend => (
+                    <h4 className='friend' key={friend.id}>{friend.name}, {friend.age}, {friend.email}</h4>
+                ))}
+            </div>
         </div>
     );
 };
