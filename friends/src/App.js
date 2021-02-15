@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
+import FriendLists from './components/FriendLists';
 import './App.css';
+import { axiosWithAuth } from './utils/axiosWithAuth';
 
 function App() {
+  const logout = () => {
+    axiosWithAuth().post('/logout')
+      .catch(err => console.error('unable to logout'));
+      localStorage.removeItem('token');
+    }
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <li>
+        <Link to ='/login'>LOGIN</Link>
+      </li>
+      <li>
+        <Link to = '/logout' onClick={logout}>LOG OUT</Link>
+      </li>
+      <li>
+        <Link to ='/protected'>Friends List</Link>
+      </li>
+      <Switch>
+        <PrivateRoute exact path='/protected' component={FriendLists}/>
+        <Route path='/login' component={Login}/>
+        <Route component={Login}/>
+      </Switch> 
     </div>
+    </Router>   
   );
 }
 
