@@ -5,7 +5,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 class FriendsList extends React.Component {
     state = {
-        Friends: []
+        friends: []
     };
 
     componentDidMount() {
@@ -15,7 +15,10 @@ class FriendsList extends React.Component {
     getData = () => {
         axiosWithAuth().get('http://localhost:5000/api/friends')
           .then(res => {
-              console.log("AM: FriendsList.js: getData: res: ", res);
+              console.log("AM: FriendsList.js: getData: res: ", res.data);
+              this.setState({
+                friends: res.data
+              })
           })
           .catch(err => console.error("Unable to retrieve data: ", err.message));
     };
@@ -26,6 +29,17 @@ class FriendsList extends React.Component {
         return (
             <div>
                 <h1>Here Are Your Friends</h1>
+                <div>
+                    {this.state.friends.map(friend => {
+                        return (
+                            <div key={friend.id} >
+                                <h4>{friend.name}</h4>
+                                <p>Age: {friend.age}</p>
+                                <p>Email: {friend.email}</p>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         );
     };
