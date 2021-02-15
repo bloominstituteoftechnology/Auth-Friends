@@ -8,7 +8,7 @@ class FriendsList extends React.Component {
     state = {
         friends: [],
         newFriend: {
-            id: '',
+            id: Date.now(),
             name: '',
             age: '',
             email: ''
@@ -38,7 +38,12 @@ class FriendsList extends React.Component {
                 [e.target.name]: e.target.value
             }
         })
-        console.log(e.target.value);
+    };
+
+    addFriend = () => {
+        axiosWithAuth().post('http://localhost:5000/api/friends', this.state.newFriend)
+          .then(res => console.log("addFriend: ", res))
+          .catch(err => console.error("Cannot add friend", err.message));
     };
 
     
@@ -59,7 +64,7 @@ class FriendsList extends React.Component {
                     })}
                 </div>
 
-                <form>
+                <form onSubmit={this.addFriend} >
                     <label htmlFor="name" >Name: </label>
                     <input id="name" name="name" type="text" value={this.state.newFriend.name} onChange={this.handleChange} />
 
@@ -68,6 +73,8 @@ class FriendsList extends React.Component {
 
                     <label htmlFor="email" >Email: </label>
                     <input id="email" name="email" type="text" value={this.state.newFriend.email} onChange={this.handleChange} />
+
+                    <button>Add Friend</button>
                 </form>
             </div>
         );
