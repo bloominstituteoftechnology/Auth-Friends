@@ -1,0 +1,38 @@
+.labels {
+  color: purple;
+}
+
+.button {
+  background-color: green;
+  color: sandybrown;
+  margin-top: 2rem;
+}
+
+.form {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.member-list{
+    margin:0 auto;
+    color:crimson;
+}
+h2{
+    margin:0;
+}
+li{
+    display: flex;
+   align-items: baseline;
+    padding-top: .2rem;
+}
+p{
+    margin:.5rem;
+}
+
+.lables1{
+    color:orangered;
+}
+
+.labels2{
+    color: greenyellow;
+}
