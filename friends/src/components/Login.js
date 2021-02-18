@@ -6,7 +6,23 @@ class Login extends React.Component {
         credentials: {
             username: '',
             password: ''
+        },
+        hasRedirected: false,
+        redirectMsg: ''
+    };
+
+    componentDidMount() {
+        this.getRedirect();
+    }
+
+    getRedirect = () => {
+        if (localStorage.getItem('redirect')) {
+            this.setState({
+                hasRedirected: true,
+                redirectMsg: localStorage.getItem('redirect')
+            });
         }
+        return
     };
 
     handleChange = e => {
@@ -26,38 +42,51 @@ class Login extends React.Component {
 
   login = e => {
       e.preventDefault();
-    //   login to server for token
-    axiosWithAuth()
-        .post("http://localhost:5000/api/login", this.state.credentials)
-        .then((res) => {
-            console.log('ab: Login.js: login: res:', res);
-            localStorage.setItem('token', res.data.payload);
-            this.props.history.push('/friendlist');
-        })
-        .catch((err) => {
-            console.error(err.response)
-        })
-  };
+        //   login to server for token
+        axiosWithAuth()
+            .post("http://localhost:5000/api/login", this.state.credentials)
+            .then((res) => {
+                localStorage.setItem('token', res.data.payload)
+                console.log('ab: Login.js: login: res:', res)
+                this.props.history.push('/friendlist')
+            })
+            .catch((err) => {
+                console.error(err.response)
+            })
+    };
 
   render() {
       return (
           <div className="form">
-              <header>
-                  <h1>Login !</h1>
-              </header>
+              {this.state.hasRedirected && (
+                  <div className="redirect-msg">
+                      <h3>{this.state.redirectMsg}</h3>
+                  </div>
+              )}
               <form onSubmit={this.login}>
-                  <input
-                    type="text"
-                    name="username"
-                    value={this.state.credentials.username}
-                    onChange={this.handleChange}
-                />
-                <input
-                    type="password"
-                    name="password"
-                    value={this.state.credentials.password}
-                    onChange={this.handleChange}
-                />
+                <header>
+                    <h1 className="login-txt">Login !</h1>
+                </header>
+                <label htmlFor="username" className="username">
+                    Username
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        value={this.state.credentials.username}
+                        onChange={this.handleChange}
+                    />
+                    </label>
+                <label htmlFor="password" className="password">
+                    Password
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={this.state.credentials.password}
+                        onChange={this.handleChange}
+                    />
+                </label>
                 <button> Log In</button>
               </form>
           </div>

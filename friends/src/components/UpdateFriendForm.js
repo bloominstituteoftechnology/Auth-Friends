@@ -3,13 +3,15 @@ import { withRouter } from 'react-router-dom';
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 
-class AddFriend extends React.Component {
+class UpdateFriend extends React.Component {
     state = {
         friendData: {
             name: '',
             age: '',
-            email: ''
-        }
+            email: '',
+            id: 0
+        },
+        friends: []
     };
 
     handleChange = e => {
@@ -21,14 +23,41 @@ class AddFriend extends React.Component {
         });
     };
 
-    addFriend = e => {
+    changeFriend = e => {
         e.preventDefault();
 
         axiosWithAuth()
-            .post("http://localhost:5000/api/friends", this.state.friendData)
+            .get("/friends")
             .then((res) => {
-                console.log('ab: AddFriendForm.js: addFriend(): res:', res);
-                this.props.history.push('/friendlist')
+                console.log('ab: UpdateFriend.js: changeFriend(): res:', res);
+                this.setState({
+                    friends: res.data
+                })
+            })
+            .catch((err) => {
+                console.error(err.response)
+            })
+            
+        
+        console.log(this.state.friends);    
+        this.setState({
+            friendData: {
+                id: this.state.friends.includes(this.state.friendData.name).id
+                // find((frn) => {
+                //     if (frn.name === this.state.friendData.name) {
+                //         return frn.id
+                //     }
+                // })
+            }
+        })    
+        
+        console.log(this.state.friendData.id);
+
+        axiosWithAuth()
+            .put(`http://localhost:5000/api/friends/:${this.state.friendData.id}`, this.state.friendData)
+            .then((res) => {
+                console.log('ab: UpdateFriendForm.js: changeFriend(): res:', res);
+                this.props.history.push('/friendlist');
             })
             .catch((err) => {
                 console.error(err.response)
@@ -45,9 +74,9 @@ class AddFriend extends React.Component {
         return (
             <div className="form">
                 
-                <form onSubmit={this.addFriend}>
+                <form onSubmit={this.changeFriend}>
                     <header>
-                        <h2> Add A Friend</h2>
+                        <h2> Change Friend Info</h2>
                     </header>
                     <label htmlFor="name" className="name">
                         Name
@@ -81,7 +110,6 @@ class AddFriend extends React.Component {
                     </label>
                     <button> Add Friend</button>
                 </form>
-
                 <form onSubmit={this.pushToComponent.bind(this)}>
                     <header className="footer-form-question">
                         <h5>Remove A Friend ?</h5>
@@ -93,4 +121,4 @@ class AddFriend extends React.Component {
     }
 };
 
-export default withRouter(AddFriend);
+export default withRouter(UpdateFriend);

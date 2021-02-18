@@ -11,10 +11,13 @@ import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = ({component: Component, ...props}) => {
     return <Route {...props} render={() => {
-        if (localStorage.getItem('token')) {
+        if (localStorage.getItem('token') && localStorage.getItem('redirect')) {
+            localStorage.removeItem('redirect');
+            return <Component />
+        } else if (localStorage.getItem('token')) {
             return <Component />
         }
-        return <Redirect to="/login" />
+        return (localStorage.setItem('redirect', "Log In To Hang With Friends!"),<Redirect to="/login" />)
     }} />
 };
 

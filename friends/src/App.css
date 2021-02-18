@@ -1,32 +1,312 @@
+/* global styles */
 .App {
   text-align: center;
+  font-family: friendsFont;
+  background-image: url('./assets/FRIENDS_FOUNTAIN_CITY_SKYLINE_COUCH_1600x1000.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 1%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h3 {
+  font-size: 1.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p {
+  text-shadow: 1px 1px rgba(39, 38, 38, 0.829);
+}
+
+span {
+  text-shadow: none;
+}
+
+button {
+  padding: 2% 6%;
+  max-width: 50%;
+  font-family: friendsFont;
+  align-self: center;
+}
+
+button:hover {
+  color: red;
+  text-shadow: 1px 1px rgba(134, 1, 1, 0.616);
+  -webkit-box-shadow: 0px 0px 50px 6px #0F0F0E; 
+  box-shadow: 0px 0px 50px 6px #0F0F0E;
+}
+
+.footer-form-question {
+  color: white;
+  text-shadow: 1.5px 1.5px rgba(255, 255, 255, 0.315);
+
+}
+
+
+@font-face {
+  font-family: friendsFont;
+  src: url('./gabriel_weiss_friends/GABRWFFR.TTF');
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #282c34da;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.315);
+  border-radius: 5% 10%;
+}
+
+/* app header bullet styles */
+.aspan {
+  color: red;
+}
+
+.bspan {
+  color: aqua;
+}
+
+.cspan {
+  color: yellow;
+}
+
+.dspan {
+  color: red;
 }
 
 .App-link {
   color: #61dafb;
 }
+
+
+
+/* nav flex box */
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between ;
+  margin: 2%;
+  padding: 2%;
+  /* border: 1px solid red; */
+  background-image: url('./assets/brickbg.jpg');
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* conditional class for nav */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .main-content {
+  padding-top: 5%;
+}
+
+/* ul styling */
+ul {
+  list-style: none ;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding-left: 1em;
+  text-indent: -.7em;
+  font-size: 1.4rem;
+}
+
+/* anchor reset to remove default styles and assign new behavior */
+a {
+  text-decoration: none;
+  color: black;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.473);
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+li::before {
+  content: "• ";
+}
+
+li.a::before, li.d::before {
+  color: red ;
+}
+
+li.b::before, li.e::before {
+  color: aqua ;
+}
+
+li.c::before {
+  color: yellow ;
+}
+/* REFACTORING OUT */
+/* li.d::before {
+  color: red ;
+} */
+/* REFACRORING OUT */
+/* li.e::before {
+  color: aqua ;
+} */
+
+/* li.classname a:hover,focus,active for each nav item REPEATING GROUPED */
+/* li.a */
+li.a a:hover, li.d a:hover {
+  text-decoration: none;
+  color:red;
+  text-shadow: 1px 1px rgba(119, 0, 0, 0.616);
+}
+
+li.a a:focus, li.d a:focus {
+  color: red;
+}
+
+li.a a:active, li.d a:active {
+  color: red;
+}
+
+/* li.b */
+li.b a:hover, li.e a:hover {
+  text-decoration: none;
+  color:aqua;
+  text-shadow: 1px 1px rgba(1, 145, 145, 0.541);
+}
+
+li.b a:focus, li.e a:focus {
+  color: aqua;
+}
+
+li.b a:active, li.e a:active {
+  color: aqua;
+}
+
+/* li.c */
+li.c a:hover {
+  text-decoration: none;
+  color:yellow;
+  text-shadow: rgba(102, 78, 0, 0.582);
+}
+
+li.c a:focus {
+  color: yellow;
+}
+
+li.c a:active {
+  color: yellow;
+}
+
+/* li.d */
+/* REFACTORING OUT FOR DRY */
+/* li.d a:hover {
+  text-decoration: none;
+  color:red;
+  text-shadow: re;
+}
+
+li.d a:focus {
+  color: red;
+}
+
+li.d a:active {
+  color: red;
+} */
+
+/* li.e */
+/* REFACTORING OUT FOR DRY */
+/* li.e a:hover {
+  text-decoration: none;
+  color:aqua;
+}
+
+li.e a:focus {
+  color: aqua;
+}
+
+li.e a:active {
+  color: aqua;
+} */
+
+/* form styles */
+.form form {
+  margin: 20%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(87, 76, 136, 0.733);
+  border-radius: 15%;
+  
+}
+
+.form form, .friend-card, .App-header {
+  -webkit-box-shadow: inset 0px 0px 50px 6px #0F0F0E; 
+  box-shadow: inset 0px 0px 50px 6px #0F0F0E;
+}
+
+input {
+  margin: 3%;
+}
+/* .friend-list */
+.friend-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+/* .friend-card for each item in state */
+.friend-card {
+  margin: 2%;
+  background-color: rgba(87, 76, 136, 0.733);
+  border-radius: 15%;
+  padding: 3%;
+  min-width: 30%;
+  max-width: 30%;
+
+}
+
+/* ALL LABEL COLORS i.e. .friend-card & .form */
+.name, .login-txt, .friend-name, .redirect-msg {
+  color: red;
+  text-shadow: 1px 1px rgba(126, 3, 3, 0.705);
+}
+
+.age-label, .username {
+  color: yellow;
+  text-shadow: 1px 1px rgba(97, 95, 0, 0.795);
+}
+
+.email, .password {
+  color: aqua;
+  text-shadow: 1px 1px rgba(0, 143, 143, 0.664);
+}
+
+/* redirect spec */
+.redirect-msg {
+  margin-top: 5%;
+}
+
+/* sizing */
+.friend-name {
+  max-width: 80%;
+}
+
+.spinner {
+  margin: 25%;
+}
+
+
+@media (max-width: 600px) {
+  .friend-name {
+    margin: 5%;
+  }
+}
+
 
 @keyframes App-logo-spin {
   from {
