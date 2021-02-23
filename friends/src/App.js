@@ -12,9 +12,7 @@ function App() {
     <>
       <Navbar />
       <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
+        <Route path="/login" component={Login} />
         <Route path="/protected">
           <Protected />
         </Route>
