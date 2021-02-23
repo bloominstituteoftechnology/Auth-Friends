@@ -7,25 +7,31 @@
   background-color: darkgray;
 }
 .cardContainer {
-  padding: 3rem;
+  padding: 5%;
+  border: 2px solid green;
+  margin: 5%;
+  background-color: darkblue;
   display: grid;
   justify-content: space-evenly;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  column-gap: 20px;
-  grid-row-gap: 30px;
+  column-gap: 3%;
+  grid-row-gap: 10%;
   filter: none;
-  background-color: darkgray;
+  border-radius: 2%;
+}
+.link {
+  text-decoration: none;
 }
 .friendCard {
-  border: 1px solid blue;
-  border-radius: 25%;
+  border: 1px solid white;
+  border-radius: 15%;
   box-shadow: 10px 10px 10px 10px black;
   width: 100%;
   filter: blur(8px);
   /* opacity: 5%; */
 }
 .friendCard:hover {
-  border: 1px solid blue;
+  border: 5px solid white;
   background-color: lightgray;
   width: 100%;
   opacity: 100%;
@@ -33,7 +39,11 @@
 }
 .input {
   border: 1px solid red;
+  border-radius: 2%;
   font-size: larger;
+  background-color: darkblue;
+  margin: 5%;
+  color: white;
 }
 .button {
   border-radius: 4px;

@@ -43,44 +43,46 @@ export function GetFriends(props) {
   }, []);
 
   return (
-    <div className="input">
-      <h1>Friend list</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            onChange={handleChange}
-            value={formValues.name}
-          />
-        </label>
-        <br></br>
-        <label>
-          Age:
-          <input
-            type="text"
-            name="age"
-            onChange={handleChange}
-            value={formValues.age}
-          />
-        </label>
-        <br></br>
-        <label>
-          Email:
-          <input
-            type="text"
-            name="email"
-            onChange={handleChange}
-            value={formValues.email}
-          />
-        </label>
-        <br></br>
-        <button className="button">
-          <span>Add New Friend </span>
-        </button>
-        <h4>Hover over cards to reveal friends</h4>
-      </form>
+    <div className="totalContainer">
+      <div className="input">
+        <h1>Friend list</h1>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Name:
+            <input
+              type="text"
+              name="name"
+              onChange={handleChange}
+              value={formValues.name}
+            />
+          </label>
+          <br></br>
+          <label>
+            Age:
+            <input
+              type="text"
+              name="age"
+              onChange={handleChange}
+              value={formValues.age}
+            />
+          </label>
+          <br></br>
+          <label>
+            Email:
+            <input
+              type="text"
+              name="email"
+              onChange={handleChange}
+              value={formValues.email}
+            />
+          </label>
+          <br></br>
+          <button className="button">
+            <span>Add New Friend </span>
+          </button>
+          <h4>Hover over cards to reveal friends</h4>
+        </form>
+      </div>
       <div className="cardContainer">
         {friendList.map((friend) => {
           return <Friend friend={friend} />;

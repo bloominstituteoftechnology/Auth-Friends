@@ -11,7 +11,9 @@ function App() {
       <div className="App">
         <ul>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login" className="link">
+              Login
+            </Link>
           </li>
         </ul>
         <Switch>
