@@ -1,0 +1,3 @@
+/api/login
+/api/friends
+/api/friends/:id
