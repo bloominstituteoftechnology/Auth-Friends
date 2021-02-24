@@ -1,33 +1,38 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+// import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 const initialFormValues= {
-    username: "",
-    password: "",
+    credentials: {
+        username: "",
+        password: ""
+    }
 }
 
-const Login = () => {
+const Login = (props) => {
     const [formValues, setFormValues] = useState(initialFormValues)
 
     const handleChange = (e) =>{
-        setFormValues(
-            {...formValues, [e.target.name] : e.target.value}
+        setFormValues( {...formValues, [e.target.name] : e.target.value}
         )
     }
 
     const handleLogin = (e) =>{
         e.preventDefault();
 
-        const userLogin =  {
-            username: "Lambda School",
-            password: "i<3Lambd4"
-        }
-        axios.post("http://localhost:5000/api/login", userLogin)
+        // const userLogin =  {
+        //     username: "Lambda School",
+        //     password: "i<3Lambd4"
+        // }
+        axios.post('http://localhost:5000/api/login', formValues)
+        //axiosWithAuth().post("/login", userLogin)
             .then((resp)=>{
-                console.log(resp, "RESPONSE")
+                
+                localStorage.setItem("token", JSON.stringify(resp.data.payload))
+                props.history.push('.friendsProtected');
             })
             .catch((err)=>{
-                console.log("ERR", err)
+                 console.log(err)
             })
         
     }
@@ -47,13 +52,14 @@ const Login = () => {
                 </label>
                 <label>Password:
                     <input
-                    type="password"
+                    type="text"
                     name="password"
                     value={formValues.password}
                     onChange={handleChange}
                     >
                     </input>
                 </label>
+                <button>submit</button>
             </form>
             
         </div>
