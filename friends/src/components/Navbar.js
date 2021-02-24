@@ -6,7 +6,8 @@ export const Navbar = () => {
     <div>
       <Link to="/home">Home</Link>
       <Link to="/login">Login</Link>
-      <Link to="/protected">Protected</Link>
+      <Link to="/logout">Logout</Link>
+      <Link to="/friendslist">Friends List</Link>
     </div>
   );
 };
