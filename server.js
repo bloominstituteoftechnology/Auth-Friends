@@ -74,6 +74,7 @@ app.post('/api/login', (req, res) => {
   }
 });
 
+
 app.get('/api/friends', authenticator, (req, res) => {
   setTimeout(() => {
     res.send(friends);
