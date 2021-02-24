@@ -4,12 +4,14 @@ import Login from './components/Login'
 import { Route, Link, Switch } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute'
 import FriendList from './components/FriendList'
+import Friend from './components/Friend'
+import FriendForm from './components/FriendForm';
 
 function App() {
 
   const logout = (e) => {
     e.preventDefault();
-    localStorage.remove('token');
+    localStorage.removeItem('token');
     window.location.href = '/login'
   }
 
@@ -18,17 +20,23 @@ function App() {
       <nav>
         
           <Link to="/login">Home</Link>
-          <Link to="/friendsProtected">Friends</Link>
+          <br></br>
+          <Link to="/friends">Friends</Link>
+          <br></br>
+          <Link to='/friendForm'>Add A New Friend</Link>
+          <br></br>
+          <Link onClick={logout}> Log Me Out</Link>
           
         
       </nav>
       <Switch>
-        <PrivateRoute exact path="/friendsProtected" component = {FriendList} />
+        <PrivateRoute exact path="/friends" component = {FriendList} />
+        <PrivateRoute exact path="/friendForm" component = {FriendForm} />
         <Route path ="/login" component={Login}/>
       </Switch>
 
        
-       <button onClick={logout}>Lougout</button>
+       {/* <button onClick={logout}>Lougout</button> */}
     </div>
   );
 }

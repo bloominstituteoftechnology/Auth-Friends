@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Friend from './Friend'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
+import {Link} from 'react-router-dom'
 
 export default function FriendList() {
     const [friends, setFriends] = useState([])
@@ -29,7 +30,9 @@ export default function FriendList() {
             <div>
                 {
                     friends.map((friend)=>{
-                        return <Friend friend={friend} key={friend.id}/>
+                        return <Link to={`friends/${friend.id}`}>
+                        <Friend friend={friend} key={friend.id}/>
+                        </Link>
                     })
                 }
                 
