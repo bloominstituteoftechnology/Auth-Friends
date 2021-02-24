@@ -11,9 +11,8 @@ export default function FriendList() {
     axiosWithAuth()
         .get('/friends')
         .then((resp)=>{
-            console.log("FriendList .then", resp)
-            setFriends({friends: resp.data})
-            console.log(friends)
+            console.log("FriendList .then", resp.data)
+            setFriends(resp.data)
         })
         .catch((err)=>{
             console.log(err)
@@ -29,12 +28,11 @@ export default function FriendList() {
             <h1>HERE ARE MY FRIENDS:</h1>
             <div>
                 {
-                    friends.map(friend=>{
-                        return (
-                            <Friend friend={friend}/>
-                        )
+                    friends.map((friend)=>{
+                        return <Friend friend={friend} key={friend.id}/>
                     })
                 }
+                
             </div>
         </div>
     )
