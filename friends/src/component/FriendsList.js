@@ -29,7 +29,9 @@ class FriendsList extends React.Component {
               
             })
             .then(res => {
-                console.log(res)
+               this.setState({
+                 friendsList: res.data.friends
+               })
             })
             .catch(err => console.log({ err }));
         };
