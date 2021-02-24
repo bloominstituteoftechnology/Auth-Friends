@@ -1,0 +1,114 @@
+/* * {
+  background-color: darkgray;
+} */
+
+.App {
+  text-align: center;
+  background-color: darkgray;
+}
+.cardContainer {
+  padding: 5%;
+  border: 2px solid green;
+  margin: 5%;
+  background-color: darkblue;
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  column-gap: 3%;
+  grid-row-gap: 10%;
+  filter: none;
+  border-radius: 2%;
+}
+.link {
+  text-decoration: none;
+}
+.friendCard {
+  border: 1px solid white;
+  border-radius: 15%;
+  box-shadow: 10px 10px 10px 10px black;
+  width: 100%;
+  filter: blur(8px);
+  /* opacity: 5%; */
+}
+.friendCard:hover {
+  border: 5px solid white;
+  background-color: lightgray;
+  width: 100%;
+  opacity: 100%;
+  filter: none;
+}
+.input {
+  border: 1px solid red;
+  border-radius: 2%;
+  font-size: larger;
+  background-color: darkblue;
+  margin: 5%;
+  color: white;
+}
+.button {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: darkgray;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
