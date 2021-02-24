@@ -1,9 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
-export default function PrivateRoute() {
+const PrivateRoute = ({component: Component, ...rest}) => {
     return (
-        <div>
-            
-        </div>
+        <Route 
+        {...rest}
+        render={(componentProps) => {
+            if (localStorage.getItem("token")){
+                return <Component {...componentProps} />
+            } else {
+                return <Redirect to="/login" />
+            }
+        }}
+        />
     )
 }
+
+export default PrivateRoute;
