@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { axiosAuth } from "./axios/axioswithauth";
-import { Link, Route, Switch, BrowserRouter } from "react-router-dom";
+import { Link, Route,BrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import DeleteUser from "./DeleteUser";
 import Login from "./Login";
@@ -23,6 +23,7 @@ function App() {
 	};
 
 	return (
+    <BrowserRouter>
 			<div className="App">
 				<Link to="./login">Login</Link>
 				<Link onClick={logout}>Logout</Link>
@@ -37,7 +38,6 @@ function App() {
 					)}
 				</li>
 
-				<Switch>
 					<PrivateRoute
 						exact
 						path="/protected"
@@ -64,8 +64,8 @@ function App() {
 					<Route path="/login" component={Login} />
 					<Route component={Login} />
 					<Route path="/protected/user" component={FriendList} />
-				</Switch>
 			</div>
+      </BrowserRouter>
 	);
 }
 
