@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function DeleteUser() {
+export default function CreateUser() {
 	const initialState = {
 		id: Date.now,
 		name: "",
@@ -17,10 +17,12 @@ export default function DeleteUser() {
 			[e.target.name]: e.target.value,
 		});
 	};
-	const onSubmit = () => {
+	const onSubmit = (e) => {
+		e.preventDefault();
 		axios
-			.delete("http://localhost:5000/api/friends", friend.id)
+			.post("http://localhost:5000/api/friends", friend)
 			.then((response) => {
+				console.log(response);
 				setFriend(response.data);
 			})
 			.catch((err) => {
@@ -30,23 +32,26 @@ export default function DeleteUser() {
 
 	return (
 		<div>
-			<h2>Delete a Friend</h2>
+			<h2>Post a New Friend</h2>
 			<form onSubmit={onSubmit}>
-				<label>
+				<label htmlFor="name">
+					Name
 					<input
 						name="name"
 						value={friend.name}
 						onChange={handleChange}
 					/>
 				</label>
-				<label>
+				<label htmlFor="" age>
+					Age
 					<input
 						name="age"
 						value={friend.age}
 						onChange={handleChange}
 					/>
 				</label>
-				<label>
+				<label htmlFor="email">
+					Email
 					<input
 						name="email"
 						value={friend.email}
