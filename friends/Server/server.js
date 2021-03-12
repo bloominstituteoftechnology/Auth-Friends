@@ -81,7 +81,7 @@ app.get('/api/friends', authenticator, (req, res) => {
 });
 
 app.get('/api/friends/:id', authenticator, (req, res) => {
-  const friend = friends.find(f => f.id == req.params.id);
+  const friend = friends.find(f => f.id === req.params.id);
 
   if (friend) {
     res.status(200).json(friend);
@@ -101,7 +101,7 @@ app.post('/api/friends', authenticator, (req, res) => {
 app.put('/api/friends/:id', authenticator, (req, res) => {
   const { id } = req.params;
 
-  const friendIndex = friends.findIndex(f => f.id == id);
+  const friendIndex = friends.findIndex(f => f.id === id);
 
   if (friendIndex > -1) {
     const friend = { ...friends[friendIndex], ...req.body };

@@ -53,7 +53,7 @@ Now that we have the token, we can do an AJAX request to an endpoint using the a
   // etc
   axiosWithAuth().get('endpoint/path/here').then(data => /* do something with the data */);
 
-  2. Implement protected routes usiing an authentication token and redirect
+  2. Implement protected routes using an authentication token and redirect
 
   We are going to build a protected route
 
