@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Link, Switch, Form } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from "react";
+
 import "bootstrap/dist/css/bootstrap.css";
-import { Button, LinearProgress, TextField } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import "./App.css";
 
-import lady from "./images/streetart.png";
+import lady from "../images/streetart.png";
 
 const login = "";
 
-function App() {
-  const [credentials, setCredentials] = useState({});
+export default function Home() {
+    const [credentials, setCredentials] = useState({});
 
   const handleChange = () => {
     console.log("You Clicked Me");
@@ -170,5 +169,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
