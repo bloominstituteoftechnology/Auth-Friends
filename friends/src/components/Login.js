@@ -27,6 +27,7 @@ class Login extends React.Component{
             .then(res => {
                 console.log(res)
                 localStorage.setItem("authToken", res.data.payload);
+                //Push back to logged in Home page
             })
             .catch(err => console.log(err))
 

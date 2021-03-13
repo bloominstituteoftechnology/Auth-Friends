@@ -9,7 +9,14 @@ function App() {
   return (
   <Router>
     <div className="App">
-      Hello World!
+      <ul>
+        <li>
+          <Link to="/login"> Login</Link>
+        </li>
+        <li>
+          <Link to="/protected">Protected Page</Link>
+        </li>
+      </ul>
       <Switch>
         <Route component={Login}/>
       </Switch>
