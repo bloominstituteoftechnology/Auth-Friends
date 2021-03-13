@@ -15,11 +15,11 @@ Topics:
 
 #### Initialize Project
 
-* Run `npm install` inside the root directory of this project to install dependencies for the API server.
-* Run `npm start` to start the API server.
+[x] Run `npm install` inside the root directory of this project to install dependencies for the API server.
+[x] Run `npm start` to start the API server.
 * Run `npx create-react-app friends --use-npm` in a separate terminal window in the root directory of the project to create your starter application.
-* If you experience issues with `npx`, you may create your starter application by running `create-react-app friends --use-npm`.
-* `cd` into the _friends_ folder and type `npm install axios react-router-dom` which will install the needed dependencies.
+[x] If you experience issues with `npx`, you may create your starter application by running `create-react-app friends --use-npm`.
+[x] `cd` into the _friends_ folder and type `npm install axios react-router-dom` which will install the needed dependencies.
 
 ### Task 2: MVP
 

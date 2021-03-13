@@ -1,0 +1,64 @@
+.App {
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.app-background-container {
+  background-image: url("./assets/john-fowler-RsRTIofe0HE-unsplash.jpg");
+  /* background-attachment: fixed; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  height: 40vh;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.addfriend-container {
+  display: flex;
+  height: 40vh;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.friendList-container {
+  padding: 3rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.friend-card-container {
+  margin: 1rem;
+}
+
+
+
+.App-header {
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
