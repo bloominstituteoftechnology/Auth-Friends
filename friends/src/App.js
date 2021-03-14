@@ -1,14 +1,15 @@
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import LogIn from "./components/LogIn/LogIn";
 import FriendsList from "./components/FriendsList/FriendsList";
-
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={LogIn} />
-        <Route path="/friendsList" component={FriendsList} />
+        <PrivateRoute exact path="/friends-list" component={FriendsList} />
       </Switch>
     </Router>
   );

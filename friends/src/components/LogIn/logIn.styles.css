@@ -9,7 +9,7 @@
 }
 
 .bg-image {
-  background-image: url("https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-image: url('https://images.pexels.com/photos/3491688/pexels-photo-3491688.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
   background-size: cover;
   background-position: center;
 }
@@ -25,24 +25,19 @@
   border-radius: 2rem;
 }
 
-.fa {
-  margin-left: -12px;
-  margin-right: 8px;
-}
-
 .form-label-group {
   position: relative;
   margin-bottom: 1rem;
 }
 
-.form-label-group > input,
-.form-label-group > label {
+.form-label-group>input,
+.form-label-group>label {
   padding: var(--input-padding-y) var(--input-padding-x);
   height: auto;
   border-radius: 2rem;
 }
 
-.form-label-group > label {
+.form-label-group>label {
   position: absolute;
   top: 0;
   left: 0;
@@ -55,8 +50,8 @@
   cursor: text;
   /* Match the input under the label */
   border: 1px solid transparent;
-  border-radius: 0.25rem;
-  transition: all 0.1s ease-in-out;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
 }
 
 .form-label-group input::-webkit-input-placeholder {
@@ -84,7 +79,7 @@
   padding-bottom: calc(var(--input-padding-y) / 3);
 }
 
-.form-label-group input:not(:placeholder-shown) ~ label {
+.form-label-group input:not(:placeholder-shown)~label {
   padding-top: calc(var(--input-padding-y) / 3);
   padding-bottom: calc(var(--input-padding-y) / 3);
   font-size: 12px;
@@ -92,10 +87,10 @@
 }
 
 /* Fallback for Edge
-  -------------------------------------------------- */
+-------------------------------------------------- */
 
 @supports (-ms-ime-align: auto) {
-  .form-label-group > label {
+  .form-label-group>label {
     display: none;
   }
   .form-label-group input::-ms-input-placeholder {
@@ -104,13 +99,15 @@
 }
 
 /* Fallback for IE
-  -------------------------------------------------- */
+-------------------------------------------------- */
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .form-label-group > label {
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  .form-label-group>label {
     display: none;
   }
   .form-label-group input:-ms-input-placeholder {
     color: #777;
   }
 }
+

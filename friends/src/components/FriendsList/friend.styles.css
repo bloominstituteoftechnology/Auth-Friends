@@ -1,0 +1,79 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700");
+
+
+h1 {
+  float: left;
+  width: 100%;
+  color: #232323;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+h1 span {
+  font-family: "Libre Baskerville", serif;
+  display: block;
+  font-size: 45px;
+  text-transform: none;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  font-weight: 700;
+}
+
+h1 a {
+  color: #131313;
+  font-weight: bold;
+}
+
+.profile-card-1 {
+  margin-left: 7%;
+  margin-bottom: 7%;
+  font-family: "Open Sans", Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  width: 265px;
+  height: 290px;
+  color: white;
+  text-align: center;
+  border: none;
+}
+.profile-card-1 .background {
+  width: 100%;
+  vertical-align: top;
+  opacity: 0.9;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  -webkit-transform: scale(1.8);
+  transform: scale(2.8);
+}
+.profile-card-1 .card-content {
+  width: 100%;
+  padding: 5px 25px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+.profile-card-1 .profile {
+  font-size: 5rem;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  max-width: 100px;
+  opacity: 1;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 1);
+  -webkit-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+}
+.profile-card-1 h2 {
+  margin: 0 0 5px;
+  font-weight: 600;
+  font-size: 25px;
+}
+.profile-card-1 h2 small {
+  display: block;
+  font-size: 15px;
+  margin-top: 10px;
+}

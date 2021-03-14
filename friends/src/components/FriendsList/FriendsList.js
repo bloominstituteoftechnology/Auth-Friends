@@ -1,32 +1,35 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
+import { Friend } from "./Friend";
+import Logout from "../Logout";
+import FriendForm from "../FriendForm/FriendForm";
 import "./friendsList.style.css";
 
 function FriendsList() {
   const [friendsList, setFriendsList] = useState([]);
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    axios
-      .get("http://localhost:5000/api/friends", {
-        headers: { Authorization: token },
-      })
+    axiosWithAuth()
+      .get("/friends")
       .then((res) => {
         setFriendsList(res.data);
-        console.log(friendsList);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [friendsList]);
 
   return (
     <div>
-      <h1>Friends List</h1>
-      {friendsList.map((friend) => (
-        <div className="friends">
-          <h2 className="friend">{friend.name}</h2>
-        </div>
-      ))}
+      <p className="log-out">
+        <Logout />
+      </p>
+      <h1 className="title">Friends</h1>
+      <FriendForm />
+      <div className="container">
+        {friendsList.map((friend, index) => (
+          <Friend key={index} friend={friend} />
+        ))}
+      </div>
     </div>
   );
 }
