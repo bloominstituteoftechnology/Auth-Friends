@@ -25,6 +25,11 @@
   border-radius: 2rem;
 }
 
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+}
+
 .form-label-group {
   position: relative;
   margin-bottom: 1rem;

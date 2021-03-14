@@ -1,8 +1,33 @@
-import React from "react";
-import "./LogIn.styles.css";
+import React, { useState } from "react";
+import axios from "axios";
+
+import "./logIn.styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function LogIn() {
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (event) => {
+    const { value, name } = event.target;
+    setCredentials({ ...credentials, [name]: value });
+  };
+
+  const login = (event) => {
+    setLoading(!loading);
+    axios
+      .post("http://localhost:5000/api/login", credentials)
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("authToken", res.data.payload);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="container-fluid">
       <div className="row no-gutter">
@@ -13,25 +38,31 @@ function LogIn() {
               <div className="row">
                 <div className="col-md-9 col-lg-8 mx-auto">
                   <h3 className="login-heading mb-4">Welcome back!</h3>
-                  <form>
+                  <form onSubmit={login}>
                     <div className="form-label-group">
                       <input
-                        type="email"
-                        id="inputEmail"
+                        name="username"
+                        type="text"
+                        id="inputUsername"
                         className="form-control"
-                        placeholder="Email address"
+                        placeholder="username"
+                        value={credentials.username}
+                        onChange={handleChange}
                         required
                         autofocus
                       />
-                      <label for="inputEmail">Email address</label>
+                      <label for="inputUsername">Username</label>
                     </div>
 
                     <div className="form-label-group">
                       <input
-                        type="password"
+                        name="password"
+                        type="text"
                         id="inputPassword"
                         className="form-control"
                         placeholder="Password"
+                        value={credentials.password}
+                        onChange={handleChange}
                         required
                       />
                       <label for="inputPassword">Password</label>
@@ -50,12 +81,18 @@ function LogIn() {
                         Remember password
                       </label>
                     </div>
-                    <button
-                      className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-                      type="submit"
-                    >
-                      Sign in
-                    </button>
+                    {loading === true ? (
+                      <button className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">
+                        <i class="fa fa-spinner fa-spin"></i>Loading
+                      </button>
+                    ) : (
+                      <button
+                        className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                        type="submit"
+                      >
+                        Sign in
+                      </button>
+                    )}
                   </form>
                 </div>
               </div>

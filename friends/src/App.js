@@ -1,11 +1,14 @@
-import LogIn from "./components/LogIn";
+import LogIn from "./components/LogIn/LogIn";
 
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <LogIn />
-    </div>
+    <Router>
+      <div>
+        <LogIn />
+      </div>
+    </Router>
   );
 }
 
