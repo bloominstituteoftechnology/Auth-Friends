@@ -49,7 +49,7 @@ function LogIn() {
                         value={credentials.username}
                         onChange={handleChange}
                         required
-                        autofocus
+                        autoFocus
                       />
                       <label for="inputUsername">Username</label>
                     </div>
