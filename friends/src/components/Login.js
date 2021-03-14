@@ -28,7 +28,7 @@ class Login extends React.Component{
                 console.log(res)
                 localStorage.setItem("authToken", res.data.payload);
                 //Push back to logged in Home page
-                // this.state.history.push("/protected");
+                this.props.history.push("/protected");
             })
             .catch(err => console.log(err))
 
