@@ -2,6 +2,14 @@ html {
   overflow: hidden;
 }
 
+#videoBackground {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+
+}
+
 body {
   background-color: orangered;
   margin: 0;
@@ -82,10 +90,11 @@ body {
   background-image: url(./images/P2.jpg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 100vw;
   position: absolute;
   z-index: -1;
   transform: translateZ(-1px) scale(2);
+  box-shadow: 0 0 1rem black
 }
 
 .parallax-wrapperFour {
@@ -101,12 +110,13 @@ body {
   content: "";
   width: 100vw;
   min-height: 120vh;
+  margin-top: 20vh;
   top: 0;
   left: 0;
   background-image: url(./images/P4.jpg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 100vw;
   position: absolute;
   z-index: 2;
   transform: translateZ(-1px) scale(2);
@@ -151,10 +161,11 @@ body {
   min-height: 120vh;
   top: 0;
   left: 0;
+  background-color: black;
   background-image: url(./images/P3.jpg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 100vw;
   position: absolute;
   z-index: 2;
   transform: translateZ(-1px) scale(2);
@@ -178,7 +189,7 @@ body {
   background-image: url(./images/P5.jpeg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 100vw 100vh;
   position: absolute;
   z-index: 2;
   transform: translateZ(-1px) scale(2);
