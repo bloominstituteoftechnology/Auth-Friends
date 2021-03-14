@@ -28,6 +28,7 @@ class Login extends React.Component{
                 console.log(res)
                 localStorage.setItem("authToken", res.data.payload);
                 //Push back to logged in Home page
+                // this.state.history.push("/protected");
             })
             .catch(err => console.log(err))
 
@@ -35,7 +36,7 @@ class Login extends React.Component{
 
     render() {
         return(
-        <div>
+        <div className='login-form'>
             <form onSubmit={this.login}>
                 <input 
                 type="text"
