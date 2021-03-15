@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+
 
 import FriendCard from './FriendCard';
 
@@ -18,7 +18,7 @@ class FriendsList extends React.Component {
 
 
     getData = () => {
-        const token = localStorage.getItem("authToken");
+        // const token = localStorage.getItem("authToken");
         axiosWithAuth().get("/friends")
             .then(res => {
                 console.log(res)
@@ -34,9 +34,11 @@ class FriendsList extends React.Component {
         return(
             <div>
                 <h1>Friends List</h1>
+                <div>
                 {this.state.friendsList.map( (friend, index) => {
                     return <FriendCard key={index} friend={friend} />
                 })}
+                </div>
             </div>
         );
     };
