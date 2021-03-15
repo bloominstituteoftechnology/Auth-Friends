@@ -1,8 +1,16 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-export default function Logout() {
-    return(
-        <Link>Logout</Link>
+const Logout = () => {
+    let history = useHistory();
+    const logout = () => {
+      localStorage.removeItem("authToken");
+      history.push("/");
+    };
+  
+    return (
+      <div onClick={logout}>Logout</div>
     )
-};
+  }
+  
+  export default Logout;
