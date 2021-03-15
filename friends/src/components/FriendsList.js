@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import FriendCard from './FriendCard';
 
-// import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 
 class FriendsList extends React.Component {
@@ -19,7 +19,7 @@ class FriendsList extends React.Component {
 
     getData = () => {
         const token = localStorage.getItem("authToken");
-        axios.get("http://localhost:5000/api/friends", { headers: {Authorization: token}} )
+        axiosWithAuth().get("/friends")
             .then(res => {
                 console.log(res)
                 this.setState({
