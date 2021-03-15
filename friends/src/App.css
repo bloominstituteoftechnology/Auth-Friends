@@ -1,0 +1,81 @@
+.App {
+  text-align: center;
+  justify-content: center;
+}
+
+/* .login-form {
+  background: #fff;
+	padding: 2rem;
+	width: 30%;
+	border-radius: 1rem;
+	box-shadow: 0px 7px 28px -5px rgba(0, 0, 0, 0.52);
+	display: flex; 
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+} */
+
+/* .input{
+  width: 50%;
+	padding: 0.8rem;
+	margin-bottom: 0.7rem;
+	outline: none;
+	border: none;
+	background: #f3f3f3;
+} */
+
+
+/* Added styling here*/
+ul {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 36px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+li {
+  list-style: none;
+  margin-right: 6px;
+  color: #204963;
+}
+
+a {
+  text-decoration: none;
+  padding: 6px;
+  color: #204963;
+}
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
