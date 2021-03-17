@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 
 import AppBar from "@material-ui/core/AppBar";
-
+import Home from './components/home'
 import Login from "./components/login";
 import Logout from "./components/logout";
-import Home from './components/home'
+import AddArtist from './components/addArtist'
 import Artists from './components/artists'
 import PrivateRoute from './components/PrivateRoute'
 
@@ -66,6 +66,13 @@ export default function App() {
               Logout
             </Link>
             <Link
+              to='add'
+              className='btn btn-outline-light'
+              style={{ color: '#666', margin: '0 1rem'}}
+              >
+              Add Artist
+              </Link>
+            <Link
               to="protected"
               className="btn btn-outline-light"
               style={{ color: "#666" }}
@@ -91,6 +98,7 @@ export default function App() {
         <Route path="/Home" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/logout" component={Logout} />
+        <Route exact path='/add' component={AddArtist}/>
         <PrivateRoute exact path="/protected" component={Artists} />
       </Switch>
     </BrowserRouter>
