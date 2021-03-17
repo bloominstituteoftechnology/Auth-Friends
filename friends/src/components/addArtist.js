@@ -3,6 +3,7 @@ import { TextField, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
+
 const initialNewArtistValue = {
   id: Date.now(),
   name: "",
@@ -17,26 +18,25 @@ const AddArtist = () => {
   const history = useHistory();
 
   const handleChange = (e) => {
-    const newArtistInfo = { ...newArtist, [e.target.name]: e.target.value };
-    setNewArtist(newArtistInfo);
+    setNewArtist({
+      ...newArtist,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const addNewArtist = (props) => {
+  const addNewArtist = (e) => {
+    e.preventDefault();
     console.log("Meet the new Artist", newArtist);
     axiosWithAuth()
-      .post("/Artists", newArtist)
+      .post("http://localhost:5000/api/Artists", newArtist)
       .then((res) => {
+        setNewArtist(initialNewArtistValue);
         console.log(res);
         history.push("/protected");
       })
       .catch((error) => {
         console.log("Incoming Error from Add New Artist", error);
       });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addNewArtist(newArtist);
   };
 
   return (
@@ -92,7 +92,7 @@ const AddArtist = () => {
         </h5>
       </div>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={addNewArtist}
         className="d-flex flex-column justify-content-center, align-items-center"
         style={{
           maxWidth: "50vw",
@@ -113,55 +113,59 @@ const AddArtist = () => {
           margin="dense"
           color="primary"
           value={newArtist.name}
-          onClick={handleChange}
+          onChange={handleChange}
           style={{ backgroundColor: "#AAA" }}
         />
         <TextField
-          name="activeSince"
+          type='text'
+          name="active_since"
           label="Active Since"
           variant="outlined"
           margin="dense"
           color="primary"
           value={newArtist.active_since}
-          onClick={handleChange}
+          onChange={handleChange}
           style={{ backgroundColor: "#AAA" }}
         />
         <TextField
-          name="artistLink"
+          type='text'
+          name="artist_link"
           label="Artist Link"
           variant="outlined"
           margin="dense"
           color="primary"
           value={newArtist.artist_link}
-          onClick={handleChange}
+          onChange={handleChange}
           style={{ backgroundColor: "#AAA" }}
         />
         <TextField
-          name="imageLink"
+          type='text'
+          name="image_url"
           label="Image Link"
           variant="outlined"
           margin="dense"
           color="primary"
           value={newArtist.image_url}
-          onClick={handleChange}
+          onChange={handleChange}
           style={{ backgroundColor: "#AAA" }}
         />
         <TextField
+          type='text'
           name="bio"
           label="Bio"
           variant="outlined"
           margin="dense"
           color="primary"
           value={newArtist.bio}
-          onClick={handleChange}
+          onChange={handleChange}
           style={{ backgroundColor: "#AAA" }}
         />
         <Button
           variant="contained"
-          type="submit"
           size="medium"
           color="primary"
           style={{ margin: "2vh 0 " }}
+          onClick={addNewArtist}
         >
           Contribute Artist
         </Button>

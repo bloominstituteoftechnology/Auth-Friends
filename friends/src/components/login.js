@@ -22,12 +22,12 @@ class Login extends React.Component {
   };
 
   login = (e) => {
-    console.log("login fired", e);
+    //console.log("login fired", e);
     e.preventDefault();
     axios
       .post("http://localhost:5000/api/login", this.state.credentials)
       .then((res) => {
-        console.log("Resolved Token Value", res.data.payload);
+        //console.log("Resolved Token Value", res.data.payload);
         localStorage.setItem("authToken", res.data.payload);
         // redirect to logged in homepage
         this.props.history.push("/protected");
