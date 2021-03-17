@@ -228,3 +228,10 @@ body {
   color: white;
   text-align: justify;
 }
+
+.add-artist {
+  background-image: url(./images/art.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

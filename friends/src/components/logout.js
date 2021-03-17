@@ -6,7 +6,7 @@ const Logout = () => {
   const logout = () => {
     console.log("logged out");
     localStorage.clear();
-    history.push("/Home");
+    history.push("/");
   };
 
   return (
