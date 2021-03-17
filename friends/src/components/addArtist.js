@@ -56,9 +56,9 @@ const AddArtist = () => {
           boxShadow: "0 0 1rem black",
         }}
       >
-        <h1>寄稿アーティスト</h1>
-        <h3>C O N T R I B U T E - A R T I S T </h3>
-        <h6 style={{ marginTop: "5vh" }}>
+        <h1>アーティストに貢献する</h1>
+        <h3>C o n t r i b u t e - A r t i s t</h3>
+        <h5 style={{ marginTop: "8vh" }}>
           Street arts have spent decades developing different schemes and
           formats for influencing public space. Street arts are for everyone,
           regardless of age or social status. They allow for real exchange and
@@ -71,24 +71,25 @@ const AddArtist = () => {
           and collective emotions.
           <br />
           <br />
-          <em>Therefore</em>, We are committed to creating spaces for debate
-          where we can discuss the transformative power of street arts in depth.
-          We encourage cultural institutions, foundations, private companies,
-          artists, people who are professionally engaged in politics… to be
-          courageous: with proposals which wish to transform both for the
-          territory and for citizens, co-creating with street art professionals
-          . We encourage artists from all disciplines to head outdoors with more
-          conviction than ever to express and share their creativity. We
-          encourage citizens to do it too, because art belongs to everyone.
-          Recite, paint, draw, sing, dance, write… on the street! Now is the
-          time to act.
+          Therefore: We are committed to creating spaces for debate where we can
+          discuss the transformative power of street arts in depth. We encourage
+          cultural institutions, foundations, private companies, artists, people
+          who are professionally engaged in politics… to be courageous: with
+          proposals which wish to transform both for the territory and for
+          citizens, co-creating with street art professionals . We encourage
+          artists from all disciplines to head outdoors with more conviction
+          than ever to express and share their creativity. We encourage citizens
+          to do it too, because art belongs to everyone. Recite, paint, draw,
+          sing, dance, write… on the street! Now is the time to act.
           <br />
           <br />
-          So if you know of any artists that need to fill the pages of Street
-          Art, give us a heads up. Contribute an artist using the form below and
-          we will make sure that they make it up immediately. See you on the
-          streets! See you on the street.
-        </h6>
+          If you have an artist that you would like to see featured on Street
+          Art, submit their information below. Help us to make sure Street Art
+          remains what it's always been. By the people. For the People.
+          <br />
+          <br />
+          See you on the street.{" "}
+        </h5>
       </div>
       <form
         onSubmit={handleSubmit}
@@ -101,7 +102,9 @@ const AddArtist = () => {
           padding: "8vh 10vw",
         }}
       >
-        <h3 style={{marginBottom: '3vh', color: 'white'}}>C O N T R I B U T E - A R T I S T </h3>
+        <h3 style={{ marginBottom: "3vh", color: "white" }}>
+          C O N T R I B U T E - A R T I S T{" "}
+        </h3>
         <TextField
           type="text"
           name="name"
