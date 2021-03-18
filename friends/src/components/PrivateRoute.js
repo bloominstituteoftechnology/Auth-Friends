@@ -16,6 +16,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         return <Component {...props} />;
       }
       else { 
+        alert("You must login first")
         return <Redirect to="/login" />;
       }
     }}

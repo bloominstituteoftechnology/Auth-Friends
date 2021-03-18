@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 const Logout = () => {
   let history = useHistory();
   const logout = () => {
-    console.log("logged out");
+    alert("You have been logged out. Thank you for visiting");
     localStorage.clear();
     history.push("/");
   };

@@ -26,12 +26,12 @@ const AddArtist = () => {
 
   const addNewArtist = (e) => {
     e.preventDefault();
-    console.log("Meet the new Artist", newArtist);
+    //console.log("Meet the new Artist", newArtist);
     axiosWithAuth()
       .post("http://localhost:5000/api/Artists", newArtist)
       .then((res) => {
         setNewArtist(initialNewArtistValue);
-        console.log(res);
+        //console.log(res);
         history.push("/protected");
       })
       .catch((error) => {

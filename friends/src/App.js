@@ -101,6 +101,7 @@ export default function App() {
         <Route exact path='/add' component={AddArtist}/>
         <PrivateRoute exact path="/protected" component={Artists} />
       </Switch>
+      
     </BrowserRouter>
   );
 }

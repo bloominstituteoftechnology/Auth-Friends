@@ -12,19 +12,19 @@ class Artists extends React.Component {
 
   getData = () => {
     const token = localStorage.getItem("authToken");
-    console.log("token", token);
+    //console.log("token", token);
     axiosWithAuth()
       .get("/friends")
       .then((res) => {
-        console.log(res);
+       // console.log(res);
         this.setState({
           ...this.setState,
           artist: res.data,
         });
-        console.log(
-          "this.state.artist from Artist component",
-          this.state.artist[0].name
-        );
+        //console.log(
+        //  "this.state.artist from Artist component",
+        //  this.state.artist[0].name
+       // );
       })
       .catch((error) =>
         console.log(
@@ -44,7 +44,7 @@ class Artists extends React.Component {
               <img
                 src={this.state.artist[idx].image_url}
                 alt={this.state.artist[idx].name}
-                style={{ maxWidth: "20vw", boxShadow: '0 0 2vh black', border: '1rem solid white' }}
+                style={{minWidth: '35vw', maxWidth: "50vw", boxShadow: '0 0 2vh black', border: '1rem solid white' }}
               /></a>
               <h2 style={{ color: "white", margin: '1vh', textShadow: '0 0 1rem white' }}>{this.state.artist[idx].name}</h2>
               <h5 style={{color: 'white', textShadow: '0 0 1rem white'}}>Active Since: {this.state.artist[idx].active_since}</h5>
