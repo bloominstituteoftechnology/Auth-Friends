@@ -59,7 +59,7 @@ export default function App() {
               Login
             </Link>
             <Link
-              to="/logout"
+              to="logout"
               className="btn btn-outline-light"
               style={{ color: "#666", margin: "0 1rem" }}
             >
