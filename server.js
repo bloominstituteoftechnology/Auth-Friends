@@ -103,7 +103,7 @@ let friends = [
     name: 'Royyal Dog',
     active_since: '2010',
     artist_link: 'https://the-royyal-dog.squarespace.com/',
-    image_url: 'http://whatthefunmag.com/wp-content/uploads/2020/06/KakaoTalk_Photo_2020-06-02-08-17-38-1024x751.jpeg',
+    image_url: 'https://whatthefunmag.com/wp-content/uploads/2020/06/KakaoTalk_Photo_2020-06-02-08-17-38-1024x751.jpeg',
     bio: 'Royyal Dog (Chris Chanyang Shim, 심찬양) is a graffiti writer and graffiti artist from Seoul, Korea.  He is best known for his photorealistic murals of African American women in traditional Korean hanbok dresses and iconic rappers.  His paintings carry a message of global harmony and have been recognized for multiculturalism. His work can be seen around the world.Royyal Dog studied animation at Chungkang College of Cultural Industries in Incheon.  He also studied pastoral studies at International Evangelical College in the Philippines before dropping out to pursue graffiti in Perth, Australia. Royyal Dog currently resides in Los Angeles with his wife and jindo/labrador retriever.'
   },
   {

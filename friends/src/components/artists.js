@@ -44,7 +44,7 @@ class Artists extends React.Component {
               <img
                 src={this.state.artist[idx].image_url}
                 alt={this.state.artist[idx].name}
-                style={{minWidth: '35vw', boxShadow: '0 0 2vh black', border: '1rem solid white' }}
+                style={{maxWidth: '40vw', boxShadow: '0 0 2vh black', border: '1rem solid white' }}
               /></a>
               <h2 style={{ color: "white", margin: '1vh', textShadow: '0 0 1rem white' }}>{this.state.artist[idx].name}</h2>
               <h5 style={{color: 'white', textShadow: '0 0 1rem white'}}>Active Since: {this.state.artist[idx].active_since}</h5>
